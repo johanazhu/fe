@@ -1,0 +1,18 @@
+{
+  "name": "elaine",
+  "version": "1.0.0",
+  "description": "五年前端三年面试",
+  "main": "index.js",
+  "scripts": {
+    "doc:dev": "vuepress dev docs",
+    "doc:build": "vuepress build docs"
+  },
+  "author": "johan",
+  "license": "ISC",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-rc.1"
+  },
+  "dependencies": {
+    "vuepress-plugin-copyright": "^1.0.2"
+  }
+}

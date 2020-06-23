@@ -1,0 +1,197 @@
+# Object
+
+### 1. Object() 对象概要
+
+在前面几节或多或少看到有关Object的使用，让我们通过几行代码来认识Object
+
+```javascript
+var cody = new Object(); // 创建一个不带属性的空对象
+for(key in cody) { // 确认 cody 对象是普通的空对象
+    if (cody.hasOwnProperty(key)) { // 检查它自身上的属性和方法
+        console.log(key) // 没有任何输出，因为 cody 本身不包含任何属性
+    }
+}
+```
+
+通过 `Object() 构造函数` 创建出来名为 `cody` 的普通对象。可以把 `Object() 构造函数` 想象成饼干模型，该模型用来创建没有预定义属性或方法的空对象（当然，除了哪些继承自原型链的属性或方法）
+
+```javascript
+var cody = {} // 等效于 var cody = new Object(); {} 是语法糖
+```
+
+注意：Object() 构造函数本身对象，即 构造函数是基于 Function 构造函数创建的对象。有点混乱，但是要记住，像 Array 构造函数那样，Object 构造函数只是创建了`空白对象`，我们可以随性所以地创建任何`空对象`。然后像 `cody` 这样的空对象与创建拥有预定义属性的构造函数非常不同。
+
+### 2. Object() 参数
+
+`Object()构造函数` 采用一个可选参数。该参数是要创建的值。如果不提供任何参数，那么将假定一个有null 或 undefined 值
+
+```javascript
+var cody1 = new Object();
+var cody2 = new Object(undefined);
+var cody3 = new Object(null);
+console.log(typeof cody1, typeof cody2, typeof cody3) // 'object object object'
+```
+
+我们可以使用 `Object()构造函数` 来创建任何其他拥有构造函数的原生对象
+
+```javascript
+console.log(new Object('foo'));
+console.log(new Obejct(1));
+console.log(new Object([]));
+console.log(new Object(function () { }));
+console.log(new Object(true));
+console.log(new Object(/\bt[a-z]+\b/))
+// 使用 Object() 构造函数创建 string, number, array, function, boolean, regex 对象
+// 提醒：这些是例子，仅作演示，内置函数有9个，都可以用Object()构造函数创建
+```
+
+### 3. Object() 属性和方法
+
+Object() 对象具有以下属性（不包括继承的属性和方法）。
+
+**属性** (如 Object.prototype)
+
+- prototype
+
+### 4. Object() 对象实例属性和方法
+
+Object() 对象实例拥有下列属性和方法。
+
+**实例属性** （如 var myObject = { }; myObject.constructor）;
+
+- constructor
+
+**实例方法** （如 var myObject = { }; myObject.toString()）;
+
+- hasOwnProperty()
+- isPrototypeOf()
+- propertyIsEnumerable()
+- toLocaleString()
+- toString()
+- valueOf()
+
+注意：原型链以 Object.prototype 结尾，因此，Object() 的所有属性和方法（如上所示）被所有的 JavaScript 对象继承
+
+```javascript
+console.log(Object.prototype) // 可以查找所有的 Object() 构造函数上的属性和方法
+```
+
+
+
+### 5.所有对象都继承自 Object.prototype
+
+Object() 构造函数在 JavaScript 中是特殊的，因为它的 prototype 属性在原型链中是最后一个
+
+下面的代码，我将 foo 属性添加到 Object.prototype 上，然后创建一个字符串
+
+```javascript
+Object.prototype.foo = 'foo';
+var myString = 'bar';
+console.log(myString.foo); // foo
+// 先在myString 实例上找foo属性，找不到往 myString.__proto__ 上找，也就是 String.prototype 上找，再找不到往 myString.__proto__.__proto__ 上找，也就是在 Object.prototype 上找
+// myString.__proto__ === String.prototype
+// myString.__proto__.__proto__ === String.prototype.__proto__ === Object.prototype
+// 原型链的奥秘会在后续文章中详细说明
+```
+
+ 注意：添加至 Object.prototype 的任何内容都将出现在for in 循环和原型链中。因此，更该 Obejct.prototype 是被禁止的
+
+### 6.Object() 构造函数实例上的属性——Constructor
+
+介绍：返回创建实例对象的 `Object` 构造函数的引用
+
+描述：所有对象都会从它的原型能上继承一个 `constructor` 属性
+
+```javascript
+var o = {};
+o.constructor === Object; // true
+
+var a = [];
+a.constructor === Array;  // true
+
+var n = new Number(3);
+n.constructor === Number // number
+
+```
+
+```javascript
+function People(name) {
+    this.name = name;
+}
+var elaine = new People('elaine');
+console.log(elaine.constructor) // People
+```
+
+说白了，它的作用就是告诉你，谁创造了你。但是它是不可靠的，因为可以改变他的指针，除了 String，Number，Boolean 等只读的原生构造函数，其他的都可以被改变，举个例子
+
+```javascript
+function People(name) {
+    this.name = name;
+}
+var func = function () {};
+func.constructor = People
+console.log(a.constructor === People) // true
+// javascript 可以动态复制，所有的引用对象都不靠谱，因为都能被动态替换掉值
+```
+
+注意：ES6中的 `Class` 中有个constructor() 方法，是另一码事 
+
+
+
+### 7.Object() 构造函数实例上的方法——hasOwnProperty
+
+介绍：这个对象是否有它自身的属性或方法
+
+一般用法: objSource.hasOwnProperty('XX')
+
+```javascript
+var foo = {}; // 创建一个空对象
+foo.name = 'johan' // 给 foo对象 动态赋值
+foo.sayHello = function() {
+    console.log('hello world')
+}
+console.log(foo.hasOwnProperty('name')) // true
+console.log(foo.hasOwnProperty('age')) // false
+console.log(foo.hasOwnProperty('sayHello')) // true
+console.log(foo.hasOwnProperty('toStrig')) // false
+```
+
+解读：如果本身有这个属性或者方法，用hasOwnProperty 就能检测出，它能区别 `自身属性与继承属性`
+
+在之前一章中我们谈到如何深拷贝时，我们就用到了它，用它遍历对象的所有自身属性
+
+```javascript
+// 截取深拷贝中的一段
+function clone(source) {
+    var target = {};
+    // 如果目标对象是对象的话
+    for (let prop in source) {
+        if(source.hasOwnProperty(prop) && target[prop] === 'object') {
+            target[prop] = deepClone(source[prop])
+        } else {
+            target[prop] = source[prop]
+        }
+    }
+    return target
+}
+```
+
+
+
+
+
+
+
+
+
+两个对象做对比
+
+isDeepEqual
+
+
+
+
+
+defineProperty
+
+它的特性，vue就是利用了这个属性来做双向数据绑定的
