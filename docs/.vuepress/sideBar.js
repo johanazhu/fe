@@ -164,7 +164,24 @@ function webpackSideBar() {
             collapsable: false,
             sidebarDepth: 0, 
             children: [
-                "webpack/webpack-teach.md",
+                "webpack/webpack从零到总结.md",
+                "webpack/常见面试题.md",
+                "webpack/webpack持久化缓存.md",
+                "webpack/webpack配置篇.md",
+                "webpack/深入理解webpack文件打包机制.md",
+                "webpack/loader和plugin做什么.md",
+                "webpack/webpack如何做优化.md",
+                "webpack/webpack深入总结.md",
+                "webpack/Polyfill 方案的过去、现在和未来.md",
+                "webpack/使用ProloadPrefetch优化你的应用.md",
+                "webpack/实现一个简单的webpack.md",
+                "webpack/为什么webpack4默认支持ES6语法的压缩.md",
+                "webpack/webapck热更新解读.md",
+                "webpack/webpack-dev-middleware源码解读.md",
+                "webpack/happy-pack原理解析.md",
+                "webpack/webpack5构建大型项目.md",
+                "webpack/实战-webpack大型项目实战.md",
+                "webpack/实战-动手打一个自己的脚手架.md",
             ]
         },
         {
@@ -172,8 +189,9 @@ function webpackSideBar() {
             collapsable: false,
             sidebarDepth: 0, 
             children: [
-                "webpack/babel.md",
-                "webpack/如何写一个babel.md"
+                "webpack/babel/基础知识.md",
+                "webpack/babel/如何写一个babel.md",
+                "webpack/babel/深入理解babel生态.md"
             ]
         },
         {
@@ -208,6 +226,10 @@ function nodeSideBar() {
                 "Node/module模块.md",
                 "Node/缓冲器Buffer模块.md",
                 "Node/域名服务器dns模块.md",
+                "Node/进程与线程.md",
+                "Node/脚手架.md",
+                "Node/cookie、session、token、jwt.md",
+                "Node/require和import.md",
                 "Node/export.md",
                 "Node/Node-mysql实践.md",
             ]
@@ -228,8 +250,11 @@ function nodeSideBar() {
             sidebarDepth: 0, 
             children: [
                 "Koa2/koa2-teach.md", 
-                "Koa2/koa2实践.md", 
+                "Koa2/源码分析.md", 
+                "Koa2/对比Express、Koa.md", 
                 "Koa2/手写koa2.md", 
+                "Koa2/koa2+MongoDB+JWT实战.md", 
+                "Koa2/Serverless+Egg.js后台管理系统实战.md", 
             ]
         },
         {
@@ -345,20 +370,49 @@ function jsSideBar() {
                 "JavaScript/作用域与执行上下文.md",
                 "JavaScript/作用域链与原型链.md",
                 "JavaScript/原型.md",
-                "JavaScript/面对对象三大将.md",
+                "JavaScript/原型与原型链.md",
+                "JavaScript/作用域与闭包.md",
+                "JavaScript/作用域与执行上下文.md",
                 "JavaScript/Array.md",
                 "JavaScript/String.md",
-                "JavaScript/循环.md",
+                "JavaScript/循环都来这儿.md",
                 "JavaScript/TypeScript.md",
             ]
         },
         {
-            title: "JavaScript面试汇总",
+            title: "JavaScript面向对象编程",
             collapsable: false,
             sidebarDepth: 0, 
             children: [
-                "JavaScript/Interview/手写.md",
-                "JavaScript/Interview/new关键字具体做了什么.md",
+                "JavaScript/面向对象/介绍.md",
+                "JavaScript/面向对象/面向对象三大将.md",
+            ]
+        },
+        {
+            title: "JavaScript高阶",
+            collapsable: false,
+            sidebarDepth: 0, 
+            children: [
+                "JavaScript/高阶/JavaScript运行原理.md",
+                "JavaScript/高阶/JavaScript中的对象机制.md",
+                "JavaScript/高阶/JavaScript中的函数进阶指南.md",
+                "JavaScript/高阶/深入理解JSCore.md",
+                "JavaScript/高阶/JavaScript引擎.md",
+                "JavaScript/高阶/JavaScript工作机制.md",
+            ]
+        },
+        {
+            title: "JavaScript原理",
+            collapsable: false,
+            sidebarDepth: 0, 
+            children: [
+                "JavaScript/原理/模拟apply、call的实现.md",
+                "JavaScript/原理/模拟bind的实现.md",
+                "JavaScript/原理/模拟new的实现.md",
+                "JavaScript/原理/0.1+0.2为什么不等于0.3.md",
+                "JavaScript/原理/模拟MVVM的实现.md",
+                "JavaScript/原理/源码实现.md",
+                "JavaScript/原理/手写汇总.md",
             ]
         },
     ];
@@ -371,10 +425,14 @@ function ES6SideBar() {
             collapsable: false,
             sidebarDepth: 0, 
             children: [
-                "ES6/Foreword.md",
+                "ES6/完全指南.md",
+                "ES6/模块化历程.md",
+                "ES6/深入理解ES6模块机制.md",
                 "ES6/Promise.md", 
+                "ES6/Async.md", 
                 "ES6/Class.md", 
-                "ES6/Modal.md", 
+                "ES6/Proxy.md", 
+                "ES6/Generator.md", 
                 "ES6/Let&Const.md",
                 "ES6/ES6.md",
             ]
@@ -390,12 +448,17 @@ function BrowserSideBar() {
             sidebarDepth: 0, 
             children: [
                 "Browser/browser.md",
+                "Browser/localStorage.md",   
                 "Browser/页面构建过程.md", 
                 "Browser/渲染机制.md", 
-                "Browser/web生命周期.md", 
+                "Browser/渲染树的形成原理.md", 
+                "Browser/回流与重绘.md", 
                 "Browser/跨域.md", 
                 "Browser/事件循环.md", 
-                "Browser/localStorage.md",                 
+                "Browser/事件Api.md",               
+                "Browser/浏览器性能优化.md",               
+                "Browser/缓存.md",               
+                "Browser/浏览器原理.md",               
             ]
         },
     ]

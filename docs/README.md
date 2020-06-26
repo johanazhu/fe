@@ -1,13 +1,13 @@
 ---
 home: true
-actionText: 快速开始 →
+actionText: FE知识地图
 actionLink: /Introduction/
 features:
-- title: 夯实基础
-  details: 不积跬步无以至千里, 仰望星空还需脚踏实地
-- title: 构建体系
-  details: 告别碎片化学习，帮助你构筑你自己的知识体系
-- title: 全栈开发
-  details: 以Js开发为背景，全栈开发，DevOps
+- title: 自由及生命
+  details: 抛弃一切才是自由，有一种能力看透并抱起，不在乎失去一切
+- title: 生命的意义
+  details: 参差百态乃幸福之本源
+- title: 努力前进
+  details: 想要佩服谁，我就照镜子
 footer: © 2020 - johan
 ---

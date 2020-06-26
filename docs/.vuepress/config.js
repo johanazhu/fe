@@ -53,7 +53,7 @@ module.exports = {
         text: "JavaScript",
         items: [
           { text: "Js基础", link: "/JavaScript/Foreword.md" },
-          { text: "ES6", link: "/ES6/Foreword.md" },
+          { text: "ES6", link: "/ES6/完全指南.md" },
           { text: "Browser", link: "/Browser/browser.md" },
           { text: "性能优化", link: "/Performance/介绍.md" },
         ]
@@ -62,7 +62,7 @@ module.exports = {
       {
         text: "Node",
         items: [
-          { text: "Node基本面", link: "/Node/Node基本面" },
+          { text: "Node基本面", link: "/Node/Node基本面.md" },
           { text: "Express", link: "/Express/express-teach.md" },
           { text: "Koa2", link: "/Koa2/koa2-teach.md" },
           { text: "PM2", link: "/Node/PM2.md" },
@@ -71,7 +71,7 @@ module.exports = {
           { text: "Redis", link: "/Redis/redis-teach.md" }
         ]
       },
-      { text: "webpack", link: "/webpack/" },
+      { text: "webpack", link: "/webpack/webpack从零到总结.md" },
       {
         text: "大前端",
         items: [
