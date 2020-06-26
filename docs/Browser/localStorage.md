@@ -13,3 +13,17 @@ localStorage 与 sessionStorage 与 cookie 的对比
 
 
 答案： GZIP,SSR同构、PWA应用、预渲染、localStorage缓存js文件等、
+
+
+
+
+
+一种简单无副作用的同源开页面数据同步方案
+
+https://mp.weixin.qq.com/s?__biz=MzI0NTE5NzYyMw==&mid=2247483801&idx=1&sn=390c7900b227e0dd1d5727878cff34ec&chksm=e9537fc1de24f6d70c25695e7f32b4b713ab2fef42ea5d24b4a5b6a6768006d365b7e459b8d3&mpshare=1&scene=1&srcid=&sharer_sharetime=1571583079156&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+
+
+
+如何给 localStorage 设置一个有效期
+
+https://www.javascriptc.com/112.html?from=groupmessage&isappinstalled=0

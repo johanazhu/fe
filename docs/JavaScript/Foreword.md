@@ -77,3 +77,37 @@ Math函数和Regex正则和JSON
 
 要确认好
 
+
+
+
+
+夯实JS主要知识点
+
+- 基本类型和引用类型
+- 类型判断
+- 强制类型转换
+- 作用域
+- 执行上下文
+- 理解函数的执行过程
+- this 指向
+- 闭包
+- 原型和原型链
+- js 的继承
+- event loop
+
+https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+
+
+
+珠峰架构课里对javascript 高级的课程安排
+
+- call、apply、bind、new等手写实现
+- 原型链和闭包深入
+- 执行上下文和作用域链
+- 深拷贝和浅拷贝
+- 防抖和节流
+- 词法分析和语法分析
+- 常量、解析、模板字符串、解构操作符、箭头函数、数组新方法、生成器和迭代器等ES6语法
+- Symbol 愿变成、Set和Map应用以及 WeakMap、Object.defineProperty 以及下一代的 Proxy& Reflect、ESModule实现、浏览器和Node.js中的EventLoop
+- V8 内存管理、垃圾收集、引用记数、标记清除、标记整理和增量标记
+- 高阶函数、发布订阅和观察者模式、Promise核心应用、generator和实现co库、async+await原理、实现完整的PromiseA+类库、包括reduce、all、finally、tru等方法

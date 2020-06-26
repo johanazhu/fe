@@ -51,3 +51,9 @@ CommonJS 模块是运行时加载，ES6 模块是编译时输出接口
 
 
 https://github.com/mqyqingfeng/Blog/issues/108
+
+
+
+js模块化规范总结
+
+https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046624&idx=1&sn=5e148a4785b54730e3673ba709882a24&chksm=87c419f0b0b390e61fc91695c663e27ed130c28e30307d4576c43023b4bf6964ef2f56645d61&mpshare=1&scene=1&srcid=&sharer_sharetime=1576713268652&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd

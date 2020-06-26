@@ -245,9 +245,15 @@ foo.bar.a() // window
 
 
 
+重学 this 关键字
+
+https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247484231&idx=1&sn=36db9c6d78b541e73a40cf3e496691fe&chksm=f9910596cee68c80f6d81196644fe5e2ebf84a6e66b11df36276542aa6ab11135affcc23d662&mpshare=1&scene=1&srcid=&sharer_sharetime=1567987883759&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
 
 
 
+完整梳理 this 指向
+
+https://mp.weixin.qq.com/s?__biz=MzA3MTI3Mjk3NA==&mid=2247483660&idx=1&sn=4cc5c66b988e79f39587af46f51b9e95&chksm=9f315e6da846d77b89863afbab30e3dc5d0396bac49aad6e7c9da72882ba378e782a8cd8f61b&mpshare=1&scene=1&srcid=&sharer_sharetime=1566956479051&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
 
 
 
