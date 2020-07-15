@@ -220,7 +220,7 @@ console.log(elaine instanceof Object);
 
 instanceof 运算符能让我们找到他的爸爸是谁（谁制造了他，从生理上讲应该是妈妈是谁），以及他的祖宗十八代
 
-#### constructor
+#### constructor 构造器
 
 `constructor` 是一种用于创建和初始化 `class` 创建的对象的特殊方法。请注意，他是方法。就好比
 

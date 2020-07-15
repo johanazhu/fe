@@ -21,7 +21,7 @@ var funcB = function (num1, num2) {
 // 函数在对象中的别名叫方法
 ```
 
-函数可用于返回值、构建对象，或者作为一种机制简单运行代码。JavaScript的函数有很多种用途，但从最基本的形式来说，函数知识可执行语句的唯一作用域
+函数可用于返回值、构建对象，或者作为一种机制简单运行代码。JavaScript的函数有很多种用途，但从最基本的形式来说，函数只是可执行语句的唯一作用域
 
 ### 3. Function() 属性和方法
 
@@ -53,7 +53,7 @@ var funcB = function (num1, num2) {
 
 ### 5. 函数是“一等公民”（不仅语法，还有值）
 
-在 JavaScript 中，函数是对象。这意味着函数可以存储在一个变量、数组或对象中。同时，函数可以传递给函数，并由函数返回。函数拥有属性，因为它是一个对象。所有这些因素使函数在 JavaScript 中成为 “一等公民”。补充一点，因为函数的本质作用是执行代码，它创造了函数作用域。
+在 JavaScript 中，函数是对象。这意味着函数可以存储在一个变量、数组或对象中。同时，函数可以传递给函数，并由函数返回。函数拥有属性，因为它是一个对象。所有这些因素使函数在 JavaScript 中成为 “一等公民”。补充一点，**因为函数的本质作用是执行代码，它创造了函数作用域。**
 
 ```javascript
 // 1. 函数可以保存在变量(funcA)、数组(funcB)和对象中(funcC)
@@ -86,9 +86,9 @@ console.log(funcStr) // funcStr is not defined
 
 ### 6. this 和 arguments 适用于所有函数
 
-在所有函数的作用域/函数体内，this 和 arguments 值都是可用的
+在所有函数的作用域/函数体内，`this` 和 `arguments` 值都是可用的
 
-arguments 对象是一种类数组对象，它包含所有传递给函数的参数。
+`arguments` 是类数组对象，它包含所有传递给函数的参数。
 
 ```javascript
 var add = function() {
@@ -97,9 +97,9 @@ var add = function() {
 console.log(add(1, 1)) // 2
 ```
 
-传递给所有函数的 this 关键字都是对包含函数的对象的引用。换句话说，谁引用它，this就指向谁。
+传递给所有函数的 this 关键字都是对包含函数的对象的引用。换句话说，**谁引用它，this就指向谁。**
 
-当函数在全局作用域中定义时， this 值时全局对象。
+当函数在全局作用域中定义时， this 值时全局对象。具体讲 `this` 的内容我们下一节再讲
 
 ```javascript
 var myObj = {
@@ -142,6 +142,7 @@ var add3 = function(x, y) {
 - 作为方法
 - 作为构造函数
 - 使用 apply() 或者 call()
+- 自调用
 
 ```javascript
 // 函数模式
@@ -183,7 +184,7 @@ myObj.sayHello.apply(elaine, ['foo', 'bar']) // elaine, foo, bar
 // elaine 调用 myObj.sayHello 方法
 ```
 
-
+看出来为什么说 `Fucntion` 是 JavaScript 的王了吧，关用它就有6种方法，便利即正义
 
 ### 9. 匿名函数
 
