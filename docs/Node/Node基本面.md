@@ -17,3 +17,9 @@ https://mp.weixin.qq.com/s?__biz=MzIyNDU2NTc5Mw==&mid=2247484541&idx=1&sn=3f61e9
 一杯茶的时间，上手Node.js
 
 https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247485160&idx=1&sn=abd92879be52a6a154b7a36d5753ae95&chksm=c066877ef7110e68af08f631949e7e0da5a2866e188537f9e661e923e2b3ecb24185b91e9192&mpshare=1&scene=1&srcid=&sharer_sharetime=1584318313184&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+
+
+
+一份Node.js 入门指南和实践，请注意查收
+
+https://juejin.im/post/5e0006c251882512795675f9
