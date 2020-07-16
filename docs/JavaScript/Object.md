@@ -110,7 +110,7 @@ var a = [];
 a.constructor === Array;  // true
 
 var n = new Number(3);
-n.constructor === Number // number
+n.constructor === Number // true
 
 ```
 
@@ -122,7 +122,11 @@ var elaine = new People('elaine');
 console.log(elaine.constructor) // People
 ```
 
-说白了，它的作用就是告诉你，谁创造了你。但是它是不可靠的，因为可以改变他的指针，除了 String，Number，Boolean 等只读的原生构造函数，其他的都可以被改变，举个例子
+说白了，它的作用就是告诉你，谁创造了你。
+
+我的记忆方法是 谁构造了你，即谁生了你，即母亲生你，即构造函数（构造器）即母亲，而原型（prototype）则是父亲，你的财富来源于你的父亲（比喻不太洽淡，我想说的是继承）
+
+但是它是不可靠的，因为可以改变他的指针，除了 String，Number，Boolean 等只读的原生构造函数，其他的都可以被改变，举个例子
 
 ```javascript
 function People(name) {
@@ -131,7 +135,7 @@ function People(name) {
 var func = function () {};
 func.constructor = People
 console.log(a.constructor === People) // true
-// javascript 可以动态复制，所有的引用对象都不靠谱，因为都能被动态替换掉值
+// javascript 可以动态赋值，所有的引用对象都不靠谱，因为都能被动态替换掉值
 ```
 
 注意：ES6中的 `Class` 中有个constructor() 方法，是另一码事 
@@ -142,7 +146,7 @@ console.log(a.constructor === People) // true
 
 介绍：这个对象是否有它自身的属性或方法
 
-一般用法: objSource.hasOwnProperty('XX')
+一般用法: `obj.hasOwnProperty('XX')`
 
 ```javascript
 var foo = {}; // 创建一个空对象
@@ -156,7 +160,7 @@ console.log(foo.hasOwnProperty('sayHello')) // true
 console.log(foo.hasOwnProperty('toStrig')) // false
 ```
 
-解读：如果本身有这个属性或者方法，用hasOwnProperty 就能检测出，它能区别 `自身属性与继承属性`
+解读：如果本身有这个属性或者方法，用 `hasOwnProperty` 就能检测出，它能区别 `自身属性与继承属性`
 
 在之前一章中我们谈到如何深拷贝时，我们就用到了它，用它遍历对象的所有自身属性
 
