@@ -65,7 +65,9 @@ https://segmentfault.com/a/1190000016550260
 
 
 
+要就来45道promise 面试题一次爽到底
 
+https://mp.weixin.qq.com/s?__biz=MzU2MzM2NzU0NA==&mid=2247486648&idx=1&sn=8168c0890a22b040d9168a1c7a874c91&chksm=fc5a17afcb2d9eb91c4f23fe32379872eb3b1cdfe16b665595f414de074be3597a9828f86b95&mpshare=1&scene=1&srcid=08023WuhQBebCG7JPDgRA7gi&sharer_sharetime=1596372513380&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=d3c7cb8eeb23bc8371a63c2c038a4346a643fac790b41e08813720477b73b5a51979ceb3b77e871c11f56e5fbd478e242e4b62824535ad8ba88b8c390ae5c278656607053088669c62170cbba456ed13&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=AdYrc4H%2FIPJMi8okpYIZ7zM%3D&pass_ticket=4davwgOmWCYDVj%2FsJ8s9Ou6rhS%2BFBYYFPDyL90lmG7D8MJIBJTs1gnZXHNEOtV2C
 
 
 
