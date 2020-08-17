@@ -92,3 +92,11 @@ diff实现过程
 让虚拟DOM和DOM-diff不在成为你的绊脚石
 
 https://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247484479&idx=1&sn=2d6461dd9bee8416da5f342064b5e540&chksm=9782cab6a0f543a0d2e54dd316f0921031b1b0add56fc291404a9afd82d0a68c6b8326ce7f8b&mpshare=1&scene=1&srcid=&sharer_sharetime=1574727372597&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+
+
+
+深度剖析：如何实现一个Virtual DOM
+
+https://segmentfault.com/a/1190000017072371
+
+https://github.com/livoras/blog/issues/13
