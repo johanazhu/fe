@@ -2,27 +2,59 @@
 
 
 
-之前我们介绍原型的时候，我们曾经说过：
+之前在介绍 原型 篇时，在介绍隐式原型继承时，说想要得到一个包含数据、方法以及关联原型三个组成部分的丰满对象，包含了三个步骤：
 
-原型继承有两种形式，一种是显式原型继承，另一种是隐式原型继承。区别在于是否是开发者亲自操作
+1）创建空对象
 
-而 new 的过程，就是隐式原型继承
+2）设置该对象的原型为另一个对象或者 null
 
-后来，我们通过显式原型的方法来模式原型继承。
+3）填充该对象，增加属性或者方法
 
-隐式原型的特点是：
+这些过程即 完成创建对象、原型继承和属性初始化。
 
-1. 自动将
+隐式继承过程中，JS 帮我们做了创建对象和原型继承。
 
+隐式继承包括两种，一对象（数组）字面量；而 new 继承
 
+按照隐式继承的两层隐式行为来看
+
+1）隐式的通过 new Object() 去创建对象
+
+2）隐式的进行原型继承
+
+那么，我们可以这样做：
+
+```javascript
+function User(firstname, lastname) {
+    this.firstname = firstname;
+	this.lastname = lastname;
+}
+const user = new User('johnny', 'joestar');
+```
 
 
 
 ```javascript
-function Person(name, age){
-    this.name = name;
-    this.age = age;
+const new2 = (Constructor, ...args) => {
+    let instance = Object.create(Constructor.prototype);
+    Constructor.call(instance, ...args);
+    return instance;
 }
-var a = new Person('johan', 26);
+function User(firstname, lastname) {
+    this.firstname = firstname;
+	this.lastname = lastname;
+}
+
+const user = new2(User, 'johnny', 'joestar')
 ```
+
+
+
+
+
+
+
+
+
+
 
