@@ -13,3 +13,19 @@
 ​	多种数据结构： string，list  hash set sorted set
 
 ​	可持久化，保证了数据安全
+
+
+
+
+
+Redis 常见命令行
+
+| 命令名        | 描述          |
+| ------------- | ------------- |
+| keys *        | 查看所有的key |
+| set key value | 设置key-value |
+| get key       | 得到某个key   |
+| del key       | 删除某个key   |
+|               |               |
+|               |               |
+

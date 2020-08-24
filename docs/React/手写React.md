@@ -14,6 +14,20 @@ render方法，接受虚拟dom对象，返回真实dom对象
 
 
 
+https://github.com/BetaSu/just-react
+
+
+
+90行写好一个react
+
+看完了，写的蛮好的。作者实现了JSX、函数组件、类组件和生命周期钩子函数
+
+虚拟DOM 借用 `snabdom` ，vue用的就是这个库
+
+https://www.html.cn/web/javascript/19259.html
+
+
+
 simple-react
 
 https://github.com/hujiulong/simple-react
