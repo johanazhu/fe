@@ -1,3 +1,5 @@
+# StatefulWidget
+
 statefulWidget实现步骤
 
 1.首先继承StagefulWidget
@@ -10,7 +12,7 @@ statefulWidget实现步骤
 
 StatefulWidgetD 生命周期
 
-![16ab1dbc405c19e2](C:\Users\Administrator\Desktop\16ab1dbc405c19e2.png)
+![statefulwidget生命周期](D:\code\project\elaine\fe\docs\.vuepress\public\images\Flutter\statefulwidget生命周期.png)
 
 ```dart
 class XXXState extends State<XXX> {

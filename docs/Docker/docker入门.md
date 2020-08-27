@@ -1,4 +1,4 @@
-# docker 入门
+# docker 入门（介绍篇）
 
 docker 是什么？
 
@@ -22,17 +22,63 @@ docker 是什么？
 
 ### 什么是docker？
 
-docker是用Go语言实现的开源项目，可以让我们方便的创建和使用容器，docker将程序以及程序所有的依赖都打包到docker container，这样你的程序可以在任何环节都会有一致的表现，这里程序运行的
+docker是用Go语言实现的开源项目，可以让我们方便的创建和使用容器，docker将程序以及程序所有的依赖都打包到docker container，这样你的程序可以在任何环节都会有一致的表现，这里程序运行的依赖也就是容器就好比集装箱，容器所处的操作系统环境就好比货船或港口，**程序的表现只和集装箱有关系（容器），和集装箱放在哪个货船或者哪个港口（操作系统）没有关系**
+
+### 如何使用docker
+
+docker中有这样几个概念：
+
+- dockerfile
+- image
+- container
+
+image可以理解为可执行程序，conainer就是运行起来的进程
+
+写程序需要源代码，那么“写”image就需要dockerfile，dockerfile就是image的源代码，docker就是“编译器”
+
+因此我们只需要在dockerfile中执行需要哪些程序、依赖什么样的配置，之后把dockerfile交给“编译器”docker进行“编译”，也就是docker build命令，生成的可执行程序image，之后运行这个image，就是docker run命令，image运行起来后就是docker container
+
+### docker是如何工作的
+
+docker使用的是常见的CS架构，也就是client-server模式，docker client负责处理用户输入的各种命令，比如docker build、docker run，真正工作的其实是server，也就是docker daemon（守护进程），值得注意的是，docker client和docker daemon可以运行在同一台机器上
+
+我们用几个命令来解释下docker工作流程：
+
+#### 1.docker build
+
+当我们写完dockerfile交给docker“编译”时使用这个命令，那么client在接收到请求后转发给docker daemon，接着docker daemon根据dockerfile创建出“可执行程序”image
+
+![docker_build](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_build.png)
+
+#### 2.docker run
+
+有了“可执行程序”image后就可以运行程序了，接下来使用命令docker run，docker daemon接收到该命令后找到具体的image，然后加载到内存可以执行，image执行起来就是所谓的container
+
+![docker_run](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_run.png)
+
+#### 3.docker pull
+
+其实docker build和docker run是两个最核心的命令，会用这两个命令基本上docker就可以用起来，剩下的就是一些补充。
+
+docker pull是什么意思，学过git的同学都知道有git pull，从远端仓库拉数据，你可以将你的image放到docker hub上，我们使用docker pull，就是从docker hub上下载image
+
+这个命令的实现很简单，用户通过docker client发送命令，docker daemon接受到命令后向docker registry发送image下载请求，下载后存放在本地，这样我们就可以使用image了
+
+![docker_pull](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_pull.png)
+
+### docker的底层实现
+
+docker基于Linux内核提供这样几项功能实现的：
+
+- #### NameSpce
+
+  - 我们知道Linux中的PID、IPC、网络等资源都是原句的，而NameSpace机制是一种资源隔离方案，在该机制下这些资源就不再是全局的了，而是数据某个特定的NameSpace，各个NameSpace下的资源互不干扰，这就使得每个NameSpace看起来像个独立的操作系统一样，但只有NameSpace是不够的
+
+- #### Control groups
+
+  - 虽然有了NameSpace技术可以实现资源隔离，但进程还是可以不受控的访问系统资源，比如CPU、内存、磁盘、网络等，为了控制容器中进程对资源的访问，Dokcer蔡勇control groups（也就是cgroup），有了cgroup就可以控制容器中进程对系统资源的消耗，比如你可以限制某个容器使用内存的上限、可以在哪些CPU上运行等等
 
 
-
-
-
-
-
-小灰
-
-https://mp.weixin.qq.com/s?__biz=MjM5MjAwODM4MA==&mid=2650774057&idx=1&sn=9fe063207040df636ddb220528b87a46&chksm=bea7ebfa89d062ec9aa42767f110659424212721128ca190b7e30ab2fa5949c08b02e3261797&mpshare=1&scene=1&srcid=0820T5LEp2m5UkDOejgLAZpY&sharer_sharetime=1597921730846&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=872f9623724a6dd21b4eac8a4d63067a595403a311af09f4a2317c714a9a806b439bdf97e0146b69867b50ee0930a1d1238ed8639c62102ca811c820b80186349351351327fa0114c8478782b26e9b3152da2a94bddcb19cee76abdc50a05615a306374ff037d54725f172aaad9a697ede9db8de2c46eacecf636d3335b07355&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=Aafr8C4utPSmecm3fuTsbuc%3D&pass_ticket=TsA3PI05iiUinqHnDfYVdx1V%2B9jJWA%2BSubrQWX9LU74LRuhyWIKFBcyk82o8wvTr
 
 
 

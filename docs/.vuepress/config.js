@@ -75,22 +75,23 @@ module.exports = {
       {
         text: "大前端",
         items: [
-          { text: "webApp", link: "/webApp/" },
-          { text: "Flutter", link: "/Flutter/" },
-          { text: "RN", link: "/RN/" },
-          { text: "微信公众号", link: "/WeChat/" },
-          { text: "微信小程序", link: "/WxApp/" }
+          { text: "webApp", link: "/webApp/Foreword.md" },
+          { text: "Flutter", link: "/Flutter/Foreword.md" },
+          { text: "微信公众号", link: "/WeChat/Foreword.md" },
+          { text: "微信小程序", link: "/WxApp/Foreword.md" },
+          { text: "RN", link: "/RN/Foreword.md" },
         ]
       },
       {
         text: "Html&CSS",
         items: [
-          { text: "HTML", link: "/HTML/" },
-          { text: "CSS", link: "/CSS/" }
+          { text: "HTML", link: "/HTML/HTML.md" },
+          { text: "CSS", link: "/CSS/Foreword.md" },
+          { text: "Jquery", link: "/Jquery/高效jquery.md" }
         ]
       },
       {
-        text: "武器库",
+        text: "多多益善",
         items: [
           { text: "算法", link: "/Algorithm/" },
           { text: "数据结构", link: "/DataStructure/" },
@@ -127,6 +128,7 @@ module.exports = {
       "/WxApp": bigFrondSideBar(),
       "/HTML": frontEndBasicSideBar(),
       "/CSS": frontEndBasicSideBar(),
+      "/Jquery": frontEndBasicSideBar(),
       "/Algorithm": ArmorySideBar(),
       "/DataStructure": ArmorySideBar(),
       "/HTTP": ArmorySideBar(),
@@ -135,7 +137,8 @@ module.exports = {
       "/Linux": ArmorySideBar(),
       "/DesignPattern": designPatternSideBar(),
       "/CSBasic": csBasicSideBar(),
-      "/About": aboutSideBar()
+      "/About": aboutSideBar(),
+      "/Others": aboutSideBar(),
     }
   },
   configureWebpack: {
