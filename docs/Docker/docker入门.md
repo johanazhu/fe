@@ -113,3 +113,26 @@ docker 入门看这篇就够了
 https://mp.weixin.qq.com/s/CClZ9xRMN9mEgEXMm9MuGw
 
 https://www.cnblogs.com/clsn/p/8410309.html
+
+
+
+
+
+
+
+一个容器（container）就是一个独立的虚拟操作系统
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
