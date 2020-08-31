@@ -14,7 +14,11 @@ dockerfile是为了描述一个镜像（应用），通过docker-compose来组�
 
 
 
+通过 dockerfile 生成image（镜像）
 
+```javascript
+docker build .
+```
 
 
 
