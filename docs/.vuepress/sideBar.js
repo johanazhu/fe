@@ -122,7 +122,6 @@ function ArmorySideBar() {
         "Docker/docker-do.md",
         "Docker/docker-how.md",
         "Docker/docker-shell.md",
-        "Docker/docker-teach.md",
       ],
     },
     {

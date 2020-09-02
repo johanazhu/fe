@@ -70,13 +70,13 @@ docker pull是什么意思，学过git的同学都知道有git pull，从远端�
 
 docker基于Linux内核提供这样几项功能实现的：
 
-- #### NameSpce
+- #### NameSpace
 
   - 我们知道Linux中的PID、IPC、网络等资源都是原句的，而NameSpace机制是一种资源隔离方案，在该机制下这些资源就不再是全局的了，而是数据某个特定的NameSpace，各个NameSpace下的资源互不干扰，这就使得每个NameSpace看起来像个独立的操作系统一样，但只有NameSpace是不够的
 
 - #### Control groups
 
-  - 虽然有了NameSpace技术可以实现资源隔离，但进程还是可以不受控的访问系统资源，比如CPU、内存、磁盘、网络等，为了控制容器中进程对资源的访问，Dokcer蔡勇control groups（也就是cgroup），有了cgroup就可以控制容器中进程对系统资源的消耗，比如你可以限制某个容器使用内存的上限、可以在哪些CPU上运行等等
+  - 虽然有了NameSpace技术可以实现资源隔离，但进程还是可以不受控的访问系统资源，比如CPU、内存、磁盘、网络等，为了控制容器中进程对资源的访问，Dokcer采用control groups（也就是cgroup），有了cgroup就可以控制容器中进程对系统资源的消耗，比如你可以限制某个容器使用内存的上限、可以在哪些CPU上运行等等
 
 
 
@@ -113,3 +113,26 @@ docker 入门看这篇就够了
 https://mp.weixin.qq.com/s/CClZ9xRMN9mEgEXMm9MuGw
 
 https://www.cnblogs.com/clsn/p/8410309.html
+
+
+
+
+
+
+
+一个容器（container）就是一个独立的虚拟操作系统
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

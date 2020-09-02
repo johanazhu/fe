@@ -6,3 +6,15 @@
 
 什么是shell？
 
+查看linux的版本
+
+```shell
+uname -r
+```
+
+重启linux
+
+```shell
+sudo reboot
+```
+
