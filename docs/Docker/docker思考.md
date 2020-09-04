@@ -1,4 +1,4 @@
-## docker禽兽指南
+# docker禽兽指南
 
 一个服务器中，可以安装多个应用，每一个应用起一个docker容器，
 每一个docker容器中通过docker Compose编排容器
@@ -40,13 +40,11 @@ docker push johanbo/nginx_container:latest
 docker inspect johanbo/nginx_container
 ```
 
-![](C:\Users\Administrator\Desktop\docker\docker_inspect.png)
+![docker_inspect](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_inspect.png)
 
 登录 `hub.docker.com`
 
-![](C:\Users\Administrator\Desktop\docker\dockerhub.png)
-
-
+![dockerhub](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerhub.png)
 
 
 
@@ -54,7 +52,7 @@ docker inspect johanbo/nginx_container
 
 做一个dockerfile文件
 
-![](C:\Users\Administrator\Desktop\docker\dockerfile文件.png)
+
 
 build 文件，-t：tag标签   	.  当前目录
 
@@ -64,7 +62,7 @@ docker build -t johanbo/nginxfordockerfile .
 
 生成了 image 镜像，通过`docker images` 即可查看
 
-![](C:\Users\Administrator\Desktop\docker\通过dockerfile生成的image.png)
+![通过dockerfile生成的image](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\通过dockerfile生成的image.png)
 
 然后基于`johanbo/nginxfordockerfile`  来生成容器吧
 
@@ -84,7 +82,7 @@ nginx
 ps -ef	查看进程
 ```
 
-`Ctrl + p + q` 退出容器
+`Ctrl + p + q` 退出容器但不关闭
 
 在浏览器中输入`localhost:4444`
 

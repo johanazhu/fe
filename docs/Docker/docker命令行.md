@@ -59,9 +59,17 @@ docker commit <原修改后容器ID> <新容器名称>
 
 
 
+`docker stop xx` 停止容器
+
+`docker start xx`	运行已经停止的容器
+
+`docker kill xx` 	直接关闭容器
 
 
 
+
+
+`docker images` === `docker image ls`
 
 
 
