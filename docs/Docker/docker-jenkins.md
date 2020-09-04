@@ -68,3 +68,10 @@ test： success
 
 如果让github 通知 jenkins
 
+
+
+
+
+https://issues.jenkins-ci.org/projects/JENKINS/issues/JENKINS-63575?filter=allopenissues
+
+版本问题，
