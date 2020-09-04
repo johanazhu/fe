@@ -32,7 +32,7 @@ function bigFrondSideBar() {
         "Flutter/dart.md",
         "Flutter/FlutterTeach.md",
         "Flutter/Widget.md",
-        "Flutter/StatefulWidget.md"
+        "Flutter/StatefulWidget.md",
       ],
     },
     {
@@ -42,37 +42,42 @@ function bigFrondSideBar() {
       children: [
         "WeChat/Foreword.md",
         "WeChat/微信分享.md",
-        "WeChat/微信服务端开发.md"
+        "WeChat/微信服务端开发.md",
       ],
     },
     {
       title: "微信小程序",
       collapsable: false,
       sidebarDepth: 0,
-      children: [
-        "WxApp/Foreword.md"
-      ],
+      children: ["WxApp/Foreword.md"],
     },
     {
       title: "RN",
       collapsable: false,
       sidebarDepth: 0,
-      children: [
-        "RN/Foreword.md"
-      ],
+      children: ["RN/Foreword.md"],
     },
   ];
 }
 
-function ArmorySideBar() {
+function AlgorithmAndDataStructure() {
   return [
     {
       title: "算法",
       collapsable: false,
       sidebarDepth: 0,
       children: [
-        "Algorithm/First.md",
-        "Algorithm/数组降维.md",
+        "Algorithm/什么是数据结构与算法.md",
+        "Algorithm/递归.md",
+        "Algorithm/排序.md",
+        "Algorithm/二分查找.md",
+        "Algorithm/搜索.md",
+        "Algorithm/哈希算法.md",
+        "Algorithm/贪心算法.md",
+        "Algorithm/分治算法.md",
+        "Algorithm/回溯算法.md",
+        "Algorithm/动态规划.md",
+        "Algorithm/字符串匹配算法.md",
         "Algorithm/如何对一个数组进行去重.md",
       ],
     },
@@ -81,13 +86,24 @@ function ArmorySideBar() {
       collapsable: false,
       sidebarDepth: 0,
       children: [
-        "DataStructure/First.md",
-        "DataStructure/堆.md",
-        "DataStructure/栈.md",
+        "DataStructure/什么是数据结构与算法.md",
+        "DataStructure/数组.md",
         "DataStructure/链表.md",
-        "DataStructure/hash表.md",
+        "DataStructure/栈.md",
+        "DataStructure/队列.md",
+        "DataStructure/散列表.md",
+        "DataStructure/二叉树.md",
+        "DataStructure/堆.md",
+        "DataStructure/跳表.md",
+        "DataStructure/图.md",
+        "DataStructure/Trie树.md",
       ],
     },
+  ];
+}
+
+function ArmorySideBar() {
+  return [
     {
       title: "HTTP",
       collapsable: false,
@@ -564,4 +580,5 @@ module.exports = {
   designPatternSideBar,
   csBasicSideBar,
   aboutSideBar,
+  AlgorithmAndDataStructure,
 };

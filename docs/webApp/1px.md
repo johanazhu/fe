@@ -26,3 +26,8 @@ https://zhuanlan.zhihu.com/p/73261198
 7种方法解决移动端Retina 屏幕 1px 边框问题
 
 https://www.jianshu.com/p/7e63f5a32636
+
+
+
+0.5 像素的边框，怎么做
+

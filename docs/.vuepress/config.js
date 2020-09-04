@@ -11,7 +11,8 @@ const {
   bigFrondSideBar,
   designPatternSideBar,
   csBasicSideBar,
-  aboutSideBar
+  aboutSideBar,
+  AlgorithmAndDataStructure,
 } = require("./sideBar");
 
 module.exports = {
@@ -29,16 +30,16 @@ module.exports = {
       {
         name: "keywords",
         content:
-          "javascript知识体系, React框架, javascript学习路线,js, webpack, 前端的一切, 前端面试, 知识体系, js技术栈, git, http, 算法, 数据结构"
-      }
+          "javascript知识体系, React框架, javascript学习路线,js, webpack, 前端的一切, 前端面试, 知识体系, js技术栈, git, http, 算法, 数据结构",
+      },
     ],
-    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }]
+    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
   ],
   // 端口号
   port: 3000,
   markdown: {
     // 代码块行号
-    lineNumbers: true
+    lineNumbers: true,
   },
   themeConfig: {
     // 最后更新时间
@@ -56,7 +57,7 @@ module.exports = {
           { text: "ES6", link: "/ES6/完全指南.md" },
           { text: "Browser", link: "/Browser/browser.md" },
           { text: "性能优化", link: "/Performance/介绍.md" },
-        ]
+        ],
       },
       { text: "React", link: "/React/" },
       {
@@ -68,8 +69,8 @@ module.exports = {
           { text: "PM2", link: "/Node/PM2.md" },
           { text: "Mongoose", link: "/Mongoose/mongoose-teach.md" },
           { text: "Mysql", link: "/Mysql/mysql-teach.md" },
-          { text: "Redis", link: "/Redis/redis-teach.md" }
-        ]
+          { text: "Redis", link: "/Redis/redis-teach.md" },
+        ],
       },
       { text: "webpack", link: "/webpack/webpack从零到总结.md" },
       {
@@ -80,33 +81,36 @@ module.exports = {
           { text: "微信公众号", link: "/WeChat/Foreword.md" },
           { text: "微信小程序", link: "/WxApp/Foreword.md" },
           { text: "RN", link: "/RN/Foreword.md" },
-        ]
+        ],
       },
       {
         text: "Html&CSS",
         items: [
           { text: "HTML", link: "/HTML/HTML.md" },
           { text: "CSS", link: "/CSS/Foreword.md" },
-          { text: "Jquery", link: "/Jquery/高效jquery.md" }
-        ]
+          { text: "Jquery", link: "/Jquery/高效jquery.md" },
+        ],
       },
       {
         text: "多多益善",
         items: [
-          { text: "算法", link: "/Algorithm/" },
-          { text: "数据结构", link: "/DataStructure/" },
+          // { text: "数据结构与算法", link: "/Algorithm/什么是数据结构与算法.md" },
+          {
+            text: "数据结构与算法",
+            link: "/DataStructure/什么是数据结构与算法.md",
+          },
           { text: "HTTP", link: "/HTTP/" },
           { text: "Docker", link: "/Docker/" },
           { text: "Git", link: "/Git/" },
           { text: "Linux", link: "/Linux/" },
           { text: "设计模式", link: "/DesignPattern/单例模式.md" },
-          { text: "CS基础", link: "/CSBasic/" }
-        ]
+          { text: "CS基础", link: "/CSBasic/" },
+        ],
       },
       {
         text: "关于",
-        link: "/About/about.md"
-      }
+        link: "/About/about.md",
+      },
     ],
     sidebar: {
       "/JavaScript": jsSideBar(),
@@ -129,8 +133,8 @@ module.exports = {
       "/HTML": frontEndBasicSideBar(),
       "/CSS": frontEndBasicSideBar(),
       "/Jquery": frontEndBasicSideBar(),
-      "/Algorithm": ArmorySideBar(),
-      "/DataStructure": ArmorySideBar(),
+      "/Algorithm": AlgorithmAndDataStructure(),
+      "/DataStructure": AlgorithmAndDataStructure(),
       "/HTTP": ArmorySideBar(),
       "/Docker": ArmorySideBar(),
       "/Git": ArmorySideBar(),
@@ -139,7 +143,7 @@ module.exports = {
       "/CSBasic": csBasicSideBar(),
       "/About": aboutSideBar(),
       "/Others": aboutSideBar(),
-    }
+    },
   },
   configureWebpack: {
     resolve: {
@@ -147,10 +151,10 @@ module.exports = {
       alias: {
         // '@images': '../images/',
         // "@public": "./public",
-      }
-    }
+      },
+    },
   },
-  smoothScroll: true
+  smoothScroll: true,
   // 插件
   // plugins: ['@vuepress/back-to-top']
 };
