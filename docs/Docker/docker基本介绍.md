@@ -84,3 +84,6 @@ Container:  一个网站的操作系统
 
 dockerfile 生成镜像（image），push 到远程仓库，你要使用，就先pull 到本地，再run项目
 
+
+
+陈浩：namespace 解决的问题是环境隔离问题，而cgroup 解决计算机资源使用上的隔离
