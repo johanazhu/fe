@@ -1,0 +1,35 @@
+# python
+
+
+
+一切皆对象（Object）
+
+有自己从属的数据类型
+
+有属性（attribute）和方法（method）/函数（function）
+
+
+
+### Python 标准的数据类型 Data Types
+
+- 数字（Number）
+- 字符（String）
+- 列表（List）
+- 字典（Dictionary）
+- 元组（Tuple）
+- 集合（Set）
+
+
+
+### Number
+
+#### 整数（integer）
+
+- 0.1
+
+浮点数（float）
+
+
+
+
+
