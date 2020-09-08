@@ -306,3 +306,132 @@ which cat
   - ctrl+k 从光标位置开始，删除右方所有的字符，直到该行结束的位置
 - 登出系统
   - ctrl+d 快速退出终端
+
+
+
+### 软件包管理 apt
+
+apt 是 advanced package tools 的意思，apt 是 debian 系发行版的软件包管理工具。红帽系的 yum、arch 系的 pacman 也是很好的管理工具。
+
+#### 为什么要用这个工具 🔧
+
+- 不同的 cpu 架构要用不同的二进制文件
+- 你可以有两种方法得到某种架构（比如 mips) 的二进制文件
+  - 直接下载这个架构的二进制文件
+  - 下载这个软件包的源文件，自己编译 ⚙️
+
+**但是这个得到的二进制文件还是有可能不能用，比如：**
+
+软件包之间是有依赖关系的，这个软件包依赖的软件包不存在，甚至被依赖的软件包所依赖的软件包不存在，这就形成了一条链路，我们就需要把这条链路上所有的软件包都下载下来。
+
+**有没有更便捷的方法呢？当然有，我们可以：**
+
+使用 apt 把相关操作封装成接口，我们直接调用 apt 就可以了，所以叫做高级包管理工具，当然你得有地方下载，这就需要镜像站
+
+#### 镜像站（mirrors）
+
+**可以理解为软件包放在网络上。**
+
+我们可以自己访问 [debian 系的镜象列表](https://www.debian.org/mirror/list) 查看，这里面其实对应的就是我们 `/etc/apt/sources.list`。
+
+**镜像站一般也不只提供一个发行版的镜像。**
+
+以 [清华镜像站](https://mirror.tuna.tsinghua.edu.cn/) 为例：
+
+- 有好多发行版
+- 点击发行版或软件包后面问号
+- 可以获得 `sources.list` 的相关清华源配置代码
+
+
+
+
+
+### Linuxlogo
+
+下载
+
+```shell
+sudo apt install linuxlogo
+```
+
+展示
+
+```shell
+linuxlogo
+```
+
+可以看到发行版的logo包括了：
+
+- 内核版本
+- 发行版版本
+- 编译日期
+- cpu 速度
+
+
+
+### 字符画Figlet
+
+查找
+
+```shell
+apt search large character
+```
+
+下载
+
+```
+sudo apt install figlet
+```
+
+使用
+
+```shell
+figlet elaine
+```
+
+![figlet](D:\code\project\elaine\fe\docs\.vuepress\public\images\Linux\figlet.png)
+
+查找所有的模板文字
+
+```shell
+sudo find / -name "*.flf"
+```
+
+
+
+
+
+### 风格文字 toilet
+
+查找（搜索）
+
+```shell
+apt search toilet
+```
+
+展示信息
+
+```shell
+apt show toilet
+```
+
+下载
+
+```shell
+sudo apt install toilet
+```
+
+使用
+
+```shell
+toilet elaine
+```
+
+查找所有的模板文字
+
+```shell
+sudo find / -name "*.tlf"
+```
+
+
+

@@ -1,24 +1,82 @@
-# dockerfile 最小实践——koa为例
+# 实战：docker-jenkins
 
 
 
-最小实践，意味着将链路打通，打通后站在全局看问题，问题能看的清晰，这一章，我将带你实现一个最简单的node服务，以koa为例
-
-先决知识：对docker有一定的了解，但是不知道如何操作dockerfile
+https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms
 
 
 
-https://mp.weixin.qq.com/s?__biz=MzA5ODQyNzk3MQ==&mid=2451546466&idx=1&sn=a5f9c494da20070ab0ec94ffd52d0502&chksm=877ab44eb00d3d5822deeafb0f55d3fe38855aa8b00c17300158976b9b0693304e61d9c58180&scene=21#wechat_redirect
+```shell
+docker run --name jenkins -p 8080:8080 -p 50000:50000 -d -v /home/johan/www/jenkins:/var/jenkins_home jenkins/jenkins:lts
+```
+
+`-d`： 后台运行
+
+/root/jenkins_node1
+
+
+
+**PS:映射数据卷之前要先建立文件，并且提高他的文件读写权限为777**
+
+使用`sudo chmod -R 777 /home/johan/www/jenkins`
+
+
+
+需要等一段时间，然后下载他推荐的插件
+
+![docker_jenkins新手](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_jenkins新手.png)
+
+报错就重试，咔咔就是干
+
+
+
+创建账号：
 
 
 
 
 
-先生成一个dockerfile，就好比package.json，
+换源：
 
-docker build 它，就能哪找dockerfile上的指令生成一个镜像，接着按照镜像生成（run）一个容器，查看是否能通，如果通的话，就 push 到远端仓库。在你的服务器上 pull 该仓库，并生成一个容器
+`https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`
 
-这就是最小实现 
+下载 ssh 插件：
+
+Publish over SSH
+
+
+
+系统配置：连接SSH
+
+使用密码
+
+test： success
+
+
+
+下载nodejs 插件
+
+
+
+全局配置node 
+
+
+
+
+
+但现在我们还只是打通了一条线，即
+
+如果让github 通知 jenkins
+
+
+
+
+
+https://issues.jenkins-ci.org/projects/JENKINS/issues/JENKINS-63575?filter=allopenissues
+
+版本问题，
+
+
 
 
 

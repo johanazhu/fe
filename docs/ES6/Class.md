@@ -85,3 +85,68 @@ const createElement = (type, props = {}, ...children) => {
 ...
 ```
 
+
+
+
+
+
+
+
+
+
+
+ES6的class转换为ES5中的prototype具体代表着什么
+
+```javascript
+const name = 'hanbo';
+const obj1 = {
+    sayhello: function() {
+        console.log('sayhello')
+    },
+    verson: 'v1'
+}
+
+class A {
+	constructor() {
+        this.name = name;
+        this.obj1 = obj1
+    }   
+    sayA() {
+        console.log('sayA')
+    }
+}
+const a = new A()
+a.sayA() // sayA 来源自A的原型上 
+a.name // hanbo
+a.obj1.verson() //  v1
+a.obj1.sayhello() // sayhello
+```
+
+
+
+new 的意思就是实例化，实例化代表
+
+
+
+可以看出，sayA 方法是公共方法，而
+
+
+
+```javascript
+const name = 'hanbo';
+function A() {
+    this.name = name
+}
+A.prototype.sayA = function() {
+    console.log('sayA')
+}
+```
+
+
+
+PS: 我们约定俗成，首字母大写的为构造函数
+
+
+
+
+
