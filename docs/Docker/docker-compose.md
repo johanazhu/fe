@@ -48,7 +48,11 @@ volumes:
 
 
 
+### 什么是docker-compose
 
+通过 docker-compose 用户可以很容器地用一个配置文件定义一个多容器的应用
+
+docker-compose 解决了容器与容器之间如何管理编排的问题
 
 
 

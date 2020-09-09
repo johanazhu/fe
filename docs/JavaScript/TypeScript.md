@@ -79,5 +79,21 @@ https://ts.xcatliu.com/introduction/hello-typescript
 
 
 
+TypeScript 是 javaScript 的超集其实就是原生ES语法+Type 类型
 
+
+
+切记 所有的ts的依赖，都必须是@types 开头的，否则用不了
+
+
+
+- 类型定义：每一个变量都需要定义它的类型
+- 引用第三方类库：第三方库如果不是 `TypeScript` 写的，没有提供声明文件，就需要去为第三方库编写声明文件
+- 新概念：`TypeScript` 中引入的类型（Types）、类（Classes）、泛型（Generics）、接口（Interfaces）以及枚举（Enums）
+
+
+
+
+
+https://segmentfault.com/a/1190000021210413
 

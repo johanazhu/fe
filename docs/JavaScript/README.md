@@ -10,3 +10,11 @@ https://mp.weixin.qq.com/s?__biz=MzU3MzcxMzg2Mw==&mid=2247483924&idx=1&sn=fa6940
 以前面试的时候常害怕别人问：**原型** 、**原型链** 、**闭包** 、**继承**、**构造函数** ，**this** ， 后来过了一年，我害怕别人问 防抖和节流、promise、深拷贝和浅拷贝、react、webpack的优化，再后来就是 基础的算法问题，
 
 说不知道，是撒谎。但也谈不上章口就来。说到底，还是基础不扎实，其本质没理解到位，所以需要写点东西加深自己的印象。
+
+javascript 开发者必须知道的33个知识点
+
+https://github.com/stephentian/33-js-concepts
+
+
+
+要将这些盘活，连成一个大网
