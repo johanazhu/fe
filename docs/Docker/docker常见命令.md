@@ -83,7 +83,7 @@
 
 `docker save –o ubuntu_node.jar ubuntu_node`
 
-导出镜像： `docker load < express_server.tar`
+导入镜像： `docker load < express_server.tar`
 
 
 
