@@ -7,7 +7,7 @@ features:
     details: Things Change Roll With It
   - title: 生命的意义
     details: 参差百态乃幸福之本源
-  - title: 努力前进
+  - title: 常威，你拿什么跟我斗
     details: 想要佩服谁，我就照镜子
 footer: © 2020 - johan
 ---
