@@ -435,3 +435,158 @@ sudo find / -name "*.tlf"
 
 
 
+### 蒸汽汽车 sl
+
+```shell
+sudo apt install sl
+sl
+sl -l
+sl -F
+```
+
+`SL` 代表 `Steam Locomotive`，这个命令和 ls 很像，这个命令就是在 ls 打错的情况下提提神：😓
+
+- `-l` 选项:会出现一个小火车
+- `-F` 选项:会让火车越飞越高，要注意是大写F
+- `-e` 选项:允许中途被 ctrl+c 打断
+
+
+
+
+
+### 黑客帝国 cmatrix
+
+
+
+下载
+
+```shell
+sudo apt install cmatrix
+```
+
+- `-b`: 部分加粗头部变色 bold
+- `-B`: 全部加粗头部变色 Bold
+- `-o`: 老式的 old school
+- `-s`: 屏保模式 Screensaver
+- `-u`: 我们可以设置中间 0-9 的间隔时间 ⏲
+  - 0 为无间隔非常快
+  - 9 为比较慢
+- `-C`: 后面加上想要的颜色 (Color) 模式
+  - 目前支持红绿蓝青品黄黑白
+
+```shell
+cmatrix -b
+cmatrix -u 9
+cmatrix -C blue
+```
+
+
+
+### 满屏乱码 bb
+
+下载
+
+```shell
+sudo apt install bb
+```
+
+使用
+
+```shell
+bb
+```
+
+
+
+### 装酷屏幕 hollywood
+
+显示和搜索
+
+```shell
+apt show hollywood
+apt search hollywood
+```
+
+更新源信息及下载 hollywood
+
+```shell
+sudo apt update	#更新源信息
+apt show hollywood
+sudo apt install hollywood
+```
+
+使用
+
+```shell
+hollywood
+```
+
+
+
+### aptitude
+
+软件包工具 apt
+
+软件包哦不断能下载，也能升级，还能删除
+
+专门管理软件包的 aptitude
+
+
+
+### 牛说 cowsay
+
+下载
+
+```shell
+sudo apt install cowsay
+```
+
+使用
+
+```shell
+cowsay johan
+```
+
+- `-b` 极简主义 Borg Mode
+- `-d` 死亡状态 dead
+- `-g` 贪婪金钱 greedy
+- `-p` 偏执狂 paranoia
+- `-s` 石化 stone
+- `-w` 紧张睁大眼 wired
+- `-t` 闭眼的
+- `-e` 设置眼睛 eye 字符 后面眼睛字符
+
+```shell
+cowsay -p johan
+cowsay -s johan
+cowsay -e *- johan
+```
+
+除了 cowsay 之外，cowthink 也可以使用
+
+```shell
+cowthink -p joahan
+```
+
+
+
+### 管道 pipe
+
+pipe 原理
+
+- 中间的那条竖线 | （在键盘回车上面）, 就是 pipe
+- pipe, 意思是管道
+- 原来 figlet "oeasy"命令执行之后进行输出
+- 输出流，直接流到屏幕 (stdout) 上
+- 现在给他加了一个管道|
+- figlet 不直接输出到屏幕了
+- figlet 把输出结果流到了 cowsay 指令中
+- cowsay 接收到了流过来的 figlet 的结果做为参数
+- cowsay 的输出结果最终流到了屏幕 (stdout) 上
+
+```shell
+toilet  --gay oeasy | cowthink -n
+```
+
+**我对管道的理解：就是下一步**
+
