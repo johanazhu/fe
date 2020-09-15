@@ -44,3 +44,9 @@ https://www.bilibili.com/video/av23687046
 书：
 
 笨方法学python
+
+
+
+廖雪峰的python3 教程
+
+https://www.liaoxuefeng.com/wiki/1016959663602400/1016966022717728

@@ -27,3 +27,13 @@ https://mp.weixin.qq.com/s?__biz=MzAxOTAzNjUwMg==&mid=301057679&idx=1&sn=e118647
 JSBridge 设计和实现
 
 [https://jeezliu.github.io/javascript/hybrid/JSBridge%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0/](https://jeezliu.github.io/javascript/hybrid/JSBridge设计和实现/)
+
+
+
+
+
+
+
+js-native 通信的 6 种方式
+
+https://mp.weixin.qq.com/s?__biz=MzI5MTY0ODAwNQ==&mid=2247486731&idx=1&sn=cf6f4b5f87251f294bf89dc28b5a50a5&chksm=ec0c2a61db7ba3770057f490203da3e91738e064d1db49a22211b369381b034784ae62ec40c2&scene=126&sessionid=1600131619&key=b936ead840dca7f66df09127a2f7d45f7a1b97c4e1bcb1550f591efa91ed855246f30a30d6edf60dbce26254c7776221432c842419f76096cbe1b2c68e4a954c1ac18bb2e6aaf21cabecf87ad66543c7ac0d9cf79b6385e9ce780d3eda97785dce10dcaf55918717df84f5cdb83a4975e21f22ebd20ffec8571be57ff0bf088a&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=Adk09ifd8BcM1BSVt76lbvE%3D&pass_ticket=X3VNYNXcDTVwNpUtGAVXbhnocc4It3ssOIqIC%2FA7FS4fnHhcGPBP0sZBFjnUOpnH&wx_header=0
