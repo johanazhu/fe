@@ -105,3 +105,11 @@ https://juejin.im/post/5dd64ae6f265da478b00e639
 十个案例学会 React Hooks
 
 https://github.com/happylindz/blog/issues/19
+
+有状态的组件没有渲染，有渲染的组件没有状态
+
+
+
+手动做一个hook
+
+https://github.com/shanggqm/blog/issues/4
