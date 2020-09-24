@@ -49,7 +49,7 @@ module.exports = {
     sidebarDepth: 0,
     // 导航
     nav: [
-      { text: "导读", link: "/Introduction/" },
+      // { text: "导读", link: "/Introduction/" },
       {
         text: "JavaScript",
         items: [
@@ -76,11 +76,18 @@ module.exports = {
       {
         text: "大前端",
         items: [
-          { text: "webApp", link: "/webApp/Foreword.md" },
+          { text: "WebApp", link: "/WebApp/Foreword.md" },
           { text: "Flutter", link: "/Flutter/Foreword.md" },
           { text: "微信公众号", link: "/WeChat/Foreword.md" },
           { text: "微信小程序", link: "/WxApp/Foreword.md" },
           { text: "RN", link: "/RN/Foreword.md" },
+        ],
+      },
+      {
+        text: "数据结构与算法",
+        items: [
+          { text: "数据结构", link: "/DataStructure/什么是数据结构.md" },
+          { text: "算法", link: "/Algorithm/什么是算法.md" },
         ],
       },
       {
@@ -94,17 +101,12 @@ module.exports = {
       {
         text: "多多益善",
         items: [
-          // { text: "数据结构与算法", link: "/Algorithm/什么是数据结构与算法.md" },
-          {
-            text: "数据结构与算法",
-            link: "/DataStructure/什么是数据结构与算法.md",
-          },
-          { text: "HTTP", link: "/HTTP/" },
-          { text: "Docker", link: "/Docker/" },
-          { text: "Git", link: "/Git/" },
-          { text: "Linux", link: "/Linux/" },
           { text: "设计模式", link: "/DesignPattern/单例模式.md" },
-          { text: "CS基础", link: "/CSBasic/" },
+          { text: "HTTP", link: "/HTTP/HTTP是什么.md" },
+          { text: "Docker", link: "/Docker/docker基础介绍.md" },
+          { text: "Git", link: "/Git/git-teach.md" },
+          { text: "Linux", link: "/Linux/shell.md" },
+          { text: "CS基础", link: "/CSBasic/计算机的起源.md" },
         ],
       },
       {
@@ -125,7 +127,7 @@ module.exports = {
       "/Mysql": nodeSideBar(),
       "/Redis": nodeSideBar(),
       "/webpack": webpackSideBar(),
-      "/webApp": bigFrondSideBar(),
+      "/WebApp": bigFrondSideBar(),
       "/Flutter": bigFrondSideBar(),
       "/RN": bigFrondSideBar(),
       "/WeChat": bigFrondSideBar(),

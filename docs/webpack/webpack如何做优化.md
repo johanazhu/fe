@@ -1,4 +1,4 @@
-
+# webpack如何做优化
 
 
 
@@ -110,38 +110,38 @@ https://zhuanlan.zhihu.com/p/33377189
 
            	2. 使用 DllPlugin 预先打包好第三方库
 	
-            	1. ```javascript
-            	// dll.config.js
-            	const webpack = require('webpack');
-            	const path = require('path');
-            	const DllPlugin = require('webpack/lib/DllPlugin')
-            	const vendors = [
-            	  'react',
-            	  'react-dom',
-            	  'react-router',
-            	  'redux',
-            	  'react-redux',
-            	  'jquery',
-            	  'antd',
-            	  'lodash',
-            	]
-            	module.exports = {
-            	  entry: {
-            	    'dll': vendors,
-            	  },
-            	  output: {
-            	    filename: '[name].js',
-            	    path: path.resolve(__dirname, 'public'),
-            	    library: '__[name]__lib',
-            	  },
-            	  plugins: [
-            	    new DllPlugin({
-            	      name: '__[name]__lib',
-            	      path: path.join(__dirname, 'build', '[name].manifest.json'),
-            	    }),
-            	  ]
-            	}
-            	```
+               	1. ```javascript
+                  	// dll.config.js
+                  	const webpack = require('webpack');
+                  	const path = require('path');
+                  	const DllPlugin = require('webpack/lib/DllPlugin')
+                  	const vendors = [
+                  	  'react',
+                  	  'react-dom',
+                  	  'react-router',
+                  	  'redux',
+                  	  'react-redux',
+                  	  'jquery',
+                  	  'antd',
+                  	  'lodash',
+                  	]
+                  	module.exports = {
+                  	  entry: {
+                  	    'dll': vendors,
+                  	  },
+                  	  output: {
+                  	    filename: '[name].js',
+                  	    path: path.resolve(__dirname, 'public'),
+                  	    library: '__[name]__lib',
+                  	  },
+                  	  plugins: [
+                  	    new DllPlugin({
+                  	      name: '__[name]__lib',
+                  	      path: path.join(__dirname, 'build', '[name].manifest.json'),
+                  	    }),
+                  	  ]
+                  	}
+               ```
 	
             	具体配置
 	
@@ -197,7 +197,7 @@ https://zhuanlan.zhihu.com/p/33377189
       	4. 尽可能减少构建时间
 	2. 不值得去配置
         	1. 优化开发体验
-            	2. 开发环境才需要的配置
+                  	2. 开发环境才需要的配置
 
 
 
