@@ -97,3 +97,10 @@ TypeScript 是 javaScript 的超集其实就是原生ES语法+Type 类型
 
 https://segmentfault.com/a/1190000021210413
 
+
+
+
+
+图雀的typescript 教程
+
+https://tuture.co/tags/TypeScript/

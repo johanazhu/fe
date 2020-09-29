@@ -17,3 +17,9 @@ https://mp.weixin.qq.com/s?__biz=MzI0NTE5NzYyMw==&mid=2247484065&idx=1&sn=bdcd7a
 详细的 nginx 配置 https 零基础教程
 
 https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247484991&idx=2&sn=a68e578591e2df254fa339aacc1ec9e2&chksm=f99100eecee689f88e9e08fddc9ff42d0c88b8fd89c027b489005d28cf1950320f6e3b6cf1fd&mpshare=1&scene=1&srcid=&sharer_sharetime=1585873416059&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+
+
+
+nginx 教程
+
+https://github.com/jaywcjlove/nginx-tutorial

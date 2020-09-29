@@ -19,3 +19,9 @@ https://github.com/johanazhu/react-style-guide
 
 
 最小实践
+
+
+
+编写可维护的前端代码
+
+https://zhuanlan.zhihu.com/p/141633166?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128&utm_content=sec
