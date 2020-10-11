@@ -7,10 +7,10 @@ function bigFrondSideBar() {
       children: [
         "WebApp/Foreword.md",
         "WebApp/常见问题.md",
-        "WebApp/dp、sp、px.md",
-        "WebApp/1px.md",
+        "WebApp/分辨率浅析.md",
+        "WebApp/1px问题.md",
         "WebApp/移动端布局.md",
-        "WebApp/适配.md",
+        "WebApp/适配方案.md",
         "WebApp/flexible源码解析.md",
         "WebApp/offset、scroll、client.md",
         "WebApp/滚动穿透.md",
@@ -20,7 +20,9 @@ function bigFrondSideBar() {
         "WebApp/Hybrid.md",
         "WebApp/JSBridge.md",
         "WebApp/主题色提取.md",
+        "WebApp/我常用的webApp开发规范.md",
         "WebApp/最佳实践.md",
+        "WebApp/mobileHack.md",
       ],
     },
     {
@@ -141,10 +143,7 @@ function ArmorySideBar() {
       title: "Git",
       collapsable: false,
       sidebarDepth: 0,
-      children: [
-        "Git/git-teach.md",
-        "Git/git-shell.md"
-      ],
+      children: ["Git/git-teach.md", "Git/git-shell.md"],
     },
     {
       title: "Linux",
