@@ -24,3 +24,17 @@ mobx 设计哲学
 从零开始用proxy实现mobx
 
 https://github.com/ascoders/blog/issues/19
+
+
+
+
+
+mobx 入门教程
+
+https://github.com/sorrycc/blog/issues/2
+
+
+
+mobx 原理
+
+https://github.com/sorrycc/blog/issues/3
