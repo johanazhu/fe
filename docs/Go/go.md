@@ -19,3 +19,13 @@ https://github.com/yangwenmai/learning-golang
 李文周
 
 https://www.liwenzhou.com/posts/Go/go_menu/
+
+安装vscode中go 的插件
+
+首先要改变代理
+
+https://goproxy.io/
+
+其次安装go的插件
+
+![VScode安装插件](../.vuepress/public/images/golang/VScode安装插件.png)

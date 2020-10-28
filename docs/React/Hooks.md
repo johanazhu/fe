@@ -219,3 +219,8 @@ useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
 
 
 
+React hooks 原理
+
+用到了闭包
+
+https://github.com/brickspert/blog/issues/26

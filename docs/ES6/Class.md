@@ -42,7 +42,7 @@ const test = new Test();
 
 **为了迎合 class 的基本行为， prototype 继承数据的能力被屏蔽了**
 
-![prototype屏蔽继承数据能力迎合class](..\.vuepress\public\images\JavaScript\prototype屏蔽继承数据能力迎合class.png)
+![prototype屏蔽继承数据能力迎合class](../.vuepress/public/images/JavaScript/prototype屏蔽继承数据能力迎合class.png)
 
 而如果想要让继承者继承数据，就要在prototype上写
 

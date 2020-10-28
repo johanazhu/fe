@@ -13,6 +13,9 @@
     "@vuepress/plugin-back-to-top": "^1.0.0-rc.1"
   },
   "dependencies": {
+    "markdown-it-disable-url-encode": "^1.0.1",
+    "vue-router": "3.4.5",
+    "vuepress": "^1.6.0",
     "vuepress-plugin-copyright": "^1.0.2"
   }
 }

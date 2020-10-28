@@ -76,7 +76,7 @@ npm run start
 
 看到如下图所示：
 
-![dockerfile_脚本](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerfile最小实现\dockerfile_脚本.png)
+![dockerfile_脚本](../.vuepress/public/images/Docker/dockerfile最小实现/dockerfile_脚本.png)
 
 浏览器访问正常
 
@@ -137,7 +137,7 @@ docker build . -t johan/koa_server:v1.0.0
 
 效果如下图所示：
 
-![docker_build](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerfile最小实现\docker_build.png)
+![docker_build](../.vuepress/public/images/Docker/dockerfile最小实现/docker_build.png)
 
 查看镜像是否有了
 
@@ -174,7 +174,7 @@ docker ps -a
 docker save johan/koa_server:v1.0.0 > koa_server.tar
 ```
 
-![导出镜像](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerfile最小实现\导出镜像.png)
+![导出镜像](../.vuepress/public/images/Docker/dockerfile最小实现/导出镜像.png)
 
 
 
@@ -188,7 +188,7 @@ docker save johan/koa_server:v1.0.0 > koa_server.tar
 rz
 ```
 
-![lrzsz上传镜像](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerfile最小实现\lrzsz上传镜像.png)
+![lrzsz上传镜像](../.vuepress/public/images/Docker/dockerfile最小实现/lrzsz上传镜像.png)
 
 解开此压缩包（导入）
 
@@ -196,7 +196,7 @@ rz
 docker load < koa_server.tar
 ```
 
-![导入镜像](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerfile最小实现\导入镜像.png)
+![导入镜像](../.vuepress/public/images/Docker/dockerfile最小实现/导入镜像.png)
 
 基于此容器生成容器
 
@@ -238,7 +238,7 @@ docker tag johan/koa_server:v1.0.0 johanbo/koa_server:v1.0.0
 docker push johanbo/koa_server:v1.0.0
 ```
 
-![docker_push](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerfile最小实现\docker_push.png)
+![docker_push](../.vuepress/public/images/Docker/dockerfile最小实现/docker_push.png)
 
 
 
@@ -250,7 +250,7 @@ docker push johanbo/koa_server:v1.0.0
 docker pull johanbo/koa_server:v1.0.0
 ```
 
-![docker_pull](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\dockerfile最小实现\docker_pull.png)
+![docker_pull](../.vuepress/public/images/Docker/dockerfile最小实现/docker_pull.png)
 
 > **注意**：这里需要打标签，否则会默认拉取latest
 
