@@ -78,7 +78,7 @@ Linux 发行版虽然很多，但是大体上是三大家族：
 - Rhel 家族
 - Suse 家族
 
-![distro_family](H:\code\elaine\docs\.vuepress\public\images\Linux\distro_family.jpg)
+![distro_family](../.vuepress/public/images/Linux/distro_family.jpg)
 
 #### Ubuntu 和 Mint
 
@@ -120,7 +120,7 @@ ls /etc/*release
 
 - /etc/*release 是参数，指的是根（root）下的 etc 文件夹下的所有以 release 结尾的文件
 
-![release](H:\code\elaine\docs\.vuepress\public\images\Linux\release.png)
+![release](../.vuepress/public/images/Linux/release.png)
 
 
 
@@ -169,7 +169,7 @@ proc 指的是 process（进程）， 进程就是被内核从硬盘加载到内
 whatis uname
 ```
 
-![whatis](H:\code\elaine\docs\.vuepress\public\images\Linux\whatis.png)
+![whatis](../.vuepress/public/images/Linux/whatis.png)
 
 **这样就可以让 `whatis` 命令告诉我们命令用法。**
 
@@ -389,7 +389,7 @@ sudo apt install figlet
 figlet elaine
 ```
 
-![figlet](D:\code\project\elaine\fe\docs\.vuepress\public\images\Linux\figlet.png)
+![figlet](../.vuepress/public/images/Linux/figlet.png)
 
 查找所有的模板文字
 

@@ -65,7 +65,7 @@ docker 的整个生命周期由三部分组成：镜像（image）+ 容器（con
 
 ### 传统的虚拟机与容器对比
 
-![虚拟机和容器](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\虚拟机和容器.jpg)
+![虚拟机和容器](../.vuepress/public/images/Docker/虚拟机和容器.jpg)
 
 可以看出，传统的虚拟机是每开一个虚拟机，相当于运行一个系统，这种是非常占用系统资源的，但容器（以docker为例）。也起到了应用之间的隔离效果
 
@@ -77,7 +77,7 @@ docker 的整个生命周期由三部分组成：镜像（image）+ 容器（con
 
 
 
-![repository、image和container](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\repository、image和container.png)
+![repository、image和container](../.vuepress/public/images/Docker/repository、image和container.png)
 
 
 
@@ -97,7 +97,7 @@ cgroup 解决计算机资源使用上的隔离
 
 ### docker架构图
 
-![docker架构图](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker架构图.jpg)
+![docker架构图](../.vuepress/public/images/Docker/docker架构图.jpg)
 
 
 
@@ -111,13 +111,13 @@ docker使用的是常见的CS架构，也就是client-server模式，docker clie
 
 当我们写完dockerfile交给docker“编译”时使用这个命令，那么client在接收到请求后转发给docker daemon，接着docker daemon根据dockerfile创建出“可执行程序”image
 
-![docker_build](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_build.png)
+![docker_build](../.vuepress/public/images/Docker/docker_build.png)
 
 #### docker run
 
 有了“可执行程序”image后就可以运行程序了，接下来使用命令docker run，docker daemon接收到该命令后找到具体的image，然后加载到内存可以执行，image执行起来就是所谓的container
 
-![docker_run](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_run.png)
+![docker_run](../.vuepress/public/images/Docker/docker_run.png)
 
 #### docker pull
 
@@ -127,5 +127,5 @@ docker pull是什么意思，学过git的同学都知道有git pull，从远端�
 
 这个命令的实现很简单，用户通过docker client发送命令，docker daemon接受到命令后向docker registry发送image下载请求，下载后存放在本地，这样我们就可以使用image了
 
-![docker_pull](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_pull.png)
+![docker_pull](../.vuepress/public/images/Docker/docker_pull.png)
 

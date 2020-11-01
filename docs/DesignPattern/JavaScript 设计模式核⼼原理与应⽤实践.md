@@ -26,7 +26,7 @@
 
  二十年前，四位程序员前辈（Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides）通过编写《设计模式：可复用面向对象软件的基础》这本书， 阐述了设计模式领域的开创性成果。在这本书中，将23种设计模式按照“创建型”、“行为型”和“结构型”进行划分： 
 
-![23种设计模式](H:\code\elaine\docs\.vuepress\public\images\DesignPattern\23种设计模式.jpg)
+![23种设计模式](../.vuepress/public/images/DesignPattern/23种设计模式.jpg)
 
 无论是创建型、结构型还是行为型，这些具体的设计模式都是在用自己的方式去封装不同类型的变化。
 

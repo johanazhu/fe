@@ -12,11 +12,11 @@ docker 通过 namespace 和 ctrol group 等底层技术实现同一个服务器�
 
 你可以把一个服务器理解为一艘（运输）船，容器（container）就是一个个集装箱，
 
-![虚拟机结构](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\虚拟机结构.jpg)
+![虚拟机结构](../.vuepress/public/images/Docker/虚拟机结构.jpg)
 
 
 
-![docker结构](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker结构.jpg)
+![docker结构](../.vuepress/public/images/Docker/docker结构.jpg)
 
 
 

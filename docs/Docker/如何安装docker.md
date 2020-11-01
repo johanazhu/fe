@@ -12,7 +12,7 @@
 docker version
 ```
 
-![docker_version](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_version.png)
+![docker_version](../.vuepress/public/images/Docker/docker_version.png)
 
 从打印出的信息中我们可以看出，它的Server里的OS（操作系统）是linux，也正式我们想要的，如果是window，需要切换小鲸鱼图标
 
@@ -20,10 +20,10 @@ docker version
 
 看到 Switch to Linux containers ... 说明是 window 版本
 
-![set_linux环境](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\set_linux环境.png)
+![set_linux环境](../.vuepress/public/images/Docker/set_linux环境.png)
 
 如下是Docker切换成window后的样子（看OS/Arch）
 
-![docker_version_window](D:\code\project\elaine\fe\docs\.vuepress\public\images\Docker\docker_version_window.png)
+![docker_version_window](../.vuepress/public/images/Docker/docker_version_window.png)
 
 点击小鲸鱼，登录账号，以后发布自己的docker 镜像就可以命令行直接推送至docker hub，原理跟git一样

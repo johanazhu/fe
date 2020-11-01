@@ -27,7 +27,7 @@ m.get('Johan') // 26
 console.dir(Map)
 ```
 
-![Map构造函数结构](D:\code\project\elaine\fe\docs\.vuepress\public\images\ES6\Map构造函数结构.png)
+![Map构造函数结构](../.vuepress/public/images/ES6/Map构造函数结构.png)
 
 肉眼分析可得，它是基于Object创建的对象实例（`__proto__`指向Object，不懂的可以去Javascript中的原型篇中了解一二），其次它的原型上有`clear`、`delete(key)`、`entries`、`forEach(callbackFn[, thisArg])`、`get(key)`、`set(key, valye)`、`has(key)`、`keys`、`values`、`[@@iterator]` 等十个方法，还有两个原型属性 `constructor` 和 `size`。各个方法和属性对应的解释不做说明，懂的人自然懂，不懂的可以去查
 

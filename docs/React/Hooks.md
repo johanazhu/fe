@@ -113,3 +113,114 @@ https://github.com/happylindz/blog/issues/19
 手动做一个hook
 
 https://github.com/shanggqm/blog/issues/4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### useRef
+
+#### 为啥使用useRef?
+
+它不仅仅是用来管理DOM ref 的，它还相当于 this，可以存放任何变量，很好的解决闭包带来的不方便行
+
+#### 怎么使用useRef?
+
+```javascript
+const [count, setCount] = useState<number>(0)
+const countRef = useRef<number>(count)
+```
+
+##### 场景举例
+
+##### 1.闭包问题
+
+点击 **加** 一个按钮 3 次，再点 **弹框显示** 1次，再点 **加** 按钮 2 次，最终 `alert` 会是什么结果？
+
+```react
+import React, { useState } from 'react'
+
+const Counter = () => {
+  const [count, setCount] = useState<number>(0)
+
+  const handleCount = () => {
+    setTimeout(() => {
+      alert('current count: ' + count)
+    }, 3000);
+  }
+
+  return (
+    <div>
+      <p>current count: { count }</p>
+      <button onClick={() => setCount(count + 1)}>加</button>
+      <button onClick={() => handleCount()}>弹框显示</button>
+    </div>
+  )
+}
+
+export default Counter
+```
+
+结果是弹框内容为 **current count: 3**，为什么？
+
+ 闭包了，每次调用setCount，
+
+当我们更新状态的时候, **React 会重新渲染组件, 每一次渲染都会拿到独立的 count 状态, 并重新渲染一个 handleCount 函数. 每一个 handleCount 里面都有它自己的 count 。**
+
+如何
+
+
+
+
+
+
+
+
+
+渲染一个组件，会将内部的方法重新执行，这个操作是没有闭包的，消耗无关的性能。
+
+使用useMemo来优化
+
+传入 `useMemo` 的函数会在渲染期间执行，
+
+
+
+### useCallback
+
+
+
+`useMemo` 和 `useCallback` 接受的参数都是一样，都是在其依赖项发生变化后执行，都是返回缓存的值，区别在于 `useMemo` 返回的是函数运行的结果，`useCallback` 返回的是函数
+
+useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+React hooks 原理
+
+用到了闭包
+
+https://github.com/brickspert/blog/issues/26

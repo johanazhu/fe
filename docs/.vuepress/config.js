@@ -18,7 +18,7 @@ const {
 module.exports = {
   title: "五年前端三年面试",
   // 网页描述
-  description: "我欲成仙，快乐齐天",
+  description: "我很好，你好吗",
   head: [
     // icon
     ["link", { rel: "icon", href: "/favicon.ico" }],
@@ -151,12 +151,19 @@ module.exports = {
     resolve: {
       // 静态资源的别名
       alias: {
-        // '@images': '../images/',
+        '@images': './public/images',
         // "@public": "./public",
       },
     },
   },
   smoothScroll: true,
+  // typora 中使用图片资源转译成乱码
+  markdown: {
+    // ......
+    extendMarkdown: md => {
+      md.use(require("markdown-it-disable-url-encode"));
+    }
+  }
   // 插件
   // plugins: ['@vuepress/back-to-top']
 };
