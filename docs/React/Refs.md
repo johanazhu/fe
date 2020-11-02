@@ -115,3 +115,8 @@ class Parent extends React.Component {
 export default React.memo(Parent);
 ```
 
+
+
+react-ref
+
+https://www.robinwieruch.de/react-ref
