@@ -26,7 +26,7 @@ Server 这里指服务端，它是 Serverless 解决问题的边界；而 less �
 
  第二种：广义 Serverless = 服务端免运维 = 具备 Serverless 特性的云服务 
 
-![image-20200523095830121](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20200523095830121.png)
+![image-20200523095830121](../.vuepress/public/images/Serverless/定义.png)
 
  广义 Serverless，其实就是指服务端免运维，也是未来的主要趋势。 
 
