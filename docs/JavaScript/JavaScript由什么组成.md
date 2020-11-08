@@ -34,7 +34,7 @@
 
 ​		引用类型是一种数据结构，在别的语言中被称为类，但是在 JavaScript 中实际上没有类（基于原型链继承Object）。原生的引用类型有 `Object` 、`Function`、`Array` 、`Date`、`RegExp`、`Error`
 
-​	![数据类型分类](/images/JavaScript/数据类型分类.png)
+​	![数据类型分类](../.vuepress/public/images/JavaScript/数据类型分类.png)
 
 ​		JavaScript内置了一些构造函数和对象，详情的可以到 MDN（ [JavaScript的内置函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures) ）上看一眼，其最主要的九个原生对象构造函数：
 
@@ -55,7 +55,7 @@
 
 以上就是ECMAScript中最重要的东西。
 
-注意：JavaScript内置对象有很多，具体参考(https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)
+注意：JavaScript内置对象有很多，具体参考[这篇](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)
 
 我们可以看一下以下代码：
 
@@ -79,11 +79,11 @@ console.log(typeof myString, typeof myNumber, typeof myBoolean)
 // object, object, object
 ```
 
-我们看到如果使用字面量语法创建值，那么值类型的输出结果就是值类型；
+我们看到如果使用字面量语法创建值，**那么值类型的输出结果就是值类型**；
 
-如果使用 new 关键字创建 String()、Number()、Boolean() 值时，创建的对象实际上是一个复杂对象。
+如果使用 new 关键字创建 String()、Number()、Boolean() 值时，**创建的对象实际上是一个复杂对象**。
 
-这说明 new 关键字 做了一些手脚，至于它是怎么改变三个小兄弟的，可以调整到——这里[ new 改变了对象 ]
+这说明 new 关键字 做了一些手脚，至于它是怎么改变三个小兄弟的，可以跳转到——这里[ new 改变了对象 ]
 
 ### typeof 操作符
 
@@ -142,19 +142,19 @@ if(typeof XXX === 'function') {
 }
 ```
 
-> PS: 在《JavaScript启示录》里第一章第八节里说 RegExp() 的类型返回的是 function，但是我检验后发现并不是，我猜测是因为书的版本比较来，而我用的chrome浏览器（V8引擎）表示 RegExp的类型为object
+> PS: 在《JavaScript启示录》里第一章第八节里说 RegExp() 的类型返回的是 function，但是我检验后发现并不是，我猜测是因为老版本的浏览器对RegExp的判断为 funtion，而我用的chrome浏览器（V8引擎）表示 RegExp的类型为object
 
 ### 基本类型和引用类型的区别
 
-基本类型储存在栈内存中
+**基本类型储存在栈内存中**
 
-引用类型是储存对内存中
+**引用类型储存堆内存中**
 
 基本类型所花的内存小，所以可以直接拷贝
 
 引用类型所花的内存大，所以是地址引用
 
-![类型存储](/images/JavaScript/类型存储.png)
+![类型存储](../.vuepress/public/images/JavaScript/类型存储.png)
 
 ```javascript
 // 案例1
@@ -175,11 +175,11 @@ console.log(object1, object2)
 // 输出 { name: 'elaine', age: 23 } { name: 'elaine', age: 23 }  
 ```
 
-因为基本类型（值类型）是存放在栈内存中，string1赋值给string2后，相当于独立开一个空间给string2，string1和string2是完全独立的两个个体，再给string1赋值什么，都与string2无关。
+因为基本类型（值类型）是存放在栈内存中，string1赋值给string2后，相当于开了一个独立空间给string2，string1和string2是完全独立的两个个体，再给string1赋值什么，都与string2无关。
 
-而引用类型（复杂类型）之所以叫引用类型（其实本名叫复杂类型或复杂值，只是大家叫引用类型习惯了），因为对象的地址是引用的，Object可以一直嵌套，Function也可以嵌套很多很多层（回调函数），Array可以变花样的做出三维数组之类，总之，对象可以弄的很大。弄得很大，就很占内存，如果一个很大的值随意复制，那对使用者来说就是灾难（不知不觉中就占了很大的内存）。所以它不可能随意复制，而是用指针的方式来将对象指向同一个地址（这里可以衍生到浅拷贝和深拷贝）
+而引用类型（复杂类型）之所以叫引用类型（在学术上叫复杂类型或复杂值），因为对象的地址是引用的，Object可以一直嵌套，Function也可以嵌套很多很多层（回调函数），Array可以变花样的做出三维数组之类，总之，对象可以弄的很大。弄得越大，就越占内存，如果一个很大的值随意复制，那对使用者来说就是灾难（不知不觉中就占了很大的内存）。所以它不可能随意复制，而是用指针的方式来将对象指向同一个地址（这里可以衍生到浅拷贝和深拷贝）
 
-当你创建一个object1就在堆内存中开辟一个内存。如果你赋值给object2，其实就是把object1指向堆内存的地址复制给object2，它们指向的是同一个地址。再在object1或者object2做修改的话，相当于在堆内存上做修改，无论object1修改还是object2修改都会改变
+当你创建一个object1，就在堆内存中开辟一个内存。如果你赋值给object2，其实就是把object1指向堆内存的地址复制给object2，它们指向的是同一个地址。再在object1或者object2做修改的话，相当于在堆内存上做修改，无论object1修改还是object2修改都会改变
 
 ```javascript
 var obj1 = {}

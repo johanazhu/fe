@@ -531,7 +531,7 @@ function csBasicSideBar() {
       children: [
         "CSBasic/计算机的起源.md",
         "CSBasic/计算机的组成.md",
-        "CSBasic/操作系统基础篇.md",
+        // "CSBasic/操作系统基础篇.md",
         "CSBasic/计算机网络传输层篇.md",
         "CSBasic/计算机网络网络层篇.md",
         "CSBasic/计算机网络应用层篇.md",
