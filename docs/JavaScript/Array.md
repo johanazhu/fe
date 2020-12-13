@@ -1,11 +1,58 @@
 # Array
-## 1.概要
+## 概要
 
-数组是一组按序排列的值，创建数组的目的通常是遍历数字索引值，以零索引开始。我们需要了解的是，数组是按照数字顺序排列的集合，相对地，对象的属性名称是无序的。从本质上讲，数组使用数字作为查找建，而对象拥有用户自定义的属性名。 JavaScript 没有真正的关联数组，对象可用于实现关联数组的功能
+数组是一组按序排列的值，创建数组的目的通常是遍历数字索引值，以零索引开始。
+
+我们需要了解的是，数组是按照数字顺序排列的集合，相对地，对象的属性名称是无序的。
+
+从本质上讲，数组使用数字作为查找建，而对象拥有用户自定义的属性名。
+
+ JavaScript 没有真正的关联数组，对象可用于实现关联数组的功能
 
 
 
-## 2. Array() 属性和方法
+如果我们想了解数组中有什么方法和属性，有个很简单的方法——通过浏览器打印 Array
+
+```javascript
+console.dir(Array)
+```
+
+![查看Array数据结构](../.vuepress/public/images/JavaScript/Array/查看Array数据结构.png)
+
+除去 arguments、caller、Symbol、get Symbol 以及 [[Scopes]] （这些是什么？具体我还没搞明白，不过本文重点在于分析Array的构造函数的属性和方法以及它原型上的属性和方法）
+
+我们可以得出，Array 的属性有 length，name，prototype（所有的函数创建时，都会默认给该函数添加 `prototype` 属性[见原型篇章]）
+
+方法有：from()、isArray()、of()
+
+写个Class模拟Array就是：
+
+```javascript
+class MyArray {
+    constructor() {
+        this.name = name;
+        this.length = arguments.length; // arguments 指参数中的类数组对象
+        this.prototype = prototype;
+    }
+}
+MyArray.from = function() {}
+MyArray.isArray = function () {}
+MyArray.of = function () {}
+```
+
+![查看Array数据结构](../.vuepress/public/images/JavaScript/Array/自己写的Array.png)
+
+ps： 这里提一句，用class模拟类(继承)，它的constructor函数 其实也很好记，它就是用来做属性初始化的，它很特殊，写在class中，但不在prototype里
+
+
+
+## Array() 原型上的属性和方法
+
+
+
+
+
+## Array() 属性和方法
 
 Array() 对象具有以下属性（不包括继承的属性和方法）
 
@@ -23,8 +70,6 @@ Array() 对象具有以下属性（不包括继承的属性和方法）
 
 - index
 
-- input
-
 - length
 
   - ```javascript
@@ -32,7 +77,6 @@ Array() 对象具有以下属性（不包括继承的属性和方法）
     myArray.length
     ```
 
-    
 
 **实例方法**
 
@@ -171,6 +215,42 @@ Array() 对象具有以下属性（不包括继承的属性和方法）
 - reduce()
 
 - some()
+
+
+
+## 4.数组方法备忘录
+
+- ### 添加/删除元素
+
+  - push(...items) —— 从结尾添加元素
+
+  - pop() —— 从截取提取元素
+
+  - shift() —— 从开头提取元素
+
+  - unshift(...items) —— 从开头添加元素
+
+  - splice(index, deleteCount, ...items) —— 从 `index` 开始： 删除 `deleteCount` 元素并在当前位置插入元素
+
+  - slice(start, end) —— 它从所有元素的开始索引`“start”` 复制到 `end` （不包括（`end`））返回一个新的数组
+
+  - concat(...items) —— 返回一个新数组：复制当前数组的所有成员并向其中添加 `items`。如果有任何`items` 是个数组，那么就取其元素 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

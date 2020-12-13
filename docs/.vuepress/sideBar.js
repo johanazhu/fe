@@ -425,6 +425,7 @@ function jsSideBar() {
         "JavaScript/原理/模拟bind的实现.md",
         "JavaScript/原理/模拟new的实现.md",
         "JavaScript/原理/0.1+0.2为什么不等于0.3.md",
+        "JavaScript/原理/JSONP——从理论到实践.md",
         "JavaScript/原理/模拟MVVM的实现.md",
         "JavaScript/原理/模拟数组方法.md",
         "JavaScript/原理/源码实现.md",
