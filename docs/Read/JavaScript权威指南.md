@@ -53,25 +53,104 @@
 
   
 
+### 对象
+
+- 然而对象不仅仅是字符串到值的映射，除了可以保持自有的竖向，JavaScript对象还可以从一个称为原型的对象继承属性。对象的方法通常是继承的属性
+
 
 
 ### 对象
 
 - 原型（prototype）是对象的一个属性
 - 可以通过对象直接量、关键字new和（ECMAScript5中的）Object.create()函数来创建对象
-- new运算符
+- 每一个对象都有与之相关的原型(prototype)、类(class)和可扩展性(extensible attribute)
+
+- 对象字面量：
+
+- ```javascript
+  var empty = {}							// 没有任何属性的对象
+  var point = {x: 0, y: 0}				// 两个属性
+  var point = {x: point.x, y: point.y+1}	// 更复杂的值
+  var book = {		
+      "main title": "JavaScript",			// 属性名字里有空格，必须用字符串表示
+      "sub-title": "The Definitive Guide",// 属性名字里有连字符，必须用字符串表示
+      "for": "all audiences",				// “for”是保留字，因此必须用引号
+      author: {							// 这个属性的值是一个对象
+          firstname: "johnny",			// 注意，这里的属性名都没有引号
+          surname: "joestar"
+      }
+  }
+  ```
+
+- new运算符创建并初始化一个新对象。关键字new后跟随一个函数调用。这里的函数称做构造函数（constructor），构造函数用以初始化一个新创建的对象。JavaScript语言核心中的原始类型都包含内置构造函数
+
+- ```javascript
+  var a = new Array(); 				// 创建一个空数组，和[]一样
+  var d = new Date(); 				// 创建一个表示当前时间的Date对象
+  var r = new RegExp("js")			// 创建一个可以进行模式匹配的RegExp对象
+  ```
+
+- 每一个JavaScript对象(null除外)都和另一个对象相关联。“另一个”对象就是我们熟知的原型，每一个对象都从原型继承属性。
+
+- Object.create() 是一个静态函数，而不是提供给某个函数调用的方法
+
+- ```javascript
+  var o1 = Object.create({x: 1, y: 2}) 			// o1继承了属性x和y
+  ```
+
+- 可以通过传入参数null来创建一个没有原型的新对象，但通过这种方式创建的对象不会继承任何东西，甚至不包括基础方法，比如toString()，也就是说，它将不能和“+”运算符一起正常工作：
+
+- ```javascript
+  var o2 = Object.create(null)			// 思考：可以创建纯粹的对象
+  ```
+
+- 如果想创建一个普通的空对象（比如通过｛｝或者new Object() 创建的对象），需要传入Object.prototype:
+
+- ```javascript
+  var o3 = Object.create(Object.prototype)
+  ```
+
+- 通过原型继承创建一个新对象（ECMAScript 3模拟原型继承）
+
+- ```javascript
+  // inherit() 返回了一个继承自原型对象p的属性的新对象
+  // 这里使用ECMAScript 5中的Object.create()函数(如果存在的话)
+  // 如果不存在Object.create(),则退化使用其他方法
+  function inherit(p){
+      if(p == null) throw TypeError();		// p是一个对象，但不能是null
+      if(Object.create) 						// 如果Object.create()存在
+          return Object.create(p);			// 直接使用它
+  	var t = typeof p;						// 否则进行进一步检测
+      if(t !== "object" && t !== "function") throw TypeError();
+      function f() {};						// 定义一个空构造函数
+      f.prototype = p;						// 将其原型属性设置为p
+      return new f();							// 使用f()创建p的继承对象
+  }
+  ```
+
+  
+
+- 判断任何类型的方法
+
+```javascript
+function classof(o) {
+	if (o ===  null) return "Null";
+	if(o === undefined) return "Undefined";
+	return Object.prototype.toString.call(o).slice(8, -1);
+}
+```
+
+- 所有的javascript对象都从Object.prototype继承属性
+
+
+
+### 数组
 
 
 
 
 
-
-
-
-
-
-
-
+### 原型
 
 
 
