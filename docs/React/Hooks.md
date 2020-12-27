@@ -118,9 +118,15 @@ https://github.com/shanggqm/blog/issues/4
 
 
 
+React hooks 原理
+
+用到了闭包
+
+https://github.com/brickspert/blog/issues/26
 
 
 
+自定义hooks
 
 
 
@@ -207,6 +213,22 @@ useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
 
 
 
+### 什么时候使用 useMemo 和 useCallback ？
+
+这两个 hooks 内置于 React 都有特别的原因：
+
+1. 引用相等
+2. 昂贵的计算
+
+
+
+引用类型的变量会引起 组件的不必要的渲染
+
+https://jancat.github.io/post/2019/translation-usememo-and-usecallback/
+
+
+
+针对useMemo和useCallback 最直观的测试就是打印 函数式组件是否有渲染，优化之后，没改变的组件不渲染
 
 
 
@@ -219,8 +241,23 @@ useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
 
 
 
-React hooks 原理
 
-用到了闭包
 
-https://github.com/brickspert/blog/issues/26
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

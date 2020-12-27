@@ -55,7 +55,11 @@
 
 
 
+### 对象
 
+- 原型（prototype）是对象的一个属性
+- 可以通过对象直接量、关键字new和（ECMAScript5中的）Object.create()函数来创建对象
+- new运算符
 
 
 
