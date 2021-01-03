@@ -51,19 +51,22 @@ module.exports = {
     nav: [
       // { text: "导读", link: "/Introduction/" },
       {
-        text: "JavaScript",
+        text: "前端基础",
         items: [
-          { text: "Js基础", link: "/JavaScript/Foreword.md" },
+          { text: "JavaScript", link: "/JavaScript/Foreword.md" },
           { text: "ES6", link: "/ES6/完全指南.md" },
           { text: "Browser", link: "/Browser/browser.md" },
-          { text: "性能优化", link: "/Performance/介绍.md" },
+          { text: "Performance", link: "/Performance/介绍.md" },
+          { text: "HTML", link: "/HTML/HTML.md" },
+          { text: "CSS", link: "/CSS/Foreword.md" },
+          { text: "Jquery", link: "/Jquery/高效jquery.md" },
         ],
       },
       { text: "React", link: "/React/" },
       {
         text: "Node",
         items: [
-          { text: "Node基本面", link: "/Node/Node基本面.md" },
+          { text: "Node", link: "/Node/Node基本面.md" },
           { text: "Express", link: "/Express/express-teach.md" },
           { text: "Koa2", link: "/Koa2/koa2-teach.md" },
           { text: "PM2", link: "/Node/PM2.md" },
@@ -88,14 +91,6 @@ module.exports = {
         items: [
           { text: "数据结构", link: "/DataStructure/什么是数据结构.md" },
           { text: "算法", link: "/Algorithm/什么是算法.md" },
-        ],
-      },
-      {
-        text: "Html&CSS",
-        items: [
-          { text: "HTML", link: "/HTML/HTML.md" },
-          { text: "CSS", link: "/CSS/Foreword.md" },
-          { text: "Jquery", link: "/Jquery/高效jquery.md" },
         ],
       },
       {

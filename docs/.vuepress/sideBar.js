@@ -369,17 +369,24 @@ function reactSideBar() {
 function jsSideBar() {
   return [
     {
+      title: "常见面试题",
+      collapsable: false,
+      sidebarDepth: 0,
+      children: [
+        "JavaScript/常见面试题/常见面试题.md",
+      ],
+    },
+    {
       title: "JavaScript知识梳理",
       collapsable: false,
       sidebarDepth: 0,
       children: [
         "JavaScript/Foreword.md",
-        "JavaScript/常见面试题.md",
         "JavaScript/JavaScript是什么.md",
         "JavaScript/JavaScript由什么组成.md",
         "JavaScript/一切皆对象.md",
-        "JavaScript/Object.md",
-        "JavaScript/Function.md",
+        "JavaScript/对象.md",
+        "JavaScript/函数.md",
         "JavaScript/作用域.md",
         "JavaScript/this关键字.md",
         "JavaScript/闭包.md",
@@ -387,20 +394,11 @@ function jsSideBar() {
         "JavaScript/作用域链与原型链.md",
         "JavaScript/原型.md",
         "JavaScript/原型与原型链.md",
-        "JavaScript/Array.md",
-        "JavaScript/String.md",
+        "JavaScript/数组.md",
+        "JavaScript/字符串.md",
         "JavaScript/循环都来这儿.md",
         "JavaScript/Object.create(null).md",
-        "JavaScript/TypeScript.md",
-      ],
-    },
-    {
-      title: "JavaScript面向对象编程",
-      collapsable: false,
-      sidebarDepth: 0,
-      children: [
-        "JavaScript/面向对象/介绍.md",
-        "JavaScript/面向对象/面向对象三大将.md",
+        "JavaScript/面向对象编程.md",
       ],
     },
     {
@@ -409,11 +407,16 @@ function jsSideBar() {
       sidebarDepth: 0,
       children: [
         "JavaScript/高阶/JavaScript运行原理.md",
+        "JavaScript/高阶/JavaScript工作原理.md",
+        "JavaScript/高阶/JavaScript引擎.md",
         "JavaScript/高阶/JavaScript中的对象机制.md",
         "JavaScript/高阶/JavaScript中的函数进阶指南.md",
         "JavaScript/高阶/深入理解JSCore.md",
         "JavaScript/高阶/JavaScript引擎.md",
         "JavaScript/高阶/JavaScript工作机制.md",
+        "JavaScript/高阶/用js写js解析器.md",
+        "JavaScript/高阶/JavaScript引擎V8执行流程概述.md",
+        "JavaScript/高阶/TypeScript.md",
       ],
     },
     {
