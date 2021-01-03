@@ -70,3 +70,9 @@ https://www.zhihu.com/question/20070065/answer/16021641?utm_source=wechat_sessio
 一张脑图带你全面掌握 git 命令
 
 https://mp.weixin.qq.com/s?__biz=Mzg5NDEyMzA2NQ==&mid=2247485885&idx=1&sn=fb026c79d62160e30c8a573b88292ada&chksm=c02524ebf752adfd0d5d8a779ab4935a1c3bf7c3d6c901a816c52847c4f0083ddd0576a486f4&mpshare=1&scene=1&srcid=09157qmCiBiWZ7XiqTZVoupe&sharer_sharetime=1600137668493&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=6614a0a10b7b6719893163c2d47988f8f6b7aba22cad0bb980c58ef9ad491d18382e59e4eca8a3980f277546c047004649a36c251ab70e6a4da0fc3258912d709dd732ea16a9ffe66140f1cdd3e234c6ced69b8c599b71a9dcc7fd3411ff83c1fb7c16f255065b8872178dee43d7c7518cd2e9c8a3290958d1932ff28baa8c4d&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=AYO1EPBf4skwaROMxz490bI%3D&pass_ticket=X3VNYNXcDTVwNpUtGAVXbhnocc4It3ssOIqIC%2FA7FS4fnHhcGPBP0sZBFjnUOpnH&wx_header=0
+
+
+
+我用四个命令概括了Git的所有套路
+
+https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/git-chang-yong-ming-ling
