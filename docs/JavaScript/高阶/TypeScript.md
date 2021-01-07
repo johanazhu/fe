@@ -104,3 +104,9 @@ https://segmentfault.com/a/1190000021210413
 图雀的typescript 教程
 
 https://tuture.co/tags/TypeScript/
+
+
+
+编写高质量可维护的代码：Awesome TypeScript
+
+https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw
