@@ -132,15 +132,15 @@ const foo = function() {
 
 
 
+高级异步模式 - Promise 单例
+
+https://mp.weixin.qq.com/s/DQeJ-H4va0zTlSAoNsgF1Q
 
 
 
+Promise 原理及宏微任务
 
-
-
-
-
-
+https://mp.weixin.qq.com/s/BlD9HgXM9hqRGf3Ep9UYEw
 
 
 

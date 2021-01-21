@@ -40,7 +40,6 @@ componentDidUpdate 当组件更新完
 说明如何解决可能存在的冲突问题，需要结合实际案例。
 能说明架构分层逻辑、各层的核心模块，以及核心模块要解决的问题。能结合实际场景例举一些坑或者优雅的处理方案则更佳。
 
-
 知道react-router，redux，redux-thunk，react-redux，immutable，antd或同级别社区组件库。
 知道vue和angular对应全家桶分别有哪些。
 知道浏览器react相关插件有什么，怎么用。
@@ -51,3 +50,14 @@ componentDidUpdate 当组件更新完
 能从数据驱动角度透彻的说明白redux，能够口喷原生js和redux结合要怎么做。
 能结合redux，vuex，mobx等数据流谈谈自己对vue和react的异同。
 有基于全家桶构建复杂应用的经验，比如最近很火的微前端和这些类库结合的时候要注意什么，会有什么坑，怎么解决
+
+
+
+react status 中文周刊
+
+https://mp.weixin.qq.com/s/Keq88pAyVA_Xwvg1V2Tu1A
+
+
+
+
+

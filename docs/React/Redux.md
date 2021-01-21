@@ -105,3 +105,10 @@ https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484475&amp;idx=1&amp;s
 
 https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247485220&idx=2&sn=74811cf3a61baf1a883fe1c7a76b88fa&chksm=c06686b2f7110fa4211871572ae52b08b0cc045741540e28e7c026f441b7c7f26e454aecd1b0&mpshare=1&scene=1&srcid=&sharer_sharetime=1585194811446&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
 
+
+
+为什么不适用一个全局变量代替redux
+
+https://www.zhihu.com/question/428851039
+
+因为一个全局变量在被改变之后无法驱动 react 组件重新渲染

@@ -110,3 +110,12 @@ https://tuture.co/tags/TypeScript/
 编写高质量可维护的代码：Awesome TypeScript
 
 https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw
+
+
+
+又升级了！你不知道的 TypeScript 泛型
+
+https://mp.weixin.qq.com/s/JTfzexEh0qYDWHCT4l337A
+
+
+

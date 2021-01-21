@@ -43,3 +43,10 @@ https://mp.weixin.qq.com/s?__biz=MzI5MTY0ODAwNQ==&mid=2247486731&idx=1&sn=cf6f4b
 JSBridge的原理
 
 https://juejin.cn/post/6844903585268891662
+
+
+
+JsBridge 通信原理
+
+https://zhuanlan.zhihu.com/p/343317967?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128
+
