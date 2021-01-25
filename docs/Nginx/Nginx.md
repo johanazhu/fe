@@ -38,3 +38,11 @@ server {
 
 
 ## Nginx 是什么？
+
+
+
+
+
+nginx教程
+
+https://github.com/jaywcjlove/nginx-tutorial
