@@ -8,6 +8,7 @@ const {
   webpackSideBar,
   frontEndBasicSideBar,
   ArmorySideBar,
+  DockerSideBar,
   bigFrondSideBar,
   designPatternSideBar,
   csBasicSideBar,
@@ -75,7 +76,7 @@ module.exports = {
           { text: "Redis", link: "/Redis/redis-teach.md" },
         ],
       },
-      { text: "webpack", link: "/webpack/webpack从零到总结.md" },
+      { text: "webpack", link: "/webpack/" },
       {
         text: "大前端",
         items: [
@@ -96,8 +97,8 @@ module.exports = {
       {
         text: "多多益善",
         items: [
-          { text: "设计模式", link: "/DesignPattern/单例模式.md" },
-          { text: "HTTP", link: "/HTTP/HTTP是什么.md" },
+          { text: "设计模式", link: "/DesignPattern/" },
+          { text: "HTTP", link: "/HTTP/" },
           { text: "Docker", link: "/Docker/docker基础介绍.md" },
           { text: "Git", link: "/Git/git-teach.md" },
           { text: "Linux", link: "/Linux/shell.md" },
@@ -133,7 +134,7 @@ module.exports = {
       "/Algorithm": AlgorithmAndDataStructure(),
       "/DataStructure": AlgorithmAndDataStructure(),
       "/HTTP": ArmorySideBar(),
-      "/Docker": ArmorySideBar(),
+      "/Docker": DockerSideBar(),
       "/Git": ArmorySideBar(),
       "/Linux": ArmorySideBar(),
       "/DesignPattern": designPatternSideBar(),

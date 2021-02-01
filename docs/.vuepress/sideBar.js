@@ -114,14 +114,34 @@ function ArmorySideBar() {
       collapsable: false,
       sidebarDepth: 0,
       children: [
+        "HTTP/常见面试题.md",
         "HTTP/HTTP是什么.md",
         "HTTP/HTTP的前世今生.md",
         "HTTP/网络是怎样连接的.md",
-        "HTTP/HTTP协议原理+实践 Web开发工程师必学.md",
         "HTTP/restful.md",
-        "HTTP/常见面试题.md",
+        "HTTP/TCP.md",
+        "HTTP/session与token登录.md",
+        "HTTP/HTTP1,2,3的对比.md",
+        "HTTP/GET和POST请求的本质区别是什么.md",
       ],
     },
+    {
+      title: "Git",
+      collapsable: false,
+      sidebarDepth: 0,
+      children: ["Git/git-teach.md", "Git/git-shell.md"],
+    },
+    {
+      title: "Linux",
+      collapsable: false,
+      sidebarDepth: 0,
+      children: ["Linux/shell.md"],
+    },
+  ];
+}
+
+function DockerSideBar() {
+  return [
     {
       title: "Docker",
       collapsable: false,
@@ -138,18 +158,6 @@ function ArmorySideBar() {
         "Docker/实战：docker-jenkins.md",
         "Docker/教程：李瓶儿讲docker.md",
       ],
-    },
-    {
-      title: "Git",
-      collapsable: false,
-      sidebarDepth: 0,
-      children: ["Git/git-teach.md", "Git/git-shell.md"],
-    },
-    {
-      title: "Linux",
-      collapsable: false,
-      sidebarDepth: 0,
-      children: ["Linux/shell.md"],
     },
   ];
 }
@@ -372,9 +380,7 @@ function jsSideBar() {
       title: "常见面试题",
       collapsable: false,
       sidebarDepth: 0,
-      children: [
-        "JavaScript/常见面试题/常见面试题.md",
-      ],
+      children: ["JavaScript/常见面试题/常见面试题.md"],
     },
     {
       title: "JavaScript知识梳理",
@@ -513,14 +519,19 @@ function designPatternSideBar() {
       sidebarDepth: 0,
       children: [
         "DesignPattern/发布订阅模式.md",
+        "DesignPattern/观察者模式.md",
         "DesignPattern/单例模式.md",
+        "DesignPattern/适配器模式.md",
+        "DesignPattern/原型模式.md",
         "DesignPattern/构造器模式.md",
+        "DesignPattern/装饰器模式.md",
         "DesignPattern/建造者模式.md",
         "DesignPattern/代理模式.md",
         "DesignPattern/外观模式.md",
-        "DesignPattern/观察者模式.md",
         "DesignPattern/策略模式.md",
         "DesignPattern/迭代器模式.md",
+        "DesignPattern/工厂模式.md",
+        "DesignPattern/MVC模式与MVVM模式.md",
       ],
     },
   ];
@@ -566,7 +577,11 @@ function aboutSideBar() {
       title: "术与道",
       collapsable: false,
       sidebarDepth: 0,
-      children: ["Others/代码和人生.md", "Others/知识与技能.md"],
+      children: [
+        "Others/代码和人生.md",
+        "Others/学习原则.md",
+        "Others/知识与技能.md",
+      ],
     },
     {
       title: "留言本站",
@@ -593,6 +608,7 @@ module.exports = {
   webpackSideBar,
   frontEndBasicSideBar,
   ArmorySideBar,
+  DockerSideBar,
   bigFrondSideBar,
   designPatternSideBar,
   csBasicSideBar,
