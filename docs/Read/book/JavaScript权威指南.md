@@ -69,7 +69,7 @@
 
 可以通过对象直接量、关键字new和（ECMAScript5中的）Object.create()函数来创建对象
 
-每一个对象都有与之相关的原型(prototype)、类(class)和可扩展性(extensible attribute)
+
 
 对象字面量：
 
@@ -97,6 +97,10 @@ var r = new RegExp("js")			// 创建一个可以进行模式匹配的RegExp对�
 ```
 
 每一个JavaScript对象(null除外)都和另一个对象相关联。“另一个”对象就是我们熟知的原型，每一个对象都从原型继承属性。
+
+所有通过对象直接量创建的对象都具有同一个原型对象，并可以通过JavaScript代码Object.prototype获得对原型对象的引用。
+
+
 
 Object.create() 是一个静态函数，而不是提供给某个函数调用的方法
 
@@ -148,9 +152,21 @@ function classof(o) {
 
 
 
+每一个对象都有与之相关的原型（prototype）、类（class）和可扩展性（extensible attribute）
+
+
+
 ## 第七章：数组
 
 
+
+
+
+## 第八章：函数
+
+
+
+## 第九章：类和模块
 
 
 

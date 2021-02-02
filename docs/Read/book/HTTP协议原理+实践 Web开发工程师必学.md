@@ -4,9 +4,7 @@
 
 浏览器输入URL后HTTP请求返回的完整过程
 
-<!-- ![image-20200209120312553](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20200209120312553.png) -->
-
-![浏览器输入URL后HTTP请求返回的完整过程](/images/HTTP/浏览器输入URL后HTTP请求返回的完整过程.png)
+![浏览器输入URL后HTTP请求返回的完整过程](../.vuepress/public/images/HTTP/浏览器输入URL后HTTP请求返回的完整过程.png)
 
 
 ## 网络协议分层
@@ -15,7 +13,7 @@
 
 
 
-![网络协议分层](/images/HTTP/网络协议分层.png)
+![网络协议分层](../.vuepress/public/images/HTTP/网络协议分层.png)
 
 
 
@@ -124,7 +122,7 @@ http://user:pass@host.com:80/path?query=string#hash
 ### HTTP报文格式
 
 
-![HTTP报文格式](/images/HTTP/HTTP报文格式.png)
+![HTTP报文格式](../.vuepress/public/images/HTTP/HTTP报文格式.png)
 
 #### HTTP的方法
 
@@ -247,7 +245,7 @@ XMLHttpRequestUpload 对象均没有任何事件监听器
 #### 缓存验证Last-Modified和Etag的使用
 
 
-![缓存验证Last-Modified和Etag的使用](/images/HTTP/缓存验证Last-Modified和Etag的使用.png)
+![缓存验证Last-Modified和Etag的使用](../.vuepress/public/images/HTTP/缓存验证Last-Modified和Etag的使用.png)
 
 验证头：Last-Modified、Etag
 
@@ -411,7 +409,7 @@ HTTP 头 Vary	http头信息一样才缓存
 在nginx中配置https
 
 
-![在nginx中配置https](/images/HTTP/在nginx中配置https.png)
+![在nginx中配置https](../.vuepress/public/images/HTTP/在nginx中配置https.png)
 
 
 ### HTTP2
