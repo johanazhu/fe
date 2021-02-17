@@ -8,6 +8,47 @@ https://missing-semester-cn.github.io/2020/version-control/
 
 
 
+列出所有 git 当时能找到的配置
+
+```shell
+git config --list
+# diff.astextplain.textconv=astextplain
+# filter.lfs.clean=git-lfs clean -- %f
+# filter.lfs.smudge=git-lfs smudge -- %f
+# filter.lfs.process=git-lfs filter-process
+# filter.lfs.required=true
+# http.sslbackend=openssl
+# http.sslcainfo=D:/Program Files (x86)/Git/mingw64/ssl/certs/ca-bundle.crt
+# core.autocrlf=true
+# core.fscache=true
+# core.symlinks=false
+# pull.rebase=false
+# credential.helper=manager
+# user.email=t511069160@qq.com
+# user.name=johanazhu
+# core.repositoryformatversion=0
+# core.filemode=false
+# core.bare=false
+# core.logallrefupdates=true
+# core.symlinks=false
+# core.ignorecase=true
+# remote.origin.url=git@10.139.108.213:/mnt/datadisk/git_repo/jingqb-web.git
+# remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+# branch.master.remote=origin
+# branch.master.merge=refs/heads/master
+```
+
+也可以通过输入`git config <key>`：检查 Git 的某一项配置
+
+```shell
+git config user.name
+# johanazhu
+```
+
+
+
+
+
 #### 设置全局git用户名和邮箱
 
 ```shell
