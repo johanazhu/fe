@@ -192,6 +192,8 @@ elaine.sayName.call(johan, 'johan1', 261)
 
 回过头来看，apply 和 call 的语义就是 elaine的方法sayName作用于johan，sayName需要传入的参数，我从第二个参数开始传值；或者说 johan调用elaine 的sayName方法，从第二个参数开始传值
 
+call和apply具有掰弯this指向的能力
+
 #### 箭头函数
 
 与箭头函数相关的语法和特征我们会在ES6篇中着重描述，这里，我们只讲箭头函数与 this 的关系。在“作为函数调用”小节中我们使用箭头函数，试图让它绑定，但是却感觉错了
@@ -270,3 +272,33 @@ https://mp.weixin.qq.com/s?__biz=MzI1MDU0Mjc4Mg==&mid=2247484550&idx=1&sn=af613b
 
 
 构造函数就是个模式，this未来会指向new出来的对象。创建 Person 的实例时，this.name 将引用新创建的对象，并将一个名为 `name` 的属性放入新对象中。
+
+
+
+this 其实很好理解，它就是一个代词，表示”这个“。
+
+生活中遇到一些事物规律，我们归纳总结，得出结论，用一个名词代替这个规律，例如马太效应，墨菲定律，我们约定俗成，这个词就是表示这些意。这样一抽象，彼此信息消耗就减少了。this 其实很好理解，this 就是”这个“。
+
+```javascript
+var foo = {
+    value: 1
+};
+function bar() {
+    console.log(this.value)
+}
+bar()
+```
+
+调用函数bar，函数中的 this 就默认代指 window。window上没有value，那结果就是 undefined。
+
+```javascript
+var foo = {
+    value: 1
+};
+function bar() {
+    console.log(this.value)
+}
+bar.call(foo)
+```
+
+call 能硬核掰弯this指向，将this指向第一个参数，所以这段代码中，this 代指 foo ， foo 上有value，所以打印结果是 1

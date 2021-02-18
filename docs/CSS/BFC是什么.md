@@ -1,101 +1,36 @@
-# BFC是什么
-
-BFC是什么
+# CSS世界中的结界——BFC
 
 
 
-https://github.com/ljianshu/Blog/issues/15
+### BFC是什么
+
+BFC全称为 block formattng context，中文为“块级格式化上下文”。相对应的还有IFC，也就是 inline formatting context，中文为“内联格式化上下文”。
+
+BFC的特征如结界一般，里面的人出不去，外面的人进不来
+
+表现原则：如果一个元素具有BFC，内部子元素再怎么翻云覆雨，都不会影响外部的元素。所以，BFC元素是不可能发生 margin 重叠的，因为 margin 重叠时会影响外面的元素的；BFC元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度坍塌，必然会影响后面元素布局和定位，**这显然有违BFC元素的子元素不会影响外部元素的设定**。
 
 
 
+如何触发BFC呢？常见的情况如下：
+
+- html 根元素；
+- float 的值不为none；
+- overflow 的值为 auto、scroll或hidden；
+- display 的值为 table-cell、table-caption和inline-block中的任何一个；
+- position 的值不为 relative 和 static
+
+换言之，只要元素符合上面任意一个元素，就无须使用 clear: both 属性去清除浮动的影响了。因为，不要见到一个 <div> 元素就加上类似.clearfix 的类名，否则只能暴雷你孱弱的CSS基本功
 
 
-## BFC(块级格式化上下文)
 
-BFC(Block formatting context)
+### BFC的作用
 
-直译为"块级格式化上下文"。
+##### 1.清除内部浮动
 
-### 元素的显示模式
+在布局时我们经常会遇到这种情况，对子元素设置浮动后，父元素会发生高度塌陷，也就是父元素的高度变为0。解决这个问题，只需要将父元素变成一个 BFC 就行。常用的做法如给父元素设置overflow: hidden 属性
 
-我们前面讲过 元素的显示模式 display。 
-
-分为 块级元素   行内元素  行内块元素 ，其实，它还有很多其他显示模式。
-
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/dis.png"  style="border: 1px dashed #ccc; padding: 5px;" />
-
-### 那些元素会具有BFC的条件
-
-不是所有的元素模式都能产生BFC，w3c 规范： 
-
-display 属性为 block, list-item, table 的元素，会产生BFC.
-
-大家有么有发现这个三个都是用来布局最为合理的元素，因为他们就是用来可视化布局。
-
-注意其他的，display属性，比如 line 等等，他们创建的是 IFC ，我们暂且不研究。
-
-这个BFC 有着具体的布局特性： 
-
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/box.gif" />
-
-有宽度和高度 ， 有 外边距margin  有内边距padding 有边框 border。
-
-就好比，你有了练习武术的体格了。 有潜力，有资质。
-
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/gu.jpeg" width="400" />
-
-### 什么情况下可以让元素产生BFC
-
-以上盒子具有BFC条件了，就是说有资质了，但是怎样触发才会产生BFC，从而创造这个封闭的环境呢？ 
-
-在好比，你光有资质还不行，你需要一定额外效果才能出发的武学潜力，要么你掉到悬崖下面，捡到了一本九阴真经，要么你学习葵花宝典，欲练此功必先....
-
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/kuihua.png" />
-同样，要给这些元素添加如下属性就可以触发BFC。
-
--float属性不为none
-
--position为absolute或fixed
-
--display为inline-block, table-cell, table-caption, flex, inline-flex
-
--overflow不为visible。
-
-### BFC元素所具有的特性
-
-BFC布局规则特性：
-
-1.在BFC中，盒子从顶端开始垂直地一个接一个地排列.
-
-2.盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻盒子的margin会发生重叠
-
-3.在BFC中，每一个盒子的左外边缘（margin-left）会触碰到容器的左边缘(border-left)（对于从右到左的格式来说，则触碰到右边缘）。
-
-1. BFC的区域不会与浮动盒子产生交集，而是紧贴浮动边缘。
-2. 计算BFC的高度时，自然也会检测浮动或者定位的盒子高度。
-
-它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
-
-白话文： 孩子在家里愿意怎么折腾都行，但是出了家门口，你就的乖乖的，不能影响外面的任何人。
-
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/xiong.jpeg" width="400" />
-
-### BFC的主要用途
-
-BFC能用来做什么？
-
-(1) 清除元素内部浮动
-
-只要把父元素设为BFC就可以清理子元素的浮动了，最常见的用法就是在父元素上设置overflow: hidden样式，对于IE6加上zoom:1就可以了。
-
-主要用到 
-
-```
-计算BFC的高度时，自然也会检测浮动或者定位的盒子高度。
-```
-
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/fu.jpg" />
-(2) 解决外边距合并问题
+##### 2.垂直 margin 合并
 
 外边距合并的问题。
 
@@ -107,100 +42,143 @@ BFC能用来做什么？
 
 属于同一个BFC的两个相邻盒子的margin会发生重叠，那么我们创建不属于同一个BFC，就不会发生margin重叠了。
 
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/ma.png" />
+<img src="../.vuepress/public/images/CSS/BFC_margin.png" />
 
-(3) 制作右侧自适应的盒子问题
+##### 3.自适应布局
 
-主要用到 
+如下
 
+### BFC与流式布局
+
+**BFC 的结界特性最重要的用途其实不是去 margin 重叠或者是清除 float 影响，而是实现更健壮、更智能的自适应布局**
+
+我们从最基本的文字环绕效果说起，
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+	margin: 0;
+	padding: 0;
+}
+.box {
+	width:200px;
+	border: 1px solid #000;
+}
+.zhanan {
+	width: 50px;
+	height: 50px;
+	background: yellow;
+    float: left;
+}
+.info {
+	background: #f1f1f1;
+    color: #222;
+}
+</style>
+<body>
+    <div class="box">
+        <div class="zhanan">渣男</div>
+        <p class="info">资产100000000，上海三套房，劳斯莱斯两辆，上市公司CEO,肖战相貌，彭于晏身材，只爱你一个人...</p>
+    </div>
+</body>
+</html>
 ```
-普通流体元素BFC后，为了和浮动元素不产生任何交集，顺着浮动边缘形成自己的封闭上下文
+
+我们看到这样的场景：
+
+![BFC1](../.vuepress/public/images/CSS/BFC1.png)
+
+给info加上 overflow：hidden
+
+![BFC1](../.vuepress/public/images/CSS/BFC2.png)
+
+因为我们将info元素改造成了BFC，所以具有BFC 特性的元素的子元素不会受到外部元素影响，也不会影响外部元素，于是，这里的 info 元素为了不和浮动元素产生任何交集，顺着浮动边缘形成自己的封闭上下文
+
+
+
+### BFC的局限
+
+有了BFC自适应布局，纯流体特性布局基本上没有了存在的价值。然后，只是理论上如此。如果 BFC 自适应布局真那么超能，那为何并没有口口相传呢？
+
+因为绝大多数出发BFC的属性自身有一些古怪的特性，所以，实操时，能兼顾流体特性和 BFC 特性来实现自适应布局的属性并不多。接下来我们一个一个来看，
+
+1. float: left。浮动元素本身 BFC 化，然后浮动元素有破坏性和包裹性，失去了元素本身的流体自适应。因此无法用来实现自动填满容器的自适应布局。不过兼容性尚可，在IE时代被大肆使用，也就是常说的“浮动布局”
+2. position: absolute。严重脱离文档流
+3. overflow: hidden。最为常见的 BFC 使用属性。唯一的问题就是容器盒子外的元素可能会被隐藏掉
+4. display: inline-block。在IE6和IE7上古浏览器中，兼容性比 overflow: hidden 更好
+5. display: table-cell。兼容性要在IE8及以上版本的浏览器；二是应付连续英文字符换行有些吃力，适用场景比 overflow:hidden 更为宽泛
+6. display: table-row。对 width 无感，无法自适应剩余容器空间。
+7. display: table-caption。此属性一无是处
+
+还有其他声明对自适应布局也都一无是处，就不展开细说
+
+总结一下。我们对 BFC 声明家族大致过了一边，能担任自适应布局重任的也就是一下几个：
+
+- overflow: auto/hidden，适用于 IE7 及以上版本浏览器；
+- display: inline-block，适用于 IE6 和 IE7
+- display: table-cell，适用于 IE8 及以上版本浏览器
+
+最后，我们提炼出两套 IE7 及以上版本浏览器适配的自适应解决方案。
+
+1. 借助 overflow 属性，如下：
+
+```css
+.lbf-content { overflow: hidden; }
 ```
 
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/you.png" />
+2. 融合 display: table-cell 和 display: inline-block，如下：
 
-### BFC 总结
+```css
+.lbf-content {
+    display: table-cell; width: 9999px;
+    /* 如果不需要兼容IE7，以下样式可以省略 */
+    *display: inline-block; *width: auto;
+}
+```
+
+这两种基于 BFC 的自适应方案均支持无限桥套，因此，多栏自适应可以通过嵌套方式实现。这两种方案均有一点不足，前者如果子元素要定位到父元素的外面可能会被隐藏，后者无法直接让连续英文字符换行。
+
+最后，关于display: table-cell 元素内连续英文字符无法换行的问题，事实上是可以解决的，就是使用类似下面的 CSS 代码：
+
+```css
+.word-break {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+}
+```
+
+
+
+### 总结
 
 BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。包括浮动，和外边距合并等等，因此，有了这个特性，我们布局的时候就不会出现意外情况了。
 
-## 优雅降级和渐进增强
-
-什么是渐进增强（progressive enhancement）、优雅降级（graceful degradation）呢？
-
-渐进增强 progressive enhancement：
-
-针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
-
- 类似 爬山，由低出往高处爬
-
-  <img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/pa.png" width="400" />
-
-  <b>优雅降级 graceful degradation：</b>
-
-一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
-
-类似蹦极，由高处往低处下落
-
-<img src="H:/Frontend Knowledge/2号线-CSS/BFC/media/xia.jpg" />
-
-　　区别：渐进增强是向上兼容，优雅降级是向下兼容。
-
-个人建议： 现在互联网发展很快， 连微软公司都抛弃了ie浏览器，转而支持 edge这样的高版本浏览器，我们很多情况下没有必要再时刻想着低版本浏览器了，而是一开始就构建完整的效果，根据实际情况，修补低版本浏览器问题。
-
-## 浏览器前缀
-
-| 浏览器前缀 | 浏览器                                 |
-| ---------- | -------------------------------------- |
-| -webkit-   | Google Chrome, Safari, Android Browser |
-| -moz-      | Firefox                                |
-| -o-        | Opera                                  |
-| -ms-       | Internet Explorer, Edge                |
-| -khtml-    | Konqueror                              |
+但在我看来，BFC已成过去式，现在有更好的自适应布局手段——flex，在现代手机H5遍地的世界里，flex的兼容性已经足够了，
 
 
 
-后面我们会有 常用的解决H5和C3 的兼容解决文件， 我们这里暂且不涉及。
 
-## 背景渐变
 
-在线性渐变过程中，颜色沿着一条直线过渡：从左侧到右侧、从右侧到左侧、从顶部到底部、从底部到顶部或着沿任何任意轴。如果你曾使用过制作图件，比如说Photoshop，你对线性渐变并不会陌生。
+参考资料：
 
-兼容性问题很严重，我们这里之讲解线性渐变
+【CSS】深入理解BFC原理及应用(https://www.jianshu.com/p/acf76871d259)
 
-语法格式： 
-
-~~~css
-background:-webkit-linear-gradient(渐变的起始位置， 起始颜色， 结束颜色)；
-~~~
-
-~~~css
-background:-webkit-linear-gradient(渐变的起始位置， 颜色 位置， 颜色位置....)；
-~~~
+CSS世界：张鑫旭
 
 
 
-## CSS W3C 统一验证工具
-
-CssStats 是一个在线的 CSS 代码分析工具
-
-```
-网址是：  http://www.cssstats.com/
-```
 
 
 
-如果你想要更全面的，这个神奇，你值得拥有：
 
-W3C 统一验证工具：    http://validator.w3.org/unicorn/  ☆☆☆☆☆
 
-因为它可以检测本地文件哦！！
 
-## CSS 压缩
-
-通过上面的检测没有错误，为了提高加载速度和节约空间（相对来说，css量很少的情况下，几乎没啥区别），可以通过css压缩工具把css进行压缩。
-
- w3c css压缩   http://tool.chinaz.com/Tools/CssFormat.aspx   网速比较慢
-
- 还可以去站长之家进行快速压缩。
-
- http://tool.chinaz.com/Tools/CssFormat.aspx  

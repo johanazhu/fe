@@ -1,31 +1,18 @@
-# apply、call、bind
+# call、apply、bind的应用
 
-https://github.com/mqyqingfeng/Blog/issues?page=4&q=is%3Aissue+is%3Aopen
 
-先说结论：
 
-apply
+之前在讲 [this关键字](../this关键字) 时，我们介绍过这三个api，我们得出这样的结论：**call、apply和bind都拥有掰弯this指向的能力**。
 
-call
+介于当时的重点在于this，对这三者并没有详细介绍，这一节，我们好好说一说这三个api。
 
-bind
 
-这三者都能改变this 的指向。用法即 A.call(B, ...args)。将 A中的this 指针指向 B 
 
-```javascript
-function People(name) {
-    this.name = name;
-    this.sayName = function(){
-        console.log('My name is ' + this.name)
-    }
-}
-const elaine = new People('elaine');
-console.log(elaine.sayName()) // My name is elaine
-const johan = { name: "johan" }
-console.log(elaine.sayName.call(johan)) // My name is johan
-```
-
-将 
+- call
+- apply
+- bind
+- 实际应用
+  - 继承 xxx = Person.apply(this)
 
 
 
@@ -175,7 +162,9 @@ Function.prototype.johanApply = function(context = window, params = []) {
 
 
 
+参考资料：
 
+[冯羽](https://github.com/mqyqingfeng/Blog/issues/11)
 
 
 
