@@ -118,9 +118,43 @@ Function.prototype.mybind = function(context) {
 
 ### 构造函数效果的模拟实现
 
+bind还有一个特点，就是
 
+```javascript
+一个绑定函数也能使用new操作符来创建对象：这种行为就像把原函数当成构造器。提供的this值被忽略，同时调用时的参数被提供给模拟函数
+```
 
+也就是说当 bind 返回的函数作为构造函数的时候， bind 时指定的 this 值会失效，但传入的参数依然生效。举个例子：
 
+```javascript
+var value = 2;
+
+var foo = {
+    value: 1
+}
+
+function bar(name, age) {
+    this.habit = 'shopping';
+    console.log(this.value);
+    console.log(this.name)
+    console.log(this.age)
+}
+
+bar.prototype.friend = 'johan';
+
+var bindFoo = bar.bind(foo, 'elaine');
+
+var obj = new bindFoo(18)
+// undefined
+// elaine
+// 18
+console.log(obj.habit) 
+// shopping
+console.log(obj.friend)
+// johan
+```
+
+注意：尽管在全局和 foo 中都声明了 value 值，最后依然返回了 undefined，说明绑定的 this 失效了，如果大家知道 new 的模拟实现，就会知道这个时候的 this 已经指向了 obj
 
 
 
