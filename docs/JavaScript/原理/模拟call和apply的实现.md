@@ -2,6 +2,8 @@
 
 
 
+## Call实现
+
 我们在 apply、call、bind 中曾经介绍过这三个api的作用，硬核掰弯this指向。这一节我们模拟实现apply和call，下一节我们介绍模拟实现bind
 
 我们先看一个例子：
@@ -228,12 +230,12 @@ console.log(bar.call(foo, 'johan', 22))
 
 ```javascript
 Function.prototype.mycall3 = function(context) {
-    var context = context || window;
+    context = context || window;
     context.fn = this;
     
     var args = [];
     for (var i = 0, len = arguments.length; i < len; i++) {
-        args.push("arguments[" + i + "]")
+        args.push('arguments[' + i + ']')
     }
     
     var result = eval('context.fn(' + args +')'); // eval 不能用双引号
@@ -281,6 +283,57 @@ Function.prototype.mycall = function(context, ...args) {
     const result = context[fn](..args) // 调用除context外的arguments参数
     delete context[fn];
     return result;
+}
+```
+
+
+
+## apply实现
+
+apply 的实现跟 call 类似，这里直接给代码，代码来自于这知乎 郑航的实现：
+
+```javascript
+Function.prototype.myApply = function (context, arr) {
+    context = context || window;
+    context.fn = this;
+    
+    var result;
+    if (!arr) {
+        result = context.fn()
+    } else {
+        var args = []
+        for (var i = 0, len = arr.length; i < len; i++) {
+            args.push('arr[' + i + ']')
+        }
+        result = eval('context.fn(' + args + ')')
+    }
+    
+    delete context.fn
+    return result
+    
+}
+```
+
+
+
+### ES6 模拟实现 apply
+
+```javascript
+Function.prototype.myapply = function(context = window, args) {
+    if (this === Function.prototype) {
+        return undefined
+    }
+    const fn = Symbol();
+    context[fn] = this;
+    let result;
+    if (!Array.isArray(args)) {
+        result = context[fn]()
+    } else {
+        result = context[fn](...args)
+    }
+	
+    delete context[fn]
+    return result
 }
 ```
 

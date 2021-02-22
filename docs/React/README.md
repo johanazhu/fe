@@ -60,26 +60,3 @@ https://mp.weixin.qq.com/s/Keq88pAyVA_Xwvg1V2Tu1A
 
 
 
-
-React有什么坑点？
-
-1、JSX做表达式判断时，需要强转未boolean类型，如：
-
-```jsx
-render() {
-    const b = 0;
-    return (
-    	<div>
-        	{
-                !!b && <div>这是一段文字</div>
-            }
-        </div>
-    )
-}
-```
-
-如果不使用!!b 进行强转数据类型，会在页面里面输出 0
-
-
-
-https://github.com/yacan8/blog/issues/18

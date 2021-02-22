@@ -154,7 +154,7 @@ Function.prototype.johanApply = function(context = window, params = []) {
 
 
 
-
+bind 用到了闭包
 
 
 
