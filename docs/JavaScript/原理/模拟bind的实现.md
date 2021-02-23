@@ -156,25 +156,178 @@ console.log(obj.friend)
 
 注意：尽管在全局和 foo 中都声明了 value 值，最后依然返回了 undefined，说明绑定的 this 失效了，如果大家知道 new 的模拟实现，就会知道这个时候的 this 已经指向了 obj
 
+所以我们可以通过修改返回的函数的原型来实现，
+
+```javascript
+Function.prototype.bind2 = function (context) {
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        // 当作为构造函数时，this 指向实例，此时结果为 true，将绑定函数的 this 指向实例，可以让实例获得来自绑定函数的值
+        // 以上面的是 demo 为例，如果改成`this instanceof fBound ? null : context`,实例只是一个空对象，将 null 改成 this，实例会具有 habit 属性
+        // 当作为普通函数时，this 指向 window，此时结果为 false，将绑定函数的 this 指向 context
+        return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs))
+    }
+    // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
+    // 按上面的 demo 为例，this 指的是 bar(谁调用我，我指向谁)，fBound.protype=this.prototype 就是将 bar.prototype 赋值给了 fBound，供实例来继承 
+    fBound.prototype = this.prototype;
+    return fBound;
+}
+```
 
 
 
+### 构造函数效果的优化实现
+
+在第三版中，我们直接将 fBound.prototype = this.prototype，我们直接修改 fBound.prototype 的时候，也会直接修改绑定函数的 prototype。看个例子
+
+```javascript
+// bind2 以 第四版 为基础
+function bar() {}
+var bindFoo = bar.bind2(null)
+bindFoo.prototype.value = 1
+console.log(bar.prototype.value) // 1
+```
+
+我们修改的是绑定函数 bindFoo 的 prototype ，却把 bar 的 prototype 也修改了。这是因为对象赋值是引用地址，所以改变 bindFoo 的 prototype 就是改变 bar 的 prototype 。这里有两个方案，一通过一个空函数来进行中转，二通过深拷贝来实现
+
+#### 空函数进行中装
+
+```javascript
+Function.prototype.bind2 = function (context) {
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+    
+    var fNOP = function () {};
+    
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+    }
+    
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+    return fBound;
+}
+```
+
+#### 深拷贝来实现
+
+```javascript
+Function.prototype.bind2 = function(context) {
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1)
+    
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments)
+        return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs))
+    }
+    fBound.prototype = JSON.parse(JSON.stringify(this.prototype)) // 使用最简单的深拷贝
+    return fBound
+}
+```
 
 
 
+如果调用 bind 的不是函数咋办?
+
+不行，我们要报错！
+
+```javascript
+if (typeof this !== "function") {
+    throw new Error("Function.prototype.bind - what is trying to be bound is not callable")
+}
+```
 
 
 
+### 最终版本
+
+```javascript
+Function.prototype.bind2 = function(context) {
+    if (typeof this !== "function") {
+        throw new Error("Function.prototype.bind - what is trying to be bound is not callable")
+    }
+    
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1)
+    
+    var fNOP = function () {}
+    
+    var bBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments)
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs))
+    }
+    fNOP.prototype = this.prototype
+    fBound.prototype = new fNOP
+    return fBound
+}
+```
+
+PS: 因为拷贝那个比较简单，所以我们用空函数进行中装为例
 
 
 
+### ES6版本模拟bind
 
+1. 处理参数，返回一个闭包
 
+2. 判断是否为构造函数调用，如果是则使用 `new` 调用当前函数
+3. 如果不是，使用 `apply` ，将 `context` 和处理好的参数传入
 
+```javascript
+Function.prototype.myBind = function (context, ...args1) {
+    if (this === Function.prototype) {
+        throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable")
+    }
+    const _this = this
+    return function F(...args2) {
+        // 判断是否用于构造函数
+        if (this instanceof F) {
+       
+            return new _this(...args1, ...args2)
+        }
+        return this.apply(context, args1.concat(args2))
+    }
+}
+```
 
+测试用例 ：
 
+```javascript
+var foo = {
+    value: 1
+}
 
+function bar(name, age) {
+    this.habit = 'shopping';
+    console.log(this.value);
+    console.log(this.name)
+    console.log(this.age)
+}
 
+bar.prototype.friend = 'johan';
+
+var bindFoo = bar.myBind(foo, 'elaine');
+
+var obj = new bindFoo(18)
+// undefined
+// elaine
+// 18
+console.log(obj.habit) 
+// shopping
+console.log(obj.friend)
+// johan
+```
+
+如何理解 ` return new _this(...args1, ...args2)`
+
+以上诉 demo 为例，`_this` 指的 是 bar，即第一次调用myBind时存在函数myBind中的变量，被闭包住了。
+
+后面的（...args1, ...args2）就是使用扩展运算符，展开变量
+
+ 
 
 
 
@@ -185,3 +338,5 @@ console.log(obj.friend)
 参考资料：
 
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+
+[JavaScript深入之bind的模拟实现](https://github.com/mqyqingfeng/Blog/issues/12)
