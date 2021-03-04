@@ -1,20 +1,19 @@
-const {
-  nodeSideBar,
-  reactSideBar,
-  jsSideBar,
-  ES6SideBar,
-  BrowserSideBar,
-  PerformanceSideBar,
-  webpackSideBar,
-  frontEndBasicSideBar,
-  ArmorySideBar,
-  DockerSideBar,
-  bigFrondSideBar,
-  designPatternSideBar,
-  csBasicSideBar,
-  aboutSideBar,
-  AlgorithmAndDataStructure,
-} = require("./sideBar");
+
+const jsSideBar = require("./jsSideBar");
+const reactSideBar = require("./reactSideBar");
+const bigFrondSideBar = require("./bigFrondSideBar");
+const AlgorithmAndDataStructure = require("./AlgorithmAndDataStructure");
+const ArmorySideBar = require("./ArmorySideBar");
+const DockerSideBar = require("./DockerSideBar");
+const frontEndBasicSideBar = require("./frontEndBasicSideBar");
+const webpackSideBar = require("./webpackSideBar");
+const nodeSideBar = require("./nodeSideBar");
+const ES6SideBar = require("./ES6SideBar");
+const BrowserSideBar = require("./BrowserSideBar");
+const PerformanceSideBar = require("./PerformanceSideBar");
+const designPatternSideBar = require("./designPatternSideBar");
+const csBasicSideBar = require("./csBasicSideBar");
+const aboutSideBar = require("./aboutSideBar");
 
 module.exports = {
   title: "五年前端三年面试",
