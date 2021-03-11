@@ -363,7 +363,7 @@ function getType(target) {
 | --------------------------- | ------------------------------------------------------------ | ------------------------------------------- |
 | typeof                      | string、number、boolean、undefined以及 function              | null以及除function外的对象，结果都为 object |
 | constructor                 | string、number、boolean、array、object、function 以及 构造函数 | undefined、null。不安全，因为 指向可以改变  |
-| instanceof                  |                                                              |                                             |
+| instanceof                  | 准确地判断复杂引用数据类型                                   | 不能正确判断基础数据类型                    |
 | Object.prototype.toString() | 内置构造函数函数                                             | 构造函数                                    |
 
 我们知道
