@@ -146,6 +146,10 @@ https://mp.weixin.qq.com/s/BlD9HgXM9hqRGf3Ep9UYEw
 
 
 
+一年菜鸟实现Promise所有方法
+
+https://segmentfault.com/a/1190000023690122?_ea=60466188
+
 
 
 

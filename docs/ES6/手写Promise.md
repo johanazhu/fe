@@ -138,3 +138,4 @@ function resolvePromise(promise,x,resolve,reject){
 }
 ```
 
+https://segmentfault.com/a/1190000023690122?_ea=60466188
