@@ -56,7 +56,36 @@ cache-control的优先级最高，比如cache-control：no-cache，就直接进�
 
 
 
+# 缓存相关
 
+
+
+深入理解浏览器的缓存机制
+
+https://www.jianshu.com/p/54cc04190252
+
+
+
+浏览器 & HTTP 缓存策略
+
+
+
+【面试三板斧】之缓存
+
+https://mp.weixin.qq.com/s?__biz=Mzk0OTIwOTc5Ng==&mid=2247486813&idx=1&sn=0ed82e72452ad27494bbcdb90de4ae4b&source=41#wechat_redirect
+
+
+
+彻底理解浏览器的缓存机制
+
+https://www.cnblogs.com/duiniweixiao/p/8884274.html
+
+
+
+
+前端缓存最佳实践
+
+https://mp.weixin.qq.com/s/03OAnrJ5kM-kdITr00YR4Q
 
 
 
