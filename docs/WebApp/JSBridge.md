@@ -80,6 +80,7 @@ Native 调用 JS 比较简单，只要 H5 将 JS 方法暴露在 Window 上给 N
 
 在 Native 中注入方法来引用 JSBridge。这样有利于保持 API 与 Native 的一致性，但是缺点是在 Native 注入的方法和时机都受限， JS 调用 Native 之前需要先判断 JSBridge 是否注入成功
 
+
 #### 使用规范
 
 H5 调用 Native 方法的伪代码实例，如：
@@ -170,5 +171,3 @@ JSBridge 就字如其意，它是 Native 和 H5 交互的一种手段，可以�
 [WebView与APP交互实战记录](https://segmentfault.com/a/1190000018208609)
 
 [小白必看，JSBridge](https://mp.weixin.qq.com/s?__biz=MzI0NTE5NzYyMw==&mid=2247484005&idx=1&sn=43b97435aa13b4427c82bf87a9165c05&chksm=e9537c3dde24f52ba8f59e7ea837ac6b23d8bc8376cb6d5e7a34214ed49b6820fe67ab80416b&mpshare=1&scene=1&srcid=&sharer_sharetime=1582500333067&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
-
-[JSBridge 通信原理](https://zhuanlan.zhihu.com/p/343317967?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128)
