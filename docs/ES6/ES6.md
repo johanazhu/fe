@@ -113,9 +113,14 @@ const foo = `this is a ${example}`;
 
 ### Set 和 Map
 
-### 结构赋值
+### 解构赋值
 
 ### 展开运算符
 
 ​	使用...来表示展开运算符，它可以展开数组/对象
 
+
+
+ES6+ 的必考集合，你都会了吗？
+
+https://mp.weixin.qq.com/s/yaDMqup7Ut_5ial4oAQBDA

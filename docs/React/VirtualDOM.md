@@ -100,3 +100,36 @@ https://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247484479&idx=1&sn=2d6461
 https://segmentfault.com/a/1190000017072371
 
 https://github.com/livoras/blog/issues/13
+
+
+
+谈谈你对虚拟dom 原理的理解
+
+https://mp.weixin.qq.com/s/2ddtB_yNx7r9_y7-sF7T-w
+
+
+
+面试官问: 如何理解Virtual DOM？
+
+https://zhuanlan.zhihu.com/p/79408137
+
+
+
+vdom是虚拟DOM的简称，指的是用JS模拟的DOM结构，将DOM变化的对比放在JS层来做。换而言之，vdom就是JS对象
+
+
+
+精度 dom diff 原理详解
+
+https://github.com/ascoders/weekly/blob/v2/190.%E7%B2%BE%E8%AF%BB%E3%80%8ADOM%20diff%20%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3%E3%80%8B.md
+
+
+
+谈谈你对虚拟DOM原理的理解
+
+https://mp.weixin.qq.com/s/2ddtB_yNx7r9_y7-sF7T-w
+
+
+
+
+
