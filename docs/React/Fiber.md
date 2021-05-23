@@ -135,7 +135,9 @@ React16将内部组件层改成Fiber这种数据结构，因此它的架构名�
 
 
 
+fiber 到底有多细
 
+https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw
 
 
 

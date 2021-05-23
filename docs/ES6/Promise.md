@@ -156,7 +156,9 @@ https://mp.weixin.qq.com/s/r4hG9Fh4nMjdAzPWjcAP7g
 
 
 
+这次彻底搞懂 promise
 
+https://mp.weixin.qq.com/s/pELnbmQkpsz2LmIQBnSeQQ
 
 
 

@@ -167,3 +167,8 @@ setState 的坑：
 
    1. 在React中，**如果是由React引发的事件处理（比如通过onClick引发的事件处理），调用setState不会同步更新this.state，除此之外的setState调用会同步执行this.state**。所谓“除此之外”，指的是绕过React通过addEventListener直接添加的事件处理函数，还有通过setTimeout/setInterval产生的异步调用。
 
+
+
+setState 到底是同步的，还是异步的
+
+https://mp.weixin.qq.com/s/my2Jx7pcbVYnaCWklAzKXA
