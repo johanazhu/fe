@@ -162,3 +162,12 @@ https://mp.weixin.qq.com/s/pELnbmQkpsz2LmIQBnSeQQ
 
 
 
+then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）因此可以采用链式写法，即then方法后面再调用另一个then方法
+
+
+
+实例化 Promise 传入的函数是同步执行的，then 方法本身其实也是**同步**执行的，但 then 中的回调会先放入微任务队列，等同步任务执行完毕后，再依次取出执行，换句话说只有回调是异步的
+
+
+
+在new Promise 中使用resolve或者reject，相当于变更promise的状态，变化后，promise.then会执行
