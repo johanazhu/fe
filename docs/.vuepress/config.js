@@ -2,8 +2,8 @@
 const jsSideBar = require("./jsSideBar");
 const reactSideBar = require("./reactSideBar");
 const bigFrondSideBar = require("./bigFrondSideBar");
-const AlgorithmAndDataStructure = require("./AlgorithmAndDataStructure");
 const ArmorySideBar = require("./ArmorySideBar");
+const HttpSideBar = require("./HttpSideBar");
 const DockerSideBar = require("./DockerSideBar");
 const frontEndBasicSideBar = require("./frontEndBasicSideBar");
 const webpackSideBar = require("./webpackSideBar");
@@ -14,6 +14,7 @@ const PerformanceSideBar = require("./PerformanceSideBar");
 const designPatternSideBar = require("./designPatternSideBar");
 const csBasicSideBar = require("./csBasicSideBar");
 const aboutSideBar = require("./aboutSideBar");
+const FrontEndSideBar = require("./FrontEndSideBar");
 
 module.exports = {
   title: "五年前端三年面试",
@@ -50,58 +51,59 @@ module.exports = {
     // 导航
     nav: [
       // { text: "导读", link: "/Introduction/" },
-      {
-        text: "前端基础",
-        items: [
-          { text: "JavaScript", link: "/JavaScript/Foreword.md" },
-          { text: "ES6", link: "/ES6/完全指南.md" },
-          { text: "Browser", link: "/Browser/总纲.md" },
-          { text: "Performance", link: "/Performance/介绍.md" },
-          { text: "HTML", link: "/HTML/HTML.md" },
-          { text: "CSS", link: "/CSS/Foreword.md" },
-          { text: "Jquery", link: "/Jquery/高效jquery.md" },
-        ],
-      },
+      { text: "前端基础", link: "/Introduction/前端基础文章目录.md" },
+    //   {
+    //     text: "前端基础",
+    //     items: [
+    //       { text: "JavaScript", link: "/JavaScript/" },
+    //       { text: "ES6", link: "/ES6/" },
+    //       { text: "Browser", link: "/Browser/" },
+    //       { text: "HTML", link: "/HTML/" },
+    //       { text: "CSS", link: "/CSS/" },
+    //       { text: "Jquery", link: "/Jquery/高效jquery.md" },
+    //     ],
+    //   },
       { text: "React", link: "/React/" },
-      {
-        text: "Node",
-        items: [
-          { text: "Node", link: "/Node/Node基本面.md" },
-          { text: "Express", link: "/Express/express-teach.md" },
-          { text: "Koa2", link: "/Koa2/koa2-teach.md" },
-          { text: "PM2", link: "/Node/PM2.md" },
-          { text: "Mongoose", link: "/Mongoose/mongoose-teach.md" },
-          { text: "Mysql", link: "/Mysql/mysql-teach.md" },
-          { text: "Redis", link: "/Redis/redis-teach.md" },
-        ],
-      },
-      { text: "webpack", link: "/webpack/" },
-      {
-        text: "大前端",
-        items: [
-          { text: "WebApp", link: "/WebApp/Foreword.md" },
-          { text: "Flutter", link: "/Flutter/Foreword.md" },
-          { text: "微信公众号", link: "/WeChat/Foreword.md" },
-          { text: "微信小程序", link: "/WxApp/Foreword.md" },
-          { text: "RN", link: "/RN/Foreword.md" },
-        ],
-      },
-      {
-        text: "数据结构与算法",
-        items: [
-          { text: "数据结构", link: "/DataStructure/什么是数据结构.md" },
-          { text: "算法", link: "/Algorithm/什么是算法.md" },
-        ],
-      },
+      { text: "后端", link: "/Introduction/后端文章目录.md" },
+    //   {
+    //     text: "后端",
+    //     items: [
+    //       { text: "Node基础", link: "/Node/Node基本面.md" },
+    //       { text: "Koa2", link: "/Koa2/koa2-teach.md" },
+    //       { text: "Express", link: "/Express/express-teach.md" },
+    //       { text: "PM2", link: "/Node/PM2.md" },
+    //       { text: "Mongoose", link: "/Mongoose/mongoose-teach.md" },
+    //       { text: "Mysql", link: "/Mysql/mysql-teach.md" },
+    //       { text: "Redis", link: "/Redis/redis-teach.md" },
+    //       { text: "Go", link: "/Go/go.md" },
+    //     ],
+    //   },
+      { text: "大前端", link: "/Introduction/大前端文章目录.md" },
+    //   {
+    //     text: "大前端",
+    //     items: [
+    //       { text: "Performance", link: "/Performance/介绍.md" },
+    //       { text: "webpack", link: "/webpack" },
+    //       { text: "WebApp", link: "/WebApp/Foreword.md" },
+    //       { text: "Flutter", link: "/Flutter/Foreword.md" },
+    //       { text: "微信公众号", link: "/WeChat/Foreword.md" },
+    //       { text: "微信小程序", link: "/WxApp/Foreword.md" },
+    //       { text: "babel", link: "/webpack/babel/基础知识.md" },
+    //       { text: "vite", link: "/webpack/vite/速度与激情之Vite初体验.md" },
+    //       { text: "RN", link: "/RN/Foreword.md" },
+    //     ],
+    //   },
       {
         text: "多多益善",
         items: [
-          { text: "设计模式", link: "/DesignPattern/" },
+          //   { text: "数据结构与算法", link: "/DataStructure&Algorithm/" },
+          { text: "数据结构与算法", link: "https://github.com/johanazhu/leetcode" },
           { text: "HTTP", link: "/HTTP/" },
-          { text: "Docker", link: "/Docker/docker基础介绍.md" },
-          { text: "Git", link: "/Git/git-teach.md" },
-          { text: "Linux", link: "/Linux/shell.md" },
-          { text: "CS基础", link: "/CSBasic/计算机的起源.md" },
+          { text: "Docker", link: "/Docker/" },
+          { text: "Git", link: "/Git/" },
+          { text: "Linux", link: "/Linux/" },
+          { text: "设计模式", link: "/DesignPattern/" },
+          { text: "CS基础", link: "/CSBasic/" },
         ],
       },
       {
@@ -130,9 +132,7 @@ module.exports = {
       "/HTML": frontEndBasicSideBar(),
       "/CSS": frontEndBasicSideBar(),
       "/Jquery": frontEndBasicSideBar(),
-      "/Algorithm": AlgorithmAndDataStructure(),
-      "/DataStructure": AlgorithmAndDataStructure(),
-      "/HTTP": ArmorySideBar(),
+      "/HTTP": HttpSideBar(),
       "/Docker": DockerSideBar(),
       "/Git": ArmorySideBar(),
       "/Linux": ArmorySideBar(),
@@ -140,6 +140,7 @@ module.exports = {
       "/CSBasic": csBasicSideBar(),
       "/About": aboutSideBar(),
       "/Others": aboutSideBar(),
+      "/Introduction": FrontEndSideBar(),
     },
   },
   configureWebpack: {

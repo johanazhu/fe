@@ -1,13 +1,9 @@
-# linux 的一些东西
+# Linux导航
 
 
 
+[Linux基本概念](./基本概念.md)
 
+[Linux常用命令](./常用命令.md)
 
-https://juejin.cn/post/6844904080972709901
-
-
-
-教程：
-
-https://www.bilibili.com/video/av55883609
+[Linux目录结构](./目录结构.md)

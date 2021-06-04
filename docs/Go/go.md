@@ -28,4 +28,4 @@ https://goproxy.io/
 
 其次安装go的插件
 
-![VScode安装插件](../.vuepress/public/images/golang/VScode安装插件.png)
+![VScode安装插件](https://i.loli.net/2021/06/04/CXq24MKnDmrRuVF.png)

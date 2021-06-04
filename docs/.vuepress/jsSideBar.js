@@ -12,7 +12,7 @@ function jsSideBar() {
         collapsable: false,
         sidebarDepth: 0,
         children: [
-          "JavaScript/Foreword.md",
+          "JavaScript/",
           "JavaScript/JavaScript是什么.md",
           "JavaScript/JavaScript由什么组成.md",
           "JavaScript/一切皆对象.md",
@@ -40,7 +40,7 @@ function jsSideBar() {
         collapsable: false,
         sidebarDepth: 0,
         children: [
-          "JavaScript/原理/汇总导航.md",
+          "JavaScript/原理/",
           "JavaScript/原理/源码实现.md",
           "JavaScript/原理/拷贝的秘密.md",
           "JavaScript/原理/模拟call和apply的实现.md",
@@ -68,6 +68,7 @@ function jsSideBar() {
         collapsable: false,
         sidebarDepth: 0,
         children: [
+          "JavaScript/高阶/",
           "JavaScript/高阶/JavaScript运行原理.md",
           "JavaScript/高阶/JavaScript工作原理.md",
           "JavaScript/高阶/JavaScript引擎.md",

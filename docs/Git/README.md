@@ -1,4 +1,8 @@
-# GIT
+# 导航
+
+
+
+
 现代人必须掌握的技能
 
 注意哦，我在前言中说的是现代人，不单单是一个开发者，而是身为一个人，需要掌握GIT思想。
@@ -16,14 +20,3 @@ GIT的工作流
 
 
 
-字节头条的git流程
-
-https://mp.weixin.qq.com/s?__biz=Mzg5NjAzMjI0NQ==&mid=2247487589&idx=1&sn=88490987ce377baad08dc8b9350721f7&chksm=c0061cfff77195e94d87534024529365a0e58604f6229768678fb366def383a77ffac1ac919f&mpshare=1&scene=1&srcid=0925MZ47hzqmCd61AY9mGz9b&sharer_sharetime=1600992766610&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=240d40e83da786d09da4496c05e0b91df38906258030d1ce47118d9b50b21aee10ad3106a14af992d17c98c5fb6e5bd782fd5c4b2c467e874a1d8569a9e1b7ce8f832c5997f166f27fb08bb68d514412a1455e37048bbf6ef1fd0517fecc4b060eebb33ca7b63d08ead49b938228961861eea1cc51b12ed7e3ec6ffc18f78b53&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=ARE5w%2FKzT4H6mS3wj%2BqiuUU%3D&pass_ticket=IAAAZXPG6kGgyAWoBydfn7Rbr0g%2BoLDkGTN4w7Dz6PJyi1ELnVaDf%2FNhBdahb9W8&wx_header=0
-
-
-
-
-
-图解 git 原理与日常实用指南
-
-https://mp.weixin.qq.com/s/nCci-3sExjaYdva6-XAxzg

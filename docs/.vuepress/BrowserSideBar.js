@@ -5,7 +5,7 @@ function BrowserSideBar() {
         collapsable: false,
         sidebarDepth: 0,
         children: [
-          "Browser/总纲.md",
+          "Browser/",
           "Browser/浏览器架构.md",
           "Browser/渲染进程中的线程.md",
           "Browser/浏览器的渲染原理.md",

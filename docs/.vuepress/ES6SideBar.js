@@ -5,8 +5,7 @@ function ES6SideBar() {
         collapsable: false,
         sidebarDepth: 0,
         children: [
-          "ES6/完全指南.md",
-          "ES6/ES6.md",
+          "ES6/",
           "ES6/模块化历程.md",
           "ES6/深入理解ES6模块机制.md",
           "ES6/Promise.md",

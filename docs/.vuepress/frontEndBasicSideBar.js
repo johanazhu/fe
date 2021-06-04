@@ -4,14 +4,14 @@ function frontEndBasicSideBar() {
         title: "HTML",
         collapsable: false,
         sidebarDepth: 0,
-        children: ["HTML/HTML.md"],
+        children: ["HTML/"],
       },
       {
         title: "CSS",
         collapsable: false,
         sidebarDepth: 0,
         children: [
-          "CSS/Foreword.md",
+          "CSS/",
           "CSS/垂直居中.md",
           "CSS/Flex.md",
           "CSS/布局.md",
