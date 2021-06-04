@@ -55,7 +55,7 @@ module.exports = {
         items: [
           { text: "JavaScript", link: "/JavaScript/Foreword.md" },
           { text: "ES6", link: "/ES6/完全指南.md" },
-          { text: "Browser", link: "/Browser/browser.md" },
+          { text: "Browser", link: "/Browser/总纲.md" },
           { text: "Performance", link: "/Performance/介绍.md" },
           { text: "HTML", link: "/HTML/HTML.md" },
           { text: "CSS", link: "/CSS/Foreword.md" },

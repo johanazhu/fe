@@ -14,7 +14,7 @@
 
 - 网页授权access_token和普通access_token
 
-![image-20201221123635929](C:\Users\hanbo\AppData\Roaming\Typora\typora-user-images\image-20201221123635929.png)
+![image-20201221123635929](https://i.loli.net/2021/06/03/PQCgKNv7zFHOdDT.png)
 
 
 

@@ -1,5 +1,7 @@
 # Fiber 是什么
 
+
+
 完全理解React Fiber
 
 http://www.ayqy.net/blog/dive-into-react-fiber/
@@ -87,7 +89,7 @@ Fiber之前的架构是同步更新，遍历，从根组件开始到子节点，
 
 现有的React版本，当组件树很大的时候就会出现这种问题，因为更新过程是同步地一层组件套一层组件，逐渐深入的过程，在更新完所有组件之前不停止，函数的调用栈就像下图这样，调用得很深，而且很长时间不会返回。
 
-![image-20210429131950217](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20210429131950217.png)
+![image-20210429131950217](https://i.loli.net/2021/06/03/7ncbYMKSCjBkRfr.png)
 
 因为JavaScript单线程的特点，每个同步任务不能耗时太长，不然就会让程序不会对其他输入作出相应，React的更新过程就是犯了这个禁忌，而React Fiber就是要改变现状。
 
@@ -99,7 +101,7 @@ React Fiber 的方式：
 
 把一个耗时长的任务分成很多小任务，每一个小任务完成了，就把控制权交还给React负责任务协调的模块，看看有没有其他其他紧急任务要做，如果没有就继续去更新，如果有紧急任务，那就去做紧急任务
 
-![image-20210429145248158](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20210429145248158.png)
+![image-20210429145248158](https://i.loli.net/2021/06/03/GYqmfj2AFPZURMt.png)
 
 
 
@@ -138,52 +140,4 @@ React16将内部组件层改成Fiber这种数据结构，因此它的架构名�
 fiber 到底有多细
 
 https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

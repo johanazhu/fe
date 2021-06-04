@@ -318,9 +318,9 @@ react到底是什么
 
 ​	react.createElement
 
-​	类组件 <Welcome>
+​	类组件 `<Welcome>`
 
-​	函数组件 const jsx = <div></div>
+​	函数组件` const jsx = <div></div>`
 
 ​	jsx会转换为react.createElement
 

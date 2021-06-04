@@ -15,7 +15,7 @@
 
 
 
-![工作区域](D:\code\project\elaine\fe\docs\.vuepress\public\images\Git\工作区域.jpg)
+![工作区域](https://i.loli.net/2021/06/03/1pBMUbkOPAGNWjH.jpg)
 
 - Workspace：就是你在电脑上看到的目录
 - Index/Stage：暂存区，一般存放在 .git 目录下。执行 `git add`，改动添加到这个区域

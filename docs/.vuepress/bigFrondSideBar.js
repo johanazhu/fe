@@ -44,6 +44,8 @@ function bigFrondSideBar() {
         children: [
           "WeChat/Foreword.md",
           "WeChat/微信分享.md",
+          "WeChat/微信开发.md",
+          "WeChat/微信网页授权及JSSDK.md",
           "WeChat/微信服务端开发.md",
         ],
       },
