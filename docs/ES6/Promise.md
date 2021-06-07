@@ -9,11 +9,13 @@ Promise是ES6新增的语法，解决了回调地狱的问题
 https://www.jianshu.com/p/da611c080feb
 https://juejin.im/post/5b851e136fb9a019f47d1d4b
 
-
 https://github.com/xieranmaya/blog/issues/3
 
 
+
 https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046472&idx=1&sn=308e85ae3a92dd81c1943d12f4e9d128&chksm=87c41958b0b3904e962e6df6788ee8f66947da90066f700db0e25f59b21e12bd620121714efb&mpshare=1&scene=1&srcid=&sharer_sharetime=1571791544493&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+
+
 
 https://www.kancloud.cn/kancloud/promises-book/44251
 
@@ -67,7 +69,7 @@ https://segmentfault.com/a/1190000016550260
 
 要就来45道promise 面试题一次爽到底
 
-https://mp.weixin.qq.com/s?__biz=MzU2MzM2NzU0NA==&mid=2247486648&idx=1&sn=8168c0890a22b040d9168a1c7a874c91&chksm=fc5a17afcb2d9eb91c4f23fe32379872eb3b1cdfe16b665595f414de074be3597a9828f86b95&mpshare=1&scene=1&srcid=08023WuhQBebCG7JPDgRA7gi&sharer_sharetime=1596372513380&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=d3c7cb8eeb23bc8371a63c2c038a4346a643fac790b41e08813720477b73b5a51979ceb3b77e871c11f56e5fbd478e242e4b62824535ad8ba88b8c390ae5c278656607053088669c62170cbba456ed13&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=AdYrc4H%2FIPJMi8okpYIZ7zM%3D&pass_ticket=4davwgOmWCYDVj%2FsJ8s9Ou6rhS%2BFBYYFPDyL90lmG7D8MJIBJTs1gnZXHNEOtV2C
+https://mp.weixin.qq.com/s?__biz=Mzg3MTU4NTI3OA==&mid=2247488564&idx=1&sn=064273a79002be92454954f0973c86ce&source=41#wechat_redirect
 
 
 
@@ -141,6 +143,14 @@ https://mp.weixin.qq.com/s/DQeJ-H4va0zTlSAoNsgF1Q
 Promise 原理及宏微任务
 
 https://mp.weixin.qq.com/s/BlD9HgXM9hqRGf3Ep9UYEw
+
+
+
+
+
+从一道让我失眠的 Promise 面试题开始，深入分析 Promise 实现细节
+
+https://mp.weixin.qq.com/s/r4hG9Fh4nMjdAzPWjcAP7g
 
 
 

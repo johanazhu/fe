@@ -17,3 +17,23 @@ https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650591301&idx=1&sn=a266e2
 cookie和session
 
 https://github.com/alsotang/node-lessons/tree/master/lesson16
+
+
+
+理解 Cookie、Session、Token
+
+https://mp.weixin.qq.com/s/bMIIbfbJ1ETt7b419Oaukg
+
+
+
+关键点是验证
+
+当然，如果一个人的 token 被别人偷走了，那我也没办法，我也会认为小偷就是合法用户，这其实和一个人的 session id 被别人偷走是一样的。
+
+ 
+
+这样一来，我就不保存 session id 了，我只是生成 token ，然后验证 token ，我用我的 CPU 计算时间获取了我的 session 存储空间 ！
+
+
+
+之前豪哥说保存Token的方式不合适，但是怎么不合适了呢？本质都是验证用户信息而已
