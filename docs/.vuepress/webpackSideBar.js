@@ -36,6 +36,14 @@ function webpackSideBar() {
         ],
       },
       {
+        title: "vite",
+        collapsable: false,
+        sidebarDepth: 0,
+        children: [
+          "webpack/vite/速度与激情之Vite初体验.md"
+        ],
+      },
+      {
         title: "AST抽象语法树",
         collapsable: false,
         sidebarDepth: 0,

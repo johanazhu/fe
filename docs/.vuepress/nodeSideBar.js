@@ -29,6 +29,23 @@ function nodeSideBar() {
         ],
       },
       {
+        title: "Koa2",
+        collapsable: false,
+        sidebarDepth: 0,
+        children: [
+          "Koa2/koa2-teach.md",
+          "Koa2/源码分析.md",
+          "Koa2/对比 Koa 和 Redux.md",
+          "Koa2/对比Express、Koa.md",
+          "Koa2/手写koa2.md",
+          "Koa2/实战李瓶儿博客开发.md",
+          "Koa2/koa2+MongoDB+JWT实战.md",
+          "Koa2/Serverless+Egg.js后台管理系统实战.md",
+          "Koa2/Koa2开发微信小程序服务端笔记.md",
+          "Koa2/JWT.md",
+        ],
+      },
+      {
         title: "Express",
         collapsable: false,
         sidebarDepth: 0,
@@ -36,19 +53,6 @@ function nodeSideBar() {
           "Express/express-teach.md",
           "Express/express-mongoose实践.md",
           "Express/手写express.md",
-        ],
-      },
-      {
-        title: "Koa2",
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          "Koa2/koa2-teach.md",
-          "Koa2/源码分析.md",
-          "Koa2/对比Express、Koa.md",
-          "Koa2/手写koa2.md",
-          "Koa2/koa2+MongoDB+JWT实战.md",
-          "Koa2/Serverless+Egg.js后台管理系统实战.md",
         ],
       },
       {
@@ -74,6 +78,12 @@ function nodeSideBar() {
         collapsable: false,
         sidebarDepth: 0,
         children: ["Redis/redis-teach.md"],
+      },
+      {
+        title: "Go",
+        collapsable: false,
+        sidebarDepth: 0,
+        children: ["Go/go.md"],
       },
     ];
 }

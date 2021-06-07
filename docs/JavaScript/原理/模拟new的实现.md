@@ -1,6 +1,8 @@
 # 模拟new的实现
 
-之前在介绍 原型 篇时，在介绍隐式原型继承时，说想要得到一个包含数据、方法以及关联原型三个组成部分的丰满对象，包含了三个步骤：
+
+
+之前在介绍 原型篇 时，在介绍隐式原型继承时，说想要得到一个包含数据、方法以及关联原型三个组成部分的丰满对象，包含了三个步骤：
 
 1）创建空对象
 
@@ -109,6 +111,7 @@ new 构造函数
 
 
 
+<<<<<<< HEAD
 若川
 
 1.创建了一个全新的对象
@@ -175,3 +178,21 @@ var elaine = myNew(Person, 'johan', 22)
 
 
 
+=======
+THE LAST TIME
+
+```javascript
+function objectFactory() {
+    var obj = new Object() // 从 Object.prototype 上克隆一个对象
+    Constructor = Array.prototype.shift.call(arguments); // 取得外部传入的构造器，取第一个参数
+    // 以下是 Object.create() 的核心
+    var F = function() {};
+    F.prototype = Constructor.prototype;
+    obj = new F() // 指向正确的原型
+    
+    var ret = Constructor.apply(obj, arguments); // 借用外部传入的构造器给obj设置属性
+    return typeof ret === 'object' ? ret : obj; // 确保构造器总是返回一个对象
+}
+```
+
+>>>>>>> 842dd92bacfb7f18c5266b290a1e23dd5432facc

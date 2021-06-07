@@ -2,32 +2,33 @@
 function ArmorySideBar() {
     return [
       {
-        title: "HTTP",
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          "HTTP/常见面试题.md",
-          "HTTP/HTTP是什么.md",
-          "HTTP/HTTP的前世今生.md",
-          "HTTP/网络是怎样连接的.md",
-          "HTTP/restful.md",
-          "HTTP/TCP.md",
-          "HTTP/session与token登录.md",
-          "HTTP/HTTP1,2,3的对比.md",
-          "HTTP/GET和POST请求的本质区别是什么.md",
-        ],
-      },
-      {
         title: "Git",
         collapsable: false,
         sidebarDepth: 0,
-        children: ["Git/git-teach.md", "Git/git-shell.md"],
+        children: [
+            "Git/", 
+            "Git/常用命令.md", 
+            "Git/工作流.md", 
+            "Git/教程.md", 
+            "Git/原理.md",
+            "Git/专题：时光穿梭机.md",
+            "Git/npm.md",
+        ],
       },
       {
         title: "Linux",
         collapsable: false,
         sidebarDepth: 0,
-        children: ["Linux/shell.md"],
+        children: [
+            "Linux/", 
+            "Linux/基本概念.md",
+            "Linux/常用命令.md",
+            "Linux/目录结构.md",
+            "Linux/防火墙知一二.md", 
+            "Linux/远程服务器相关操作.md", 
+            "Linux/Oeasy教linux.md",
+            "Linux/shell.md",
+        ],
       },
     ];
 }

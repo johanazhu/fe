@@ -20,7 +20,7 @@ BFC的特征如结界一般，里面的人出不去，外面的人进不来
 - display 的值为 table-cell、table-caption和inline-block中的任何一个；
 - position 的值不为 relative 和 static
 
-换言之，只要元素符合上面任意一个元素，就无须使用 clear: both 属性去清除浮动的影响了。因为，不要见到一个 <div> 元素就加上类似.clearfix 的类名，否则只能暴雷你孱弱的CSS基本功
+换言之，只要元素符合上面任意一个元素，就无须使用 clear: both 属性去清除浮动的影响了。因为，不要见到一个 `<div>` 元素就加上类似.clearfix 的类名，否则只能暴雷你孱弱的CSS基本功
 
 
 
@@ -42,7 +42,7 @@ BFC的特征如结界一般，里面的人出不去，外面的人进不来
 
 属于同一个BFC的两个相邻盒子的margin会发生重叠，那么我们创建不属于同一个BFC，就不会发生margin重叠了。
 
-<img src="../.vuepress/public/images/CSS/BFC_margin.png" />
+<img src="https://i.loli.net/2021/06/03/YLG6tZU1J5RjluT.png" />
 
 ##### 3.自适应布局
 
@@ -93,11 +93,11 @@ BFC的特征如结界一般，里面的人出不去，外面的人进不来
 
 我们看到这样的场景：
 
-![BFC1](../.vuepress/public/images/CSS/BFC1.png)
+![BFC1](https://i.loli.net/2021/06/03/uKSvxCOnWcyLPG3.png)
 
 给info加上 overflow：hidden
 
-![BFC1](../.vuepress/public/images/CSS/BFC2.png)
+![BFC1](https://i.loli.net/2021/06/03/oPjbLkCtgpwdZGI.png)
 
 因为我们将info元素改造成了BFC，所以具有BFC 特性的元素的子元素不会受到外部元素影响，也不会影响外部元素，于是，这里的 info 元素为了不和浮动元素产生任何交集，顺着浮动边缘形成自己的封闭上下文
 
@@ -168,17 +168,9 @@ BFC就是页面上的一个隔离的独立容器，容器里面的子元素不�
 
 
 
-参考资料：
+### 参考资料
 
-【CSS】深入理解BFC原理及应用(https://www.jianshu.com/p/acf76871d259)
+[【CSS】深入理解BFC原理及应用](https://www.jianshu.com/p/acf76871d259)
 
 CSS世界：张鑫旭
-
-
-
-
-
-
-
-
 

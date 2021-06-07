@@ -5,6 +5,7 @@ function csBasicSideBar() {
         collapsable: false,
         sidebarDepth: 0,
         children: [
+          "CSBasic/",
           "CSBasic/计算机的起源.md",
           "CSBasic/计算机的组成.md",
           // "CSBasic/操作系统基础篇.md",

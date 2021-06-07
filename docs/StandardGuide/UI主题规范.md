@@ -1,36 +1,42 @@
+# UI主题规范
+
+
+
 ### 标准蓝
 
-------
 
-#### 基础标准色	![1591926539345](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1591926539345.png)
 
-  产品主色调，品牌色，标签背景色，详情页标准字
+#### 基础标准色
 
-#### 基本文字色	  
+####  ![1591926539345](https://i.loli.net/2021/06/03/RY6mZ19zWUX8xha.png)
 
-####  ![1591926915959](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1591926915959.png)
+产品主色调，品牌色，标签背景色，详情页标准字
+
+#### 基本文字色
+
+####  ![1591926915959](https://i.loli.net/2021/06/03/cOBguvtlwVI4GaX.png)
 
 用于一级文字标题，如页面标题	应用名称	应用集名称
 
-#### ![1591927017531](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1591927017531.png)
+#### ![1591927017531](https://i.loli.net/2021/06/03/YgRrXSvhxAmfGeB.png)
 
 用于二级文字标题，如消息文字等
 
-#### ![1591927081244](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1591927081244.png)
+#### ![1591927081244](https://i.loli.net/2021/06/03/T4rfPwLKGsB89yS.png)
 
 用于三级文字标题
 
-#### ![1591927186808](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1591927186808.png)
+#### ![1591927186808](https://i.loli.net/2021/06/03/EIc317YT6epnVuM.png)
 
 用于次要文字标题
 
 ### 全局标准色
 
-#### ![1591927254453](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1591927254453.png)
+#### ![1591927254453](https://i.loli.net/2021/06/03/jlxdpI4R5cofgSn.png)
 
 列表分割线颜色
 
-#### ![1591927289470](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1591927289470.png)
+#### ![1591927289470](https://i.loli.net/2021/06/03/2zfiuBky17vC6Hg.png)
 
 页面背景色
 

@@ -29,7 +29,7 @@ class 与 prototype 继承
 
 ```javascript
 class Test {
-    a: 1;
+    a = 1;
 	constructor() {
         this.b = 1;
     }

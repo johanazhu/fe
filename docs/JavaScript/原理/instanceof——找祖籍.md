@@ -105,7 +105,7 @@ function myInstanceof(left, right) {
     // getPrototype是Object对象自带的一个方法，等效于__proto__
     let proto = Object.getPrototypeOf(left);
     while(true) {
-        // 查找到尽头，还没找到
+        // 循环往下寻找，知道找到相同的对象
         if (proto == null) return false;
         // 找到相同的原型对象
         if (proto == right.prototype) return true
