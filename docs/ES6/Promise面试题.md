@@ -2,6 +2,8 @@
 
 
 
+### 题目一
+
 ```javascript
 async function async1() {
   console.log(1);
@@ -30,7 +32,7 @@ console.log(6);
 
 
 
-题目二
+### 题目二
 
 ```javascript
 new Promise((resolve, reject) => {
@@ -51,21 +53,52 @@ new Promise((resolve, reject) => {
 })
 ```
 
+<details>
+    <summary>答案</summary>
+    promise1、then11、promise2、then21、then12
+</details>
 
+### 分析：
 
-promise1
+promise 能够链式调用的原理，即
 
-then11
-
-promise2
-
-then21
-
-then12
-
-
+promise 的 then/catch 方法执行后也会返回一个 promise
 
 
 
+> 当一个 promise 被 resolve 时，会遍历之前通过 then 给这个 promise 注册的所有回调，将它们一次放入微任务队列中
+
+如何理解：
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+    setTimeout(resolve, 1000)
+})
+p.then(() => {
+    console.log("log: 外部第一个then");
+})
+p.then(() => {
+  	console.log("log: 外部第二个then");
+});
+p.then(() => {
+  	console.log("log: 外部第三个then");
+});
+```
+
+按顺序执行，先看到 new Prmose 中的 setTimeout，把它放入宏任务中，往下执行，看到 then，脑子里想到的是是否被 resolve/reject 了，因为只有被执行成功/失败了，才会执行then中的回调函数。
+
+题目中 1 秒后变量 p 才会被 resolve，但是在 resolve 前通过 then 方法给它注册了 3 个回调，此时这 3 个回调不会被执行，也不会被放入微任务队列中，它们会被 p 内部存储起来（再手写 promise 时，这些回调会放在 promise 内部保存的数组中），等到 p 被 resolve 后，依次将 3 个回调推入微任务队列， 此时如果没有同步任务就会逐个取出再执行
 
 
+
+**then 方法即不会触发回调，也不会将它放到微任务，then 只负责注册回调，由 resolve 将注册的回到放入微任务队列，由事件循环将其取出并执行**
+
+
+
+
+
+
+
+### 参考资料
+
+[Promise 链式调用顺序引发的思考](https://juejin.cn/post/6844903972008886279)

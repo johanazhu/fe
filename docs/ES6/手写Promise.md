@@ -4,6 +4,22 @@
 
 
 
+### Promise 标准
+
+1. 只有一个 then 方法，没有 catch，race，all 等方法，甚至没有构造函数
+   1. Promise
+2. then 方法返回一个新的 promise
+3. 不同的 promise 的实现需要可以互相调用
+4. Promise 的初始状态为 pending，它可以由此状态转换为 fulfilled或者rejected，一旦状态确定，就不可以再次转换为其它状态，状态确定的过程称为 settle
+
+### Promise A+ 标准
+
+
+
+
+
+
+
 别人写的
 
 ```javascript
