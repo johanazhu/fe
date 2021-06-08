@@ -111,6 +111,74 @@ new 构造函数
 
 
 
+<<<<<<< HEAD
+若川
+
+1.创建了一个全新的对象
+
+2.这个对象会被执行`[[prototype]]`（也就是 `__proto__`）链接
+
+3.生成的新对象会绑定到函数调用的 `this`
+
+4.通过 `new` 创建的每个对象将最终被`[[prototype]]` 链接到这个函数的 `prototype` 对象上
+
+5.如果函数没有返回对象类型`Object`(包含`Functoin`, `Array`, `Date`, `RegExg`, `Error`)，那么new表达式中的函数调用会自动返回这个新的对象。
+
+
+
+
+
+JavaScript 高级编程第四版
+
+使用 new 调用类的构造函数会执行如下操作
+
+1.在内存中创建一个新对象
+
+2.这个新对象内部的 `__proto__` 指针被赋值为构造函数的 prototype 属性
+
+3.构造函数内部的 this 被赋值为这个新对象（即 this 指向新对象）
+
+4.执行构造函数内部的代码（给新对象添加属性）
+
+5.如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象
+
+
+
+```javascript
+function myNew(Con, ...arg) {
+    var obj = Object.create(null)
+    obj.__proto__ = Con.prototype;
+	var result = Con.apply(obj, arg);
+    return typeof result === 'object' ? result : obj
+}
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+var johan = new Person('johan', 22)
+var elaine = myNew(Person, 'johan', 22)
+```
+
+
+
+
+
+### 参考资料
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
 THE LAST TIME
 
 ```javascript
@@ -127,3 +195,4 @@ function objectFactory() {
 }
 ```
 
+>>>>>>> 842dd92bacfb7f18c5266b290a1e23dd5432facc
