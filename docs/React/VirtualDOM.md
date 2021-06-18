@@ -133,3 +133,39 @@ https://mp.weixin.qq.com/s/2ddtB_yNx7r9_y7-sF7T-w
 
 
 
+### Virtual Dom 的优势在哪里？
+
+是一种视图层的表达力，可以用纯 JavaScript 对象去描述界面应该渲染成什么样子
+
+为函数式的 UI编程方式打开了大门
+
+可以渲染到 DOM 以外的 backend，比如 ReactNative
+
+
+
+virtual-dom-is-pure-overhead 这篇文章所说
+
+> - 虚拟DOM不是快，而是“通常”比较快
+>
+> - 无效、无意义的 diff 是需要浪费性能的，因此有些场景不如直接操作原生DOM性能好
+>
+> - 虚拟DOM 价值不在于性能
+
+虚拟DOM 只是实现一个目的的手段或方式：声明式、基于状态驱动UI的开发模式
+
+
+
+
+
+### 参考资料
+
+[virtual-dom-is-pure-overhead](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
+
+[网上都说操作真实DOM慢...](https://www.zhihu.com/question/31809713)
+
+
+
+
+
+
+
