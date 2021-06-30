@@ -52,9 +52,9 @@ const next = store.dispatch;
 
 
 
+Redux 设计思想与工作原理
 
-
-
+https://mp.weixin.qq.com/s/bJizhO3eP7db22YdzF0fOQ
 
 
 

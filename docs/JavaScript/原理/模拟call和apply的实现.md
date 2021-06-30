@@ -4,7 +4,7 @@
 
 ## Call实现
 
-我们在 apply、call、bind 中曾经介绍过这三个api的作用，硬核掰弯this指向。这一节我们模拟实现apply和call，下一节我们介绍模拟实现bind
+我们在 apply、call、bind 中曾经介绍过这三个 api 的作用，硬核掰弯 this 指向。这一节我们模拟实现 apply 和 call ，下一节我们介绍模拟实现 bind
 
 我们先看一个例子：
 
@@ -337,3 +337,6 @@ Function.prototype.myapply = function(context = window, args) {
 }
 ```
 
+
+
+无论是call还是apply，难点是 context.fn = this

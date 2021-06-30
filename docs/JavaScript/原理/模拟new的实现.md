@@ -92,15 +92,7 @@ function objectFactory() {
 
 
 
-
-
-### 参考资料
-
-[JS 的 new 到底是干什么的？](https://zhuanlan.zhihu.com/p/23987456?utm_medium=social&utm_source=wechat_session)
-
-
-
-
+#### 测试一波
 
 ```javascript
 function User(firstname, lastname) {
@@ -125,4 +117,12 @@ function User(firstname, lastname) {
 
 const user = new2(User, 'johnny', 'joestar')
 ```
+
+
+
+
+
+### 参考资料
+
+[JS 的 new 到底是干什么的？](https://zhuanlan.zhihu.com/p/23987456?utm_medium=social&utm_source=wechat_session)
 

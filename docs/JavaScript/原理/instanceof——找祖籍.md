@@ -97,8 +97,9 @@ function myInstanceof(left, right) {
 
 ### 看看别人家的 instanceof 实现
 
+神三元
+
 ```javascript
-// 神三元
 function myInstanceof(left, right) {
     // 基本数据类型直接返回 false
     if (typeof left !== 'object' || left === null) return false;

@@ -23,3 +23,10 @@ https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247484991&idx=2&sn=a68e57
 nginx 教程
 
 https://github.com/jaywcjlove/nginx-tutorial
+
+
+
+Nginx 最全操作总结
+
+https://mp.weixin.qq.com/s/LmtHTOVOvdcnMBuxv7a9_A
+
