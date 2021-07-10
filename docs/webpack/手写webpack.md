@@ -2,6 +2,20 @@
 
 
 
+打包 bundle 原理分析与实现
+
+npx webpack
+
+​	webpack -> config -> 打包入口 输出目录（入口文件在哪） -> 入口文件 -> 分析是否有依赖，以及依赖模块的路径 -> 解析处理内容（es6转es5）-> chunk code（缺失函数，require exports）
+
+
+
+
+
+
+
+
+
 
 
 微医前端带你从头建立构建体系【开篇】
