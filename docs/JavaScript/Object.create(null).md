@@ -14,4 +14,20 @@
 
 
 
+```javascript
+const create = (proto) => {
+  let Noop = function () {};
+  Noop.prototype = proto;
+  return new Noop();
+};
+```
+
+
+
+
+
+
+
+
+
 https://juejin.im/post/5acd8ced6fb9a028d444ee4e

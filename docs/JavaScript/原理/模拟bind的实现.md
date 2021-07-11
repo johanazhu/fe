@@ -283,13 +283,13 @@ Function.prototype.myBind = function (context, ...args1) {
         throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable")
     }
     const _this = this
-    return function F(...args2) {
+    return function F() {
         // 判断是否用于构造函数
         if (this instanceof F) {
        
-            return new _this(...args1, ...args2)
+            return new _this(...args1, ...arguments)
         }
-        return this.apply(context, args1.concat(args2))
+        return this.apply(context, args1.concat(arguments))
     }
 }
 ```
@@ -330,13 +330,17 @@ console.log(obj.friend)
 
  
 
+bind的骚操作在于它可以用作构造函数，所以要判断返回的函数（闭包），是否是被实例化，如果实例化，就是基于 foo 来做实例化，参数为传来的所以参数
+
+如果是当作一个普通函数调用，那么就用 apply 来调用
 
 
 
 
 
 
-参考资料：
+
+### 参考资料
 
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 

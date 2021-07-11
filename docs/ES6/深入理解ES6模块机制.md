@@ -2,11 +2,6 @@
 
 
 
-
-https://github.com/happylindz/blog/issues/10
-
-
-
 ES6 模块跟 CommonJS 模块的不同，主要有一下两个方面：
 
 	1. ES6 模块输出的是值的引用，输出接口动态绑定，而 CommonJS 输出的是值的拷贝
@@ -413,3 +408,6 @@ ES6、CommonJS 模块加载机制到动态模块 import() 导入
 
 
 
+### 参考
+
+[深入理解ES模块机制](https://github.com/happylindz/blog/issues/10)

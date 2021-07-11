@@ -8,9 +8,27 @@
 
 
 
+#### useCallback 
+
+useCallback 钩子是专门为传递给子组件的回调函数设计的，可以避免不必要的重新创建这些函数，重新创建这些函数的过程会再每次重渲染时引起性能问题
+
+
+
 全面了解React Suspense 和 Hooks
 
 https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484462&amp;idx=1&amp;sn=5dbd034c08a993f6ff7a65d62da0b9bd&source=41#wechat_redirect
+
+
+
+#### useRef
+
+useRef 钩子能够再重渲染过程中保存 state
+
+使用 useRef 保存和更新一些数据时有一定好处的，**它可以不通过内存来保存数据**，使得这些数据再重渲染时不会被清除掉
+
+如果我们想利用普通的变量再重渲染过程中追踪数据变化是不可行的，因为每次组件渲染时它都会被重新初始化。然而，如果使用 ref 的话，其中的数据能在每次组件渲染时保持不变。
+
+
 
 
 
@@ -266,7 +284,9 @@ https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e
 
 
 
+### 参考资料
 
+[你可能不知道的五个关键的 React 知识点](https://mp.weixin.qq.com/s/Brp0TECsGpdBdv1686TPiQ)
 
 
 

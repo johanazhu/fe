@@ -1,4 +1,119 @@
 # Promise 
+
+
+
+## 什么是Promise
+
+在了解Promise前，先去看看为什么会产生Promise
+
+#### JavaScript的回调函数
+
+```javascript
+getAsync("fileA.txt", function(error, result) {
+    if (error) {
+        //  失败时的处理
+        throw err;
+    }
+    // 成功后的处理
+})
+```
+
+Node.Js 的规则是在 JavaScript 的回调函数的第一个参数为 `Error` 对象，这是它的一个惯例
+
+#### 使用Promise进行异步处理
+
+```javascript
+var promise = getAsyncPromise("fileA.txt")
+promise.then(function(result) {
+    // 获取文件内容成功后的处理
+}).catch(function(error) {
+    // 获取文件内容失败后的处理
+})
+// 或者用另一种
+promise.then(function(result) {
+     // 获取文件内容成功后的处理
+}, function(error) {
+    // 获取文件内容失败后的处理
+})
+```
+
+看到用promise和回调函数的区别没有
+
+promise 更趋于同步的想法——我去调这个行为，等（then）它好了我再执行XX
+
+综上所述：
+
+promise是异步编程的一种解决方案，比传统的回调函数和事件更合理和强大
+
+所谓 promise，简单来说就是**一个容器**，里面保存着某个未来才会结束的行为（通常是一个异步处理）。从语法上讲，promise 是一个对象，从它那可以获取异步操作的消息
+
+
+
+
+
+## 实战Promise
+
+
+
+### 一般用法
+
+之前介绍过，promise像一个容器，包裹着“成功”或“失败”
+
+```javascript
+function promise() {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve('成功')
+        }, 1000)
+    })
+}
+promise().then(function(value) {
+    console.log(value)
+})
+```
+
+
+
+### then
+
+#### 它的使用
+
+then 方法可以接受两个回调函数作为参数，
+
+第一个回调函数是 promise 对象的状态变为 resolved 的时候调用，
+
+第二个回调函数是 promise 对象的状态变为 rejected 时调用
+
+其中第二个函数时可选的，不一定需要提供
+
+#### 它的作用
+
+为 promise 实例添加状态改变时的回调函数
+
+前面说过，then 方法的第一个参数是 resolved 状态的回调函数，第二个参数是 rejected 状态的回调函数（可选）
+
+**then 方法返回的是一个新的 promise 实例**。注意，不是原来那个 promise 实例，因此可以采用链式写法，即在 then 方法后面再调用另一个 then 方法
+
+注意：**then 方法即不会触发回调，也不会将它放到微任务，then 只负责注册回调，由 resolve 将注册的回调放入微任务队列，由事件循环将其取出并执行**
+
+
+
+### 执行顺序
+
+面试中常常考的问题
+
+在说这个之前，需要先聊天事件循环的执行顺序
+
+简单来说：XXX
+
+回过头说promise，promise新建后就会立即执行，而then会被塞到为微任务中，当宏任务执行完后再执行微任务
+
+
+
+
+
+
+
 promise
 
 Promise是ES6新增的语法，解决了回调地狱的问题
@@ -171,3 +286,12 @@ then方法返回的是一个新的Promise实例（注意，不是原来那个Pro
 
 
 在new Promise 中使用resolve或者reject，相当于变更promise的状态，变化后，promise.then会执行
+
+
+
+
+
+### 参考资料
+
+[面试问到 Promise，这样回答最完美了](https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484500&idx=1&sn=01d5ed1a017a09a232df19721cbbc0d4&source=41#wechat_redirect)
+

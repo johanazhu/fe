@@ -1,4 +1,60 @@
-# redux
+# Redux
+
+
+
+JS 应用程序的可预测状态容器
+
+
+
+Redux 是什么？
+
+有什么用？
+
+它的写法
+
+
+
+我们写React，当页面逻辑不复杂时，我们可以通过state来管理数据
+
+但是当页面逻辑复杂时，Page页面（一个Page就是一个组件）下有 Header组件、Content组件、Footer组件等，Header组件中又有Avatar组件、HeaderTitle组件、HeaderOther组件，Avatar中又有其他的组件，那么你拿到后端传来的数据时，怎么把数据传递给细分后的子孙组件呢？
+
+![image-20210617105102880](https://i.loli.net/2021/06/17/buLJOjiKwaWk7Rg.png)
+
+通过props让下传？
+
+在这个例子中，Avatar需要获取 avatar的图片资源，需要通过页面请求从后端获取数据。在 Page 组件中获取到数据，存在 state 的 data 中，先把数据传递给 Header 组件，再由 Header 传递给 Avatar。Header 组件用不到 avatarImg，但为了子组件多写了一边。
+
+如果通过 props 的方式传递数据，如果页面一复杂，写的人会写到手抖。
+
+所以有一些大牛开始写一些库，来关联两者之间的关系，最开始是 flux，后来 redux 改进了，成了主流，但是要说明的一点是，
+
+react是用jsx的写法来展示视图，通过state来管理状态
+
+flux、redux、mobx等是针对状态的管理的库，不需要react也可以用，但是它们是因为react而被大众认知并且发扬光大
+
+如果我们要手写一个redux，不需要用到react
+
+而实际开发中，如果我们需要说的react全家桶，包括：react（描述视图的库）、redux（状态管理的库）、react-redux（将react与redux结合在一起的库）
+
+因为这是最常见的，其实说法不准确，应该叫react-redux全家桶。因为如果你用mobx的话，就是这样：react（描述视图的库）、mobx（状态管理的库）、mobx-react（将mobx与react结合在一起的库）
+
+说起来，我们忽略了一直有用到的库：react-dom，它的作用是将用 react 写好的虚拟dom转换成真实dom
+
+发现了没，常规来说，像 react和react-dom是要结合在一起了。为什么要分开，因为用react写好的虚拟dom可以放在其他容器上，比如手机上（react-native）、VR上（react-vr）
+
+像redux最初是为了解决react上的状态管理，结合了react-redux的功能，后来再把它拆开
+
+
+
+flux 不表，单单就 redux 来说，如果把每一个状态比作一个村民，村长有一个记录了每一个村民的劳动清单，例如张三——种田，李四——种苹果，王五——种桃子，赵六——打铁，这个清单就是reducer。每次有人过来问，问村长张三是做什么的，村长查了茶名单，告诉那人，张三是种田的。过了几年，有人死了，就来村长这里登记，李四死掉了，村长更新名单。同样的，换职业、新人加入等都要去村长那里登记。这就是redux。
+
+相当于有一个全局的store管理着状态，这里自然而然就有个问题出来，为什么要搞这么麻烦，难道不能直接搞个全局对象，但是全局对象的确定是你可以修改，我也可以修改，毕竟javascript是肉类型，你修改了store中的数据，我都不知道。
+
+所以有人搞出一个库来
+
+
+
+
 
 ### 其言
 

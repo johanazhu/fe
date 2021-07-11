@@ -153,7 +153,7 @@ age // 5
 
 #### 作为构造函数调用
 
-JavaScript 支持面向对象式编程，与主流的面向对象式编程语言不同， JavaScript并没有类（Class）的概念，而是使用基于原型（prototype）的继承方式（ES6中的Class其实是原型继承的语法糖）。相应的，JavaScript中的构造函数也很特殊，如果不适用new调用，则和普通函数一样。作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用。如果调用正确，this绑定到新创建的对象上。
+JavaScript 支持面向对象式编程，与主流的面向对象式编程语言不同， JavaScript并没有类（Class）的概念，而是使用基于原型（prototype-base）的继承方式（ES6中的Class其实是原型继承的语法糖）。相应的，JavaScript中的构造函数也很特殊，如果不适用new调用，则和普通函数一样。作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用。如果调用正确，this绑定到新创建的对象上。
 
 ```javascript
 function People(name, age) {
@@ -190,9 +190,9 @@ console.log(johan) { name: "johan1", age: 261 }
 elaine.sayName.call(johan, 'johan1', 261)
 ```
 
-回过头来看，apply 和 call 的语义就是 elaine的方法sayName作用于johan，sayName需要传入的参数，我从第二个参数开始传值；或者说 johan调用elaine 的sayName方法，从第二个参数开始传值
+回过头来看，apply 和 call 的语义就是 elaine 的方法 sayName 作用于 johan ，sayName 需要传入的参数，我从第二个参数开始传值；或者说 johan 调用 elaine 的 sayName 方法，从第二个参数开始传值
 
-call和apply具有掰弯this指向的能力
+**call和apply具有掰弯this指向的能力**
 
 #### 箭头函数
 
@@ -253,22 +253,6 @@ foo.bar.a() // window
 
 
 
-重学 this 关键字
-
-https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247484231&idx=1&sn=36db9c6d78b541e73a40cf3e496691fe&chksm=f9910596cee68c80f6d81196644fe5e2ebf84a6e66b11df36276542aa6ab11135affcc23d662&mpshare=1&scene=1&srcid=&sharer_sharetime=1567987883759&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
-
-
-
-完整梳理 this 指向
-
-https://mp.weixin.qq.com/s?__biz=MzA3MTI3Mjk3NA==&mid=2247483660&idx=1&sn=4cc5c66b988e79f39587af46f51b9e95&chksm=9f315e6da846d77b89863afbab30e3dc5d0396bac49aad6e7c9da72882ba378e782a8cd8f61b&mpshare=1&scene=1&srcid=&sharer_sharetime=1566956479051&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
-
-
-
-面试三板斧——this
-
-https://mp.weixin.qq.com/s?__biz=MzI1MDU0Mjc4Mg==&mid=2247484550&idx=1&sn=af613bef12e5bc102c18ddf676f07a34&chksm=e981eb57def66241ae4bb7cc5e13ec1da19366c4c91d3e2e165fd1c5b1bdfad6ac16a7cbbf56&mpshare=1&scene=1&srcid=1125l5w8RfTcp1c9J9kwF8J3&sharer_sharetime=1606309812635&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=ace5dede87a40e70e8ec3f2b27f8d5f648045f478663a9b5bdb970b747a925858c239a1fadb7a1e65e20df924ad496d9cba48daffdb2519236be9316b87a50632a9c4921dbea221ee67b52f84f84c40366c3eb9f76a65d5626d5b01457cd9c07c8c506d8797fa045ff7eb415daf60cd87275db57cee345515e5b12a43d76e811&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=AeAM2n1g%2B%2Bpt8l519bMnx0E%3D&pass_ticket=NobQ5TAx7Olw6LadlkMu5zuU5DSWS1XhNGE4KCNN4gFe7KsugULfw02vrvAelJJ5&wx_header=0
-
 
 
 构造函数就是个模式，this未来会指向new出来的对象。创建 Person 的实例时，this.name 将引用新创建的对象，并将一个名为 `name` 的属性放入新对象中。
@@ -317,3 +301,14 @@ https://www.zhihu.com/question/412637481/answer/1539325572
 - this 设计问题的更远，是产品营销需求与设计师个人偏好之间的冲突
 
 this 是万恶之源，大家都是（词法）静态作用域，就他是动态的.
+
+
+
+### 参考资料
+
+[重学 this 关键字](https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247484231&idx=1&sn=36db9c6d78b541e73a40cf3e496691fe&chksm=f9910596cee68c80f6d81196644fe5e2ebf84a6e66b11df36276542aa6ab11135affcc23d662&mpshare=1&scene=1&srcid=&sharer_sharetime=1567987883759&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+
+[完整梳理 this 指向](https://mp.weixin.qq.com/s?__biz=MzA3MTI3Mjk3NA==&mid=2247483660&idx=1&sn=4cc5c66b988e79f39587af46f51b9e95&chksm=9f315e6da846d77b89863afbab30e3dc5d0396bac49aad6e7c9da72882ba378e782a8cd8f61b&mpshare=1&scene=1&srcid=&sharer_sharetime=1566956479051&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+
+[面试三板斧——this](https://mp.weixin.qq.com/s?__biz=MzI1MDU0Mjc4Mg==&mid=2247484550&idx=1&sn=af613bef12e5bc102c18ddf676f07a34&chksm=e981eb57def66241ae4bb7cc5e13ec1da19366c4c91d3e2e165fd1c5b1bdfad6ac16a7cbbf56&mpshare=1&scene=1&srcid=1125l5w8RfTcp1c9J9kwF8J3&sharer_sharetime=1606309812635&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=ace5dede87a40e70e8ec3f2b27f8d5f648045f478663a9b5bdb970b747a925858c239a1fadb7a1e65e20df924ad496d9cba48daffdb2519236be9316b87a50632a9c4921dbea221ee67b52f84f84c40366c3eb9f76a65d5626d5b01457cd9c07c8c506d8797fa045ff7eb415daf60cd87275db57cee345515e5b12a43d76e811&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=AeAM2n1g%2B%2Bpt8l519bMnx0E%3D&pass_ticket=NobQ5TAx7Olw6LadlkMu5zuU5DSWS1XhNGE4KCNN4gFe7KsugULfw02vrvAelJJ5&wx_header=0)
+

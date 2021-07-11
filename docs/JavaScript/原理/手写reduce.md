@@ -1,5 +1,5 @@
-# 手写promise
+# 手写reduce
 
 
 
-如何手写promise
+手写reduce
