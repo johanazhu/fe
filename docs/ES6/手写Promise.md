@@ -1,18 +1,5 @@
 # 手写Promise
 
-我要按照自己的思路一步一步写promise
-
-
-
-### Promise 标准
-
-1. 只有一个 then 方法，没有 catch，race，all 等方法，甚至没有构造函数
-   1. Promise
-2. then 方法返回一个新的 promise
-3. 不同的 promise 的实现需要可以互相调用
-4. Promise 的初始状态为 pending，它可以由此状态转换为 fulfilled或者rejected，一旦状态确定，就不可以再次转换为其它状态，状态确定的过程称为 settle
-
-### Promise A+ 标准
 
 
 
@@ -20,138 +7,15 @@
 
 
 
-别人写的
 
-```javascript
-function myPromise(constructor){
-    let self=this;
-    self.status="pending" //定义状态改变前的初始状态
-    self.value=undefined;//定义状态为resolved的时候的状态
-    self.reason=undefined;//定义状态为rejected的时候的状态
-    self.onFullfilledArray=[];
-    self.onRejectedArray=[];
-    function resolve(value){
-       if(self.status==="pending"){
-          self.value=value;
-          self.status="resolved";
-          self.onFullfilledArray.forEach(function(f){
-                f(self.value);
-                //如果状态从pending变为resolved，
-                //那么就遍历执行里面的异步方法
-          });
 
-       }
-    }
-    function reject(reason){
-       if(self.status==="pending"){
-          self.reason=reason;
-          self.status="rejected";
-          self.onRejectedArray.forEach(function(f){
-              f(self.reason);
-             //如果状态从pending变为rejected，
-             //那么就遍历执行里面的异步方法
-          })
-       }
-    }
-    //捕获构造异常
-    try{
-       constructor(resolve,reject);
-    }catch(e){
-       reject(e);
-    }
-}
 
-myPromise.prototype.then=function(onFullfilled,onRejected){
-    let self=this;
-    let promise2;
-    switch(self.status){
-      case "pending":
-        promise2 = new myPromise(function(resolve,reject){
-             self.onFullfilledArray.push(function(){
-                setTimeout(function(){
-                  try{
-	                 let temple=onFullfilled(self.value);
-	                 resolvePromise(temple)
-	                }catch(e){
-	                   reject(e) //error catch
-	                }
-                })
-             });
-             self.onRejectedArray.push(function(){
-                setTimeout(function(){
-                   try{
-	                   let temple=onRejected(self.reason);
-	                   resolvePromise(temple)
-	                 }catch(e){
-	                   reject(e)// error catch
-	               }
-                })
-             });
-        })
-      case "resolved":
-        promise2=new myPromise(function(resolve,reject){
-           setTimeout(function(){
-               try{
-	              let temple=onFullfilled(self.value);
-	              //将上次一then里面的方法传递进下一个Promise状态
-	              resolvePromise(temple);
-	            }catch(e){
-                  reject(e);//error catch
-               }
-           })
-        })
-        break;
-      case "rejected":
-        promise2=new myPromise(function(resolve,reject){
-           setTimeout(function(){
-             try{
-               let temple=onRejected(self.reason);
-               //将then里面的方法传递到下一个Promise的状态里
-               resolvePromise(temple);
-             }catch(e){
-               reject(e);
-             }
-           })
-        })
-        break;
-      default:
-   }
-   return promise2;
-}
 
-function resolvePromise(promise,x,resolve,reject){
-  if(promise===x){
-     throw new TypeError("type error")
-  }
-  let isUsed;
-  if(x!==null&&(typeof x==="object"||typeof x==="function")){
-      try{
-        let then=x.then;
-        if(typeof then==="function"){
-           //是一个promise的情况
-           then.call(x,function(y){
-              if(isUsed)return;
-              isUsed=true;
-              resolvePromise(promise,y,resolve,reject);
-           },function(e){
-              if(isUsed)return;
-              isUsed=true;
-              reject(e);
-           })
-        }else{
-           //仅仅是一个函数或者是对象
-           resolve(x)
-        }
-      }catch(e){
-         if(isUsed)return;
-         isUsed=true;
-         reject(e);
-      }
-  }else{
-    //返回的基本类型，直接resolve
-    resolve(x)
-  }
-}
-```
 
-https://segmentfault.com/a/1190000023690122?_ea=60466188
+
+
+### 参考资料：
+
+[从一道让我失眠的 Promise 面试题开始，深入分析 Promise 实现细节](https://juejin.cn/post/6945319439772434469)
+
+[【第1738期】100 行代码实现 Promises/A+ 规范](https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651234151&idx=1&sn=6292156c16e851d8d5f1dbccdfc82a74&chksm=bd4946e38a3ecff561bef99277e0f1ad5ec7f7014437aa100cb01e872eee80985adb04734b11&mpshare=1&scene=1&srcid=&sharer_sharetime=1570493248167&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)

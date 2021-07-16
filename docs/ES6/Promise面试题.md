@@ -97,8 +97,45 @@ p.then(() => {
 
 
 
+### 面试题
+
+```javascript
+new Promise((resolve, reject) => {
+    console.log("log: 外部promise");
+    resolve();
+}).then(() => {
+    console.log("log: 外部第一个then");
+    new Promise((resolve, reject) => {
+        console.log("log: 内部promise");
+        resolve();
+    }).then(() => {
+        console.log("log: 内部第一个then");
+    }).then(() => {
+        console.log("log: 内部第二个then");
+    });
+}).then(() => {
+    console.log("log: 外部第二个then");
+});
+```
+
+#### 结论一
+
+当执行 then 方法时，如果前面的 promise 已经是 resolved 状态，则直接将回调放入微任务队列中
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### 参考资料
 
 [Promise 链式调用顺序引发的思考](https://juejin.cn/post/6844903972008886279)
+
+[关于一道经典Promise面试题的思考](https://juejin.cn/post/6978001532717367304)
