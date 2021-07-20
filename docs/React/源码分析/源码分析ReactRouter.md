@@ -16,7 +16,7 @@
 
 ![后端路由过程](https://i.loli.net/2021/06/16/Fit7zNHclqfOTKZ.png)
 
-服务端渲染页面，后端有完整的 HTML 页面，爬虫更容易获取信息，有利于 SEO 优化。对于客户端的资源占用更少，尤其是移动端，可以更省电。
+服务端渲染页面，后端有完整的 HTML 页面，爬虫更容易获取信息，有利于 SEO 优化。对于客户端的资源占用更少，尤其是移动端，可以更省流量
 
 #### 过渡
 
@@ -299,7 +299,7 @@ Route 提供了三种渲染方式：子组件、`props.component`、`props.rende
 
 从后端路由到前端路由，最大的改变是体验，体验更良好了
 
-前端路由陆星的模式有两种：hash 模式 和 history 模式，两者分别利用浏览器自由特性实现单页面导航
+前端路由模式有两种：hash 模式 和 history 模式，两者分别利用浏览器自由特性实现单页面导航
 
 - hash 模式：window.location 或 a 标签改变锚点值，window.hashchange() 监听锚点变化
 - history 模式：history.pushState()、history.replaceState() 定义目标路由，window.onpopstate() 监听浏览器操作导致的 URL 变化
