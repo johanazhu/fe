@@ -2,6 +2,10 @@
 
 
 
+### 手写系列-实现一个铂金段位的 React
+
+https://mp.weixin.qq.com/s/C4pjEzYPZocRnJOaF1q0Jg
+
 
 
 ### 实现一个小型react思路

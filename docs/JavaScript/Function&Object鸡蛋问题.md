@@ -2,11 +2,15 @@
 
 
 
+先来一张图
+
+![原型](https://i.loli.net/2021/06/08/BjVYFWQr1lfkHd8.png)
+
+
+
 `Function.__proto__ === Function.prototype` 引发的鸡生蛋蛋生鸡问题
 
 Object.prototype、Function.prototype、function Object、function Function 之间的关系
-
-
 
 ```javascript
 Object instanceof Function 		// true
@@ -41,3 +45,6 @@ Function.__proto__ === Function.prototype
 [JS 究竟是先有鸡还是有蛋](https://www.cnblogs.com/echolun/p/12384935.html)
 
 [JavaScript 世界万物诞生记](https://zhuanlan.zhihu.com/p/22989691)
+
+[深入探究 Function & Object 鸡蛋问题](https://muyiy.cn/blog/5/5.3.html#%E5%BC%95%E8%A8%80)
+

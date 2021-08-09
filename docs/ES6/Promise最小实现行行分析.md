@@ -33,7 +33,7 @@ function Promise(fn) {
     const resolve = (value) => {
         setTimeout(() => {
             this.data = value;
-            // 执行回调函数数组中的所有
+            // 执行回调函数数组中的所有函数
             this.callbacks.forEach((cb) => cb(value))
         })
     }
@@ -56,7 +56,6 @@ new Promise(fn)
 ```
 
 > 注意：无论是 fn 还是 resolve 都是函数，因为在 JS 中函数也是对象，可以当作值来传递，所以这样的写法不奇怪
->
 
 我们的手写源码中有 `fn(resolve)` ，当 `new Promise(fn)` 时，我们就已经调用了 `fn` ，并把Promise 构造函数中的 resolve 传入。这里的例子中，执行顺序是：
 

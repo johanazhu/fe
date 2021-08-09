@@ -1,5 +1,6 @@
 ---
 home: true
+heroImage: ./logo.png
 actionText: FE知识地图
 actionLink: /Introduction/
 features:
