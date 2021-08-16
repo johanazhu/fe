@@ -306,8 +306,6 @@ function compose( ...funcs) {
 
 Redux 是 JavaScript 应用的状态容器。它保证程序行为一致性且易于测试
 
-![image-20210413210343082](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20210413210343082.png)
-
 
 
 

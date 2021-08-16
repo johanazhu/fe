@@ -10,5 +10,5 @@ features:
     details: 参差百态乃幸福之本源
   - title: 不解释，不后悔，不抱怨
     details: 想要佩服谁，我就照镜子
-footer: Copyright © 2020 - johan
+footer: Copyright © 2020-present johan
 ---
