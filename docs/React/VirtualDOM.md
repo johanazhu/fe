@@ -157,6 +157,14 @@ virtual-dom-is-pure-overhead 这篇文章所说
 
 
 
+你不知道的虚拟dom 字节-写的很好
+
+https://juejin.cn/post/6985058301184737287
+
+
+
+
+
 ### 参考资料
 
 [virtual-dom-is-pure-overhead](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
