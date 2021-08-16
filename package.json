@@ -11,8 +11,7 @@
   "author": "johan",
   "license": "ISC",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.8.2",
-    "glob-parent": "^6.0.0"
+    "@vuepress/plugin-back-to-top": "^1.8.2"
   },
   "dependencies": {
     "markdown-it-disable-url-encode": "^1.0.1",
