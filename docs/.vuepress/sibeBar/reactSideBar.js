@@ -1,12 +1,17 @@
 function reactSideBar() {
   return [
+        {
+      title: '常见面试题',
+      collapsable: false,
+      sidebarDepth: 0,
+      children: ['React/面试题/常见面试题.md'],
+    },
     {
       title: 'React基础',
       collapsable: false,
       sidebarDepth: 0,
       children: [
         // 'React/README.md',
-        'React/面试题/常见面试题.md',
         // 'React/component.md',
         'React/生命周期.md',
         'React/setState.md',

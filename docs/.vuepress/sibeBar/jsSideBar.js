@@ -7,7 +7,7 @@ function jsSideBar() {
       children: ['JavaScript/常见面试题/常见面试题.md'],
     },
     {
-      title: 'JavaScript知识梳理',
+      title: 'JavaScript基础',
       collapsable: false,
       sidebarDepth: 0,
       children: [
