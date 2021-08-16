@@ -1,24 +1,26 @@
-const jsSideBar = require('./jsSideBar')
-const reactSideBar = require('./reactSideBar')
-const bigFrondSideBar = require('./bigFrondSideBar')
-const ArmorySideBar = require('./ArmorySideBar')
-const HttpSideBar = require('./HttpSideBar')
-const DockerSideBar = require('./DockerSideBar')
-const frontEndBasicSideBar = require('./frontEndBasicSideBar')
-const webpackSideBar = require('./webpackSideBar')
-const nodeSideBar = require('./nodeSideBar')
-const ES6SideBar = require('./ES6SideBar')
-const BrowserSideBar = require('./BrowserSideBar')
-const PerformanceSideBar = require('./PerformanceSideBar')
-const designPatternSideBar = require('./designPatternSideBar')
-const csBasicSideBar = require('./csBasicSideBar')
-const aboutSideBar = require('./aboutSideBar')
-const FrontEndSideBar = require('./FrontEndSideBar')
+const jsSideBar = require('./sibeBar/jsSideBar')
+const reactSideBar = require('./sibeBar/reactSideBar')
+const bigFrondSideBar = require('./sibeBar/bigFrondSideBar')
+const ArmorySideBar = require('./sibeBar/ArmorySideBar')
+const HttpSideBar = require('./sibeBar/HttpSideBar')
+const DockerSideBar = require('./sibeBar/DockerSideBar')
+const frontEndBasicSideBar = require('./sibeBar/frontEndBasicSideBar')
+const webpackSideBar = require('./sibeBar/webpackSideBar')
+const nodeSideBar = require('./sibeBar/nodeSideBar')
+const ES6SideBar = require('./sibeBar/ES6SideBar')
+const BrowserSideBar = require('./sibeBar/BrowserSideBar')
+const PerformanceSideBar = require('./sibeBar/PerformanceSideBar')
+const designPatternSideBar = require('./sibeBar/designPatternSideBar')
+const csBasicSideBar = require('./sibeBar/csBasicSideBar')
+const aboutSideBar = require('./sibeBar/aboutSideBar')
+const FrontEndSideBar = require('./sibeBar/FrontEndSideBar')
 
 module.exports = {
   title: '五年前端三年面试',
+  keywords:
+    'jahan，johnnyjoestar，javascript知识体系, React框架, javascript学习路线,js, webpack, 前端的一切, 前端面试, 知识体系, js技术栈, git, http, 算法, 数据结构',
   // 网页描述
-  description: '前端技术，面试',
+  description: 'johan的前端知识地图',
   head: [
     // icon
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -38,15 +40,14 @@ module.exports = {
       'script',
       {},
       `
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ba0bbc21ba293c7cf67f60c2d4889ee5";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();
-      
-        `,
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?ba0bbc21ba293c7cf67f60c2d4889ee5";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+          `,
     ],
   ],
   // 端口号
@@ -63,8 +64,8 @@ module.exports = {
     sidebarDepth: 0,
     // 导航
     nav: [
-      // { text: "导读", link: "/Introduction/" },
-      { text: '前端基础', link: '/Introduction/前端基础文章目录.md' },
+      { text: '导读', link: '/Introduction/' },
+      { text: '前端基础', link: '/JavaScript/' },
       //   {
       //     text: "前端基础",
       //     items: [
@@ -77,7 +78,7 @@ module.exports = {
       //     ],
       //   },
       { text: 'React', link: '/React/' },
-      { text: '后端', link: '/Introduction/后端文章目录.md' },
+      { text: '后端', link: '/Node/' },
       //   {
       //     text: "后端",
       //     items: [
@@ -91,7 +92,7 @@ module.exports = {
       //       { text: "Go", link: "/Go/go.md" },
       //     ],
       //   },
-      { text: '大前端', link: '/Introduction/大前端文章目录.md' },
+      //   { text: '大前端', link: '/Introduction/大前端文章目录.md' },
       //   {
       //     text: "大前端",
       //     items: [
@@ -107,7 +108,7 @@ module.exports = {
       //     ],
       //   },
       {
-        text: '多多益善',
+        text: '了解更多',
         items: [
           //   { text: "数据结构与算法", link: "/DataStructure&Algorithm/" },
           {
@@ -120,11 +121,12 @@ module.exports = {
           { text: 'Linux', link: '/Linux/' },
           { text: '设计模式', link: '/DesignPattern/' },
           { text: 'CS基础', link: '/CSBasic/' },
+          { text: '关于', link: '/About/about.md' },
         ],
       },
       {
-        text: '关于',
-        link: '/About/about.md',
+        text: 'Github',
+        link: 'https://github.com/johanazhu',
       },
     ],
     sidebar: {
@@ -177,7 +179,7 @@ module.exports = {
     },
   },
   // 插件
-  // plugins: ['@vuepress/back-to-top']
+  //   plugins: ['@vuepress/back-to-top']
 }
 
 // ['@vuepress/back-to-top'],

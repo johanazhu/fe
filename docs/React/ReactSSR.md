@@ -154,7 +154,7 @@ react ssr 最终产物其实就是 SPA + SSR
 
 react.hybrate
 
-`hydrate`是 React 中提供在初次渲染的时候，去复用原本已经存在的 DOM 节点，减少重新生成节点以及删除原本 DOM 节点的开销，来加速初次渲染的功能。
+`hydrate` 是 React 中提供在初次渲染的时候，去复用原本已经存在的 DOM 节点，减少重新生成节点以及删除原本 DOM 节点的开销，来加速初次渲染的功能。
 
 
 
@@ -204,8 +204,10 @@ componentDidMount	生命周期只会在浏览器端执行
 
 刚开始做的数据同构时，我在前端代码中模拟请求，然后抱起来后，浏览器支持ComponentDidMount，我不知道服务器支不支持，但是浏览器报错
 
+```javascript
 react-dom.development.js:88 Warning: Did not expect server HTML to contain the text node "
             " in <div>.
+```
 
 
 
