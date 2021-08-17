@@ -4,7 +4,7 @@ function reactSideBar() {
       title: '常见面试题',
       collapsable: false,
       sidebarDepth: 0,
-      children: ['React/面试题/常见面试题.md'],
+      children: ['React/面试题/'],
     },
     {
       title: 'React基础',

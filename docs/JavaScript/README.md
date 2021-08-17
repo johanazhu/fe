@@ -1,25 +1,18 @@
-# JavaScript前言
+# 前言
 
 
 
+> 一生的知识积累，自学的起码占90%
 
 
-如何深入了解JavaScript，我们不妨看看书中是怎么描述的。
 
-在 《JavaScript语言精粹》中，它的主旨是JavaScript语言中的精华部分，从它的语法分析，再到对象到函数再到继承到数组等等；
+抛开其他的，我们站在3年工作的基础上，你脑子里能想到那些与 JavaScript 语言有关的关键字。
 
-在《JavaScript启示录》中，它从对象开始讲，再讲对象和属性，再讲各个内置函数，比如 Object()、Function()、再到this、作用域和闭包、原型、Array()、String()...
+类型、对象、函数、原型、原型链、this、词法作用域、作用域链、执行上下文、闭包、垃圾回收、事件循环...
 
-可以看出 JavaScript启示录更加的全面。
+每一个知识点与知识点间互相联系，互相交叉引用，这就像一座座城市，城市有城市群，大的城市群就是一个大的知识点，每个小的知识点之间也是有联系的
 
-但这仅仅是10几年前的老书，和现在相比，很多东西没有得到补充。
-
-我希望能写出一本覆盖比较全面的前端地图，能让自己在这里就能看到外面的世界
-
-
-如果按照路线图
-
-什么是js？——js有什么组成（一切皆对象）——对象——Object——Function
+如果把前端知识点比作中国地图，我想 JavaScript 基础就像是长三角地区，这是中国最重要的地方之一，也是一名五年前端必考的知识点
 
 
 
@@ -71,22 +64,6 @@ Function()
 
 
 
-夯实JS主要知识点
-
-- 基本类型和引用类型
-- 类型判断
-- 强制类型转换
-- 作用域
-- 执行上下文
-- 理解函数的执行过程
-- this 指向
-- 闭包
-- 原型和原型链
-- js 的继承
-- event loop
-
-https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
-
 
 
 珠峰架构课里对javascript 高级的课程安排
@@ -108,16 +85,14 @@ https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360
 this的指向（apply, call, bind）
 作用域
 闭包
-https://mp.weixin.qq.com/s?__biz=MzU3MzcxMzg2Mw==&mid=2247483924&idx=1&sn=fa69401f5b562dd81dcf1c4162852908&chksm=fd3c3ebcca4bb7aafca6548e862af76c49daf5282b7c5b9d2b4c46400782a78fe8bcf49a377a&token=1491323947&lang=zh_CN&scene=21#wechat_redirect
+
 深拷贝和浅拷贝
 
 以前面试的时候常害怕别人问：**原型** 、**原型链** 、**闭包** 、**继承**、**构造函数** ，**this** ， 后来过了一年，我害怕别人问 防抖和节流、promise、深拷贝和浅拷贝、react、webpack的优化，再后来就是 基础的算法问题，
 
 说不知道，是撒谎。但也谈不上章口就来。说到底，还是基础不扎实，其本质没理解到位，所以需要写点东西加深自己的印象。
 
-javascript 开发者必须知道的33个知识点
 
-https://github.com/stephentian/33-js-concepts
 
 
 

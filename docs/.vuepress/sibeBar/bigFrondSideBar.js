@@ -30,8 +30,8 @@ function bigFrondSideBar() {
       collapsable: false,
       sidebarDepth: 0,
       children: [
-        'WeChat/Foreword.md',
-        'WeChat/微信分享.md',
+        'WeChat/',
+        'WeChat/微信网页授权.md',
         'WeChat/微信开发.md',
         'WeChat/微信网页授权及JSSDK.md',
         'WeChat/微信服务端开发.md',
@@ -41,7 +41,11 @@ function bigFrondSideBar() {
       title: '微信小程序',
       collapsable: false,
       sidebarDepth: 0,
-      children: ['WxApp/Foreword.md'],
+      children: [
+        'WxApp/',
+        'WxApp/微信小程序基础架构浅析.md',
+        'WxApp/写给前端的跨平台方案、跨端引擎的本质.md'
+    ],
     },
     {
       title: 'Flutter',
@@ -59,7 +63,7 @@ function bigFrondSideBar() {
       title: 'RN',
       collapsable: false,
       sidebarDepth: 0,
-      children: ['RN/Foreword.md'],
+      children: ['RN/'],
     },
   ]
 }

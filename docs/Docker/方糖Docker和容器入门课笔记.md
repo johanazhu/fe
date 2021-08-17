@@ -6,7 +6,7 @@
 
 
 
-![image-20210814082125845](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20210814082125845.png)
+![image-20210814082125845](https://i.loli.net/2021/08/18/UwI9zfLo7pmKHJO.png)
 
 
 
