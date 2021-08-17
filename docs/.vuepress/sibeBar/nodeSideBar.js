@@ -49,7 +49,7 @@ function nodeSideBar() {
       collapsable: false,
       sidebarDepth: 0,
       children: [
-        'Express/express-teach.md',
+        'Express/',
         'Express/express-mongoose实践.md',
         'Express/手写express.md',
       ],
