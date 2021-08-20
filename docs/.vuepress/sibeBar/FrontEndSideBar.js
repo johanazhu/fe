@@ -29,7 +29,7 @@ function FrontEndSideBar() {
         '/Node/',
         '/Koa2/',
         '/Express/',
-        '/PM2',
+        '/PM2/',
         '/Mongoose/',
         '/Mysql/',
         '/Redis/',
