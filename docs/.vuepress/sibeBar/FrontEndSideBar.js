@@ -32,7 +32,7 @@ function FrontEndSideBar() {
         '/PM2',
         '/Mongoose/',
         '/Mysql/',
-        '/Redis/redis-teach.md',
+        '/Redis/',
         '/Go/go.md',
       ],
     },
