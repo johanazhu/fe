@@ -44,7 +44,7 @@
 
 [PM2](../Node/PM2.md)
 
-[Mongoose](../Mongoose/mongoose-teach.md)
+[Mongoose](../Mongoose/)
 
 [Mysql](../Mysql/mysql-teach.md)
 
