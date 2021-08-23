@@ -98,3 +98,30 @@ PS:如果你的更新和删除出现 error：1175处于安全模式，先使用�
 SET SQL_SAFE_UPDATES=0;
 ```
 
+
+
+
+
+
+
+- mysql介紹、安裝和使用
+- nodejs连接mysql
+- API连接mysql
+
+为什么使用mysql而不是mogondb
+
+- mysql是企业内最常见的存储工具，一般都有专人运维
+- mysql也是社区内最常用的存储工具，有问题可以随时可查
+- 另：mysql本身是一个复杂的数据库软件，本课只讲基本使用
+
+#### mysql介绍
+
+- web server 中最流行的关系型数据库
+- 官网可免费下载，用于学习
+- 轻量级，易学易用
+
+mysql workbench 可视化数据库
+
+mysql命令
+
+show databases 显示所有的数据库表

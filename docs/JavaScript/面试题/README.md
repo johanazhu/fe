@@ -73,22 +73,6 @@ https://mp.weixin.qq.com/s/qcUjTZGVRIBR4-JINXpFpA
 
 
 
-前端八股文：
-
-- 原型链
-- 继承的实现
-- 数据类型
-- var、let和const
-- new 的过程
-- this 指向问题
-- call、apply和bind 实现方式
-- 闭包
-- 事件循环
-- 类型判断
-- 手写 promise
-
-
-
 
 
 JS 20道概念虽老但也略有收获的JS基础题
@@ -113,3 +97,12 @@ https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ
 
 https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
 
+
+
+
+
+### 参考资料
+
+
+
+[夯实JS主要知识点]
