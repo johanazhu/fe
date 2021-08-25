@@ -24,7 +24,7 @@
 
 ​	
 
-### JavaScript的数据类型
+## JavaScript的数据类型
 
 ​		**数据类型分为 基本类型 和 引用类型。**
 
@@ -85,7 +85,7 @@ console.log(typeof myString, typeof myNumber, typeof myBoolean)
 
 这说明 new 关键字 做了一些手脚，至于它是怎么改变三个小兄弟的，可以跳转到——这里[ new 改变了对象 ]
 
-### typeof 操作符
+## typeof 操作符
 
 作用：返回正在使用的值的类型
 
@@ -144,7 +144,7 @@ if(typeof XXX === 'function') {
 
 > PS: 在《JavaScript启示录》里第一章第八节里说 RegExp() 的类型返回的是 function，但是我检验后发现并不是，我猜测是因为老版本的浏览器对RegExp的判断为 funtion，而我用的chrome浏览器（V8引擎）表示 RegExp的类型为object
 
-### 基本类型和引用类型的区别
+## 基本类型和引用类型的区别
 
 **基本类型储存在栈内存中**
 
@@ -203,7 +203,7 @@ console.log(obj2) // { name: 'elaine', age: 22};
 
 在 typeof 操作符中已经谈过，typeof 可以检测出 string、number、boolean、undefined以及 function，而对于 null 和 对象则无法检测，显示 object
 
-#### instanceof 运算符
+### instanceof 运算符
 
 `instanceof ` 运算符用于检测构造函数的 `prototype` 属性是否出现在某个实例对象的原型链上
 
@@ -220,7 +220,7 @@ console.log(elaine instanceof Object);
 
 instanceof 运算符能让我们找到他的爸爸是谁（谁制造了他，从生理上讲应该是妈妈是谁），以及他的祖宗十八代
 
-#### constructor 构造器
+### constructor 构造器
 
 `constructor` 是一种用于创建和初始化 `class` 创建的对象的特殊方法。请注意，他是方法。就好比
 
@@ -286,7 +286,7 @@ console.log(student.constructor) // Person() {}
 
 具体我们在 原型链 那章做详细介绍
 
-#### Object.prototype.toString.call(source)
+### Object.prototype.toString.call(source)
 
 `toString()` 方法返回一个表示该对象的字符串
 

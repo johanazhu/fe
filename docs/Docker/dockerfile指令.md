@@ -1,6 +1,6 @@
 # dockerfile 指令
 
-### 指令速查
+## 指令速查
 
 `FROM` 	基于什么
 
@@ -27,7 +27,7 @@
 
 
 
-### VOLUME
+## VOLUME
 
 `VOLUME` 	定义匿名数据卷。在启动容器是
 
@@ -46,7 +46,7 @@ VOLUME ["<路径1>", "路径2"...]
 
 
 
-### LABEL
+## LABEL
 
 ```
 LABEL version="1.0" description="这是一个Web服务器" by="IT笔录
@@ -58,7 +58,7 @@ LABEL version="1.0" description="这是一个Web服务器" by="IT笔录
 
 
 
-### 例子
+## 例子
 
 ```dockerfile
 # base image

@@ -15,7 +15,7 @@
 
 
 
-### 返回函数的模拟实现
+## 返回函数的模拟实现
 
 先从第一个特点开始，举个例子：
 
@@ -66,7 +66,7 @@ console.log(bindFoo()) // 1
 
 
 
-### 传参的模拟实现
+## 传参的模拟实现
 
 我们要实现传参功能前，先看看在使用 bind 时传参会是怎么个样子
 
@@ -116,7 +116,7 @@ Function.prototype.mybind = function(context) {
 
 
 
-### 构造函数效果的模拟实现
+## 构造函数效果的模拟实现
 
 bind还有一个特点，就是
 
@@ -178,7 +178,7 @@ Function.prototype.bind2 = function (context) {
 
 
 
-### 构造函数效果的优化实现
+## 构造函数效果的优化实现
 
 在第三版中，我们直接将 fBound.prototype = this.prototype，我们直接修改 fBound.prototype 的时候，也会直接修改绑定函数的 prototype。看个例子
 
@@ -192,7 +192,7 @@ console.log(bar.prototype.value) // 1
 
 我们修改的是绑定函数 bindFoo 的 prototype ，却把 bar 的 prototype 也修改了。这是因为对象赋值是引用地址，所以改变 bindFoo 的 prototype 就是改变 bar 的 prototype 。这里有两个方案，一通过一个空函数来进行中转，二通过深拷贝来实现
 
-#### 空函数进行中装
+### 空函数进行中装
 
 ```javascript
 Function.prototype.bind2 = function (context) {
@@ -212,7 +212,7 @@ Function.prototype.bind2 = function (context) {
 }
 ```
 
-#### 深拷贝来实现
+### 深拷贝来实现
 
 ```javascript
 Function.prototype.bind2 = function(context) {
@@ -242,7 +242,7 @@ if (typeof this !== "function") {
 
 
 
-### 最终版本
+## 最终版本
 
 ```javascript
 Function.prototype.bind2 = function(context) {
@@ -270,7 +270,7 @@ PS: 因为拷贝那个比较简单，所以我们用空函数进行中装为例
 
 
 
-### ES6版本模拟bind
+## ES6版本模拟bind
 
 1. 处理参数，返回一个闭包
 
@@ -340,8 +340,8 @@ bind的骚操作在于它可以用作构造函数，所以要判断返回的函�
 
 
 
-### 参考资料
+## 参考资料
 
-[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+- [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
-[JavaScript深入之bind的模拟实现](https://github.com/mqyqingfeng/Blog/issues/12)
+- [JavaScript深入之bind的模拟实现](https://github.com/mqyqingfeng/Blog/issues/12)

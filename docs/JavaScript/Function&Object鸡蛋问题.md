@@ -40,11 +40,11 @@ Function.__proto__ === Function.prototype
 
 
 
-### 参考资料
+## 参考资料
 
-[JS 究竟是先有鸡还是有蛋](https://www.cnblogs.com/echolun/p/12384935.html)
+- [JS 究竟是先有鸡还是有蛋](https://www.cnblogs.com/echolun/p/12384935.html)
 
-[JavaScript 世界万物诞生记](https://zhuanlan.zhihu.com/p/22989691)
+- [JavaScript 世界万物诞生记](https://zhuanlan.zhihu.com/p/22989691)
 
-[深入探究 Function & Object 鸡蛋问题](https://muyiy.cn/blog/5/5.3.html#%E5%BC%95%E8%A8%80)
+- [深入探究 Function & Object 鸡蛋问题](https://muyiy.cn/blog/5/5.3.html#%E5%BC%95%E8%A8%80)
 

@@ -11,7 +11,7 @@ function HTTPSideBar() {
         'HTTP/HTTP的前世今生.md',
         'HTTP/HTTP缓存.md',
         'HTTP/网络是怎样连接的.md',
-        'HTTP/restful.md',
+        'HTTP/RESTful.md',
         'HTTP/TCP.md',
         'HTTP/session与token登录.md',
         'HTTP/HTTP1,2,3的对比.md',

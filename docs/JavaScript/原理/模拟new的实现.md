@@ -2,13 +2,13 @@
 
 
 
-### 前言
+## 前言
 
 new 的本质是让你少些几行代码
 
 
 
-### 正文
+## 正文
 
 之前在介绍 [原型篇](../原型.md) 时，在介绍隐式原型继承时，说想要得到一个包含数据、方法以及关联原型三个组成部分的丰满对象，包含了三个步骤：
 
@@ -32,7 +32,7 @@ new 的本质是让你少些几行代码
 
 
 
-### new是什么？
+## new是什么？
 
 **它是 JavaScript 为了让开发者开发起来方便而实现的关键字**
 
@@ -66,7 +66,7 @@ function new2(Constructor, ...args) {
 
 
 
-### 别人的new写法
+## 别人的new写法
 
 
 
@@ -92,7 +92,7 @@ function objectFactory() {
 
 
 
-#### 测试一波
+测试一波
 
 ```javascript
 function User(firstname, lastname) {
@@ -122,7 +122,8 @@ const user = new2(User, 'johnny', 'joestar')
 
 
 
-### 参考资料
+## 参考资料
 
-[JS 的 new 到底是干什么的？](https://zhuanlan.zhihu.com/p/23987456?utm_medium=social&utm_source=wechat_session)
+- [JS 的 new 到底是干什么的？](https://zhuanlan.zhihu.com/p/23987456?utm_medium=social&utm_source=wechat_session)
+
 

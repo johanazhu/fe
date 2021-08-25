@@ -1,4 +1,4 @@
-## docker-compose
+# docker-compose
 
 服务（`service`）：一个应用的容器，实际上可以包括若干相同镜像的容器实例
 

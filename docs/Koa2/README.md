@@ -1,4 +1,4 @@
-# Koa2
+# Koa2从零到脚手架
 
 
 
@@ -82,16 +82,19 @@ ctx.status // 相当于 ctx.response.status
 npm install koa-router --save
 ```
 
-> 有些教程使用 `@koa/router`，现如今这两个库由同一个人维护，代码也一致。即 koa-router === @koa/router
+> 有些教程使用 `@koa/router`，现如今这两个库由同一个人维护，代码也一致。即 koa-router === @koa/router（写自2021年8月23日）
 
-
+NPM包地址：[koa-router](https://www.npmjs.com/package/koa-router) 、[@koa/router](https://www.npmjs.com/package/@koa/router)
 
 #### 如何使用
 
-在 src 中 创建 controllers 目录，用来存放控制器有关的代码。首先是 AuthController，创建 src/controllers/auth.js，代码如下：
+在根目录下创建 controllers 目录，用来存放控制器有关的代码。首先是 HomeController，创建 controllers/home.js，代码如下：
 
 ```javascript
-class AuthController {
+class HomeController {
+  static home(ctx) {
+    ctx.body = 'hello world'
+  }
   static async login(ctx) {
     ctx.body = 'Login Controller'
   }
@@ -100,65 +103,85 @@ class AuthController {
   }
 }
 
-module.exports = AuthController;
+module.exports = HomeController;
 ```
 
 
 
 #### 实现路由
 
-再创建 `src/routes.js`，用于把控制器挂载到对应的路由上面：
+再创建 routes 文件夹，用于把控制器挂载到对应的路由上面，创建 home.js
 
 ```javascript
 const Router = require('koa-router')
-
-const AuthController = require('./controllers/auth')
+const { home, login, register } = require('../controllers/home')
 
 const router = new Router()
 
-router.get('/home', async (ctx) => {
-  ctx.body = 'hello world'
-})
-router.post('/login', AuthController.login)
-router.post('/register', AuthController.register)
+router.get('/', home)
+router.post('/login', login)
+router.post('/register', register)
 
 module.exports = router
-
 ```
-
-可以看到 `@koa/router` 的使用方式基本上与 Express Router 保持一致
-
-
 
 #### 注册路由
 
-最后我们需要将 router 注册为中间件，新建 `src/server.js`，编写代码如下：
+在 routes 中创建 index.js，以后所有的路由都放入 routes，我们创建 index.js 的目的是为了让结构更加整齐，index.js 负责所有路由的注册，它的兄弟文件负责各自的路由
+
+```javascript
+const fs = require('fs')
+module.exports = (app) => {
+  fs.readdirSync(__dirname).forEach((file) => {
+    if (file === 'index.js') {
+      return
+    }
+    const route = require(`./${file}`)
+    app.use(route.routes()).use(route.allowedMethods())
+  })
+}
+```
+
+> 注：allowedMethods 的作用
+>
+> 1. 响应 option 方法，告诉它所支持的请求方法
+> 2. 相应地返回 405 （不允许）和 501 （没实现）
+>
+> 注：可以看到 `@koa/router` 的使用方式基本上与 Express Router 保持一致
+
+
+
+#### 引入路由
+
+最后我们需要将 router 注册为中间件，新建 `index.js`，编写代码如下：
 
 ```javascript
 const Koa = require('koa')
-const router = require('./routes');
+const routing = require('./routes')
 
 // 初始化 Koa 应用实例
 consr app = new Koa()
 
 // 注册中间件
 // 相应用户请求
-app.use(router.routes()).use(router.allowedMethods());
+routing(app)
 
 // 运行服务器
 app.listen(3000);
 ```
 
+
+
 使用 postman 测试一下
 
-![测试](https://i.loli.net/2021/08/23/eyRqZ2Tz57pLYCV.png)
+![测试路由](https://i.loli.net/2021/08/24/PFnyfjLORIZ1imC.png)
 
 
 
 ### 其他中间件
 
 - koa-bodyparser ——请求体解析
-- koa-static —— 提供静态资源
+- koa-static —— 提供静态资源服务
 - @koa/cors —— 跨域
 - koa-json-error —— 处理错误
 - koa-parameter —— 参数校验
@@ -179,7 +202,7 @@ const koaStatic = require('koa-static')
 const cors = require('@koa/cors')
 const error = require('koa-json-error')
 const parameter = require('koa-parameter')
-const router = require('./routes')
+const routing = require('./routes')
 
 const app = new Koa()
 
@@ -193,7 +216,7 @@ app.use(bobyParser())
 app.use(koaStatic(path.join(__dirname, 'public')))
 app.use(cors())
 app.use(parameter(app))
-app.use(router.routes()).use(router.allowedMethods())
+routing(app)
 
 app.listen(3000, () => {
   console.log('3000端口已启动')
@@ -203,7 +226,7 @@ app.listen(3000, () => {
 
 
 
-### 实现 JWT 鉴权
+## 实现 JWT 鉴权
 
 JSON Web Token（JWT）是一种流行的 RESTful API 鉴权方案
 
@@ -213,7 +236,7 @@ JSON Web Token（JWT）是一种流行的 RESTful API 鉴权方案
 cnpm install koa-jwt jsonwebtoken -S
 ```
 
-创建 `src/config/index.js` ，用来存放 JWT Secret 常量，代码如下：
+创建 `config/index.js` ，用来存放 JWT Secret 常量，代码如下：
 
 ```javascript
 const JWT_SECRET = 'secret'
@@ -229,99 +252,92 @@ module.exports = {
 
 ![加入JWT后的洋葱模型](https://i.loli.net/2021/08/23/J5LYKBUTFIm4Q87.png)
 
-可以看出，所有的请求都可以直接访问未受保护的路由，但是受保护的路由都放在 JWT 中间件的后面，我们需要对 routes.js 进行改造
+可以看出，所有的请求都可以直接访问未受保护的路由，但是受保护的路由都放在 JWT 中间件的后面，我们需要再创建几个文件来做 JWT 的实验
+
+我们知道，所谓的用户（users）是个最常见的需要鉴权的路由，所以我们现在 controllers 中创建 user.js ，写下如下代码： 
+
+```javascript
+class UserController {
+  static async create(ctx) {
+    ctx.status = 200
+    ctx.body = 'create'
+  }
+  static async find(ctx) {
+    ctx.status = 200
+    ctx.body = 'find'
+  }
+  static async findById(ctx) {
+    ctx.status = 200
+    ctx.body = 'findById'
+  }
+  static async update(ctx) {
+    ctx.status = 200
+    ctx.body = 'update'
+  }
+  static async delete(ctx) {
+    ctx.status = 200
+    ctx.body = 'delete'
+  }
+}
+
+module.exports = UserController
+```
+
+### 注册 JWT 中间件
+
+用户的增删改查都安排上了，语义很明显了，其次我们在 routes 文件中创建 user.js，这里展示与 users 路由相关的代码：
 
 ```javascript
 const Router = require('koa-router')
+const jwt = require('koa-jwt')
+const {
+  create,
+  find,
+  findById,
+  update,
+  delete: del,
+} = require('../controllers/user')
 
-const AuthController = require('./controllers/auth')
-const UserController = require('./controllers/user')
+const router = new Router({ prefix: '/users' })
+const { JWT_SECRET } = require('../config/')
 
-// const router = new Router();
-const unprotectedRouter = new Router()
+const auth = jwt({ JWT_SECRET })
 
-// router.get('/home', ...)
-unprotectedRouter.get('/home', async (ctx) => {
-  ctx.body = 'hello world'
-})
+router.post('/', create)
+router.get('/', find)
+router.get('/:id', findById)
+router.put('/:id', auth, update)
+router.delete('/:id', auth, del)
 
-// auth 相关的路由
-// router.post('/login', AuthController.login)
-// router.post('/register', AuthController.register)
-unprotectedRouter.post('/login', AuthController.login)
-unprotectedRouter.post('/register', AuthController.register)
-
-const protectedRouter = new Router()
-
-// users 相关的路由
-// router.get('/users', UserController.listUsers);
-// router.get('/users/:id', UserController.showUserDetail);
-// router.put('/users/:id', UserController.updateUser);
-// router.delete('/users/:id', UserController.deleteUser);
-protectedRouter.post('/users', UserController.createUser)
-protectedRouter.get('/users', UserController.listUsers)
-protectedRouter.get('/users/:id', UserController.showUserDetail)
-protectedRouter.put('/users/:id', UserController.updateUser)
-protectedRouter.delete('/users/:id', UserController.deleteUser)
-
-// 导出未受保护的路由和受保护的路由
-module.exports = {
-  unprotectedRouter,
-  protectedRouter,
-}
+module.exports = router
 ```
 
-以上代码我们实现了 protectedRouter 和 unprotectedRouter，分别对应于需要 JWT 中间件保护的路由和不需要保护的路由
-
-#### 注册 JWT 中间件
-
-`router.js`
-
-```javascript
-...
-// const router = require('./routes')
-const { protectedRouter, unprotectedRouter } = require('./routes');
-...
-// app.use(router.routes()).use(router.allowedMethods())
-// 无需 JWT Token 即可访问
-app.use(unprotectedRouter.routes()).use(unprotectedRouter.allowedMethods())
-
-// 注册 JWT 中间件
-app.use(jwt({ secret: JWT_SECRET }).unless({ method: 'GET' }))
-
-// 需要 JWT Token 才可访问
-app.use(protectedRouter.routes()).use(protectedRouter.allowedMethods())
-
-...
-```
-
-
+综上代码，routes 文件下的 home.js 都不需要 JWT 中间件的保护，user.js 中的 更新和删除需要 JWT 的保护
 
 测试一下，能看出 JWT 已经起作用了
 
-![测试2](https://i.loli.net/2021/08/23/JknzTY8Ht5Fh4pZ.png)
+![测试JWT](https://i.loli.net/2021/08/24/HEt9xDV8WQUnKcJ.png)
 
-这里我们需要暂停一下，为了方便 JWT 的测试，需要加入数据库
+我们到目前为止，完成了对 JWT 的验证，但是验证的前提是先签发 JWT，怎么签发，你登录的时候我给你一个签好名的 token，要更新/删除时在请求头中带上 token，我就能校验...
 
-#### Mongoose 加入战场
+这里牵扯到登录，我们先暂停一下，先补充数据库的知识，让项目更加完整
+
+## Mongoose 加入战场
 
 如果要做一个完整的项目，数据库是必不可少的，与 Node 匹配的较好的是 NoSql 数据库，其中以 Mongodb 为代表，当然如果我们要使用这一数据库，需要按照相应的库，而这个库就是 mongoose
+
+### 下载 mongoose
 
 ```shell
 cnpm i mongoose -S
 ```
 
+### 连接及配置
 
-
-
-
-
-
-#### 连接及配置
-
-在 `src/config/index.js` 中添加 connectionStr 变量，代表 mongoose 连接的数据库地址
+在 `config/index.js` 中添加 connectionStr 变量，代表 mongoose 连接的数据库地址
 
 ```javascript
+const JWT_SECRET = 'secret'
 const connectionStr = 'mongodb://127.0.0.1:27017/basic'
 
 module.exports = {
@@ -330,7 +346,7 @@ module.exports = {
 }
 ```
 
-创建 `src/db/index.js`
+创建 `db/index.js`
 
 ```javascript
 const mongoose = require('mongoose')
@@ -372,7 +388,7 @@ db.connect()
 
 ### 创建数据模型定义
 
-在 `src` 目录下创建 `models` 目录，用来存放数据模型定义文件，在其中创建 `User.js`，代表用户模型，代码如下：
+在根目录下创建 `models` 目录，用来存放数据模型定义文件，在其中创建 `User.js`，代表用户模型，代码如下：
 
 ```javascript
 const mongoose = require('mongoose')
@@ -389,55 +405,40 @@ module.exports = mongoose.model('User', schema)
 
 ### 在 Controller 中操作数据库
 
-然后就可以在 Controller 中进行数据的增删改查操作。首先我们打开 `src/constrollers/user.js`
+然后就可以在 Controller 中进行数据的增删改查操作。首先我们打开 `constrollers/user.js`
 
 ```javascript
 const User = require('../models/User')
 
 class UserController {
-  static async createUser(ctx) {
+  static async create(ctx) {
     const { username, password } = ctx.request.body
     const model = await User.create({ username, password })
     ctx.status = 200
     ctx.body = model
   }
-  static async listUsers(ctx) {
-    //   插入数据
-    // User.insertMany([
-    //   {
-    //     username: 'johan',
-    //     password: '123',
-    //   },
-    //   {
-    //     username: 'elaine',
-    //     password: '456',
-    //   },
-    // ])
+  static async find(ctx) {
     const model = await User.find()
     ctx.status = 200
     ctx.body = model
   }
-   static async showUserDetail(ctx) {
+  static async findById(ctx) {
     const model = await User.findById(ctx.params.id)
-    ctx.status = 200;
+    ctx.status = 200
     ctx.body = model
   }
-  static async updateUser(ctx) {
+  static async update(ctx) {
     const model = await User.findByIdAndUpdate(ctx.params.id, ctx.request.body)
     ctx.status = 200
     ctx.body = model
   }
-  static async deleteUser(ctx) {
+  static async delete(ctx) {
     await User.findByIdAndDelete(ctx.params.id)
-    ctx.status = 200
-    ctx.body = {
-      success: true,
-    }
+    ctx.status = 204
   }
 }
 
 module.exports = UserController
-
 ```
 
 以上代码中，
@@ -445,20 +446,20 @@ module.exports = UserController
 - User.create({xxx})：在 User 表中创建一个数据
 - User.find()：查看所有的 User 表中的数据
 - User.findById(id)：查看 User 表中的其中一个
-- User.findByIdAndUpdate(id)：更新 User 表中的其中一个数据
+- User.findByIdAndUpdate(id, body)：更新 User 表中的其中一个数据
 - User.findByIdAndDelete(id)：删除 User 表中的其中一个数据
 
-以上就是**增删改查**
+以上就是对数据库的**增删改查**
 
-### 加盐
+## 加盐
 
 这个我们需要对密码进行一下加密，无它，安全。
 
-进数据库一查，就能看到密码，这说明数据对开发人员是公开的，开发人员可以拿着用户的账号密码做任何事，这是不被允许的。
+进数据库一查，就能看到密码，这说明数据对开发人员是公开的，开发人员可以拿着用户的账号密码做任何事，这是不被允许的
 
-![数据库中的用户表](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20210823155124948.png)
+![数据库中的用户表](https://i.loli.net/2021/08/24/iJZhb8D297e4Tjl.png)
 
-#### 下载 npm 包——bcrypt 
+### 下载 npm 包——bcrypt 
 
 ```shell
 cnpm i bcrypt --save
@@ -483,15 +484,15 @@ const schema = new mongoose.Schema({
 
 添加 select：false 不可见，set(val) 对值进行加密，我们来测试一下 
 
-![创建李四](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20210823160752125.png)
+![创建李四](https://i.loli.net/2021/08/24/JoHQ5XICL2Bh1St.png)
 
 能看到 password 被加密了，即使在数据库里，也看不出用户的密码，那用户输入的密码难道输入这么一串密码，显然不是，用户要是输入的话，我们要对其进行验证，例如我们的登录
 
-我们进入 `constrollers/auth` 文件中，对其进行改造，
+我们进入 `constrollers/home` 文件中，对其进行改造，
 
 ```javascript
 ...
-class AuthController {
+class HomeController {
   static async login(ctx) {
     const { username, password } = ctx.request.body
     const user = await User.findOne({ username }).select('+password')
@@ -508,9 +509,9 @@ class AuthController {
 
 回到 JWT 
 
-### 在 Login 中签发 JWT Token
+## 在 Login 中签发 JWT Token
 
-我们需要提供一个 API 端口让用户可以获取到 JWT Token，最合适的当然是登录接口 `/login` ，打开 `src/controllers/auth.js`，在 `login` 控制器中实现签发 JWT Token 的逻辑，代码如下：
+我们需要提供一个 API 端口让用户可以获取到 JWT Token，最合适的当然是登录接口 `/login` ，打开 `controllers/home.js`，在 `login` 控制器中实现签发 JWT Token 的逻辑，代码如下：
 
 ```javascript
 const jwt = require('jsonwebtoken')
@@ -518,7 +519,7 @@ const User = require('../models/User')
 
 const { JWT_SECRET } = require('../config/')
 
-class AuthController {
+class HomeController {
   static async login(ctx) {
     const { username, password } = ctx.request.body
 
@@ -545,7 +546,7 @@ class AuthController {
 
 在 `login` 中，我们首先根据用户名（请求体中的 `name` 字段）查询对应的用户，如果该用户不存在，则直接返回 401；存在的话再通过 `(bcrypt').compareSync` 来验证请求体中的明文密码 `password` 是否和数据库中存储的加密密码是否一致，如果一致则通过 `jwt.sign` 签发 Token，如果不一致则还是返回 401。
 
-### 在 User 控制器中添加访问控制
+## 在 User 控制器中添加访问控制
 
 Token 的中间件和签发都搞定之后，最后一步就是在合适的地方校验用户的 Token，确认其是否有足够的权限。最典型的场景便是，在更新或删除用户时，我们要**确保是用户本人在操作**。打开 `controllers/user.js`
 
@@ -554,7 +555,7 @@ const User = require('../models/User')
 
 class UserController {
   ...
-  static async updateUser(ctx) {
+  static async update(ctx) {
     const userId = ctx.params.id
     if (userId !== ctx.state.user.id) {
       ctx.status = 403
@@ -567,7 +568,7 @@ class UserController {
     ctx.status = 200
     ctx.body = model
   }
-  static async deleteUser(ctx) {
+  static async delete(ctx) {
     const userId = ctx.params.id
 
     if (userId !== ctx.state.user.id) {
@@ -588,18 +589,19 @@ module.exports = UserController
 
 添加了一些用户并登录，将 Token 添加到请求头中，使用 DELETE 删除用户，能看到 状态码变成 204，删除成功
 
-![删除用户操作](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20210823172425424.png)
+![删除用户操作](https://i.loli.net/2021/08/24/TgPnXmwVZF8vYNQ.png)
 
-### 断言处理
+## 断言处理
 
 在做登录时、更新用户信息、删除用户时，我们需要if else 来判断，这看起来很蠢，如果我们能用断言来处理，代码在看上去会优雅很多，这个时候 `http-assert` 就出来了
 
 ```javascript
+// constrollers/home.js
 ...
 const assert = require('http-assert')
 
 
-class AuthController {
+class HomeController {
   static async login(ctx) {
     const { username, password } = ctx.request.body
     // 1.根据用户名找用户
@@ -619,11 +621,31 @@ class AuthController {
 }
 ```
 
+同理，处理 `controllers/user`
 
+```javascript
+...
+  static async update(ctx) {
+    const userId = ctx.params.id
+    assert(userId === ctx.state.user.id, 403, '无权进行此操作')
+    const model = await User.findByIdAndUpdate(ctx.params.id, ctx.request.body)
+    ctx.status = 200
+    ctx.body = model
+  }
+  static async delete(ctx) {
+    const userId = ctx.params.id
+    assert(userId === ctx.state.user.id, 403, '无权进行此操作')
+    await User.findByIdAndDelete(ctx.params.id)
+    ctx.status = 204
+  }
+...
+```
 
-### 校验
+代码看起来就是整洁清爽
 
-之前我们加了一个中间件——koa-parameter，我们当初只是添加了这个中间件，但是未使用，我们在创建用户时需要判断用户名和密码的数据类型为 String 类型且必填，进入 `controllers/user.js` 添加代码如下：
+## 参数校验
+
+之前我们加了一个中间件——`koa-parameter`，我们当初只是注册了这个中间件，但是未使用，我们在创建用户时需要判断用户名和密码的数据类型为 String 类型且必填，进入 `controllers/user.js` 添加代码如下：
 
 ```javascript
 ...
@@ -644,11 +666,10 @@ class UserController {
 
 
 
-差不多完结，放到 Github 地址
+Github地址：[koa-basic](https://github.com/johanazhu/koa-basic)
 
 
 
-### 参考资料
+## 参考资料
 
-[一杯茶的时间，上手 Koa2 + MySQL 开发](https://tuture.co/2020/05/22/fac8401/)
-
+- [一杯茶的时间，上手 Koa2 + MySQL 开发](https://tuture.co/2020/05/22/fac8401/)

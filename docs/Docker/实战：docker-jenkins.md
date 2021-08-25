@@ -2,7 +2,7 @@
 
 上篇，我们讲到了dockerfile 的最小实现，但也抛出了一个问题，即使 docker 解决了环境和部署问题，但CICD还是让人感到心累，本章通过 docker 生成 jenkins 容器，并将 jenkins 与 github 结合，实现 一定程度上的 CI
 
-### 希望达到的效果
+## 希望达到的效果
 
 我希望我再 git push 后，代码推送至 jenkins ，在jenkins 点击 发布，就能将我的代码推送至 服务器，我浏览页面，马上就能看到效果
 
@@ -18,7 +18,7 @@ git push 到 仓库后，jenkins 监听到，执行脚本
 
 
 
-### jenkins 快速入门
+## jenkins 快速入门
 
 它是java语言写的cicd，
 
@@ -26,13 +26,13 @@ git push 到 仓库后，jenkins 监听到，执行脚本
 
 
 
-### 实现思路
+## 实现思路
 
 jenkins
 
 
 
-### 实现步骤
+## 实现步骤
 
 第一步：拉取 jenkins 镜像，以此为镜像生成容器
 
@@ -44,7 +44,7 @@ jenkins
 
 
 
-### 第一步：生成jenkins容器
+## 第一步：生成jenkins容器
 
 先从dockerhub上拉取jenkins
 
@@ -86,11 +86,11 @@ docker logs jenkins
 
 
 
-### 第二步：安装配置jenkins
+## 第二步：安装配置jenkins
 
 按照安装推荐插件安装jenkins 的插件
 
-#### 配合 jenkins
+### 配合 jenkins
 
 ![docker_jenkins安装推荐的插件](../.vuepress/public/images/Docker/jenkins/docker_jenkins安装推荐的插件.png)
 
@@ -104,13 +104,13 @@ docker logs jenkins
 
 
 
-#### 创建管理员账号
+### 创建管理员账号
 
 ![docker_jenkins创建账号](../.vuepress/public/images/Docker/jenkins/docker_jenkins创建账号.png)
 
 保存成功，开始使用 jenkins
 
-#### 换源
+### 换源
 
 `https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`
 
@@ -122,7 +122,7 @@ docker logs jenkins
 
 
 
-#### 下载 ssh 插件
+### 下载 ssh 插件
 
 前往 系统管理 ——> 插件管理 ——> 可选插件
 
@@ -130,7 +130,7 @@ docker logs jenkins
 
 ![docker_jenkins下载ssh插件](../.vuepress/public/images/Docker/jenkins/docker_jenkins下载ssh插件.png)
 
-#### 配置ssh
+### 配置ssh
 
 前往 系统管理 ——> 系统配置——> 拉到最下面（Publish over SSH）
 
@@ -142,7 +142,7 @@ docker logs jenkins
 
 点击 Test Configuration，已经和服务器接通
 
-#### 安装 nodejs 插件
+### 安装 nodejs 插件
 
 node插件在跑node项目时需要使用，这里先安装好
 
@@ -150,7 +150,7 @@ node插件在跑node项目时需要使用，这里先安装好
 
 搜索node，并安装
 
-#### 全局配置node 
+### 全局配置node 
 
 前往 系统管理 ——> 全局工具配置 ——> NodeJS
 
@@ -162,7 +162,7 @@ node插件在跑node项目时需要使用，这里先安装好
 
 
 
-### 第三步：准备 node 服务
+## 第三步：准备 node 服务
 
 我们拿上一章讲的koa为例子讲解
 
@@ -180,17 +180,17 @@ git push -u origin master
 
 
 
-### 第四步： jenkins 部署 node 服务
+## 第四步： jenkins 部署 node 服务
 
-#### 创建一个任务
+### 创建一个任务
 
 ![jenkins新建任务](../.vuepress/public/images/Docker/jenkins/jenkins新建任务.png)
 
-#### 起任务名
+### 起任务名
 
 ![jenkins起任务名字](../.vuepress/public/images/Docker/jenkins/jenkins起任务名字.png)
 
-#### 任务描述
+### 任务描述
 
 ![jenkins任务描述1](../.vuepress/public/images/Docker/jenkins/jenkins任务描述1.png)
 
@@ -229,7 +229,7 @@ docker run -d --name koa_server_container -p 3011:3010  johanbo/koa_server:v1.0.
 
 应用并保存
 
-#### 立即构建服务
+### 立即构建服务
 
 ![jenkins控制台输出](../.vuepress/public/images/Docker/jenkins/jenkins控制台输出.png)
 
@@ -253,7 +253,7 @@ app.use(async ctx => {
 
 ![jenkins部署成功](../.vuepress/public/images/Docker/jenkins/jenkins部署成功.png)
 
-### 总结
+## 总结
 
 在实际开发中其实踩了很多坑，虽然有很好的别人写过的教程，但自己动手做时却有各种限制，比如操作系统不同，秘钥，jenkins的SSH插件，jenkins里支持docker命令的插件集成问题等等
 
@@ -267,37 +267,12 @@ app.use(async ctx => {
 
 
 
-参考文章：
+## 参考文章
 
-1. 怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？
-
-https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms
-
-2. 【手把手系列之】Jenkins+Docker自动化部署vue项目
-
-https://juejin.im/post/6844903984419831815
-
-3. Failed to add SSH key. Message [invalid privatekey 问题
-
-http://www.wallcopper.com/linux/3689.html
-
-4. jenkins配置publish over ssh遇到的问题
-
-https://zhuanlan.zhihu.com/p/39549204
-
-5. Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow
-
-https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow
-
-
-
-参考视频：
-
-Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie
-
-https://www.youtube.com/watch?v=mszE-OCI2V4
-
-
-
-
+- [怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？](https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms)
+- [【手把手系列之】Jenkins+Docker自动化部署vue项目](https://juejin.im/post/6844903984419831815)
+- [Failed to add SSH key. Message “invalid privatekey” 问题](http://www.wallcopper.com/linux/3689.html)
+- [jenkins配置publish over ssh遇到的问题](https://zhuanlan.zhihu.com/p/39549204)
+- [Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow](https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow)
+- [Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie](https://www.youtube.com/watch?v=mszE-OCI2V4)
 

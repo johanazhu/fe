@@ -6,7 +6,7 @@
 
 ## 关于this
 
-### 1.1 为什么使用 this
+### 为什么使用 this
 
 我们解释一下为什么要使用this，用一个例子
 
@@ -55,7 +55,7 @@ speak(me) // Hello, I'm JOHAN
 
 看到这里你也许明白了，this 是一种更为优雅的”传递”对象引用的方式。这个例子还过于简单，当你遇到7.8个甚至10几个函数（或叫方法）之间的调用时，显式传值无疑会变得混乱。除此之外，在原型中，函数自动引入合适的上下文对象是极为重要的，这个我们放在原型章中在讲。
 
-### 1.2 this到底是什么
+### this到底是什么
 
 this到底是一种什么样的机制。
 
@@ -63,11 +63,11 @@ this到底是一种什么样的机制。
 2. this的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式
 3. 当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包含函数在哪里被调用（调用栈）、函数的调用方式、传入的参数等信息。this就是这个记录的一个属性，会在函数执行的过程中用到。
 
-## 2.调用位置
+## 调用位置
 
 正如上面所讲，this是在运行时绑定的，它的上下文取决于函数调用时的各个条件。在JavaScript中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，和使用apply或者call调用。下面我们按照调用方式不同，分别讨论 this 的含义
 
-#### 作为对象方法调用
+### 作为对象方法调用
 
 在 JavaScript中，函数也是对象，因此函数可以作为一个对象的属性，此时该函数被称为该对象的方法，在调用这种调用方式时，this 被自然绑定到该对象
 
@@ -82,7 +82,7 @@ var people = {
 people.sayName() // elaine
 ```
 
-#### 作为函数调用
+### 作为函数调用
 
 函数也可以直接被调用，此时 this 绑定到全局对象。在浏览器中，window 就是该全局对象。比如下面的例子：函数被调用时，this 被绑定到全局对象，接下来执行赋值语句，相当于隐式的声明了一个全局变量，这显然不是调用者希望的
 
@@ -151,7 +151,7 @@ age // 5
 
 可答案却让我匪夷所思，箭头函数难道不应该把this指向它的上一层吗？这个我们在后面会解释
 
-#### 作为构造函数调用
+### 作为构造函数调用
 
 JavaScript 支持面向对象式编程，与主流的面向对象式编程语言不同， JavaScript并没有类（Class）的概念，而是使用基于原型（prototype-base）的继承方式（ES6中的Class其实是原型继承的语法糖）。相应的，JavaScript中的构造函数也很特殊，如果不适用new调用，则和普通函数一样。作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用。如果调用正确，this绑定到新创建的对象上。
 
@@ -162,7 +162,7 @@ function People(name, age) {
 }
 ```
 
-#### 使用 apply 或 call 调用
+### 使用 apply 或 call 调用
 
 让我们再一次重申，在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。这两个方法异常强大，他们允许切换函数执行的上下文环境（context）,即 this 绑定的对象。很多 JavaScript 中的技巧以及类库都用到了该方法。让我们看一个具体的例子：
 
@@ -194,7 +194,7 @@ elaine.sayName.call(johan, 'johan1', 261)
 
 **call和apply具有掰弯this指向的能力**
 
-#### 箭头函数
+### 箭头函数
 
 与箭头函数相关的语法和特征我们会在ES6篇中着重描述，这里，我们只讲箭头函数与 this 的关系。在“作为函数调用”小节中我们使用箭头函数，试图让它绑定，但是却感觉错了
 
@@ -227,7 +227,7 @@ var foo = {
 foo.bar.a() // window
 ```
 
-## 3.函数的执行环境
+## 函数的执行环境
 
 我们之前一直在讲一件事，this是如何被调用的，也说了this是什么，那么我们来看看，一个函数被执行时会发生什么？
 
@@ -237,13 +237,13 @@ foo.bar.a() // window
 
 
 
-## 4.this有什么作用
+## this有什么作用
 
 全局执行上下文中：this 指向了 `window` 对象，方便我们来调用全局 `window` 对象
 
 函数执行上下文中：this 指向了调用该函数的对象，减少的参数的传递，原来如何需要在函数内部操作被调用对象，当然还需要将对象作为参数传递进去，而又了 `this`，就不需要了，直接拿 `this` 就可以操作该调用对象的属性
 
-## 5. 结语
+## 结语
 
 结语就留给后面的自己吧
 
@@ -304,11 +304,12 @@ this 是万恶之源，大家都是（词法）静态作用域，就他是动态
 
 
 
-### 参考资料
+## 参考资料
 
-[重学 this 关键字](https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247484231&idx=1&sn=36db9c6d78b541e73a40cf3e496691fe&chksm=f9910596cee68c80f6d81196644fe5e2ebf84a6e66b11df36276542aa6ab11135affcc23d662&mpshare=1&scene=1&srcid=&sharer_sharetime=1567987883759&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [重学 this 关键字](https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247484231&idx=1&sn=36db9c6d78b541e73a40cf3e496691fe&chksm=f9910596cee68c80f6d81196644fe5e2ebf84a6e66b11df36276542aa6ab11135affcc23d662&mpshare=1&scene=1&srcid=&sharer_sharetime=1567987883759&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
 
-[完整梳理 this 指向](https://mp.weixin.qq.com/s?__biz=MzA3MTI3Mjk3NA==&mid=2247483660&idx=1&sn=4cc5c66b988e79f39587af46f51b9e95&chksm=9f315e6da846d77b89863afbab30e3dc5d0396bac49aad6e7c9da72882ba378e782a8cd8f61b&mpshare=1&scene=1&srcid=&sharer_sharetime=1566956479051&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [完整梳理 this 指向](https://mp.weixin.qq.com/s?__biz=MzA3MTI3Mjk3NA==&mid=2247483660&idx=1&sn=4cc5c66b988e79f39587af46f51b9e95&chksm=9f315e6da846d77b89863afbab30e3dc5d0396bac49aad6e7c9da72882ba378e782a8cd8f61b&mpshare=1&scene=1&srcid=&sharer_sharetime=1566956479051&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
 
-[面试三板斧——this](https://mp.weixin.qq.com/s?__biz=MzI1MDU0Mjc4Mg==&mid=2247484550&idx=1&sn=af613bef12e5bc102c18ddf676f07a34&chksm=e981eb57def66241ae4bb7cc5e13ec1da19366c4c91d3e2e165fd1c5b1bdfad6ac16a7cbbf56&mpshare=1&scene=1&srcid=1125l5w8RfTcp1c9J9kwF8J3&sharer_sharetime=1606309812635&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=ace5dede87a40e70e8ec3f2b27f8d5f648045f478663a9b5bdb970b747a925858c239a1fadb7a1e65e20df924ad496d9cba48daffdb2519236be9316b87a50632a9c4921dbea221ee67b52f84f84c40366c3eb9f76a65d5626d5b01457cd9c07c8c506d8797fa045ff7eb415daf60cd87275db57cee345515e5b12a43d76e811&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=AeAM2n1g%2B%2Bpt8l519bMnx0E%3D&pass_ticket=NobQ5TAx7Olw6LadlkMu5zuU5DSWS1XhNGE4KCNN4gFe7KsugULfw02vrvAelJJ5&wx_header=0)
+- [面试三板斧——this](https://mp.weixin.qq.com/s?__biz=MzI1MDU0Mjc4Mg==&mid=2247484550&idx=1&sn=af613bef12e5bc102c18ddf676f07a34&chksm=e981eb57def66241ae4bb7cc5e13ec1da19366c4c91d3e2e165fd1c5b1bdfad6ac16a7cbbf56&mpshare=1&scene=1&srcid=1125l5w8RfTcp1c9J9kwF8J3&sharer_sharetime=1606309812635&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=ace5dede87a40e70e8ec3f2b27f8d5f648045f478663a9b5bdb970b747a925858c239a1fadb7a1e65e20df924ad496d9cba48daffdb2519236be9316b87a50632a9c4921dbea221ee67b52f84f84c40366c3eb9f76a65d5626d5b01457cd9c07c8c506d8797fa045ff7eb415daf60cd87275db57cee345515e5b12a43d76e811&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=AeAM2n1g%2B%2Bpt8l519bMnx0E%3D&pass_ticket=NobQ5TAx7Olw6LadlkMu5zuU5DSWS1XhNGE4KCNN4gFe7KsugULfw02vrvAelJJ5&wx_header=0)
+
 

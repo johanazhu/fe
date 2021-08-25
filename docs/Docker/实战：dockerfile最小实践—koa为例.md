@@ -1,6 +1,6 @@
 # 实战：dockerfile 最小实践——koa为例
 
-### 前言
+## 前言
 
 最小实践，意味着将链路打通，站在更高的层面看问题，问题就变得清晰，这一章，我将带你实现一个最简单的koa服务，并将其部署至服务器上。
 
@@ -8,7 +8,7 @@
 
 
 
-### 实现思路
+## 实现思路
 
 第一步：先启动一个 koa 应用，
 
@@ -30,7 +30,7 @@
 
 
 
-### 第一步：先启动一个 koa 应用
+## 第一步：先启动一个 koa 应用
 
 新建一个 dockerfile_koa_demo 文件，npm init -y 生成package.json。下载koa包，新建 app.js
 
@@ -82,7 +82,7 @@ npm run start
 
 
 
-### 第二步：写个Dockerfile文件
+## 第二步：写个Dockerfile文件
 
  新建一个 Dockerfile 文件
 
@@ -118,7 +118,7 @@ CMD ["node", "./app.js"]
 
 
 
-### 第三步：基于 dockerfile 生成镜像
+## 第三步：基于 dockerfile 生成镜像
 
 为了加快构建速度，我们先生成 `.dockerignore` ，并往里写上 `node_modules`
 
@@ -147,7 +147,7 @@ docker images
 
 
 
-### 第四步：基于此镜像生成一容器
+## 第四步：基于此镜像生成一容器
 
 命令行生成一容器
 
@@ -168,7 +168,7 @@ docker ps -a
 
 
 
-### 第五步：导出此镜像
+## 第五步：导出此镜像
 
 ```shell
 docker save johan/koa_server:v1.0.0 > koa_server.tar
@@ -178,7 +178,7 @@ docker save johan/koa_server:v1.0.0 > koa_server.tar
 
 
 
-### 第六步：在服务器上跑通
+## 第六步：在服务器上跑通
 
 这里我们假设服务器上已经安装了 docker 以及 lrzsz 包（本文具体不展开）
 
@@ -218,7 +218,7 @@ docker ps -a
 
 
 
-### 另一种方法第五步：上传镜像
+## 另一种方法第五步：上传镜像
 
 命令行登录 dockerhub（首先要先注册）
 
@@ -242,7 +242,7 @@ docker push johanbo/koa_server:v1.0.0
 
 
 
-### 另一种方法第六步：拉取镜像
+## 另一种方法第六步：拉取镜像
 
 登录服务器，并拉取镜像
 
@@ -267,7 +267,7 @@ docker run -d --name koa_server_container -p 3010:3010 johan/koa_server:v1.0.0
 
 
 
-### 后续
+## 后续
 
 你可以在 `dockerfile` 里配置你所需的环境变量，镜像生成的容器是个 "mini 服务器"，怎么倒腾都行，和整个服务器没有关系，所以你的应用不受环境影响。
 

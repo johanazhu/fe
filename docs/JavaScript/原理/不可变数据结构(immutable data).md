@@ -58,9 +58,10 @@ react 为什么不能直接修改 state？
 
 
 
-### 参考资料
+## 参考资料
 
-[不可变数据结构（immutable data）](https://github.com/sunyongjian/blog/issues/33)
+- [不可变数据结构（immutable data）](https://github.com/sunyongjian/blog/issues/33)
 
-[React 为什么不能直接修改state?](https://www.zhihu.com/question/440916294/answer/1715903878)
+- [React 为什么不能直接修改state?](https://www.zhihu.com/question/440916294/answer/1715903878)
+
 
