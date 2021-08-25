@@ -86,3 +86,13 @@ https://mp.weixin.qq.com/s/bMIIbfbJ1ETt7b419Oaukg
 
 
 之前豪哥说保存Token的方式不合适，但是怎么不合适了呢？本质都是验证用户信息而已
+
+
+
+## JWT
+
+
+
+使用nodejs 实现jwt原理
+
+https://mp.weixin.qq.com/s?__biz=MzI1ODE4NzE1Nw==&mid=2247488056&idx=1&sn=d07e95f60604aa2da9aee49b86e6cd5f&chksm=ea0d58c2dd7ad1d45e20a951b8847b63d597a99ade063014e20e79b23162e051ee06f68755d0&scene=126&sessionid=1600412234&key=d3c7cb8eeb23bc83968429e6896fb1b7aba49ba0d6a3b34aff3f5ccb37deb4cb883e7a341562d5ab59ff32b314a331abab775bccc7865ce6c364a77489f8bf91df735ca53b2b3a507b575204e29604b058962fba3a78d88dfc2a238dc84d35749b598b16d8077ecdc6928b0da8787889d8a64251fc1618d27a315f2e46696f5b&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=ATtLISQdbnnQU2A6%2BO3uCSY%3D&pass_ticket=G1%2BpLV9U7UxieEvoe8apJpgtIUKxkgKCK%2Fa%2B3TfiAiVfivJ091UXMCqZfVMTaBn2&wx_header=0

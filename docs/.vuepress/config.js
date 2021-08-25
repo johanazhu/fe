@@ -100,7 +100,7 @@ module.exports = {
             "/Koa2": nodeSideBar(),
             "/Express": nodeSideBar(),
             "/PM2": nodeSideBar(),
-            "/Mongoose": nodeSideBar(),
+            "/MongoDB": nodeSideBar(),
             "/Mysql": nodeSideBar(),
             "/Redis": nodeSideBar(),
             "/GO": nodeSideBar(),

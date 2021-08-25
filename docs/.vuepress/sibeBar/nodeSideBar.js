@@ -6,11 +6,13 @@ function nodeSideBar() {
             sidebarDepth: 0,
             children: [
                 "Node/",
+                "Node/Node基础.md",
+                "Node/事件触发器Events模块.md",
+                "Node/module模块.md",
+                "Node/npm.md",
                 "Node/脚手架.md",
-                "Node/cookie、session、token、jwt.md",
-                "Node/require和import.md",
-                "Node/export.md",
-                "Node/Node-mysql实践.md"
+                "Node/Restful.md",
+                "Node/session与JWT.md"
             ]
         },
         {
@@ -24,10 +26,8 @@ function nodeSideBar() {
                 "Koa2/对比Express、Koa.md",
                 "Koa2/手写koa2.md",
                 "Koa2/实战李瓶儿博客开发.md",
-                "Koa2/koa2+MongoDB+JWT实战.md",
                 "Koa2/Serverless+Egg.js后台管理系统实战.md",
-                "Koa2/Koa2开发微信小程序服务端笔记.md",
-                "Koa2/JWT.md"
+                "Koa2/Koa2开发微信小程序服务端笔记.md"
             ]
         },
         {
@@ -45,8 +45,8 @@ function nodeSideBar() {
             path: "Node/PM2.md"
         },
         {
-            title: "Mongoose",
-            path: "Node/Mongoose.md"
+            title: "MongoDB",
+            path: "Node/MongoDB.md"
         },
         {
             title: "Mysql",

@@ -1,87 +1,104 @@
-# Node
+# Node导航
 
 
 
-## Node 是什么
-
-Node 是 JavaScript 的一种运行环境，是一个基于 Chrome V8 引擎建立的一个平台。由于采用了事件驱动、非阻塞 I/O 的模型，Node 能够成为了构建轻量且高效的 Web 应用的理想选择
-
-
-
-## Node 全局对象
-
-在浏览器中，我们有 `document` 和 `window` 等全局对象；而 Node 只包含 ECMAScript 和 V8，不包含 BOM 和 DOM，因此 Node 中不存在 `document` 和 `window`；取而代之，Node 专属的全局对象是 `process`
-
-### JavaScript 全局对象的分类
-
-在此之前，我们先看一下 JavaScript 各个运行环境的全局对象的比较，如下图所示：
-
-![image-20210822180831780](https://i.loli.net/2021/08/22/HfksCreUZlO37Kx.png)
-
-可以看到 JavaScript 全局对象可以分为四类：
-
-1. 浏览器专属，例如 `window`、`alert` 等等；
-2. Node 专属，例如 `process`、`__dirname` 、`__filename` 等等
-3. 浏览器和 Node 共有，但是实现方式不同，例如 `console` 、`setTimeout` 、`setInterval`
-4. 浏览器和 Node 共有，并且属于 ECMAScript 语言定义的一部分，例如 `Date`、`String`、`promise` 等
-
-
-
-### Node 专属全局对象解析
-
-#### process进程
-
-process 全局对象可以说是 Node.js 的灵魂，它是管理当前 Node.js 进程状态的对象，提供了与操作系统的简单接口。
-
-##### 有哪些属性
-
-- `pid`：进程编号
-- `env`：系统环境变量
-- `argv`：命令行执行此脚本时的输入参数
-- `platform`：当前操作系统的平台
-
-> 提示
+> 我生来就是高山而非溪流，我欲于群峰之巅俯视平庸的沟壑。
 >
-> 可以在 Node REPL 中尝试一下这些对象。像上面说的那样进入 REPL（你的输出很有可能跟我的不一样）：
->
-> ```shell
-> $ node
-> Welcome to Node.js v12.10.0.
-> Type ".help" for more information.
-> > process.pid
-> 3
-> > process.platform
-> 'darwin'
-> ```
-
-#### Buffer
-
-`Buffer` 全局对象让 JavaScript 也能够轻松地处理二进数据流，结合 Node 的流接口（Stream），能够实现高效的二进制文件处理
-
-#### `__filename` 和 `__dirname`
-
-分别代表当前所运行 Node 脚本的文件路径和所在目录路径
+> 我生来就是人杰而非草芥，我站在伟人之肩藐视卑微的懦夫。
 
 
 
-#### module 模块
+一个 NodeJS 后端工程师需要掌握那些什么知识才能独胆一面呢？我的理解是能用 Node 写一段代码，运行在服务器上提供服务。要想做到这些，我们需要对 Node 有基本的认知，以及要学会基于 Node 的 Web 框架（express 或者 koa2），除此之外，我们还要知道数据库方面的知识，缓存相关的知识。有了这些我们就要部署一个项目，部署项目时，我们要知道 linux 、shell命令、怎么做 CI/CD，怎么部署一个项目等等
 
-Node 实现了一个简单模块记在系统。在 Node 中，文件和模块是一一对应的关系，可以理解为一个文件就是一个模块。其模块系统的实现主要依赖于全局对象 module，其中实现了 exports（导出）、require（加载）机制
-
-简单来说，commonJS 导出的是值的拷贝，而非值的引用，这与 [ES6中的模块化](../ES6/深入理解ES6模块机制.md)是不一样的
-
-具体可以跳转这里看 [Node中的模块机制](../Node中的模块机制.md) 
+Go、Python 都可以写后端，韩信点兵，多多益善。有了 Node 做基础，学 Go 很多东西一通百通
 
 
 
+​	
+
+## Node 基础
+
+[Node基础](./Node基础.md)
+
+**模块** 这里主讲两个模块
+
+- [Events模块](./事件触发器Events模块.md)
+  - Node 是事件驱动开发
+- [module模块](./module模块.md)
+  - CommonJS 规范
+  - require、module 和 exports
+
+[NPM](./npm.md)
+
+[脚手架](./脚手架.md)
 
 
-### 参考资料
 
-[一杯茶的时间，上手 Node.js](https://tuture.co/2019/12/03/892fa12/)
+## Web 后端开发
 
-[Node.js 后端工程师学习路径](https://github.com/tuture-dev/nodejs-roadmap)
+### Express
 
-[「万字整理 」这里有一份Node.js入门指南和实践,请注意查收](https://juejin.cn/post/6844904029219192839)
+待填写
 
-[一篇文章构建你的 NodeJS 知识体系](https://mp.weixin.qq.com/s/wezc-VpKOXilEnsHvSuU9g)
+
+
+### Koa
+
+- [Koa2从零到脚手架](../Koa2/README.md)
+
+- [手写koa](../Koa2/手写koa2.md)
+
+
+
+### [session与JWT](./session与JWT.md)
+
+### [Web API 设计](./Restful.md)
+
+
+
+
+
+
+
+
+
+## [Mysql](./Mysql.md)
+
+
+
+## [MongoDB](./MongoDB.md)
+
+
+
+## [Redis](./Redis.md)
+
+
+
+## [HTTP 协议](../HTTP/README.md)
+
+
+
+
+
+## 应用部署
+
+服务如何部署
+
+需要掌握 linus 知识
+
+shell
+
+CI/CD
+
+[PM2](./PM2.md)
+
+
+
+## 其他语言
+
+### [Go](./Go.md)
+
+
+
+
+

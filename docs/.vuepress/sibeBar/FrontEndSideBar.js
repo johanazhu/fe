@@ -30,7 +30,7 @@ function FrontEndSideBar() {
                 "/Koa2/",
                 "/Express/",
                 "/Node/PM2.md",
-                "/Node/Mongoose.md",
+                "/Node/MongoDB.md",
                 "/Node/Mysql.md",
                 "/Node/Redis.md",
                 "/Node/Go.md"
