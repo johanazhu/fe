@@ -1,24 +1,40 @@
 # Redis
 
-### 什么是Redis
+## 什么是Redis
 
-​	开源
+Redis 是一个开源（BSD许可）的内存数据结构存储，用作数据库，缓存和消息代理。
 
-​	Redis 是 Remote Dictionary Server(远程数据服务)的缩写
+它支持的数据结构：string，list，set，sorted set，hash
 
-​	Redis是 内存高速缓存数据库
-
-​	数据模型为 key-value
-
-​	多种数据结构： string，list  hash set sorted set
-
-​	可持久化，保证了数据安全
+- Redis 是由 C 语言写的
+- 数据模型为 key-value
 
 
 
 
 
-Redis 常见命令行
+## 特点
+
+- 速度快，因为数据存在内存中，类似于 HashMap
+  - HashMap的特点是查找和操作的时间复杂度为O(1)
+- 可持久化
+- 可用于缓存，消息，按 key 设置过期时间，过期后将自动删除
+
+
+
+
+
+## 应用场景
+
+目前的场景就是当作缓存用
+
+
+
+
+
+
+
+## 常见命令行
 
 | 命令名        | 描述          |
 | ------------- | ------------- |
@@ -31,7 +47,13 @@ Redis 常见命令行
 
 
 
-10分钟快速入门Redis
 
-https://github.com/jaywcjlove/handbook/blob/master/Redis/README.md
+
+## 实战
+
+到现在还没用到
+
+
+
+
 

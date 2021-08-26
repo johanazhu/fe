@@ -1,4 +1,12 @@
-# 对比Express、Koa
+# 对比Express、Koa2、Redux
+
+
+
+
+
+Koa 的 compose 能处理异步，Redux 的不能
+
+
 
 
 
@@ -8,3 +16,12 @@ https://mp.weixin.qq.com/s?__biz=MzIyNDU2NTc5Mw==&mid=2247484704&idx=1&sn=145e6b
 
 
 
+对比 Koa 和 Redux：分析前端中的中间件原理
+
+https://mp.weixin.qq.com/s/MDUs23Avf1yV_3VMCyZOrg
+
+
+
+深入理解洋葱模型
+
+https://mp.weixin.qq.com/s/L9cAdBZ9YDmtdEaX8v29jA
