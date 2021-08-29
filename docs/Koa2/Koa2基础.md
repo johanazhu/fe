@@ -23,6 +23,7 @@ Node 基本常识
 Koa2 是什么？
 
 - 用 NodeJS 写的 Web 框架
+- Koa 可被视为 nodejs 的 HTTP 模块的抽象
 
 
 

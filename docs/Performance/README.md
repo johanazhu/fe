@@ -9,6 +9,14 @@
 
 
 
+如何查看性能
+
+深入浅出 Performance 工具 & API
+
+https://mp.weixin.qq.com/s/VZ0evkv-2590-DCuBL-Zlw
+
+
+
 
 各种性能优化
 
@@ -61,6 +69,16 @@ https://zhuanlan.zhihu.com/p/78053275
 
 
 https://developers.weixin.qq.com/community/develop/article/doc/00062cad124c8867cf380f64156c13
+
+
+
+
+
+面试官：你知道的前端优化手段
+
+https://mp.weixin.qq.com/s/_PhDlEBUF7YhP0UpXdMX8A
+
+
 
 
 

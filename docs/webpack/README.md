@@ -9,6 +9,12 @@
 
 
 
+万字长文，带你从零学习 Webpack
+
+https://mp.weixin.qq.com/s/2rUjUM6Zfu1I7cjRUDschg
+
+
+
 我打算写一篇关于webpack的系列文章，从零到搭配极致的前端脚手架，技术栈是webpack+react。虽然网上有大把大把的资料和教程，但要么不全，要么简单。
 
 
