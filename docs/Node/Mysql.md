@@ -2,21 +2,44 @@
 
 
 
-### mysql安装步骤
-
-https://zhuanlan.zhihu.com/p/37152572
+## [mysql安装步骤](https://zhuanlan.zhihu.com/p/37152572)
 
 
 
-### 操作数据库
+## mysql介绍
 
-- ##### 建库
+- web server 中最流行的关系型数据库
+- 官网可免费下载，用于学习
+- 轻量级，易学易用
 
-- ##### 建表
 
-- ##### 表操作
 
-操作表
+## 命令行
+
+| 命令                                                         | 说明                                          |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| show databases                                               | 显示所有的数据库表                            |
+| create database blog                                         | 创建数据库                                    |
+| use blog                                                     | 使用数据库                                    |
+| show tables                                                  | 显示数据库中所有表                            |
+| show columns from customers                                  | 查看表结构                                    |
+| drop database blog                                           | 删除数据库                                    |
+| mysqldump -h localhost -u root -p blog > D:\blog.sql         | 导出数据库 blog 的结构和数据                  |
+| mysqldump -h localhost -u root -p blog -d> D:\blog_stru.sql  | 导出数据库 blog 的结构（加-d参数）            |
+| mysqldump -h localhost -u root -p blog customers > D:\customers.sql | 导出数据库 blog 中的 customers 表的结构和数据 |
+| mysql -h localhost -u root -p blog < D:\blog.sql             | 向数据库 blog 导入数据库文件 blog.sql         |
+
+
+
+## 操作数据库
+
+- 建库
+
+- 建表
+
+- 表操作
+
+### 操作表
 
 **增、删、改、查**
 
@@ -24,13 +47,13 @@ https://zhuanlan.zhihu.com/p/37152572
 
 
 
-增
+#### 增
 
 ```mysql
 insert into users(username, `password`, realname) values('lisi', '123', '李四')
 ```
 
-查
+#### 查
 
 查users表所有信息
 
@@ -70,9 +93,7 @@ select * from users where username like '%zhang%' order by id desc;
 
 ps：一般不用 * ，耗性能
 
-
-
-改
+#### 改
 
 更新 id为3的realname为张三
 
@@ -80,9 +101,7 @@ ps：一般不用 * ，耗性能
 update users set realname='张三' where id='3'
 ```
 
-
-
-删
+#### 删
 
 ```mysql
 delete from users where realname='李四'
@@ -104,24 +123,5 @@ SET SQL_SAFE_UPDATES=0;
 
 
 
-- mysql介紹、安裝和使用
-- nodejs连接mysql
-- API连接mysql
 
-为什么使用mysql而不是mogondb
 
-- mysql是企业内最常见的存储工具，一般都有专人运维
-- mysql也是社区内最常用的存储工具，有问题可以随时可查
-- 另：mysql本身是一个复杂的数据库软件，本课只讲基本使用
-
-#### mysql介绍
-
-- web server 中最流行的关系型数据库
-- 官网可免费下载，用于学习
-- 轻量级，易学易用
-
-mysql workbench 可视化数据库
-
-mysql命令
-
-show databases 显示所有的数据库表
