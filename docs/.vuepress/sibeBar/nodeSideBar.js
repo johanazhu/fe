@@ -24,7 +24,7 @@ function nodeSideBar() {
                 "Koa2/Koa2基础",
                 "Koa2/实战：Koa2从零到脚手架",
                 "Koa2/源码分析.md",
-                "Koa2/手写koa2.md",
+                "Koa2/手写Koa2.md",
                 "Koa2/对比Express、Koa2、Redux"
             ]
         },
