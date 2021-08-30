@@ -165,15 +165,17 @@ https://juejin.cn/post/6985058301184737287
 
 
 
-### 参考资料
+## 参考资料
 
-[virtual-dom-is-pure-overhead](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
+- [virtual-dom-is-pure-overhead](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
 
-[网上都说操作真实DOM慢...](https://www.zhihu.com/question/31809713)
-
-
+- [网上都说操作真实DOM慢...](https://www.zhihu.com/question/31809713)
 
 
 
 
 
+
+15张图，20分钟吃透Diff算法核心原理，我说的！！！
+
+https://juejin.cn/post/6994959998283907102
