@@ -46,7 +46,11 @@
 
 [Redis](../Node/Redis.md)
 
+[Python](../Node/Python)
+
 [Go](../Node/Go.md)
+
+[Nest.js](../Node/Nest.js)
 
 ## 大前端方面
 

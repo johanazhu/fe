@@ -8,6 +8,12 @@ https://segmentfault.com/a/1190000015615057
 
 
 
+从 setState 聊到 React 性能优化
+
+https://mp.weixin.qq.com/s/xb6mfgRTTSTEnfzk37aPEA
+
+
+
 
 
 https://segmentfault.com/blog/fedbj

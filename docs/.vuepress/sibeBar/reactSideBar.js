@@ -1,6 +1,6 @@
 function reactSideBar() {
   return [
-        {
+    {
       title: '常见面试题',
       collapsable: false,
       sidebarDepth: 0,
