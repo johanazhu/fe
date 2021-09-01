@@ -282,3 +282,9 @@ React.context应用了 render props 模式，什么是 render props 。传入的
 
 
 context 的问题，如何管理context对象
+
+
+
+React 系统复习如何做最高效
+
+https://mp.weixin.qq.com/s/0SBeDkpp_DYS8uAnYL3AiQ

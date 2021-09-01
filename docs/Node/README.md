@@ -8,7 +8,7 @@
 
 Go、Python 都可以写后端，韩信点兵，多多益善。有了 Node 做基础，学 Go 很多东西一通百通
 
-​
+
 
 ## Node 基础
 
@@ -22,9 +22,9 @@ Go、Python 都可以写后端，韩信点兵，多多益善。有了 Node 做�
   - CommonJS 规范
   - require、module 和 exports
 
-[NPM](./npm.md)
-
 [脚手架](./脚手架.md)
+
+[NPM](./npm.md)
 
 ## Web 后端开发
 
@@ -43,7 +43,7 @@ Go、Python 都可以写后端，韩信点兵，多多益善。有了 Node 做�
 
 ### [session 与 JWT](./session与JWT.md)
 
-### [Web API 设计](./Restful.md)
+### [Web API 设计](./RESTful.md)
 
 ## [Mysql](./Mysql.md)
 
@@ -62,6 +62,8 @@ Go、Python 都可以写后端，韩信点兵，多多益善。有了 Node 做�
 shell
 
 CI/CD
+
+swagger 把你的 api 设计为这个形式展示出来 
 
 [PM2](./PM2.md)
 
