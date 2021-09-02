@@ -1,4 +1,4 @@
-# 手写react系列
+# 手写React
 
 
 
@@ -114,7 +114,7 @@ createElement(tag, attrs, child1, child2, child3)
 
 
 
-## 组件和声明周期
+## 组件和生命周期
 
 
 

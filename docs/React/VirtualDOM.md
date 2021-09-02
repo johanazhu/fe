@@ -179,3 +179,11 @@ https://juejin.cn/post/6985058301184737287
 15张图，20分钟吃透Diff算法核心原理，我说的！！！
 
 https://juejin.cn/post/6994959998283907102
+
+
+
+
+
+谈谈对虚拟dom的理解
+
+https://mp.weixin.qq.com/s/GAviSEsBIsOturghONEZmw

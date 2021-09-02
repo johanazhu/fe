@@ -1,13 +1,20 @@
-# 应用篇：TodoList
+# TodoList
+
+
 
 最简单的应用大概就是TodoList
 
-余博伦
+- 普通版本
 
-普通的
 
-redux版的
+- redux版的
 
-mobx版的
 
-hook版的
+- mobx版的
+
+
+- hook版的
+
+- dva 版本
+
+- ts + hooks 版本

@@ -4,13 +4,37 @@
 
 MovMov 
 
+先做好了，再写文章
 
 
-模仿 TapTap 的布局
 
-PWA
+原型
 
-css 
+​	数据已经有了，需要展示什么部分，UI参考TapTap 的话需要做什么
+
+设计
 
 ​	bulma或者Tailwind 来做
+
+基础脚手架搭建 TypeScript + React Hooks + immuable 
+
+​	TypeScript 语法学习  
+
+​	React 以及 hooks的使用 
+
+​	相关的优化学习  
+
+​	immuable 数据不可变的学习
+
+TapTap默认的颜色取自海报颜色
+
+下拉更新这个
+
+数据缓存这点
+
+数据变多之后如何处理
+
+自动化发布
+
+PWA
 

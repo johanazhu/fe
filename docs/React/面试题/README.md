@@ -1,31 +1,91 @@
-# React 常见面试题
-
-setState() 将对组件state的更改排入队列，并通知React需要使用更新后的state重新渲染此组件及其子组件
-
-setState() 并不总是立即更新。他会批量推迟更新。为消除隐患，可以使用 componentDidUpdate 或者 setState 的回调函数
-
-this.setState为什么是异步的
-
-提高性能，react规定的
-
-vue修改属性也是异步的
-
-setState的过程
-
-调用React.component中的renderComponent函数，前后vnode对比，最终走向path(preVnode,newVnode)
-
-react Context
-
-渲染十万条数据
-https://mp.weixin.qq.com/s?__biz=MzU3Nzk3NDk5OQ==&mid=2247483836&idx=1&sn=31adbff9461dc2a1f90cb6b947e53fb4&chksm=fd7d2604ca0aaf12011800b7b08cb13d1e0dca01f9ec46a40edafb0d1c3f9a065ae0e38844cb&mpshare=1&scene=1&srcid=&sharer_sharetime=1572568998733&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+# 常见面试题
 
 
 
+知乎上有个问题：[如果进阿里前端，代码能力得达到什么程度？](https://www.zhihu.com/question/29191974/answer/1620274467)
+
+阿里官方的回答中，如果是个数量掌握 React 前端框架，了解技术底层的话，中高级的要求点是：
+
+- 能说明白为什么要实现fiber，以及可能带来的坑
+- 能说明白为什么要实现hook
+- 能说明白为什么要用immutable，以及用或者不用的考虑
+- 知道react不常用的特性，比如context，portal
+- 能用自己的理解说明白react like框架的本质，能说明白如何让这些框架共存
+- 能设计出框架无关的技术架构。包括但不限于：
+- 说明如何解决可能存在的冲突问题，需要结合实际案例。
+- 能说明架构分层逻辑、各层的核心模块，以及核心模块要解决的问题。能结合实际场景例举一些坑或者优雅的处理方案则更佳
+- 看过全家桶源码，不要求每行都看，但是知道核心实现原理和底层依赖。能口喷几行关键代码把对应类库实现即达标
+- 能从数据驱动角度透彻的说明白 redux，能够口喷原生 js 和 redux 结合要怎么做
+- 能结合 redux，vuex，mobx 等数据流谈谈自己对 vue 和 react 的异同
+- 有基于全家桶构建复杂应用的经验，比如最近很火的微前端和这些类库结合的时候要注意什么，会有什么坑，怎么解决
 
 
-#### 为什么 constructor 里要调用 super 和传递 props？
 
-这是官网的一段代码，具体见：状态（State） 和 生命周期（https://zh-hans.reactjs.org/docs/state-and-lifecycle.html）
+一看，我就谎的一逼，这就是中高级前端的标准，你达标了吗？
+
+
+
+## 常见题
+
+Q：函数式组件与 class 组件的区别
+
+A：水水水水
+
+Q：为什么不能在循环中调用 hooks？react 中为什么不能在 for 循环、if 语句里使用 hooks，说下 react hooks 实现原理。
+
+A：
+
+Q：渲染十万条数据解决方案
+
+A：[渲染十万条数据解决方案](./渲染十万条数据解决方案.md)
+
+Q：请问 Fiber 是什么？
+
+A：
+
+Q：怎么做性能优化
+
+A：主要用React.memo、React.useCallback、React.usememo 的作用
+
+Q：请问 setState 是异步还是同步？为什么？追问什么事件可以触发异步，什么会触发同步
+
+A：转到 setState 方面解答
+
+Q：请问 React 从本页面跳转至其他站点页是否会执行 unmount？为什么
+
+A：
+
+Q：请问 React 中的 错误捕获
+
+A：转 异步捕获 方面
+
+Q：请问 React.Router的模式
+
+A：共三种模式，手写一个
+
+Q：请问 Dva 的知识点？与 namespce 同层的参数有哪些？
+
+A：
+
+Q：请问 React/ Vue 之类的框架为什么需要给组件添加 key 属性，其作用是什么？
+
+A：
+
+Q：考虑过 React 、 Vue 这类的框架为什么要用 Virtual DOM 机制吗？
+
+A：
+
+Q：请求 Redux 的原理是什么？你能手写一个 Redux 吗？
+
+A：
+
+Q：你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
+
+A：
+
+Q：为什么 constructor 里要调用 super 和传递 props？
+
+A：这是官网的一段代码，具体见：[状态（State） 和 生命周期](https://zh-hans.reactjs.org/docs/state-and-lifecycle.html)
 
 ```jsx
 class Clock extends React.Component {
@@ -33,7 +93,6 @@ class Clock extends React.Component {
         super(props);
         this.state = { date: new Date() };
     }
-    
     render() {
         return (
         	<div>
@@ -49,11 +108,11 @@ class Clock extends React.Component {
 
 不知道你有没有疑惑为什么要调用 `super` 和传递 `props`，接下来我们来揭开谜题吧
 
-##### 为什么要调用super
+**为什么要调用 super**
 
 其实这不是 React 的限制，这是 JavaScript 的限制，在构造函数里如果要调用 this，那么提前就要调用 super，在 React 里，我们常常会在构造函数里初始化 state ，`this.state = xxx` ,所以需要调用 super
 
-##### 为什么要传递 props
+**为什么要传递 props**
 
 你可以能以为必须给 `super` 传入 `props` ,否则 `React.Component` 就没办法初始化 `this.props`
 
@@ -66,9 +125,9 @@ class Component {
 }
 ```
 
-不过，如果你不小心漏传了 `props` ，直接调用了 `super()` ,你仍然可以在 `render` 和其他方法中访问 `this.props` 
+不过，如果你不小心漏传了 `props` ，直接调用了 `super()` ，你仍然可以在 `render` 和其他方法中访问 `this.props` 
 
-无名氏这样也行？**因为 React 会在构造函数被调用之后，会把 props 赋值给刚刚创建的实例对象**
+难道这样也行？**因为 React 会在构造函数被调用之后，会把 props 赋值给刚刚创建的实例对象**
 
 ```javascript
 const instance = new YourComponent(props);
@@ -110,65 +169,33 @@ class Button extends React.Component {
 }
 ```
 
+Q：为什么调用方法要 bind this？
+
+A：四种写实践的写法
+
+Q：请问 React 有什么坑点？
+
+A：
+
+1. JSX做表达式判断时，需要强转未boolean类型，如：
 
 
-#### 为什么调用方法要 bind this？
-
-四种写实践的写法
-
-
-
-#### 为什么要 setState，而不是直接 this.state.xx = oo?
-
-我们知道在 vue 中的修改状态是可以直接修改的。为什么在react中不行
-
-因为 setState 做的事情不仅只是修改了 `this.state` 的值，另外最重要的是它会出发 React的更新机制，会进行diff，然后将 patch 部分更新到真实 dom 里。
-
-如果你直接 `this.state.xx = oo` 的话，state 的值确实会改，但是改了不会触发 UI 的更新，那就不是数据驱动了。
-
-那为什么Vue直接修改 data 可以触发 UI 的更新呢？ 因为 Vue 在创建 UI 的时候会把这些 data 给收集起来，并且在这些 data 的访问器属性 setter 进行了重写，在这个重写的方法里会去触发 UI 的更新
-
-
-
-#### setState 是同步还是异步相关问题
-
-1. setState 是同步还是异步？
-
-我的会带是执行过程代码同步，只要合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，所以表现出来有时候同步，有时候异步
-
-2. 何时是同步，何时是异步？
-
-只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout/setInterval 等原生API 中都是同步到。简单的可以理解为被 React 控制的函数里面就会表现出“异步”，反之表现为同步。
-
-3. 那为什么会出现异步的情况呢？
-
-为了做性能优化，将 state 的更新延缓到最后批量合并再去渲染，对于应用的性能优化有极大好处。如果每次的状态更改都去重新渲染真实 dom，那么它将带来巨大的性能消耗
-
-4. 那如何在表现出异步的函数里可以准确拿到更新后的 state 呢？
-
-通过第二个参数 `setState(partialState, callback)` 中的 callback 拿到更新后的结果
-
-或者可以直接给 state 传递函数来表现出同步的情况
-
-```javascript
-this.setState((state) => {
-    return { val: newVal }
-})
+```jsx
+render() {
+    const b = 0;
+    return (
+    	<div>
+        	{
+                !!b && <div>这是一段文字</div>
+            }
+        </div>
+    )
+}
 ```
 
-5. 那表现出异步的原理是怎么样的？
+如果不使用!!b 进行强转数据类型，会在页面里面输出 0
 
-直接讲源码肯定篇幅不够，可以看这篇文章：你真的理解setState吗？。
-
-我这里还是用最简单的语言让你理解：在 React 的 setState 函数实现中，会根据 isBatchingUpdates(默认是 false) 变量判断是否直接更新 this.state 还是放到队列中稍后更新。然后有一个 batchedUpdate 函数，可以修改 isBatchingUpdates 为 true，当 React 调用事件处理函数之前，或者生命周期函数之前就会调用 batchedUpdate 函数，这样的话，setState 就不会同步更新 this.state，而是放到更新队列里面后续更新。
-
-这样你就可以理解为什么原生事件和 setTimeout/setinterval 里面调用 this.state 会同步更新了吧，因为通过这些函数调用的 React 没办法去调用 batchedUpdate 函数将 isBatchingUpdates 设置为 true，那么这个时候 setState 的时候默认就是 false，那么就会同步更新。
-
-
-
-
-
-资料来源处：https://mp.weixin.qq.com/s?__biz=MzI1ODk2Mjk0Nw==&mid=2247484614&idx=1&sn=a2b5050136c2cd5e00db90a6cc8daaed&chksm=ea0167aadd76eebc0af31bf8de9ee7e5a35ecdb9e19045f5f36a0e5f8e3ae28e25e58eec0994&mpshare=1&scene=1&srcid=&sharer_sharetime=1567645123897&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+2. 如果key不变，数据就不会变，如果两列数据为[1, 2, 3] ,[1, 2, 3, 4, 5, 6]点击第一组数据中的任意项，此数据标红，且展示第二组数据，如果展示UI时，key为index，那么前三是不会被替换的，你看的会是数据标红了且是第二条数据
 
 
 
@@ -176,42 +203,14 @@ this.setState((state) => {
 
 
 
-35 道咱们必须要清除的 React 面试题
-
-https://juejin.im/post/5dc20a4ff265da4d4e30040b
 
 
+## 参考资料
 
+- [如果进阿里前端，代码能力得达到什么程度？](https://www.zhihu.com/question/29191974/answer/1620274467)
+- [金三银四 React 常见面试题](https://juejin.cn/post/6940287134154637326)
+- [一年半经验，百度、有赞、阿里前端面试总结](https://github.com/yacan8/blog/issues/18)
+- [React 灵魂 23 问，你能答对几个？](https://zhuanlan.zhihu.com/p/304213203)
+- [35 道咱们必须要清楚的 React 面试题](https://juejin.cn/post/6844903988073070606)
+- [新手学习 react 迷惑的点(完整版)](https://mp.weixin.qq.com/s?__biz=MzI1ODk2Mjk0Nw==&mid=2247484614&idx=1&sn=a2b5050136c2cd5e00db90a6cc8daaed&chksm=ea0167aadd76eebc0af31bf8de9ee7e5a35ecdb9e19045f5f36a0e5f8e3ae28e25e58eec0994&mpshare=1&scene=1&srcid=&sharer_sharetime=1567645123897&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
 
-
-
-
-React/ Vue.js 之类的框架为什么需要给组件添加 key 属性，其作用是什么？
-
-考虑过 Vue.js 、React 这类的框架为什么要用 Virtual DOM 机制吗？
-
-
-
-
-
-React 灵魂 23 问，你能答对几个？
-
-https://mp.weixin.qq.com/s?__biz=MzUxNzk1MjQ0Ng==&mid=2247489463&idx=1&sn=54685960428f0200f9b5feefcbec17fa&chksm=f9911166cee69870649aa9574b8323822171f323a56dbf35a771ef3b09e36618213af22c34a1&mpshare=1&scene=1&srcid=1226VWv8GV4DKOkyw4QbnpCs&sharer_sharetime=1608993330571&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=29495e6e9fe7db1332e70d9524a74e41d4d0c93d8fa5f5ec5a05346bb39236f7a9b3614592b7ef36de44b6c51630cfa40c7741b0e70dc0a88ca86fbe2f5f74884dcc672c36345c47599a28af854bb3d826406e7179e57648abb69fa1e9bede820fe384081142594ab838397703b96455c466febfc679686186fa8678acb1d31a&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=Ac5bf8x4Fy6tMd51aRl4TBM%3D&pass_ticket=J2WTHwIBT%2FJbeW7JkzLq0631o0mfN%2FqbP77GajCs5BGOPgD7rmOGeIBuggO%2FztSy&wx_header=0
-
-
-
-金三银四 React 常见面试题
-
-https://juejin.cn/post/6940287134154637326
-
-
-
-不能修葺的房子
-
-https://mp.weixin.qq.com/s/APqvWcqhT5GSYsho_-sEtA
-
-
-
-谈谈对虚拟dom的理解
-
-https://mp.weixin.qq.com/s/GAviSEsBIsOturghONEZmw
