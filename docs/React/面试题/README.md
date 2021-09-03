@@ -27,63 +27,201 @@
 
 ## 常见题
 
-Q：函数式组件与 class 组件的区别
-
-A：水水水水
-
-Q：为什么不能在循环中调用 hooks？react 中为什么不能在 for 循环、if 语句里使用 hooks，说下 react hooks 实现原理。
-
-A：
-
-Q：渲染十万条数据解决方案
+### Q：渲染十万条数据解决方案
 
 A：[渲染十万条数据解决方案](./渲染十万条数据解决方案.md)
 
-Q：请问 Fiber 是什么？
+### Q：请问 Fiber 是什么？
 
 A：
 
-Q：怎么做性能优化
+
+
+### 组件
+
+#### **Q：函数式组件与 class 组件的区别**
+
+A：水水水水
+
+#### Q：React 有哪几种创建组件的方式？有什么区别
+
+A：
+
+#### Q：React 组件间有哪些通讯方式？
+
+A：
+
+#### Q：父组件如何调用子组件中的方法？
+
+A：
+
+#### Q：React 如何区分 class 组件 和 Function 组件
+
+A：
+
+
+
+### 性能优化
+
+#### Q：在 React 中可以做哪些性能优化
+
+类组件
+
+函数式组件
+
+其他方式
 
 A：主要用React.memo、React.useCallback、React.usememo 的作用
 
-Q：请问 setState 是异步还是同步？为什么？追问什么事件可以触发异步，什么会触发同步
+#### Q：请问 React/ Vue 之类的框架为什么需要给组件添加 key 属性，其作用是什么？
+
+A：唯一性
+
+
+
+### state & setState
+
+#### Q：请问 setState 是异步还是同步？为什么？
 
 A：转到 setState 方面解答
 
-Q：请问 React 从本页面跳转至其他站点页是否会执行 unmount？为什么
+#### Q：什么事件可以触发异步，什么会触发同步？
 
 A：
 
-Q：请问 React 中的 错误捕获
+#### Q：state 更新之后发生了什么
 
-A：转 异步捕获 方面
+A：
 
-Q：请问 React.Router的模式
+#### Q：调用 setState 之后发生了什么
+
+A：
+
+#### Q：在 shouldComponentUpdate 或 componentWillUpdate 中使用 setState 会发生什么？
+
+A：
+
+#### Q：为什么不能直接使用 this.state 改变数据
+
+A：
+
+
+
+### Hooks
+
+#### Q：你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
+
+A：
+
+#### Q：为什么不能在循环中调用 hooks？或者说为什么不能在 for 循环、if 语句里使用 hooks？
+
+A：
+
+#### Q：React hooks，他带来了哪些便利
+
+A：
+
+#### Q：列举几个常用的 Hook
+
+A：
+
+#### Q：说下 React hooks 实现原理
+
+A：
+
+#### Q：React Hooks 当中的 useEffect 是如何区分生命周期钩子的
+
+
+
+### Virtual DOM
+
+#### Q：React 的 Virtual dom 是怎么实现的？
+
+A：
+
+#### Q：考虑过 React 、 Vue 这类的框架为什么要用 Virtual DOM 机制吗？
+
+A：
+
+
+
+### Q：简单介绍下 diff 算法
+
+A：
+
+
+
+
+
+### React中的事件机制
+
+#### Q：简述下 React 的事件代理机制
+
+A：
+
+#### Q：React 的事件代理机制和原生事件绑定有什么区别？
+
+A：
+
+#### Q：React 的事件代理机制和原生事件绑定混用会有什么问题？
+
+A：
+
+#### Q：React 中如果绑定事件使用匿名函数会怎么样？
+
+A：
+
+
+
+### 生态相关
+
+#### Q：Reudx 是什么
+
+A：
+
+#### Q：请求 Redux 的原理是什么？你能手写一个 Redux 吗？
+
+A：
+
+#### Q：React-redux 的实现原理
+
+A：
+
+#### Q：Redux 和 mobx 的区别
+
+A：
+
+#### Q：Redux 异步中间件有什么用？
+
+A：
+
+#### Q：请问 React.Router 的模式
 
 A：共三种模式，手写一个
 
-Q：请问 Dva 的知识点？与 namespce 同层的参数有哪些？
+#### Q：请问 Dva 的知识点？与 namespce 同层的参数有哪些？
 
 A：
 
-Q：请问 React/ Vue 之类的框架为什么需要给组件添加 key 属性，其作用是什么？
+
+
+### Q：请问 React 从本页面跳转至其他站点页是否会执行 unmount？为什么
 
 A：
 
-Q：考虑过 React 、 Vue 这类的框架为什么要用 Virtual DOM 机制吗？
+### Q：请问 React 中的 错误捕获
+
+A：转 异步捕获 方面
+
+### Q：错误边界是什么？它有什么用？
 
 A：
 
-Q：请求 Redux 的原理是什么？你能手写一个 Redux 吗？
 
-A：
 
-Q：你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
 
-A：
 
-Q：为什么 constructor 里要调用 super 和传递 props？
+### Q：为什么 constructor 里要调用 super 和传递 props？
 
 A：这是官网的一段代码，具体见：[状态（State） 和 生命周期](https://zh-hans.reactjs.org/docs/state-and-lifecycle.html)
 
@@ -169,15 +307,47 @@ class Button extends React.Component {
 }
 ```
 
-Q：为什么调用方法要 bind this？
+### Q：为什么调用方法要 bind this？
 
 A：四种写实践的写法
 
-Q：请问 React 有什么坑点？
+
+
+### Q：简述下 React 的生命周期？每个声明周期都做了什么？
 
 A：
 
-1. JSX做表达式判断时，需要强转未boolean类型，如：
+### Q：React 中的 ref 是干嘛的？
+
+A：
+
+### Q：connect 原理
+
+A：
+
+### Q：什么是 Portals？
+
+A：
+
+### Q：什么是 suspense 组件？
+
+A：
+
+### Q：为什么React 元素有一个 $$typeof 属性？
+
+A：
+
+### Q：为什么 JSX 中的组件名要以大写字母开头
+
+A：判断当前渲染的元素是组件还是 HTML 元素
+
+
+
+### Q：请问 React 有什么坑点？
+
+A：
+
+1. JSX做表达式判断时，需要强转未 boolean 类型，如：
 
 
 ```jsx
@@ -196,6 +366,10 @@ render() {
 如果不使用!!b 进行强转数据类型，会在页面里面输出 0
 
 2. 如果key不变，数据就不会变，如果两列数据为[1, 2, 3] ,[1, 2, 3, 4, 5, 6]点击第一组数据中的任意项，此数据标红，且展示第二组数据，如果展示UI时，key为index，那么前三是不会被替换的，你看的会是数据标红了且是第二条数据
+
+
+
+
 
 
 
