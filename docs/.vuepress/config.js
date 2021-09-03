@@ -151,7 +151,7 @@ module.exports = {
         options: {
           clientID: '4686cfa8a5bef7222000',
           clientSecret: '563d381c24ec5979c421b700ccd0920277c9c3a6',
-          repo: 'fe',
+          repo: 'fe-comments',
           owner: 'johanazhu',
           admin: ['johanazhu'],
           distractionFreeMode: false,
