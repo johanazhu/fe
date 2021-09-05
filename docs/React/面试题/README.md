@@ -131,6 +131,12 @@ A：
 
 #### Q：React Hooks 当中的 useEffect 是如何区分生命周期钩子的
 
+A：
+
+#### Q：useEffect(fn, []) 和 componentDidMount 有什么差异
+
+A：
+
 
 
 ### Virtual DOM
@@ -140,6 +146,10 @@ A：
 A：
 
 #### Q：考虑过 React 、 Vue 这类的框架为什么要用 Virtual DOM 机制吗？
+
+A：
+
+#### Q：为什么 Virtual dom 会提高性能？
 
 A：
 
@@ -202,6 +212,20 @@ A：共三种模式，手写一个
 #### Q：请问 Dva 的知识点？与 namespce 同层的参数有哪些？
 
 A：
+
+
+
+### 生命周期
+
+#### Q：简述下 React 的生命周期？每个声明周期都做了什么？
+
+A：
+
+#### Q：聊聊 React 16.4 + 的生命周期
+
+A：
+
+
 
 
 
@@ -313,9 +337,7 @@ A：四种写实践的写法
 
 
 
-### Q：简述下 React 的生命周期？每个声明周期都做了什么？
 
-A：
 
 ### Q：React 中的 ref 是干嘛的？
 
@@ -340,6 +362,12 @@ A：
 ### Q：为什么 JSX 中的组件名要以大写字母开头
 
 A：判断当前渲染的元素是组件还是 HTML 元素
+
+
+
+### Q：React 17、React 18 有什么新的特性
+
+A：
 
 
 
@@ -385,6 +413,5 @@ render() {
 - [金三银四 React 常见面试题](https://juejin.cn/post/6940287134154637326)
 - [一年半经验，百度、有赞、阿里前端面试总结](https://github.com/yacan8/blog/issues/18)
 - [React 灵魂 23 问，你能答对几个？](https://zhuanlan.zhihu.com/p/304213203)
-- [35 道咱们必须要清楚的 React 面试题](https://juejin.cn/post/6844903988073070606)
 - [新手学习 react 迷惑的点(完整版)](https://mp.weixin.qq.com/s?__biz=MzI1ODk2Mjk0Nw==&mid=2247484614&idx=1&sn=a2b5050136c2cd5e00db90a6cc8daaed&chksm=ea0167aadd76eebc0af31bf8de9ee7e5a35ecdb9e19045f5f36a0e5f8e3ae28e25e58eec0994&mpshare=1&scene=1&srcid=&sharer_sharetime=1567645123897&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
 
