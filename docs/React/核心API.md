@@ -12,20 +12,24 @@
 
 [Component](#Component)
 
-- 组件，React
+- 构建组件的基类
 
 [PureComponent](#PureComponent)
 
-- 与 Component 不同的点在于，它进行了浅对比
-- 即 shouldComponentUpdate 的操作
+- 与 Component 不同的点在于，它进行了浅对比，即 shouldComponentUpdate 的操作
 
 [memo](#memo)
+
+- 高阶组件
+- 缓存操作
 
 
 
 ### Refs
 
 [createRef](#createRef)
+
+- 创建一个能够通过 ref 属性附加到 React 元素的 ref 
 
 [forwardRef](#forwardRef)
 
@@ -74,7 +78,7 @@
 
 [React.Children](#React.Children)
 
-- map、forEach、count、toArray、only
+- map、forEach、count、only、toArray
 
   
 
@@ -216,17 +220,195 @@ const ref = React.createRef();
 
 
 
+### Fragment
+
+React.Fragment 组件能够在不额外创建 DOM 元素的情况下，让 render() 方法返回多个元素
+
+```react
+render() {
+  return (
+    <React.Fragment>
+      Some text.
+      <h2>A heading</h2>
+    </React.Fragment>
+  );
+}
+```
+
+你也可以使用其简写语法 `<></>`。React v16.2.0 以上支持
+
+### lazy
+
+lazy 允许你定义一个动态加载的组件。这有助于缩减 bundle 的体积，并延迟加载在初次渲染时未用到的组件
+
+```react
+// 这个组件是动态加载的
+const SomeComponent = React.lazy(() => import('./SomeComponent'));
+```
+
+请注意，渲染 lazy 组件依赖该组件渲染树上层的 `<React.Suspense>` 组件。这是指定加载指示器（loading indicator）的方法
+
+React.lazy 接受一个函数，这个函数需要动态调用 import()。它必须返回一个 Promise，该 Promise 需要 resolve 一个 default export 的 React 组件
+
+> 注意
+>
+> 使用 React.lazy 的动态引入特征需要 JS 环境支持 Promise。在 IE11 及以下版本的浏览器中需要引入 polyfill 来使用该特征
+
+### Suspense
+
+React.Suspense 可以指定加载指示器（loading indicator），以防其组件树种的某些子组件尚未具备渲染条件，目前，懒加载组件是 `React.Suspense` 支持的唯一用例：
+
+```react
+// 该组件是动态加载的
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    // 显示 <Spinner> 组件直至 OtherComponent 加载完成
+    <React.Suspense fallback={<Spinner />}>
+      <div>
+        <OtherComponent />
+      </div>
+    </React.Suspense>
+  );
+}
+```
+
+fallback 属性接受任何在组件加载过程中你想展示的 React 元素，你可以将 Suspense 组件置于懒加载组件之上的任何位置。你甚至可以用一个 Subspense 组件包裹多个懒加载组件
+
+```react
+import React, { Suspense } from 'react';
+
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <section>
+          <OtherComponent />
+          <AnotherComponent />
+        </section>
+      </Suspense>
+    </div>
+  );
+}
+```
 
 
 
+### createElement
 
-## Context
+我们使用的 JSX 语法，是 createElement 的语法糖
+
+```javascript
+React.createElement(
+	type,
+    [props],
+    [...children]
+)
+```
+
+创建并返回指定类型的新 React 元素。其中类型参数既可以是标签名、字符串（如 'div' 或 ‘span'），也可以是 React 组件类型（class组件或函数组件），亦或是 React.Frament 类型
+
+
+
+### createFactory
+
+```react
+React.createFactory(type)
+```
+
+返回用于生成指定类型 React 元素的函数
+
+现已废弃
+
+
+
+### cloneElement
+
+```javascript
+React.cloneElement(
+	element,
+    [config],
+    [...children]
+)
+```
+
+以 element 元素为样板克隆并返回新的 React 元素。config 中应包含新的 props，key 或 ref。返回元素的 props 是将新的 props 与原始元素的 props 浅层合并后的结果。新的子元素将取代现有的子元素，如果在 config 中未出现 key 或 ref，那么原始元素的 key 和 ref 将被保留
+
+React.cloneElement() 几乎等同于：
+
+```react
+<element.type {...element.props} {...props}>{children}</element.type>
+```
+
+
+
+### isValidElement
+
+```react
+React.isValidElement(object)
+```
+
+验证对象是否为 React 元素，返回值为 true 或 false
+
+
+
+### Children
+
+React.Children 提供了用于处理 this.props.children 不透明数据结构的使用方法
+
+#### React.Children.map
+
+```react
+React.Children.map(children, function[(thisArg)])
+```
+
+在 children 里的每个直接子节点上调用一个函数，并将 this 设置为 thisArg。如果 children 是一个数组，它将被遍历并为数组中的每个子节点调用该函数。如果子节点为 null 或是 undefined，则此方法将放回 null 或是 undefined，而不会返回数组
+
+#### React.Children.forEach
+
+```react
+React.Children.forEach(children, function[(thisArg)])
+```
+
+与 React.Children.map() 类似，但它不会返回一个数组
+
+#### React.Children.count
+
+```react
+React.Children.count(children)
+```
+
+返回 children 中的组件总数量
+
+#### React.Children.only
+
+```react
+React.Children.only(children)
+```
+
+验证 children 是否只有一个子节点（一个 React 元素），如果有则返回它，否则此方法会抛出错误
+
+#### React.Children.toArray
+
+```react
+React.Children.toArray(children)
+```
+
+将 children 这个复杂的数据结构以数组的方式扁平展开并返回，并为每个子节点分配一个 key。当你想要在渲染函数中操作子节点的集合时，它会非常使用
+
+
+
+### Context
 
 Context 提供了一个无需为每层组件手动添加 props，就能在组件数间进行数据传递的方法
 
 
 
-### 使用方法
+#### 使用方法
 
 1. 先注册一个变量
 
@@ -256,7 +438,7 @@ Provider负责提供context，而Consumer用来消费Provider提供的context
 
 
 
-## Portals
+### Portals
 
 Protal 提供了一种将子节点但渲染到父组件意外的 DOM 节点的方案
 
@@ -272,7 +454,7 @@ React.createPortal(child, container)
 
 
 
-## lazy
+
 
 
 
