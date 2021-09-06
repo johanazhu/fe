@@ -12,6 +12,12 @@ src 地址已经给了
 
 
 
+
+
+TapTap 是给颜色的
+
+
+
 https://juejin.cn/post/6844903509784002573
 
 
@@ -56,31 +62,23 @@ https://juejin.cn/post/6844904147746029581
 
 
 
-
-
-
-
-TapTap 是给颜色的
-
-
-
-
-
-
-
-
-
-
-
 https://api.unsplash.com/photos
 
 用这个来模拟个类似的效果，ok了
 
 
 
+
+
+
+
 总结：
 
 一个效果，包含了多个技术点
+
+先是 js 的懒加载
+
+然后是 react 的懒加载应用（调用 unsplash api + hooks）
 
 
 

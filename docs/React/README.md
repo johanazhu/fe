@@ -23,7 +23,7 @@
 
 ## React各种知识点
 
-- [React 介绍](./React介绍.md)
+- [React 快速了解](./React快速了解.md)
 - [核心 API](./核心API.md)
   - Component
   - pureComponent

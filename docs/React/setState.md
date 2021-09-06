@@ -2,6 +2,24 @@
 
 
 
+setState：这个API设计到底怎么样
+
+https://zhuanlan.zhihu.com/p/25954470
+
+
+
+setState为什么不会同步更新组件状态
+
+https://zhuanlan.zhihu.com/p/25990883
+
+
+
+setState何时同步更新状态
+
+https://zhuanlan.zhihu.com/p/26069727
+
+
+
 浅入深出setState
 
 https://segmentfault.com/a/1190000015615057
