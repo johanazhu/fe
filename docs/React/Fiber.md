@@ -141,3 +141,10 @@ fiber 到底有多细
 
 https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw
 
+
+
+你不知道的 React Virtual DOM
+
+这里也讲到了 Fiber
+
+https://juejin.cn/post/6985058301184737287#heading-4
