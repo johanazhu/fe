@@ -2,6 +2,21 @@
 
 
 
+对比 Diff 的话，最有的算法时间复杂度为 O(n3)
+
+React 在以下两个假设的基础上提出了一套 O(n) 的启发式算法
+
+1. 两个不同类型的元素会产生不同的树
+2. 开发者可以通过设置 key 属性，来告知渲染哪些子元素在不同的渲染树下可以保持不变
+
+
+
+完全对比O(n3)无法接受，故降级为同层对比的 O(n)方案
+
+为什么降级可行？因为跨层级很少法神可以忽略
+
+
+
 diff算法
 
 什么是diff算法
@@ -39,21 +54,12 @@ diff实现过程
 
 
 
-DIff算法看不懂就一起来锤我(带图)
 
-https://mp.weixin.qq.com/s/XRR9afpujcjbgFZM0Zw6Gw
+## 参考资料
 
+[DIff算法看不懂就一起来锤我(带图)](https://mp.weixin.qq.com/s/XRR9afpujcjbgFZM0Zw6Gw)
 
+[15张图，20分钟吃透Diff算法核心原理](https://juejin.cn/post/6994959998283907102)
 
-
-
-15张图，20分钟吃透Diff算法核心原理，我说的！！！
-
-https://juejin.cn/post/6994959998283907102
-
-
-
-精度 dom diff 原理详解
-
-https://github.com/ascoders/weekly/blob/v2/190.%E7%B2%BE%E8%AF%BB%E3%80%8ADOM%20diff%20%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3%E3%80%8B.md
+[精读《DOM diff 原理详解》](https://github.com/ascoders/weekly/blob/v2/190.%E7%B2%BE%E8%AF%BB%E3%80%8ADOM%20diff%20%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3%E3%80%8B.md)
 
