@@ -2,39 +2,17 @@
 
 
 
-setState：这个API设计到底怎么样
-
-https://zhuanlan.zhihu.com/p/25954470
 
 
+setState 容易犯错的点
 
-setState为什么不会同步更新组件状态
-
-https://zhuanlan.zhihu.com/p/25990883
-
-
-
-setState何时同步更新状态
-
-https://zhuanlan.zhihu.com/p/26069727
-
-
-
-浅入深出setState
-
-https://segmentfault.com/a/1190000015615057
-
-
-
-从 setState 聊到 React 性能优化
-
-https://mp.weixin.qq.com/s/xb6mfgRTTSTEnfzk37aPEA
+1. setState 不会立刻改变 React 组件中 state 的值
+2. setState 通过引发一次组件的更新过程来引发重绘
+3. 多次 setState 函数调用会被合并
 
 
 
 
-
-https://segmentfault.com/blog/fedbj
 
 
 
@@ -55,12 +33,6 @@ setState的过程
 调用 React.component 中的 renderComponent 函数，前后 vnode 对比，最终走向path(preVnode,newVnode)
 
 
-
-### 自定义Component
-
-如果用一句话描述Component，那就是 属性和状态的UI表达
-
-state的逻辑很简单，就是更新state后再render一次，获取到最新的vdom，再走一遍diff
 
 
 
@@ -134,15 +106,9 @@ this.setState((state) => {
 
 
 
-只用拿去setState 相关知识就好
-
-https://mp.weixin.qq.com/s/BJb2o_F_5qpgqJRALpkh5Q
 
 
 
-重新认识 React 的 setState
-
-https://keqingrong.cn/blog/2019-04-01-react-setstate
 
  React 的 `setState` 是同步还是异步执行？
 
@@ -158,11 +124,11 @@ this.setState(()=>{})第一个值写成函数
 
 
 
-https://zhuanlan.zhihu.com/p/39512941
 
-1. **`setState `只在合成事件和钩子函数中是“异步”的，在原生事件和`setTimeout` 中都是同步的。**
-2. **`setState` 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，当然可以通过第二个参数 `setState(partialState, callback)` 中的`callback`拿到更新后的结果。**
-3. setState **的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次`setState`，`setState`的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时`setState`多个不同的值，在更新时会对其进行合并批量更新。**
+
+1. `setState `只在合成事件和钩子函数中是“异步”的，在原生事件和`setTimeout` 中都是同步的。
+2. `setState` 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，当然可以通过第二个参数 `setState(partialState, callback)` 中的`callback`拿到更新后的结果。
+3. setState 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次`setState`，`setState`的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时`setState`多个不同的值，在更新时会对其进行合并批量更新。
 
 
 
@@ -211,15 +177,7 @@ setState 的坑：
 
 
 
-setState 到底是同步的，还是异步的
 
-https://mp.weixin.qq.com/s/my2Jx7pcbVYnaCWklAzKXA
-
-
-
-你真的理解setState吗？
-
-https://juejin.cn/post/6844903636749778958
 
 
 
@@ -275,5 +233,18 @@ this.setState((state) => {
 
 
 
-[React 中 setState 是一个宏任务还是微任务？](https://segmentfault.com/a/1190000040445026)
+## 参考资料
+
+- [setState：这个API设计到底怎么样](https://zhuanlan.zhihu.com/p/25954470)
+
+- [setState为什么不会同步更新组件状态](https://zhuanlan.zhihu.com/p/25990883)
+
+- [setState何时同步更新状态](https://zhuanlan.zhihu.com/p/26069727)
+- [浅入深出setState（上篇）](https://segmentfault.com/a/1190000015615057)
+- [浅入深出setState（下篇）](https://segmentfault.com/a/1190000015821018)
+- [setState详解与React性能优化](https://segmentfault.com/a/1190000039776687)
+- [重新认识 React 的 setState](https://keqingrong.cn/blog/2019-04-01-react-setstate)
+- [你真的理解setState吗？](https://zhuanlan.zhihu.com/p/39512941)
+- [setState 到底是同步的，还是异步的](https://mp.weixin.qq.com/s/my2Jx7pcbVYnaCWklAzKXA)
+- [React 中 setState 是一个宏任务还是微任务？](https://segmentfault.com/a/1190000040445026)
 
