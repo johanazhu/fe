@@ -2,9 +2,37 @@
 
 
 
+## 前言
+
+想起自己 8 月份面试时，被面试官们问了好几个 setState 的问题，现在想想，虽然回答上问题了，但是了解的不深刻，为什么？我知道 setState 被设计成”异步“是为了性能，但是涉及到源码解读我就歇菜了；我知道如何让它同步，但是遇到真实 Code 时，却不知道如何下手。说到底，当时是准备了面经把这些概念记下来，而没有真正理解它
+
+
+
+## 快速了解
+
+基本概念和使用
+
+关键点问题
+
+​	setState 最招骂的就是不会立即修改 this.state
+
+
+
+
+
+调用 setState 后会发生什么
+
+有一答一
+
+来几个面试题
+
+
+
 
 
 ## 基本概念和使用
+
+React 的理念之一是 UI=f(data)，修改 data 即驱动 UI 变化，那么怎么修改呢？React 提供了一个
 
 
 
@@ -18,23 +46,16 @@ setState 容易犯错的点
 
 
 
+## 常见的问题
 
+### 问题一：
 
-
-
-setState() 将对组件state的更改排入队列，并通知React需要使用更新后的state重新渲染此组件及其子组件
-
-setState() 并不总是立即更新。他会批量推迟更新。为消除隐患，可以使用 componentDidUpdate 或者 setState 的回调函数
-
-this.setState为什么是异步的
-
-提高性能，react规定的
-
-vue修改属性也是异步的
-
-setState的过程
-
-调用 React.component 中的 renderComponent 函数，前后 vnode 对比，最终走向path(preVnode,newVnode)
+```react
+this.setState({count: state.count + 1}); 
+this.setState({count: state.count + 1}); 
+this.setState({count: state.count + 1}); 
+// state.count === 1，不是 3
+```
 
 
 
@@ -42,7 +63,7 @@ setState的过程
 
 
 
-### setState
+
 
 setState是异步的？
 
@@ -66,7 +87,7 @@ setState是异步的？
 
 我们知道在 vue 中的修改状态是可以直接修改的。为什么在react中不行
 
-因为 setState 做的事情不仅只是修改了 `this.state` 的值，另外最重要的是它会出发 React的更新机制，会进行diff，然后将 patch 部分更新到真实 dom 里。
+因为 setState 做的事情不仅只是修改了 `this.state` 的值，另外最重要的是它会触发 React 的更新机制，会进行diff，然后将 patch 部分更新到真实 dom 里。
 
 如果你直接 `this.state.xx = oo` 的话，state 的值确实会改，但是改了不会触发 UI 的更新，那就不是数据驱动了。
 
@@ -74,75 +95,17 @@ setState是异步的？
 
 
 
-#### setState 是同步还是异步相关问题
-
-1. setState 是同步还是异步？
-
-我的会带是执行过程代码同步，只要合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，所以表现出来有时候同步，有时候异步
-
-2. 何时是同步，何时是异步？
-
-只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout/setInterval 等原生API 中都是同步到。简单的可以理解为被 React 控制的函数里面就会表现出“异步”，反之表现为同步。
-
-3. 那为什么会出现异步的情况呢？
-
-为了做性能优化，将 state 的更新延缓到最后批量合并再去渲染，对于应用的性能优化有极大好处。如果每次的状态更改都去重新渲染真实 dom，那么它将带来巨大的性能消耗
-
-4. 那如何在表现出异步的函数里可以准确拿到更新后的 state 呢？
-
-通过第二个参数 `setState(partialState, callback)` 中的 callback 拿到更新后的结果
-
-或者可以直接给 state 传递函数来表现出同步的情况
-
-```javascript
-this.setState((state) => {
-    return { val: newVal }
-})
-```
-
-5. 那表现出异步的原理是怎么样的？
-
-直接讲源码肯定篇幅不够，可以看这篇文章：你真的理解setState吗？。
-
-我这里还是用最简单的语言让你理解：在 React 的 setState 函数实现中，会根据 isBatchingUpdates(默认是 false) 变量判断是否直接更新 this.state 还是放到队列中稍后更新。然后有一个 batchedUpdate 函数，可以修改 isBatchingUpdates 为 true，当 React 调用事件处理函数之前，或者生命周期函数之前就会调用 batchedUpdate 函数，这样的话，setState 就不会同步更新 this.state，而是放到更新队列里面后续更新。
-
-这样你就可以理解为什么原生事件和 setTimeout/setinterval 里面调用 this.state 会同步更新了吧，因为通过这些函数调用的 React 没办法去调用 batchedUpdate 函数将 isBatchingUpdates 设置为 true，那么这个时候 setState 的时候默认就是 false，那么就会同步更新。
 
 
 
 
+## setState 的大纲笔记
 
-
-
- React 的 `setState` 是同步还是异步执行？
-
-一般情况下，是异步的；但有些情况是同步的，例如在异步事件（setTimeout、promise）或者原生事件中执行setState？
-
-setState为什么是异步的？
-
-因为它设计成异步的，那么为什么被设计成异步的？一是为了提高性能，二是
-
-如何让它同步执行？
-
-this.setState(()=>{})第一个值写成函数
-
-
-
-
-
-1. `setState `只在合成事件和钩子函数中是“异步”的，在原生事件和`setTimeout` 中都是同步的。
-2. `setState` 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，当然可以通过第二个参数 `setState(partialState, callback)` 中的`callback`拿到更新后的结果。
-3. setState 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次`setState`，`setState`的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时`setState`多个不同的值，在更新时会对其进行合并批量更新。
-
-
-
-setState 的坑：
-
-1. setState不会立刻改变React组件中state的值；
+1. setState不会立刻改变 React 组件中 state 的值；
 
    1. 因为批处理
-   2. 修改this.state值是没有意义的，它不会驱动react重渲染
-   3. setState函数能帮助我们更新视图，引发componentDidMount、render等一系列函数的调用
+   2. 修改 this.state 值是没有意义的，它不会驱动 react 重渲染
+   3. setState 函数能帮助我们更新视图，引发 componentDidMount、render 等一系列函数的调用
 
 2. setState通过引发一次组件的更新过程来引发重新绘制；
 
@@ -185,21 +148,31 @@ setState 的坑：
 
 
 
-
-
-#### 为什么要 setState，而不是直接 this.state.xx = oo?
-
-我们知道在 vue 中的修改状态是可以直接修改的。为什么在react中不行
-
-因为 setState 做的事情不仅只是修改了 `this.state` 的值，另外最重要的是它会出发 React的更新机制，会进行diff，然后将 patch 部分更新到真实 dom 里。
-
-如果你直接 `this.state.xx = oo` 的话，state 的值确实会改，但是改了不会触发 UI 的更新，那就不是数据驱动了。
-
-那为什么Vue直接修改 data 可以触发 UI 的更新呢？ 因为 Vue 在创建 UI 的时候会把这些 data 给收集起来，并且在这些 data 的访问器属性 setter 进行了重写，在这个重写的方法里会去触发 UI 的更新
+## 调用 setState 后会发生什么
 
 
 
-#### setState 是同步还是异步相关问题
+React 的结构
+
+React
+
+​	Component
+
+​		prototype
+
+​			setState
+
+
+
+ReactDOM 的结构
+
+​	updater
+
+
+
+
+
+## 有一答一
 
 1. setState 是同步还是异步？
 
@@ -207,9 +180,9 @@ setState 的坑：
 
 2. 何时是同步，何时是异步？
 
-只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout/setInterval 等原生API 中都是同步到。简单的可以理解为被 React 控制的函数里面就会表现出“异步”，反之表现为同步。
+只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout/setInterval 等原生API 中都是同步的。简单的可以理解为被 React 控制的函数里面就会表现出“异步”，反之表现为同步。
 
-3. 那为什么会出现异步的情况呢？
+3. 那为什么会出现异步的情况呢？（为什么这么设计？）
 
 为了做性能优化，将 state 的更新延缓到最后批量合并再去渲染，对于应用的性能优化有极大好处。如果每次的状态更改都去重新渲染真实 dom，那么它将带来巨大的性能消耗
 
@@ -227,17 +200,38 @@ this.setState((state) => {
 
 5. 那表现出异步的原理是怎么样的？
 
-直接讲源码肯定篇幅不够，可以看这篇文章：你真的理解setState吗？。
-
-我这里还是用最简单的语言让你理解：在 React 的 setState 函数实现中，会根据 isBatchingUpdates(默认是 false) 变量判断是否直接更新 this.state 还是放到队列中稍后更新。然后有一个 batchedUpdate 函数，可以修改 isBatchingUpdates 为 true，当 React 调用事件处理函数之前，或者生命周期函数之前就会调用 batchedUpdate 函数，这样的话，setState 就不会同步更新 this.state，而是放到更新队列里面后续更新。
+在 React 的 setState 函数实现中，会根据 isBatchingUpdates（默认是 false） 变量判断是否直接更新 this.state 还是放到队列中稍后更新。然后有一个 batchedUpdate 函数，可以修改 isBatchingUpdates 为 true，当 React 调用事件处理函数之前，或者生命周期函数之前就会调用 batchedUpdate 函数，这样的话，setState 就不会同步更新 this.state，而是放到更新队列里面后续更新。
 
 这样你就可以理解为什么原生事件和 setTimeout/setinterval 里面调用 this.state 会同步更新了吧，因为通过这些函数调用的 React 没办法去调用 batchedUpdate 函数将 isBatchingUpdates 设置为 true，那么这个时候 setState 的时候默认就是 false，那么就会同步更新。
 
 
 
+## 来几个面试题
 
+第一个，也是我在面试中遇到的。如下的代码，它的 a 的值是多少？又 render 了几次
 
-想起自己 8月份面试时，被面试官问 “setState 是一个宏任务还是微任务？”的尴尬处境，明明是同步代码，硬要把我带坑里
+```react
+class C extends React.Component {
+  state = {
+    a: 0
+  };
+  componentDidMount() {
+    this.setState({ a: 1 });
+    setTimeout(() => {
+      this.setState({ a: 2 });
+    }, 0);
+    new Promise((resolve) => {
+      resolve(this.setState({ a: 3 }));
+    }).then(() => {
+      this.setState({ a: 4 });
+    });
+  }
+  render() {
+    console.log("state", this.state);
+    return <div>{this.state.a}</div>;
+  }
+}
+```
 
 
 
