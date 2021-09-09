@@ -20,6 +20,8 @@ React 英语意思：响应
 
 最好的学习资料在[官网](https://zh-hans.reactjs.org/docs/state-and-lifecycle.html)
 
+React 的作者的 [blog](https://overreacted.io/) ，上面有很多易错点以及原理解答，很好的学习资料
+
 ## 哲学
 
 单向数据流的哲学
