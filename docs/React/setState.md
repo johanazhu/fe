@@ -4,7 +4,7 @@
 
 ## 前言
 
-想起自己 8 月份面试时，被面试官们问了好几个 setState 的问题，现在想想，虽然回答上问题了，但是了解的不深刻，为什么？我知道 setState 被设计成”异步“是为了性能，但是涉及到源码解读我就歇菜了；我知道如何让它同步，但是遇到真实 Code 时，却不知道如何下手。说到底，当时是准备了面经把这些概念记下来，而没有真正理解它
+想起自己 8 月份面试时，被面试官们问了好几个 setState 的问题，现在想想，虽然回答上问题了，但是了解的不深刻。我知道 setState 被设计成”异步“是为了性能，但是涉及到源码解读我就歇菜了；我知道如何让它同步，但是遇到真实的代码情况时，却不知道如何下手。说到底，当时是准备了面经把这些概念记下来，而没有真正理解它
 
 
 
@@ -14,17 +14,33 @@
 
 关键点问题
 
-​	setState 最招骂的就是不会立即修改 this.state
+- setState 不会立即改变 React 组件中 state 的值
+- setState 通过引发一次组件的更新过程来引发重新绘制
+- 多次 setState 函数调用产生的效果会合并
 
+setState 什么时候能同步
 
+​	addEventListener 绑定的原生事件处理、setTimeout/setInterval
 
-
-
-调用 setState 后会发生什么
+执行原理
 
 有一答一
 
 来几个面试题
+
+
+
+为什么不直接同步而要塞入队列中，一起做处理，原理是什么？
+
+性能
+
+假设每次 setState 就要更新数据，更新过程要走四个生命周期，走完一轮生命周期’
+
+render 函数的结果要拿去做 diff 对比和更新真实 DOM，这个就很耗时间
+
+所以将它每次调用都放在一起一次性处理，能将对 DOM 操作降到最小，提高性能
+
+
 
 
 
@@ -33,6 +49,83 @@
 ## 基本概念和使用
 
 React 的理念之一是 UI=f(data)，修改 data 即驱动 UI 变化，那么怎么修改呢？React 提供了一个
+
+
+
+[官网介绍](https://zh-hans.reactjs.org/docs/react-component.html#setstate)：
+
+> `setState()` 将对组件 state 的更新排入队列，并通知 React 需要使用更新后的 state 重新渲染此组件及其子组件。这是用于更新用户界面以响应事件处理器和处理服务器数据的主要方式
+>
+> 为了更好的感知性能，React 会延迟调用它，然后通过一次传递更新多个组件。React 并不会保证 state 的变更会立即生效
+>
+> `setState()` 并不总是立即更新组件。它会批量推迟更新。这使得在调用 `setState()` 后立即读取 `this.state` 成为了隐患。为了消除隐患，请使用 `componentDidUpdate` 或者 `setState` 的回调函数（`setState(updater, callback)`），这两种方式都可以保证在应用更新后触发
+>
+> 除非 `shouldComponentUpdate()` 返回 `false`，否则 `setState()` 将始终执行重新渲染操作。如果可变对象被使用，且无法在 `shouldComponentUpdate()` 中实现条件渲染，那么仅在新旧状态不一时调用 `setState()`可以避免不必要的重新渲染
+
+使用方法
+
+setState(updater[, callback])
+
+
+
+参数一为带有形式参数的 updater 函数：
+
+```javascript
+(state, props) => stateChange
+
+// 例如
+// this.setState((state, props) => {
+//   return {counter: state.counter + props.step};
+// });
+```
+
+setState() 的第一个参数除了接受函数外，还可以接受对象类型：
+
+```javascript
+setState(stateChange[, callback])
+
+// 例如：this.setState({count: 2})
+```
+
+
+
+setState() 的第二个参数位可选的回调函数，它将在 setState 完成合并并重新渲染组件后执行。通常，我们建议使用 componentDidUpdate 来代替此方法
+
+为什么？
+
+
+
+如果在同意周期内对多个 setState 进行处理，例如，在同一周期内多次设置商品数据，相当于：
+
+```javascript
+this.setState({count: state.count + 1});
+this.setState({count: state.count + 1});
+this.setState({count: state.count + 1});
+// === 
+Object.assign(
+  count,
+  {quantity: state.quantity + 1},
+  {quantity: state.quantity + 1},
+  ...
+)
+```
+
+后调的 setState 将覆盖同一周期内先调用 setState 的值
+
+
+
+- setState(stateChange[, callback])
+- setState((state, props) => stateChange[, callback])
+
+
+
+
+
+
+
+setState必引发更新过程，但不一定会引发render被执行，因为shouldCompomentUpdate可以返回false
+
+为什么？原理
 
 
 
@@ -95,7 +188,7 @@ setState是异步的？
 
 
 
-
+目前React会将setState的效果放在队列中，积攒着一次引发更新过程，为的就是把Virtual DOM和DOM树操作降到最小，用于提高性能
 
 
 
@@ -148,25 +241,60 @@ setState是异步的？
 
 
 
-## 调用 setState 后会发生什么
+## 执行原理
 
 
 
-React 的结构
-
-React
-
-​	Component
-
-​		prototype
-
-​			setState
 
 
+this.setState 之后，触发更新。[更新的生命周期调用顺序如下](https://zh-hans.reactjs.org/docs/react-component.html)：
 
-ReactDOM 的结构
+- static getDerivedStateFromProps
+- shouldComponentUpdate
+- UNSAFE_componentWillUpdate
+- render
+- getSnapshotBeforeUpdate
+- componentDidUpdate
 
-​	updater
+
+
+
+
+在 React 的 setState 函数实现中，会根据一个变量 isBatchingUpdates 判断是直接更新 this.state 还是放到队列中回头再说，而 isBatchingUpdates 默认是 false，也就表示 setState 会同步更新 this.state，但是，有一个函数 batchedUpdates，这个函数会把 isBatchingUpdates 修改为 true，而当 React 在调用事件处理函数之前就会调用这个 batchedUpdates，造成的后果，就是由 React 控制的事件处理过程 setState 不会同步更新 this.state
+
+
+
+源码：
+
+```react
+Component.prototype.setState = function(partialState, callback) {
+  invariant(
+    typeof partialState === 'object' ||
+      typeof partialState === 'function' ||
+      partialState == null,
+    'setState(...): takes an object of state variables to update or a ' +
+      'function which returns an object of state variables.',
+  );
+  this.updater.enqueueSetState(this, partialState, callback, 'setState');
+};
+```
+
+
+
+
+
+```javascript
+ReactComponent.prototype.setState = function (partialState, callback) {
+  this.updater.enqueueSetState(this, partialState);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'setState');
+  }
+};
+```
+
+
+
+
 
 
 
@@ -235,6 +363,44 @@ class C extends React.Component {
 
 
 
+```react
+class App extends React.Component {
+  state = {
+    val: 0
+  };
+  componentDidMount() {
+    this.setState({ val: this.state.val + 1 });
+    console.log(this.state.val);
+    this.setState({ val: this.state.val + 1 });
+    console.log(this.state.val);
+    setTimeout(() => {
+      console.log(this.state.val);
+      this.setState({ val: this.state.val + 1 });
+      console.log(this.state.val);
+      this.setState({ val: this.state.val + 1 });
+      console.log(this.state.val);
+    }, 0);
+  }
+  render() {
+    return <div className="App">{this.state.val}</div>;
+  }
+}
+```
+
+可以在这里查看 [demo](https://codesandbox.io/s/setstate-216l6?file=/src/App.js)
+
+答案是 0、0、1、2、3
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 参考资料
@@ -246,7 +412,6 @@ class C extends React.Component {
 - [setState何时同步更新状态](https://zhuanlan.zhihu.com/p/26069727)
 - [浅入深出setState（上篇）](https://segmentfault.com/a/1190000015615057)
 - [浅入深出setState（下篇）](https://segmentfault.com/a/1190000015821018)
-- [setState详解与React性能优化](https://segmentfault.com/a/1190000039776687)
 - [重新认识 React 的 setState](https://keqingrong.cn/blog/2019-04-01-react-setstate)
 - [你真的理解setState吗？](https://zhuanlan.zhihu.com/p/39512941)
 - [setState 到底是同步的，还是异步的](https://mp.weixin.qq.com/s/my2Jx7pcbVYnaCWklAzKXA)
