@@ -1,30 +1,26 @@
-# 源码分析ReactRouter源码
+# 源码分析React Router源码
 
 
 
-### 前端路由前世今生
+## 前端路由前世今生
 
 前端路由发展到今天，经历了后端路由、前后端路由过渡、前端路由的过程
 
-#### 后端路由
+### 后端路由
 
-
-
-这个时期，不管 Web 后端是什么语言的框架，都会有一个专门开辟出来的路由模块或者路由区域，用来匹配用户给出的 URL 地址，以及一些表单提交、页面请求地址。用户进行页面切换时，浏览器发送不同的 URL 请求，服务器接收到浏览器的请求时，通过解析不同的 URL 地址进行后端路由匹配，将模板拼接好后将之返回给前端完整的 HTML，浏览器拿到这个 HTML 文件后直接解析展示了，也就是所谓的服务端渲染。
-
-
+这个时期，不管 Web 后端是什么语言的框架，都会有一个专门开辟出来的路由模块或者路由区域，用来匹配用户给出的 URL 地址，以及一些表单提交、页面请求地址。用户进行页面切换时，浏览器发送不同的 URL 请求，服务器接收到浏览器的请求时，通过解析不同的 URL 地址进行后端路由匹配，将模板拼接好后将之返回给前端完整的 HTML，浏览器拿到这个 HTML 文件后直接解析展示了，也就是所谓的服务端渲染
 
 ![后端路由过程](https://i.loli.net/2021/06/16/Fit7zNHclqfOTKZ.png)
 
 服务端渲染页面，后端有完整的 HTML 页面，爬虫更容易获取信息，有利于 SEO 优化。对于客户端的资源占用更少，尤其是移动端，可以更省流量
 
-#### 过渡
+### 过渡
 
 Ajax 的基本概念（XMLHttpRequest 的前身）
 
 单页应用不仅在页面交互是无刷新的，连页面跳转都是无刷新的，为了配合实现单页面应用跳转，前端路由孕育而生。
 
-#### 前端路由
+### 前端路由
 
 前端路由的兴起，使得页面渲染由服务器渲染变成了前端渲染。为什么这么说呢！请求一个 URL 地址时，服务器不需要拼接模板，只需返回一个 HTML 即可，一般浏览器拿到的 HTML 是这样的：
 
@@ -43,29 +39,17 @@ Ajax 的基本概念（XMLHttpRequest 的前身）
 </html>
 ```
 
-这里空荡荡的只有一个` <div id="app"></div>`，以及一系列的 js 文件，所以说这个 HTML 是不完整的。我们看到的页面是通过这一系列的 js 渲染出来的，也就是前端渲染。前端渲染通过客户端的算力来解决页面的构建，很大程度上缓解了服务端的压力。
-
-
+这里空荡荡的只有一个` <div id="app"></div>`，以及一系列的 js 文件，所以说这个 HTML 是不完整的。我们看到的页面是通过这一系列的 js 渲染出来的，也就是前端渲染。前端渲染通过客户端的算力来解决页面的构建，很大程度上缓解了服务端的压力
 
 ![前端路由过程](https://i.loli.net/2021/06/16/xw5eLQZEt2KCiyq.png)
 
 单页面开发是趋势，但也不能避重就轻，忽略前端渲染的缺点。由于服务器没有保留完整的 HTML，通过 js 进行动态 DOM 拼接，需要耗费额外的时间，不如服务端渲染速度快，也不利于 SEO 优化。所以说，实际开发中，不能盲目选择渲染方式，一定要基于业务场景。对于没有复杂交互，SEO 要求严格的网站，服务器渲染也是正确的选择
 
-
-
 ## 核心原理解析
 
-
-
-
-
-#### react-router-dom
+### react-router-dom
 
 react-router 的注入方式是在组件树顶层放一个 Router 组件，然后在组件树种散落着很多 Route 组件，顶层的 Router 组件负责分析监听 URL 的变化，在其下面的 Route 组件渲染对应的组件
-
-
-
-
 
 ### React Router 用法回顾
 
@@ -144,14 +128,6 @@ export default App;
 react-router 使用了 history 这个核心库。
 
 而 history 库的本质是通过前文所说的
-
-
-
-
-
-
-
-
 
 要想了解 React-Router 的本质，就要依次解决这三个问题
 
@@ -249,7 +225,7 @@ class Route extends React.Component {
 
 
 
-#### Route 的实现
+### Route 的实现
 
 我们前面提到，前端路由的核心在于监听和匹配，上面我们使用 `<Router>` 实现了监听，那么本小节就来分析 `<Route>` 是如何做匹配的，同样地我们先回顾 `<Route>` 的用法：
 
@@ -299,7 +275,7 @@ Route 提供了三种渲染方式：子组件、`props.component`、`props.rende
 
 
 
-### 总结
+## 总结
 
 从后端路由到前端路由，最大的改变是体验，体验更良好了
 
@@ -325,17 +301,17 @@ React Router 的主要组件源码，整体的实现：
 
 
 
-### 参考资料
+## 参考资料
 
-[深入浅出解析React Router源码](https://mp.weixin.qq.com/s/hcAMubPlse4cK9y_-mS5yQ)
+- [深入浅出解析React Router源码](https://mp.weixin.qq.com/s/hcAMubPlse4cK9y_-mS5yQ)
 
-[单页面应用路由实现原理：以 React-Router 为例](https://github.com/youngwind/blog/issues/109)
+- [单页面应用路由实现原理：以 React-Router 为例](https://github.com/youngwind/blog/issues/109)
 
-[剖析单页面应用路由实现原理](https://github.com/happylindz/blog/issues/4)
+- [剖析单页面应用路由实现原理](https://github.com/happylindz/blog/issues/4)
 
-[SPA 路由三部曲之核心原理](https://juejin.cn/post/6895882310458343431)
+- [SPA 路由三部曲之核心原理](https://juejin.cn/post/6895882310458343431)
 
-[SPA 路由三部曲之实战演练](https://mp.weixin.qq.com/s/SJXwhTo4j6I3WMmQuOOs7A)
+- [SPA 路由三部曲之实战演练](https://mp.weixin.qq.com/s/SJXwhTo4j6I3WMmQuOOs7A)
 
-[图解 React-router 带你深入理解路由本质](https://mp.weixin.qq.com/s/xyk9Qla6p2lDsRoqrvasTA)
+- [图解 React-router 带你深入理解路由本质](https://mp.weixin.qq.com/s/xyk9Qla6p2lDsRoqrvasTA)
 

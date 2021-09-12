@@ -135,17 +135,16 @@ export default React.memo(Parent);
 
 
 
-https://www.v2ex.com/t/800228#reply3
-
 
 
 
 
 ## 参考资料
 
-[你想知道的关于 Refs 的知识都在这了](https://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247484399&idx=1&sn=e865eb3f967639477a05262d0ddf09af&chksm=9782cd66a0f544700894ede3a1b02882585a738a0b3c31a56a8b297bd4b878d6f57d8c790fea&mpshare=1&scene=1&srcid=&sharer_sharetime=1572998605426&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [你想知道的关于 Refs 的知识都在这了](https://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247484399&idx=1&sn=e865eb3f967639477a05262d0ddf09af&chksm=9782cd66a0f544700894ede3a1b02882585a738a0b3c31a56a8b297bd4b878d6f57d8c790fea&mpshare=1&scene=1&srcid=&sharer_sharetime=1572998605426&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
 
-[React ref 从原理到应用](#https://mp.weixin.qq.com/s/Y6rCRrv0H92cKnvZsn1c0g)
+- [React ref 从原理到应用](#https://mp.weixin.qq.com/s/Y6rCRrv0H92cKnvZsn1c0g)
+- [React 进阶实践指南](https://juejin.cn/book/6945998773818490884/section/6953939191776411689)
 
 
 

@@ -440,13 +440,3 @@ https://www.xiejiahe.com/blog/detail/5cb2ec342bbcb67b4a5f3ed6
 
 
 
-
-
-
-
-
-
-滑动效果以后再做
-
-https://www.zhangxinxu.com/wordpress/2016/12/web-mobile-scroll-prevent-window-js-css/
-

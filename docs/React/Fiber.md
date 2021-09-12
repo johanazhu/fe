@@ -1,20 +1,8 @@
-# Fiber 是什么
+# Fiber 笔记
 
 
 
-完全理解React Fiber
 
-http://www.ayqy.net/blog/dive-into-react-fiber/
-
-深入React Fiber 架构
-
-https://zhuanlan.zhihu.com/p/57346388
-
-
-
-这可能是最通俗的 Fiber 打开方式
-
-https://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247484348&idx=1&sn=7730b71b1b4c7eae2c1a16bfdb43abb1&chksm=9782cd35a0f54423e7791ffe7e0e8b3989a2842109fed15ce3ab2ea74f50b89559ce1e1b7a41&mpshare=1&scene=1&srcid=&sharer_sharetime=1571714540896&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
 
 
 
@@ -52,9 +40,7 @@ componentWillMount和componentWillUpdate 往往有副作用
 
 
 
-看家本领来了：全面了解 React Suspense 和 Hooks
 
-https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484462&idx=1&sn=5dbd034c08a993f6ff7a65d62da0b9bd&source=41#wechat_redirect
 
 异步渲染中的 Fiber的做法是：分片
 
@@ -63,17 +49,6 @@ https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484462&idx=1&sn=5dbd03
 
 
 
-
-Suspense要解决两个问题
-
-1. 代码分片
-2. 异步获取数据
-
-
-
-走进 React Fiber 的世界
-
-https://juejin.cn/post/6937560479795511303
 
 
 
@@ -123,13 +98,9 @@ React Fiber更新过程被分为两个阶段（Phase）：第一个阶段 Reconc
 
 比如说，一个低优先级的任务A正在执行，已经调用了某个组件的componentWillUpdate函数，接下来发现自己的时间分片已经用完了，于是冒出水面，看看有没有紧急任务，哎呀，真的有一个紧急任务B，接下来React Fiber就会去执行这个紧急任务B，任务A虽然进行了一半，但是没办法，只能完全放弃，等到任务B全搞定之后，任务A重头来一遍，注意，是重头来一遍，不是从刚才中段的部分开始，也就是说，componentWillUpdate函数会被再调用一次。
 
-https://zhuanlan.zhihu.com/p/26027085
 
 
 
-React Fiber架构
-
-https://zhuanlan.zhihu.com/p/37095662
 
 虚拟DOM是由JSX转译过来的，JSX的入口函数是React.createElement, 可操作空间不大， 第三大的底层API也非常稳定，因此我们只能改变第二层。
 
@@ -137,14 +108,21 @@ React16将内部组件层改成Fiber这种数据结构，因此它的架构名�
 
 
 
-fiber 到底有多细
-
-https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw
 
 
 
-你不知道的 React Virtual DOM
 
-这里也讲到了 Fiber
 
-https://juejin.cn/post/6985058301184737287#heading-4
+
+## 参考资料
+
+- [完全理解React Fiber](http://www.ayqy.net/blog/dive-into-react-fiber/)
+- [[译]深入React fiber架构及源码](https://zhuanlan.zhihu.com/p/57346388)
+- [这可能是最通俗的 React Fiber(时间分片) 打开方式](https://juejin.cn/post/6844903975112671239)
+- [看家本领来了：全面了解 React Suspense 和 Hooks](https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484462&idx=1&sn=5dbd034c08a993f6ff7a65d62da0b9bd&source=41#wechat_redirect)
+- [走进 React Fiber 的世界](https://juejin.cn/post/6937560479795511303)
+- [React Fiber是什么](https://zhuanlan.zhihu.com/p/26027085)
+- [React Fiber架构](https://zhuanlan.zhihu.com/p/37095662)
+- [react fiber 到底有多细](https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw)
+- [你不知道的 React Virtual DOM](https://juejin.cn/post/6985058301184737287#heading-6)
+
