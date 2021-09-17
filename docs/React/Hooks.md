@@ -65,9 +65,55 @@ useState中的值是个对象，改变对象中的值，demo 会渲染吗？如�
 
 能否口喷hooks 的原理是什么
 
+你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
+
+为什么不能在循环中调用 hooks？或者说为什么不能在 for 循环、if 语句里使用 hooks？
+
+React hooks，它带来了哪些便利
+
+列举几个常用的 Hook
+
+说下 React hooks 实现原理
+
+React Hooks 当中的 useEffect 是如何区分生命周期钩子的
+
+ useEffect(fn, []) 和 componentDidMount 有什么差异
+
+
+
+
+
+```react
+// 用来替代constructor初始化状态
+useState()
+
+// 替代 componentDidMount和componentDidUpdate以及componentWillUnmount
+// 统一称为处理副作用
+useEffect()
+
+// 替代shouldComponent
+useMemo（）
+```
+
+
+
+
+
 
 
 ## 是什么
+
+React Hooks 是 React `16.7.0-alpha` 版本推出的新特性.
+
+React Hooks 要解决的问题是状态共享，是继 [render-props](https://zh-hans.reactjs.org/docs/render-props.html#gatsby-focus-wrapper) 和 [higher-order components](https://zh-hans.reactjs.org/docs/higher-order-components.html#use-hocs-for-crossing-cutting-concerns) 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题
+
+> Render props  是一个用于告知组件需要渲染什么内容的函数 props
+>
+> 不一定要用名为 render 的prop 来使用这种模式。任何被用于告知组件需要渲染什么内容的函数 prop 在技术上都可以被称为 render prop
+>
+> 自己的话：父组件控制要渲染什么内容
+
+
 
 用来定义有状态和生命周期函数的纯函数组件（在过去纯函数组件是没有状态和生命周期函数的）
 
@@ -76,6 +122,23 @@ useState中的值是个对象，改变对象中的值，demo 会渲染吗？如�
 ## 有什么用
 
 让函数式组件拥有状态，更符合函数式编程理念
+
+
+
+## 使用规则
+
+Hooks 的本质就是 JavaScript 函数，在使用它时需要遵守[两条规则](https://zh-hans.reactjs.org/docs/hooks-rules.html)
+
+### 只在最顶层使用 Hook
+
+**不要在循环，条件或嵌套函数中调用 Hook**，确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们。遵守这条规则，你就能确保 Hook 在每次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 useState 和 useEffect 调用之间保持 hook 状态的正确
+
+### 只在 React 函数中调用 Hook
+
+不要再普通的 JavaScript 函数中调用 Hook，你可以：
+
+- 在 React 的函数组件中调用 Hook
+- 在自定义 Hook 中调用其他 Hook
 
 
 
@@ -108,6 +171,12 @@ useState中的值是个对象，改变对象中的值，demo 会渲染吗？如�
 
 针对useMemo和useCallback 最直观的测试就是打印 函数式组件是否有渲染，优化之后，没改变的组件不渲染
 
+
+
+先说结论 useCallback 和 useMemo 都可缓存函数的引用或值，但是从更细的实用角度来说，useCallback 缓存函数的引用，useMemo 缓存计算数据的值
+
+
+
 ### useMemo
 
 渲染一个组件，会将内部的方法重新执行，这个操作是没有闭包的，消耗无关的性能。
@@ -133,6 +202,48 @@ useCallback 钩子是专门为传递给子组件的回调函数设计的，可�
 useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
 
 
+
+### React.memo
+
+只有当 props 改变时会重新渲染子组件
+
+[demo](https://codesandbox.io/s/laughing-shamir-5nx7p?file=/src/App.js)
+
+
+
+### useCallback 和 useMemo
+
+相同点：useCallback 和 useMemo 都是性能优化的手段，类似于类组件的 shouldComponentUpdate，在子组件中使用 shouldComponentUpdate，判断该组件的 props 和 state 有没有变化，从而避免每次父组件 render 时重新渲染子组件
+
+区别：useCallback 和 useMemo 的区别是 useCallback 返回一个函数，当把它返回的这个函数作为子组件使用时，可以笔名每次父组件更新时重新渲染这个子组件
+
+```react
+const renderButton = useCallback(
+     () => (
+         <Button type="link">
+            {buttonText}
+         </Button>
+     ),
+     [buttonText]    // 当buttonText改变时才重新渲染renderButton
+);
+```
+
+useMemo 返回的是一个值，用于避免在每次渲染时都进行高开销的计算
+
+```react
+// 仅当num改变时才重新计算结果
+const result = useMemo(() => {
+    for (let i = 0; i < 100000; i++) {
+      (num * Math.pow(2, 15)) / 9;
+    }
+}, [num]);
+```
+
+
+
+### 什么时候使用
+
+别人导师说：任何时候都用是一个好的习惯，但是大部分时间不用也没什么大问题。**但是如果该函数或变量作为 props 传给子组件，请一定要用，避免子组件的非必要渲染**
 
 
 
@@ -215,27 +326,9 @@ export default Counter
 
 ## 参考资料
 
-- [看家本领来了：全面了解 React Suspense 和 Hooks](https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484462&amp;idx=1&amp;sn=5dbd034c08a993f6ff7a65d62da0b9bd&source=41#wechat_redirect)
-
 - [无意识设计-复盘React Hook的创造过程](https://github.com/shanggqm/blog/issues/4)
 
-- [你可能不知道的 React Hooks](https://mp.weixin.qq.com/s?__biz=MzI1ODk2Mjk0Nw==&mid=2247484934&idx=1&sn=55c272fa810e5645f9e0a42a238e8620&chksm=ea01656add76ec7c7e50140b639f11259b80cdbb2523180e8eb4a1f0ec0032494429a6ba036a&mpshare=1&scene=1&srcid=&sharer_sharetime=1578441321152&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
-
-- [如何结合React Hooks 来使用 Redux](https://mp.weixin.qq.com/s?__biz=MzI1ODE4NzE1Nw==&mid=2247487442&idx=1&sn=4cd7e5f483f05e664aadefee84b1c5b7&chksm=ea0d4528dd7acc3e2eccb7b5f3d551eaf07f0c5b0a59c94a4780d0877d0b16f48c2a37f225d0&mpshare=1&scene=1&srcid=&sharer_sharetime=1582717146626&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
-
 - [【React深入】从Mixin到HOC再到Hook](https://juejin.cn/post/6844903815762673671)
-
-- [面试官: 谈一谈 HOC、Render props、Hooks](https://mp.weixin.qq.com/s?__biz=MzA3MjkwNTM1Mw==&mid=2649139131&idx=1&sn=3a2e9a5ae7dd3099943e01d69c980a61&chksm=8705205db072a94b3e21380876b072240efd2b08f5af85d8ddfe8725960fe11372c308e17c59&mpshare=1&scene=1&srcid=&sharer_sharetime=1583729706595&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
-
-- [什么时候使用 useMemo 和 useCallback](https://mp.weixin.qq.com/s?__biz=MzIxNjgwMDIzMA==&mid=2247485108&idx=1&sn=7f7eab36001073edfb4cf7368d79be32&chksm=9782c83da0f5412b2bfb89ed7dd194226e3d9800a4c7b21f89e26bea919844b4799d8a74722c&mpshare=1&scene=1&srcid=&sharer_sharetime=1583904339220&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
-
-- [React Redux | 小孩子才做選擇！ Hooks 和 Redux 我全都要！](https://medium.com/enjoy-life-enjoy-coding/react-redux-%E5%B0%8F%E5%AD%A9%E5%AD%90%E6%89%8D%E5%81%9A%E9%81%B8%E6%93%87-hooks-%E5%92%8C-redux-%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81-1fdd226f5d99)
-
-- [精读《怎么用 React Hooks 造轮子》](https://github.com/ascoders/weekly/blob/v2/080.%E7%B2%BE%E8%AF%BB%E3%80%8A%E6%80%8E%E4%B9%88%E7%94%A8%20React%20Hooks%20%E9%80%A0%E8%BD%AE%E5%AD%90%E3%80%8B.md)
-
-- [精读《useEffect 完全指南》](https://github.com/ascoders/weekly/blob/v2/096.%E7%B2%BE%E8%AF%BB%E3%80%8AuseEffect%20%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E3%80%8B.md)
-
-- [How to fetch data with React Hooks](https://www.robinwieruch.de/react-hooks-fetch-data)
 
 - [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
 
@@ -245,10 +338,6 @@ export default Counter
 
 - [React Hooks 原理](https://github.com/brickspert/blog/issues/26)
 
-- [【译】什么时候使用 useMemo 和 useCallback](https://jancat.github.io/post/2019/translation-usememo-and-usecallback/)
-
-- [useEffect 引起的 React Hooks 深入了解](https://mp.weixin.qq.com/s/O7qvU0bM-_ZpmgdIILxbKQ)
-
 - [useEffect, useCallback, useMemo三者有何区别](https://mp.weixin.qq.com/s/MzpUROCRYPpwOycI2sz3lQ)
 
 - [React hooks 最佳实践【更新中】](https://mp.weixin.qq.com/s?__biz=MzI1ODE4NzE1Nw==&mid=2247488110&idx=1&sn=f7c142fb65259f22773bb2bad4ccf8ca&chksm=ea0d5894dd7ad18236c174f1b5776f933473c7d6e3d3f95b3f57516d5594552ad7414198d1f4&scene=126&sessionid=1617017984&key=74e411ceb40c53ecceeb837c57022e68713e07c93481427e7e48bce03a829b9867bfe6e59e4db1e1b7bcf1db392c63aecc4ac96c0d04c594bf4f1dcaadb7e77fc37f8e6cb0405ba447bbd29ac158bdfe5f8d98515a27c910f031d65e34617eaa75ab601ef2a0780a16db37bc7c58280e68401ba0ae105a59274bb9a0ed6d1d16&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090070&lang=zh_CN&exportkey=ATPQQ5EDyogKCw2h%2BuLo8yA%3D&pass_ticket=rOrDQ7aYmbIfx6AGR%2BUc8RcjMfmD7fSjUCfVAc87kvPd%2BMLrrXll%2BmIbzLV5R7OT&wx_header=0)
@@ -256,8 +345,6 @@ export default Counter
 - [React Hooks 万字总结](https://juejin.cn/post/6948748617817522206)
 
 - [React hooks: not magic, just arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
-
-- [你可能不知道的五个关键的 React 知识点](https://mp.weixin.qq.com/s/Brp0TECsGpdBdv1686TPiQ)
 
 - [「React万字基础全面剖析」](https://mp.weixin.qq.com/s/-WLQPNHF2zzPB1v1Lwkw1w)
 

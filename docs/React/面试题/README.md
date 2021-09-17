@@ -43,11 +43,11 @@ A：
 
 A：水水水水
 
-#### Q：React 有哪几种创建组件的方式？有什么区别
+#### Q： React 有哪几种创建组件的方式？有什么区别
 
 A：
 
-#### Q：React 组件间有哪些通讯方式？
+#### Q： React 组件间有哪些通讯方式？
 
 A：
 
@@ -55,7 +55,7 @@ A：
 
 A：
 
-#### Q：React 如何区分 class 组件 和 Function 组件
+#### Q： React 如何区分 class 组件 和 Function 组件
 
 A：
 
@@ -89,7 +89,7 @@ A：转到 setState 方面解答
 
 A：
 
-#### Q：state 更新之后发生了什么
+#### Q： state 更新之后发生了什么
 
 A：
 
@@ -117,7 +117,7 @@ A：
 
 A：
 
-#### Q：React hooks，他带来了哪些便利
+#### Q： React hooks，它带来了哪些便利
 
 A：
 
@@ -129,11 +129,11 @@ A：
 
 A：
 
-#### Q：React Hooks 当中的 useEffect 是如何区分生命周期钩子的
+#### Q： React Hooks 当中的 useEffect 是如何区分生命周期钩子的
 
 A：
 
-#### Q：useEffect(fn, []) 和 componentDidMount 有什么差异
+#### Q： useEffect(fn, []) 和 componentDidMount 有什么差异
 
 A：
 
@@ -141,7 +141,7 @@ A：
 
 ### Virtual DOM
 
-#### Q：React 的 Virtual dom 是怎么实现的？
+#### Q： React 的 Virtual dom 是怎么实现的？
 
 A：
 
@@ -169,15 +169,15 @@ A：
 
 A：
 
-#### Q：React 的事件代理机制和原生事件绑定有什么区别？
+#### Q： React 的事件代理机制和原生事件绑定有什么区别？
 
 A：
 
-#### Q：React 的事件代理机制和原生事件绑定混用会有什么问题？
+#### Q： React 的事件代理机制和原生事件绑定混用会有什么问题？
 
 A：
 
-#### Q：React 中如果绑定事件使用匿名函数会怎么样？
+#### Q： React 中如果绑定事件使用匿名函数会怎么样？
 
 A：
 
@@ -185,7 +185,7 @@ A：
 
 ### 生态相关
 
-#### Q：Reudx 是什么
+#### Q： Reudx 是什么
 
 A：
 
@@ -193,15 +193,15 @@ A：
 
 A：
 
-#### Q：React-redux 的实现原理
+#### Q： React-redux 的实现原理
 
 A：
 
-#### Q：Redux 和 mobx 的区别
+#### Q： Redux 和 mobx 的区别
 
 A：
 
-#### Q：Redux 异步中间件有什么用？
+#### Q： Redux 异步中间件有什么用？
 
 A：
 
@@ -339,11 +339,11 @@ A：四种写实践的写法
 
 
 
-### Q：React 中的 ref 是干嘛的？
+### Q： React 中的 ref 是干嘛的？
 
 A：
 
-### Q：connect 原理
+### Q： connect 原理
 
 A：
 
@@ -355,7 +355,7 @@ A：
 
 A：
 
-### Q：为什么React 元素有一个 $$typeof 属性？
+### Q：为什么React 元素有一个 `$$typeof` 属性？
 
 A：
 
@@ -365,7 +365,7 @@ A：判断当前渲染的元素是组件还是 HTML 元素
 
 
 
-### Q：React 17、React 18 有什么新的特性
+### Q： React 17、React 18 有什么新的特性
 
 A：
 

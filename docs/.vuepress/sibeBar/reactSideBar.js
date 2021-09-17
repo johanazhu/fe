@@ -16,7 +16,7 @@ function reactSideBar() {
       sidebarDepth: 0,
       children: [
         'React/',
-        'React/React介绍.md',
+        'React/React快速了解.md',
         'React/核心API.md',
         'React/VirtualDOM.md',
         'React/Diff.md',
@@ -27,8 +27,9 @@ function reactSideBar() {
         'React/事件机制.md',
         'React/Fiber.md',
         'React/性能优化.md',
-        'React/Ref.md',
+        'React/Refs.md',
         'React/生命周期.md',
+        'React/为什么我们要写super(props).md',
       ],
     },
     {

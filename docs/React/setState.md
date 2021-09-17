@@ -48,9 +48,7 @@ render 函数的结果要拿去做 diff 对比和更新真实 DOM，这个就很
 
 ## 基本概念和使用
 
-React 的理念之一是 UI=f(data)，修改 data 即驱动 UI 变化，那么怎么修改呢？React 提供了一个
-
-
+React 的理念之一是 UI=f(data)，修改 data 即驱动 UI 变化，那么怎么修改呢？React 提供了一个 API ——setState
 
 [官网介绍](https://zh-hans.reactjs.org/docs/react-component.html#setstate)：
 
@@ -62,11 +60,9 @@ React 的理念之一是 UI=f(data)，修改 data 即驱动 UI 变化，那么�
 >
 > 除非 `shouldComponentUpdate()` 返回 `false`，否则 `setState()` 将始终执行重新渲染操作。如果可变对象被使用，且无法在 `shouldComponentUpdate()` 中实现条件渲染，那么仅在新旧状态不一时调用 `setState()`可以避免不必要的重新渲染
 
-使用方法
+### 使用方法
 
 setState(updater[, callback])
-
-
 
 参数一为带有形式参数的 updater 函数：
 
@@ -87,11 +83,19 @@ setState(stateChange[, callback])
 // 例如：this.setState({count: 2})
 ```
 
-
-
-setState() 的第二个参数位可选的回调函数，它将在 setState 完成合并并重新渲染组件后执行。通常，我们建议使用 componentDidUpdate 来代替此方法
+setState() 的第二个参数位可选的回调函数，它将在 setState 完成合并重新渲染组件后执行。通常，我们建议使用 componentDidUpdate 来代替此方法
 
 为什么？
+
+[stackoverflow](https://stackoverflow.com/questions/56501409/what-is-the-advantage-of-using-componentdidupdate-over-the-setstate-callback) 有人问过，也有人回答过
+
+一致的逻辑，
+
+批量更新
+
+什么时候 setState 会比较好？
+
+当外部代码需要等待状态更新时
 
 
 
@@ -125,15 +129,9 @@ Object.assign(
 
 setState必引发更新过程，但不一定会引发render被执行，因为shouldCompomentUpdate可以返回false
 
-为什么？原理
 
 
 
-setState 容易犯错的点
-
-1. setState 不会立刻改变 React 组件中 state 的值
-2. setState 通过引发一次组件的更新过程来引发重绘
-3. 多次 setState 函数调用会被合并
 
 
 
@@ -194,25 +192,25 @@ setState是异步的？
 
 ## setState 的大纲笔记
 
-1. setState不会立刻改变 React 组件中 state 的值；
+1. setState 不会立刻改变 React 组件中 state 的值
 
    1. 因为批处理
    2. 修改 this.state 值是没有意义的，它不会驱动 react 重渲染
    3. setState 函数能帮助我们更新视图，引发 componentDidMount、render 等一系列函数的调用
 
-2. setState通过引发一次组件的更新过程来引发重新绘制；
+2. setState 通过引发一次组件的更新过程来引发重新绘制
 
-   1. 使用setState后，会触发render
+   1. 使用 setState 后，会触发 render
 
-   2. react不像vue，vue是通过数据劫持来实现数据变化视图跟着更新，react需要通过调用setState来render
+   2. react 不像 vue，vue 是通过数据劫持来实现数据变化视图跟着更新，react 需要通过调用 setState 来render
 
-      1. React改变状态时通过一个函数setState驱动的，和vue不同
+      1. React 改变状态时通过一个函数 setState 驱动的，和 vue 不同
 
-   3. setState 调用引起的React的更新生命周期函数4个函数（比修改props引发的生命周期少一个componentWillReceiveProps函数），这4个函数一次被调用
+   3. setState 调用引起的React的更新生命周期函数4个函数（比修改 props 引发的生命周期少一个componentWillReceiveProps函数），这4个函数一次被调用
 
       1. shouldComponentUpdate
 
-      2. componnetWillUpdate
+      2. componentWillUpdate
 
       3. render
 
@@ -330,7 +328,7 @@ this.setState((state) => {
 
 在 React 的 setState 函数实现中，会根据 isBatchingUpdates（默认是 false） 变量判断是否直接更新 this.state 还是放到队列中稍后更新。然后有一个 batchedUpdate 函数，可以修改 isBatchingUpdates 为 true，当 React 调用事件处理函数之前，或者生命周期函数之前就会调用 batchedUpdate 函数，这样的话，setState 就不会同步更新 this.state，而是放到更新队列里面后续更新。
 
-这样你就可以理解为什么原生事件和 setTimeout/setinterval 里面调用 this.state 会同步更新了吧，因为通过这些函数调用的 React 没办法去调用 batchedUpdate 函数将 isBatchingUpdates 设置为 true，那么这个时候 setState 的时候默认就是 false，那么就会同步更新。
+这样你就可以理解为什么原生事件和 setTimeout/setInterval 里面调用 this.state 会同步更新了吧，因为通过这些函数调用的 React 没办法去调用 batchedUpdate 函数将 isBatchingUpdates 设置为 true，那么这个时候 setState 的时候默认就是 false，那么就会同步更新。
 
 
 
@@ -406,9 +404,7 @@ class App extends React.Component {
 ## 参考资料
 
 - [setState：这个API设计到底怎么样](https://zhuanlan.zhihu.com/p/25954470)
-
 - [setState为什么不会同步更新组件状态](https://zhuanlan.zhihu.com/p/25990883)
-
 - [setState何时同步更新状态](https://zhuanlan.zhihu.com/p/26069727)
 - [浅入深出setState（上篇）](https://segmentfault.com/a/1190000015615057)
 - [浅入深出setState（下篇）](https://segmentfault.com/a/1190000015821018)
@@ -416,4 +412,5 @@ class App extends React.Component {
 - [你真的理解setState吗？](https://zhuanlan.zhihu.com/p/39512941)
 - [setState 到底是同步的，还是异步的](https://mp.weixin.qq.com/s/my2Jx7pcbVYnaCWklAzKXA)
 - [React 中 setState 是一个宏任务还是微任务？](https://segmentfault.com/a/1190000040445026)
+- [What is the advantage of using componentDidUpdate over the setState callback?](https://stackoverflow.com/questions/56501409/what-is-the-advantage-of-using-componentdidupdate-over-the-setstate-callback)
 

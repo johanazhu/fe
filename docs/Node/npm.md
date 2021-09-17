@@ -20,12 +20,14 @@ npm 菜鸟教程：[https://www.runoob.com/nodejs/nodejs-npm.html](https://www.r
 
 ## NPM 常用命令行
 
-| 命令                      | 说明               |
-| ------------------------- | ------------------ |
-| npm init                  | 初始化，加 -y 一键 |
-| npm install npm@latest -g | 升级到最新         |
-| npm cache clean -f        | npm 清除缓存       |
-| npm publist               | 讲包推送到远程仓库 |
+| 命令                      | 说明                   |
+| ------------------------- | ---------------------- |
+| npm init                  | 初始化，加 -y 一键     |
+| npm install npm@latest -g | 升级到最新             |
+| npm cache clean -f        | npm 清除缓存           |
+| npm publist               | 讲包推送到远程仓库     |
+| npm update                | 升级包                 |
+| npm audit fix             | 修复包的安全漏洞并升级 |
 
 
 
