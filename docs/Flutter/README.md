@@ -24,3 +24,9 @@ https://github.com/FlutterDance/movie
 
 
 https://mp.weixin.qq.com/s/rUcWz7Rx5T34WyYoCDLh8Q
+
+
+
+怎样写好Flutter代码
+
+https://mp.weixin.qq.com/s/Xsp4pdxqdyGovXQmXcKk7A

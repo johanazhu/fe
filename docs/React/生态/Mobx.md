@@ -90,4 +90,5 @@
 - [从零开始用 proxy 实现 mobx](https://github.com/ascoders/blog/issues/19)
 - [MobX 入门教程](https://github.com/sorrycc/blog/issues/2)
 - [MobX 原理](https://github.com/sorrycc/blog/issues/3)
+- https://github.com/chenxiaochun/blog/issues/51
 

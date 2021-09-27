@@ -1,27 +1,28 @@
-# React Hooks 从认识到手写
+# React Hook 从认识到手写
 
 
 
 ## 前言
 
-React hooks 必会，必考题。现在一个 React 开发要不会 Hooks 的话，很难说自己是一名合格的开发者，Hooks 问世已经3年了（18年出品），同仁出的教程数不胜数，这里做我对 Hooks 的认识和理解
+React hook 必会，必考题。现在一个 React 开发要不会 Hook 的话，很难说自己是一名合格的开发者，Hook 问世已经3年了（18年出品），同仁出的教程数不胜数，这里做我对 Hook 的认识和理解
 
 
 
 ## 大纲
 
-测试一下 Hooks 的熟练程度
+测试一下 Hook 的熟练程度
 
 是什么
 
+- 为什么要有 Hook
+  - 状态逻辑复用
+
 - 发展史
-  - 从Mixin到HOC再到Hook
+  - Mixin 
+  - HOC
+- Hook 的设计目标
 
-有什么用
-
-- 让函数式组件拥有状态，更符合函数式编程理念
-
-最重要且常见的两个 hooks
+最重要且常见的两个 Hook
 
 - useState
 
@@ -53,31 +54,165 @@ React hooks 必会，必考题。现在一个 React 开发要不会 Hooks 的话
 
 ## 测试一下 Hooks 的熟练程度
 
-为什么不能在循环中调用 hooks？react 中为什么不能在 for 循环、if 语句里使用 hooks
-
-为什么只能在函数最外层调用 Hook，不要在循环、条件判断或者子函数中调用？
-
-React Hooks 为什么不能写在条件语句中？
+为什么不能在 for 循环、if 语句里使用 Hook
 
 React.memo、React.useCallback、React.usememo 的作用
 
-useState中的值是个对象，改变对象中的值，demo 会渲染吗？如果用 React.memo() 包裹住呢
+useState 中的值是个对象，改变对象中的值，组件会渲染吗？如果用 React.memo() 包裹住呢
 
-能否口喷hooks 的原理是什么
+能否口喷 Hook 的原理是什么
 
-你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
+你对 Hook 了解吗？Hooks 的本质是什么？为什么？
 
-为什么不能在循环中调用 hooks？或者说为什么不能在 for 循环、if 语句里使用 hooks？
-
-React hooks，它带来了哪些便利
+React Hook，它带来了哪些便利
 
 列举几个常用的 Hook
 
-说下 React hooks 实现原理
+说下 React Hook 实现原理
 
-React Hooks 当中的 useEffect 是如何区分生命周期钩子的
+React Hook 当中的 useEffect 是如何区分生命周期钩子的
 
- useEffect(fn, []) 和 componentDidMount 有什么差异
+useEffect(fn, []) 和 componentDidMount 有什么差异
+
+
+
+-----
+
+回答的如何？如果一知半解请随我看一下我对它的认识
+
+## 是什么
+
+React Hook 是 React 16.7.0-alpha（真正推出是 React 16.8）推出的新特性。它可以让你再不编写 class 的情况下使用 state 以及其他的 React 特性
+
+### 为什么要有 Hook
+
+我们一定要有个概念，即 React 的本质是什么？它的特征 UI=f(data)、一切皆组件、声明式编程。那好，它既然是 UI=f(data)，data（数据）通过 function 来驱动 UI 视图变化，之前了解 [setState](./快问快答setState.md) 时我们就说了，setState 是来管理状态的，因为在一个视图，你不能简单只展示，也要交互，交互就有状态的改变，React 是通过 setState 来改变状态。但 setState 是类组件中的API，而每一个类组件写起来很麻烦，需要加各种生命周期。在函数式组件中，是没有状态的，一般当做渲染（无状态组件）
+
+说了这么多，那为什么要有 Hook 呢？因为**状态逻辑复用**。我们先了解下状态逻辑复用的发展史
+
+### 发展史
+
+#### Mixin时代
+
+在我还没用 React 之前就有了，现在已经被淘汰。
+
+> Mixin（混入）是一种通过扩展收集功能的方式，它本质上是将一个对象的属性拷贝到另一个对象上，不过你可以拷贝`任意多`个对象的`任意个`方法到一个新对象上去，这是`继承`所不能实现的。它的出现主要就是为了解决代码复用问题
+
+这里不对其做分析，React官方文档在 [Mixins Considered Harmful](https://zh-hans.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html) 一文中提到了 Mixin 带来的危害：
+
+- Mixin 可能会相互依赖，相互耦合，不利于代码维护
+- 不同的 Mixin 中的方法可能会相互冲突
+- Mixin 非常多时，组件时可以感知到的，甚至还要为其做相关处理，这样会给代码造成滚雪球的复杂性
+
+#### HOC（高阶组件）
+
+HOC的原理其实很简单，它就是一个函数，且它接受一个组件作为参数，并返回一个新的组件，把复用的地方放在高阶组件中，你在使用的时候，只需要做不同
+
+打个比方：就好像我给你一瓶水，你在渴的时候就会喝它；你在耍帅的时候拿它摆POSE；你在别人需要的时候给他喝帮助人...
+
+write is cheap，show you code
+
+```react
+function Wrapper(WrappedComponent) {
+    return class extends React.Component {
+        componentDidMount() {
+            console.log('我是一瓶水')
+        }
+        render() {
+            return (
+                <div>
+                    <div className="title">{this.props.title}</div>	
+                    <WrappedComponent {...this.props} />
+                </div>	
+            )
+        }
+    }
+}
+```
+
+```react
+import "./styles.css";
+import React from "react";
+import Wrapper from "./Wrapper";
+
+class A extends React.Component {
+  render() {
+    return <div>喝它</div>;
+  }
+}
+
+class B extends React.Component {
+  render() {
+    return <div>耍帅摆POSE</div>;
+  }
+}
+
+class C extends React.Component {
+  render() {
+    return <div>帮助别人</div>;
+  }
+}
+
+const AA = Wrapper(A);
+const BB = Wrapper(B);
+const CC = Wrapper(C);
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
+      <AA title="我是普通人" />
+      <BB />
+      <CC />
+    </div>
+  );
+}
+
+```
+
+这样就很明显的看出 HOC 的好处，”一瓶水“是共同代码，A、B、C处理业务代码，然后将A、B、C传入HOC（一瓶水）中，返回了一个新的组件 AA、BB、CC。相同的代码得到了公用
+
+![HOC-demo](https://i.loli.net/2021/09/17/q7vQpZwIngNc3C2.png)
+
+各位可以前往这里查看 [demo](https://codesandbox.io/s/hoc-demo-d9p9j?file=/src/App.js:0-629)
+
+HOC 的用处不单单是代码复用，还可以做权限控制、打印日志等。但它有也缺陷，例如 HOC 是在原组件上进行包裹或者嵌套，如果大量使用 HOC，将会产生非常多的嵌套，这会让调试变得非常困难；而且HOC 可以劫持 props，在不遵守约定的情况下可能造成冲突
+
+### Hook 的设计目标
+
+我们了解了 React 状态逻辑复用的发展史，结合类组件带来的不便。我们希望 React Hook 能这样的：
+
+1. 无 Class 的复杂性
+2. 无生命周期的困扰
+3. 优雅地复用
+4. 对其 Class 组件已经具备的能力
+
+
+
+## 最重要且常见的两个 hooks
+
+### useState
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### useEffect
+
+它是什么
+
+#### 与 useLayoutEffect 的区别
 
 
 
@@ -96,65 +231,6 @@ useMemo（）
 ```
 
 
-
-
-
-
-
-## 是什么
-
-React Hooks 是 React `16.7.0-alpha` 版本推出的新特性.
-
-React Hooks 要解决的问题是状态共享，是继 [render-props](https://zh-hans.reactjs.org/docs/render-props.html#gatsby-focus-wrapper) 和 [higher-order components](https://zh-hans.reactjs.org/docs/higher-order-components.html#use-hocs-for-crossing-cutting-concerns) 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题
-
-> Render props  是一个用于告知组件需要渲染什么内容的函数 props
->
-> 不一定要用名为 render 的prop 来使用这种模式。任何被用于告知组件需要渲染什么内容的函数 prop 在技术上都可以被称为 render prop
->
-> 自己的话：父组件控制要渲染什么内容
-
-
-
-用来定义有状态和生命周期函数的纯函数组件（在过去纯函数组件是没有状态和生命周期函数的）
-
-
-
-## 有什么用
-
-让函数式组件拥有状态，更符合函数式编程理念
-
-
-
-## 使用规则
-
-Hooks 的本质就是 JavaScript 函数，在使用它时需要遵守[两条规则](https://zh-hans.reactjs.org/docs/hooks-rules.html)
-
-### 只在最顶层使用 Hook
-
-**不要在循环，条件或嵌套函数中调用 Hook**，确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们。遵守这条规则，你就能确保 Hook 在每次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 useState 和 useEffect 调用之间保持 hook 状态的正确
-
-### 只在 React 函数中调用 Hook
-
-不要再普通的 JavaScript 函数中调用 Hook，你可以：
-
-- 在 React 的函数组件中调用 Hook
-- 在自定义 Hook 中调用其他 Hook
-
-
-
-
-
-## 最重要且常见的两个 hooks
-
-### useState
-
-
-
-### useEffect
-
-它是什么
-
-#### 与 useLayoutEffect 的区别
 
 
 
@@ -313,6 +389,21 @@ export default Counter
 
 
 
+
+## 使用规则
+
+Hooks 的本质就是 JavaScript 函数，在使用它时需要遵守[两条规则](https://zh-hans.reactjs.org/docs/hooks-rules.html)
+
+### 只在最顶层使用 Hook
+
+**不要在循环，条件或嵌套函数中调用 Hook**，确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们。遵守这条规则，你就能确保 Hook 在每次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 useState 和 useEffect 调用之间保持 hook 状态的正确
+
+### 只在 React 函数中调用 Hook
+
+不要再普通的 JavaScript 函数中调用 Hook，你可以：
+
+- 在 React 的函数组件中调用 Hook
+- 在自定义 Hook 中调用其他 Hook
 
 
 
