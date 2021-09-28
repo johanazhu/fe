@@ -43,8 +43,6 @@ function bigFrondSideBar() {
             sidebarDepth: 0,
             children: [
                 'WxApp/',
-                'WxApp/微信小程序基础架构浅析.md',
-                'WxApp/写给前端的跨平台方案、跨端引擎的本质.md'
             ],
         },
         {
