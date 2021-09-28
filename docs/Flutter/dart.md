@@ -14,6 +14,49 @@
 
 
 
+可以在 DartPad 上练习
+
+> DartPad 是 Dart 的一个线上 playground
+
+
+
+### 程序入口
+
+JavaScript 没有预定义的入口函数，但是在 Dart 中，每个 app 都必须有一个顶级的 `main()` 函数作为应用程序的入口点
+
+```dart
+main() {}
+```
+
+
+
+### 控制台输出
+
+想打印到控制台，使用关键字 `print`：
+
+```dart
+print('Hello world')
+```
+
+> PS：javascript 是 console.log；python 是 print。语法不同罢了
+
+
+
+### 变量
+
+Dart 的变量必须是明确的，像 TS 那样，需要给一个变量加类型
+
+```dart
+String name = 'dart';
+int number = 1;
+```
+
+
+
+
+
+
+
 #### 常量
 
 `final`
