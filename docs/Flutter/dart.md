@@ -1,4 +1,18 @@
-## Dart
+# Dart
+
+
+
+要学习 Flutter，就必须先学会 dart。这就好比你要先会 JavaScript 才能写 React/Vue。因为 Flutter 是基于 dart 来写的
+
+这里可以看看：
+
+[中文 dart 网站](https://dart.cn/)
+
+
+
+
+
+
 
 #### 常量
 
