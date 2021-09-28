@@ -10,6 +10,12 @@ https://mp.weixin.qq.com/s/0v4GbqbW9hKSlSeTiv8mrg
 
 
 
+基于 Serverless Component 的全栈解决方案
+
+https://zhuanlan.zhihu.com/p/97027497
+
+
+
 ## 1.什么是 Serverless 
 
 Server 这里指服务端，它是 Serverless 解决问题的边界；而 less 我们可以理解为较少关心，它是  Serverless  解决问题的目的。组合在一起就是“较少关心服务端”

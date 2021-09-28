@@ -408,6 +408,14 @@ ES6、CommonJS 模块加载机制到动态模块 import() 导入
 
 
 
+「万字进阶」深入浅出 Commonjs 和 Es Module
+
+https://mp.weixin.qq.com/s/y_uk7wXAfvq8FzcUZrR93w
+
+
+
+
+
 ### 参考
 
 [深入理解ES模块机制](https://github.com/happylindz/blog/issues/10)
