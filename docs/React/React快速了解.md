@@ -24,7 +24,9 @@ React 的作者的 [blog](https://overreacted.io/) ，上面有很多易错点�
 
 ## 哲学
 
-单向数据流的哲学
+单向数据流
+
+不可变特性（immutability）
 
 ## 本质
 
