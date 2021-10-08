@@ -2,13 +2,19 @@
 
 
 
-Flutter 的安装
+## Flutter 的安装
 
-直接去[官网](https://flutter.cn/docs/get-started/install/windows)下载，不像两年前那么麻烦
+直接去[官网](https://flutter.cn/docs/get-started/install/windows)下载，放好位置，我放在`D://`
 
-安装好之后，配置环境
+配置环境，环境变量的 path 中添加 `D://`，这样我们就能在任何地方运行 flutter 指令了
 
-启动 android studio
+运行 `flutter doctor`
+
+![flutter doctor](https://i.loli.net/2021/09/29/a9ONX47sbPUVTz5.png)
+
+
+
+接下来就是启动 android studio
 
 开启第一个 flutter 项目
 
