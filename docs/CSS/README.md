@@ -146,3 +146,14 @@ w3c引入这两个概念是为了格式化文档树以外的信息。也就是�
 ## 参考资料
 
 - [总结伪类和伪元素](http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/)
+
+- [【面试题】CSS知识点整理(附答案)](https://juejin.cn/post/6844904117819850765)
+
+- [【建议收藏】css晦涩难懂的点都在这啦](https://juejin.cn/post/6888102016007176200)
+
+- [margin:auto的魔法](https://mp.weixin.qq.com/s/KoIpUnJtUp2Y5bComYRHHw)
+
+  
+
+  
+
