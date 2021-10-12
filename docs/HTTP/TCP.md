@@ -56,6 +56,37 @@ https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#_3
 
 
 
+# udp
+
+
+
+网络通讯概述
+
+ip地址（重点）
+
+Linux命令
+
+端口（重点）
+
+socker简介
+
+udp网络程序-发送-接收
+
+python3编译转换
+
+udp绑定端口问题（重点）
+
+网络通讯过程（简单版）
+
+案例：udp聊天器
+
+
+
+## 网络通讯概述
+
+
+
+### 1.什么是网络
 
 
 
@@ -67,10 +98,21 @@ https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#_3
 
 
 
+被问到http的时候你就这么回答
+
+https://mp.weixin.qq.com/s/7uuypNid-1iNlXavTFHp7w
 
 
 
 
+
+
+
+
+
+网络是怎么样连接的
+
+https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247484152&idx=1&sn=ba6fc3a8c71c69a2290f2284aad74fcb&scene=19#wechat_redirect
 
 
 

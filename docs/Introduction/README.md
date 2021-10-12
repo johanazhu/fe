@@ -84,7 +84,7 @@
 
 ## [设计模式](../DesignPattern/发布订阅模式.md)
 
-## [Jquery](../Jquery/高效jquery.md)
+## [Jquery](../Jquery/)
 
 ## [读书](../Read/book/)
 
