@@ -1,4 +1,4 @@
-# Git-Commit-Log
+# git提交规范
 
 
 
@@ -23,4 +23,6 @@ https://www.npmjs.com/package/commitizen
 https://wutao.work/archives/10104.html
 
 
+
+## 参考资料
 
