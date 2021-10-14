@@ -134,8 +134,8 @@ new Promise((resolve, reject) => {
 
 
 
-### 参考资料
+## 参考资料
 
-[Promise 链式调用顺序引发的思考](https://juejin.cn/post/6844903972008886279)
+- [Promise 链式调用顺序引发的思考](https://juejin.cn/post/6844903972008886279)
 
-[关于一道经典Promise面试题的思考](https://juejin.cn/post/6978001532717367304)
+- [关于一道经典Promise面试题的思考](https://juejin.cn/post/6978001532717367304)
