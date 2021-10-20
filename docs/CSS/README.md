@@ -7,37 +7,29 @@
 
 CSS 方面的知识点，说起来也就这几点：
 
-BFC
-
 [选择器](#选择器)
 
 [伪类与伪元素](#伪类与伪元素)
 
-画个三角形
+[画个三角形](#画个三角形)
 
-盒模型
+[盒模型](#盒模型)
 
-清除浮动
+[BFC](#BFC)
 
-- 为什么要清除浮动
+[清除浮动](#清除浮动)
 
-- 为什么会产生浮动
+[各种布局](#布局)
 
-布局知识
+- [flex布局](#flex)
 
-- flex布局
+- [grid布局](#grid)
 
-- grid布局
-
-- 水平垂直居中的方案
-- 左边固定宽，右边自适应
-- 左图右文布局做法
-- 瀑布流效果
-- 其他布局流
-
-
-
-## BFC
+- [水平垂直居中](#水平垂直居中)
+- [左边固定宽，右边自适应](#左边固定宽，右边自适应)
+- [左图右文布局](左图右文布局)
+- [瀑布流效果](#瀑布流效果)
+- [圣杯、双飞翼](#圣杯、双飞翼)
 
 
 
@@ -94,46 +86,181 @@ w3c引入这两个概念是为了格式化文档树以外的信息。也就是�
 
 ## 画个三角形
 
+宽高为0，border三边设置透明transparent，一边设置颜色
 
+```css
+.sanjiaoxing {
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left: 10px solid black;
+}
+```
+
+[线上demo](https://codepen.io/jojobo/pen/XWaKwMy)
 
 
 
 ## 盒模型
 
+盒模型由 margin、border、padding、content 组成
+
+分两种
+
+- 标准盒模型
+  - width = content 宽度
+  - height = content 高度
+- IE模型
+  - width = border + padding + content 宽度
+  - height = border + padding + content 高度
+
+在浏览器中，默认是标准盒模型，css 的写法是 box-sizing: content-box。如果要切换成 IE 模式（也叫怪异盒子），写法为 box-sizing: border-box。
 
 
 
-## 如何清除浮动？
+## 外边距重叠
+
+块的上边距(margin-top)和下外边距(margin-bottom)有时合并（折叠）为单个边距，其大小为单个边距的最大值（或如果它们相等，则仅为其中一个），这种行为称为**边距折叠**
+
+有三种情况会引起外边距重叠
+
+- 同一层相邻元素之间
+
+  - ```css
+    <style>
+    p:nth-child(1){
+      margin-bottom: 13px;
+    }
+    p:nth-child(2){
+      margin-top: 87px;
+    }
+    </style>
+    
+    <p>下边界范围会...</p>
+    <p>...会跟这个元素的上边界范围重叠。</p>
+    ```
+
+  - [线上demo](https://codepen.io/jojobo/pen/MWvedqz?editors=1100)
+
+- 没有内容将父元素和后代元素分开
+
+  - ```css
+    <style type="text/css">
+        section    {
+            margin-top: 13px;
+            margin-bottom: 87px;
+        }
+    
+        header {
+            margin-top: 87px;
+        }
+    
+        footer {
+            margin-bottom: 13px;
+        }
+    </style>
+    
+    <section>
+        <header>上边界重叠 87</header>
+        <main></main>
+        <footer>下边界重叠 87 不能再高了</footer>
+    </section>
+    ```
+
+  - [线上demo](https://codepen.io/jojobo/pen/WNExVwN?editors=1100)
+
+- 空的块级元素
+
+  - ```css
+    <style>
+    p {
+      margin: 0;
+    }
+    div {
+      margin-top: 13px;
+      margin-bottom: 87px;
+    }
+    </style>
+    
+    <p>上边界范围是 87 ...</p>
+    <div></div>
+    <p>... 上边界范围是 87</p>
+    ```
+
+  - [线上demo](https://codepen.io/jojobo/pen/qBXNzgX?editors=1100)
+
+解决方案
+
+- 将其设置为浮动元素、inline-block 元素、绝对定位元素、将父元素设置为 BFC（仅限第二种父中有子情况）
+
+## [BFC](./BFC是什么.md)
+
+什么是BFC？
+
+- 块级上下文作用域，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域
+
+怎么引起BFC？
+
+- 根元素（html ）
+- 浮动元素（元素的 float 不是 none）
+- 绝对定位元素（元素的 position 为 absolute 或 fixed）
+- display的值为table-cell、table-caption和inline-block、flex 、inline-flex、grid、 inline-grid中的任何一个（表格单元格、表格单元格、行内块元素、弹性元素、网格元素）
+- overflow 不会 visible 的块级元素
+- 匿名表格单元格元素
+
+BFC 有什么用？
+
+- 清除浮动
+- 解决外边距重叠问题
+- 自适应布局（最主要的问题）
+
+BFC 有什么不足？
+
+已经过时，现在用 flex 布局能代替 BFC 的作用，并且更加强大
 
 
+
+## 清除浮动
+
+在父元素后面添加一个伪元素，设置为 block，并清除左右浮动
+
+```css
+.container::after {
+    content: "";
+    display: block;
+    clear: bothd
+}
+```
 
 ## 布局
 
 
 
-### flex布局
+### [flex布局](./flex.md)
 
 
 
-### grid布局
+### [grid布局](./grid.md)
 
 
 
-### 水平垂直居中的方案
+### [水平垂直居中](./水平垂直居中.md)
 
 
 
-### 左边固定宽，右边自适应
+### [左边固定宽，右边自适应](./左边固定宽，右边自适应.md)
 
 
 
-### 左图右文布局做法
+### [左图右文布局](./左图右文布局.md)
 
 
 
-### 瀑布流效果
+### [瀑布流效果](./瀑布流效果.md)
 
 
+
+### [圣杯、双飞翼](./圣杯、双飞翼.md)
 
 
 
@@ -151,9 +278,4 @@ w3c引入这两个概念是为了格式化文档树以外的信息。也就是�
 
 - [【建议收藏】css晦涩难懂的点都在这啦](https://juejin.cn/post/6888102016007176200)
 
-- [margin:auto的魔法](https://mp.weixin.qq.com/s/KoIpUnJtUp2Y5bComYRHHw)
-
-  
-
-  
-
+- [margin: auto的魔法](https://mp.weixin.qq.com/s/KoIpUnJtUp2Y5bComYRHHw)

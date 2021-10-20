@@ -6,19 +6,30 @@
 
 BFC全称为 block formattng context，中文为“块级格式化上下文”。相对应的还有IFC，也就是 inline formatting context，中文为“内联格式化上下文”。
 
+是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域
+
+具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性
+
 BFC的特征如结界一般，里面的人出不去，外面的人进不来
 
-表现原则：如果一个元素具有BFC，内部子元素再怎么翻云覆雨，都不会影响外部的元素。所以，BFC元素是不可能发生 margin 重叠的，因为 margin 重叠时会影响外面的元素的；BFC元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度坍塌，必然会影响后面元素布局和定位，**这显然有违BFC元素的子元素不会影响外部元素的设定**。
+表现原则：如果一个元素具有BFC，内部子元素再怎么翻云覆雨，都不会影响外部的元素。所以，BFC元素是不可能发生 margin 重叠的，因为 margin 重叠时会影响外面的元素；BFC 元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度坍塌，必然会影响后面元素布局和定位**这显然有违BFC元素的子元素不会影响外部元素的设定**。
 
 
 
 如何触发BFC呢？常见的情况如下：
 
-- html 根元素；
-- float 的值不为none；
-- overflow 的值为 auto、scroll或hidden；
-- display 的值为 table-cell、table-caption和inline-block中的任何一个；
-- position 的值不为 relative 和 static
+- 根元素（html ）
+- 浮动元素（元素的 float 不是 none）
+- 绝对定位元素（元素的 position 为 absolute 或 fixed）
+- 行内块元素（元素的 display 为 inline-block）
+- 表格单元格（元素的 display 为 table-cell，HTML 表格单元格默认该值）
+- 表格标题（元素的 display 为 table-caption，HTML 表格标题默认为该值）
+- 匿名表格单元格元素（元素的 [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 为 `table、``table-row`、 `table-row-group、``table-header-group、``table-footer-group`（分别是HTML table、row、tbody、thead、tfoot 的默认属性）或 `inline-table`）
+- overflow 不会 visible 的块级元素
+- 弹性元素（display 为 flex 或 inline-flex 元素的直接子元素）
+- 网格元素（display 为 grid 或 inline-grid 元素的直接子元素）
+
+还有其他的可以到[这里](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)查看
 
 换言之，只要元素符合上面任意一个元素，就无须使用 clear: both 属性去清除浮动的影响了。因为，不要见到一个 `<div>` 元素就加上类似.clearfix 的类名，否则只能暴雷你孱弱的CSS基本功
 
@@ -40,7 +51,7 @@ BFC的特征如结界一般，里面的人出不去，外面的人进不来
 盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻盒子的margin会发生重叠
 ```
 
-属于同一个BFC的两个相邻盒子的margin会发生重叠，那么我们创建不属于同一个BFC，就不会发生margin重叠了。
+属于同一个 BFC 的两个相邻盒子的 margin 会发生重叠，那么我们创建不属于同一个 BFC，就不会发生 margin 重叠了。
 
 <img src="https://i.loli.net/2021/06/03/YLG6tZU1J5RjluT.png" />
 
@@ -48,7 +59,7 @@ BFC的特征如结界一般，里面的人出不去，外面的人进不来
 
 如下
 
-## BFC与流式布局
+#### BFC与流式布局
 
 **BFC 的结界特性最重要的用途其实不是去 margin 重叠或者是清除 float 影响，而是实现更健壮、更智能的自适应布局**
 
@@ -99,7 +110,7 @@ BFC的特征如结界一般，里面的人出不去，外面的人进不来
 
 ![BFC1](https://i.loli.net/2021/06/03/oPjbLkCtgpwdZGI.png)
 
-因为我们将 info 元素改造成了BFC，所以具有 BFC 特性的元素的子元素不会受到外部元素影响，也不会影响外部元素，于是，这里的 info 元素为了不和浮动元素产生任何交集，顺着浮动边缘形成自己的封闭上下文
+因为我们将 info 元素改造成了 BFC，所以具有 BFC 特性的元素的子元素不会受到外部元素影响，也不会影响外部元素，于是，这里的 info 元素为了不和浮动元素产生任何交集，顺着浮动边缘形成自己的封闭上下文
 
 
 
@@ -171,6 +182,6 @@ BFC就是页面上的一个隔离的独立容器，容器里面的子元素不�
 ## 参考资料
 
 - [【CSS】深入理解BFC原理及应用](https://www.jianshu.com/p/acf76871d259)
-
 - [CSS世界：张鑫旭](https://book.douban.com/subject/27615777/)
+- [Web 开发者指南](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
 
