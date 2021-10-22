@@ -29,6 +29,8 @@ flex 是一种布局方式，在 CSS3 之后开始有。它主要由父容器和
 - 基础尺寸：`flex-basis`
   - 指定 flex 元素在主轴方向上的初始大小（基础尺寸）
   - 默认值为 auto，即项目本身大小
+  - 浏览器会根据 flex-basis 计算主轴是否有剩余空间，与宽度有关，优先级如何划分
+    - max-width/min-width > flex-basis > width > box
 - **缩写：`flex`**
   - flex-grow、flex-shrink、flex-basis的缩写
   - 默认值为 0 1 auto
@@ -135,9 +137,9 @@ flex默认值为0 1 auto。除此之外，还有各种其他值
 
 ### 默认值 flex: initial
 
-它等同于 `flex:0 1 auto`，表示 flex容器有剩余空间时尺寸不增长（`flex-grow`: 0），flex 容器尺寸不足时尺寸会收缩变小（`flex-shrink`:1），尺寸自适应于内容（`flex-basis`:auto）
+它等同于 `flex:0 1 auto`，表示 flex容器有剩余空间时尺寸不增长（`flex-grow: 0`），flex 容器尺寸不足时尺寸会收缩变小（`flex-shrink:1`），尺寸自适应于内容（`flex-basis:auto`）
 
-我的理解：子项总长度小于总容器时，不会去撑满（`flex-grow`:0），而按实际宽高度存在(`flex-basis`:auto)；当子项总长度大于总容器时，子项会相对于的收缩相对比例（`flex-shrink`:1）
+我的理解：子项总长度小于总容器时，不会去撑满（`flex-grow:0`），而按实际宽高度存在(`flex-basis:auto`)；当子项总长度大于总容器时，子项会相对于的收缩相对比例（`flex-shrink:1`）
 
 #### 适用场景
 
@@ -175,7 +177,7 @@ flex默认值为0 1 auto。除此之外，还有各种其他值
 
 `flex:1` 等同于设置 `flex: 1 1 0%` ，`flex: auto` 等同于 `flex: 1 1 auto`
 
-可以看出两者的 `flex-grow` 和 `flex-shrink` 都是一样的，意味着它们都可以弹性扩展以及弹性收缩，区别在于 `flex: 1` 中 `flex-basis` 为 0，即宽度为 0。`flex:auto` 中的 `flex-basis`为 auto，即宽度为自身宽度
+可以看出两者的 `flex-grow` 和 `flex-shrink` 都是一样的，意味着它们都可以弹性扩展以及弹性收缩，区别在于 `flex: 1` 中 `flex-basis` 为 0，即子项的初始大小（宽度）为 0。`flex:auto` 中的 `flex-basis`为 auto，即宽度为自身宽度
 
 表现的样子为：
 
@@ -183,9 +185,13 @@ flex默认值为0 1 auto。除此之外，还有各种其他值
 
 这里需要解释一下，因为我最开始也不理解，其公式为：
 
-每个子项的宽度 = （总宽度 - `flex-basis` 的宽度）/ 3（以这个例子为例）
+**每个子项的宽度 = （总宽度 - `flex-basis` 的初始大小）/ 子项个数**
 
-因为 `flex:1` 的 `flex-basis` 的宽度为 0 ，所以最后它的总宽度扩张或者收缩时每个子项都能等分
+以这个例子为例，
+
+当`flex:1` 时，即`flex: 1 1 0%`， `flex-basis` 为 0，初始大小为0，所以每个子项等分
+
+当 `flex:auto` 时，即 `flex: 1 1 auto`， `flex-basis` 为 auto，初始大小为自身大小，总宽度 - 每个子项的宽度后，剩余的空间等分给每一项
 
 #### 适用于 flex: 1 的场景
 
