@@ -126,9 +126,9 @@ new Promise((resolve, reject) => {
 
 
 
+promise 题目我不会做
 
-
-
+https://www.v2ex.com/t/810025#reply13
 
 
 
