@@ -264,7 +264,16 @@ BFC 有什么不足？
 
 
 
+## block、inline-block、inline对比
 
+- block
+  - 块级元素，独占一行
+  - 常见元素：div、p、h1...h6、ul、ol、dl、address、blockquote
+- inline-block
+  - 行内块元素，不独占一行，又可以设置宽度和高度
+- inline
+  - 行内元素，相连的排在一行，拍不下时换行
+  - 常见元素：span、a、input、select、textarea、img、br、strong、em、label
 
 
 
