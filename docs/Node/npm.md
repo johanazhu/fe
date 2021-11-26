@@ -57,14 +57,6 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 
 
-## Package.json 属性说明
+## 参考资料
 
-- name 包名
-- version 版本
-- description 描述
-- homepage 官网url
-- author 作者
-- dependencies 生产依赖包列表
-- devDependencies 开发依赖包列表
-- ...
-
+- [nodejs中文文档](http://nodejs.cn/website2/learn/update-all-the-nodejs-dependencies-to-their-latest-version/)

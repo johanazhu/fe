@@ -135,3 +135,9 @@ createElement(tag, attrs, child1, child2, child3)
 tinyreact
 
 https://github.com/ykforerlang/tinyreact
+
+
+
+自己造一个ReactDOM
+
+https://mp.weixin.qq.com/s/kmJWbNriGouztcGx4be8BQ

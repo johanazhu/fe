@@ -126,3 +126,9 @@ https://mp.weixin.qq.com/s/fe_VqsoEErmBF6y5pph99A
 
 
 https://mp.weixin.qq.com/s/TzkAQrDYR2O2VeauYCSWhw
+
+
+
+最全的TypeScript学习指南
+
+https://mp.weixin.qq.com/s/B7sdfzu6ZBbfwSdB34rGGA
