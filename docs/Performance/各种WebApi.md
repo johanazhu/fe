@@ -6,7 +6,7 @@
 
 ### 监听视窗激活状态
 
-![原型](../.vuepress/public/images/Performance/监听视窗激活状态.gif)
+![原型](https://i.loli.net/2021/11/24/I4elPJRbA8W639F.gif)
 
 
 

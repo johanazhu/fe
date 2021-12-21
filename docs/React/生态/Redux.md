@@ -364,6 +364,14 @@ https://zhuanlan.zhihu.com/p/410648220?utm_source=wechat_session&utm_medium=soci
 
 
 
+Redux设计哲学
+
+https://juejin.cn/post/7019185205336342542
+
+
+
+
+
 ## 参考资料
 
 - [从零开始实现一个 Redux，知其然并知其所以然](https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484475&amp;idx=1&amp;sn=27575ab8a8ad4e5e78cec8c2bcad4b0c&source=41#wechat_redirect)

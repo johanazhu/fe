@@ -129,6 +129,7 @@ https://mp.weixin.qq.com/s/TzkAQrDYR2O2VeauYCSWhw
 
 
 
+
 了不起的 tsconfig.json 指南
 
 https://zhuanlan.zhihu.com/p/285270177
@@ -136,3 +137,7 @@ https://zhuanlan.zhihu.com/p/285270177
 字节 React + TypeScript 实践总结篇
 
 https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ
+
+最全的TypeScript学习指南
+
+https://mp.weixin.qq.com/s/B7sdfzu6ZBbfwSdB34rGGA

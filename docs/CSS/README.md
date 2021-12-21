@@ -114,7 +114,7 @@ w3c引入这两个概念是为了格式化文档树以外的信息。也就是�
   - width = border + padding + content 宽度
   - height = border + padding + content 高度
 
-在浏览器中，默认是标准盒模型，css 的写法是 box-sizing: content-box。如果要切换成 IE 模式（也叫怪异盒子），写法为 box-sizing: border-box。
+在浏览器中，默认是标准盒模型，css 的写法是 `box-sizing: content-box`。如果要切换成 IE 模式（也叫怪异盒子），写法为 `box-sizing: border-box`。
 
 
 
