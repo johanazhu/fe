@@ -372,3 +372,24 @@ https://zhuanlan.zhihu.com/p/410648220?utm_source=wechat_session&utm_medium=soci
 - [Redux 设计思想与工作原理](https://mp.weixin.qq.com/s/bJizhO3eP7db22YdzF0fOQ)
 - [MDN：reduce](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
 
+
+
+reducer
+
+![image-20211201213057914](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20211201213057914.png)
+
+
+
+测试：
+
+![image-20211201212745568](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20211201212745568.png)
+
+
+
+createStore初版：
+
+![image-20211201213225454](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20211201213225454.png)
+
+
+
+![image-20211201215600493](C:\Users\mayn\AppData\Roaming\Typora\typora-user-images\image-20211201215600493.png)

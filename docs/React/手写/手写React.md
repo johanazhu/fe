@@ -2,97 +2,7 @@
 
 
 
-### 手写系列-实现一个铂金段位的 React
 
-https://mp.weixin.qq.com/s/C4pjEzYPZocRnJOaF1q0Jg
-
-
-
-### 实现一个小型react思路
-
-我们写的 `jsx ` 代码，都会被转换成`React.createElement`这种形式
-
-先把虚拟`dom`对象-`js`对象（虚拟dom）变成真实`dom`对象，然后插入到根标签内
-
-render方法，接受虚拟dom对象，返回真实dom对象
-
-
-
-https://github.com/BetaSu/just-react
-
-
-
-90行写好一个react
-
-看完了，写的蛮好的。作者实现了JSX、函数组件、类组件和生命周期钩子函数
-
-虚拟DOM 借用 `snabdom` ，vue用的就是这个库
-
-https://www.html.cn/web/javascript/19259.html
-
-
-
-simple-react
-
-https://github.com/hujiulong/simple-react
-
-
-
-
-
-从零开始的React再造之旅
-
-https://mp.weixin.qq.com/s?__biz=Mzg2NDAzMjE5NQ==&mid=2247485323&idx=1&sn=e60644bc3d940cf3ed960133cd75a358&chksm=ce6ec327f9194a31b31d6b5f9ec61ec2b3979fd335e2810f0acd49d8a02c923ab0ca3536a09e&mpshare=1&scene=1&srcid=&sharer_sharetime=1582163598178&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
-
-
-
-React 源码分析
-
-https://zhuanlan.zhihu.com/p/28697362
-
-
-
-从零实现react系列： React 的架构设计（系列文章可以都找来）
-
-https://mp.weixin.qq.com/s/of1ulUPtz7c8Evc9A8cYdw
-
-
-
-
-
-https://github.com/AttackXiaoJinJin/reactExplain
-
-
-
-
-
-從零開始的 React 再造之路
-
-https://segmentfault.com/a/1190000021689852
-
-
-
-
-
-React 技术揭秘
-
-https://react.iamkasong.com/hooks/prepare.html
-
-
-
-老外的做一个react
-
-https://pomb.us/build-your-own-react/
-
-
-
-# 手写源码
-
-
-
-参考https://github.com/hujiulong/simple-react
-
-实现JSX，组件，声明周期，diff，setState等核心功能
 
 ## 前言
 
@@ -132,6 +42,34 @@ createElement(tag, attrs, child1, child2, child3)
 
 
 
-tinyreact
 
-https://github.com/ykforerlang/tinyreact
+
+
+
+## 参考资料
+
+- [Preact（React）核心原理详解](https://mp.weixin.qq.com/s?__biz=MzU0ODk0MDg4Nw==&mid=2247483951&idx=1&sn=b4fbae59bd89c442c7c8fdaa97d0eca7&chksm=fbb63f17ccc1b60187019619a7ae0c8eee9e9a6a0ac12d02bb5d882b97f0426eb2d5c1a288ae&mpshare=1&scene=1&srcid=1219E4YN8Tw4TU6zNCpHO6Qi&sharer_sharetime=1576748110521&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+
+- [从0实现一个tiny react](https://github.com/ykforerlang/tinyreact)
+
+- [手写系列-实现一个铂金段位的 React](https://mp.weixin.qq.com/s/C4pjEzYPZocRnJOaF1q0Jg)
+
+- [React技术揭秘](https://react.iamkasong.com/)
+
+- [用90行javascript代码构建自己的react](https://www.html.cn/web/javascript/19259.html)
+
+- [simple-react](https://github.com/hujiulong/simple-react)
+
+- [从零开始的 React 再造之旅](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490304&idx=1&sn=ff1210a10d747ee4a467572cb479003e&source=41#wechat_redirect)
+
+- [React 源码解析](https://zhuanlan.zhihu.com/p/28697362)
+
+- [从0实现React 系列(一)：React的架构设计](https://mp.weixin.qq.com/s?__biz=Mzg4MTYwMzY1Mw==&mid=2247496377&idx=1&sn=0949ca28eee0fac69c8afcce76424cae&source=41#wechat_redirect)
+
+- [React源码解析](https://github.com/AttackXiaoJinJin/reactExplain)
+
+- [从零开始的 React 再造之旅](https://segmentfault.com/a/1190000021689852)
+
+- [build-your-own-react](https://pomb.us/build-your-own-react/)
+
+  
