@@ -4,7 +4,7 @@
 
 
 
-使用过`redux`的同学都知道，`redux`作为`react`公共状态管理工具，配合`react-redux`可以很好的管理数据,派发更新，更新视图渲染的作用，那么对于 `react-redux` 是如何做到根据 `state` 的改变，而更新组件，促使视图渲染的呢，让我们一起来探讨一下，`react-redux` 源码的奥妙所在
+使用过`redux`的同学都知道，`redux`作为`react`公共状态管理工具，配合`react-redux`可以很好的管理数据，派发更新，更新视图渲染的作用，那么对于 `react-redux` 是如何做到根据 `state` 的改变，而更新组件，促使视图渲染的呢，让我们一起来探讨一下，`react-redux` 源码的奥妙所在
 
 
 
@@ -13,6 +13,27 @@
 
 
 React-redux
+
+
+
+主要是两个组件，connect 高阶组件 和 Provider 组件
+
+connect
+
+1. 从 `store` 里面获取读和写的 API
+2. 对拿到的接口进行封装。根据 `mapStateToProps` 和 `mapDispatchToProps` 进行封装
+3. 在家当的时候进行更新（精准更新）。只有`store` 发生变化，才对页面进行更新
+4. 渲染组件（订阅redux，数据改变后广播通知）
+
+
+
+connect 就是一个高阶组件
+
+Provider 其实就是一个使用 context 上下文后的组件
+
+
+
+把 context 喝 store 结合起来，与欸的那个只能通过 `dispatch` 来进行修改，这样的话，每个组件既可以去 context 里面获取 store 从而获取状态，又不用担心它们乱改数据
 
 
 

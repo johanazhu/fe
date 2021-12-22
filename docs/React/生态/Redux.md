@@ -360,13 +360,9 @@ const next = store.dispatch;
 
 
 
-https://zhuanlan.zhihu.com/p/410648220?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128
 
 
 
-Redux设计哲学
-
-https://juejin.cn/post/7019185205336342542
 
 
 
@@ -374,9 +370,8 @@ https://juejin.cn/post/7019185205336342542
 
 ## 参考资料
 
-- [从零开始实现一个 Redux，知其然并知其所以然](https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484475&amp;idx=1&amp;sn=27575ab8a8ad4e5e78cec8c2bcad4b0c&source=41#wechat_redirect)
-
-- [从0实现一个tinyredux](https://github.com/ykforerlang/tinyredux)
-- [Redux 设计思想与工作原理](https://mp.weixin.qq.com/s/bJizhO3eP7db22YdzF0fOQ)
 - [MDN：reduce](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
 
+Redux设计哲学
+
+https://juejin.cn/post/7019185205336342542
