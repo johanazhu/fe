@@ -2,22 +2,14 @@
 
 
 
-https://juejin.im/post/5e17c1dd6fb9a02fd67e9990
 
 
 
-一文吃透 webpack 核心原理
-
-https://mp.weixin.qq.com/s/e7oKV7sBqCpZQAj-8fG3Dg
 
 
 
-[万字总结] 一文吃透 Webpack 核心原理
+## 参考资料
 
-https://xie.infoq.cn/article/ddca4caa394241447fa0aa3c0
-
-
-
-范文杰 的webpack 源码解析
-
-https://zhuanlan.zhihu.com/p/367931462
+- [Webpack 再深入再总结](https://juejin.cn/post/6844904042066345998)
+- [[万字总结] 一文吃透 Webpack 核心原理](https://mp.weixin.qq.com/s/e7oKV7sBqCpZQAj-8fG3Dg)
+- [[源码解读] Webpack 插件架构深度讲解](https://zhuanlan.zhihu.com/p/367931462)
