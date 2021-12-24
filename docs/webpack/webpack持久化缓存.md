@@ -10,14 +10,12 @@
 
 
 
-https://zhuanlan.zhihu.com/p/33377189
-
-https://github.com/happylindz/blog/issues/7
 
 
 
 
+## 参考资料
 
-希望浏览器长缓存？你应该知道的webpack配置
-
-https://segmentfault.com/a/1190000011980729
+- [webpack 大型应用优化实践](https://zhuanlan.zhihu.com/p/33377189)
+- [webpack 持久化缓存实践](https://github.com/happylindz/blog/issues/7)
+- [希望做浏览器长缓存？关于Webpack生成的Hash，你应该知道这些](https://segmentfault.com/a/1190000011980729)

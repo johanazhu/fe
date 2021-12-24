@@ -7,20 +7,10 @@ plugin 列表
 
 
 
-https://juejin.im/post/5d706172f265da03ca118d28
 
 
+## 参考资料
 
-
-
-手把手带你入门Webpack Plugin
-
-https://mp.weixin.qq.com/s/8oDENjCOsXxlA2fyuIN4GA
-
-
-
-
-
-Webpack - 手把手教你写一个 loader / plugin
-
-https://mp.weixin.qq.com/s/T9H5HYpo-MBgZiSnaHTi0A
+- [为什么 webpack4 默认支持 ES6 语法的压缩？](https://juejin.cn/post/6844903935413583880)
+- [手把手带你入门Webpack Plugin](https://mp.weixin.qq.com/s/8oDENjCOsXxlA2fyuIN4GA)
+- [Webpack - 手把手教你写一个 loader / plugin](https://mp.weixin.qq.com/s/T9H5HYpo-MBgZiSnaHTi0A)

@@ -2,9 +2,7 @@
 
 
 
-大型webpack应用如何做优化
 
-https://zhuanlan.zhihu.com/p/33377189
 
 开发环境：
 
@@ -32,7 +30,7 @@ https://zhuanlan.zhihu.com/p/33377189
                 PS: 模块热更新机制
 
                 	1. 当子模块发生更新时，更新事件会一层层往上传递，也就是从 App.js 文件传递到 main.js 文件，直到有某层的文件接受了当前变化的模块，也就是 main.js 文件中定义的 module.hot.appept(['./App', callback])，这时就会调用 callback 函数去执行自定义逻辑
-                 	2. 如果事件一直往上抛到最外层都没有文件接受它，就会直接刷新网页
+                	2. 如果事件一直往上抛到最外层都没有文件接受它，就会直接刷新网页
 
                 webpack方面也有相应的开启热跟新的处理
 
@@ -110,42 +108,42 @@ https://zhuanlan.zhihu.com/p/33377189
 
            	2. 使用 DllPlugin 预先打包好第三方库
 	
-               	1. ```javascript
-                  	// dll.config.js
-                  	const webpack = require('webpack');
-                  	const path = require('path');
-                  	const DllPlugin = require('webpack/lib/DllPlugin')
-                  	const vendors = [
-                  	  'react',
-                  	  'react-dom',
-                  	  'react-router',
-                  	  'redux',
-                  	  'react-redux',
-                  	  'jquery',
-                  	  'antd',
-                  	  'lodash',
-                  	]
-                  	module.exports = {
-                  	  entry: {
-                  	    'dll': vendors,
-                  	  },
-                  	  output: {
-                  	    filename: '[name].js',
-                  	    path: path.resolve(__dirname, 'public'),
-                  	    library: '__[name]__lib',
-                  	  },
-                  	  plugins: [
-                  	    new DllPlugin({
-                  	      name: '__[name]__lib',
-                  	      path: path.join(__dirname, 'build', '[name].manifest.json'),
-                  	    }),
-                  	  ]
-                  	}
+                     	1. ```javascript
+                    // dll.config.js
+                    const webpack = require('webpack');
+                    const path = require('path');
+                    const DllPlugin = require('webpack/lib/DllPlugin')
+                    const vendors = [
+                      'react',
+                      'react-dom',
+                      'react-router',
+                      'redux',
+                      'react-redux',
+                      'jquery',
+                      'antd',
+                      'lodash',
+                    ]
+                    module.exports = {
+                      entry: {
+                        'dll': vendors,
+                      },
+                      output: {
+                        filename: '[name].js',
+                        path: path.resolve(__dirname, 'public'),
+                        library: '__[name]__lib',
+                      },
+                      plugins: [
+                        new DllPlugin({
+                          name: '__[name]__lib',
+                          path: path.join(__dirname, 'build', '[name].manifest.json'),
+                        }),
+                      ]
+                    }
                ```
 	
             	具体配置
-	
-           	3. 使用 Happypack 多线程加快构建
+	   	
+            	3. 使用 Happypack 多线程加快构建
 
             ​	webpack 构建慢是因为要解析和处理大量的文件，它需要一件件去做。 Happypack 的核心原理就是把这部分任务分解到多个进程去并行处理，从而减少总的构建时间
 
@@ -179,70 +177,45 @@ https://zhuanlan.zhihu.com/p/33377189
             
 
            	4. 不使用 webpack css 模块方案
-
-             	css in js 会增加机器的编译时间，所以不使用
+       	
+           		css in js 会增加机器的编译时间，所以不使用
 
 	2. 不值得去配置的
 
         	1. 代码丑化
-            	2. 模块拆包，持久化缓存
-                	3. 减少打包文件大小
+        		2. 模块拆包，持久化缓存
+        	    	3. 减少打包文件大小
 
 生存环境：
 
  	1. 值得去配置的
-      	1. 模块拆包
-      	2. 尽可能减少打包文件大小
-      	3. 代码丑化压缩
-      	4. 尽可能减少构建时间
-	2. 不值得去配置
-        	1. 优化开发体验
-                  	2. 开发环境才需要的配置
-
-
-
-https://zhuanlan.zhihu.com/p/33377189
-
-
-
-webpack 前端性能优化
-
-https://mp.weixin.qq.com/s/O5GYyd70Toe010f18SOkWA
-
-
-
-玩转 webpack ，使你的打包速度提升90%
-
-https://mp.weixin.qq.com/s?__biz=MjM5NTk4MDA1MA==&mid=2458073274&idx=1&sn=c9b763bf04624a39d06c8ef620f29983&chksm=b187aec786f027d19a1fa53885e86f87fd2968655715f0f600c2389ad5e419c28e0809cfdba6&mpshare=1&scene=1&srcid=&sharer_sharetime=1583157673155&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+ 	  	1. 模块拆包
+ 	  	2. 尽可能减少打包文件大小
+ 	  	3. 代码丑化压缩
+ 	  	4. 尽可能减少构建时间
+ 	2. 不值得去配置
+ 	    	1. 优化开发体验
+ 	              	2. 开发环境才需要的配置
 
 
 
 
 
-webpack 优化笔记
-
-https://github.com/twinkle77/Knowledge-sharing/issues/81
 
 
 
-腾讯 IMweb 团队的前端构建秘籍
-
-https://mp.weixin.qq.com/s?__biz=MzI1ODE4NzE1Nw==&mid=2247487301&idx=1&sn=66f1ffad37081f1da2755102637c10bb&chksm=ea0d45bfdd7acca9096a8664b8ab1dd3ffd0f14fa4a59a6467a20faf18178458a6ed8c1a72c6&mpshare=1&scene=1&srcid=&sharer_sharetime=1582717204519&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
 
 
 
-webpack打包太慢怎么办？试试 dllplugin
+## 参考资料
 
-https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484435&amp;idx=1&amp;sn=8b6fa24209f18864c26023e9171bd6cf&source=41#wechat_redirect
+- [webpack 大型应用优化实践](https://zhuanlan.zhihu.com/p/33377189)
+- [前端性能优化——webpack篇](https://mp.weixin.qq.com/s/O5GYyd70Toe010f18SOkWA)
+- [玩转 webpack，使你的打包速度提升 90%](https://mp.weixin.qq.com/s?__biz=MjM5NTk4MDA1MA==&mid=2458073274&idx=1&sn=c9b763bf04624a39d06c8ef620f29983&chksm=b187aec786f027d19a1fa53885e86f87fd2968655715f0f600c2389ad5e419c28e0809cfdba6&mpshare=1&scene=1&srcid=&sharer_sharetime=1583157673155&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [webpack优化笔记](https://github.com/twinkle77/Knowledge-sharing/issues/81)
+- [腾讯 IMWeb 团队的前端构建秘籍](https://mp.weixin.qq.com/s?__biz=MzI1ODE4NzE1Nw==&mid=2247487301&idx=1&sn=66f1ffad37081f1da2755102637c10bb&chksm=ea0d45bfdd7acca9096a8664b8ab1dd3ffd0f14fa4a59a6467a20faf18178458a6ed8c1a72c6&mpshare=1&scene=1&srcid=&sharer_sharetime=1582717204519&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [Webpack 打包太慢怎么办? 试试 Dllplugin](https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247484435&idx=1&sn=8b6fa24209f18864c26023e9171bd6cf&source=41#wechat_redirect)
+- [Webpack 优化技巧，构建效率提升 50%](https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247484358&idx=1&sn=cbccc1bb47ef230816d770b5741691c5&chksm=c0668250f7110b4646833f93072bacadee06edf3e43e760244689a0436523b3d3ac2d93cb2ef&mpshare=1&scene=1&srcid=&sharer_sharetime=1567384391143&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [Webpack优化——将你的构建效率提速翻倍](https://juejin.cn/post/6844903924806189070)
+- [webpack 大型应用优化实践](https://zhuanlan.zhihu.com/p/33377189)
 
-
-
-webpack 优化技巧，构建效率提升 50%
-
-https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247484358&idx=1&sn=cbccc1bb47ef230816d770b5741691c5&chksm=c0668250f7110b4646833f93072bacadee06edf3e43e760244689a0436523b3d3ac2d93cb2ef&mpshare=1&scene=1&srcid=&sharer_sharetime=1567384391143&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
-
-
-
-webpack优化——将你的构建效率提速翻倍
-
-https://juejin.im/post/5d614dc96fb9a06ae3726b3e
