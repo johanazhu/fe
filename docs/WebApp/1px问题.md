@@ -32,13 +32,15 @@
 
 1像素问题
 
-https://github.com/AlloyTeam/Mars/blob/master/solutions/border-1px.md
 
 
 
 
 
 
+## 参考资料
+
+- [CSS 实现类似原生效果的 1px 边框](https://github.com/AlloyTeam/Mars/blob/master/solutions/border-1px.md)
 
 
 
