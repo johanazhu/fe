@@ -96,3 +96,12 @@ https://zhuanlan.zhihu.com/p/400429457?utm_source=wechat_session&utm_medium=soci
 
 ### 参考资料
 
+15条前端必备的性能优化方法，你知道哪些
+
+https://zhuanlan.zhihu.com/p/85310910
+
+
+
+从龟速 11s 到闪电 1s，详解前端性能优化之首屏加载
+
+https://mp.weixin.qq.com/s/CE4uUUEufCUvXx5HZJxJBw
