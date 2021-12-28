@@ -16,7 +16,7 @@ font-family: PingFangSC-Regular,Helvetica,STHeiti STXihei,Microsoft YaHei,Micros
 
 ### css与javascript 分离
 
-https://www.open-open.com/lib/view/open1449325854077.html
+
 
 
 
@@ -40,3 +40,6 @@ https://www.open-open.com/lib/view/open1449325854077.html
 
    
 
+## 参考资料
+
+- [H5项目常见问题汇总及解决方案](https://www.open-open.com/lib/view/open1449325854077.html)

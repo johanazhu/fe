@@ -63,16 +63,23 @@ setTimeout(function () {
 window.location = 'intent://' + schemeUrl + '#Intent;scheme=' + scheme + ';package=' + self.package + ';end';
 ```
 
-补充一个来自三水清的详细讲解 [http://js8.in/2013/12/16/ios%E4%BD%BF%E7%94%A8schema%E5%8D%8F%E8%AE%AE%E8%B0%83%E8%B5%B7app/](http://js8.in/2013/12/16/ios使用schema协议调起app/)
 
 
 
-https://github.com/RubyLouvre/mobileHack
 
 
 
-https://mp.weixin.qq.com/s?__biz=MzI0MzIyMDM5Ng==&mid=2649826693&idx=1&sn=86c9c0657ac4cec87421267dc4ec9f2c&chksm=f175ef46c6026650969e0396b5423cd32110606dff9a40d1d08d7822e1cbe2a62e9447ff752e&mpshare=1&scene=1&srcid=&sharer_sharetime=1584449414703&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+## 参考资料
 
-
-
-https://mp.weixin.qq.com/s?__biz=Mzg2NDAzMjE5NQ==&mid=2247484857&idx=1&sn=a4562185da23740c42182adf4eb0fc96&chksm=ce6ec115f91948035274bc2cd93fabda921d915bd9ea9ab28c86cb4bc9933c01937b5d0e5126&mpshare=1&scene=1&srcid=&sharer_sharetime=1571876108871&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+- [iOS使用scheme协议调起APP](https://js8.in/2013/12/16/ios%E4%BD%BF%E7%94%A8schema%E5%8D%8F%E8%AE%AE%E8%B0%83%E8%B5%B7app/)
+- [司徒正美的mobileHack](https://github.com/RubyLouvre/mobileHack)
+- [12个前端必会 H5 问题及解决方法](https://github.com/suoyuesmile/suo-blog/blob/master/articals/h5/0003.md)
+- [微信 H5 页面兼容性解决方案](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490207&idx=1&sn=82e08108f953fa541304b8bfc318fb30&source=41#wechat_redirect)
+- [web app问题及技巧总结](https://github.com/yunzhijia/front-end/blob/master/web%20app%E9%97%AE%E9%A2%98%E5%8F%8A%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93.md)
+- [mobileTech](https://github.com/jtyjty99999/mobileTech)
+- [H5项目常见问题汇总及解决方案](https://www.open-open.com/lib/view/open1449325854077.html)
+- [移动端 H5 相关问题汇总](https://github.com/suoyuesmile/suo-blog/blob/master/articals/h5/0003.md)
+- [如何写一个适配iPhoneX的底部导航](https://juejin.cn/post/6844903615304302600)
+- [微信 H5 页面兼容性解决方案](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490207&idx=1&sn=82e08108f953fa541304b8bfc318fb30&source=41#wechat_redirect)
+- [微信浏览器禁止页面下拉查看网址](https://juejin.cn/post/6844903940190896135)
+- [移动web开发踩坑总结](http://www.imooc.com/article/260139)

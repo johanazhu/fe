@@ -50,25 +50,14 @@ webview 是手机系统中，一个基于webkit内核，拥有渲染引擎和JS�
 
 
 
-某些环节也可能涉及到server端
-
-https://jeezliu.github.io/javascript/hybrid/JSBridge%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0/
 
 
 
 
 
-Hybrid 应用中H5与Native 通信的那点事儿
 
-https://mp.weixin.qq.com/s?__biz=Mzg2NDAzMjE5NQ==&mid=2247485506&idx=1&sn=c96d0a067962e3bbc03c98548a2d7efa&chksm=ce6ecceef91945f87c50c41e844b719120dbc18d26f98f797df8b756439e8eb60a256159dc0b&mpshare=1&scene=1&srcid=&sharer_sharetime=1586567321300&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+## 参考资料
 
-
-
-转转 Hybrid 体系建设
-
-https://juejin.im/post/6872185695838928909
-
-
-
-
-
+- [JSBridge 设计和实现](https://jeezliu.github.io/javascript/hybrid/JSBridge%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0/)
+- [Hybrid 应用中 H5 与 Native 通信的那点事儿](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490355&idx=1&sn=312748f8249b48038b7d159cc44c1806&source=41#wechat_redirect)
+- [转转Hybrid体系建设](https://juejin.cn/post/6872185695838928909)
