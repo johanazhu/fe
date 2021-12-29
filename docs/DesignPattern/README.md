@@ -44,19 +44,15 @@ javascript即使面向对象语言又是函数式语言，那么你在代码中�
 
 
 
-如何理解这6种常见设计模式
-
-https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247499441&idx=1&sn=98eed3e09d42165dee63ca808f5dec63&chksm=e92ac3bede5d4aa875f15dbc6e7c1d16b822150d8b2651c968a6d839ebb861c812fd39fffd0b&mpshare=1&scene=1&srcid=0911eUProIfYMUQDvAZO5oYI&sharer_sharetime=1599783120349&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=872f9623724a6dd23805746e3d8835e1eeb95b9833921bcca3abb055f7e3a5e93f06a012a57c961c6ddb9e0b49250a103769279b5d7abd80fe5890b1073a63c93f8d0000d7954747d1aef8f486df7b24fe6393c6db643d2a6e472aed454310f94c42066ab57a2bc2c4d9213995de6092ff03533de9e33df15be31e0259908769&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=AdIx8mPoHjtjyzYmGlQYNnk%3D&pass_ticket=B6FNKnnbZTjKt8UKWmUWP6xoShmkcsXlRS3%2BQ43mwno9yzUlbhReyMePJTWAeYe5&wx_header=0
-
-
-
-【速学速记】《设计模式》这样学就对了！
-
-https://mp.weixin.qq.com/s/dQE7-945x_2rieyBXV46rQ
 
 
 
 
+
+
+## 参考资料
+
+- [【速学速记】《设计模式》这样学就对了！](https://mp.weixin.qq.com/s/dQE7-945x_2rieyBXV46rQ)
 
 
 

@@ -30,6 +30,6 @@ requestAnimationFrame 是由系统来决定回调函数的执行时机，而 set
 
 
 
-字节面试官问粉丝，如何实现准时的setTimeout
+## 参考资料
 
-https://mp.weixin.qq.com/s/ENU93_jSUaAONCkfTQTK-Q
+- [字节面试官问粉丝，如何实现准时的setTimeout](https://mp.weixin.qq.com/s/ENU93_jSUaAONCkfTQTK-Q)
