@@ -83,3 +83,6 @@ window.location = 'intent://' + schemeUrl + '#Intent;scheme=' + scheme + ';packa
 - [微信 H5 页面兼容性解决方案](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490207&idx=1&sn=82e08108f953fa541304b8bfc318fb30&source=41#wechat_redirect)
 - [微信浏览器禁止页面下拉查看网址](https://juejin.cn/post/6844903940190896135)
 - [移动web开发踩坑总结](http://www.imooc.com/article/260139)
+- [iOS Safari浏览器上overflow: scroll元素无法滑动bug解决方法整理](https://segmentfault.com/a/1190000012761272)
+- [iOS safari浏览器上overflow: scroll元素无法滚动bug深究](https://segmentfault.com/a/1190000016408566)
+

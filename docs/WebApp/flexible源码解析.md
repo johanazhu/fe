@@ -2,57 +2,60 @@
 
 
 
-执行 flexible 后，会在`<html>` 元素上增加一个 `data-dpr` 属性，以及一个`font-size` 样式，JS会根据不同的设备添加不同的 `data-dpr` 值，比如说 2 或者 3，同时会给 `html` 加上对应的 `font-size` 的值，比如 `75px`
 
 
+amlib-flexible 源码总共44行
 
 ```javascript
-if (!dpr && !scale) {
-    var isAndroid = win.navigator.appVersion.match(/android/gi);
-    var isIPhone = win.navigator.appVersion.match(/iphone/gi);
-    var devicePixelRatio = win.devicePixelRatio;
-    if (isIPhone) {
-        // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
-        if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {                
-            dpr = 3;
-        } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
-            dpr = 2;
-        } else {
-            dpr = 1;
-        }
-    } else {
-        // 其他设备下，仍旧使用1倍的方案
-        dpr = 1;
+(function flexible (window, document) {
+  var docEl = document.documentElement
+  var dpr = window.devicePixelRatio || 1
+
+  // adjust body font size
+  function setBodyFontSize () {
+    if (document.body) {
+      document.body.style.fontSize = (12 * dpr) + 'px'
     }
-    scale = 1 / dpr;
-}
+    else {
+      document.addEventListener('DOMContentLoaded', setBodyFontSize)
+    }
+  }
+  setBodyFontSize();
+
+  // set 1rem = viewWidth / 10
+  function setRemUnit () {
+    var rem = docEl.clientWidth / 10
+    docEl.style.fontSize = rem + 'px'
+  }
+
+  setRemUnit()
+
+  // reset rem unit on page resize
+  window.addEventListener('resize', setRemUnit)
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      setRemUnit()
+    }
+  })
+
+  // detect 0.5px supports
+  if (dpr >= 2) {
+    var fakeBody = document.createElement('body')
+    var testElement = document.createElement('div')
+    testElement.style.border = '.5px solid transparent'
+    fakeBody.appendChild(testElement)
+    docEl.appendChild(fakeBody)
+    if (testElement.offsetHeight === 1) {
+      docEl.classList.add('hairlines')
+    }
+    docEl.removeChild(fakeBody)
+  }
+}(window, document))
 ```
 
 
 
-### flexible 的实质
 
-flexible 的实际上就是通过 JS 来动态改写 meta 标签，代码类似这样：
-
-```javascript
-var metaEl = doc.createElement('meta');
-var scale = isRetina ? 0.5:1;
-metaEl.setAttribute('name', 'viewport');
-metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-if (docEl.firstElementChild) {
-    document.documentElement.firstElementChild.appendChild(metaEl);
-} else {
-    var wrap = doc.createElement('div');
-    wrap.appendChild(metaEl);
-    documen.write(wrap.innerHTML);
-}
-```
-
-他做了这样几件事：
-
-- 动态改写 `<meta>` 标签
-- 给 `<html> ` 元素添加 `data-dpr` 属性，并且动态改写 `data-dpr` 的值
-- 给 `<html> ` 元素添加 `font-size` 属性，并且动态改写 `font-size` 的值
 
 
 
@@ -69,6 +72,37 @@ flexible 作为屏幕宽度适配解决方案，是存在一些问题的：
 - 动态修改 Viewport 存在一定的分线
 
 
+
+两个版本
+
+0.3.2 老的
+
+通过 meta 标签改变页面的缩放比例，从而达到适配的目的，同时，这个方案解决 1px 问题
+
+缺点是只对 ios 的 dpr 进去处理，对于 安卓机型都默认 dpr = 1
+
+2.0 新的（2019）
+
+两个问题存在，判断设备支不支持 0.5px，如果支持，就在 body 上面添加一个名为 hairlines 的class，所以我们的代码这样写
+
+```css
+.line{
+ border:1px solid red;
+}
+/* dpr>=2且支持0.5px的时候*/
+.hairlines .line{
+ border:0.5px solid red;
+}
+```
+
+但这样有两个问题
+
+- 对于那些 `dpr> 2 且不支持 0.5px` 的安卓机，我们应该如何统一处理？
+- 如果 `dpr = 3` 那么 border 就应该是 `0.333px`，而不是 `0.5px` 了
+
+ 
+
+https://juejin.cn/post/6896713964848152589
 
 ## 参考资料
 
