@@ -1,0 +1,31 @@
+export const data = {
+  "key": "v-74dc2df0",
+  "path": "/HTTP/HTTP%E7%9A%84%E7%94%B1%E6%9D%A5.html",
+  "title": "HTTP的由来",
+  "lang": "en-US",
+  "frontmatter": {},
+  "excerpt": "",
+  "headers": [
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
+    }
+  ],
+  "git": {},
+  "filePathRelative": "HTTP/HTTP的由来.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

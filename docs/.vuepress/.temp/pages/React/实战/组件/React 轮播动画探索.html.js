@@ -1,0 +1,24 @@
+export const data = {
+  "key": "v-4762bfe4",
+  "path": "/React/%E5%AE%9E%E6%88%98/%E7%BB%84%E4%BB%B6/React%20%E8%BD%AE%E6%92%AD%E5%8A%A8%E7%94%BB%E6%8E%A2%E7%B4%A2.html",
+  "title": "React 轮播动画探索",
+  "lang": "en-US",
+  "frontmatter": {},
+  "excerpt": "",
+  "headers": [],
+  "git": {},
+  "filePathRelative": "React/实战/组件/React 轮播动画探索.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

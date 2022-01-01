@@ -1,0 +1,51 @@
+<template><h1 id="图片懒加载解决方案" tabindex="-1"><a class="header-anchor" href="#图片懒加载解决方案" aria-hidden="true">#</a> 图片懒加载解决方案</h1>
+<h2 id="为什么使用图片懒加载" tabindex="-1"><a class="header-anchor" href="#为什么使用图片懒加载" aria-hidden="true">#</a> 为什么使用图片懒加载？</h2>
+<p><strong>为了性能</strong>。如果你要访问</p>
+<p>我们在讲 <RouterLink to="/Browser/%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">浏览器的页面生命周期</RouterLink> 中曾经说过：</p>
+<blockquote>
+<p>DOMContentLoaded：浏览器已完全加载完 HTML，并构建了 DOM 树，但像图片、样式表之类的外部资源可能尚未加载完成</p>
+<p>load：浏览器不仅加载完成了 HTML，还加载完所有的外部资源：图片、字体、样式等</p>
+</blockquote>
+<p>我们要让图片小，一是压缩图片，还有些方法如换图片格式，比如 Google 提出的 WebP，</p>
+<p>还有例如图片懒加载</p>
+<p>一个页面如果一开始就加载整个站的图片无疑会花很多时间，那么我们通过一些手段，用 placeholder 来代替图片，或者用小图来代替，等</p>
+<p>视图内看到的图片可以第一时间显示，没看到的先不用展示</p>
+<p>图片的加载权重比较高，会让页面卡顿</p>
+<p><img src="https://i.loli.net/2021/09/13/vW7DyaxABizjuNr.jpg" alt="resource-priority"></p>
+<h2 id="最简单的实现——以小换大" tabindex="-1"><a class="header-anchor" href="#最简单的实现——以小换大" aria-hidden="true">#</a> 最简单的实现——以小换大</h2>
+<p>最开始是小图片或 placeholder 图，等图片加载完毕后换成大图</p>
+<p>小图所花的时间少，马上就能显示出来，然后通过 JS 显示原来的图</p>
+<h2 id="监听图片高度" tabindex="-1"><a class="header-anchor" href="#监听图片高度" aria-hidden="true">#</a> 监听图片高度</h2>
+<p>最开始展示页面范围内的图片，然后往下滑再逐步展示图片</p>
+<p>在这里也要做节流</p>
+<p>主要技术点：节流 + 当前元素 offsetTop</p>
+<h2 id="intersection-observer" tabindex="-1"><a class="header-anchor" href="#intersection-observer" aria-hidden="true">#</a> Intersection Observer</h2>
+<p>它是什么</p>
+<p>它的语法是怎么样</p>
+<p>怎么用这个实现图片懒加载</p>
+<h2 id="以实养战" tabindex="-1"><a class="header-anchor" href="#以实养战" aria-hidden="true">#</a> 以实养战</h2>
+<p>我们已经用 JS 来实现了图片懒加载，但是这还不够。因为现在的项目基本基于 React/Vue 框架实现，我们来用 React 来实现一下图片懒加载</p>
+<h3 id="图片-api" tabindex="-1"><a class="header-anchor" href="#图片-api" aria-hidden="true">#</a> 图片 API</h3>
+<p>申请 unsplash API 的使用，</p>
+<h3 id="自定义-hooks" tabindex="-1"><a class="header-anchor" href="#自定义-hooks" aria-hidden="true">#</a> 自定义 Hooks</h3>
+<p>自定义 Intersection Observer  Hooks</p>
+<h3 id="参考佳作" tabindex="-1"><a class="header-anchor" href="#参考佳作" aria-hidden="true">#</a> 参考佳作</h3>
+<p>看别人怎么做的？ medium 如何加载图片</p>
+<ul>
+<li>
+<p>直到图片进入可是范围才加载图片</p>
+</li>
+<li>
+<p>然后，加载一张模糊的缩略图</p>
+</li>
+<li>
+<p>然后，加载全尺寸图片，并替代调缩略图</p>
+</li>
+</ul>
+<p>Github 地址</p>
+<p>线上 demo</p>
+<p><a href="https://segmentfault.com/a/1190000017795499" target="_blank" rel="noopener noreferrer">懒加载的3种实现方式<ExternalLinkIcon/></a></p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<p><a href="https://hateonion.me/posts/19jan30/" target="_blank" rel="noopener noreferrer">图片懒加载从简单到复杂<ExternalLinkIcon/></a></p>
+<p>https://codepen.io/jojobo/pen/QWEzYvY</p>
+</template>

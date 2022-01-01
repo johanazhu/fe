@@ -1,0 +1,31 @@
+export const data = {
+  "key": "v-5081988c",
+  "path": "/ES6/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6.html",
+  "title": "深入理解 ES6 模块机制",
+  "lang": "en-US",
+  "frontmatter": {},
+  "excerpt": "",
+  "headers": [
+    {
+      "level": 3,
+      "title": "参考",
+      "slug": "参考",
+      "children": []
+    }
+  ],
+  "git": {},
+  "filePathRelative": "ES6/深入理解ES6模块机制.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

@@ -1,0 +1,24 @@
+export const data = {
+  "key": "v-5bad7568",
+  "path": "/JavaScript/%E5%8E%9F%E7%90%86/%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.html",
+  "title": "实现模板引擎",
+  "lang": "en-US",
+  "frontmatter": {},
+  "excerpt": "",
+  "headers": [],
+  "git": {},
+  "filePathRelative": "JavaScript/原理/实现模板引擎.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}
