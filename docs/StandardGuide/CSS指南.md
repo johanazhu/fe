@@ -1,7 +1,3 @@
-# CSS指南
-
-
-
-
+# CSS 指南
 
 https://github.com/chadluo/CSS-Guidelines

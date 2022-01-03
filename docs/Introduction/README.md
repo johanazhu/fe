@@ -58,7 +58,7 @@
 
 [微信公众号](../WeChat/)
 
-[微信小程序](../WxApp/)
+[微信小程序](../MiniApp/)
 
 [Flutter](../Flutter/)
 
