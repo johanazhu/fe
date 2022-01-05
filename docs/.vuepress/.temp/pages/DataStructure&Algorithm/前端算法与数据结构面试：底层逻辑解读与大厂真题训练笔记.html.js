@@ -49,3 +49,16 @@ export const data = {
   },
   "filePathRelative": "DataStructure&Algorithm/前端算法与数据结构面试：底层逻辑解读与大厂真题训练笔记.md"
 }
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

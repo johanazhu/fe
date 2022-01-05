@@ -162,9 +162,9 @@ bind 用到了闭包
 
 
 
-参考资料：
+## 参考资料
 
-[冯羽](https://github.com/mqyqingfeng/Blog/issues/11)
+- [JavaScript深入之call和apply的模拟实现](https://github.com/mqyqingfeng/Blog/issues/11)
 
 
 

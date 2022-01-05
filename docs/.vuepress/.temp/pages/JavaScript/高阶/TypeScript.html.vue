@@ -39,28 +39,25 @@
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sayHello</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>然后执行</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>tsc hello.ts
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>https://ts.xcatliu.com/introduction/hello-typescript</p>
-<p>TypeScript 是 javaScript 的超集其实就是原生ES语法+Type 类型</p>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>TypeScript 是 javaScript 的超集其实就是原生ES语法+Type 类型</p>
 <p>切记 所有的ts的依赖，都必须是@types 开头的，否则用不了</p>
 <ul>
 <li>类型定义：每一个变量都需要定义它的类型</li>
 <li>引用第三方类库：第三方库如果不是 <code>TypeScript</code> 写的，没有提供声明文件，就需要去为第三方库编写声明文件</li>
 <li>新概念：<code>TypeScript</code> 中引入的类型（Types）、类（Classes）、泛型（Generics）、接口（Interfaces）以及枚举（Enums）</li>
 </ul>
-<p>https://segmentfault.com/a/1190000021210413</p>
-<p>图雀的typescript 教程</p>
-<p>https://tuture.co/tags/TypeScript/</p>
-<p>编写高质量可维护的代码：Awesome TypeScript</p>
-<p>https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw</p>
-<p>又升级了！你不知道的 TypeScript 泛型</p>
-<p>https://mp.weixin.qq.com/s/JTfzexEh0qYDWHCT4l337A</p>
-<p>总结TypeScript在项目开发中的应用实践体会</p>
-<p>https://mp.weixin.qq.com/s/fe_VqsoEErmBF6y5pph99A</p>
-<p>https://mp.weixin.qq.com/s/TzkAQrDYR2O2VeauYCSWhw</p>
-<p>了不起的 tsconfig.json 指南</p>
-<p>https://zhuanlan.zhihu.com/p/285270177</p>
-<p>字节 React + TypeScript 实践总结篇</p>
-<p>https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ</p>
-<p>最全的TypeScript学习指南</p>
-<p>https://mp.weixin.qq.com/s/B7sdfzu6ZBbfwSdB34rGGA</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://ts.xcatliu.com/" target="_blank" rel="noopener noreferrer">TypeScript 入门教程<ExternalLinkIcon/></a></li>
+<li><a href="https://blog.fundebug.com/2021/06/28/typescript-the-difference-between-interface-and-type/" target="_blank" rel="noopener noreferrer">使用 TypeScript 常见困惑：interface 和 type 的区别是什么？<ExternalLinkIcon/></a></li>
+<li><a href="https://tuture.co/tags/Typescript/" target="_blank" rel="noopener noreferrer">图雀的typescript 教程<ExternalLinkIcon/></a></li>
+<li><a href="https://segmentfault.com/a/1190000021210413" target="_blank" rel="noopener noreferrer">4000字讲清 《深入理解TypeScript》一书 【基础篇】<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw" target="_blank" rel="noopener noreferrer">编写高质量可维护的代码：Awesome TypeScript<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/JTfzexEh0qYDWHCT4l337A" target="_blank" rel="noopener noreferrer">又升级了！你不知道的 TypeScript 泛型（千字长文，建议收藏）<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/fe_VqsoEErmBF6y5pph99A" target="_blank" rel="noopener noreferrer">总结TypeScript在项目开发中的应用实践体会<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/TzkAQrDYR2O2VeauYCSWhw" target="_blank" rel="noopener noreferrer">30个小知识让你更清楚TypeScript<ExternalLinkIcon/></a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/285270177" target="_blank" rel="noopener noreferrer">了不起的 tsconfig.json 指南<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ" target="_blank" rel="noopener noreferrer">字节 React + TypeScript 实践总结篇<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/B7sdfzu6ZBbfwSdB34rGGA" target="_blank" rel="noopener noreferrer">最全的TypeScript学习指南<ExternalLinkIcon/></a></li>
+</ul>
 </template>

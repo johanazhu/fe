@@ -34,16 +34,12 @@
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">result</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>问：介绍defineProperty方法，什么时候需要用到</p>
-<p>44道 js 难题， 做对一半就是高手</p>
-<p>https://mp.weixin.qq.com/s/qcUjTZGVRIBR4-JINXpFpA</p>
-<p>JS 20道概念虽老但也略有收获的JS基础题</p>
-<p>https://www.cnblogs.com/echolun/p/13363457.html</p>
-<p>十道经典面试题</p>
-<p>https://zhuanlan.zhihu.com/p/373484984</p>
-<p>常见面试题</p>
-<p>https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ</p>
-<p>夯实JS主要知识点</p>
-<p>https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&amp;mid=2451046276&amp;idx=1&amp;sn=b54360af4eaa853699f6ebda2d2be822&amp;chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1566830719714&amp;sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd</p>
-<h3 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h3>
-<p>[夯实JS主要知识点]</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&amp;mid=2451046276&amp;idx=1&amp;sn=b54360af4eaa853699f6ebda2d2be822&amp;chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1566830719714&amp;sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd" target="_blank" rel="noopener noreferrer">夯实JS主要知识点<ExternalLinkIcon/></a></li>
+<li><a href="https://www.jianshu.com/p/e161bd720e64" target="_blank" rel="noopener noreferrer">44道JS难题，做对一半就是高手<ExternalLinkIcon/></a></li>
+<li><a href="https://www.cnblogs.com/echolun/p/13363457.html" target="_blank" rel="noopener noreferrer">JS 20道概念虽老但也略有收获的JS基础题<ExternalLinkIcon/></a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/373484984" target="_blank" rel="noopener noreferrer">精选十道前端面试题<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ" target="_blank" rel="noopener noreferrer">字节跳动最爱考的前端面试题：JavaScript 基础<ExternalLinkIcon/></a></li>
+</ul>
 </template>

@@ -32,7 +32,5 @@
 <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h2 id="手写-防抖" tabindex="-1"><a class="header-anchor" href="#手写-防抖" aria-hidden="true">#</a> 手写 防抖</h2>
 <h2 id="手写-节流" tabindex="-1"><a class="header-anchor" href="#手写-节流" aria-hidden="true">#</a> 手写 节流</h2>
-<p>https://segmentfault.com/a/1190000018257074</p>
-<p>死磕 36 个 JS 手写题</p>
-<p>https://mp.weixin.qq.com/s/Fra63OYWVN4_rQehTn6o7w</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 </template>

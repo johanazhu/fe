@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-a3a9b72e",
   "path": "/JavaScript/%E5%8E%9F%E7%90%86/%E8%8A%82%E6%B5%81.html",
-  "title": "节流",
+  "title": "节流（throttle）",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
@@ -72,4 +72,17 @@ export const data = {
     ]
   },
   "filePathRelative": "JavaScript/原理/节流.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }

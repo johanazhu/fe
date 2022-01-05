@@ -205,18 +205,6 @@ document<span class="token punctuation">.</span><span class="token function">get
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>代码已经部署在codepen.io上，可以通过 <a href="https://codepen.io/jojobo/pen/KKNYoQx" target="_blank" rel="noopener noreferrer">这里<ExternalLinkIcon/></a> 查看</p>
-<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
-<ul>
-<li>
-<p><a href="https://github.com/jashkenas/underscore/blob/master/modules/debounce.js" target="_blank" rel="noopener noreferrer">underscore的debounce源码<ExternalLinkIcon/></a></p>
-</li>
-<li>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/22" target="_blank" rel="noopener noreferrer">JavaScript专题之跟着underscore学防抖<ExternalLinkIcon/></a></p>
-</li>
-<li>
-<p><a href="https://codepen.io/jojobo/pen/KKNYoQx" target="_blank" rel="noopener noreferrer">codepen在线代码平台<ExternalLinkIcon/></a></p>
-</li>
-</ul>
 <p>无论是防抖，还是节流，都是闭包的引用</p>
 <p>防抖和节流都是防止某一时间频繁触发，但是原理不一样</p>
 <p>防抖是某一段时间内只执行一次，而节流是间隔时间执行</p>
@@ -231,10 +219,14 @@ document<span class="token punctuation">.</span><span class="token function">get
 <li>鼠标不断点击触发，mousedown(单位时间内只触发一次)</li>
 <li>监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断</li>
 </ul>
-<p>老外写的防抖与节流</p>
-<p>https://css-tricks.com/debouncing-throttling-explained-examples/</p>
 <h3 id="如何区分节流和防抖" tabindex="-1"><a class="header-anchor" href="#如何区分节流和防抖" aria-hidden="true">#</a> 如何区分节流和防抖</h3>
 <p>防抖是虽然事件持续触发，但只有等事件停止触发后 n 秒才执行函数，节流是持续触发的时候，每 n 秒执行一次函数</p>
-<p>防抖节流场景及应用</p>
-<p>https://mp.weixin.qq.com/s/XzqwfdG4-whUaAxxnXITmg</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://github.com/jashkenas/underscore/blob/master/modules/debounce.js" target="_blank" rel="noopener noreferrer">underscore的debounce源码<ExternalLinkIcon/></a></li>
+<li><a href="https://github.com/mqyqingfeng/Blog/issues/22" target="_blank" rel="noopener noreferrer">JavaScript专题之跟着underscore学防抖<ExternalLinkIcon/></a></li>
+<li><a href="https://codepen.io/jojobo/pen/KKNYoQx" target="_blank" rel="noopener noreferrer">codepen在线代码平台<ExternalLinkIcon/></a></li>
+<li><a href="https://css-tricks.com/debouncing-throttling-explained-examples/" target="_blank" rel="noopener noreferrer">Debouncing and Throttling Explained Through Examples<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/XzqwfdG4-whUaAxxnXITmg" target="_blank" rel="noopener noreferrer">防抖节流场景及应用<ExternalLinkIcon/></a></li>
+</ul>
 </template>

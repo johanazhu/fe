@@ -13,5 +13,8 @@
   <span class="token class-name">Noop</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> proto<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Noop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>https://juejin.im/post/5acd8ced6fb9a028d444ee4e</p>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://juejin.cn/post/6844903589815517192" target="_blank" rel="noopener noreferrer">详解Object.create(null)<ExternalLinkIcon/></a></li>
+</ul>
 </template>

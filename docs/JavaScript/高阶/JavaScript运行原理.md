@@ -2,12 +2,13 @@
 
 
 
-从 JavaScript 的运行原理谈解析效率优化
-
-https://mp.weixin.qq.com/s?__biz=Mzg2NDAzMjE5NQ==&mid=2247485208&idx=1&sn=6be6813089294531ebe69f7e04bbfb90&chksm=ce6ec3b4f9194aa2f5734221e573d58dd1ddc155594dd90880b8a265d96dab13212407d7c924&mpshare=1&scene=1&srcid=&sharer_sharetime=1579317529268&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
 
 
 
-javaScript 是如何运行的？
 
-https://blog.fundebug.com/2019/09/26/how-does-javascript-execute/
+
+
+## 参考资料
+
+- [从JavaScript的运行原理谈解析效率优化](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490285&idx=1&sn=86ed879706094c1b053c3d6ccfc062c5&source=41#wechat_redirect)
+- [JavaScript 是如何运行的？](https://blog.fundebug.com/2019/09/26/how-does-javascript-execute/)

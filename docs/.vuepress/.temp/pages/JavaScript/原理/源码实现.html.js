@@ -5,7 +5,14 @@ export const data = {
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
-  "headers": [],
+  "headers": [
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
+    }
+  ],
   "git": {
     "updatedTime": 1640996999000,
     "contributors": [
@@ -17,4 +24,17 @@ export const data = {
     ]
   },
   "filePathRelative": "JavaScript/原理/源码实现.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }

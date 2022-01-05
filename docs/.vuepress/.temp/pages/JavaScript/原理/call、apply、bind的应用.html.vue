@@ -93,6 +93,8 @@ context<span class="token punctuation">.</span><span class="token function-varia
     <span class="token keyword">return</span> result
 <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>bind 用到了闭包</p>
-<p>参考资料：</p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/11" target="_blank" rel="noopener noreferrer">冯羽<ExternalLinkIcon/></a></p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://github.com/mqyqingfeng/Blog/issues/11" target="_blank" rel="noopener noreferrer">JavaScript深入之call和apply的模拟实现<ExternalLinkIcon/></a></li>
+</ul>
 </template>

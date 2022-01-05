@@ -17,6 +17,12 @@ export const data = {
       "title": "实现apply",
       "slug": "实现apply",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
     }
   ],
   "git": {
@@ -30,4 +36,17 @@ export const data = {
     ]
   },
   "filePathRelative": "JavaScript/原理/call、apply、bind的应用.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }

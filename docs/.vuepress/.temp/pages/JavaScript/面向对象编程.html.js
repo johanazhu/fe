@@ -11,6 +11,12 @@ export const data = {
       "title": "面向对象（OOP）之类的继承（extend）",
       "slug": "面向对象-oop-之类的继承-extend",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
     }
   ],
   "git": {
@@ -24,4 +30,17 @@ export const data = {
     ]
   },
   "filePathRelative": "JavaScript/面向对象编程.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }
