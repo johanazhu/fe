@@ -1,16 +1,6 @@
-# Git提交规范
-
-
-
-
-
-
-
-
+# Git 提交规范
 
 ## Git 规范
-
-
 
 使用 [commitlint](https://github.com/conventional-changelog/commitlint) 工具，常用有以下几种类型：
 
@@ -31,10 +21,6 @@
 -revert ：撤回提交
 
 -test ：添加或修正测试
-举例git commit -m 'feat: add list'
-
-
-
-
+举例 git commit -m 'feat: add list'
 
 https://github.com/pigcan/blog/issues/15

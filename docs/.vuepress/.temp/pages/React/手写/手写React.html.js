@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-2e15d580",
   "path": "/React/%E6%89%8B%E5%86%99/%E6%89%8B%E5%86%99React.html",
-  "title": "手写React",
+  "title": "手写 React",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
@@ -14,8 +14,8 @@ export const data = {
     },
     {
       "level": 2,
-      "title": "JSX和虚拟DOM",
-      "slug": "jsx和虚拟dom",
+      "title": "JSX 和虚拟 DOM",
+      "slug": "jsx-和虚拟-dom",
       "children": []
     },
     {
@@ -26,14 +26,14 @@ export const data = {
     },
     {
       "level": 2,
-      "title": "diff算法",
-      "slug": "diff算法",
+      "title": "diff 算法",
+      "slug": "diff-算法",
       "children": []
     },
     {
       "level": 2,
-      "title": "异步的setState",
-      "slug": "异步的setstate",
+      "title": "异步的 setState",
+      "slug": "异步的-setstate",
       "children": []
     },
     {

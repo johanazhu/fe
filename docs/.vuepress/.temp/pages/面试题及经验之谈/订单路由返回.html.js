@@ -8,8 +8,14 @@ export const data = {
   "headers": [
     {
       "level": 2,
-      "title": "访问上一页url地址",
-      "slug": "访问上一页url地址",
+      "title": "访问上一页 url 地址",
+      "slug": "访问上一页-url-地址",
+      "children": []
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
       "children": []
     }
   ],

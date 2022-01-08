@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-79c57128",
   "path": "/React/%E7%94%9F%E6%80%81/ReactRedux.html",
-  "title": "React Redux源码解析",
+  "title": "React Redux 源码解析",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",

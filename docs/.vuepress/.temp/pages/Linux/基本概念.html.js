@@ -48,19 +48,14 @@ export const data = {
       "title": "WebServer",
       "slug": "webserver",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
     }
-  ],
-  "git": {
-    "updatedTime": 1640996999000,
-    "contributors": [
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 1
-      }
-    ]
-  },
-  "filePathRelative": "Linux/基本概念.md"
+  ]
 }
 
 if (import.meta.webpackHot) {

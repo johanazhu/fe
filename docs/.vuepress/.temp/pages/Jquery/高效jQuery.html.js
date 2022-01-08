@@ -1,6 +1,6 @@
 export const data = {
-  "key": "v-3a711500",
-  "path": "/Jquery/%E9%AB%98%E6%95%88jQuery.html",
+  "key": "v-78c18e40",
+  "path": "/Jquery/%E9%AB%98%E6%95%88jquery.html",
   "title": "高效 jQuery 的奥秘",
   "lang": "en-US",
   "frontmatter": {},
@@ -14,16 +14,10 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
-    "contributors": [
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 1
-      }
-    ]
+    "updatedTime": null,
+    "contributors": []
   },
-  "filePathRelative": "Jquery/高效jQuery.md"
+  "filePathRelative": "Jquery/高效jquery.md"
 }
 
 if (import.meta.webpackHot) {

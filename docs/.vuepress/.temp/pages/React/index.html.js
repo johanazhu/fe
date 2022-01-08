@@ -36,7 +36,18 @@ export const data = {
       "slug": "实战",
       "children": []
     }
-  ]
+  ],
+  "git": {
+    "updatedTime": 1641392436000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 2
+      }
+    ]
+  },
+  "filePathRelative": "React/README.md"
 }
 
 if (import.meta.webpackHot) {

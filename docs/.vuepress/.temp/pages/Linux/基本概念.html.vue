@@ -243,8 +243,9 @@
 <p>缓存</p>
 <p>PHP,Python,Java</p>
 <p>必备服务</p>
-<p>https://mp.weixin.qq.com/s/iiEuNnSeWlHPBiuvVuXklg</p>
-<p>https://juejin.cn/post/6844904080972709901</p>
-<p>教程：</p>
-<p>https://www.bilibili.com/video/av55883609</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/iiEuNnSeWlHPBiuvVuXklg" target="_blank" rel="noopener noreferrer">看完这篇你一定能掌握Linux<ExternalLinkIcon/></a></li>
+<li><a href="https://juejin.cn/post/6844904080972709901" target="_blank" rel="noopener noreferrer">半小时搞会 CentOS 入门必备基础知识<ExternalLinkIcon/></a></li>
+</ul>
 </template>

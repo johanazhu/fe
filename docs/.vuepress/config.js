@@ -1,3 +1,4 @@
+
 const jsSideBar = require("./sibeBar/jsSideBar");
 const reactSideBar = require("./sibeBar/reactSideBar");
 const bigFrondSideBar = require("./sibeBar/bigFrondSideBar");
@@ -56,6 +57,7 @@ module.exports = {
         // 代码块行号
         lineNumbers: true,
     },
+
     // 主题和它的配置
     theme: "@vuepress/theme-default",
     themeConfig: {

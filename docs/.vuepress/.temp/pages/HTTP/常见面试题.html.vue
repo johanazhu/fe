@@ -10,5 +10,6 @@
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 <ul>
 <li><a href="https://segmentfault.com/a/1190000038556123" target="_blank" rel="noopener noreferrer">GET 和 POST请求的本质区别是什么？<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&amp;mid=2247484152&amp;idx=1&amp;sn=ba6fc3a8c71c69a2290f2284aad74fcb&amp;scene=19#wechat_redirect" target="_blank" rel="noopener noreferrer">点亮前端必会网络知识点<ExternalLinkIcon/></a></li>
 </ul>
 </template>

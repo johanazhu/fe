@@ -17,19 +17,14 @@ export const data = {
       "title": "SSH协议",
       "slug": "ssh协议",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
     }
-  ],
-  "git": {
-    "updatedTime": 1640996999000,
-    "contributors": [
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 1
-      }
-    ]
-  },
-  "filePathRelative": "Linux/远程服务器相关操作.md"
+  ]
 }
 
 if (import.meta.webpackHot) {

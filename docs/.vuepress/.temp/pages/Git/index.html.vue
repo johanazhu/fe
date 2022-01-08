@@ -7,14 +7,22 @@
 <p>git能做什么</p>
 <p>git对我们有什么思想上的帮忙</p>
 <p>git的工作流</p>
-<p>https://www.v2ex.com/t/806914#reply11</p>
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
-<p>程序员必备基础：Git 命令全方位学习</p>
-<p>https://mp.weixin.qq.com/s?__biz=Mzk0MzIyMDA1OA==&amp;mid=2247494230&amp;idx=4&amp;sn=44a9a3f11382f748f6aede13ab644d7a&amp;source=41#wechat_redirect</p>
-<p>牛客网</p>
-<p>https://www.zhihu.com/question/357385506</p>
 <ul>
-<li><a href="https://mp.weixin.qq.com/s/7eLcoFTHwMETH-Sqb4ysKg" target="_blank" rel="noopener noreferrer">图解 Git 各种用法，简单明了，一目了然！<ExternalLinkIcon/></a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=Mzk0MzIyMDA1OA==&amp;mid=2247494230&amp;idx=4&amp;sn=44a9a3f11382f748f6aede13ab644d7a&amp;source=41#wechat_redirect" target="_blank" rel="noopener noreferrer">程序员必备基础：Git 命令全方位学习<ExternalLinkIcon/></a></li>
+<li>
+<p><a href="https://www.v2ex.com/t/806914#reply11" target="_blank" rel="noopener noreferrer">V2EX讨论<ExternalLinkIcon/></a></p>
+</li>
+<li>
+<p><a href="https://mp.weixin.qq.com/s?__biz=Mzk0MzIyMDA1OA==&amp;mid=2247494230&amp;idx=4&amp;sn=44a9a3f11382f748f6aede13ab644d7a&amp;source=41#wechat_redirect" target="_blank" rel="noopener noreferrer">程序员必备基础：Git 命令全方位学习<ExternalLinkIcon/></a></p>
+</li>
+<li>
+<p><a href="https://www.zhihu.com/question/357385506" target="_blank" rel="noopener noreferrer">如何学习好 Git ？知乎讨论<ExternalLinkIcon/></a></p>
+</li>
+<li>
+<p><a href="https://mp.weixin.qq.com/s/7eLcoFTHwMETH-Sqb4ysKg" target="_blank" rel="noopener noreferrer">图解 Git 各种用法，简单明了，一目了然！<ExternalLinkIcon/></a></p>
+</li>
+<li>
+<p><a href="https://mp.weixin.qq.com/s?__biz=Mzk0MzIyMDA1OA==&amp;mid=2247494230&amp;idx=4&amp;sn=44a9a3f11382f748f6aede13ab644d7a&amp;source=41#wechat_redirect" target="_blank" rel="noopener noreferrer">程序员必备基础：Git 命令全方位学习<ExternalLinkIcon/></a></p>
+</li>
 </ul>
 </template>

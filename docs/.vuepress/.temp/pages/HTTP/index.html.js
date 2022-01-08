@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-12e1114e",
   "path": "/HTTP/",
-  "title": "HTTP导航",
+  "title": "HTTP 导航",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",

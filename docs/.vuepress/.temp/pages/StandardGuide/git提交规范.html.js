@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-247befdd",
   "path": "/StandardGuide/git%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83.html",
-  "title": "Git提交规范",
+  "title": "Git 提交规范",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",

@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-7e2b8f98",
   "path": "/Performance/",
-  "title": "Web性能的方方面面",
+  "title": "Web 性能的方方面面",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",

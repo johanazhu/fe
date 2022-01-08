@@ -5,18 +5,14 @@ export const data = {
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
-  "headers": [],
-  "git": {
-    "updatedTime": 1640996999000,
-    "contributors": [
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 1
-      }
-    ]
-  },
-  "filePathRelative": "Linux/README.md"
+  "headers": [
+    {
+      "level": 3,
+      "title": "推荐课程",
+      "slug": "推荐课程",
+      "children": []
+    }
+  ]
 }
 
 if (import.meta.webpackHot) {

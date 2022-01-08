@@ -2,4 +2,12 @@
 
 
 
-https://mp.weixin.qq.com/s/vGhfOhBqHPcEdKq037FAog
+
+
+
+
+
+
+## 参考资料
+
+- [干掉session，爽死了！](https://mp.weixin.qq.com/s/vGhfOhBqHPcEdKq037FAog)

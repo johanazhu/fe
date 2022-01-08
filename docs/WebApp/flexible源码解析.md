@@ -1,29 +1,24 @@
-# flexible源码解析
+# flexible 源码解析
 
-
-
-
-
-amlib-flexible 源码总共44行
+amlib-flexible 源码总共 44 行
 
 ```javascript
-(function flexible (window, document) {
+;(function flexible(window, document) {
   var docEl = document.documentElement
   var dpr = window.devicePixelRatio || 1
 
   // adjust body font size
-  function setBodyFontSize () {
+  function setBodyFontSize() {
     if (document.body) {
-      document.body.style.fontSize = (12 * dpr) + 'px'
-    }
-    else {
+      document.body.style.fontSize = 12 * dpr + 'px'
+    } else {
       document.addEventListener('DOMContentLoaded', setBodyFontSize)
     }
   }
-  setBodyFontSize();
+  setBodyFontSize()
 
   // set 1rem = viewWidth / 10
-  function setRemUnit () {
+  function setRemUnit() {
     var rem = docEl.clientWidth / 10
     docEl.style.fontSize = rem + 'px'
   }
@@ -50,14 +45,8 @@ amlib-flexible 源码总共44行
     }
     docEl.removeChild(fakeBody)
   }
-}(window, document))
+})(window, document)
 ```
-
-
-
-
-
-
 
 - ~~根据设备的 dpr 动态改写 `` 标签，设置 viewport 的缩放~~
 - ~~给 `` 元素添加 data-dpr 属性，并且动态改写 data-dpr 的值~~
@@ -65,13 +54,9 @@ amlib-flexible 源码总共44行
 
 > 关于头两点，其实现在的 `lib-flexible` 库已经不这样做了，不再去缩放 Viewport，字体大小的设定也直接使用了 rem
 
-
-
 flexible 作为屏幕宽度适配解决方案，是存在一些问题的：
 
 - 动态修改 Viewport 存在一定的分线
-
-
 
 两个版本
 
@@ -83,15 +68,15 @@ flexible 作为屏幕宽度适配解决方案，是存在一些问题的：
 
 2.0 新的（2019）
 
-两个问题存在，判断设备支不支持 0.5px，如果支持，就在 body 上面添加一个名为 hairlines 的class，所以我们的代码这样写
+两个问题存在，判断设备支不支持 0.5px，如果支持，就在 body 上面添加一个名为 hairlines 的 class，所以我们的代码这样写
 
 ```css
-.line{
- border:1px solid red;
+.line {
+  border: 1px solid red;
 }
 /* dpr>=2且支持0.5px的时候*/
-.hairlines .line{
- border:0.5px solid red;
+.hairlines .line {
+  border: 0.5px solid red;
 }
 ```
 
@@ -100,13 +85,8 @@ flexible 作为屏幕宽度适配解决方案，是存在一些问题的：
 - 对于那些 `dpr> 2 且不支持 0.5px` 的安卓机，我们应该如何统一处理？
 - 如果 `dpr = 3` 那么 border 就应该是 `0.333px`，而不是 `0.5px` 了
 
- 
-
 https://juejin.cn/post/6896713964848152589
 
 ## 参考资料
 
 [前端基础知识概述 -- 移动端开发的屏幕、图像、字体与布局的兼容适配](https://github.com/chokcoco/cnblogsArticle/issues/25#)
-
-
-

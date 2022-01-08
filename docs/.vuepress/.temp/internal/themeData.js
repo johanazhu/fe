@@ -1324,7 +1324,6 @@ export const themeData = {
           "/HTTP/HTTP是什么.md",
           "/HTTP/HTTP的由来.md",
           "/HTTP/TCP.md",
-          "/HTTP/网络是怎样连接的.md",
           "/HTTP/三次握手和四次挥手.md",
           "/HTTP/HTTP缓存.md",
           "/HTTP/HTTPS怎么就安全了.md",

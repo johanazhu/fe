@@ -1,9 +1,4 @@
 <template><h1 id="tcp协议" tabindex="-1"><a class="header-anchor" href="#tcp协议" aria-hidden="true">#</a> TCP协议</h1>
-<p>本文把TCP/IP讲绝了！</p>
-<p>https://mp.weixin.qq.com/s/EhkbUZYX_P7XJFQ5471HaQ</p>
-<p>一文串联 HTTP、TCP、IP、以太网</p>
-<p>https://mp.weixin.qq.com/s/6cZ5VWYs55R0cxG5aABHjA</p>
-<p>https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#_3-tcp%EF%BC%9A%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E5%9C%B0%E9%80%81%E8%BE%BE%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F</p>
 <p>总结：</p>
 <ul>
 <li>互联网中的数据是通过数据包来传输的，数据包在传输过程中容易丢失或出错</li>
@@ -27,8 +22,12 @@
 <p>案例：udp聊天器</p>
 <h2 id="网络通讯概述" tabindex="-1"><a class="header-anchor" href="#网络通讯概述" aria-hidden="true">#</a> 网络通讯概述</h2>
 <h3 id="_1-什么是网络" tabindex="-1"><a class="header-anchor" href="#_1-什么是网络" aria-hidden="true">#</a> 1.什么是网络</h3>
-<p>被问到http的时候你就这么回答</p>
-<p>https://mp.weixin.qq.com/s/7uuypNid-1iNlXavTFHp7w</p>
-<p>网络是怎么样连接的</p>
-<p>https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&amp;mid=2247484152&amp;idx=1&amp;sn=ba6fc3a8c71c69a2290f2284aad74fcb&amp;scene=19#wechat_redirect</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/EhkbUZYX_P7XJFQ5471HaQ" target="_blank" rel="noopener noreferrer">本文把TCP/IP讲绝了！<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg4MTYwMzY1Mw==&amp;mid=2247496571&amp;idx=1&amp;sn=3532002eb4a2f4d4cd54cb6bfc934f05&amp;source=41#wechat_redirect" target="_blank" rel="noopener noreferrer">一文串联 HTTP、TCP、IP、以太网<ExternalLinkIcon/></a></li>
+<li><a href="https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%8C%85%E7%9A%84%E2%80%9C%E6%97%85%E7%A8%8B%E2%80%9D" target="_blank" rel="noopener noreferrer">TCP协议：如何保证页面文件能被完整送达浏览器<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/7uuypNid-1iNlXavTFHp7w" target="_blank" rel="noopener noreferrer">被问到http的时候你就这么回答<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&amp;mid=2247484152&amp;idx=1&amp;sn=ba6fc3a8c71c69a2290f2284aad74fcb&amp;scene=19#wechat_redirect" target="_blank" rel="noopener noreferrer">点亮前端必会网络知识点<ExternalLinkIcon/></a></li>
+</ul>
 </template>

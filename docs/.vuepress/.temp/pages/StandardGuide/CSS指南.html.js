@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-d54d35bc",
   "path": "/StandardGuide/CSS%E6%8C%87%E5%8D%97.html",
-  "title": "CSS指南",
+  "title": "CSS 指南",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",

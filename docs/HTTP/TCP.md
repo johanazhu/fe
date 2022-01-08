@@ -4,21 +4,7 @@
 
 
 
-本文把TCP/IP讲绝了！
 
-https://mp.weixin.qq.com/s/EhkbUZYX_P7XJFQ5471HaQ
-
-
-
-一文串联 HTTP、TCP、IP、以太网
-
-https://mp.weixin.qq.com/s/6cZ5VWYs55R0cxG5aABHjA
-
-
-
-
-
-https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#_3-tcp%EF%BC%9A%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E5%9C%B0%E9%80%81%E8%BE%BE%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F
 
 
 
@@ -35,20 +21,6 @@ https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#_3
 一个TCP 连接过程包括建立连接、传输数据和断开连接三个阶段
 
 而 HTTP 协议，正是建立在 TCP 连接基础之上的。HTTP 是一种允许浏览器向服务器获取资源的协议，是 Web 的基础
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -98,47 +70,9 @@ udp绑定端口问题（重点）
 
 
 
-被问到http的时候你就这么回答
+## 参考资料
 
-https://mp.weixin.qq.com/s/7uuypNid-1iNlXavTFHp7w
-
-
-
-
-
-
-
-
-
-网络是怎么样连接的
-
-https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247484152&idx=1&sn=ba6fc3a8c71c69a2290f2284aad74fcb&scene=19#wechat_redirect
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [本文把TCP/IP讲绝了！](https://mp.weixin.qq.com/s/EhkbUZYX_P7XJFQ5471HaQ)
+- [一文串联 HTTP、TCP、IP、以太网](https://mp.weixin.qq.com/s?__biz=Mzg4MTYwMzY1Mw==&mid=2247496571&idx=1&sn=3532002eb4a2f4d4cd54cb6bfc934f05&source=41#wechat_redirect)
+- [TCP协议：如何保证页面文件能被完整送达浏览器](https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%8C%85%E7%9A%84%E2%80%9C%E6%97%85%E7%A8%8B%E2%80%9D)
+- [被问到http的时候你就这么回答](https://mp.weixin.qq.com/s/7uuypNid-1iNlXavTFHp7w)
