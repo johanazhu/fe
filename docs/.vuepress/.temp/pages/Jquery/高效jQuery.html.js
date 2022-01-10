@@ -14,8 +14,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1634048020000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 2
+      }
+    ]
   },
   "filePathRelative": "Jquery/高效jquery.md"
 }

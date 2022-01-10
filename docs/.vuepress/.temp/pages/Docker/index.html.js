@@ -18,7 +18,23 @@ export const data = {
       "slug": "参考资料",
       "children": []
     }
-  ]
+  ],
+  "git": {
+    "updatedTime": 1641642108000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 7
+      },
+      {
+        "name": "johnny",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
+  },
+  "filePathRelative": "Docker/README.md"
 }
 
 if (import.meta.webpackHot) {

@@ -27,8 +27,24 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1629886487000,
+    "contributors": [
+      {
+        "name": "johan",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      },
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      },
+      {
+        "name": "johnny",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "HTTP/restful.md"
 }

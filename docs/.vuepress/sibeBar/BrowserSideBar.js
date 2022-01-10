@@ -1,7 +1,7 @@
 function BrowserSideBar() {
     return [
         {
-            text: "/Browser",
+            text: "Browser",
             collapsable: false,
             sidebarDepth: 0,
             children: [

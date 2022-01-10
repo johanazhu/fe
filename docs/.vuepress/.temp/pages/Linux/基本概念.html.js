@@ -55,7 +55,18 @@ export const data = {
       "slug": "参考资料",
       "children": []
     }
-  ]
+  ],
+  "git": {
+    "updatedTime": 1641642108000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 3
+      }
+    ]
+  },
+  "filePathRelative": "Linux/基本概念.md"
 }
 
 if (import.meta.webpackHot) {

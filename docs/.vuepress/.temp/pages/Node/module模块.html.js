@@ -17,6 +17,12 @@ export const data = {
       "title": "export 与 module.export 的区别",
       "slug": "export-与-module-export-的区别",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
     }
   ],
   "git": {

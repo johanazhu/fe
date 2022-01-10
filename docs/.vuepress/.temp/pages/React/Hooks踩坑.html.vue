@@ -68,6 +68,8 @@ someone <span class="token operator">=</span> <span class="token punctuation">{<
 <p>形成快照，2s之后的是按照2秒前的动作执行</p>
 <p>所以产生 Capture Value 的原因，正是每一次 re-render 的时候，都是重新去执行函数组件了，对于之前已经执行过的函数组件，并不会做任何操作</p>
 <p>利用 <code>useRef</code> 就可以绕过 Capture Value 的特性。<strong>可以认为 <code>ref</code> 在所有 Render 过程中保持着唯一引用，因此所有对 <code>ref</code> 的赋值或取值，拿到的都只有一个最终状态</strong>，而不会在每个 Render 间存在隔离。</p>
+<p>React Hooks 使用误区，驳官方文档</p>
+<p>https://mp.weixin.qq.com/s/Yf4-5Zni3-heWjzM2KYAFQ</p>
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 <ul>
 <li>

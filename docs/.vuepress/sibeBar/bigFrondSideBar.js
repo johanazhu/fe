@@ -44,7 +44,7 @@ function bigFrondSideBar() {
             children: ["/MiniApp/"],
         },
         {
-            text: "/Flutter",
+            text: "Flutter",
             collapsable: false,
             sidebarDepth: 0,
             children: [

@@ -1,7 +1,7 @@
 export const data = {
-  "key": "v-79c57128",
-  "path": "/React/%E7%94%9F%E6%80%81/ReactRedux.html",
-  "title": "React Redux 源码解析",
+  "key": "v-2edc0de1",
+  "path": "/Express/Express%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html",
+  "title": "Express源码解析",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
@@ -14,21 +14,10 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1641172712000,
-    "contributors": [
-      {
-        "name": "johan",
-        "email": "t511069160@qq.com",
-        "commits": 3
-      },
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 2
-      }
-    ]
+    "updatedTime": null,
+    "contributors": []
   },
-  "filePathRelative": "React/生态/ReactRedux.md"
+  "filePathRelative": "Express/Express源码解析.md"
 }
 
 if (import.meta.webpackHot) {

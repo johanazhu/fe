@@ -16,4 +16,12 @@ function mySetInterval(func, wait) {
 // 返回值
 ```
 
-https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/259
+
+
+
+
+
+
+## 参考资料
+
+- [用 setTimeout 实现 setInterval，阐述实现的效果与setInterval的差异](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/259)

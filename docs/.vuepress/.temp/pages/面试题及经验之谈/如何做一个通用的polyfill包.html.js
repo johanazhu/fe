@@ -7,9 +7,9 @@ export const data = {
   "excerpt": "",
   "headers": [
     {
-      "level": 3,
-      "title": "如何面试前端工程师",
-      "slug": "如何面试前端工程师",
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
       "children": []
     }
   ],

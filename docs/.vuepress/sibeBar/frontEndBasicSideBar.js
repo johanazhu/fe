@@ -7,7 +7,7 @@ function frontEndBasicSideBar() {
             children: ["/HTML/"],
         },
         {
-            text: "/CSS",
+            text: "CSS",
             collapsable: false,
             sidebarDepth: 0,
             children: [
@@ -27,7 +27,7 @@ function frontEndBasicSideBar() {
             ],
         },
         {
-            text: "/Jquery",
+            text: "Jquery",
             collapsable: false,
             sidebarDepth: 0,
             children: [

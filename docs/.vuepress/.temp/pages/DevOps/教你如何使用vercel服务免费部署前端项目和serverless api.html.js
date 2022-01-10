@@ -1,19 +1,14 @@
 export const data = {
-  "key": "v-ccae214e",
-  "path": "/webpack/%E5%9F%BA%E4%BA%8E%20webpack%20%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88.html",
-  "title": "基于 webpack 的持久化缓存方案",
+  "key": "v-737b6891",
+  "path": "/DevOps/%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8vercel%E6%9C%8D%E5%8A%A1%E5%85%8D%E8%B4%B9%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%92%8Cserverless%20api.html",
+  "title": "教你如何使用vercel服务免费部署前端项目和serverless api",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
   "headers": [],
   "git": {
-    "updatedTime": 1641172712000,
+    "updatedTime": 1641731124000,
     "contributors": [
-      {
-        "name": "johan",
-        "email": "t511069160@qq.com",
-        "commits": 2
-      },
       {
         "name": "johanazhu",
         "email": "t511069160@qq.com",
@@ -21,7 +16,7 @@ export const data = {
       }
     ]
   },
-  "filePathRelative": "webpack/基于 webpack 的持久化缓存方案.md"
+  "filePathRelative": "DevOps/教你如何使用vercel服务免费部署前端项目和serverless api.md"
 }
 
 if (import.meta.webpackHot) {

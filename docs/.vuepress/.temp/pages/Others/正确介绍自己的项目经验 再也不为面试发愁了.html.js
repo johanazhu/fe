@@ -1,19 +1,14 @@
 export const data = {
-  "key": "v-ccae214e",
-  "path": "/webpack/%E5%9F%BA%E4%BA%8E%20webpack%20%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88.html",
-  "title": "基于 webpack 的持久化缓存方案",
+  "key": "v-15005b3f",
+  "path": "/Others/%E6%AD%A3%E7%A1%AE%E4%BB%8B%E7%BB%8D%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%20%E5%86%8D%E4%B9%9F%E4%B8%8D%E4%B8%BA%E9%9D%A2%E8%AF%95%E5%8F%91%E6%84%81%E4%BA%86.html",
+  "title": "正确介绍自己的项目经验 再也不为面试发愁了",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
   "headers": [],
   "git": {
-    "updatedTime": 1641172712000,
+    "updatedTime": 1641731124000,
     "contributors": [
-      {
-        "name": "johan",
-        "email": "t511069160@qq.com",
-        "commits": 2
-      },
       {
         "name": "johanazhu",
         "email": "t511069160@qq.com",
@@ -21,7 +16,7 @@ export const data = {
       }
     ]
   },
-  "filePathRelative": "webpack/基于 webpack 的持久化缓存方案.md"
+  "filePathRelative": "Others/正确介绍自己的项目经验 再也不为面试发愁了.md"
 }
 
 if (import.meta.webpackHot) {

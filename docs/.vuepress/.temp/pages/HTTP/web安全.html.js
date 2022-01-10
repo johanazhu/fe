@@ -12,7 +12,18 @@ export const data = {
       "slug": "参考资料",
       "children": []
     }
-  ]
+  ],
+  "git": {
+    "updatedTime": 1641642108000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 4
+      }
+    ]
+  },
+  "filePathRelative": "HTTP/web安全.md"
 }
 
 if (import.meta.webpackHot) {

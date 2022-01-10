@@ -2,7 +2,7 @@ function FrontEndSideBar() {
     return [
         {
             text: "目录",
-            path: "/Introduction/",
+            link: "/Introduction/",
         },
         {
             text: "JavaScript",
@@ -50,59 +50,59 @@ function FrontEndSideBar() {
         },
         {
             text: "ES6",
-            path: "/ES6/",
+            link: "/ES6/",
         },
         {
             text: "浏览器",
-            path: "/Browser/",
+            link: "/Browser/",
         },
         {
             text: "HTTP",
-            path: "/HTTP/",
+            link: "/HTTP/",
         },
         {
             text: "HTML",
-            path: "/HTML/",
+            link: "/HTML/",
         },
         {
             text: "CSS",
-            path: "/CSS/",
+            link: "/CSS/",
         },
         {
             text: "Docker",
-            path: "/Docker/",
+            link: "/Docker/",
         },
         {
             text: "Git",
-            path: "/Git/",
+            link: "/Git/",
         },
         {
             text: "Linux",
-            path: "/Linux/",
+            link: "/Linux/",
         },
         {
             text: "计算机基础",
-            path: "/CSBasic/",
+            link: "/CSBasic/",
         },
         {
             text: "设计模式",
-            path: "/DesignPattern/发布订阅模式.md",
+            link: "/DesignPattern/发布订阅模式.md",
         },
         {
             text: "Jquery",
-            path: "/Jquery/",
+            link: "/Jquery/",
         },
         {
             text: "读书目录",
-            path: "/Read/book/",
+            link: "/Read/book/",
         },
         {
             text: "源码目录",
-            path: "/Read/code/",
+            link: "/Read/code/",
         },
         {
             text: "关于我",
-            path: "/About/about.md",
+            link: "/About/about.md",
         },
     ];
 }

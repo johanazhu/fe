@@ -32,35 +32,39 @@ function nodeSideBar() {
             text: "Express",
             collapsable: false,
             sidebarDepth: 0,
-            children: ["/Express/", "/Express/手写express.md"],
+            children: [
+                "/Express/",
+                "/Express/手写express.md",
+                "/Express/Express源码解析.md",
+            ],
         },
         {
             text: "PM2",
-            path: "/Node/PM2.md",
+            link: "/Node/PM2.md",
         },
         {
             text: "MongoDB",
-            path: "/Node/MongoDB.md",
+            link: "/Node/MongoDB.md",
         },
         {
             text: "Mysql",
-            path: "/Node/Mysql.md",
+            link: "/Node/Mysql.md",
         },
         {
             text: "Redis",
-            path: "/Node/Redis.md",
+            link: "/Node/Redis.md",
         },
         {
             text: "Go",
-            path: "/Node/Go.md",
+            link: "/Node/Go.md",
         },
         {
             text: "Python",
-            path: "/Node/Python/",
+            link: "/Node/Python/",
         },
         {
             text: "Nest.js",
-            path: "/Node/Nest.js.md",
+            link: "/Node/Nest.js.md",
         },
     ];
 }

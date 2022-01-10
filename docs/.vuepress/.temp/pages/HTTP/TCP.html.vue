@@ -28,6 +28,5 @@
 <li><a href="https://mp.weixin.qq.com/s?__biz=Mzg4MTYwMzY1Mw==&amp;mid=2247496571&amp;idx=1&amp;sn=3532002eb4a2f4d4cd54cb6bfc934f05&amp;source=41#wechat_redirect" target="_blank" rel="noopener noreferrer">一文串联 HTTP、TCP、IP、以太网<ExternalLinkIcon/></a></li>
 <li><a href="https://blog.poetries.top/browser-working-principle/guide/part1/lesson02.html#%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%8C%85%E7%9A%84%E2%80%9C%E6%97%85%E7%A8%8B%E2%80%9D" target="_blank" rel="noopener noreferrer">TCP协议：如何保证页面文件能被完整送达浏览器<ExternalLinkIcon/></a></li>
 <li><a href="https://mp.weixin.qq.com/s/7uuypNid-1iNlXavTFHp7w" target="_blank" rel="noopener noreferrer">被问到http的时候你就这么回答<ExternalLinkIcon/></a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&amp;mid=2247484152&amp;idx=1&amp;sn=ba6fc3a8c71c69a2290f2284aad74fcb&amp;scene=19#wechat_redirect" target="_blank" rel="noopener noreferrer">点亮前端必会网络知识点<ExternalLinkIcon/></a></li>
 </ul>
 </template>

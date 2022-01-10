@@ -26,8 +26,19 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1632870533000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 2
+      },
+      {
+        "name": "johnny",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "Flutter/dart.md"
 }
