@@ -71,7 +71,7 @@ console.log(sayHello(user))
 tsc hello.ts
 ```
 
-https://ts.xcatliu.com/introduction/hello-typescript
+
 
 
 
@@ -95,49 +95,22 @@ TypeScript 是 javaScript 的超集其实就是原生ES语法+Type 类型
 
 
 
-https://segmentfault.com/a/1190000021210413
 
 
 
 
 
-图雀的typescript 教程
 
-https://tuture.co/tags/TypeScript/
+## 参考资料
 
-
-
-编写高质量可维护的代码：Awesome TypeScript
-
-https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw
-
-
-
-又升级了！你不知道的 TypeScript 泛型
-
-https://mp.weixin.qq.com/s/JTfzexEh0qYDWHCT4l337A
-
-
-
-总结TypeScript在项目开发中的应用实践体会
-
-https://mp.weixin.qq.com/s/fe_VqsoEErmBF6y5pph99A
-
-
-
-https://mp.weixin.qq.com/s/TzkAQrDYR2O2VeauYCSWhw
-
-
-
-
-了不起的 tsconfig.json 指南
-
-https://zhuanlan.zhihu.com/p/285270177
-
-字节 React + TypeScript 实践总结篇
-
-https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ
-
-最全的TypeScript学习指南
-
-https://mp.weixin.qq.com/s/B7sdfzu6ZBbfwSdB34rGGA
+- [TypeScript 入门教程](https://ts.xcatliu.com/)
+- [使用 TypeScript 常见困惑：interface 和 type 的区别是什么？](https://blog.fundebug.com/2021/06/28/typescript-the-difference-between-interface-and-type/)
+- [图雀的typescript 教程](https://tuture.co/tags/Typescript/)
+- [4000字讲清 《深入理解TypeScript》一书 【基础篇】](https://segmentfault.com/a/1190000021210413)
+- [编写高质量可维护的代码：Awesome TypeScript](https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw)
+- [又升级了！你不知道的 TypeScript 泛型（千字长文，建议收藏）](https://mp.weixin.qq.com/s/JTfzexEh0qYDWHCT4l337A)
+- [总结TypeScript在项目开发中的应用实践体会](https://mp.weixin.qq.com/s/fe_VqsoEErmBF6y5pph99A)
+- [30个小知识让你更清楚TypeScript](https://mp.weixin.qq.com/s/TzkAQrDYR2O2VeauYCSWhw)
+- [了不起的 tsconfig.json 指南](https://zhuanlan.zhihu.com/p/285270177)
+- [字节 React + TypeScript 实践总结篇](https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ)
+- [最全的TypeScript学习指南](https://mp.weixin.qq.com/s/B7sdfzu6ZBbfwSdB34rGGA)

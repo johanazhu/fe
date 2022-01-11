@@ -51,10 +51,10 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1593601640000,
+    "updatedTime": 1640996999000,
     "contributors": [
       {
-        "name": "johnny",
+        "name": "johanazhu",
         "email": "t511069160@qq.com",
         "commits": 1
       }

@@ -205,6 +205,6 @@
 <p><RouterLink to="/React/%E5%AE%9E%E6%88%98/%E4%BB%BFTapTap%E9%BB%98%E8%AE%A4%E9%A2%9C%E8%89%B2%E5%8F%96%E6%B5%B7%E6%8A%A5%E9%A2%9C%E8%89%B2.html">仿 TapTap 默认颜色取海报颜色</RouterLink></p>
 </li>
 </ul>
-<p>re'a</p>
+<p>React 前端工程师学习路径</p>
 <p>https://github.com/tuture-dev/react-roadmap</p>
 </template>

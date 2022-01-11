@@ -1,4 +1,4 @@
-<template><h1 id="节流" tabindex="-1"><a class="header-anchor" href="#节流" aria-hidden="true">#</a> 节流</h1>
+<template><h1 id="节流-throttle" tabindex="-1"><a class="header-anchor" href="#节流-throttle" aria-hidden="true">#</a> 节流（throttle）</h1>
 <h2 id="原理" tabindex="-1"><a class="header-anchor" href="#原理" aria-hidden="true">#</a> 原理</h2>
 <p><strong>如果你持续触发事件，每隔一段时间，只执行一次事件</strong></p>
 <p>关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器</p>
@@ -146,7 +146,6 @@ container.onmousemove = throttle(getUserAction, 1000, {
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>至此我们已经完整实现了一个 underscore 中的 throttle 函数，恭喜，撒花！</p>
 <h2 id="原理-1" tabindex="-1"><a class="header-anchor" href="#原理-1" aria-hidden="true">#</a> 原理</h2>
 <p>防抖（<code>debounce</code>）：不管事件触发频率多高，一定在事件触发 <code>n</code> 秒后才执行，如果你在一个事件触发的 <code>n</code> 秒内又触发了这个事件，就以新的事件的事件为准， <code>n</code> 秒后才执行，总之，触发完事件 <code>n</code> 秒内不再触发事件， <code>n</code> 秒后再执行</p>
-<p><a href="http://www.conardli.top/docs/JavaScript/%E9%98%B2%E6%8A%96.html#%E5%8E%9F%E7%90%86" target="_blank" rel="noopener noreferrer">http://www.conardli.top/docs/JavaScript/%E9%98%B2%E6%8A%96.html#%E5%8E%9F%E7%90%86<ExternalLinkIcon/></a></p>
 <p>防抖，如果再点击，从头再来</p>
 <p>防抖取第近一次的调用</p>
 <p>防抖：规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效</p>
@@ -165,9 +164,13 @@ container.onmousemove = throttle(getUserAction, 1000, {
 <li>鼠标不断点击触发，mousedown(单位时间内只触发一次)</li>
 <li>监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断</li>
 </ul>
-<p>https://github.com/mqyqingfeng/Blog/issues/22</p>
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 <ul>
-<li><a href="https://github.com/mqyqingfeng/Blog/issues/26" target="_blank" rel="noopener noreferrer">JavaScript专题之跟着 underscore 学节流<ExternalLinkIcon/></a></li>
+<li>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/26" target="_blank" rel="noopener noreferrer">JavaScript专题之跟着 underscore 学节流<ExternalLinkIcon/></a></p>
+</li>
+<li>
+<p><a href="http://www.conardli.top/docs/JavaScript/%E9%98%B2%E6%8A%96.html#%E5%8E%9F%E7%90%86" target="_blank" rel="noopener noreferrer">awesome-coding-js-防抖<ExternalLinkIcon/></a></p>
+</li>
 </ul>
 </template>

@@ -10,7 +10,6 @@
 <li>为什么 setState 卸载这里造成了重复渲染多次？</li>
 <li>setState在这里写合适吗</li>
 </ul>
-<p>https://www.yuque.com/fe9/select/fon761</p>
 <p>组件是有周期</p>
 <p>componentWillMount 当要挂载</p>
 <p>componentDidMount 挂载上时</p>
@@ -19,8 +18,6 @@
 <p>shouldComponentUpdate 返回boolean</p>
 <p>componentWillUpdate 当组件要更新前</p>
 <p>componentDidUpdate 当组件更新完</p>
-<p>生命周期图谱</p>
-<p>https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</p>
 <p>现在生命周期都没人考了，为什么？大家都用 函数式组件来写，状态的话由hook来管理</p>
 <p>为什么？写起来简单，不用写不必要的生命周期</p>
 <p>组件渲染：</p>
@@ -32,10 +29,6 @@
 <p>props变化</p>
 <p>componentWillReceiveProps-shouldComponentUpdate-componentWillUpdate-render-componentDidUpdate(比调用this.setState多了componentWillReceiveProps)</p>
 <p><img src="https://i.loli.net/2021/06/03/ZpyL2VFdatu7rc1.png" alt="image-20210429143319567"></p>
-<p>我对 React v16.4 生命周期的理解</p>
-<p>https://juejin.cn/post/6844903655372488712</p>
-<p>生命周期</p>
-<p>https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</p>
 <p>这些场景，我们同样需要在React Hook中予以解决。React为<code>Class component</code>设计了一大堆生命周期函数：</p>
 <ul>
 <li>在实际的项目开发中用的比较频繁的，譬如渲染后期的：<code>componentDidMount</code>、<code>componentDidUpdate</code>、<code>componentWillUnmount</code>；</li>
@@ -44,4 +37,10 @@
 <li>用于性能优化的<code>shouldComponentUpdate</code>；</li>
 </ul>
 <p>React 16.3版本已经明确了将在17版本中废弃<code>componentWillMount</code>、<code>componentWillUpdate</code>和<code>componentWillReceiveProps</code>这三个生命周期函数。设计用来取代<code>componentWillReceiveProps</code>的<code>getDerivedStateFromProps</code>也并不被推荐使用</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://www.yuque.com/fe9/select/fon761" target="_blank" rel="noopener noreferrer">React生命周期管理<ExternalLinkIcon/></a></li>
+<li><a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener noreferrer">react-lifecycle-methods-diagram<ExternalLinkIcon/></a></li>
+<li><a href="https://juejin.cn/post/6844903655372488712" target="_blank" rel="noopener noreferrer">我对 React v16.4 生命周期的理解<ExternalLinkIcon/></a></li>
+</ul>
 </template>

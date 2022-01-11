@@ -99,7 +99,3 @@ this的指向（apply, call, bind）
 要将这些盘活，连成一个大网
 
 
-
-常见面试题：
-
-https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ

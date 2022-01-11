@@ -5,6 +5,29 @@ export const data = {
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
+<<<<<<< HEAD
+  "headers": [
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
+    }
+  ]
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+=======
   "headers": [],
   "git": {
     "updatedTime": 1593178540000,
@@ -17,6 +40,7 @@ export const data = {
     ]
   },
   "filePathRelative": "JavaScript/高阶/JavaScript中的函数进阶指南.md"
+>>>>>>> 25ea5de2d116bdf1e70bb0fb27004eea4633f14e
 }
 
 if (import.meta.webpackHot) {

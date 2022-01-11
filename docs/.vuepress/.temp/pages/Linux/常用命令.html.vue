@@ -86,15 +86,15 @@
 </tr>
 </tbody>
 </table>
-<h4 id="命令" tabindex="-1"><a class="header-anchor" href="#命令" aria-hidden="true">#</a> 命令</h4>
-<p>https://zhuanlan.zhihu.com/p/28674639</p>
-<p>翻译原文</p>
-<p>https://www.thegeekstuff.com/2010/11/50-linux-commands/</p>
-<p>实验楼练习 linux</p>
-<p>https://zhuanlan.zhihu.com/p/22654634</p>
 <p>查看linux的版本</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">uname</span> -r
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>重启linux</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">reboot</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>https://juejin.cn/post/6844903971815948296</p>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/28674639" target="_blank" rel="noopener noreferrer">写代码怎能不会这些 Linux 命令<ExternalLinkIcon/></a></li>
+<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/" target="_blank" rel="noopener noreferrer">50-linux-commands<ExternalLinkIcon/></a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22654634" target="_blank" rel="noopener noreferrer">linux学习资源整理<ExternalLinkIcon/></a></li>
+<li><a href="https://juejin.cn/post/6844903971815948296" target="_blank" rel="noopener noreferrer">Linux基础命令总结<ExternalLinkIcon/></a></li>
+</ul>
 </template>

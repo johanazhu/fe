@@ -58,12 +58,6 @@ export const data = {
       "level": 2,
       "title": "附录",
       "slug": "附录",
-      "children": []
-    },
-    {
-      "level": 2,
-      "title": "参考资料",
-      "slug": "参考资料",
       "children": [
         {
           "level": 3,
@@ -72,25 +66,21 @@ export const data = {
           "children": []
         }
       ]
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
     }
   ],
   "git": {
-    "updatedTime": 1634193198000,
+    "updatedTime": 1641392436000,
     "contributors": [
       {
         "name": "johanazhu",
         "email": "t511069160@qq.com",
-        "commits": 6
-      },
-      {
-        "name": "johan",
-        "email": "t511069160@qq.com",
-        "commits": 3
-      },
-      {
-        "name": "johnny",
-        "email": "t511069160@qq.com",
-        "commits": 1
+        "commits": 2
       }
     ]
   },

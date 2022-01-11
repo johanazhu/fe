@@ -33,8 +33,6 @@
 <p>比如说，一个低优先级的任务A正在执行，已经调用了某个组件的componentWillUpdate函数，接下来发现自己的时间分片已经用完了，于是冒出水面，看看有没有紧急任务，哎呀，真的有一个紧急任务B，接下来React Fiber就会去执行这个紧急任务B，任务A虽然进行了一半，但是没办法，只能完全放弃，等到任务B全搞定之后，任务A重头来一遍，注意，是重头来一遍，不是从刚才中段的部分开始，也就是说，componentWillUpdate函数会被再调用一次。</p>
 <p>虚拟DOM是由JSX转译过来的，JSX的入口函数是React.createElement, 可操作空间不大， 第三大的底层API也非常稳定，因此我们只能改变第二层。</p>
 <p>React16将内部组件层改成Fiber这种数据结构，因此它的架构名也改叫Fiber架构。Fiber节点拥有return, child, sibling三个属性，分别对应父节点， 第一个孩子， 它右边的兄弟， 有了它们就足够将一棵树变成一个链表， 实现深度优化遍历。</p>
-<p>React Fiber架构浅析</p>
-<p>https://juejin.cn/post/7005880269827735566</p>
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 <ul>
 <li><a href="http://www.ayqy.net/blog/dive-into-react-fiber/" target="_blank" rel="noopener noreferrer">完全理解React Fiber<ExternalLinkIcon/></a></li>
@@ -46,5 +44,6 @@
 <li><a href="https://zhuanlan.zhihu.com/p/37095662" target="_blank" rel="noopener noreferrer">React Fiber架构<ExternalLinkIcon/></a></li>
 <li><a href="https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw" target="_blank" rel="noopener noreferrer">react fiber 到底有多细<ExternalLinkIcon/></a></li>
 <li><a href="https://juejin.cn/post/6985058301184737287#heading-6" target="_blank" rel="noopener noreferrer">你不知道的 React Virtual DOM<ExternalLinkIcon/></a></li>
+<li><a href="https://juejin.cn/post/7005880269827735566" target="_blank" rel="noopener noreferrer">React Fiber架构浅析<ExternalLinkIcon/></a></li>
 </ul>
 </template>

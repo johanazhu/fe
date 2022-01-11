@@ -17,15 +17,21 @@ export const data = {
       "title": "export 与 module.export 的区别",
       "slug": "export-与-module-export-的区别",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
+      "children": []
     }
   ],
   "git": {
-    "updatedTime": 1629900306000,
+    "updatedTime": 1640996999000,
     "contributors": [
       {
         "name": "johanazhu",
         "email": "t511069160@qq.com",
-        "commits": 4
+        "commits": 1
       }
     ]
   },

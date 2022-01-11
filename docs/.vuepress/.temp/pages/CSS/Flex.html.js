@@ -1,6 +1,6 @@
 export const data = {
-  "key": "v-18f86e0a",
-  "path": "/CSS/flex.html",
+  "key": "v-6af5e8db",
+  "path": "/CSS/Flex.html",
   "title": "flex从总结到了解",
   "lang": "en-US",
   "frontmatter": {},
@@ -52,10 +52,16 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1640996999000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
   },
-  "filePathRelative": "CSS/flex.md"
+  "filePathRelative": "CSS/Flex.md"
 }
 
 if (import.meta.webpackHot) {

@@ -20,5 +20,8 @@
 <p>ts + hooks 版本</p>
 </li>
 </ul>
-<p>https://www.robinwieruch.de/react-hooks-fetch-data</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://www.robinwieruch.de/react-hooks-fetch-data/" target="_blank" rel="noopener noreferrer">How to fetch data with React Hooks<ExternalLinkIcon/></a></li>
+</ul>
 </template>

@@ -7,15 +7,10 @@ export const data = {
   "excerpt": "",
   "headers": [],
   "git": {
-    "updatedTime": 1603862931000,
+    "updatedTime": 1640996999000,
     "contributors": [
       {
-        "name": "johnny",
-        "email": "t511069160@qq.com",
-        "commits": 3
-      },
-      {
-        "name": "johan",
+        "name": "johanazhu",
         "email": "t511069160@qq.com",
         "commits": 1
       }

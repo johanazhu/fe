@@ -25,8 +25,6 @@ const create = (proto) => {
 
 
 
+## 参考资料
 
-
-
-
-https://juejin.im/post/5acd8ced6fb9a028d444ee4e
+- [详解Object.create(null)](https://juejin.cn/post/6844903589815517192)

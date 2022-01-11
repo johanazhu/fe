@@ -399,9 +399,9 @@ render() {
 
 
 
+react中onClick={fun}和onClick=>{()=>fun}有何区别呢？
 
-
-
+https://www.zhihu.com/question/504049336/answer/2294252770?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128&utm_content=group3_Answer&utm_campaign=shareopn
 
 
 

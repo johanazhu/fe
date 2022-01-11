@@ -7,17 +7,17 @@ export const data = {
   "excerpt": "",
   "headers": [
     {
-      "level": 3,
-      "title": "如何面试前端工程师",
-      "slug": "如何面试前端工程师",
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
       "children": []
     }
   ],
   "git": {
-    "updatedTime": 1606193970000,
+    "updatedTime": 1640996999000,
     "contributors": [
       {
-        "name": "johan",
+        "name": "johanazhu",
         "email": "t511069160@qq.com",
         "commits": 1
       }

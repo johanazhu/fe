@@ -1,7 +1,7 @@
 export const data = {
   "key": "v-a3a9b72e",
   "path": "/JavaScript/%E5%8E%9F%E7%90%86/%E8%8A%82%E6%B5%81.html",
-  "title": "节流",
+  "title": "节流（throttle）",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
@@ -62,17 +62,12 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1629886487000,
+    "updatedTime": 1641392436000,
     "contributors": [
       {
         "name": "johanazhu",
         "email": "t511069160@qq.com",
-        "commits": 4
-      },
-      {
-        "name": "johan",
-        "email": "t511069160@qq.com",
-        "commits": 1
+        "commits": 2
       }
     ]
   },

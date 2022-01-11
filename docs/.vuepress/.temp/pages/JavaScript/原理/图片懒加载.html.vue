@@ -43,9 +43,14 @@
 </li>
 </ul>
 <p>Github 地址</p>
-<p>线上 demo</p>
-<p><a href="https://segmentfault.com/a/1190000017795499" target="_blank" rel="noopener noreferrer">懒加载的3种实现方式<ExternalLinkIcon/></a></p>
+<p>线上 <a href="https://codepen.io/jojobo/pen/QWEzYvY" target="_blank" rel="noopener noreferrer">demo<ExternalLinkIcon/></a></p>
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li>
 <p><a href="https://hateonion.me/posts/19jan30/" target="_blank" rel="noopener noreferrer">图片懒加载从简单到复杂<ExternalLinkIcon/></a></p>
-<p>https://codepen.io/jojobo/pen/QWEzYvY</p>
+</li>
+<li>
+<p><a href="https://segmentfault.com/a/1190000017795499" target="_blank" rel="noopener noreferrer">懒加载的3种实现方式<ExternalLinkIcon/></a></p>
+</li>
+</ul>
 </template>

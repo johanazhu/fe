@@ -16,6 +16,14 @@ uname -r
 sudo reboot
 ```
 
-一篇教会你写 90%的 shell 脚本
 
-https://zhuanlan.zhihu.com/p/315294919?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128
+
+
+
+
+
+
+
+## 参考资料
+
+- [一篇教会你写90%的shell脚本](https://zhuanlan.zhihu.com/p/315294919)

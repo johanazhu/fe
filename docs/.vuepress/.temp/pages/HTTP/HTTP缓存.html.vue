@@ -19,19 +19,14 @@
 <p>3、如果硬盘中未查找到，就进行网络请求；</p>
 <p>4、加载到的资源缓存到硬盘和内存</p>
 <h1 id="缓存相关" tabindex="-1"><a class="header-anchor" href="#缓存相关" aria-hidden="true">#</a> 缓存相关</h1>
-<p>深入理解浏览器的缓存机制</p>
-<p>https://www.jianshu.com/p/54cc04190252</p>
-<p>浏览器 &amp; HTTP 缓存策略</p>
-<p>【面试三板斧】之缓存</p>
-<p>https://mp.weixin.qq.com/s?__biz=Mzk0OTIwOTc5Ng==&amp;mid=2247486813&amp;idx=1&amp;sn=0ed82e72452ad27494bbcdb90de4ae4b&amp;source=41#wechat_redirect</p>
-<p>彻底理解浏览器的缓存机制</p>
-<p>https://www.cnblogs.com/duiniweixiao/p/8884274.html</p>
-<p>前端缓存最佳实践</p>
-<p>https://mp.weixin.qq.com/s/03OAnrJ5kM-kdITr00YR4Q</p>
-<p>缓存的力量</p>
-<p>https://mp.weixin.qq.com/s/CsJyKVq3IIjDv32TZ9m7fQ</p>
-<p>node实践彻底搞懂强缓存和协商缓存</p>
-<p>https://juejin.cn/post/6942264171870289956#heading-1</p>
-<p>浅析HTTP缓存</p>
-<p>https://juejin.cn/post/6944891188826603528</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://www.jianshu.com/p/54cc04190252" target="_blank" rel="noopener noreferrer">深入理解浏览器的缓存机制<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzk0OTIwOTc5Ng==&amp;mid=2247486813&amp;idx=1&amp;sn=0ed82e72452ad27494bbcdb90de4ae4b&amp;source=41#wechat_redirect" target="_blank" rel="noopener noreferrer">「面试三板斧」之缓存 (上)<ExternalLinkIcon/></a></li>
+<li><a href="https://www.cnblogs.com/duiniweixiao/p/8884274.html" target="_blank" rel="noopener noreferrer">彻底理解浏览器的缓存机制<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/03OAnrJ5kM-kdITr00YR4Q" target="_blank" rel="noopener noreferrer">前端缓存最佳实践<ExternalLinkIcon/></a></li>
+<li><a href="https://mp.weixin.qq.com/s/CsJyKVq3IIjDv32TZ9m7fQ" target="_blank" rel="noopener noreferrer">浏览器缓存的力量<ExternalLinkIcon/></a></li>
+<li><a href="https://juejin.cn/post/6942264171870289956" target="_blank" rel="noopener noreferrer">node实践彻底搞懂强缓存和协商缓存<ExternalLinkIcon/></a></li>
+<li><a href="https://juejin.cn/post/6944891188826603528" target="_blank" rel="noopener noreferrer">浅析HTTP缓存<ExternalLinkIcon/></a></li>
+</ul>
 </template>

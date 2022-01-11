@@ -1,32 +1,21 @@
 export const data = {
   "key": "v-57043bbd",
   "path": "/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%8F%8A%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/%E9%9D%A2%E8%AF%95%E9%A2%98.html",
-  "title": "",
+  "title": "阿里笔试题：链式调用、对象比较以及对象是否存在循环引用",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
   "headers": [
     {
-      "level": 3,
-      "title": "如何面试前端工程师",
-      "slug": "如何面试前端工程师",
-      "children": []
-    },
-    {
-      "level": 3,
-      "title": "javascript面试知识点",
-      "slug": "javascript面试知识点",
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
       "children": []
     }
   ],
   "git": {
-    "updatedTime": 1626429279000,
+    "updatedTime": 1641731124000,
     "contributors": [
-      {
-        "name": "johan",
-        "email": "t511069160@qq.com",
-        "commits": 4
-      },
       {
         "name": "johanazhu",
         "email": "t511069160@qq.com",

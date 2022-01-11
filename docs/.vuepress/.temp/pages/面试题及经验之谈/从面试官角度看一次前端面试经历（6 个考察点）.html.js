@@ -12,7 +12,23 @@ export const data = {
       "slug": "参考资料",
       "children": []
     }
-  ]
+  ],
+  "git": {
+    "updatedTime": 1641172712000,
+    "contributors": [
+      {
+        "name": "johan",
+        "email": "t511069160@qq.com",
+        "commits": 2
+      },
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
+  },
+  "filePathRelative": "面试题及经验之谈/从面试官角度看一次前端面试经历（6 个考察点）.md"
 }
 
 if (import.meta.webpackHot) {

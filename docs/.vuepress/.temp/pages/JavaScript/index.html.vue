@@ -57,6 +57,4 @@ this的指向（apply, call, bind）
 <p>以前面试的时候常害怕别人问：<strong>原型</strong> 、<strong>原型链</strong> 、<strong>闭包</strong> 、<strong>继承</strong>、<strong>构造函数</strong> ，<strong>this</strong> ， 后来过了一年，我害怕别人问 防抖和节流、promise、深拷贝和浅拷贝、react、webpack的优化，再后来就是 基础的算法问题，</p>
 <p>说不知道，是撒谎。但也谈不上章口就来。说到底，还是基础不扎实，其本质没理解到位，所以需要写点东西加深自己的印象。</p>
 <p>要将这些盘活，连成一个大网</p>
-<p>常见面试题：</p>
-<p>https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ</p>
 </template>

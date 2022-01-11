@@ -204,6 +204,8 @@ instance<span class="token punctuation">.</span>props <span class="token operato
 <ol start="2">
 <li>如果key不变，数据就不会变，如果两列数据为[1, 2, 3] ,[1, 2, 3, 4, 5, 6]点击第一组数据中的任意项，此数据标红，且展示第二组数据，如果展示UI时，key为index，那么前三是不会被替换的，你看的会是数据标红了且是第二条数据</li>
 </ol>
+<p>react中onClick={fun}和onClick=&gt;{()=&gt;fun}有何区别呢？</p>
+<p>https://www.zhihu.com/question/504049336/answer/2294252770?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=56197411504128&amp;utm_content=group3_Answer&amp;utm_campaign=shareopn</p>
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 <ul>
 <li><a href="https://www.zhihu.com/question/29191974/answer/1620274467" target="_blank" rel="noopener noreferrer">如果进阿里前端，代码能力得达到什么程度？<ExternalLinkIcon/></a></li>

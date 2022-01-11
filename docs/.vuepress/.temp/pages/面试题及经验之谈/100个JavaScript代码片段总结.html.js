@@ -12,7 +12,23 @@ export const data = {
       "slug": "参考资料",
       "children": []
     }
-  ]
+  ],
+  "git": {
+    "updatedTime": 1641172712000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 2
+      },
+      {
+        "name": "johan",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
+  },
+  "filePathRelative": "面试题及经验之谈/100个JavaScript代码片段总结.md"
 }
 
 if (import.meta.webpackHot) {

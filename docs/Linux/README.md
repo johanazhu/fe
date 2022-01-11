@@ -12,6 +12,7 @@
 
 
 
-课程：
+### 推荐课程
 
-https://www.bilibili.com/video/BV187411y7hF?spm_id_from=333.999.0.0
+- [Linux最通俗易懂的教程阿里云真实环境学习](https://www.bilibili.com/video/BV187411y7hF)
+- [基于CentOS7的Linux操作系统的入门与服务器的配置](https://www.bilibili.com/video/av55883609)

@@ -5,6 +5,8 @@
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">uname</span> -r
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>重启 linux</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">reboot</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>一篇教会你写 90%的 shell 脚本</p>
-<p>https://zhuanlan.zhihu.com/p/315294919?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=56197411504128</p>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/315294919" target="_blank" rel="noopener noreferrer">一篇教会你写90%的shell脚本<ExternalLinkIcon/></a></li>
+</ul>
 </template>

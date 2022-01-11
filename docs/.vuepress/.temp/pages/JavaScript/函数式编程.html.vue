@@ -43,7 +43,24 @@ counter<span class="token punctuation">.</span>x <span class="token comment">// 
 <span class="token keyword">const</span> <span class="token function-variable function">g</span> <span class="token operator">=</span> <span class="token parameter">x</span> <span class="token operator">=></span> x <span class="token operator">*</span> <span class="token number">2</span>'
 <span class="token keyword">const</span> fg <span class="token operator">=</span> <span class="token function">compose</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> g<span class="token punctuation">)</span>
 <span class="token function">fg</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&amp;mid=2651233708&amp;idx=1&amp;sn=5f65bf6cc7e012ce99e648e8c4b56a89&amp;chksm=bd4944288a3ecd3eed9fa153b2eaa7e1716393a96e307228920d5c638816b437f96d80eede63&amp;scene=21#wechat_redirect</p>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>=======
+https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&amp;mid=2651233708&amp;idx=1&amp;sn=5f65bf6cc7e012ce99e648e8c4b56a89&amp;chksm=bd4944288a3ecd3eed9fa153b2eaa7e1716393a96e307228920d5c638816b437f96d80eede63&amp;scene=21#wechat_redirect</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>25ea5de2d116bdf1e70bb0fb27004eea4633f14e</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h3 id="纯函数的好处" tabindex="-1"><a class="header-anchor" href="#纯函数的好处" aria-hidden="true">#</a> 纯函数的好处</h3>
 <p>纯函数的概念</p>
 <blockquote>
@@ -75,11 +92,45 @@ counter<span class="token punctuation">.</span>x <span class="token comment">// 
 <h4 id="偏函数的简单应用" tabindex="-1"><a class="header-anchor" href="#偏函数的简单应用" aria-hidden="true">#</a> 偏函数的简单应用</h4>
 <p>Function.prototype.bind()</p>
 <p>会创建一个新函数（称为绑定函数），新函数与被调函数（绑定函数的目标函数）具有相同的函数体</p>
-<p>https://github.com/sunyongjian/FP-Code/tree/master/src</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>=======
+https://github.com/sunyongjian/FP-Code/tree/master/src</p>
 <p>https://juejin.cn/post/6940442700889980965</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>25ea5de2d116bdf1e70bb0fb27004eea4633f14e</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h3 id="概念" tabindex="-1"><a class="header-anchor" href="#概念" aria-hidden="true">#</a> 概念</h3>
 <p>函数式编程倡导<strong>利用若干简单的执行单元</strong>让计算结果不断渐进，逐层推导复杂的运算</p>
-<p>https://juejin.cn/post/6940442700889980965</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>=======
+https://juejin.cn/post/6940442700889980965</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>25ea5de2d116bdf1e70bb0fb27004eea4633f14e</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p>函数式编程有两个最基本的运算： 合成（compose）和柯里化（Currying）</p>
 <h3 id="合成-compose" tabindex="-1"><a class="header-anchor" href="#合成-compose" aria-hidden="true">#</a> 合成（Compose）</h3>
 <p>如果一个值要经过多个函数，才能变成另外一个值，就可以把所有中间步骤合并成一个函数，这叫做“函数的合成”（compose）</p>
@@ -176,5 +227,28 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>数据可变将导致[代入法]不可用，函数与数学再无关联；而数据不可变则相反</li>
 <li>数据可变将导致数据共享变得困难；而数据不可变则相反</li>
 </ul>
-<p>函数式编程无副作用是因为它不会修改自己外部的 env，也不会去修改通过参数传进来的对象，顶多修改自己的本地变量而已</p>
+<p>函数式编程无副作用是因为它不会修改自己外部的 env，也不会去修改通过参数传进来的对象，顶多修改自己的本地变量而已
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&amp;mid=2651233708&amp;idx=1&amp;sn=5f65bf6cc7e012ce99e648e8c4b56a89&amp;chksm=bd4944288a3ecd3eed9fa153b2eaa7e1716393a96e307228920d5c638816b437f96d80eede63&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">简明 JavaScript 函数式编程-入门篇<ExternalLinkIcon/></a></li>
+<li><a href="https://github.com/sunyongjian/FP-Code/tree/master/src" target="_blank" rel="noopener noreferrer">函数式编程思维<ExternalLinkIcon/></a></li>
+<li><a href="https://juejin.cn/post/6940442700889980965" target="_blank" rel="noopener noreferrer">浅析JavaScript函数式编程<ExternalLinkIcon/></a>
+=======</li>
+</ul>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>25ea5de2d116bdf1e70bb0fb27004eea4633f14e</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 </template>

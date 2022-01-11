@@ -67,42 +67,14 @@ console.log(result(tag))
 
 
 
-44道 js 难题， 做对一半就是高手
-
-https://mp.weixin.qq.com/s/qcUjTZGVRIBR4-JINXpFpA
 
 
 
 
+## 参考资料
 
-JS 20道概念虽老但也略有收获的JS基础题
-
-https://www.cnblogs.com/echolun/p/13363457.html
-
-
-
-十道经典面试题
-
-https://zhuanlan.zhihu.com/p/373484984
-
-
-
-常见面试题
-
-https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ
-
-
-
-夯实JS主要知识点
-
-https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
-
-
-
-
-
-### 参考资料
-
-
-
-[夯实JS主要知识点]
+- [夯实JS主要知识点](https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [44道JS难题，做对一半就是高手](https://www.jianshu.com/p/e161bd720e64)
+- [JS 20道概念虽老但也略有收获的JS基础题](https://www.cnblogs.com/echolun/p/13363457.html)
+- [精选十道前端面试题](https://zhuanlan.zhihu.com/p/373484984)
+- [字节跳动最爱考的前端面试题：JavaScript 基础](https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ)

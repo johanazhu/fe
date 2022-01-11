@@ -1,6 +1,6 @@
 export const data = {
-  "key": "v-30ff34c4",
-  "path": "/HTTP/RESTful.html",
+  "key": "v-e7f124c4",
+  "path": "/HTTP/restful.html",
   "title": "RESTful",
   "lang": "en-US",
   "frontmatter": {},
@@ -27,10 +27,26 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1629886487000,
+    "contributors": [
+      {
+        "name": "johan",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      },
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      },
+      {
+        "name": "johnny",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
   },
-  "filePathRelative": "HTTP/RESTful.md"
+  "filePathRelative": "HTTP/restful.md"
 }
 
 if (import.meta.webpackHot) {

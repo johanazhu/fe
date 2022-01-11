@@ -108,9 +108,7 @@ React16将内部组件层改成Fiber这种数据结构，因此它的架构名�
 
 
 
-React Fiber架构浅析
 
-https://juejin.cn/post/7005880269827735566
 
 
 
@@ -127,4 +125,5 @@ https://juejin.cn/post/7005880269827735566
 - [React Fiber架构](https://zhuanlan.zhihu.com/p/37095662)
 - [react fiber 到底有多细](https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw)
 - [你不知道的 React Virtual DOM](https://juejin.cn/post/6985058301184737287#heading-6)
+- [React Fiber架构浅析](https://juejin.cn/post/7005880269827735566)
 

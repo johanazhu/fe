@@ -12,7 +12,23 @@ export const data = {
       "slug": "参考资料",
       "children": []
     }
-  ]
+  ],
+  "git": {
+    "updatedTime": 1641172712000,
+    "contributors": [
+      {
+        "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 3
+      },
+      {
+        "name": "johan",
+        "email": "t511069160@qq.com",
+        "commits": 2
+      }
+    ]
+  },
+  "filePathRelative": "面试题及经验之谈/12道腾讯前端面试真题及答案整理.md"
 }
 
 if (import.meta.webpackHot) {
