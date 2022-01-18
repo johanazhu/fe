@@ -30,8 +30,11 @@ Symbol的作用非常的专一，换句话说其设计出来就只有一个目�
 
 
 
-https://www.zhangxinxu.com/wordpress/2018/04/known-es6-symbol-function/
 
 
 
-http://caibaojian.com/es6/symbol.html
+
+## 参考资料
+
+- [简单了解ES6/ES2015 Symbol() 方法](https://www.zhangxinxu.com/wordpress/2018/04/known-es6-symbol-function/)
+- [ES6 symbol](http://caibaojian.com/es6/symbol.html)

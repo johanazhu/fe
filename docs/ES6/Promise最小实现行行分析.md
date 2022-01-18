@@ -126,6 +126,6 @@ promise1.then((res) => {
 
 
 
-### 参考资料
+## 参考资料
 
-[最简实现Promise，支持异步链式调用（20行）](https://juejin.cn/post/6844904094079926286)
+- [最简实现Promise，支持异步链式调用（20行）](https://juejin.cn/post/6844904094079926286)
