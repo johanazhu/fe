@@ -76,7 +76,7 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
+    "updatedTime": 1629900306000,
     "contributors": [
       {
         "name": "johanazhu",
@@ -86,17 +86,4 @@ export const data = {
     ]
   },
   "filePathRelative": "Node/MongoDB.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

@@ -1,6 +1,6 @@
 export const data = {
-  "key": "v-69188a64",
-  "path": "/Node/Restful.html",
+  "key": "v-8a73a378",
+  "path": "/Node/RESTful.html",
   "title": "RESTful是个啥东西",
   "lang": "en-US",
   "frontmatter": {},
@@ -32,27 +32,8 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
-    "contributors": [
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 1
-      }
-    ]
+    "updatedTime": null,
+    "contributors": []
   },
-  "filePathRelative": "Node/Restful.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
+  "filePathRelative": "Node/RESTful.md"
 }

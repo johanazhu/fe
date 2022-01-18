@@ -136,27 +136,19 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
+    "updatedTime": 1629886487000,
     "contributors": [
       {
-        "name": "johanazhu",
+        "name": "johan",
         "email": "t511069160@qq.com",
-        "commits": 1
+        "commits": 2
+      },
+      {
+        "name": "johnny",
+        "email": "t511069160@qq.com",
+        "commits": 2
       }
     ]
   },
   "filePathRelative": "Docker/实战：docker-jenkins.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

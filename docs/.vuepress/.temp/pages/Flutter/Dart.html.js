@@ -1,6 +1,6 @@
 export const data = {
-  "key": "v-1d87308e",
-  "path": "/Flutter/dart.html",
+  "key": "v-d60d5f24",
+  "path": "/Flutter/Dart.html",
   "title": "Dart",
   "lang": "en-US",
   "frontmatter": {},
@@ -26,32 +26,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1632870533000,
+    "updatedTime": 1640996999000,
     "contributors": [
       {
         "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 2
-      },
-      {
-        "name": "johnny",
         "email": "t511069160@qq.com",
         "commits": 1
       }
     ]
   },
-  "filePathRelative": "Flutter/dart.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
+  "filePathRelative": "Flutter/Dart.md"
 }

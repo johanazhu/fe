@@ -1,6 +1,6 @@
 export const data = {
-  "key": "v-6344732a",
-  "path": "/Koa2/%E6%89%8B%E5%86%99koa2.html",
+  "key": "v-45cfe64b",
+  "path": "/Koa2/%E6%89%8B%E5%86%99Koa2.html",
   "title": "一步一步来：手写Koa2",
   "lang": "en-US",
   "frontmatter": {},
@@ -44,27 +44,8 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
-    "contributors": [
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 1
-      }
-    ]
+    "updatedTime": null,
+    "contributors": []
   },
-  "filePathRelative": "Koa2/手写koa2.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
+  "filePathRelative": "Koa2/手写Koa2.md"
 }

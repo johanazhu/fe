@@ -20,27 +20,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
+    "updatedTime": 1630485391000,
     "contributors": [
       {
-        "name": "johanazhu",
+        "name": "johan",
         "email": "t511069160@qq.com",
-        "commits": 1
+        "commits": 2
       }
     ]
   },
   "filePathRelative": "Node/Nest.js.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

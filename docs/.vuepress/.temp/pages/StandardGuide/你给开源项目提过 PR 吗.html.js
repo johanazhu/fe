@@ -7,27 +7,14 @@ export const data = {
   "excerpt": "",
   "headers": [],
   "git": {
-    "updatedTime": 1640996999000,
+    "updatedTime": 1631097705000,
     "contributors": [
       {
-        "name": "johanazhu",
+        "name": "johan",
         "email": "t511069160@qq.com",
         "commits": 1
       }
     ]
   },
   "filePathRelative": "StandardGuide/你给开源项目提过 PR 吗.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

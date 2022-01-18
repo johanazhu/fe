@@ -14,27 +14,19 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
+    "updatedTime": 1632731147000,
     "contributors": [
       {
         "name": "johanazhu",
+        "email": "t511069160@qq.com",
+        "commits": 3
+      },
+      {
+        "name": "johan",
         "email": "t511069160@qq.com",
         "commits": 1
       }
     ]
   },
   "filePathRelative": "ES6/深入理解ES6模块机制.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

@@ -44,7 +44,7 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
+    "updatedTime": 1629384625000,
     "contributors": [
       {
         "name": "johanazhu",
@@ -54,17 +54,4 @@ export const data = {
     ]
   },
   "filePathRelative": "DevOps/如果我有一台服务器，我会怎么部署.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }
