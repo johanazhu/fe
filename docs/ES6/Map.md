@@ -161,13 +161,12 @@ var m = new Map([])
 
 
 
-https://mp.weixin.qq.com/s/ax-Lec-wam0pptpRTH5Log
-
 
 
 ### 参考资料
 
-[Map and Set（集合和映射）](https://zh.javascript.info/map-set)
+- [Map and Set（集合和映射）](https://zh.javascript.info/map-set)
+- [「 Map最佳实践」什么时候适合使用 Map 而不是 Object](https://mp.weixin.qq.com/s/ax-Lec-wam0pptpRTH5Log)
 
 
 

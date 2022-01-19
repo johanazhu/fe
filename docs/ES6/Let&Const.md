@@ -1,12 +1,6 @@
 # let 和 const
 
-https://www.cnblogs.com/zhuzhenwei918/p/6131345.html
 
-
-
-我用了两个月的时间才理解 let
-
-https://zhuanlan.zhihu.com/p/28140450
 
 
 
@@ -108,9 +102,11 @@ var 声明的会在预编译阶段进行变量提升，并且赋值undefined
 
 
 
-### 参考资料
+## 参考资料
 
-[闭包](https://zh.javascript.info/closure)
+- [闭包](https://zh.javascript.info/closure)
+- [ES6之let（理解闭包）和const命令](https://www.cnblogs.com/zhuzhenwei918/p/6131345.html)
+- [我用了两个月的时间才理解 let](https://zhuanlan.zhihu.com/p/28140450)
 
 
 

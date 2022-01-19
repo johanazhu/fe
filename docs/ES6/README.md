@@ -89,7 +89,7 @@ foo()
 
 正常输出3。因此在相应花括号形成的作用域中，存在一个“死区”，起始于函数开头，终止与相关变量声明的一行。在这个范围内无法访问 let 或 const 声明的变量。这个“死区”的专业名称为：TDZ （Temporal Dead Zone） 
 
-https://gitbook.cn/gitchat/column/5c91c813968b1d64b1e08fde/topic/5c99a9a3ccb24267c1d01960
+
 
 
 
@@ -125,13 +125,7 @@ const foo = `this is a ${example}`;
 
 
 
-ES6+ 的必考集合，你都会了吗？
 
-https://mp.weixin.qq.com/s/yaDMqup7Ut_5ial4oAQBDA
-
-
-
-https://juejin.im/post/5bfe05505188252098022400
 
 
 
@@ -143,12 +137,22 @@ https://juejin.im/post/5bfe05505188252098022400
 
 
 
-1.5万字概括 ES6 全部特性
-
-https://juejin.im/post/5d9bf530518825427b27639d#heading-21
 
 
 
-ES6 你可能不知道的事 - 进阶篇
 
-https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046817&idx=1&sn=ee4af07eed742d0df9dbad676c6f9e84&chksm=87c418b1b0b391a79f27f3db6abc46c05fe8d993d98bb12e68823b96e92f34bfc84f21667e03&mpshare=1&scene=1&srcid=&sharer_sharetime=1585194801642&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd
+## 参考资料
+
+- [前端开发者不得不知的 ES6 十大特性](http://www.alloyteam.com/2016/03/es6-front-end-developers-will-have-to-know-the-top-ten-properties/)
+
+- [老司机也会在闭包相关知识点翻车（上）](https://gitbook.cn/gitchat/column/5c91c813968b1d64b1e08fde/topic/5c99a9a3ccb24267c1d01960)
+
+- [ES6 你可能不知道的事 - 进阶篇](https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046817&idx=1&sn=ee4af07eed742d0df9dbad676c6f9e84&chksm=87c418b1b0b391a79f27f3db6abc46c05fe8d993d98bb12e68823b96e92f34bfc84f21667e03&mpshare=1&scene=1&srcid=&sharer_sharetime=1585194801642&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+
+- [1.5万字概括ES6全部特性(已更新ES2020)](https://juejin.cn/post/6844903959283367950)
+
+- [ES6 完全使用手册](https://juejin.cn/post/6844903726201700365)
+
+- [ES6+ 的必考集合，你都会了吗？](https://mp.weixin.qq.com/s/yaDMqup7Ut_5ial4oAQBDA)
+
+  
