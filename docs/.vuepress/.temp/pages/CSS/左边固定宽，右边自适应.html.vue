@@ -1,0 +1,163 @@
+<template><h1 id="已知左边固定宽度-右边自适应" tabindex="-1"><a class="header-anchor" href="#已知左边固定宽度-右边自适应" aria-hidden="true">#</a> 已知左边固定宽度，右边自适应</h1>
+<p>这是一道面试题，你有多少种办法呢？</p>
+<p>这里我们假设左边名为left，宽度为 200 px，右边名为 right。即默认</p>
+<div class="language-css ext-css line-numbers-mode"><pre v-pre class="language-css"><code><span class="token selector">.left</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>我的理解分四大类</p>
+<ul>
+<li>flex 布局
+<ul>
+<li>需设置父元素高度</li>
+</ul>
+</li>
+<li>grid 布局
+<ul>
+<li>需设置父元素高度</li>
+</ul>
+</li>
+<li>绝对定位
+<ul>
+<li>双子元素 absolute
+<ul>
+<li>不需要设置父元素高度</li>
+<li>子元素都设置高度，右边子元素 <code>left：200px</code> + <code>width: 100%</code></li>
+</ul>
+</li>
+<li>左元素 absolute + 右元素 margin-left
+<ul>
+<li>不需要设置父元素高度</li>
+<li>子元素都设置高度，右边子元素 <code>margin-left: 200px</code> + <code>width: 100%</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>float 浮动
+<ul>
+<li>左元素左浮动，右元素不动
+<ul>
+<li>无需父元素</li>
+<li>左元素需设置宽高和浮动，右元素设置高度即可</li>
+</ul>
+</li>
+<li>左元素左浮动，右元素右浮动
+<ul>
+<li>无需父元素</li>
+<li>左元素设置宽高和左浮动，右元素设置右浮动以及高和宽（<code>width: calc(100% - 200px)</code>）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="flex-布局" tabindex="-1"><a class="header-anchor" href="#flex-布局" aria-hidden="true">#</a> flex 布局</h2>
+<p>需要一个父元素做 flex 布局，且需要给它一个高度（撑开容器）</p>
+<div class="language-css ext-css line-numbers-mode"><pre v-pre class="language-css"><code><span class="token selector">.father</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.right</span> <span class="token punctuation">{</span>
+    <span class="token property">flex</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="grid-布局" tabindex="-1"><a class="header-anchor" href="#grid-布局" aria-hidden="true">#</a> grid 布局</h2>
+<p>高级的布局方式，子元素不需要设置宽度，单单设置父元素属性即可。</p>
+<div class="language-css ext-css line-numbers-mode"><pre v-pre class="language-css"><code> <span class="token selector">.grid</span> <span class="token punctuation">{</span>
+     <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+     <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> 200px 100%<span class="token punctuation">;</span>
+     <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="双子元素-absolute" tabindex="-1"><a class="header-anchor" href="#双子元素-absolute" aria-hidden="true">#</a> 双子元素 + absolute</h2>
+<p>需要给子元素设置宽高，不然撑不起来。右元素设置<code>left: 200px</code></p>
+<div class="language-css ext-css line-numbers-mode"><pre v-pre class="language-css"><code><span class="token selector">.father</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px
+<span class="token punctuation">}</span>
+<span class="token selector">.left</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px
+<span class="token punctuation">}</span>
+<span class="token selector">.right</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="左元素-absolute-右元素-margin-left" tabindex="-1"><a class="header-anchor" href="#左元素-absolute-右元素-margin-left" aria-hidden="true">#</a> 左元素 absolute + 右元素 margin-left</h2>
+<div class="language-css ext-css line-numbers-mode"><pre v-pre class="language-css"><code><span class="token selector">.father</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.left</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.right</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="无父元素-左元素左浮动-右元素不动" tabindex="-1"><a class="header-anchor" href="#无父元素-左元素左浮动-右元素不动" aria-hidden="true">#</a> 无父元素 + 左元素左浮动，右元素不动</h2>
+<p>前两种都需要有个父元素，但浮动不需要</p>
+<p>左边浮动，下一个元素独占位置，并排一行</p>
+<p>同样，需要设置高度，子元素才能撑开</p>
+<div class="language-css ext-css line-numbers-mode"><pre v-pre class="language-css"><code><span class="token selector">.left</span> <span class="token punctuation">{</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.right</span> <span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="无父元素-左边左浮动-右边有浮动" tabindex="-1"><a class="header-anchor" href="#无父元素-左边左浮动-右边有浮动" aria-hidden="true">#</a> 无父元素 + 左边左浮动，右边有浮动</h2>
+<p>浮动不需要父元素，浮动就区别于正常文档流</p>
+<p>我的理解是正常文档流是二维层面，而浮动相当于成了三维，区别于 Z 轴</p>
+<p>右边元素有浮动不够，还需要设置宽度</p>
+<div class="language-css ext-css line-numbers-mode"><pre v-pre class="language-css"><code><span class="token selector">.left</span> <span class="token punctuation">{</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.right</span> <span class="token punctuation">{</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% - 200px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>只要是 float 实现此功能的，都不需要父元素，以及自身都需要设置高度</p>
+<h2 id="总结" tabindex="-1"><a class="header-anchor" href="#总结" aria-hidden="true">#</a> 总结</h2>
+<p>简单来说，实现布局最好的方式是 flex，简单兼容现代浏览器和机型。当然，我是因为还没有学 grid（但 grid 要记得参数比较多）。绝对定位和浮动各有优缺点</p>
+<table>
+<thead>
+<tr>
+<th>各大方法</th>
+<th>优缺点</th>
+<th>需要什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex</td>
+<td>布局简单</td>
+<td>需要父元素、高度。子项 <code>flex:1</code></td>
+</tr>
+<tr>
+<td>grid</td>
+<td>布局最简单，但兼容性更现代</td>
+<td>只需要父元素设置属性就好</td>
+</tr>
+<tr>
+<td>绝对定位</td>
+<td>兼容性更高</td>
+<td>需要父元素做相对定位、高度</td>
+</tr>
+<tr>
+<td>浮动</td>
+<td>兼容性更高</td>
+<td>不需要父元素，子项都需要宽高</td>
+</tr>
+</tbody>
+</table>
+<p>float区别于其他三种，不需要父元素做容器</p>
+<p>grid区别于其他三种，不需要设置子元素（左元素的）宽</p>
+<p>绝对定位区别于其他三种，它的方法不仅使父元素要有高，其子元素也要有高</p>
+<p>flex最简单</p>
+<p>附上<a href="https://azhubaby.com/demo/%E5%B7%A6%E8%BE%B9%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E8%BE%B9%E8%87%AA%E9%80%82%E5%BA%94.html" target="_blank" rel="noopener noreferrer">线上demo<ExternalLinkIcon/></a></p>
+</template>

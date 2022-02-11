@@ -71,7 +71,7 @@ function jsSideBar() {
                 "/JavaScript/高阶/JavaScript工作原理.md",
                 "/JavaScript/高阶/JavaScript引擎.md",
                 "/JavaScript/高阶/JavaScript中的对象机制.md",
-                "/JavaScript/高阶/JavaScript中的函数进阶指南.md",
+                "/JavaScript/高阶/JavaScript函数进阶指南.md",
                 "/JavaScript/高阶/深入理解JSCore.md",
                 "/JavaScript/高阶/JavaScript工作机制.md",
                 "/JavaScript/高阶/用js写js解析器.md",

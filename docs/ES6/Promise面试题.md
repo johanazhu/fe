@@ -71,7 +71,7 @@ promise 的 then/catch 方法执行后也会返回一个 promise
 如何理解：
 
 ```javascript
-let promise = new Promise((resolve, reject) => {
+let p = new Promise((resolve, reject) => {
     setTimeout(resolve, 1000)
 })
 p.then(() => {
