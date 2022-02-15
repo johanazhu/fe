@@ -24,3 +24,11 @@ https://github.com/lihongxun945/myblog/issues/40
 
 - 团队的一些技术栈和所承担的业务
 - 如果通过了未来的工作主要是做什么
+
+
+
+### 反向面试
+
+技术面试最后反问面试官的话
+
+https://github.com/yifeikong/reverse-interview-zh

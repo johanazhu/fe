@@ -10,11 +10,11 @@
 
 ### 组件
 
-[Component](#Component)
+[Component](#component)
 
 - 构建组件的基类
 
-[PureComponent](#PureComponent)
+[PureComponent](#purecomponent)
 
 - 与 Component 不同的点在于，它进行了浅对比，即 shouldComponentUpdate 的操作
 
@@ -27,19 +27,19 @@
 
 ### Refs
 
-[createRef](#createRef)
+[createRef](#createref)
 
 - 创建一个能够通过 ref 属性附加到 React 元素的 ref 
 
-[forwardRef](#forwardRef)
+[forwardRef](#forwardref)
 
 - 转发，把 ref 转发给下一个组件
 
 
 
-### Fragment
+### 空
 
-[Fragment](#Fragment)
+[Fragment](#fragment)
 
 - 其包裹作用，但自身不渲染到 DOM 上（不会渲染任何可见的UI）
 - 允许你将子列表分组，而无需向 DOM 添加额外节点
@@ -53,7 +53,7 @@
 
 - 懒加载，本质是返回一个 Promise 实例
 
-[Suspense](#Suspense)
+[Suspense](#suspense)
 
 - 与 lazy 搭配，在等待加载 lazy 组件时做优雅降低（如 loading 指示器等）
 - 使得组件可以“等待”某些操作结束后，再进行渲染
@@ -62,21 +62,21 @@
 
 ### 创建 React 元素
 
-[createElement](#createElement)
+[createElement](#createelement)
 
 - 每个 JSX 元素都是调用 React.createElement 的语法糖
 
-[createFactory](#createFactory)
+[createFactory](#createfactory)
 
 
 
 ### 转换元素
 
-[cloneElement](#cloneElement)
+[cloneElement](#cloneelement)
 
-[isValidElement](#isValidElement)
+[isValidElement](#isvalidelement)
 
-[React.Children](#React.Children)
+[React.Children](#react.children)
 
 - map、forEach、count、only、toArray
 
@@ -84,11 +84,11 @@
 
 ### 其他
 
-[Context](#Context)
+[Context](#context)
 
 - 提供一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法
 
-[Portals](#Portals)
+[Portals](#portals)
 
 Profiler
 
@@ -120,7 +120,7 @@ StrictMode
 
 React.Component 是使用 ES6 classes 方式定义 React 组件的基类
 
-```react
+```jsx
 class Greeting extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
@@ -138,7 +138,7 @@ React.PureComponent 与 React.Component 很相似。两者的区别在于 React.
 
 ### memo
 
-```react
+```jsx
 const MyComponent = React.memo(function MyComponent(props) {
   /* 使用 props 渲染 */
 });
@@ -150,7 +150,7 @@ React.memo 为高阶组件
 
 默认情况下其只会对复杂对象做浅层对比，如果你想要控制对比过程，那么需传入第二个参数
 
-```react
+```jsx
 function MyComponent(props) {
   /* 使用 props 渲染 */
 }
@@ -178,7 +178,7 @@ export default React.memo(MyComponent, areEqual);
 
 React.createRef 创建一个能够通过 ref 属性附加到 React 元素的 ref
 
-```react
+```jsx
 class MyComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -207,7 +207,7 @@ React.forwardRef 会创建一个 React 组件，这个组件能够将其接受�
 
 React.forwardRef 接受渲染函数作为参数。React 将使用 props 和 ref 作为参数来调用此函数。此函数应返回 React 节点
 
-```react
+```jsx
 const FancyButton = React.forwardRef((props, ref) => (
   <button ref={ref} className="FancyButton">
     {props.children}
@@ -224,7 +224,7 @@ const ref = React.createRef();
 
 React.Fragment 组件能够在不额外创建 DOM 元素的情况下，让 render() 方法返回多个元素
 
-```react
+```jsx
 render() {
   return (
     <React.Fragment>
@@ -241,7 +241,7 @@ render() {
 
 lazy 允许你定义一个动态加载的组件。这有助于缩减 bundle 的体积，并延迟加载在初次渲染时未用到的组件
 
-```react
+```jsx
 // 这个组件是动态加载的
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
@@ -258,7 +258,7 @@ React.lazy 接受一个函数，这个函数需要动态调用 import()。它必
 
 React.Suspense 可以指定加载指示器（loading indicator），以防其组件树种的某些子组件尚未具备渲染条件，目前，懒加载组件是 `React.Suspense` 支持的唯一用例：
 
-```react
+```jsx
 // 该组件是动态加载的
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
@@ -276,7 +276,7 @@ function MyComponent() {
 
 fallback 属性接受任何在组件加载过程中你想展示的 React 元素，你可以将 Suspense 组件置于懒加载组件之上的任何位置。你甚至可以用一个 Subspense 组件包裹多个懒加载组件
 
-```react
+```jsx
 import React, { Suspense } from 'react';
 
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -316,7 +316,7 @@ React.createElement(
 
 ### createFactory
 
-```react
+```jsx
 React.createFactory(type)
 ```
 
@@ -340,7 +340,7 @@ React.cloneElement(
 
 React.cloneElement() 几乎等同于：
 
-```react
+```jsx
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
@@ -348,7 +348,7 @@ React.cloneElement() 几乎等同于：
 
 ### isValidElement
 
-```react
+```jsx
 React.isValidElement(object)
 ```
 
@@ -362,7 +362,7 @@ React.Children 提供了用于处理 this.props.children 不透明数据结构�
 
 #### React.Children.map
 
-```react
+```jsx
 React.Children.map(children, function[(thisArg)])
 ```
 
@@ -370,7 +370,7 @@ React.Children.map(children, function[(thisArg)])
 
 #### React.Children.forEach
 
-```react
+```jsx
 React.Children.forEach(children, function[(thisArg)])
 ```
 
@@ -378,7 +378,7 @@ React.Children.forEach(children, function[(thisArg)])
 
 #### React.Children.count
 
-```react
+```jsx
 React.Children.count(children)
 ```
 
@@ -386,7 +386,7 @@ React.Children.count(children)
 
 #### React.Children.only
 
-```react
+```jsx
 React.Children.only(children)
 ```
 
@@ -394,7 +394,7 @@ React.Children.only(children)
 
 #### React.Children.toArray
 
-```react
+```jsx
 React.Children.toArray(children)
 ```
 
@@ -412,13 +412,13 @@ Context 提供了一个无需为每层组件手动添加 props，就能在组件
 
 1. 先注册一个变量
 
-```react
+```jsx
 const ThemeContext = React.createContext("light")
 ```
 
 2. 在要用的地方注入
 
-```react
+```jsx
 <ThemeContext.Provider value="dark">
     <Test />
 </ThemeContext.Provider>
@@ -426,7 +426,7 @@ const ThemeContext = React.createContext("light")
 
 3. 使用
 
-```react
+```jsx
 <ThemeContext.Consumer>
     {value => (
         <div>{value}</div>
@@ -442,7 +442,7 @@ Provider负责提供context，而Consumer用来消费Provider提供的context
 
 Protal 提供了一种将子节点但渲染到父组件意外的 DOM 节点的方案
 
-```react
+```jsx
 React.createPortal(child, container)
 ```
 
@@ -464,9 +464,10 @@ React.createPortal(child, container)
 
 ## 参考资料
 
-[React 官网](https://zh-hans.reactjs.org/docs/react-api.html#createelement)
+- [React 官网](https://zh-hans.reactjs.org/docs/react-api.html#createelement)
 
-[React万字基础全面剖析](https://mp.weixin.qq.com/s/-WLQPNHF2zzPB1v1Lwkw1w)
+- [React万字基础全面剖析](https://mp.weixin.qq.com/s/-WLQPNHF2zzPB1v1Lwkw1w)
 
-[React 系统复习如何做最高效](https://mp.weixin.qq.com/s/0SBeDkpp_DYS8uAnYL3AiQ)
+- [React 系统复习如何做最高效](https://mp.weixin.qq.com/s/0SBeDkpp_DYS8uAnYL3AiQ)
+
 

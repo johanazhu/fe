@@ -10,6 +10,7 @@
 - [快学go](https://zhuanlan.zhihu.com/quickgo)
 - [go 学习之路](https://github.com/yangwenmai/learning-golang)
 - [李文周](https://github.com/yangwenmai/learning-golang)
+- [Go 语言设计与实现](https://draveness.me/golang/#/)
 
 
 

@@ -5,6 +5,7 @@
 <li><a href="https://zhuanlan.zhihu.com/quickgo" target="_blank" rel="noopener noreferrer">快学go<ExternalLinkIcon/></a></li>
 <li><a href="https://github.com/yangwenmai/learning-golang" target="_blank" rel="noopener noreferrer">go 学习之路<ExternalLinkIcon/></a></li>
 <li><a href="https://github.com/yangwenmai/learning-golang" target="_blank" rel="noopener noreferrer">李文周<ExternalLinkIcon/></a></li>
+<li><a href="https://draveness.me/golang/#/" target="_blank" rel="noopener noreferrer">Go 语言设计与实现<ExternalLinkIcon/></a></li>
 </ul>
 <h2 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h2>
 <p>安装vscode中go 的插件</p>

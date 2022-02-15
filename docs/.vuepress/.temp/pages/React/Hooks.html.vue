@@ -157,6 +157,24 @@ export default function App() {
 </ol>
 <h2 id="最重要且常见的两个-hooks" tabindex="-1"><a class="header-anchor" href="#最重要且常见的两个-hooks" aria-hidden="true">#</a> 最重要且常见的两个 hooks</h2>
 <h3 id="usestate" tabindex="-1"><a class="header-anchor" href="#usestate" aria-hidden="true">#</a> useState</h3>
+<p>函数组件本身就是一个函数，不是类，因此没有构造函数constructor(props)</p>
+<p>任何你想定义的变量都可以单独拆分出去，独立定义，互不影响</p>
+<p>在使用 useState 时，就会蹦出一个常见的面试题，即函数式组件能捕获渲染时的值，可移步<RouterLink to="/React/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E4%B8%8E%E7%B1%BB%E7%BB%84%E4%BB%B6%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C.html">函数式组件与类组件有何不同</RouterLink> 中查看</p>
+<p>第二个会遇到的面试题时：如果useState 中的值的数据类型为 Object 时，修改其中的一个值，是否会影响到其他值的渲染</p>
+<p>例如我</p>
+<div class="language-jsx ext-jsx line-numbers-mode"><pre v-pre class="language-jsx"><code><span class="token keyword">const</span> <span class="token function-variable function">Home</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>person<span class="token punctuation">,</span> setPerson<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'johan'</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+        	</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Name</span></span> <span class="token attr-name">name</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>person<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Age</span></span> <span class="token attr-name">age</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>person<span class="token punctuation">.</span>age<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span><span class="token plain-text"> 改变名字</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">改变年龄</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>	
+    <span class="token punctuation">)</span>    
+<span class="token punctuation">}</span>
+
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>如果数据类型是 Array 呢</p>
 <h3 id="useeffect" tabindex="-1"><a class="header-anchor" href="#useeffect" aria-hidden="true">#</a> useEffect</h3>
 <p>它是什么</p>
 <h4 id="与-uselayouteffect-的区别" tabindex="-1"><a class="header-anchor" href="#与-uselayouteffect-的区别" aria-hidden="true">#</a> 与 useLayoutEffect 的区别</h4>

@@ -10,4 +10,7 @@
 <li>团队的一些技术栈和所承担的业务</li>
 <li>如果通过了未来的工作主要是做什么</li>
 </ul>
+<h3 id="反向面试" tabindex="-1"><a class="header-anchor" href="#反向面试" aria-hidden="true">#</a> 反向面试</h3>
+<p>技术面试最后反问面试官的话</p>
+<p>https://github.com/yifeikong/reverse-interview-zh</p>
 </template>

@@ -47,7 +47,7 @@
 <h2 id="执行过程" tabindex="-1"><a class="header-anchor" href="#执行过程" aria-hidden="true">#</a> 执行过程</h2>
 <p>我们用 JSX 来写 React，JSX 会通过 babel 将其代码转换成 React.createElement 的形式，React.createElement 返回的是一个对 DOM 的描述，并不是真正的 DOM，这个叫 Virtual DOM。</p>
 <p>当某一时刻调用 React 的 <code>render()</code> 方法，会创建一颗由 React 元素组成的树，在下一次 props 或 state 更新时，相同的 <code>render()</code> 方法会返回一颗不同的树。React 需要基于这两颗树之间的差异来判断如何高效更新 UI，这也就是 diff。</p>
-<p>说到 diff，此概念在 Git 中也有过，不过 diff 的算法与 React 不同，在 Git 中时间复杂度为 O(n2)，但是在 React 里，最优的算法的时间复杂度仍为 O(n3)</p>
+<p>说到 diff，此概念在 <RouterLink to="/Git/">Git</RouterLink> 中也有过，不过 diff 的算法与 React 不同，在 Git 中时间复杂度为 O(n2)，但是在 React 里，最优的算法的时间复杂度仍为 O(n3)</p>
 <p>所以 React 在以下两个假设的基础上提出了一套 O(n) 的启发式算法</p>
 <ol>
 <li>两个不同类型的元素会产生出不同的树</li>

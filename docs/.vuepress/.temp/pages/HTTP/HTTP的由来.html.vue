@@ -7,6 +7,8 @@
 <li>HTTP2</li>
 <li>HTTP3</li>
 </ul>
+<p>关于 HTTP2.0</p>
+<p>https://www.v2ex.com/t/833018#reply14</p>
 <h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 <ul>
 <li><a href="https://coolshell.cn/articles/19840.html" target="_blank" rel="noopener noreferrer">HTTP的前世今生<ExternalLinkIcon/></a></li>

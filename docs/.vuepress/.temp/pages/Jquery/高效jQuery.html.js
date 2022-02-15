@@ -1,15 +1,15 @@
 export const data = {
-  "key": "v-250e8e28",
-  "path": "/About/TalkHr.html",
-  "title": "如何要offer以及和hr谈判",
+  "key": "v-3a711500",
+  "path": "/Jquery/%E9%AB%98%E6%95%88jQuery.html",
+  "title": "高效 jQuery 的奥秘",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
   "headers": [
     {
-      "level": 3,
-      "title": "反向面试",
-      "slug": "反向面试",
+      "level": 2,
+      "title": "参考资料",
+      "slug": "参考资料",
       "children": []
     }
   ],
@@ -23,7 +23,7 @@ export const data = {
       }
     ]
   },
-  "filePathRelative": "About/TalkHr.md"
+  "filePathRelative": "Jquery/高效jQuery.md"
 }
 
 if (import.meta.webpackHot) {

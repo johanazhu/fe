@@ -52,7 +52,7 @@ React 的作者的 [blog](https://overreacted.io/) ，上面有很多易错点�
 
 当某一时刻调用 React 的 `render()` 方法，会创建一颗由 React 元素组成的树，在下一次 props 或 state 更新时，相同的 `render()` 方法会返回一颗不同的树。React 需要基于这两颗树之间的差异来判断如何高效更新 UI，这也就是 diff。
 
-说到 diff，此概念在 Git 中也有过，不过 diff 的算法与 React 不同，在 Git 中时间复杂度为 O(n2)，但是在 React 里，最优的算法的时间复杂度仍为 O(n3)
+说到 diff，此概念在 [Git](../Git/) 中也有过，不过 diff 的算法与 React 不同，在 Git 中时间复杂度为 O(n2)，但是在 React 里，最优的算法的时间复杂度仍为 O(n3)
 
 所以 React 在以下两个假设的基础上提出了一套 O(n) 的启发式算法
 

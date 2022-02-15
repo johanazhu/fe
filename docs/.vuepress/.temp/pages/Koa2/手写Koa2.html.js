@@ -1,39 +1,33 @@
 export const data = {
-  "key": "v-29fdd4c2",
-  "path": "/CSS/%E5%9C%A3%E6%9D%AF%E3%80%81%E5%8F%8C%E9%A3%9E%E7%BF%BC.html",
-  "title": "圣杯布局和双飞翼布局",
+  "key": "v-45cfe64b",
+  "path": "/Koa2/%E6%89%8B%E5%86%99Koa2.html",
+  "title": "一步一步来：手写Koa2",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
   "headers": [
     {
       "level": 2,
-      "title": "前言",
-      "slug": "前言",
+      "title": "Step 1：封装 HTTP 服务和创建 Koa 构造函数",
+      "slug": "step-1-封装-http-服务和创建-koa-构造函数",
       "children": []
     },
     {
       "level": 2,
-      "title": "作用",
-      "slug": "作用",
+      "title": "Step 2：构建 request、response、context 对象",
+      "slug": "step-2-构建-request、response、context-对象",
       "children": []
     },
     {
       "level": 2,
-      "title": "圣杯布局",
-      "slug": "圣杯布局",
+      "title": "Step 3：中间件机制和洋葱模型",
+      "slug": "step-3-中间件机制和洋葱模型",
       "children": []
     },
     {
       "level": 2,
-      "title": "双飞翼布局",
-      "slug": "双飞翼布局",
-      "children": []
-    },
-    {
-      "level": 2,
-      "title": "思考：为什么会考三栏布局?",
-      "slug": "思考-为什么会考三栏布局",
+      "title": "Step 4：错误捕获与监听机制",
+      "slug": "step-4-错误捕获与监听机制",
       "children": []
     },
     {
@@ -50,16 +44,10 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640996999000,
-    "contributors": [
-      {
-        "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 1
-      }
-    ]
+    "updatedTime": null,
+    "contributors": []
   },
-  "filePathRelative": "CSS/圣杯、双飞翼.md"
+  "filePathRelative": "Koa2/手写Koa2.md"
 }
 
 if (import.meta.webpackHot) {
