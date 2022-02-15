@@ -7,8 +7,14 @@ export const data = {
   "excerpt": "",
   "headers": [],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1642561027000,
+    "contributors": [
+      {
+        "name": "johan",
+        "email": "t511069160@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "WebApp/移动端真机调试指南.md"
 }
