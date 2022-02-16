@@ -145,17 +145,17 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1632867916000,
+    "updatedTime": 1644572694000,
     "contributors": [
       {
-        "name": "johanazhu",
+        "name": "johan",
         "email": "t511069160@qq.com",
         "commits": 11
       },
       {
-        "name": "johan",
+        "name": "johanazhu",
         "email": "t511069160@qq.com",
-        "commits": 10
+        "commits": 11
       },
       {
         "name": "johnny",
@@ -165,17 +165,4 @@ export const data = {
     ]
   },
   "filePathRelative": "React/Hooks.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

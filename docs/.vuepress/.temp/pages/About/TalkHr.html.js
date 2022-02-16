@@ -14,12 +14,12 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1634897242000,
+    "updatedTime": 1644572694000,
     "contributors": [
       {
         "name": "johan",
         "email": "t511069160@qq.com",
-        "commits": 1
+        "commits": 2
       },
       {
         "name": "johanazhu",
@@ -29,17 +29,4 @@ export const data = {
     ]
   },
   "filePathRelative": "About/TalkHr.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

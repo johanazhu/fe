@@ -51,27 +51,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1633688168000,
+    "updatedTime": 1644572694000,
     "contributors": [
       {
         "name": "johan",
         "email": "t511069160@qq.com",
-        "commits": 4
+        "commits": 5
       }
     ]
   },
   "filePathRelative": "React/React快速了解.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }
