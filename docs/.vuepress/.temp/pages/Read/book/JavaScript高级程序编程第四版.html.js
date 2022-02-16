@@ -7,19 +7,32 @@ export const data = {
   "excerpt": "",
   "headers": [
     {
-      "level": 3,
+      "level": 2,
+      "title": "第六章 集合引用类型",
+      "slug": "第六章-集合引用类型",
+      "children": [
+        {
+          "level": 3,
+          "title": "Map",
+          "slug": "map",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
       "title": "第八章 对象、类和面向对象编程",
       "slug": "第八章-对象、类和面向对象编程",
       "children": []
     }
   ],
   "git": {
-    "updatedTime": 1609663180000,
+    "updatedTime": 1644931075000,
     "contributors": [
       {
-        "name": "johan",
+        "name": "johanazhu",
         "email": "t511069160@qq.com",
-        "commits": 1
+        "commits": 2
       }
     ]
   },

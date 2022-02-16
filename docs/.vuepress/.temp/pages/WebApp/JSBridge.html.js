@@ -38,17 +38,12 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640616074000,
+    "updatedTime": 1640996999000,
     "contributors": [
       {
         "name": "johanazhu",
         "email": "t511069160@qq.com",
-        "commits": 6
-      },
-      {
-        "name": "johan",
-        "email": "t511069160@qq.com",
-        "commits": 3
+        "commits": 1
       }
     ]
   },

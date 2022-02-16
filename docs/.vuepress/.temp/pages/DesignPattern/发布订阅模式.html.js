@@ -14,15 +14,10 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640785854000,
+    "updatedTime": 1640996999000,
     "contributors": [
       {
         "name": "johanazhu",
-        "email": "t511069160@qq.com",
-        "commits": 3
-      },
-      {
-        "name": "johnny",
         "email": "t511069160@qq.com",
         "commits": 1
       }

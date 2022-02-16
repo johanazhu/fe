@@ -22,8 +22,7 @@
 <p>先使用<code>git init</code>，初始化一个新的git项目，并查看该目录下的 <code>.git</code> 隐藏目录。使用 <code>ls</code>  查看目录下的文件</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">git</span> init
 <span class="token function">ls</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>https://www.zhihu.com/topic/19557710/hot</p>
-<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
 <ul>
 <li><a href="https://mp.weixin.qq.com/s?__biz=Mzk0MzIyMDA1OA==&amp;mid=2247494230&amp;idx=4&amp;sn=44a9a3f11382f748f6aede13ab644d7a&amp;source=41#wechat_redirect" target="_blank" rel="noopener noreferrer">程序员必备基础：Git 命令全方位学习<ExternalLinkIcon/></a></li>
 <li><a href="https://www.cnblogs.com/selimsong/p/9059964.html" target="_blank" rel="noopener noreferrer">好代码是管出来的——Git的分支工作流与Pull Request<ExternalLinkIcon/></a></li>
@@ -40,6 +39,6 @@
 <li><a href="https://mp.weixin.qq.com/s/uqEL6cqRWRXu2hH1ySNAIQ" target="_blank" rel="noopener noreferrer">我在工作中是如何使用Git的<ExternalLinkIcon/></a></li>
 <li><a href="https://www.zhihu.com/question/20070065/answer/16021641?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=56197411504128&amp;utm_content=sec" target="_blank" rel="noopener noreferrer">天猪对 git 的理解<ExternalLinkIcon/></a></li>
 <li><a href="https://mp.weixin.qq.com/s/7eLcoFTHwMETH-Sqb4ysKg" target="_blank" rel="noopener noreferrer">图解 Git 各种用法，简单明了，一目了然！<ExternalLinkIcon/></a></li>
-<li></li>
+<li><a href="https://www.zhihu.com/topic/19557710/hot" target="_blank" rel="noopener noreferrer">GIT<ExternalLinkIcon/></a></li>
 </ul>
 </template>
