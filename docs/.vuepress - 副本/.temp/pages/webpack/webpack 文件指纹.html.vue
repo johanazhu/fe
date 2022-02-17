@@ -1,0 +1,39 @@
+<template><p>webpack 文件指纹</p>
+<p>Hash：和整个项目的构建相关，只要项目文件有改变，整个项目构建的 hash 值就会改变</p>
+<p>chunkhash：和 webpack 打包的 chunk 有关，不同的 entry 会生成不同的 chunkhash 值</p>
+<p>contenthash：根据文件内容来定义hash，文件内容不变，则 contenthash 不变</p>
+<p>移动端 CSS px 自动装换成 rem</p>
+<p>rem 相对单位</p>
+<p>px 绝对单位</p>
+<p>使用px2rem-loader</p>
+<p>静态资源内敛</p>
+<p>source map</p>
+<p>开发环境开启，显示环境关闭</p>
+<p>eval：使用eval包括模块代码</p>
+<p>source map：产生.map文件</p>
+<p>cheap：不包含列信息</p>
+<p>inline：将.map作为 DataUrl 嵌入，不单独生成 .map 文件</p>
+<p>module：包括loader的sourecmap</p>
+<p>基础库分离</p>
+<p>思路：将react、react-dom 基础包通过 cdn 引入， 不打入bundle中</p>
+<p>方法：1.使用 html-webpack-externals-plugin</p>
+<p>2.SplitChunksPlugin	进行公共脚本分离</p>
+<p>chunks 参数说明</p>
+<p>​	async 异步引入的库进行分离（默认）</p>
+<p>​	initial 同步引入的库进行分离</p>
+<p>​	all 所以引入的库进行分离（推荐）</p>
+<p>为了速度更快，用第一种</p>
+<p>代码分割</p>
+<p>抽离相同代码到一个共享快</p>
+<p>脚本懒加载，使得出是下载的代码更小</p>
+<p>方式： CommonJS: require.ensure</p>
+<p>ES6: 动态 import（目前还没有原生支持，需要babel转换）</p>
+<p>@babel/plugin-syntax-dynamic-import</p>
+<p>ESLint</p>
+<p>和 CI/CD 系统集成</p>
+<p>和 webpack 集成</p>
+<p>本地开发阶段增加 precommit 钩子</p>
+<p>安装 husky</p>
+<p>和 webpack 集成</p>
+<p>eslint-loader，构建时检查 js 规范</p>
+</template>

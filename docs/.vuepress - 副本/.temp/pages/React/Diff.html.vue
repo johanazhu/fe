@@ -1,0 +1,29 @@
+<template><h1 id="diff-算法" tabindex="-1"><a class="header-anchor" href="#diff-算法" aria-hidden="true">#</a> Diff 算法</h1>
+<p>对比 Diff 的话，最有的算法时间复杂度为 O(n3)</p>
+<p>React 在以下两个假设的基础上提出了一套 O(n) 的启发式算法</p>
+<ol>
+<li>两个不同类型的元素会产生不同的树</li>
+<li>开发者可以通过设置 key 属性，来告知渲染哪些子元素在不同的渲染树下可以保持不变</li>
+</ol>
+<p>完全对比O(n3)无法接受，故降级为同层对比的 O(n)方案</p>
+<p>为什么降级可行？因为跨层级很少法神可以忽略</p>
+<p>diff算法</p>
+<p>什么是diff算法</p>
+<p>​	对比 git diff</p>
+<p>vdom为什么用diff算法</p>
+<p>diff算法的实现流程</p>
+<p>​	DOM操作时昂贵的，因因此尽量减少DOM操作</p>
+<p>​	找出本次DOM必须更新的节点来更新，其他不更新</p>
+<p>​	这个“找出”的过程，就需要diff算法</p>
+<p>diff实现过程</p>
+<p>​	patch(container, vnode)	第一次渲染</p>
+<p>​	patch(vnode, newVnode)	更新数据</p>
+<h3 id="vd-diff-算法" tabindex="-1"><a class="header-anchor" href="#vd-diff-算法" aria-hidden="true">#</a> VD diff 算法</h3>
+<h4 id="思路" tabindex="-1"><a class="header-anchor" href="#思路" aria-hidden="true">#</a> 思路</h4>
+<p>一般的设计思路都是页面等于页面状态的映射，即 UI = render(state)。当需要更新页面的时候，无需关系DOM具体的变换方式，只需要改变 state 即可，剩下的事情（render）将由框架代劳。</p>
+<p>所以思路就是改变state，生成新的VD - 新的VD与旧的VD进行对比 - 生成差异对象（patch） - 遍历差异对象并更新</p>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<p><a href="https://mp.weixin.qq.com/s/XRR9afpujcjbgFZM0Zw6Gw" target="_blank" rel="noopener noreferrer">DIff算法看不懂就一起来锤我(带图)<ExternalLinkIcon/></a></p>
+<p><a href="https://juejin.cn/post/6994959998283907102" target="_blank" rel="noopener noreferrer">15张图，20分钟吃透Diff算法核心原理<ExternalLinkIcon/></a></p>
+<p><a href="https://github.com/ascoders/weekly/blob/v2/190.%E7%B2%BE%E8%AF%BB%E3%80%8ADOM%20diff%20%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3%E3%80%8B.md" target="_blank" rel="noopener noreferrer">精读《DOM diff 原理详解》<ExternalLinkIcon/></a></p>
+</template>

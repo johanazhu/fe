@@ -1,0 +1,6 @@
+<template><h1 id="react实战-自动化测试" tabindex="-1"><a class="header-anchor" href="#react实战-自动化测试" aria-hidden="true">#</a> React实战-自动化测试</h1>
+<h2 id="参考资料" tabindex="-1"><a class="header-anchor" href="#参考资料" aria-hidden="true">#</a> 参考资料</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&amp;mid=2451052221&amp;idx=1&amp;sn=7d9bb47a8c945cc902c47318888c7ab3&amp;chksm=87c40fadb0b386bbe9b5f60fe5d439262623f10fcc771a87780212ccdfbf13c8de0ab855ae7d&amp;mpshare=1&amp;scene=1&amp;srcid=1224Vu9efzYz2i49Di6aLq1n&amp;sharer_sharetime=1608765396875&amp;sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&amp;key=3544abb8932ba3507f9d241ccf26c18fb0e1adfe5417f8a23568454cb3ba8651763ee67d0fe9bd24c11eab807e9f91e33b7ecb4c2d893af92b070858ccecea8e5a76ca5452e0355ce7f3982b187cfaff1fc915a508526980cbc2acc997ad35b2591e9be374f905106aea6e6990144100f456f0d64c29106df7e9154fced60078&amp;ascene=1&amp;uin=MTA0NTY0NDM2MQ%3D%3D&amp;devicetype=Windows+10+x64&amp;version=6300002f&amp;lang=zh_CN&amp;exportkey=AcREarzVp4BNnJ0nVAHrQ%2FE%3D&amp;pass_ticket=J2WTHwIBT%2FJbeW7JkzLq0631o0mfN%2FqbP77GajCs5BGOPgD7rmOGeIBuggO%2FztSy&amp;wx_header=0" target="_blank" rel="noopener noreferrer">一文搞定前端自动化测试（React 实战）<ExternalLinkIcon/></a></li>
+</ul>
+</template>
