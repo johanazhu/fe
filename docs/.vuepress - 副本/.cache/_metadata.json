@@ -1,0 +1,31 @@
+{
+  "hash": "a7607e60",
+  "browserHash": "a87ec20d",
+  "optimized": {
+    "vue": {
+      "file": "D:/code/project/elaine/fe/docs/.vuepress/.cache/vue.js",
+      "src": "D:/code/project/elaine/fe/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "file": "D:/code/project/elaine/fe/docs/.vuepress/.cache/vue-router.js",
+      "src": "D:/code/project/elaine/fe/node_modules/vue-router/dist/vue-router.esm-bundler.js",
+      "needsInterop": false
+    },
+    "@vueuse/core": {
+      "file": "D:/code/project/elaine/fe/docs/.vuepress/.cache/@vueuse_core.js",
+      "src": "D:/code/project/elaine/fe/node_modules/@vueuse/core/index.mjs",
+      "needsInterop": false
+    },
+    "nprogress": {
+      "file": "D:/code/project/elaine/fe/docs/.vuepress/.cache/nprogress.js",
+      "src": "D:/code/project/elaine/fe/node_modules/nprogress/nprogress.js",
+      "needsInterop": true
+    },
+    "@vuepress/shared": {
+      "file": "D:/code/project/elaine/fe/docs/.vuepress/.cache/@vuepress_shared.js",
+      "src": "D:/code/project/elaine/fe/node_modules/@vuepress/shared/lib/esm/index.js",
+      "needsInterop": false
+    }
+  }
+}
