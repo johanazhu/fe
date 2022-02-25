@@ -33,5 +33,5 @@
 
 `pm2 monit <AppName>/<id> `监控这个进程的CPU和内存信息
 
-
+`pm2 delete <AppName>/<id>` 删掉
 

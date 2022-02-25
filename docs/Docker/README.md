@@ -16,6 +16,10 @@
 
 [【docker入门】10分钟，快速学会docker](https://www.bilibili.com/video/BV1R4411F7t9)
 
+[Docker 1小时快速上手教程，无废话纯干货](https://www.bilibili.com/video/BV11L411g7U1?p=1)
+
+[Docker 1小时快速上手教程，无废话纯干货文档](https://docker.easydoc.net/)
+
 
 
 

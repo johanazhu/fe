@@ -19,13 +19,9 @@
 - 能结合 redux，vuex，mobx 等数据流谈谈自己对 vue 和 react 的异同
 - 有基于全家桶构建复杂应用的经验，比如最近很火的微前端和这些类库结合的时候要注意什么，会有什么坑，怎么解决
 
+一看，我就慌的一批，这就是中高级前端的标准，你达标了吗？
 
-
-一看，我就谎的一逼，这就是中高级前端的标准，你达标了吗？
-
-
-
-## 常见题
+## 常见问题
 
 ### Q：渲染十万条数据解决方案
 
@@ -33,37 +29,66 @@ A：[渲染十万条数据解决方案](./渲染十万条数据解决方案.md)
 
 ### Q：请问 Fiber 是什么？
 
-A：
+A： React Fiber 是对核心算法的一次重新实现。16和15的区别，如下。它有三层含义，作为架构，作为静态数据结构，作为动态工作单位
+
+### Q： React Fiber 和之前的 15 有什么区别
+
+A： React 在 V16 之前会面临的主要性能问题是：当组件很庞大时，更新状态可能造成页面卡顿，更笨原因在于——更新流程是【同步、不可中断的】
+
+为了解决这个问题，React 重写了代码，提出了 Fiber 架构，它是异步可中断的
+
+## Q：函数式组件和类组件有什么区别
+
+A：最大的区别在于函数式组件会捕获渲染时的值
+
+具体可以看这篇文章——[函数式组件与类组件有何不同](../函数式组件与类组件有何不同.md)
 
 
 
-### 组件
+## 组件
 
-#### **Q：函数式组件与 class 组件的区别**
+### Q：函数式组件与 class 组件的区别
 
-A：水水水水
+A：最大的区别在于函数式组件会捕获渲染时的值
 
-#### Q： React 有哪几种创建组件的方式？有什么区别
+具体可以看这篇文章——[函数式组件与类组件有何不同](../函数式组件与类组件有何不同.md)
 
-A：
+### Q： React 有哪几种创建组件的方式？有什么区别
 
-#### Q： React 组件间有哪些通讯方式？
+A：函数式组件、类组件、createElement
 
-A：
+PS：这个问题已经淘汰，以前的函数组件是没有状态的，但现在16.8之后就有 hook，函数式组件也有状态；反而类组件没多少人写了，因为生命周期很麻烦，也难记
 
-#### Q：父组件如何调用子组件中的方法？
+### Q： React 组件间有哪些通讯方式？
 
-A：
+A：四种，父传子（props），子传父（props回调），跨组件（context），非嵌套组件通信（事件订阅）
 
-#### Q： React 如何区分 class 组件 和 Function 组件
+### Q：父组件如何调用子组件中的方法？
 
-A：
+A：一般都是子组件调用父组件的方法，那有什么办法让父组件调用子组件的方法？分两种场景
+
+- 类组件
+  - createRef
+- 函数式组件
+  - forwardRef + useImperativeHandle
+
+### Q： React是如何区分class和function的？
+
+A：在 Component 的 prototype 上有 isReactComponent ，函数式组件没有
+
+```javascript
+// React 内部
+class Component {}
+Component.prototype.isReactComponent = {}
+```
 
 
 
-### 性能优化
+## 性能优化
 
-#### Q：在 React 中可以做哪些性能优化
+### Q：在 React 中可以做哪些性能优化
+
+列表项使用 key 属性
 
 类组件
 
@@ -73,87 +98,95 @@ A：
 
 A：主要用React.memo、React.useCallback、React.usememo 的作用
 
-#### Q：请问 React/ Vue 之类的框架为什么需要给组件添加 key 属性，其作用是什么？
+### Q：请问 React/ Vue 之类的框架为什么需要给组件添加 key 属性，其作用是什么？
 
-A：唯一性
-
-
-
-### state & setState
-
-#### Q：请问 setState 是异步还是同步？为什么？
-
-A：转到 setState 方面解答
-
-#### Q：什么事件可以触发异步，什么会触发同步？
-
-A：
-
-#### Q： state 更新之后发生了什么
-
-A：
-
-#### Q：调用 setState 之后发生了什么
-
-A：
-
-#### Q：在 shouldComponentUpdate 或 componentWillUpdate 中使用 setState 会发生什么？
-
-A：
-
-#### Q：为什么不能直接使用 this.state 改变数据
-
-A：
+A：唯一性，diff 算法
 
 
 
-### Hooks
+## state & setState
 
-#### Q：你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
+### Q：请问 setState 是异步还是同步？为什么？
+
+A：代码是同步的，但是渲染要看模式，在legacy模式下，非原生事件、setTimeout/setInterval 等情况下为异步；addEventListener 绑定的原生事件、setTimeout/setInterval 同步；而在未来的concurrent 模式下（V18模式使用），都为异步
+
+为什么？为了提高性能，React会采用批处理的方案
+
+### Q：什么事件可以触发异步，什么会触发同步？
+
+A：非原生事件、非setTimeout/setInterval 会触发异步；原生事件、setTimeout/setInterval 会触发同步 
+
+### Q：调用 setState 之后发生了什么
+
+A：（在legacy模式下）调用setState 后，会将修改的回调函数放入执行队列中，当此事件中的setState全部调用完，会批处理合成setState，并依次触发static getDerivedStateFromProps、shouldComponentUpdate、render、getSnapshotBeforeUpdate、componentDidUpdate等生命周期
+
+### Q：在 shouldComponentUpdate 或 componentWillUpdate 中使用 setState 会发生什么？
+
+A：禁止在  shouldComponentUpdate 和 componentWillUpdate 中调用 setState，为什么，这回造成循环调用，直至内存崩溃。 setState 会触发 React 的更新机制，好让视图更新，会依次触发生命周期函数，而 shouldComponentUpdate 、componentWillUpdate 都是必过的生命周期，会造成循环调用（PS： componentWillUpdate 未来版本会不用）
+
+### Q：为什么不能直接使用 this.state 改变数据
+
+A：修改值不改变视图，setState不仅是修改 this.state 的值，更重要的是它会触发 React 的更新机制，会进行 diff，然后将 patch 部分更新到真实 DOM 中
+
+
+
+## Hooks
+
+### Q：你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
 
 A：
 
-#### Q：为什么不能在循环中调用 hooks？或者说为什么不能在 for 循环、if 语句里使用 hooks？
+### Q：为什么不能在循环中调用 hooks？或者说为什么不能在 for 循环、if 语句里使用 hooks？
 
 A：
 
-#### Q： React hooks，它带来了哪些便利
+### Q： React hooks，它带来了哪些便利
 
 A：
 
-#### Q：列举几个常用的 Hook
+### Q：列举几个常用的 Hook
 
 A：
 
-#### Q：说下 React hooks 实现原理
+### Q：说下 React hooks 实现原理
 
 A：
 
-#### Q： React Hooks 当中的 useEffect 是如何区分生命周期钩子的
+### Q： React Hooks 当中的 useEffect 是如何区分生命周期钩子的
 
 A：
 
-#### Q： useEffect(fn, []) 和 componentDidMount 有什么差异
+### Q： useEffect(fn, []) 和 componentDidMount 有什么差异
+
+A：
+
+### Q: hooks 和 hoc 的区别，为什么不用 hoc
+
+A:	
+
+### Q: useMemo，useCallback的区别，你是如何看待这两个 api 的意义，在什么场景下会使用它
+
+A:
+
+
+
+## Virtual DOM
+
+### Q： React 的 Virtual dom 是怎么实现的？
+
+A：
+
+### Q：考虑过 React 、 Vue 这类的框架为什么要用 Virtual DOM 机制吗？
+
+A：
+
+### Q：为什么 Virtual dom 会提高性能？
 
 A：
 
 
 
-### Virtual DOM
-
-#### Q： React 的 Virtual dom 是怎么实现的？
-
-A：
-
-#### Q：考虑过 React 、 Vue 这类的框架为什么要用 Virtual DOM 机制吗？
-
-A：
-
-#### Q：为什么 Virtual dom 会提高性能？
-
-A：
-
-
+## diff 
 
 ### Q：简单介绍下 diff 算法
 
@@ -163,71 +196,71 @@ A：
 
 
 
-### React中的事件机制
+## React中的事件机制
 
-#### Q：简述下 React 的事件代理机制
-
-A：
-
-#### Q： React 的事件代理机制和原生事件绑定有什么区别？
+### Q：简述下 React 的事件代理机制
 
 A：
 
-#### Q： React 的事件代理机制和原生事件绑定混用会有什么问题？
+### Q： React 的事件代理机制和原生事件绑定有什么区别？
 
 A：
 
-#### Q： React 中如果绑定事件使用匿名函数会怎么样？
+### Q： React 的事件代理机制和原生事件绑定混用会有什么问题？
+
+A：
+
+### Q： React 中如果绑定事件使用匿名函数会怎么样？
 
 A：
 
 
 
-### 生态相关
+## 生态相关
 
-#### Q： Reudx 是什么
-
-A：
-
-#### Q：请求 Redux 的原理是什么？你能手写一个 Redux 吗？
+### Q： Redux 是什么
 
 A：
 
-#### Q： React-redux 的实现原理
+### Q：请求 Redux 的原理是什么？你能手写一个 Redux 吗？
 
 A：
 
-#### Q： Redux 和 mobx 的区别
+### Q： React-redux 的实现原理
 
 A：
 
-#### Q： Redux 异步中间件有什么用？
+### Q： Redux 和 mobx 的区别
 
 A：
 
-#### Q：请问 React.Router 的模式
+### Q： Redux 异步中间件有什么用？
+
+A：
+
+### Q：请问 React.Router 的模式
 
 A：共三种模式，手写一个
 
-#### Q：请问 Dva 的知识点？与 namespce 同层的参数有哪些？
+### Q：请问 Dva 的知识点？与 namespce 同层的参数有哪些？
 
 A：
 
 
 
-### 生命周期
+## 生命周期
 
-#### Q：简述下 React 的生命周期？每个声明周期都做了什么？
-
-A：
-
-#### Q：聊聊 React 16.4 + 的生命周期
+### Q：简述下 React 的生命周期？每个声明周期都做了什么？
 
 A：
 
+### Q：聊聊 React 16.4 + 的生命周期
+
+A：
 
 
 
+## 其他
 
 ### Q：请问 React 从本页面跳转至其他站点页是否会执行 unmount？为什么
 
