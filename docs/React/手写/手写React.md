@@ -18,7 +18,9 @@ React 按照深度优先遍历虚拟 DOM 树的方式，在一个虚拟 DOM 上�
 React的**提交阶段**也需要做两件事
 
 - 将调和阶段记录的更新方案应用到 DOM 中
-- 调用暴露给开发者的钩子方法，如componentDidUpdate、**useLayoutEffect** 等
+- 调用暴露给开发者的钩子方法，如componentDidUpdate、useLayoutEffect 等
+
+提交
 
 
 
