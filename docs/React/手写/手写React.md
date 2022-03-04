@@ -227,6 +227,10 @@ const element = {
 
 # ReactDOM.render
 
+
+
+
+
 我们替换掉 ReactDOM.render，尝试粗暴地手写一下
 
 ```javascript
@@ -302,9 +306,83 @@ function render (element, container) {
 }
 ```
 
-- 
 
 
+当我们调用 `ReactDOM.render(reactElement, domContainer)` 时，我们的意思是：将我的 reactElement 映射到 domContainer 的宿主树上吧
+
+React 会查看 reactElement.type （在我们的例子中是button）然后告诉 ReactDOM 渲染器创建对应的宿主实例并设置正确的属性
+
+```javascript
+// 在 ReactDOM 渲染器内部（简化版）
+function createHostInstance(reactElement) {
+  let domNode = document.createElement(reactElement.type);
+  domNode.className = reactElement.props.className;
+  return domNode;
+}
+```
+
+在我们的例子中，React 会这样做：
+
+```javascript
+let domNode = document.createElement('button');
+domNode.className = 'blue';
+
+domContainer.appendChild(domNode);
+```
+
+如果 React 元素在 reactElement.props.children 中含有子元素，React 会在第一次渲染中递归地为他们创建宿主实例
+
+
+
+## FiberReconciliation
+
+如果我们用同一个 container 调用 ReactDOM.render() 两次会发生什么呢？
+
+```jsx
+ReactDOM.render(
+  <button className="blue" />,
+  document.getElementById('container')
+);
+
+// ... 之后 ...
+
+// 应该替换掉 button 宿主实例吗？
+// 还是在已有的 button 上更新属性？
+ReactDOM.render(
+  <button className="red" />,
+  document.getElementById('container')
+);
+```
+
+同样的，React 的工作是将 React 元素树映射到宿主树上去。确定该对宿主实例做什么来影响新的信息有时候叫做协调
+
+有两种方式可以解决。简化版的React 会丢弃已经存在的树然后从头开始创建它
+
+```javascript
+let domContainer = document.getElementById('container');
+// 清除掉原来的树
+domContainer.innerHTML = '';
+// 创建新的宿主实例树
+let domNode = document.createElement('button');
+domNode.className = 'red';
+domContainer.appendChild(domNode);
+```
+
+但是在 DOM 环境下，这样的做法效率低下而且会丢失像 focus、selection、scroll 等许多状态。相反，我们希望 React 这样做：
+
+```javascript
+let domNode = domContainer.firstChild;
+// 更新已有的宿主实例
+domNode.className = 'red';
+```
+
+...
+
+如果相同的元素类型在同一个地方先后出现两次，React 会重用已有的宿主实例
+
+
+
+https://overreacted.io/zh-hans/react-as-a-ui-runtime/
 
 
 

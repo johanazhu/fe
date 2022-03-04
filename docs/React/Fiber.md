@@ -2,6 +2,18 @@
 
 
 
+
+
+
+
+[官网解释](https://zh-hans.reactjs.org/docs/faq-internals.html)：
+
+> Fiber 是 React 16 中新的协调引擎。它的主要目的是使 Virtual DOM 可以进行增量式渲染。
+
+
+
+
+
 为什么会有Fiber
 
 React 在 V16 之前会面临的主要性能问题是：当组件树很庞大时，更新状态可能造成页面卡顿，根本原因在于——更新流程是 【同步、不可中断的】
@@ -167,4 +179,5 @@ React16将内部组件层改成Fiber这种数据结构，因此它的架构名�
 - [react fiber 到底有多细](https://mp.weixin.qq.com/s/gz7_StDD151Qnt-ziSfmSw)
 - [你不知道的 React Virtual DOM](https://juejin.cn/post/6985058301184737287#heading-6)
 - [React Fiber架构浅析](https://juejin.cn/post/7005880269827735566)
+- [【译】React Fiber Architecture](https://juejin.cn/post/6844903750658686983)
 

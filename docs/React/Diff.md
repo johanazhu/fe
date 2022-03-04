@@ -57,9 +57,11 @@ diff实现过程
 
 ## 参考资料
 
-[DIff算法看不懂就一起来锤我(带图)](https://mp.weixin.qq.com/s/XRR9afpujcjbgFZM0Zw6Gw)
+- [DIff算法看不懂就一起来锤我(带图)](https://mp.weixin.qq.com/s/XRR9afpujcjbgFZM0Zw6Gw)
 
-[15张图，20分钟吃透Diff算法核心原理](https://juejin.cn/post/6994959998283907102)
 
-[精读《DOM diff 原理详解》](https://github.com/ascoders/weekly/blob/v2/190.%E7%B2%BE%E8%AF%BB%E3%80%8ADOM%20diff%20%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3%E3%80%8B.md)
+- [15张图，20分钟吃透Diff算法核心原理](https://juejin.cn/post/6994959998283907102)
 
+- [精读《DOM diff 原理详解》](https://github.com/ascoders/weekly/blob/v2/190.%E7%B2%BE%E8%AF%BB%E3%80%8ADOM%20diff%20%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3%E3%80%8B.md)
+
+- [协调](https://zh-hans.reactjs.org/docs/reconciliation.html#gatsby-focus-wrapper)

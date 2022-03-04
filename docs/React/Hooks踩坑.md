@@ -117,11 +117,7 @@ sayHi(someone)
 
 
 
-React Hooks 使用误区，驳官方文档
-
-https://mp.weixin.qq.com/s/Yf4-5Zni3-heWjzM2KYAFQ
-
-
+**在任意一次渲染中，props和state是始终保持不变的。**如果props和state在不同的渲染中是相互独立的，那么使用到它们的任何值也是独立的（包括事件处理函数）。它们都“属于”一次特定的渲染。即便是事件处理中的异步函数调用“看到”的也是这次渲染中的`count`值。
 
 
 

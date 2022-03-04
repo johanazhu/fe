@@ -92,11 +92,24 @@ Component.prototype.isReactComponent = {}
 
 类组件
 
+- shouldComponentUpdate 避免不必要的渲染
+  - true：当前组件进行 render
+  - false：当前组件不进行 render
+  - 用法：shouldComponentUpdate(nextProps, nextState)
+
+- 将函数绑定放在构造函数、或者在定义阶段使用箭头函数绑定，可以笔名每次都绑定事件
+- PureComponent 会对 props 和 state 进行前对比
+
 函数式组件
 
-其他方式
+- memo 避免不必要的渲染
+  - 与 shouldComponentUpdate 相反，如果 props 相等，areEqual 会返回 true；如果 props 不相等，则返回 false
 
-A：主要用React.memo、React.useCallback、React.usememo 的作用
+- useMemo、useCallback
+  - useMemo 返回缓存的值
+  - useCallback 返回缓存的函数
+
+
 
 ### Q：请问 React/ Vue 之类的框架为什么需要给组件添加 key 属性，其作用是什么？
 
@@ -134,55 +147,79 @@ A：修改值不改变视图，setState不仅是修改 this.state 的值，更�
 
 ### Q：你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
 
-A：
+A： React Hooks 是 React 16.8 之后推出的函数式组件状态管理方案。它是为了解决状态复用、类组件写法麻烦等原因而提出的
+
+本质是什么？闭包
 
 ### Q：为什么不能在循环中调用 hooks？或者说为什么不能在 for 循环、if 语句里使用 hooks？
 
-A：
+A：因为 hooks 中的状态是以链表形式存在，如果使用 for 循环、if语句，会使得后续的状态没法更新
 
 ### Q： React hooks，它带来了哪些便利
 
-A：
+A：逻辑复用、业务代码更聚合、写法更简洁
 
 ### Q：列举几个常用的 Hook
 
-A：
+A： useState、useEffect、useRef、useCallback、useMemo、useReducer、useLayoutEffect等
 
 ### Q：说下 React hooks 实现原理
 
-A：
+A：闭包、Fiber、链表
+
+Hooks 主要是利用闭包来保存状态，使用链表保存一系列 Hooks，将链表中的第一个 Hook 与 Fiber 关联。在 Fiber 树更新时，就能从 Hooks 中计算出最终输出的状态和执行相关的副作用
 
 ### Q： React Hooks 当中的 useEffect 是如何区分生命周期钩子的
 
-A：
+A：第二个参数为空数组，简单来说是依赖项为空
 
 ### Q： useEffect(fn, []) 和 componentDidMount 有什么差异
 
-A：
+A： useEffect 会捕获 props 和 state。即使在回调函数里，你拿到的还是初始的 props 和 state。如果你想要得到“最新”的值，你可以使用 ref。不过通常会有更简单的实现方式，所以你并不一定要用 ref。记住，effects 的心智模型和 componentDidMount 以及其他生命周期是不同的，试图找到它们之间完全一致的表达反而更容易是你混淆。想要更有效，你需要“think in effects”，它的心智模型更接近于实现状态同步，而不是响应生命周期 ——Dan
 
-### Q: hooks 和 hoc 的区别，为什么不用 hoc
+#### 执行时机不同
 
-A:	
+componentDidMount 在组件挂载之后运行。如果立即（同步）设置 state，那么 React 就会触发一次额外的 render，并将第二个 render 的响应作为初始 UI，
+
+useEffect 也是在挂载后运行，但是它更往后，它不会阻塞真实DOM渲染，因为 useEffect 在绘制（Paint）之后异步运行。
+
+#### Props 和 State 的捕获（Capture Value）
+
+每次渲染就会捕获新的 props 和 state
+
+### Q: Hooks 和 hoc 的区别，为什么不用 hoc
+
+A:	通常，render props 和 高阶组件只渲染一个子节点。我们认为让 Hook 来服务这个使用场景更加简单。这两种模式仍有用户之地（例如一个虚拟滚动条组件或许会有一个 `renderItem` 属性，或是一个可见的容器组件或许会有它自己的 DOM 结构）。但在大部分场景下，Hook 足够了，并且能够帮助减少嵌套。
+
+hoc 的缺点是会有嵌套、props会被劫持，容易出现冲突，Hooks 没有个问题
 
 ### Q: useMemo，useCallback的区别，你是如何看待这两个 api 的意义，在什么场景下会使用它
 
-A:
+A: useMemo缓存值，useCallback 缓存函数。两个函数的用法很像
 
+### Q: 为什么 useState 不能在判断语句中声明？
 
+A：官网里写了只在最顶层使用 Hooks。不要在循环，条件或嵌套函数中调用 Hook，确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们。
+
+state 是以链表的数据结构存在，多个 state 之间同构 next 进行关联。假设有 3 个 state，A、B、C。如果 B 在判断语句中，那么就会出现 A，B 的状态能够及时更新，但是 C 不会更新。因为调用 2 次 useState，只会更新两次 state，在 state 的链表中，A.next ->B，B.next -> C，那么就只会更新 A、B。C不会更新，导致一些不可预知的问题
 
 ## Virtual DOM
 
 ### Q： React 的 Virtual dom 是怎么实现的？
 
-A：
+A：  React 是把真实的 DOM 树转换为 JS 对象树，也就是 Virtual DOM。每次数据更新后，重新计算 VM，并和上一次生成的 VM 树进行对比，对发生变化的部分进行批量更新。除了性能之外，VM 的实现最大的好处在于和其他平台的集成。
+
+虚拟 DOM 的本质是 JavaScript 对象，它可以代表真实 DOM 的抽象表示。通过预先操作虚拟 DOM，在某个时机找出与真实 DOM 之间的差异并重新渲染，来提升真实 DOM 的性能和效率
 
 ### Q：考虑过 React 、 Vue 这类的框架为什么要用 Virtual DOM 机制吗？
 
-A：
+A：为了减少不必要的 DOM 渲染、跨平台、为函数式的UI编程打开了大门
 
 ### Q：为什么 Virtual dom 会提高性能？
 
-A：
+A：因为 VM 并不是真实的操作 DOM，通过 diff 算法可以避免一些不变更的 DOM 操作，从而提高性能
+
+但是不一定会提高性能，他只是通过 diff 算法笔名了一些不需要变更的 DOM 操作，但最终还是要操作 DOM 的，并且 diff 的过程也需要成本
 
 
 
@@ -190,9 +227,10 @@ A：
 
 ### Q：简单介绍下 diff 算法
 
-A：
+A：本来涉及到两棵树的对比，时间复杂度是  O(n^3)。为了降低时间复杂度，React 基于两个假设条件（启发式算法 O(n) ）：
 
-
+- 相同类型的组件产生相同的DOM结构，反之不同类型的元素会产生不同的树
+- 同一层级的一组节点，可以通过唯一标识符进行区分
 
 
 
@@ -200,11 +238,11 @@ A：
 
 ### Q：简述下 React 的事件代理机制
 
-A：
+A：初始化渲染时在 root 节点上注册原生事件；原生事件触发时模拟捕获、目标和冒泡阶段派发合成事件。通过这种机制，冒泡的原生事件类型最多在 root 节点上注册一次，节省内存凯西奥
 
 ### Q： React 的事件代理机制和原生事件绑定有什么区别？
 
-A：
+A： React 的事件代理机制是框架写的合成事件
 
 ### Q： React 的事件代理机制和原生事件绑定混用会有什么问题？
 
@@ -220,15 +258,19 @@ A：
 
 ### Q： Redux 是什么
 
-A：
+A：一个状态管理库，一般和 react 搭配使用。遵循单向数据流的开发模式。用户通过 action 发起 dispatch ，通过 reducer 返回新的 store。reducer 是一个纯函数，传入store 后会输出 store
 
-### Q：请求 Redux 的原理是什么？你能手写一个 Redux 吗？
+### Q：请问 Redux 的原理是什么？你能手写一个 Redux 吗？
 
 A：
 
 ### Q： React-redux 的实现原理
 
 A：
+
+### Q: react-redux中connect实现原理
+
+A: 
 
 ### Q： Redux 和 mobx 的区别
 
@@ -252,11 +294,19 @@ A：
 
 ### Q：简述下 React 的生命周期？每个声明周期都做了什么？
 
-A：
+A：类组件才有的概念。一般分为挂载时，更新时，卸载时、错误时三块，
 
-### Q：聊聊 React 16.4 + 的生命周期
+挂载时（Mount）：constructor、getDerivedStateFromProps 、render、componentDidMount、
 
-A：
+更新时（Update）：getDerivedStateFromProps、shouldComponentUpdate、render、getSnapshotBeforeUpdate、componentDidUpdate
+
+卸载时（Unmount）：componentWillUnmount
+
+错误时（Error）：getDerivedStateFromError、componentDidCatch
+
+![image-20220304145136362](https://s2.loli.net/2022/03/04/ha3NcqybKZ24QkP.png)
+
+
 
 
 
@@ -264,15 +314,13 @@ A：
 
 ### Q：请问 React 从本页面跳转至其他站点页是否会执行 unmount？为什么
 
-A：
+A：不会，做过实验。
 
 ### Q：请问 React 中的 错误捕获
 
-A：转 异步捕获 方面
+A： getDerivedStateFromError：用来处理错误、componentDidCatch：输出完整的错误信息
 
-### Q：错误边界是什么？它有什么用？
-
-A：
+try / catch 仅能用于命令式代码（imperative code）,但是react组件是声明式的，所以需要错误边界来捕捉错误
 
 
 
@@ -374,23 +422,19 @@ A：四种写实践的写法
 
 ### Q： React 中的 ref 是干嘛的？
 
-A：
-
-### Q： connect 原理
-
-A：
+A：操作实例或DOM 的API
 
 ### Q：什么是 Portals？
 
-A：
+A：传送门，能在指定的dom上渲染组件
 
 ### Q：什么是 suspense 组件？
 
-A：
+A：一般和 lazy 结合，在页面加载出来前渲染
 
 ### Q：为什么React 元素有一个 `$$typeof` 属性？
 
-A：
+A： Dan写的[一篇文章](https://overreacted.io/zh-hans/why-do-react-elements-have-typeof-property/)，是为了防止 XSS 攻击。因为 JSON 不支持 Symbol 类型，所以服务器通过 JSON 攻击不会影响到 React
 
 ### Q：为什么 JSX 中的组件名要以大写字母开头
 
@@ -400,7 +444,7 @@ A：判断当前渲染的元素是组件还是 HTML 元素
 
 ### Q： React 17、React 18 有什么新的特性
 
-A：
+A： concurrent 模式，异步可中断
 
 
 

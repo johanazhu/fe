@@ -126,7 +126,7 @@ function Demo() {
 
 我们想一想如果没有 Virtual DOM，把页面从数据展示到 DOM 上最直接的方式是重置 innerHTML，即你更新数据后，把页面重置。但是如果是一行数据变化，也需要重置整个 innerHTML，就显然很浪费。如果加一层 Virtual DOM 呢，无论你数据如何变化（多次操作），先将它转换为 Virtual DOM，再渲染到 DOM 上，减少了 DOM 重排的次数，进而缩短生成渲染树和绘制所花的时间
 
-React 相对于直接操作原生 DOM 最大的优势在于 batching（批处理）和 diff。为了尽量减少不必要的 DOM 操作，Virtual DOM 在执行 DOM 的更新操作后，不会直接操作真实 DOM，而是根据当前应用状态的数据，生成一个全新的 Virtual DOM，然后跟上一次生成的 Virtual DOM 对比（diff），得到一个 Patch，这样就找到变化了的 DOM 系欸但，针对变化部分进行 DOM 更新，而部重新渲染整个 DOM 树，这个过程就是 diff。
+React 相对于直接操作原生 DOM 最大的优势在于 batching（批处理）和 diff。为了尽量减少不必要的 DOM 操作，Virtual DOM 在执行 DOM 的更新操作后，不会直接操作真实 DOM，而是根据当前应用状态的数据，生成一个全新的 Virtual DOM，然后跟上一次生成的 Virtual DOM 对比（diff），得到一个 Patch，这样就找到变化了的 DOM 节点，针对变化部分进行 DOM 更新，而不重新渲染整个 DOM 树，这个过程就是 diff。
 
 所谓的 batching 就是将多次比较的结果合并后一次性更新到页面，从而有效地减少页面渲染的次数，提高渲染效率。无论是 batching 还是 diff，都是为了尽量减少对 DOM 的调用。简要的示意图如下：
 
