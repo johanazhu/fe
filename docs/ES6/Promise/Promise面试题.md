@@ -124,6 +124,65 @@ new Promise((resolve, reject) => {
 
 
 
+### 面试3
+
+```javascript
+const myPromise = val => Promise.resolve(val);
+const delay = duration => { /**/ };
+myPromise(`hello`).then(delay(1000)).then(val => console.log(val));
+// 写出 delay 函数
+```
+
+```javascript
+const delay = duration => {
+    return (val) => (
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(val)
+            }, duration)
+        })
+    )
+}
+```
+
+
+
+
+
+### 题目4
+
+```md
+想做到的是，每过一秒，分别打印:
+this is 0
+this is 1
+this is 2
+~
+this is 8
+
+下面的代码结果是过一秒后全部执行。
+
+是不是哪里写的不对呢，多谢指教
+
+var jobs = [];
+
+for(let i = 0; i < 8; i++) {
+    jobs.push(async function(){
+        setTimeout(function(){
+            console.log("this is " + i)
+        },1000)
+    });
+}
+
+(async function () {
+    for (const job of jobs) {
+        await job()
+    }
+        
+})();
+```
+
+
+
 
 
 promise 题目我不会做

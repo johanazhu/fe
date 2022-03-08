@@ -1,4 +1,12 @@
-# Map
+# Map&Set
+
+
+
+以前使用集合，多数情况下会直接用 Object 代替，ES6 新增了两个特性，Map和Set，他们是对 JavaScript 关于集合概念的补充
+
+
+
+## Map
 
 
 
@@ -89,16 +97,6 @@ var twoSum = function(nums, target) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 ### 窥视Map
 
 之前在将Promise时，我们已经自己手写了Promise，那么Map（字典）我们是否也能手写一个呢？
@@ -161,12 +159,48 @@ var m = new Map([])
 
 
 
+Map 与 Object 的区别
+
+- Map 与 Object 都可以存取数据，Map 适用于存储需要**常需要变化（增减键值对）或遍历**的数据集，而Object 适用于存储**静态（例如配置信息）**数据集
+- Object 的 key 必须是 String 或 Symbol 类型，而 Map 无此限制，可以是任何值
+- Map 可以很方面的取到键值对数量，而 Object 需要用额外途径
+
+
+
+
+
+
+
+## Set
+
+Set 作为最简单的集合，有着如下几个特点：
+
+- Set 可以存储任何类型的值，遍历顺序与 插入顺序相同
+- SET 内无重复的值
+
+
+
+`Set` 和 `Map` 类似，也是一组 key 的集合，但不存储 value 。由于key不能重复，所以，在`Set`中，没有重复的key
+
+
+
+## WeakMap + WeakSet
+
+主要特点是弱引用
+
+相比于 Map 和 Set 的强引用，弱引用可以令对象在“适当”情况下正确被 GC 回收，减少内存资源浪费
+
+但由于不是强引用，所以无法进行遍历或取得值数量，只能用于值的存取（WeakMap）或是否存在值的判断（WeakSet）
+
+
+
 
 
 ### 参考资料
 
 - [Map and Set（集合和映射）](https://zh.javascript.info/map-set)
 - [「 Map最佳实践」什么时候适合使用 Map 而不是 Object](https://mp.weixin.qq.com/s/ax-Lec-wam0pptpRTH5Log)
+- [Map和Set](https://www.liaoxuefeng.com/wiki/1022910821149312/1023024181109440)
 
 
 
