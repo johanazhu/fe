@@ -45,13 +45,13 @@ int number = 1;
 
 #### 内置类型
 
--   numbers
--   strings
--   booleans
--   lists(和数组一个概念)
--   maps 字典
--   runes(Unicode 字符串)
--   symbols 符号
+- numbers
+- strings
+- booleans
+- lists(和数组一个概念)
+- maps 字典
+- runes(Unicode 字符串)
+- symbols 符号
 
 ```dar
 vord main(){
