@@ -1,6 +1,12 @@
 function BrowserSideBar() {
     return [
         {
+            text: "常见面试题",
+            collapsable: false,
+            sidebarDepth: 0,
+            children: ["/Browser/面试题/"],
+        },
+        {
             text: "Browser",
             collapsable: false,
             sidebarDepth: 0,

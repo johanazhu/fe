@@ -21,7 +21,7 @@ function bigFrondSideBar() {
                 "/WebApp/JSBridge.md",
                 // 'WebApp/主题色提取.md',
                 "/WebApp/我常用的webApp开发规范.md",
-                "/WebApp/最佳实践.md",
+                // "/WebApp/最佳实践.md",
                 "/WebApp/mobileHack.md",
             ],
         },
@@ -56,10 +56,10 @@ function bigFrondSideBar() {
             ],
         },
         {
-            text: "RN",
+            text: "ReactNative",
             collapsable: false,
             sidebarDepth: 0,
-            children: ["/RN/"],
+            children: ["/ReactNative/"],
         },
     ];
 }

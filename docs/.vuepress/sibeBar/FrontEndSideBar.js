@@ -18,10 +18,40 @@ function FrontEndSideBar() {
             children: [
                 "/React/面试题/",
                 "/React/",
-                "/React/生态/Immutable.md",
-                "/React/手写/手写React.md",
-                "/React/实战/React代码整洁之道.md",
+                "/React/手写/",
+                "/React/生态/",
+                "/React/实战/",
             ],
+        },
+        {
+            text: "大前端",
+            children: [
+                "/WebApp/",
+                "/WeChat/",
+                "/MiniApp/",
+                "/Flutter/",
+                "/ReactNative/",
+            ],
+        },
+        {
+            text: "前端工程化",
+            children: [
+                "/webpack/",
+                "/Engineered/MicroFrontend/",
+                "/Engineered/StandardGuide/",
+            ],
+        },
+        {
+            text: "ES6",
+            children: ["/ES6/面试题/", "/ES6/", "/ES6/Promise/"],
+        },
+        {
+            text: "浏览器",
+            children: ["/Browser/面试题/", "/Browser/"],
+        },
+        {
+            text: "HTTP",
+            children: ["/HTTP/面试题/", "/HTTP/"],
         },
         {
             text: "后端",
@@ -39,36 +69,6 @@ function FrontEndSideBar() {
             ],
         },
         {
-            text: "大前端",
-            children: [
-                "/WebApp/",
-                "/WeChat/",
-                "/MiniApp/",
-                "/Flutter/",
-                "/RN/",
-            ],
-        },
-        {
-            text: "ES6",
-            link: "/ES6/",
-        },
-        {
-            text: "浏览器",
-            link: "/Browser/",
-        },
-        {
-            text: "HTTP",
-            link: "/HTTP/",
-        },
-        {
-            text: "HTML",
-            link: "/HTML/",
-        },
-        {
-            text: "CSS",
-            link: "/CSS/",
-        },
-        {
             text: "Docker",
             link: "/Docker/",
         },
@@ -81,15 +81,27 @@ function FrontEndSideBar() {
             link: "/Linux/",
         },
         {
+            text: "DevOps",
+            link: "/DevOps/",
+        },
+        {
             text: "计算机基础",
             link: "/CSBasic/",
         },
         {
             text: "设计模式",
-            link: "/DesignPattern/发布订阅模式.md",
+            link: "/DesignPattern/",
         },
         {
-            text: "Jquery",
+            text: "HTML",
+            link: "/HTML/",
+        },
+        {
+            text: "CSS",
+            link: "/CSS/",
+        },
+        {
+            text: "JQuery",
             link: "/Jquery/",
         },
         {
@@ -101,8 +113,12 @@ function FrontEndSideBar() {
             link: "/Read/code/",
         },
         {
+            text: "软实力",
+            link: "/Others/",
+        },
+        {
             text: "关于我",
-            link: "/About/about.md",
+            link: "/About/",
         },
     ];
 }

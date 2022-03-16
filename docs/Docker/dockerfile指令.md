@@ -2,39 +2,37 @@
 
 ## 指令速查
 
-`FROM` 	基于什么
+`FROM` 基于什么
 
-`LABEL` 	制作者的信息
+`LABEL` 制作者的信息
 
-`ADD . xx`  	复制文件至容器
+`ADD . xx` 复制文件至容器
 
-`WORKDIR xx`	进入工作目录
+`WORKDIR xx` 进入工作目录
 
-`RUN npm install`	安装依赖包
+`RUN npm install` 安装依赖包
 
-`EXPOSE` 	端口
+`EXPOSE` 端口
 
-`COPY`		复制
+`COPY` 复制
 
-`RUN`	后面跟着命令行命令
+`RUN` 后面跟着命令行命令
 
-`CMD` 	类似于RUN 指令，用于运行程序
+`CMD` 类似于 RUN 指令，用于运行程序
 
-- CMD 在 docker run 时运行
-- RUN 是在docker build
+-   CMD 在 docker run 时运行
+-   RUN 是在 docker build
 
-`VOLUME` 	定义匿名数据卷
-
-
+`VOLUME` 定义匿名数据卷
 
 ## VOLUME
 
-`VOLUME` 	定义匿名数据卷。在启动容器是
+`VOLUME` 定义匿名数据卷。在启动容器是
 
 作用：
 
-- 避免重要的数据，因容器重启而丢失，这是非常致命的
-- 避免容器不断变大
+-   避免重要的数据，因容器重启而丢失，这是非常致命的
+-   避免容器不断变大
 
 格式：
 
@@ -44,19 +42,11 @@ VOLUME ["<路径1>", "路径2"...]
 
 在启动容器 docker run 的时候，我们可以通过 -v 参数修改挂载点
 
-
-
 ## LABEL
 
 ```
 LABEL version="1.0" description="这是一个Web服务器" by="IT笔录
 ```
-
-
-
-
-
-
 
 ## 例子
 
@@ -80,4 +70,3 @@ EXPOSE 3010
 CMD ["pm2", "start", "app.js", "--no-daemon"]
 
 ```
-

@@ -4,10 +4,7 @@ function ES6SideBar() {
             text: "常见面试题",
             collapsable: false,
             sidebarDepth: 0,
-            children: [
-                "/ES6/ES6面试合集.md",
-                "/ES6/Promise/Promise面试题.md",
-            ],
+            children: ["/ES6/面试题/", "/ES6/面试题/Promise面试题.md"],
         },
         {
             text: "ES6",
@@ -16,9 +13,6 @@ function ES6SideBar() {
             children: [
                 "/ES6/",
                 "/ES6/ES6完全指南.md",
-                "/ES6/Promise/Promise.md",
-                "/ES6/Promise/手写Promise.md",
-                "/ES6/Promise/Async.md",
                 "/ES6/模块化历程.md",
                 "/ES6/手写模块打包器.md",
                 "/ES6/Class.md",
@@ -27,6 +21,16 @@ function ES6SideBar() {
                 "/ES6/Map&Set.md",
                 "/ES6/ES6+.md",
                 "/ES6/Proxy.md",
+            ],
+        },
+        {
+            text: "Promise专栏",
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+                "/ES6/Promise/Promise.md",
+                "/ES6/Promise/手写Promise.md",
+                "/ES6/Promise/Async.md",
             ],
         },
     ];

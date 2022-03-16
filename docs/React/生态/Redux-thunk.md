@@ -1,22 +1,21 @@
-# Redux-thunk源码分析
+# Redux-thunk 源码分析
 
-
-
-### redux-thunk的源码
+### redux-thunk 的源码
 
 ```javascript
 function createThunkMiddleware(extraArgument) {
-    return ({dispatch, getState}) => (next) => (action) => {
-        if (typeof action === 'function') {
-            return action(dispatch, getState, extraArgument)
-        }
-        
-        return next(action)
-    }
-}
-const thunk = createThunkMiddleware()
-thunk.withExtraArgument = createThunkMiddleware;
+    return ({ dispatch, getState }) =>
+        (next) =>
+        (action) => {
+            if (typeof action === "function") {
+                return action(dispatch, getState, extraArgument);
+            }
 
+            return next(action);
+        };
+}
+const thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
 ```
 
 ### 如何使用
@@ -32,28 +31,21 @@ const store = createStore(
 )
 ```
 
-
-
 ```javascript
-const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+const INCREMENT_COUNTER = "INCREMENT_COUNTER";
 
 function increment() {
-  return {
-    type: INCREMENT_COUNTER,
-  };
+    return {
+        type: INCREMENT_COUNTER,
+    };
 }
 
 function incrementAsync() {
-  return (dispatch) => {
-    setTimeout(() => {
-      // 可以使用 `dispatch` 调用同步或异步操作
-      dispatch(increment());
-    }, 1000);
-  };
+    return (dispatch) => {
+        setTimeout(() => {
+            // 可以使用 `dispatch` 调用同步或异步操作
+            dispatch(increment());
+        }, 1000);
+    };
 }
 ```
-
-
-
-
-

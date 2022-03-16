@@ -1,32 +1,28 @@
 # MovMov 项目笔记
 
-
-
-MovMov 
+MovMov
 
 先做好了，再写文章
 
-
-
 原型
 
-​	数据已经有了，需要展示什么部分，UI参考TapTap 的话需要做什么
+​ 数据已经有了，需要展示什么部分，UI 参考 TapTap 的话需要做什么
 
 设计
 
-​	bulma或者Tailwind 来做
+​ bulma 或者 Tailwind 来做
 
-基础脚手架搭建 TypeScript + React Hooks + immuable 
+基础脚手架搭建 TypeScript + React Hooks + immuable
 
-​	TypeScript 语法学习  
+​ TypeScript 语法学习
 
-​	React 以及 hooks的使用 
+​ React 以及 hooks 的使用
 
-​	相关的优化学习  
+​ 相关的优化学习
 
-​	immuable 数据不可变的学习
+​ immuable 数据不可变的学习
 
-TapTap默认的颜色取自海报颜色
+TapTap 默认的颜色取自海报颜色
 
 下拉更新这个
 
@@ -38,16 +34,6 @@ TapTap默认的颜色取自海报颜色
 
 PWA
 
-
-
-
-
-
-
-
-
-
-
 React 的 keep-alive
 
 https://github.com/febobo/web-interview/issues/19
@@ -56,19 +42,6 @@ react 是不支持 keep-alive 的，那么你怎么做到让它缓存，以及�
 
 umi-plugin-keep-alive
 
-
-
-tab 
+tab
 
 tabpanel
-
-
-
-
-
-
-
-
-
-
-

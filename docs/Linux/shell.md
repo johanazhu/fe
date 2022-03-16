@@ -16,14 +16,6 @@ uname -r
 sudo reboot
 ```
 
-
-
-
-
-
-
-
-
 ## 参考资料
 
-- [一篇教会你写90%的shell脚本](https://zhuanlan.zhihu.com/p/315294919)
+-   [一篇教会你写 90%的 shell 脚本](https://zhuanlan.zhihu.com/p/315294919)

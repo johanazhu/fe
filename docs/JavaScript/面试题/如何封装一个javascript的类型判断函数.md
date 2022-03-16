@@ -1,33 +1,31 @@
-# 如何封装一个javascript的类型判断函数
-
-
+# 如何封装一个 javascript 的类型判断函数
 
 ```javascript
 function isType(source) {
     const target = Object.prototype.toString.call(source);
-    switch(target) {
+    switch (target) {
         case "[object Null]":
-            return 'null';
+            return "null";
         case "[object Undefined]":
-            return 'undefined';
+            return "undefined";
         case "[object String]":
-            return 'string';
+            return "string";
         case "[object Number]":
-            return 'number';
+            return "number";
         case "[object Boolean]":
-            return 'boolean';
+            return "boolean";
         case "[object Object]":
-            return 'object';
+            return "object";
         case "[object Array]":
-            return 'array';
+            return "array";
         case "[object Function]":
-            return 'function';
+            return "function";
         case "[object Date]":
-            return 'date';
+            return "date";
         case "[object RegExp]":
-            return 'regexp';
+            return "regexp";
         case "[object Error]":
-            return 'error';
+            return "error";
     }
 }
 
@@ -36,16 +34,13 @@ function getType(target) {
 }
 ```
 
-
-
 ```javascript
 function typeOf(obj) {
-    let res = Object.prototype.toString.call(obj).split(" ")[1]
-    res = res.substring(0, res.length - 1).toLowerCase()
-    return res
+    let res = Object.prototype.toString.call(obj).split(" ")[1];
+    res = res.substring(0, res.length - 1).toLowerCase();
+    return res;
 }
-typeOf([]) // array
-typeOf({}) // object
-typeOf(new Date()) // date
+typeOf([]); // array
+typeOf({}); // object
+typeOf(new Date()); // date
 ```
-

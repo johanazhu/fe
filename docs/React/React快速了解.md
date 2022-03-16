@@ -1,7 +1,5 @@
 # React 快速了解
 
-
-
 ## 是什么
 
 用于构建用户界面的 JavaScript 库
@@ -32,19 +30,19 @@ React 的作者的 [blog](https://overreacted.io/) ，上面有很多易错点�
 
 主要有三个特征
 
-- UI = f(data)
-  - 贯彻了一套公式
-  - 改变 data，驱动 function，从而改变 UI
-    - data 即我们所说的 props 和 state
-- 一切都是组件
+-   UI = f(data)
+    -   贯彻了一套公式
+    -   改变 data，驱动 function，从而改变 UI
+        -   data 即我们所说的 props 和 state
+-   一切都是组件
 
-  - 页面是组件，路由也是组件，错误边界也是组件...
-- 声明式编程
+    -   页面是组件，路由也是组件，错误边界也是组件...
 
-  - 对比 JQuery
-    - JQuery 是命令式的库，直接操作 dom，我拿到这个 dom，我要去干什么
-    - React 是声明式的库，写好一个组件，UI就展示成什么样
+-   声明式编程
 
+    -   对比 JQuery
+        -   JQuery 是命令式的库，直接操作 dom，我拿到这个 dom，我要去干什么
+        -   React 是声明式的库，写好一个组件，UI 就展示成什么样
 
 ## 执行过程
 
@@ -61,15 +59,9 @@ React 的作者的 [blog](https://overreacted.io/) ，上面有很多易错点�
 
 其第一点，不同类型的元素会产生不同的树，React 发现组件的类型不同时，直接重绘新的组件，而不去在做 diff。第二点即可理解为动态产生的组件需要设置 key。
 
-
-
- 
-
 ### Render
 
 Class 中的 Render 方法是个纯函数，不做任何直接渲染的事情。只是返回了一些指令，由 React 对这些指令做真正的 DOM 操作
-
-
 
 JSX 其实是 `React.createElement(compoent, props,...children)` 函数的语法糖。如下 JSX 代码：
 
@@ -82,22 +74,13 @@ JSX 其实是 `React.createElement(compoent, props,...children)` 函数的语法
 会编译为：
 
 ```javascript
-React.createElement(
-	MyButton,
-    {color: 'blue', shadowSize: 2},
-    'Click Me'
-)
+React.createElement(MyButton, { color: "blue", shadowSize: 2 }, "Click Me");
 ```
 
 [在线 Babel 编译器](https://babeljs.io/repl/#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=GYVwdgxgLglg9mABACwKYBt1wBQEpEDeAUIogE6pQhlIA8AJjAG4B8AEhlogO5xnr0AhLQD0jVgG4iAXyJA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&version=7.15.5&externalPlugins=&assumptions=%7B%7D) 可以玩一玩
 
-
-
-
-
 ## 参考资料
 
-- [React 官网](https://zh-hans.reactjs.org)
-- [帮助你深入理解 React](https://www.zhihu.com/lives/883022235516960768)
-- [Live - 帮助你深入理解 React](https://www.xbroder.com/2018/08/19/react-zhihu-live/)
-
+-   [React 官网](https://zh-hans.reactjs.org)
+-   [帮助你深入理解 React](https://www.zhihu.com/lives/883022235516960768)
+-   [Live - 帮助你深入理解 React](https://www.xbroder.com/2018/08/19/react-zhihu-live/)

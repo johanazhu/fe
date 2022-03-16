@@ -1,4 +1,4 @@
-## widget
+# Widget
 
 ### Text
 
@@ -15,36 +15,32 @@ const Text( this.data，// 内容
 })
 ```
 
-
-
-- key	//
-- style  //样式
-- textAlign  // 对齐方式
-- textDirection // 文本方向
-- softWrap   // 是否换行显示
-- overflow  // 超出文本的处理方式
-- textScaleFactor  // 每个逻辑像素的字体像素数，控制字体大小
-- maxLines  // 最大行数
-
-
+-   key //
+-   style //样式
+-   textAlign // 对齐方式
+-   textDirection // 文本方向
+-   softWrap // 是否换行显示
+-   overflow // 超出文本的处理方式
+-   textScaleFactor // 每个逻辑像素的字体像素数，控制字体大小
+-   maxLines // 最大行数
 
 ### TextStyle
 
-- inherit  // true
-- color  // 颜色
-- fontFamily // 字体
-- fontSize // 大小，默认10像素
-- fontWeight // 字重
-- fontStyle // 字体样式
-- letterSpacing  // 字间距
-- wordSpaceing  // 字符间距
-- textBaseline  // 基线
-- height // 高度
-- decoration  // 装饰
-- decorationColor  // 装饰颜色
-- decorationStyle  // 装饰样式
-- debugLabel
-- 
+-   inherit // true
+-   color // 颜色
+-   fontFamily // 字体
+-   fontSize // 大小，默认 10 像素
+-   fontWeight // 字重
+-   fontStyle // 字体样式
+-   letterSpacing // 字间距
+-   wordSpaceing // 字符间距
+-   textBaseline // 基线
+-   height // 高度
+-   decoration // 装饰
+-   decorationColor // 装饰颜色
+-   decorationStyle // 装饰样式
+-   debugLabel
+-
 
 ```dar
 body: Text("夜晚走在喧闹的小街上，反而心能更加的平静，"
@@ -63,12 +59,10 @@ body: Text("夜晚走在喧闹的小街上，反而心能更加的平静，"
  )
 ```
 
-
-
 ### Icon
 
 ```dart
-const Icon(this.icon, //IconDate 
+const Icon(this.icon, //IconDate
 {
     	   Key key
            this.size // 大小
@@ -77,10 +71,6 @@ const Icon(this.icon, //IconDate
            this.textDirection // 绘制方向，一般使用不到
 })
 ```
-
-
-
-
 
 ### Container
 
@@ -94,12 +84,9 @@ Container({
         this.foregroundDecoration  // 前景装饰
         double width,	// 容器的宽
     	double height 	// 容器的高
-        BoxConstraints constraints 
+        BoxConstraints constraints
         this.margin,
  		this.transform,
     	this.child
 })
 ```
-
-
-

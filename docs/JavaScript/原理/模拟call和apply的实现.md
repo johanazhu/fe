@@ -1,8 +1,6 @@
-# 模拟call和apply的实现
+# 模拟 call 和 apply 的实现
 
-
-
-## Call实现
+## Call 实现
 
 我们在 apply、call、bind 中曾经介绍过这三个 api 的作用，硬核掰弯 this 指向。这一节我们模拟实现 apply 和 call ，下一节我们介绍模拟实现 bind
 
@@ -10,11 +8,11 @@
 
 ```javascript
 var foo = {
-    value: 1
+    value: 1,
 };
 
 function bar() {
-    console.log(this.value)
+    console.log(this.value);
 }
 
 bar.call(foo); //1
@@ -34,10 +32,10 @@ bar.call(foo); //1
 ```javascript
 var foo = {
     value: 1,
-    bar: function() {
-        console.log(this.value)
-    }
-}
+    bar: function () {
+        console.log(this.value);
+    },
+};
 
 foo.bar(); // 1
 ```
@@ -58,11 +56,11 @@ foo.bar(); // 1
 
 ```javascript
 // 第一步
-foo.fn = bar
+foo.fn = bar;
 // 第二步
-foo.fn()
+foo.fn();
 // 第三步
-delete foo.fn
+delete foo.fn;
 ```
 
 fn 是对象的属性名，反正最后也要删除它，所以起成什么都无所谓
@@ -70,25 +68,25 @@ fn 是对象的属性名，反正最后也要删除它，所以起成什么都�
 根据这个思路，我们尝试着写第一版的 mycall 函数：
 
 ```javascript
-Function.prototype.mycall = function(context) {
+Function.prototype.mycall = function (context) {
     context.fn = this; // 谁调用this，this指向谁
     context.fn();
     delete context.fn;
-}
+};
 
 // 测试一番
 var foo = {
-    value: 2
-}
+    value: 2,
+};
 
 function bar() {
-    console.log(this.value)
+    console.log(this.value);
 }
 
-bar.mycall(foo) // 2
+bar.mycall(foo); // 2
 ```
 
-打印出 2，是不是很开心 (～￣▽￣)～
+打印出 2，是不是很开心 (～￣ ▽ ￣)～
 
 ### 模拟实现第二步
 
@@ -96,16 +94,16 @@ call 函数还能传参数执行函数。举个例子：
 
 ```javascript
 var foo = {
-    value: 1
-}
+    value: 1,
+};
 
 function bar(name, age) {
-    console.log(name)
-    console.log(age)
-    console.log(this.value)
+    console.log(name);
+    console.log(age);
+    console.log(this.value);
 }
 
-bar.call(foo, 'johan', 22) 
+bar.call(foo, "johan", 22);
 // johan
 // 22
 // 1
@@ -128,7 +126,7 @@ bar.call(foo, 'johan', 22)
 // 因为 arguments 是类数组对象，所以可以用 for 循环
 var args = [];
 for (var i = 1, len = arguments.length; i < len; i++) {
-    args.push('arguments[' + i + ']');
+    args.push("arguments[" + i + "]");
 }
 // 执行后 args 为 ["arguments[1]", "arguments[2]", "arguments[3]"]
 ```
@@ -137,14 +135,14 @@ for (var i = 1, len = arguments.length; i < len; i++) {
 
 ```javascript
 // 将数组里的元素作为多个参数放进函数的形参里
-context.fn(args.join(','))
+context.fn(args.join(","));
 // 但这个方法肯定不行
 ```
 
 也许有人想到用 ES6 的方法，不过 call 是 ES3 的方法，我们要为了模拟实现 ES3 的方法，要用到 ES6 的方法，好像......，可以是可以，但这次我们用 eval 方法拼成一个函数，类似于这样：
 
 ```javascript
-eval('context.fn(' + args + ')')
+eval("context.fn(" + args + ")");
 ```
 
 这里的 args 会自动调用 Array.toString() 方法
@@ -152,28 +150,28 @@ eval('context.fn(' + args + ')')
 所以我们的第二版克服了两大问题，代码如下
 
 ```javascript
-Function.prototype.mycall2 = function(context) {
+Function.prototype.mycall2 = function (context) {
     context.fn = this;
     var args = [];
     for (var i = 0, len = arguments.length; i < len; i++) {
-        args.push('arguments[' + i + ']')
+        args.push("arguments[" + i + "]");
     }
-    eval('context.fn(' + args + ')')
+    eval("context.fn(" + args + ")");
     delete context.fn;
-}
+};
 
 // 测试一番
 var foo = {
-    value: 2
-}
+    value: 2,
+};
 
 function bar(name, age) {
-    console.log(name)
-    console.log(age)
-    console.log(this.value)
+    console.log(name);
+    console.log(age);
+    console.log(this.value);
 }
 
-bar.mycall2(foo, 'elaine', 22)
+bar.mycall2(foo, "elaine", 22);
 // elaine
 // 22
 // 2
@@ -183,7 +181,7 @@ bar.mycall2(foo, 'elaine', 22)
 
 ### 模拟实现第三步
 
-模拟代码已经完成80%，还有两个小点要注意：
+模拟代码已经完成 80%，还有两个小点要注意：
 
 1. this 参数可以传 null ， 当为 null 的时候，视为指向 window
 
@@ -193,7 +191,7 @@ bar.mycall2(foo, 'elaine', 22)
 var value = 1;
 
 function bar() {
-    console.log(this.value)
+    console.log(this.value);
 }
 
 bar.call(null); // 1
@@ -207,18 +205,18 @@ bar.call(null); // 1
 
 ```javascript
 var foo = {
-    value: 1
-}
+    value: 1,
+};
 
 function bar(name, age) {
     return {
         value: this.value,
         name: name,
-        age: age
-    }
+        age: age,
+    };
 }
 
-console.log(bar.call(foo, 'johan', 22))
+console.log(bar.call(foo, "johan", 22));
 // {
 //		value: 1,
 // 		name: 'johan',
@@ -229,44 +227,42 @@ console.log(bar.call(foo, 'johan', 22))
 不过都很好解决，让我们直接看第三版也就是最后一版的代码：
 
 ```javascript
-Function.prototype.mycall3 = function(context) {
+Function.prototype.mycall3 = function (context) {
     context = context || window;
     context.fn = this;
-    
+
     var args = [];
     for (var i = 0, len = arguments.length; i < len; i++) {
-        args.push('arguments[' + i + ']')
+        args.push("arguments[" + i + "]");
     }
-    
-    var result = eval('context.fn(' + args +')'); // eval 不能用双引号
-    
+
+    var result = eval("context.fn(" + args + ")"); // eval 不能用双引号
+
     delete context.fn;
-    return result
-}
+    return result;
+};
 // 测试一番
 var value = 3;
 
 var foo = {
-    value: 3
-}
+    value: 3,
+};
 
 function bar(name, age) {
     return {
         value: this.value,
         name: name,
-        age: age
-    }
+        age: age,
+    };
 }
-bar.mycall3(null) 
-console.log(bar.mycall3(foo, 'johan', 22))
+bar.mycall3(null);
+console.log(bar.mycall3(foo, "johan", 22));
 // {
 //		value: 3,
 // 		name: 'johan',
 // 		age: 22
 // }
 ```
-
-
 
 ### 使用 ES6 来实现 call
 
@@ -286,9 +282,7 @@ Function.prototype.mycall = function(context, ...args) {
 }
 ```
 
-
-
-## apply实现
+## apply 实现
 
 apply 的实现跟 call 类似，这里直接给代码，代码来自于这知乎 郑航的实现：
 
@@ -296,47 +290,42 @@ apply 的实现跟 call 类似，这里直接给代码，代码来自于这知�
 Function.prototype.myApply = function (context, arr) {
     context = context || window;
     context.fn = this;
-    
+
     var result;
     if (!arr) {
-        result = context.fn()
+        result = context.fn();
     } else {
-        var args = []
+        var args = [];
         for (var i = 0, len = arr.length; i < len; i++) {
-            args.push('arr[' + i + ']')
+            args.push("arr[" + i + "]");
         }
-        result = eval('context.fn(' + args + ')')
+        result = eval("context.fn(" + args + ")");
     }
-    
-    delete context.fn
-    return result
-    
-}
+
+    delete context.fn;
+    return result;
+};
 ```
-
-
 
 ### ES6 模拟实现 apply
 
 ```javascript
-Function.prototype.myapply = function(context = window, args) {
+Function.prototype.myapply = function (context = window, args) {
     if (this === Function.prototype) {
-        return undefined
+        return undefined;
     }
     const fn = Symbol();
     context[fn] = this;
     let result;
     if (!Array.isArray(args)) {
-        result = context[fn]()
+        result = context[fn]();
     } else {
-        result = context[fn](...args)
+        result = context[fn](...args);
     }
-	
-    delete context[fn]
-    return result
-}
+
+    delete context[fn];
+    return result;
+};
 ```
 
-
-
-无论是call还是apply，难点是 context.fn = this
+无论是 call 还是 apply，难点是 context.fn = this

@@ -1,10 +1,10 @@
 # 实战：docker-jenkins
 
-上篇，我们讲到了dockerfile 的最小实现，但也抛出了一个问题，即使 docker 解决了环境和部署问题，但CICD还是让人感到心累，本章通过 docker 生成 jenkins 容器，并将 jenkins 与 github 结合，实现 一定程度上的 CI
+上篇，我们讲到了 dockerfile 的最小实现，但也抛出了一个问题，即使 docker 解决了环境和部署问题，但 CICD 还是让人感到心累，本章通过 docker 生成 jenkins 容器，并将 jenkins 与 github 结合，实现 一定程度上的 CI
 
 ## 希望达到的效果
 
-我希望我再 git push 后，代码推送至 jenkins ，在jenkins 点击 发布，就能将我的代码推送至 服务器，我浏览页面，马上就能看到效果
+我希望我再 git push 后，代码推送至 jenkins ，在 jenkins 点击 发布，就能将我的代码推送至 服务器，我浏览页面，马上就能看到效果
 
 git push 到仓库，在 jenkins 上点击发布就能发布。
 
@@ -14,39 +14,29 @@ git push 到 仓库后，jenkins 监听到，执行脚本
 
 删除原来的容器，并生成一个新的容器 映射出端口
 
-
-
-
-
 ## jenkins 快速入门
 
-它是java语言写的cicd，
+它是 java 语言写的 cicd，
 
-他是一套用java写的cicd 系统，通过 ssh可以与服务器打交道
-
-
+他是一套用 java 写的 cicd 系统，通过 ssh 可以与服务器打交道
 
 ## 实现思路
 
 jenkins
 
-
-
 ## 实现步骤
 
 第一步：拉取 jenkins 镜像，以此为镜像生成容器
 
-第二步：安装配置 jenkins 
+第二步：安装配置 jenkins
 
 第三步：准备 node 服务
 
 第四步：jenkins 部署 node 服务
 
+## 第一步：生成 jenkins 容器
 
-
-## 第一步：生成jenkins容器
-
-先从dockerhub上拉取jenkins
+先从 dockerhub 上拉取 jenkins
 
 ```shell
 docker pull jenkins/jenkins:lts
@@ -82,27 +72,21 @@ docker logs jenkins
 
 输入域名网址查看 `jenkins` 是否安装成功
 
-看到 解锁 jenkins，输入logs 中的密码，即能解锁
+看到 解锁 jenkins，输入 logs 中的密码，即能解锁
 
+## 第二步：安装配置 jenkins
 
-
-## 第二步：安装配置jenkins
-
-按照安装推荐插件安装jenkins 的插件
+按照安装推荐插件安装 jenkins 的插件
 
 ### 配合 jenkins
 
 ![docker_jenkins安装推荐的插件](../.vuepress/public/images/Docker/jenkins/docker_jenkins安装推荐的插件.png)
-
-
 
 需要等一段时间，下载这些插件
 
 ![docker_jenkins新手](../.vuepress/public/images/Docker/jenkins/docker_jenkins新手.png)
 
 **报错就重试，咔咔就是干**
-
-
 
 ### 创建管理员账号
 
@@ -118,10 +102,6 @@ docker logs jenkins
 
 ![docker_jenkins换源](../.vuepress/public/images/Docker/jenkins/docker_jenkins换源.png)
 
-
-
-
-
 ### 下载 ssh 插件
 
 前往 系统管理 ——> 插件管理 ——> 可选插件
@@ -130,7 +110,7 @@ docker logs jenkins
 
 ![docker_jenkins下载ssh插件](../.vuepress/public/images/Docker/jenkins/docker_jenkins下载ssh插件.png)
 
-### 配置ssh
+### 配置 ssh
 
 前往 系统管理 ——> 系统配置——> 拉到最下面（Publish over SSH）
 
@@ -144,13 +124,13 @@ docker logs jenkins
 
 ### 安装 nodejs 插件
 
-node插件在跑node项目时需要使用，这里先安装好
+node 插件在跑 node 项目时需要使用，这里先安装好
 
 前往 系统管理 ——> 插件管理 ——> 可选插件
 
-搜索node，并安装
+搜索 node，并安装
 
-### 全局配置node 
+### 全局配置 node
 
 前往 系统管理 ——> 全局工具配置 ——> NodeJS
 
@@ -158,13 +138,11 @@ node插件在跑node项目时需要使用，这里先安装好
 
 应用并保存它
 
-关于jenkins 的搭建到此告一段落
-
-
+关于 jenkins 的搭建到此告一段落
 
 ## 第三步：准备 node 服务
 
-我们拿上一章讲的koa为例子讲解
+我们拿上一章讲的 koa 为例子讲解
 
 生成 `.gitignore` 文件，并写入 `node_modules`
 
@@ -177,8 +155,6 @@ git commit -m 'first_commit'
 git remote add origin https://github.com/johanazhu/dockerfile_koa_server.git
 git push -u origin master
 ```
-
-
 
 ## 第四步： jenkins 部署 node 服务
 
@@ -203,8 +179,8 @@ git push -u origin master
 代码如下：
 
 ```shell
-docker stop koa_server_container 
-docker rm koa_server_container 
+docker stop koa_server_container
+docker rm koa_server_container
 docker rmi johanbo/koa_server:v.1.0.0
 cd /home/johan/www/jenkins/workspace/dockerfile_koa_server
 docker build . -t johanbo/koa_server:v1.0.0
@@ -219,13 +195,13 @@ docker run -d --name koa_server_container -p 3011:3010  johanbo/koa_server:v1.0.
 
 第三行：删除生成此容器的镜像
 
-第四行：进入服务器中的jenkins数据卷相对于的目录
+第四行：进入服务器中的 jenkins 数据卷相对于的目录
 
 注意：`dockerfile_koa_server`为你一开始创建该项目时的名字
 
-第五行：生成一个名叫johanbo/koa_server:v1.0.0 的镜像
+第五行：生成一个名叫 johanbo/koa_server:v1.0.0 的镜像
 
-第六行：生成一个以johanbo/koa_server:v1.0.0为镜像的名字叫做 koa_server_container 的容器，并将本机的3011端口与容器的3010做映射
+第六行：生成一个以 johanbo/koa_server:v1.0.0 为镜像的名字叫做 koa_server_container 的容器，并将本机的 3011 端口与容器的 3010 做映射
 
 应用并保存
 
@@ -235,17 +211,17 @@ docker run -d --name koa_server_container -p 3011:3010  johanbo/koa_server:v1.0.
 
 发现成功，并且能看到“hello，docker“
 
-在本地更改原文件app.js
+在本地更改原文件 app.js
 
 ```javascript
-app.use(async ctx => {
-    ctx.body = 'hello, docker, jenkins'
-})
+app.use(async (ctx) => {
+    ctx.body = "hello, docker, jenkins";
+});
 ```
 
-提交代码至github
+提交代码至 github
 
-通过jenkins 再次部署 node 服务
+通过 jenkins 再次部署 node 服务
 
 ![jenkins立即构建](../.vuepress/public/images/Docker/jenkins/jenkins立即构建.png)
 
@@ -255,24 +231,17 @@ app.use(async ctx => {
 
 ## 总结
 
-在实际开发中其实踩了很多坑，虽然有很好的别人写过的教程，但自己动手做时却有各种限制，比如操作系统不同，秘钥，jenkins的SSH插件，jenkins里支持docker命令的插件集成问题等等
+在实际开发中其实踩了很多坑，虽然有很好的别人写过的教程，但自己动手做时却有各种限制，比如操作系统不同，秘钥，jenkins 的 SSH 插件，jenkins 里支持 docker 命令的插件集成问题等等
 
 网上关于两种的教程也有很多，但大多数是默认：jenkins 和应用部署在同一台服务器上，这样就能在相对应的文件中构建镜像，
 
 但如果 jenkins 和应用程序是部署在两台服务器上该如何操作呢？留给下一个挑战者
 
-
-
-
-
-
-
 ## 参考文章
 
-- [怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？](https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms)
-- [【手把手系列之】Jenkins+Docker自动化部署vue项目](https://juejin.im/post/6844903984419831815)
-- [Failed to add SSH key. Message “invalid privatekey” 问题](http://www.wallcopper.com/linux/3689.html)
-- [jenkins配置publish over ssh遇到的问题](https://zhuanlan.zhihu.com/p/39549204)
-- [Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow](https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow)
-- [Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie](https://www.youtube.com/watch?v=mszE-OCI2V4)
-
+-   [怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？](https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms)
+-   [【手把手系列之】Jenkins+Docker 自动化部署 vue 项目](https://juejin.im/post/6844903984419831815)
+-   [Failed to add SSH key. Message “invalid privatekey” 问题](http://www.wallcopper.com/linux/3689.html)
+-   [jenkins 配置 publish over ssh 遇到的问题](https://zhuanlan.zhihu.com/p/39549204)
+-   [Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow](https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow)
+-   [Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie](https://www.youtube.com/watch?v=mszE-OCI2V4)

@@ -1,6 +1,6 @@
 # HTTP 导航
 
-[HTTP 常见面试题](./HTTP常见面试题.md)
+[HTTP 常见面试题](./面试题/)
 
 [HTTP 是什么](./HTTP常见面试题.md)
 

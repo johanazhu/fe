@@ -1,21 +1,12 @@
-# HTTP协议原理+实践 Web开发工程师必学！
+# HTTP 协议原理+实践 Web 开发工程师必学！
 
-
-
-浏览器输入URL后HTTP请求返回的完整过程
+浏览器输入 URL 后 HTTP 请求返回的完整过程
 
 ![浏览器输入URL后HTTP请求返回的完整过程](https://i.loli.net/2021/06/03/2YBUohayWfjNKIc.png)
 
-
 ## 网络协议分层
 
-
-
-
-
 ![网络协议分层](https://i.loli.net/2021/06/03/oD3xifJNZFpmuch.png)
-
-
 
 物理层：定义物理设备如何传输数据
 
@@ -23,41 +14,35 @@
 
 网络层：为数据在节点之间传输创建逻辑链路
 
-
-
 #### 传输层
 
 向用户提供可靠的端到端（End-to-End）服务
 
 传输层向高层屏蔽了下层数据通信的细节
 
-
-
 #### 应用层
 
 为应用软件提供了很多服务
 
-构建于TCP协议之上
+构建于 TCP 协议之上
 
 屏蔽网络传输相关细节
 
-
-
-### HTTP协议发展历史
+### HTTP 协议发展历史
 
 #### HTTP/0.9
 
-只有一个命令GET
+只有一个命令 GET
 
-没有HEADER等描述数据的信息
+没有 HEADER 等描述数据的信息
 
-服务器发送完毕，关闭TCP连接（现在的http1.1：在一个TCP中能传递多个HTTP）
+服务器发送完毕，关闭 TCP 连接（现在的 http1.1：在一个 TCP 中能传递多个 HTTP）
 
 #### HTTP/1.0
 
 增加了很多命令
 
-增加status code 和header
+增加 status code 和 header
 
 多字符集支持、多部分发送、权限、缓存等
 
@@ -67,7 +52,7 @@
 
 pipeline
 
-增加host和其他一些命令
+增加 host 和其他一些命令
 
 #### HTTP/2.0
 
@@ -77,27 +62,21 @@ pipeline
 
 头信息压缩以及推送等提高效率的功能
 
-
-
-### HTTP三次握手
+### HTTP 三次握手
 
 ![HTTP三次握手](/images/HTTP/HTTP三次握手.png)
 
 为什么要三次握手？
 
-
-
-
-
 ### URI、URL、URN
 
-#### URI 
+#### URI
 
 Uniform Resource Identifier/统一资源标识符
 
 用来标识互联网上的信息资源，唯一
 
-包括URL和URN
+包括 URL 和 URN
 
 #### URL
 
@@ -107,7 +86,7 @@ Uniform Resource Locator/统一资源定位器
 
 http://user:pass@host.com:80/path?query=string#hash
 
-此类格式的都叫做URL,比如ftp协议（文件协议）
+此类格式的都叫做 URL,比如 ftp 协议（文件协议）
 
 #### URN
 
@@ -117,28 +96,23 @@ http://user:pass@host.com:80/path?query=string#hash
 
 目前还没有非常成熟的使用方案
 
-
-
-### HTTP报文格式
-
+### HTTP 报文格式
 
 ![HTTP报文格式](https://i.loli.net/2021/06/03/dw5P7ODa2oTcYAm.png)
 
-#### HTTP的方法
+#### HTTP 的方法
 
 用来定义对于资源的操作
 
-常用的有GET、POST、PUT、DELETE等
+常用的有 GET、POST、PUT、DELETE 等
 
 从定义上讲有各自的语义
 
-
-
-#### HTTP的CODE
+#### HTTP 的 CODE
 
 定义服务器对请求的处理结果
 
-各个区间的CODE有各自的语义
+各个区间的 CODE 有各自的语义
 
 100：
 
@@ -150,37 +124,29 @@ http://user:pass@host.com:80/path?query=string#hash
 
 500：
 
-好的HTTP服务可以通过CODE判断结果
+好的 HTTP 服务可以通过 CODE 判断结果
 
+### 第三章：HTTP 的各种特性总览
 
-
-### 第三章：HTTP的各种特性总览
-
-使用curl来模式客户端请求
+使用 curl 来模式客户端请求
 
 ```javascript
 curl -v www.baidu.com
 ```
 
-
-
-CORS跨域请求的限制与解决
-
-
+CORS 跨域请求的限制与解决
 
 浏览器的同域限制
 
 JSONP
 
-‘Access-Control-Allow-Origin’： ‘*’
+‘Access-Control-Allow-Origin’： ‘\*’
 
-
-
-#### CORS预请求
+#### CORS 预请求
 
 允许方法：GET、HEAD、POST
 
-允许Content-Type：text/plain、multipart/form-data、application/x-www-form-urlencoded
+允许 Content-Type：text/plain、multipart/form-data、application/x-www-form-urlencoded
 
 其他限制：
 
@@ -200,50 +166,43 @@ XMLHttpRequestUpload 对象均没有任何事件监听器
 
 ’Access-Control-Max-Age‘: 跨域的最长时间
 
-
-
 #### 缓存 Cache-Control
 
 ##### 特性（值）:
 
-##### 	可缓存性
+##### 可缓存性
 
-​		public
+​ public
 
-​		private
+​ private
 
-​		no-cache
+​ no-cache
 
-​	**到期**
+​ **到期**
 
-​		max-age=`<seconds>`
+​ max-age=`<seconds>`
 
-​		s-maxage=`<seconds>` 代理服务器
+​ s-maxage=`<seconds>` 代理服务器
 
-​		max-stale=`<seconds>` 
+​ max-stale=`<seconds>`
 
-​	**重新验证**
+​ **重新验证**
 
-​		must-revalidate
+​ must-revalidate
 
-​		proxy-revalidate
+​ proxy-revalidate
 
-​	**其他**
+​ **其他**
 
-​		no-store 不能用缓存
+​ no-store 不能用缓存
 
-​		no-transform	不允许改动内容
-
-
+​ no-transform 不允许改动内容
 
 ’Cache-Control‘： ’max-age=200‘ 就能缓存住，
 
-前端构建工具（例如webpack）在打包时会构建出hash值。如果hash值没变，就用缓存，hash值改变（即我们写的新业务）需要用户来读取
+前端构建工具（例如 webpack）在打包时会构建出 hash 值。如果 hash 值没变，就用缓存，hash 值改变（即我们写的新业务）需要用户来读取
 
-
-
-#### 缓存验证Last-Modified和Etag的使用
-
+#### 缓存验证 Last-Modified 和 Etag 的使用
 
 ![缓存验证Last-Modified和Etag的使用](https://i.loli.net/2021/06/03/W7tXPNZ5kuYoL6A.png)
 
@@ -253,7 +212,7 @@ XMLHttpRequestUpload 对象均没有任何事件监听器
 
 上次修改时间
 
-配合If-Modified-Since或者If-Unmodified-Since使用
+配合 If-Modified-Since 或者 If-Unmodified-Since 使用
 
 对比上次修改时间以验证资源是否需要更新
 
@@ -261,55 +220,43 @@ XMLHttpRequestUpload 对象均没有任何事件监听器
 
 数据签名
 
-配合If-Match或者If-Non-Match使用
+配合 If-Match 或者 If-Non-Match 使用
 
-对比资源的签名判断是否使用缓存（webpack里的hash就是用这个原理）
+对比资源的签名判断是否使用缓存（webpack 里的 hash 就是用这个原理）
 
-
-
-#### Cookie和Session
+#### Cookie 和 Session
 
 ##### cookie
 
-通过Set-Cookie设置
+通过 Set-Cookie 设置
 
 下次请求会自动带上
 
 键值对，可以设置多个
 
-##### cookie的属性
+##### cookie 的属性
 
-max-age和expires设置过期时间
+max-age 和 expires 设置过期时间
 
-Secure只有https的时候发送
+Secure 只有 https 的时候发送
 
-HttpOnly无法通过document.cookie访问
-
-
+HttpOnly 无法通过 document.cookie 访问
 
 ```javascript
 'Set-Cookie': ['id=123;max-age=10', 'abc=456, domain=test.com']
 ```
 
+Domain：让同域名下的两个子网站之间的 cookie 通讯
 
+### HTTP 长连接
 
-Domain：让同域名下的两个子网站之间的cookie通讯
+一个 tcp 连接中能发送多个 http 请求
 
+HTTP 的长连接是建立在 tcp 的基础上，chrome 浏览器最多支持 6 个 http 请求（公用一个 tcp 连接）
 
-
-### HTTP长连接
-
-一个tcp连接中能发送多个http请求
-
-HTTP的长连接是建立在tcp的基础上，chrome浏览器最多支持6个http请求（公用一个tcp连接）
-
-在http header里写 
+在 http header 里写
 
 Connection：keep-Alive
-
-
-
-
 
 ### 数据协商
 
@@ -318,8 +265,6 @@ Connection：keep-Alive
 请求（request）
 
 返回（response）
-
-
 
 request 中的 Accept
 
@@ -331,8 +276,6 @@ Accept-Language：语言
 
 User-Agent：浏览器信息
 
-
-
 response 中的 Content
 
 Content-Type: 数据格式
@@ -341,22 +284,20 @@ Content-Encoding: 编码方式 `gzip`
 
 Content-Language：语言
 
-
-
 #### Redirect
 
 ```javascript
-if(request.url === '/') {
+if (request.url === "/") {
     response.writeHead(302, {
-        'Location': '/new'
-    })
-    response.end('')
+        Location: "/new",
+    });
+    response.end("");
 }
-if(request.url === '/new') {
+if (request.url === "/new") {
     response.writeHead(200, {
-        'Content-Type': 'text/html'
-    })
-    response.end('<div>hello,world</div>')
+        "Content-Type": "text/html",
+    });
+    response.end("<div>hello,world</div>");
 }
 ```
 
@@ -366,19 +307,13 @@ HTTP 状态码：
 
 301 永久跳转 （谨慎，你使用了之后就不好控制了）
 
-
-
-
-
-
-
 ### Nginx
 
 ```nginx
 server {
 	listen 	80;
 	server_name test.com
-	
+
 	location / {
 		proxy_pass http://127.0.0.1:888;
 		proxy_set_header Host $host;	// 修改头
@@ -388,29 +323,21 @@ server {
 
 代理缓存
 
-服务器中的Cache-Control:s-maxage 给代理缓存用
+服务器中的 Cache-Control:s-maxage 给代理缓存用
 
 no-store 永不缓存
 
-HTTP 头 Vary	http头信息一样才缓存
+HTTP 头 Vary http 头信息一样才缓存
 
-
-
-
-
-### HTTPS解析
+### HTTPS 解析
 
 #### 加密
 
 私钥和公钥
 
-
-
-在nginx中配置https
-
+在 nginx 中配置 https
 
 ![在nginx中配置https](https://i.loli.net/2021/06/03/oai5XeD2pWjNUsJ.png)
-
 
 ### HTTP2
 
@@ -429,8 +356,6 @@ server {
     http2_push_preload on;
 }
 ```
-
-
 
 http/1.1 和 http2 对比网站
 

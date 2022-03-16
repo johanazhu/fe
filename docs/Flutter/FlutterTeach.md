@@ -1,10 +1,10 @@
-# Flutter 
+# Flutter
 
 ## Flutter
 
-#### 什么是Flutter？
+#### 什么是 Flutter？
 
-谷歌出品的一款开源的跨平台移动UI框架
+谷歌出品的一款开源的跨平台移动 UI 框架
 
 #### 有哪些人在用
 
@@ -12,25 +12,15 @@ http://flutter.dev/showcase
 
 #### 对比
 
-- Cordova
-- RN（React Native）
-- Flutter -Dart 120fps 性能高
-
-
-
-
-
-
+-   Cordova
+-   RN（React Native）
+-   Flutter -Dart 120fps 性能高
 
 安装开发环境
 
 https://flutter.cn/docs/get-started/install/windows
 
-
-
-
-
-### Flutter学习
+### Flutter 学习
 
 #### Text Widget
 
@@ -137,15 +127,11 @@ ListView(
 )
 ```
 
-
-
-技术胖的flutter教程
+技术胖的 flutter 教程
 
 https://github.com/shenghy/flutter_shop
 
 https://jspang.com/detailed?id=53
-
-
 
 Flutter Dio 亲妈级别封装教程
 

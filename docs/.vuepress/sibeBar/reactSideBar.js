@@ -33,10 +33,24 @@ function reactSideBar() {
             ],
         },
         {
+            text: "手写",
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+                "/React/手写/",
+                "/React/手写/手写React.md",
+                // 'React/手写/手写Redux.md',
+                // 'React/手写/源码分析React.md',
+                // 'React/手写/源码分析ReactRedux.md',
+                "/React/手写/Preact.md",
+            ],
+        },
+        {
             text: "生态",
             collapsable: false,
             sidebarDepth: 0,
             children: [
+                "/React/生态/",
                 "/React/生态/Immutable.md",
                 "/React/生态/从Redux说起，到手写，再到状态管理.md",
                 "/React/生态/ReactRedux.md",
@@ -50,22 +64,11 @@ function reactSideBar() {
             ],
         },
         {
-            text: "手写",
-            collapsable: false,
-            sidebarDepth: 0,
-            children: [
-                "/React/手写/手写React.md",
-                // 'React/手写/手写Redux.md',
-                // 'React/手写/源码分析React.md',
-                // 'React/手写/源码分析ReactRedux.md',
-                "/React/手写/Preact.md",
-            ],
-        },
-        {
             text: "实战",
             collapsable: false,
             sidebarDepth: 0,
             children: [
+                "/React/实战/",
                 "/React/实战/React代码整洁之道.md",
                 "/React/实战/搭建我的React+TS最佳实践.md",
                 "/React/实战/自动化测试.md",

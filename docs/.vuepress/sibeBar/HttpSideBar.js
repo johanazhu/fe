@@ -1,12 +1,17 @@
 function HTTPSideBar() {
     return [
         {
+            text: "常见面试题",
+            collapsable: false,
+            sidebarDepth: 0,
+            children: ["/HTTP/面试题/"],
+        },
+        {
             text: "HTTP",
             collapsable: false,
             sidebarDepth: 0,
             children: [
                 "/HTTP/",
-                "/HTTP/常见面试题.md",
                 "/HTTP/HTTP是什么.md",
                 "/HTTP/HTTP的由来.md",
                 "/HTTP/TCP.md",

@@ -1,13 +1,5 @@
-# 干掉session，爽死了
-
-
-
-
-
-
-
-
+# 干掉 session，爽死了
 
 ## 参考资料
 
-- [干掉session，爽死了！](https://mp.weixin.qq.com/s/vGhfOhBqHPcEdKq037FAog)
+-   [干掉 session，爽死了！](https://mp.weixin.qq.com/s/vGhfOhBqHPcEdKq037FAog)

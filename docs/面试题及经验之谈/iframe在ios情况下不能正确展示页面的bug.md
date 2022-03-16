@@ -1,10 +1,8 @@
-ios srcoll height 
+ios srcoll height
 
+首先，iframe 嵌套的元素被子元素的宽度撑开，
 
-
-首先，iframe嵌套的元素被子元素的宽度撑开，
-
-在react componentDidMount中 找到iframe 把宽设置为client宽度
+在 react componentDidMount 中 找到 iframe 把宽设置为 client 宽度
 
 ```javascript
 componentDidMount() {
@@ -12,30 +10,28 @@ componentDidMount() {
 }
 ```
 
-
-
 下滑情况下，页面自动刷新到顶部
 
-是因为iframe 的高度问题，下滑超过iframe的2倍高度，页面就会受不了自动刷新
+是因为 iframe 的高度问题，下滑超过 iframe 的 2 倍高度，页面就会受不了自动刷新
 
 怎么办
 
 ```css
-height：10000px 
+height：10000px
 ```
 
 测试真的可以
 
 ```html
 <div className="scroll-wrapper">
-    <iframe 
+    <iframe
             className="iframe"
             frameBorder="0"
             scolling={isIos() ? 'no' : 'yes'}
             src="https://item.m.jd.com/product/206735.html">
 
-    </iframe>    
-</div>	
+    </iframe>
+</div>
 
 ```
 
@@ -51,4 +47,3 @@ height：10000px
     }
 }
 ```
-

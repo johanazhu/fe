@@ -1,4 +1,3 @@
-
 const jsSideBar = require("./sibeBar/jsSideBar");
 const reactSideBar = require("./sibeBar/reactSideBar");
 const bigFrondSideBar = require("./sibeBar/bigFrondSideBar");
@@ -13,8 +12,9 @@ const BrowserSideBar = require("./sibeBar/BrowserSideBar");
 const PerformanceSideBar = require("./sibeBar/PerformanceSideBar");
 const designPatternSideBar = require("./sibeBar/designPatternSideBar");
 const csBasicSideBar = require("./sibeBar/csBasicSideBar");
-const aboutSideBar = require("./sibeBar/aboutSideBar");
+const AboutSideBar = require("./sibeBar/AboutSideBar");
 const FrontEndSideBar = require("./sibeBar/FrontEndSideBar");
+const EngineeredSideBar = require("./sibeBar/EngineeredSideBar");
 
 module.exports = {
     title: "五年前端三年面试",
@@ -77,27 +77,27 @@ module.exports = {
         sidebarDepth: 0,
         // 导航
         navbar: [
-            { text: "导读", link: "/Introduction/" },
-            { text: "前端基础", link: "/JavaScript/" },
+            { text: "Introduction", link: "/Introduction/" },
+            { text: "JavaScript", link: "/JavaScript/" },
             { text: "React", link: "/React/" },
-            { text: "后端", link: "/Node/" },
-            {
-                text: "了解更多",
-                children: [
-                    //   { text: "数据结构与算法", link: "/DataStructure&Algorithm/" },
-                    // {
-                    //   text: '数据结构与算法',
-                    //   link: 'https://github.com/johanazhu/leetcode',
-                    // },
-                    { text: "HTTP", link: "/HTTP/" },
-                    { text: "Docker", link: "/Docker/" },
-                    { text: "Git", link: "/Git/" },
-                    { text: "Linux", link: "/Linux/" },
-                    { text: "设计模式", link: "/DesignPattern/" },
-                    { text: "计算机基础", link: "/CSBasic/" },
-                    { text: "关于", link: "/About/about.md" },
-                ],
-            },
+            // { text: "Node", link: "/Node/" },
+            // {
+            //     text: "More",
+            //     children: [
+            //         //   { text: "数据结构与算法", link: "/DataStructure&Algorithm/" },
+            //         // {
+            //         //   text: '数据结构与算法',
+            //         //   link: 'https://github.com/johanazhu/leetcode',
+            //         // },
+            //         { text: "HTTP", link: "/HTTP/" },
+            //         { text: "Docker", link: "/Docker/" },
+            //         { text: "Git", link: "/Git/" },
+            //         { text: "Linux", link: "/Linux/" },
+            //         { text: "DesignPattern", link: "/DesignPattern/" },
+            //         { text: "CSBasic", link: "/CSBasic/" },
+            //         { text: "About", link: "/About/about.md" },
+            //     ],
+            // },
             {
                 text: "Github",
                 link: "https://github.com/johanazhu",
@@ -120,9 +120,10 @@ module.exports = {
             "/webpack": webpackSideBar(),
             "/WebApp": bigFrondSideBar(),
             "/Flutter": bigFrondSideBar(),
-            "/RN": bigFrondSideBar(),
+            "/ReactNative": bigFrondSideBar(),
             "/WeChat": bigFrondSideBar(),
             "/MiniApp": bigFrondSideBar(),
+            "/MicroFrontend": bigFrondSideBar(),
             "/HTML": frontEndBasicSideBar(),
             "/CSS": frontEndBasicSideBar(),
             "/Jquery": frontEndBasicSideBar(),
@@ -130,10 +131,14 @@ module.exports = {
             "/Docker": DockerSideBar(),
             "/Git": ArmorySideBar(),
             "/Linux": ArmorySideBar(),
+            "/DevOps": ArmorySideBar(),
+            "/Engineered": EngineeredSideBar(),
+            "/MicroFrontend": EngineeredSideBar(),
+            "/StandardGuide": EngineeredSideBar(),
             "/DesignPattern": designPatternSideBar(),
             "/CSBasic": csBasicSideBar(),
-            "/About": aboutSideBar(),
-            "/Others": aboutSideBar(),
+            "/About": AboutSideBar(),
+            "/Others": AboutSideBar(),
             "/Introduction": FrontEndSideBar(),
         },
     },

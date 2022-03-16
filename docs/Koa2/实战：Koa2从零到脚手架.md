@@ -1,6 +1,4 @@
-# 实战：Koa2从零到脚手架
-
-
+# 实战：Koa2 从零到脚手架
 
 ## 什么是 Koa2
 
@@ -10,25 +8,21 @@
 
 [中文文档](https://koa.bootcss.com/) (野生)
 
-
-
 ## 最简单的 Koa 服务器
 
 ```javascript
-const Koa = require('koa')
+const Koa = require("koa");
 
-const app = new Koa()
+const app = new Koa();
 
 app.use((ctx) => {
-  ctx.body = 'Hello World'
-})
+    ctx.body = "Hello World";
+});
 
 app.listen(3000, () => {
-  console.log('3000端口已启动')
-})
+    console.log("3000端口已启动");
+});
 ```
-
-
 
 ## 洋葱模型
 
@@ -46,14 +40,14 @@ app.listen(3000, () => {
 
 可以看出，Koa 中间件不像 Express 中间件那样在请求通过了之后就完成自己的使命；相反，中间件的执行清晰地分为两个阶段。我们看看 Koa 中间件具体是什么样的
 
-## Koa中间件的定义
+## Koa 中间件的定义
 
-Koa的中间件是这样一个函数：
+Koa 的中间件是这样一个函数：
 
 ```javascript
 async function middleware(ctx, next) {
     // 先做什么
-    await next()
+    await next();
     // 后做什么
 }
 ```
@@ -61,20 +55,18 @@ async function middleware(ctx, next) {
 第一个参数是 Koa Context，也就是上图中贯穿中间件和请求处理函数的绿色箭头所传递的内容，里面封装了请求体和响应体（实际上还有其他属性），分别可以通过 `ctx.request` 和 `ctx.response` 来获取，一下是一些常用的属性：
 
 ```javascript
-ctx.url // 相当于 ctx.request.url
-ctx.body // 相当于 ctx.response.boby
-ctx.status // 相当于 ctx.response.status
+ctx.url; // 相当于 ctx.request.url
+ctx.body; // 相当于 ctx.response.boby
+ctx.status; // 相当于 ctx.response.status
 ```
 
 > 更多 Context 属性请参考 [Context API 文档](https://github.com/koajs/koa/blob/master/docs/api/context.md)
 
-中间件的第二个参数便是 `next` 函数：用来把控制权转交给下一个中间件。但它与 Express 的 `next` 函数本质的区别在于， **Koa 的 `next` 函数返回的是一个 Promise** ，在这个 Promise 进入完成状态（Fulfilled）后，就会去执行中间件中第二个阶段的代码。具体可以看这一篇—— [手写koa2](./手写koa2.md)
+中间件的第二个参数便是 `next` 函数：用来把控制权转交给下一个中间件。但它与 Express 的 `next` 函数本质的区别在于， **Koa 的 `next` 函数返回的是一个 Promise** ，在这个 Promise 进入完成状态（Fulfilled）后，就会去执行中间件中第二个阶段的代码。具体可以看这一篇—— [手写 koa2](./手写koa2.md)
 
 ## 有哪些常见的中间件
 
-
-
-### 路由中间件——koa-router或@koa/router
+### 路由中间件——koa-router 或@koa/router
 
 #### 下载 npm 包
 
@@ -82,9 +74,9 @@ ctx.status // 相当于 ctx.response.status
 npm install koa-router --save
 ```
 
-> 有些教程使用 `@koa/router`，现如今这两个库由同一个人维护，代码也一致。即 koa-router === @koa/router（写自2021年8月23日）
+> 有些教程使用 `@koa/router`，现如今这两个库由同一个人维护，代码也一致。即 koa-router === @koa/router（写自 2021 年 8 月 23 日）
 
-NPM包地址：[koa-router](https://www.npmjs.com/package/koa-router) 、[@koa/router](https://www.npmjs.com/package/@koa/router)
+NPM 包地址：[koa-router](https://www.npmjs.com/package/koa-router) 、[@koa/router](https://www.npmjs.com/package/@koa/router)
 
 #### 如何使用
 
@@ -92,37 +84,35 @@ NPM包地址：[koa-router](https://www.npmjs.com/package/koa-router) 、[@koa/r
 
 ```javascript
 class HomeController {
-  static home(ctx) {
-    ctx.body = 'hello world'
-  }
-  static async login(ctx) {
-    ctx.body = 'Login Controller'
-  }
-  static async register(ctx) {
-    ctx.body = 'Register Controller'
-  }
+    static home(ctx) {
+        ctx.body = "hello world";
+    }
+    static async login(ctx) {
+        ctx.body = "Login Controller";
+    }
+    static async register(ctx) {
+        ctx.body = "Register Controller";
+    }
 }
 
 module.exports = HomeController;
 ```
-
-
 
 #### 实现路由
 
 再创建 routes 文件夹，用于把控制器挂载到对应的路由上面，创建 home.js
 
 ```javascript
-const Router = require('koa-router')
-const { home, login, register } = require('../controllers/home')
+const Router = require("koa-router");
+const { home, login, register } = require("../controllers/home");
 
-const router = new Router()
+const router = new Router();
 
-router.get('/', home)
-router.post('/login', login)
-router.post('/register', register)
+router.get("/", home);
+router.post("/login", login);
+router.post("/register", register);
 
-module.exports = router
+module.exports = router;
 ```
 
 #### 注册路由
@@ -130,16 +120,16 @@ module.exports = router
 在 routes 中创建 index.js，以后所有的路由都放入 routes，我们创建 index.js 的目的是为了让结构更加整齐，index.js 负责所有路由的注册，它的兄弟文件负责各自的路由
 
 ```javascript
-const fs = require('fs')
+const fs = require("fs");
 module.exports = (app) => {
-  fs.readdirSync(__dirname).forEach((file) => {
-    if (file === 'index.js') {
-      return
-    }
-    const route = require(`./${file}`)
-    app.use(route.routes()).use(route.allowedMethods())
-  })
-}
+    fs.readdirSync(__dirname).forEach((file) => {
+        if (file === "index.js") {
+            return;
+        }
+        const route = require(`./${file}`);
+        app.use(route.routes()).use(route.allowedMethods());
+    });
+};
 ```
 
 > 注：allowedMethods 的作用
@@ -148,8 +138,6 @@ module.exports = (app) => {
 > 2. 相应地返回 405 （不允许）和 501 （没实现）
 >
 > 注：可以看到 `@koa/router` 的使用方式基本上与 Express Router 保持一致
-
-
 
 #### 引入路由
 
@@ -170,24 +158,20 @@ routing(app)
 app.listen(3000);
 ```
 
-
-
 使用 postman 测试一下
 
 ![测试路由](https://i.loli.net/2021/08/24/PFnyfjLORIZ1imC.png)
 
-
-
 ### 其他中间件
 
-- koa-bodyparser ——请求体解析
-- koa-static —— 提供静态资源服务
-- @koa/cors —— 跨域
-- koa-json-error —— 处理错误
-- koa-parameter —— 参数校验
+-   koa-bodyparser ——请求体解析
+-   koa-static —— 提供静态资源服务
+-   @koa/cors —— 跨域
+-   koa-json-error —— 处理错误
+-   koa-parameter —— 参数校验
 
 ```shell
-cnpm i koa-bodyparser -S 
+cnpm i koa-bodyparser -S
 cnpm i koa-static -S
 cnpm i @koa/cors -S
 cnpm i koa-json-error -S
@@ -195,36 +179,33 @@ cnpm i koa-parameter -S
 ```
 
 ```javascript
-const path = require('path')
-const Koa = require('koa')
-const bobyParser = require('koa-bodyparser')
-const koaStatic = require('koa-static')
-const cors = require('@koa/cors')
-const error = require('koa-json-error')
-const parameter = require('koa-parameter')
-const routing = require('./routes')
+const path = require("path");
+const Koa = require("koa");
+const bobyParser = require("koa-bodyparser");
+const koaStatic = require("koa-static");
+const cors = require("@koa/cors");
+const error = require("koa-json-error");
+const parameter = require("koa-parameter");
+const routing = require("./routes");
 
-const app = new Koa()
+const app = new Koa();
 
 app.use(
-  error({
-    postFormat: (e, { stack, ...rest }) =>
-      process.env.NODE_ENV === 'production' ? rest : { stack, ...rest },
-  }),
-)
-app.use(bobyParser())
-app.use(koaStatic(path.join(__dirname, 'public')))
-app.use(cors())
-app.use(parameter(app))
-routing(app)
+    error({
+        postFormat: (e, { stack, ...rest }) =>
+            process.env.NODE_ENV === "production" ? rest : { stack, ...rest },
+    })
+);
+app.use(bobyParser());
+app.use(koaStatic(path.join(__dirname, "public")));
+app.use(cors());
+app.use(parameter(app));
+routing(app);
 
 app.listen(3000, () => {
-  console.log('3000端口已启动')
-})
-
+    console.log("3000端口已启动");
+});
 ```
-
-
 
 ## 实现 JWT 鉴权
 
@@ -239,14 +220,12 @@ cnpm install koa-jwt jsonwebtoken -S
 创建 `config/index.js` ，用来存放 JWT Secret 常量，代码如下：
 
 ```javascript
-const JWT_SECRET = 'secret'
+const JWT_SECRET = "secret";
 
 module.exports = {
-  JWT_SECRET,
-}
+    JWT_SECRET,
+};
 ```
-
-
 
 有些路由我们希望只有已登录的用户才有权查看（受保护路由），而另一些路由则是所有请求都可以访问（不受保护的路由）。在 Koa 的洋葱模型中，我们可以这样实现：
 
@@ -254,33 +233,33 @@ module.exports = {
 
 可以看出，所有的请求都可以直接访问未受保护的路由，但是受保护的路由都放在 JWT 中间件的后面，我们需要再创建几个文件来做 JWT 的实验
 
-我们知道，所谓的用户（users）是个最常见的需要鉴权的路由，所以我们现在 controllers 中创建 user.js ，写下如下代码： 
+我们知道，所谓的用户（users）是个最常见的需要鉴权的路由，所以我们现在 controllers 中创建 user.js ，写下如下代码：
 
 ```javascript
 class UserController {
-  static async create(ctx) {
-    ctx.status = 200
-    ctx.body = 'create'
-  }
-  static async find(ctx) {
-    ctx.status = 200
-    ctx.body = 'find'
-  }
-  static async findById(ctx) {
-    ctx.status = 200
-    ctx.body = 'findById'
-  }
-  static async update(ctx) {
-    ctx.status = 200
-    ctx.body = 'update'
-  }
-  static async delete(ctx) {
-    ctx.status = 200
-    ctx.body = 'delete'
-  }
+    static async create(ctx) {
+        ctx.status = 200;
+        ctx.body = "create";
+    }
+    static async find(ctx) {
+        ctx.status = 200;
+        ctx.body = "find";
+    }
+    static async findById(ctx) {
+        ctx.status = 200;
+        ctx.body = "findById";
+    }
+    static async update(ctx) {
+        ctx.status = 200;
+        ctx.body = "update";
+    }
+    static async delete(ctx) {
+        ctx.status = 200;
+        ctx.body = "delete";
+    }
 }
 
-module.exports = UserController
+module.exports = UserController;
 ```
 
 ### 注册 JWT 中间件
@@ -288,28 +267,28 @@ module.exports = UserController
 用户的增删改查都安排上了，语义很明显了，其次我们在 routes 文件中创建 user.js，这里展示与 users 路由相关的代码：
 
 ```javascript
-const Router = require('koa-router')
-const jwt = require('koa-jwt')
+const Router = require("koa-router");
+const jwt = require("koa-jwt");
 const {
-  create,
-  find,
-  findById,
-  update,
-  delete: del,
-} = require('../controllers/user')
+    create,
+    find,
+    findById,
+    update,
+    delete: del,
+} = require("../controllers/user");
 
-const router = new Router({ prefix: '/users' })
-const { JWT_SECRET } = require('../config/')
+const router = new Router({ prefix: "/users" });
+const { JWT_SECRET } = require("../config/");
 
-const auth = jwt({ JWT_SECRET })
+const auth = jwt({ JWT_SECRET });
 
-router.post('/', create)
-router.get('/', find)
-router.get('/:id', findById)
-router.put('/:id', auth, update)
-router.delete('/:id', auth, del)
+router.post("/", create);
+router.get("/", find);
+router.get("/:id", findById);
+router.put("/:id", auth, update);
+router.delete("/:id", auth, del);
 
-module.exports = router
+module.exports = router;
 ```
 
 综上代码，routes 文件下的 home.js 都不需要 JWT 中间件的保护，user.js 中的 更新和删除需要 JWT 的保护
@@ -337,37 +316,37 @@ cnpm i mongoose -S
 在 `config/index.js` 中添加 connectionStr 变量，代表 mongoose 连接的数据库地址
 
 ```javascript
-const JWT_SECRET = 'secret'
-const connectionStr = 'mongodb://127.0.0.1:27017/basic'
+const JWT_SECRET = "secret";
+const connectionStr = "mongodb://127.0.0.1:27017/basic";
 
 module.exports = {
-  JWT_SECRET,
-  connectionStr,
-}
+    JWT_SECRET,
+    connectionStr,
+};
 ```
 
 创建 `db/index.js`
 
 ```javascript
-const mongoose = require('mongoose')
-const { connectionStr } = require('../config/')
+const mongoose = require("mongoose");
+const { connectionStr } = require("../config/");
 
 module.exports = {
-  connect: () => {
-    mongoose.connect(connectionStr, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    connect: () => {
+        mongoose.connect(connectionStr, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
-    mongoose.connection.on('error', (err) => {
-      console.log(err)
-    })
+        mongoose.connection.on("error", (err) => {
+            console.log(err);
+        });
 
-    mongoose.connection.on('open', () => {
-      console.log('Mongoose连接成功')
-    })
-  },
-}
+        mongoose.connection.on("open", () => {
+            console.log("Mongoose连接成功");
+        });
+    },
+};
 ```
 
 进入主文件 `index.js`，修改配置并启动
@@ -384,21 +363,19 @@ db.connect()
 
 ![nodemon](https://i.loli.net/2021/08/23/LQcboKAC8sZXMFh.png)
 
-
-
 ### 创建数据模型定义
 
 在根目录下创建 `models` 目录，用来存放数据模型定义文件，在其中创建 `User.js`，代表用户模型，代码如下：
 
 ```javascript
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  username: { type: String },
-  password: { type: String },
-})
+    username: { type: String },
+    password: { type: String },
+});
 
-module.exports = mongoose.model('User', schema)
+module.exports = mongoose.model("User", schema);
 ```
 
 具体可以看看 [Mongoose](../Node/Mongoose.md) 这篇文章，这里我们就看行为，以上代码表示建立了一个数据对象，供操作器来操作数据库
@@ -408,46 +385,49 @@ module.exports = mongoose.model('User', schema)
 然后就可以在 Controller 中进行数据的增删改查操作。首先我们打开 `constrollers/user.js`
 
 ```javascript
-const User = require('../models/User')
+const User = require("../models/User");
 
 class UserController {
-  static async create(ctx) {
-    const { username, password } = ctx.request.body
-    const model = await User.create({ username, password })
-    ctx.status = 200
-    ctx.body = model
-  }
-  static async find(ctx) {
-    const model = await User.find()
-    ctx.status = 200
-    ctx.body = model
-  }
-  static async findById(ctx) {
-    const model = await User.findById(ctx.params.id)
-    ctx.status = 200
-    ctx.body = model
-  }
-  static async update(ctx) {
-    const model = await User.findByIdAndUpdate(ctx.params.id, ctx.request.body)
-    ctx.status = 200
-    ctx.body = model
-  }
-  static async delete(ctx) {
-    await User.findByIdAndDelete(ctx.params.id)
-    ctx.status = 204
-  }
+    static async create(ctx) {
+        const { username, password } = ctx.request.body;
+        const model = await User.create({ username, password });
+        ctx.status = 200;
+        ctx.body = model;
+    }
+    static async find(ctx) {
+        const model = await User.find();
+        ctx.status = 200;
+        ctx.body = model;
+    }
+    static async findById(ctx) {
+        const model = await User.findById(ctx.params.id);
+        ctx.status = 200;
+        ctx.body = model;
+    }
+    static async update(ctx) {
+        const model = await User.findByIdAndUpdate(
+            ctx.params.id,
+            ctx.request.body
+        );
+        ctx.status = 200;
+        ctx.body = model;
+    }
+    static async delete(ctx) {
+        await User.findByIdAndDelete(ctx.params.id);
+        ctx.status = 204;
+    }
 }
 
-module.exports = UserController
+module.exports = UserController;
 ```
 
 以上代码中，
 
-- User.create({xxx})：在 User 表中创建一个数据
-- User.find()：查看所有的 User 表中的数据
-- User.findById(id)：查看 User 表中的其中一个
-- User.findByIdAndUpdate(id, body)：更新 User 表中的其中一个数据
-- User.findByIdAndDelete(id)：删除 User 表中的其中一个数据
+-   User.create({xxx})：在 User 表中创建一个数据
+-   User.find()：查看所有的 User 表中的数据
+-   User.findById(id)：查看 User 表中的其中一个
+-   User.findByIdAndUpdate(id, body)：更新 User 表中的其中一个数据
+-   User.findByIdAndDelete(id)：删除 User 表中的其中一个数据
 
 以上就是对数据库的**增删改查**
 
@@ -459,7 +439,7 @@ module.exports = UserController
 
 ![数据库中的用户表](https://i.loli.net/2021/08/24/iJZhb8D297e4Tjl.png)
 
-### 下载 npm 包——bcrypt 
+### 下载 npm 包——bcrypt
 
 ```shell
 cnpm i bcrypt --save
@@ -482,7 +462,7 @@ const schema = new mongoose.Schema({
 ...
 ```
 
-添加 select：false 不可见，set(val) 对值进行加密，我们来测试一下 
+添加 select：false 不可见，set(val) 对值进行加密，我们来测试一下
 
 ![创建李四](https://i.loli.net/2021/08/24/JoHQ5XICL2Bh1St.png)
 
@@ -504,10 +484,10 @@ class HomeController {
 }
 ```
 
-- User.findOne({ username }) 能查到到没有 password 的数据，因为我们人为的把 select 设为 false，如果要看，加上 select('+password') 即可
-- require('bcrypt').compareSync(password, user.password) 将用户输入的明文密码和数据库中的加密密码进行验证，为 true 是正确，false 为密码不正确
+-   User.findOne({ username }) 能查到到没有 password 的数据，因为我们人为的把 select 设为 false，如果要看，加上 select('+password') 即可
+-   require('bcrypt').compareSync(password, user.password) 将用户输入的明文密码和数据库中的加密密码进行验证，为 true 是正确，false 为密码不正确
 
-回到 JWT 
+回到 JWT
 
 ## 在 Login 中签发 JWT Token
 
@@ -585,15 +565,13 @@ class UserController {
 module.exports = UserController
 ```
 
-
-
 添加了一些用户并登录，将 Token 添加到请求头中，使用 DELETE 删除用户，能看到 状态码变成 204，删除成功
 
 ![删除用户操作](https://i.loli.net/2021/08/24/TgPnXmwVZF8vYNQ.png)
 
 ## 断言处理
 
-在做登录时、更新用户信息、删除用户时，我们需要if else 来判断，这看起来很蠢，如果我们能用断言来处理，代码在看上去会优雅很多，这个时候 `http-assert` 就出来了
+在做登录时、更新用户信息、删除用户时，我们需要 if else 来判断，这看起来很蠢，如果我们能用断言来处理，代码在看上去会优雅很多，这个时候 `http-assert` 就出来了
 
 ```javascript
 // constrollers/home.js
@@ -664,12 +642,8 @@ class UserController {
 }
 ```
 
-
-
-Github地址：[koa-basic](https://github.com/johanazhu/koa-basic)
-
-
+Github 地址：[koa-basic](https://github.com/johanazhu/koa-basic)
 
 ## 参考资料
 
-- [一杯茶的时间，上手 Koa2 + MySQL 开发](https://tuture.co/2020/05/22/fac8401/)
+-   [一杯茶的时间，上手 Koa2 + MySQL 开发](https://tuture.co/2020/05/22/fac8401/)

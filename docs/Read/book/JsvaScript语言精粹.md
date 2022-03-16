@@ -1,4 +1,4 @@
-# JavaScript语言精粹
+# JavaScript 语言精粹
 
 ## 前言
 
@@ -44,21 +44,21 @@ return 语句会导致从函数中提前返回。它也可以指定要返回的�
 
 #### 表达式
 
-最简单的表达式是字面量值（比如字符串或者数字）、变量、内置的值（true、false、null、undefined、NaN和Infinity）、以 new 开头的调用表达式、以 delete 开头的属性提取表达式、包括圆括号中的表达式、以一个前置运算符作为前导的表达式，或者表达式后面跟着：
+最简单的表达式是字面量值（比如字符串或者数字）、变量、内置的值（true、false、null、undefined、NaN 和 Infinity）、以 new 开头的调用表达式、以 delete 开头的属性提取表达式、包括圆括号中的表达式、以一个前置运算符作为前导的表达式，或者表达式后面跟着：
 
-- 一个中置运算符与另一个表达式；
-- 三元运算符 ？ 后面跟着另一个表达式，后面接一个 : ，再然后接着第3个表达式；
-- 一个函数调用；
-- 一个属性提取表达式
+-   一个中置运算符与另一个表达式；
+-   三元运算符 ？ 后面跟着另一个表达式，后面接一个 : ，再然后接着第 3 个表达式；
+-   一个函数调用；
+-   一个属性提取表达式
 
-三元运算符 ？ 有3个运算数。如果第一个运算数值为真，产生第2个运算数的值。但如果第一个运算数值为假，则产生第3个运算数的值。
+三元运算符 ？ 有 3 个运算数。如果第一个运算数值为真，产生第 2 个运算数的值。但如果第一个运算数值为假，则产生第 3 个运算数的值。
 
 运算符优先级
 
 | . [] ( )                | 提取属性与调用函数 |
 | ----------------------- | ------------------ |
 | delete new typeof + - ! | 一元运算符         |
-| * / %                   | 乘法、除法、求余   |
+| \* / %                  | 乘法、除法、求余   |
 | + -                     | 加法/连接、减法    |
 | >= <= > <               | 不等式运算符       |
 | === !==                 | 等式运算符         |
@@ -66,9 +66,7 @@ return 语句会导致从函数中提前返回。它也可以指定要返回的�
 | \|\|                    | 逻辑或             |
 | ?：                     | 三元               |
 
-typeof 运算符产生的值有‘number’、‘string’、‘boolean’、‘undefined’、‘function’和‘object’。如果运算数是一个数组或null，那么结果是'object'，这是不对的
-
-
+typeof 运算符产生的值有‘number’、‘string’、‘boolean’、‘undefined’、‘function’和‘object’。如果运算数是一个数组或 null，那么结果是'object'，这是不对的
 
 ## 第三章 对象
 
@@ -76,9 +74,9 @@ typeof 运算符产生的值有‘number’、‘string’、‘boolean’、‘
 >
 > ——莎士比亚《维洛那二绅士》
 
-Javascript 的简单数据类型包括数字、字符串、布尔值（true|false）、null值、underfined值、Symbol。其他所有的值都是对象。数字、字符串和布尔值“貌似”对象，因为它们拥有方法，但他们是不可变的。
+Javascript 的简单数据类型包括数字、字符串、布尔值（true|false）、null 值、underfined 值、Symbol。其他所有的值都是对象。数字、字符串和布尔值“貌似”对象，因为它们拥有方法，但他们是不可变的。
 
-Javascript 中的对象是可变的键控集合（keyed collections）。在Javascript中，数组是对象，函数是对象，正则表达式是对象，当然，对象自然也是对象。
+Javascript 中的对象是可变的键控集合（keyed collections）。在 Javascript 中，数组是对象，函数是对象，正则表达式是对象，当然，对象自然也是对象。
 
 对象是属性的容器，其中每一个属性都拥有名字和值。属性的名字可以是包括空字符串在内的任意字符串。属性值可以使除 undefined 值之外的任何值。
 
@@ -91,37 +89,37 @@ Javascript 包含一种原型链的特性，允许对象继承另一个对象的
 #### 基础类型
 
 ```javascript
-var a = 'hanbo'
+var a = "hanbo";
 var b = a;
-a = 'fuchan'
-console.log(b) // hanbo
-// 
+a = "fuchan";
+console.log(b); // hanbo
+//
 ```
 
 引用类型
 
 ```javascript
 var x = stooge;
-x.nickname = 'Gurly';
-var nick = stooge.nickname
+x.nickname = "Gurly";
+var nick = stooge.nickname;
 // 因为 x 和 stooge 是指向同一个对象的引用，所以 nick 为 'Gurly'
-var a = {}, b = {}, c = {};
+var a = {},
+    b = {},
+    c = {};
 // a 、 b 和 c 每个都引用一个不同的空对象
-a = b = c = {}
+a = b = c = {};
 // a 、 b 和 c 都引用同一个空对象
 ```
 
 本质：
 
-设计 js 类型的时候就设置成 
+设计 js 类型的时候就设置成
 
 **基本类型用的是栈，引用类型用的是堆**
 
-
-
 ### 原型
 
-每个对象都连接到一个原型对象，并且它可以从中继承属性。所有通过对象字面量创建的对象都可以到Object.prototype，它是 JavaScript 中的标配对象。
+每个对象都连接到一个原型对象，并且它可以从中继承属性。所有通过对象字面量创建的对象都可以到 Object.prototype，它是 JavaScript 中的标配对象。
 
 当你创建一个新对象时，你可以选择某个对象作为它的原型。
 
@@ -133,10 +131,10 @@ a = b = c = {}
 
 ```javascript
 var friend = new Person();
-Person.prototype.sayHi = function() {
-    alert('hi')
-}
-friend.sayHi() // "hi"
+Person.prototype.sayHi = function () {
+    alert("hi");
+};
+friend.sayHi(); // "hi"
 ```
 
 举个例子：
@@ -149,29 +147,28 @@ friend.sayHi() // "hi"
 function Person(name, age, job) {
     this.name = name;
     this.age = age;
-    this.job = job
-    this.sayName = function() {
-        alert(this.name)
-    }
+    this.job = job;
+    this.sayName = function () {
+        alert(this.name);
+    };
 }
-var zhangsan = new Person('张三', 15, '屠夫')
-var lisi = new Person('李四', 14, '肉贩')
+var zhangsan = new Person("张三", 15, "屠夫");
+var lisi = new Person("李四", 14, "肉贩");
 ```
 
 #### 原型模式
 
 ```javascript
 function Person() {}
-Person.prototype.name = 'zhangsan';
+Person.prototype.name = "zhangsan";
 Person.prototype.age = 15;
-Person.prototype.job = '屠夫'
-Person.prototype.sayName = function() {
-    alert(this.name)
-}
-var person1 = new Person()
-person1.sayName() // "zhangsan"
+Person.prototype.job = "屠夫";
+Person.prototype.sayName = function () {
+    alert(this.name);
+};
+var person1 = new Person();
+person1.sayName(); // "zhangsan"
 // this 指谁，谁调用它就指谁，person1调用，this就指person1，它本身没有name，就沿着原型链往上找，找到Person定义的name
-
 ```
 
 #### 继承
@@ -186,28 +183,28 @@ person1.sayName() // "zhangsan"
 function Person(name, age, job) {
     this.name = name;
     this.age = age;
-    this.job = job
-    this.sayName = function() {
-        alert(this.name)
-    }
+    this.job = job;
+    this.sayName = function () {
+        alert(this.name);
+    };
 }
 ```
 
-人类是个集合，每个人都有自己的名字，年龄也各不相同，职业也不同，但是说名字这个方法是可以相同的，就是章口就来，名字是自己的（谁调用this指向谁）
+人类是个集合，每个人都有自己的名字，年龄也各不相同，职业也不同，但是说名字这个方法是可以相同的，就是章口就来，名字是自己的（谁调用 this 指向谁）
 
 几个还好，但是上万个上亿人用这个构造函数，性能就出问题了，每实例一次，内存开销一次，创建属性和方法，因为是各自独立的副本
 
 而原型继承的特点可以弥补，它用来定义方法和共享的属性
 
 ```javascript
-function Man(){}
-Man.prototype.gender = '男人';
-Man.prototype.sayGender = function(){
-    alert('我是男人')
-}
-var xiaoming = new Man()
-xiaoming.gender // '男人'
-xiaoming.sayGender() //我是男人
+function Man() {}
+Man.prototype.gender = "男人";
+Man.prototype.sayGender = function () {
+    alert("我是男人");
+};
+var xiaoming = new Man();
+xiaoming.gender; // '男人'
+xiaoming.sayGender(); //我是男人
 ```
 
 在创建 Man 函数（构造函数也是函数）时，内存只开销一次，
@@ -218,15 +215,11 @@ xiaoming.sayGender() //我是男人
 
 详细内容见第六章“原型链的分析”
 
-
-
 #### 检查属性类型
 
 typeof 操作符检查属性的类型
 
-hasOwnProperty 如果对象拥有独有的属性，他会返回true，hasOwnProperty 犯法不会检查原型链
-
-
+hasOwnProperty 如果对象拥有独有的属性，他会返回 true，hasOwnProperty 犯法不会检查原型链
 
 #### 减少全局变量污染
 
@@ -235,8 +228,6 @@ JavaScript 可以很随意地定义全局变量来容纳你的应用的所有资
 最小化使用全局变量的方法之一是为你的应用只创建一个唯一的全局变量。
 
 当然还有一种方法（减少全局污染）——闭包
-
-
 
 ## 第四章 函数
 
@@ -250,7 +241,7 @@ JavaScript 可以很随意地定义全局变量来容纳你的应用的所有资
 
 函数中就有很多东西可以引申出来。
 
-函数是JavaScript中的第一公民啊
+函数是 JavaScript 中的第一公民啊
 
 https://www.zhihu.com/question/67652709
 
@@ -267,8 +258,8 @@ JavaScript 中的函数就是对象。对象是“名/值”对的集合并游�
 对象字面量产生的对象连接到 Object.prototype 。函数对象连接到 Function.prototype（该原型对象本身连接到 Object.prototype）。每个函数在创建时会附加两个隐藏属性：函数的上下文和实现函数行为的代码
 
 ```javascript
-var obj = {} // 对象字面量 创建 对象
-var func = function() {} // 函数字面量 创建 函数对象
+var obj = {}; // 对象字面量 创建 对象
+var func = function () {}; // 函数字面量 创建 函数对象
 ```
 
 每个函数对象在创建时也随配有一个 prototype 属性。它的值是一个拥有 constructor 属性且值极为该函数的对象。这个隐藏连接到 Function.prototype 完全不同。
@@ -309,8 +300,8 @@ test1()() // 函数返回函数，调用test1() 返回function() {console.log("�
 ```javascript
 // 创建一个名为 add 的变量，并用来把两个数字相加的函数赋值给它
 var add = function (a, b) {
-    return a + b
-}
+    return a + b;
+};
 ```
 
 将一个函数赋值给 add（字面量）
@@ -327,15 +318,15 @@ var add = function (a, b) {
 
 函数字面量可以出现在任何允许表达式出现的地方。
 
-函数也可以被定义在其他函数中。一个内部函数除了可以访问自己的参数和变量，同时它也能自由访问把它嵌套在其中的父函数的参数和变量。通过函数字面量创建的函数对象包含一个连到外部上下文的连接。这被称为闭包（closure）。它是JavaScript强大表现力的来源。详细请进闭包篇。
+函数也可以被定义在其他函数中。一个内部函数除了可以访问自己的参数和变量，同时它也能自由访问把它嵌套在其中的父函数的参数和变量。通过函数字面量创建的函数对象包含一个连到外部上下文的连接。这被称为闭包（closure）。它是 JavaScript 强大表现力的来源。详细请进闭包篇。
 
 #### 调用
 
 调用一个函数会暂停当前函数的执行，传递控制权和参数给新函数。除了声明时定义的形式参数（形参），每个函数还接受两个附加的参数：this 和 arguments。参数 this 在面向对象编程中非常重要，它的值取决于调用的模式。
 
-在JavaScript中一共有六种调用模式。方法调用模式、函数调用模式、构造函数调用模式、apply，bind，call调用模式、箭头函数调用模式，还要一种忘记了
+在 JavaScript 中一共有六种调用模式。方法调用模式、函数调用模式、构造函数调用模式、apply，bind，call 调用模式、箭头函数调用模式，还要一种忘记了
 
-调用运算符是跟在任何产生一个函数值的表达式之后的一对圆括号。圆括号内可包含零个或多个用逗号隔开的表达式。每个表达式产生一个参数值。每个参数值被赋予函数声明时定义的形式参数名。当实际参数（arguments）的个数与形式参数（parameters）的个数不匹配时，不会导致运行时错误（javascript就是骚，ts会报错）。如果实际参数值过多，超出的参数值会被忽略。如果实际参数值过少，缺失的值会被替换为 undefined。对参数值不会进行类型检查：任何类型的值都可以被传递给任何参数。
+调用运算符是跟在任何产生一个函数值的表达式之后的一对圆括号。圆括号内可包含零个或多个用逗号隔开的表达式。每个表达式产生一个参数值。每个参数值被赋予函数声明时定义的形式参数名。当实际参数（arguments）的个数与形式参数（parameters）的个数不匹配时，不会导致运行时错误（javascript 就是骚，ts 会报错）。如果实际参数值过多，超出的参数值会被忽略。如果实际参数值过少，缺失的值会被替换为 undefined。对参数值不会进行类型检查：任何类型的值都可以被传递给任何参数。
 
 回过头来说六种调用模式：
 
@@ -347,17 +338,16 @@ var add = function (a, b) {
 
 ```javascript
 var myObject = {
-	value: 0,
+    value: 0,
     increment: function (inc) {
-        this.value += typeof inc === 'number' ? inc : 1;
-    }
-}
+        this.value += typeof inc === "number" ? inc : 1;
+    },
+};
 myObject.increment();
-console.log(myObject.value) // 1
+console.log(myObject.value); // 1
 
 myObject.increment(2);
-console.log(myObject.value) // 3
-
+console.log(myObject.value); // 3
 ```
 
 ##### 函数调用模式
@@ -366,36 +356,34 @@ console.log(myObject.value) // 3
 
 ```javascript
 function add(a, b) {
-    return a + b
+    return a + b;
 }
-var sum = add(3, 4) // sum 的值为 7。
+var sum = add(3, 4); // sum 的值为 7。
 ```
 
 在笔者看来，函数调用模式就是放在全局中
 
-以此模式调用函数时，this 被绑定到全局对象上。这其实是JavaScript 语言设计上的一个bug。我们首先模拟一下按照人的思维所希望的结果——当内部函数被调用时，this应该仍然绑定到外部函数的this变量。
+以此模式调用函数时，this 被绑定到全局对象上。这其实是 JavaScript 语言设计上的一个 bug。我们首先模拟一下按照人的思维所希望的结果——当内部函数被调用时，this 应该仍然绑定到外部函数的 this 变量。
 
 ```javascript
-var myObject = {
-    
-}
+var myObject = {};
 ```
 
 ##### 构造器调用模式
 
 JavaScript 是一门基于原型继承的语言。这意味着对象可以直接从其他对象继承属性。该语言是无类型的。
 
-new 
+new
 
 如果再一个函数前面带上 new 来调用，那么背地里将会创建一个连接到该函数的 prototype 成员的新对象，同时 this 会绑定到那个新对象上。
 
-手写new
+手写 new
 
 #### apply 调用
 
 apply 方法让我们创建一个参数数组传递给调用函数。它也允许我们选择 this 的值
 
-bind，call调用
+bind，call 调用
 
 手写
 
@@ -407,22 +395,21 @@ bind，call调用
 
 ```javascript
 var sum = function () {
-    var i, sum = 0;
-    for (i = 0; i < arguments.length; i+= 1) {
-    	sum += arguments[i]
+    var i,
+        sum = 0;
+    for (i = 0; i < arguments.length; i += 1) {
+        sum += arguments[i];
     }
     return sum;
-}
-console.log(sum(4, 8, 15, 16, 23, 42)) // 108
+};
+console.log(sum(4, 8, 15, 16, 23, 42)); // 108
 ```
 
 这里要多提一句，arguments 是语言设计种的错误。它并不是一个真正的数组。它只是一个“类似数组（array-like）”的对象。arguments 拥有一个 length 属性，但它没有任何数组的方法。
 
 数组和类数组的区别在哪里？
 
-我的理解：数组继承自Array.prototype 它有 原型上的属性和方法。实例化后就能直接用，但是类数组只是结构上像数组，但却没有数组该有的东西。可以这么说，类数组长得和数组像，但它不是数组。
-
-
+我的理解：数组继承自 Array.prototype 它有 原型上的属性和方法。实例化后就能直接用，但是类数组只是结构上像数组，但却没有数组该有的东西。可以这么说，类数组长得和数组像，但它不是数组。
 
 #### 返回
 
@@ -432,13 +419,13 @@ return 语句可用来使函数提前返回。当 return 被执行时，函数�
 
 一个函数总是会返回一个值。如果没有特定的返回值，则返回 undefined
 
-我们在chrome中调试时，常常会写这样的语句：
+我们在 chrome 中调试时，常常会写这样的语句：
 
 ```javascript
 function test() {
-    console.log('hello, world')
+    console.log("hello, world");
 }
-test()
+test();
 // 返回的结果往往是：
 // hello,world
 // undefined
@@ -446,15 +433,9 @@ test()
 
 这正是因为 没有 return，导致他默认返回 undefined
 
-
-
 #### 作用域
 
 作用域控制着变量与参数的可见性及生命周期。对它能减少名字冲突，并且提供自动内存管理。
-
-
-
-
 
 静态作用域——动态作用域
 
@@ -462,17 +443,11 @@ test()
 
 块级作用域
 
-
-
 #### 闭包
 
-作用域的好处是内部函数可以访问定义他们的外部函数的参数和变量（除了this和arguments）
-
-
+作用域的好处是内部函数可以访问定义他们的外部函数的参数和变量（除了 this 和 arguments）
 
 #### 回调
-
-
 
 #### 模块
 
@@ -480,13 +455,9 @@ test()
 
 立即执行函数
 
-
-
 #### 链式
 
 有一些方法没有返回值。例如，一些设置或修改对象的某个状态却不返回任何值的方法就是典型的例子。
-
-
 
 #### 柯里化
 
@@ -498,9 +469,7 @@ test()
 
 总结函数：
 
-说话函数的最后，你只用记住一句话：再JavaScript种函数是第一公民
-
-
+说话函数的最后，你只用记住一句话：再 JavaScript 种函数是第一公民
 
 ## 第五章 继承
 
@@ -512,17 +481,15 @@ test()
 
 #### 伪类
 
-模拟类的形式来做继承，我没太看懂 
+模拟类的形式来做继承，我没太看懂
 
-javascript 语言精粹第60页
+javascript 语言精粹第 60 页
 
 #### 原型
 
 在一个纯粹的原型模式中，我们会摒弃类，转而专注于对象。基于原型的继承相比基于类的继承在概念上更为简单：一个新对象可以继承一个旧对象的属性。
 
 在某种意义上，一个内部作用域会继承它的外部作用域
-
-
 
 ## 第六章 数组
 
@@ -538,21 +505,17 @@ JavaScript 没有一个好的机制来区别数组和对象。我们可以通过
 
 ```javascript
 var is_array = function (value) {
-    return value &&
-        typeof value === 'object' &&
-        value.constructor === 'Array'
-}
+    return value && typeof value === "object" && value.constructor === "Array";
+};
 ```
 
 遗憾的是，它在识别从不同的窗口（window）或帧（iframe）里构造的数组时会失败。有一个更好的方法去判断一个对象是否是数组：
 
 ```javascript
 var is_array = function (value) {
-    return Object.prototype.toString.apply(value) === '[object Array]';
-}
+    return Object.prototype.toString.apply(value) === "[object Array]";
+};
 ```
-
-
 
 ## 第七章 正则表达式
 
@@ -575,9 +538,9 @@ JavaScript 包含了一套小型的可用在标准类型上的标准方法集。
 concat 方法产生一个新数组，它包含一份 array 的浅复制（shallow copy）并把一个或多个参数 item 附加在气候。如果参数 item 是一个数组，那么它的每个元素会被分别添加。与它功能类似的 array.push(item...)方法
 
 ```javascript
-var a = ['a', 'b', 'c'];
-var b = ['x', 'y', 'z'];
-var c = a.concat(b, true)
+var a = ["a", "b", "c"];
+var b = ["x", "y", "z"];
+var c = a.concat(b, true);
 // c 变成 ['a', 'b', 'c', 'x', 'y', 'z', true]
 ```
 
@@ -597,17 +560,17 @@ var c = a.concat(b, true)
 
 ##### 函数是顶级对象
 
-​	在精简 JavaScript 中，函数是有词法作用域的闭包（lambda）
+​ 在精简 JavaScript 中，函数是有词法作用域的闭包（lambda）
 
 ##### 基于原型继承的动态对象
 
-​	对象是无类别的。我们可以通过普通的赋值给任何对象添加一个新成员属性。一个对象可以从另一个对象继承成员属性。
+​ 对象是无类别的。我们可以通过普通的赋值给任何对象添加一个新成员属性。一个对象可以从另一个对象继承成员属性。
 
 ##### 对象字面量和数组字面量
 
-​	这对创建新的对象和数组来说是一个非常方便的表达法。JavaScript字面量是数据交换格式 JSON 的灵感之源。其实字面量表达也是一种语法糖
+​ 这对创建新的对象和数组来说是一个非常方便的表达法。JavaScript 字面量是数据交换格式 JSON 的灵感之源。其实字面量表达也是一种语法糖
 
-## 附录A 毒瘤
+## 附录 A 毒瘤
 
 > 那会在一言一行中证明其可怕
 >
@@ -621,7 +584,7 @@ var c = a.concat(b, true)
 	var foo = value；
 ```
 
-第 2 种是直接给全局对象添加一个属性。全局对象是所有全局变量的容器。在 Web 浏览器里，全局对象名为window，在Node里就是global
+第 2 种是直接给全局对象添加一个属性。全局对象是所有全局变量的容器。在 Web 浏览器里，全局对象名为 window，在 Node 里就是 global
 
 ```javascript
 window.foo = value;
@@ -631,17 +594,15 @@ global.foo = value;
 第 3 中是直接使用未经声明的变量，这被称为隐式的全局变量；
 
 ```javascript
-foo = value
+foo = value;
 ```
 
-新手比较常见，导致不容易找bug
+新手比较常见，导致不容易找 bug
 
 ### 作用域
 
-javaScript 的语法来源于C。在所有其他类似C语言风格的语言里，一个代码块（括在一对花括号中的一组语句）会创造一个作用域。代码块中声明的变量在其外部是不可见的。JavaScript 采用了这样的块语法，却没有提供块级作用域：代码块中声明的变量在包含此代码块的函数的任何位置都是可见的。
+javaScript 的语法来源于 C。在所有其他类似 C 语言风格的语言里，一个代码块（括在一对花括号中的一组语句）会创造一个作用域。代码块中声明的变量在其外部是不可见的。JavaScript 采用了这样的块语法，却没有提供块级作用域：代码块中声明的变量在包含此代码块的函数的任何位置都是可见的。
 
 在大多数语言中，一般来说，声明变量的最好的地方是在第一次用到它的地方。但这种做法在 JavaScript 里反而是一个坏习惯，因为它没有块级作用域。更好的方法是在每个函数的开头部分声明所有变量
-
-
 
 后面的糟粕什么的就不多谈了

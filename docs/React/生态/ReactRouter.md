@@ -1,6 +1,4 @@
-# 源码分析React Router源码
-
-
+# 源码分析 React Router 源码
 
 ## 前端路由前世今生
 
@@ -27,15 +25,15 @@ Ajax 的基本概念（XMLHttpRequest 的前身）
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Demo</title>
-  <link href="app.css" rel="stylesheet"/>
-</head>
-<body>
-  <div id="app"></div>
-  <script type="text/javascript" src="app.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Demo</title>
+        <link href="app.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="text/javascript" src="app.js"></script>
+    </body>
 </html>
 ```
 
@@ -55,11 +53,9 @@ react-router 的注入方式是在组件树顶层放一个 Router 组件，然�
 
 ![React-router组件](https://i.loli.net/2021/06/16/HvP9UhJQyToRij8.png)
 
-
-
-- **路由器组件**: `<BrowserRouter>` 和 `<HashRouter>`，路由器组件的作为根容器组件，`<Route>` 等路由组件必须被包裹在内才能够使用。
-- **路由匹配组件**: `<Route>` 和 `<Switch>`，路由匹配组件通过匹配 path，渲染对应组件。
-- **导航组件**: `<Link>` 和 `<NavLink>`，导航组件起到类似 `a` 标签跳转页面的作用。在后续对源码的讲解中，也将分别以这六个组件代码的解析为线索，来一窥 React Router 的整体实现。看回我们的代码，对于我们开头实现的原生路由，如果用 React Router 改写，应该是怎样的写法呢：
+-   **路由器组件**: `<BrowserRouter>` 和 `<HashRouter>`，路由器组件的作为根容器组件，`<Route>` 等路由组件必须被包裹在内才能够使用。
+-   **路由匹配组件**: `<Route>` 和 `<Switch>`，路由匹配组件通过匹配 path，渲染对应组件。
+-   **导航组件**: `<Link>` 和 `<NavLink>`，导航组件起到类似 `a` 标签跳转页面的作用。在后续对源码的讲解中，也将分别以这六个组件代码的解析为线索，来一窥 React Router 的整体实现。看回我们的代码，对于我们开头实现的原生路由，如果用 React Router 改写，应该是怎样的写法呢：
 
 ```react
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
@@ -88,10 +84,6 @@ const User = () => (<h2>User</h2>);
 export default App;
 ```
 
-
-
-
-
 ## React Router 源码实现
 
 先用最简单的话来概括一下 React Router 到底做了什么？
@@ -112,18 +104,14 @@ export default App;
 
 接下来我们看看每一个步骤是怎么实现的。
 
-
-
 ![640](https://i.loli.net/2021/06/16/LdX43GNEtSCMjI2.png)
-
-
 
 ### 如何监听 url 的变化 ？
 
-正常情况下，当 URL 发生变化时，浏览器会像服务端发送请求，但使用以下2种办法不会向服务端发送请求：
+正常情况下，当 URL 发生变化时，浏览器会像服务端发送请求，但使用以下 2 种办法不会向服务端发送请求：
 
-- 基于 hash
-- 基于 history
+-   基于 hash
+-   基于 history
 
 react-router 使用了 history 这个核心库。
 
@@ -134,23 +122,13 @@ react-router 使用了 history 这个核心库。
 1. 单页面应用路由的实现原理是什么？
 2. React-router 是如何跟 React 结合起来的？
 
-
-
 而后我们可以实现一个简单的 React-router
-
-
 
 React-Router 借用了 history 解决了第一个问题
 
 用 React.createContext 解决了第二个问题
 
-
-
 `<Router>` 只做了两件事，一是给子组件包了一层 `context`，让路由信息（ history 和 location 对象）能传递给其下所有子孙组件；二是绑定了路由监听事件，使每次路由的改变都触发`setState`
-
-
-
-
 
 实现 ReactRouter 前，先去看一下 ReactRouter 的写法
 
@@ -162,10 +140,8 @@ React-Router 借用了 history 解决了第一个问题
       <Route render={(props) => {
         return <pre>URL: {JSON.stringify(props.match.url)}</pre>
       }} />
-</Switch>	
+</Switch>
 ```
-
-
 
 > BrowseHistory 必须依赖服务器让 url 都映射到 index.html ，否则会 404 。
 
@@ -177,33 +153,31 @@ React-Router 借用了 history 解决了第一个问题
 class Route extends React.Component {
    render() {
        const { exact, path, component, children,render } = this.props;
-       
+
        const match = matchPath(location.pathname, {
            path,
            exact
        })
-       
+
        if (!match) {
            return null
        }
-       
+
        if (component) {
            return React.createElement(component, { match })
        }
-       
+
        if (render) {
            return (
                render({ match })
            )
        }
        return (
-         null	
+         null
        )
    }
 }
 ```
-
-
 
 主要是
 
@@ -222,8 +196,6 @@ class Route extends React.Component {
     />
 </RouterContext.Provider>
 ```
-
-
 
 ### Route 的实现
 
@@ -267,13 +239,9 @@ class Route extends React.Component {
 </Route>
 ```
 
-`<Route>` 所做的事情也很简单，匹配到传入的 path，渲染对应的组件。此外 `<Route>` 还提供了几种不同的匹配模式、path写法以及渲染方式
-
-
+`<Route>` 所做的事情也很简单，匹配到传入的 path，渲染对应的组件。此外 `<Route>` 还提供了几种不同的匹配模式、path 写法以及渲染方式
 
 Route 提供了三种渲染方式：子组件、`props.component`、`props.render`，三者之间又存在优先级，因此就形成了我们看到了多层三元表达式渲染的结构。
-
-
 
 ## 总结
 
@@ -281,37 +249,26 @@ Route 提供了三种渲染方式：子组件、`props.component`、`props.rende
 
 前端路由模式有两种：hash 模式 和 history 模式，两者分别利用浏览器自由特性实现单页面导航
 
-- hash 模式：window.location 或 a 标签改变锚点值，window.hashchange() 监听锚点变化
-- history 模式：history.pushState()、history.replaceState() 定义目标路由，window.onpopstate() 监听浏览器操作导致的 URL 变化
+-   hash 模式：window.location 或 a 标签改变锚点值，window.hashchange() 监听锚点变化
+-   history 模式：history.pushState()、history.replaceState() 定义目标路由，window.onpopstate() 监听浏览器操作导致的 URL 变化
 
-
-
-React Router 匹配路由由 `mathPath`  通过 `path-to-regexp` 进行，`<Route>` 相当于一个高阶组件，以不同的优先级和匹配模式渲染匹配到的子组件
-
-
+React Router 匹配路由由 `mathPath` 通过 `path-to-regexp` 进行，`<Route>` 相当于一个高阶组件，以不同的优先级和匹配模式渲染匹配到的子组件
 
 React Router 的主要组件源码，整体的实现：
 
-- 对于**监听**功能的实现，React Router 引入了 `history` 库，以屏蔽了不同模式路由在监听实现上的差异, 并将路由信息以 `context` 的形式，传递给被 `<Router> ` 包裹的组件, 使所有被包裹在其中的路由组件都能**感知到路由的变化, 并接收到路由信息**
-- 在**匹配**的部分， React Router 引入了 `path-to-regexp` 来拼接路径正则以实现不同模式的匹配，路由组件·` <Route> `作为一个高阶组件包裹业务组件, 通过比较当前路由信息和传入的 path，以不同的优先级来渲染对应组件
-
-
-
-
-
-
+-   对于**监听**功能的实现，React Router 引入了 `history` 库，以屏蔽了不同模式路由在监听实现上的差异, 并将路由信息以 `context` 的形式，传递给被 `<Router> ` 包裹的组件, 使所有被包裹在其中的路由组件都能**感知到路由的变化, 并接收到路由信息**
+-   在**匹配**的部分， React Router 引入了 `path-to-regexp` 来拼接路径正则以实现不同模式的匹配，路由组件·`<Route>`作为一个高阶组件包裹业务组件, 通过比较当前路由信息和传入的 path，以不同的优先级来渲染对应组件
 
 ## 参考资料
 
-- [深入浅出解析React Router源码](https://mp.weixin.qq.com/s/hcAMubPlse4cK9y_-mS5yQ)
+-   [深入浅出解析 React Router 源码](https://mp.weixin.qq.com/s/hcAMubPlse4cK9y_-mS5yQ)
 
-- [单页面应用路由实现原理：以 React-Router 为例](https://github.com/youngwind/blog/issues/109)
+-   [单页面应用路由实现原理：以 React-Router 为例](https://github.com/youngwind/blog/issues/109)
 
-- [剖析单页面应用路由实现原理](https://github.com/happylindz/blog/issues/4)
+-   [剖析单页面应用路由实现原理](https://github.com/happylindz/blog/issues/4)
 
-- [SPA 路由三部曲之核心原理](https://juejin.cn/post/6895882310458343431)
+-   [SPA 路由三部曲之核心原理](https://juejin.cn/post/6895882310458343431)
 
-- [SPA 路由三部曲之实战演练](https://mp.weixin.qq.com/s/SJXwhTo4j6I3WMmQuOOs7A)
+-   [SPA 路由三部曲之实战演练](https://mp.weixin.qq.com/s/SJXwhTo4j6I3WMmQuOOs7A)
 
-- [图解 React-router 带你深入理解路由本质](https://mp.weixin.qq.com/s/xyk9Qla6p2lDsRoqrvasTA)
-
+-   [图解 React-router 带你深入理解路由本质](https://mp.weixin.qq.com/s/xyk9Qla6p2lDsRoqrvasTA)

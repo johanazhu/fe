@@ -4,9 +4,7 @@
 
 项目（`project`）：由一组关联的应用容器组成的一个完整业务单元，在 `docker-compose.yml` 文件中定义
 
-`compose`  的默认管理对象是项目，通过子命令对项目的一组容器进行便捷的生命周期管理
-
-
+`compose` 的默认管理对象是项目，通过子命令对项目的一组容器进行便捷的生命周期管理
 
 创建`docker-compose.yml` 文件
 
@@ -44,41 +42,8 @@ volumes:
 
 运行 `docker-compose up -d` Compose 就会拉取镜像再创建我们所需要的镜像，然后启动 `wordpress` 和数据库容器。 接着浏览器访问 `127.0.0.1:5555` 端口就能看到 `WordPress` 安装界面了。
 
-
-
-
-
-### 什么是docker-compose
+### 什么是 docker-compose
 
 通过 docker-compose 用户可以很容器地用一个配置文件定义一个多容器的应用
 
 docker-compose 解决了容器与容器之间如何管理编排的问题
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

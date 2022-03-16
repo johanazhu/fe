@@ -1,26 +1,17 @@
 # TodoList
 
+最简单的应用大概就是 TodoList
 
+-   普通版本
 
-最简单的应用大概就是TodoList
+-   redux 版的
 
-- 普通版本
+-   mobx 版的
 
-
-- redux版的
-
-
-- mobx版的
-
-
-- hook版的
-- dva 版本
-- ts + hooks 版本
-
-
-
-
+-   hook 版的
+-   dva 版本
+-   ts + hooks 版本
 
 ## 参考资料
 
-- [How to fetch data with React Hooks](https://www.robinwieruch.de/react-hooks-fetch-data/)
+-   [How to fetch data with React Hooks](https://www.robinwieruch.de/react-hooks-fetch-data/)

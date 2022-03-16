@@ -6,11 +6,24 @@
     "scripts": {
         "dev": "vuepress dev docs",
         "build": "vuepress build docs",
-        "deploy": "bash ./deploy.sh"
+        "deploy": "bash ./deploy.sh",
+        "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,scss,md,json}\""
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.{js,jsx,scss,md,json}": [
+            "prettier --write"
+        ],
+        "*.ts?(x)": [
+            "prettier --parser=typescript --write"
+        ]
     },
     "author": "johan",
     "license": "ISC",
     "devDependencies": {
+        "husky": "^7.0.4",
         "vuepress": "^2.0.0-beta.32"
     },
     "dependencies": {

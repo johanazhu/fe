@@ -109,10 +109,10 @@ const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost:27017/school", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 });
 
-mongoose.connection.on("error", err => {
+mongoose.connection.on("error", (err) => {
     console.log(err);
 });
 
@@ -150,7 +150,7 @@ const personSchema = new Schema({
     age: { Type: Number },
     _id: Schema.Types.ObjectId, // 主键
     _fk: Schema.Types.ObjectId, // 外键
-    array: { Type: [] } // 不确定
+    array: { Type: [] }, // 不确定
 });
 ```
 

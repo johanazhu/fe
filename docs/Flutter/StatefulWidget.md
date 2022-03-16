@@ -1,14 +1,10 @@
 # StatefulWidget
 
-statefulWidget实现步骤
+statefulWidget 实现步骤
 
-1.首先继承StagefulWidget
+1.首先继承 StagefulWidget
 
-2.实现createState()的放大，返回一个State
-
-
-
-
+2.实现 createState()的放大，返回一个 State
 
 StatefulWidgetD 生命周期
 
@@ -31,7 +27,7 @@ class XXXState extends State<XXX> {
     super.didChangeDependencies();
     print("didChangeDependencies");
   }
-  
+
   @override
   void didUpdateWidget(MyApp oldWidget) {
     // TODO: implement didUpdateWidget
@@ -63,45 +59,17 @@ class XXXState extends State<XXX> {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 我有疑问
 
-StatefulWidget是有状态的，有state
+StatefulWidget 是有状态的，有 state
 
-而StatelessWidget是无状态的
+而 StatelessWidget 是无状态的
 
 呢么 StatelessWidget 是无状态组件吗
 
+StatefulWidget 是由 State 的，StatelessWidget 是无 State 的
 
-
-
-
-
-
-StatefulWidget是由State的，StatelessWidget是无State的
-
-
-
-
-
-五类Widget
+五类 Widget
 
 基础 Widget
 
@@ -112,14 +80,3 @@ StatefulWidget是由State的，StatelessWidget是无State的
 容器类 Widget
 
 可滚动 Widget
-
-
-
-
-
-
-
-
-
-
-

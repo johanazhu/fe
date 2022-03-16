@@ -1,21 +1,13 @@
 # webpack 持久化缓存
 
-
-
 1. 在多页面应用中，我们需要将公共模块进行拆包，比如 header，footer，以及一些公共区域等等，这样页面在我们的网站中进行跳转的时候由于这些公共模块存在于缓存当中，就可以直接进行加载，而不是再通过网络请求。
 2. 分离业务代码和第三方的代码：之所以将业务代码和第三方代码分离出来，是因为业务代码更新频率高，而第三方代码更新迭代速度慢，所以我们将第三方代码(库，框架)进行抽离，这样可以充分利用浏览器的缓存来加载第三方库。
 3. 从 js 中抽离 css，使得 css 样式和 js 逻辑相对独立，这样我们在修改样式或者页面的逻辑的时候它们将互不影响到各自的缓存。
 4. 抽离异步加载的内容，比如路由切割，与首屏渲染无关的内容等等。
 5. 生成稳定的 hash 值，代码修改实现 hash 值变化最小，即代码修改只影响到其对应的文件 hash 值，而不要去影响到其它文件的 hash 值。
 
-
-
-
-
-
-
 ## 参考资料
 
-- [webpack 大型应用优化实践](https://zhuanlan.zhihu.com/p/33377189)
-- [webpack 持久化缓存实践](https://github.com/happylindz/blog/issues/7)
-- [希望做浏览器长缓存？关于Webpack生成的Hash，你应该知道这些](https://segmentfault.com/a/1190000011980729)
+-   [webpack 大型应用优化实践](https://zhuanlan.zhihu.com/p/33377189)
+-   [webpack 持久化缓存实践](https://github.com/happylindz/blog/issues/7)
+-   [希望做浏览器长缓存？关于 Webpack 生成的 Hash，你应该知道这些](https://segmentfault.com/a/1190000011980729)

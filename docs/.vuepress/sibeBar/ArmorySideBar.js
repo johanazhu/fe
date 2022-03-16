@@ -28,6 +28,18 @@ function ArmorySideBar() {
                 "/Linux/shell.md",
             ],
         },
+        {
+            text: "DevOps",
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+                "/DevOps/",
+                "/DevOps/部署.md",
+                "/DevOps/异常监控系统.md",
+                "/DevOps/jenkins.md",
+                "/DevOps/sentry.md",
+            ],
+        },
     ];
 }
 

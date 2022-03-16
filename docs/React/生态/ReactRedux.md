@@ -23,5 +23,5 @@ Provider 其实就是一个使用 context 上下文后的组件
 
 ## 参考资料
 
-- [「源码解析」一文吃透 react-redux 源码（useMemo 经典源码级案例）](https://mp.weixin.qq.com/s/oEvs6qzUbf4Lb5pvftKZIQ)
-- [【干货】从零实现 react-redux](https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247485220&idx=2&sn=74811cf3a61baf1a883fe1c7a76b88fa&chksm=c06686b2f7110fa4211871572ae52b08b0cc045741540e28e7c026f441b7c7f26e454aecd1b0&mpshare=1&scene=1&srcid=&sharer_sharetime=1585194811446&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+-   [「源码解析」一文吃透 react-redux 源码（useMemo 经典源码级案例）](https://mp.weixin.qq.com/s/oEvs6qzUbf4Lb5pvftKZIQ)
+-   [【干货】从零实现 react-redux](https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247485220&idx=2&sn=74811cf3a61baf1a883fe1c7a76b88fa&chksm=c06686b2f7110fa4211871572ae52b08b0cc045741540e28e7c026f441b7c7f26e454aecd1b0&mpshare=1&scene=1&srcid=&sharer_sharetime=1585194811446&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)

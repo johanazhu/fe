@@ -1,12 +1,8 @@
-# 模拟new的实现
-
-
+# 模拟 new 的实现
 
 ## 前言
 
 new 的本质是让你少些几行代码
-
-
 
 ## 正文
 
@@ -30,25 +26,23 @@ new 的本质是让你少些几行代码
 
 2）隐式的进行原型继承
 
-
-
-## new是什么？
+## new 是什么？
 
 **它是 JavaScript 为了让开发者开发起来方便而实现的关键字**
 
-在 JavaScript 高级程序设计第四版对new调用构造函数会执行的操作描述：
+在 JavaScript 高级程序设计第四版对 new 调用构造函数会执行的操作描述：
 
 > （1）在内存中创建一个新对象
 >
 > （2）**这个新对象内部的[[prototype]]特性被赋值为构造函数的 prototype 属性**
 >
-> （3）构造函数内部的 this 被赋值为这个新对象（即this指向新对象）
+> （3）构造函数内部的 this 被赋值为这个新对象（即 this 指向新对象）
 >
 > （4）执行构造函数内部的代码（给新对象添加属性）
 >
 > （5）如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象
 
-我们可以按照以上描述来写一个new。
+我们可以按照以上描述来写一个 new。
 
 ```javascript
 function new2(Constructor, ...args) {
@@ -58,72 +52,56 @@ function new2(Constructor, ...args) {
     obj.__proto__ = Constructor.prototype;
     // (3)、构造函数内部的 this 被赋值为这个新对象
     // (4)、执行构造函数内部的代码
-	var result = Constructor.apply(obj, args);
+    var result = Constructor.apply(obj, args);
     // (5)、如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象
-    return typeof result === 'object' ? result : obj
+    return typeof result === "object" ? result : obj;
 }
 ```
 
+## 别人的 new 写法
 
+THE LAST TIME
 
-## 别人的new写法
-
-
-
-THE LAST TIME 
-
-ES3写法
+ES3 写法
 
 ```javascript
 function objectFactory() {
-    var obj = new Object() // 从 Object.prototype 上克隆一个对象
+    var obj = new Object(); // 从 Object.prototype 上克隆一个对象
     Constructor = Array.prototype.shift.call(arguments); // 取得外部传入的构造器，取第一个参数
     // 以下是 Object.create() 的核心
-    var F = function() {};
+    var F = function () {};
     F.prototype = Constructor.prototype;
-    obj = new F() // 指向正确的原型
-    
+    obj = new F(); // 指向正确的原型
+
     var ret = Constructor.apply(obj, arguments); // 借用外部传入的构造器给obj设置属性
-    return typeof ret === 'object' ? ret : obj; // 确保构造器总是返回一个对象
+    return typeof ret === "object" ? ret : obj; // 确保构造器总是返回一个对象
 }
 ```
-
-
-
-
 
 测试一波
 
 ```javascript
 function User(firstname, lastname) {
     this.firstname = firstname;
-	this.lastname = lastname;
+    this.lastname = lastname;
 }
-const user = new User('johnny', 'joestar');
+const user = new User("johnny", "joestar");
 ```
-
-
 
 ```javascript
 const new2 = (Constructor, ...args) => {
     let instance = Object.create(Constructor.prototype);
     Constructor.call(instance, ...args);
     return instance;
-}
+};
 function User(firstname, lastname) {
     this.firstname = firstname;
-	this.lastname = lastname;
+    this.lastname = lastname;
 }
 
-const user = new2(User, 'johnny', 'joestar')
+const user = new2(User, "johnny", "joestar");
 ```
-
-
-
-
 
 ## 参考资料
 
-- [JS 的 new 到底是干什么的？](https://zhuanlan.zhihu.com/p/23987456?utm_medium=social&utm_source=wechat_session)
-
-
+-   [JS 的 new 到底是干什么的？](https://zhuanlan.zhihu.com/p/23987456?utm_medium=social&utm_source=wechat_session)

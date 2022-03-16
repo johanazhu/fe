@@ -1,10 +1,6 @@
-# Scroll组件开发
-
-
+# Scroll 组件开发
 
 better-scroll
-
-
 
 https://juejin.cn/post/6979838113715585038
 
