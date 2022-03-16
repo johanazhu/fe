@@ -1243,8 +1243,8 @@ prettier@^2.6.0:
   integrity sha512-m2FgJibYrBGGgQXNzfd0PuDGShJgRavjUoRCw1mZERIWVSXF0iLzLm+aOqTAbLnC3n6JzUhAA8uZnFVghHJ86A==
 
 prismjs@^1.25.0:
-  version "1.25.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.25.0.tgz#6f822df1bdad965734b310b315a23315cf999756"
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
 
 queue-microtask@^1.2.2:
   version "1.2.3"
