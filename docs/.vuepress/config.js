@@ -100,7 +100,7 @@ module.exports = {
             // },
             {
                 text: "Github",
-                link: "https://github.com/johanazhu",
+                link: "https://github.com/johanazhu/fe",
             },
         ],
         sidebar: {
@@ -152,6 +152,25 @@ module.exports = {
         },
     },
     smoothScroll: true,
+    markdown: {
+        linkify: true
+    },
+    // plugins: [
+    //     '@vuepress/search',
+    //     // [
+    //     //     '@vuepress/plugin-docsearch',
+    //     //     {
+    //     //         apiKey: '3f380ab4ce077e42f47b8ccd34e94a65',
+    //     //         indexName: 'shengxinjing',
+    //     //         searchParameters: {
+    //     //             facetFilters: ['tags:v2'],
+    //     //         },
+    //     //         locales: {
+    //     //             placeholder: "搜索文档"
+    //     //         },
+    //     //     },
+    //     // ],
+    // ],
     // typora 中使用图片资源转译成乱码
     // markdown: {
     //     // ......
