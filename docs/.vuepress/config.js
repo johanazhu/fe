@@ -15,6 +15,8 @@ const csBasicSideBar = require("./sibeBar/csBasicSideBar");
 const AboutSideBar = require("./sibeBar/AboutSideBar");
 const FrontEndSideBar = require("./sibeBar/FrontEndSideBar");
 const EngineeredSideBar = require("./sibeBar/EngineeredSideBar");
+const ReadSideBar = require("./sibeBar/ReadSideBar");
+const InterviewSideBar = require("./sibeBar/InterviewSideBar");
 
 module.exports = {
     title: "五年前端三年面试",
@@ -80,6 +82,7 @@ module.exports = {
             { text: "Introduction", link: "/Introduction/" },
             { text: "JavaScript", link: "/JavaScript/" },
             { text: "React", link: "/React/" },
+            { text: "Interview", link: "/Interview/" },
             // { text: "Node", link: "/Node/" },
             // {
             //     text: "More",
@@ -123,7 +126,7 @@ module.exports = {
             "/ReactNative": bigFrondSideBar(),
             "/WeChat": bigFrondSideBar(),
             "/MiniApp": bigFrondSideBar(),
-            "/MicroFrontend": bigFrondSideBar(),
+            "/Interview": InterviewSideBar(),
             "/HTML": frontEndBasicSideBar(),
             "/CSS": frontEndBasicSideBar(),
             "/Jquery": frontEndBasicSideBar(),
@@ -137,6 +140,7 @@ module.exports = {
             "/StandardGuide": EngineeredSideBar(),
             "/DesignPattern": designPatternSideBar(),
             "/CSBasic": csBasicSideBar(),
+            "/Read": ReadSideBar(),
             "/About": AboutSideBar(),
             "/Others": AboutSideBar(),
             "/Introduction": FrontEndSideBar(),

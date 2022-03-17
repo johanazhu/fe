@@ -22,7 +22,7 @@ function BrowserSideBar() {
                 "/Browser/事件冒泡.md",
                 "/Browser/事件Api.md",
                 "/Browser/跨域.md",
-                "/Browser/前端性能优化.md",
+                // "/Browser/前端性能优化.md",
                 "/Browser/localStorage.md",
             ],
         },

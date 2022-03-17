@@ -5,6 +5,7 @@ function designPatternSideBar() {
             collapsable: false,
             sidebarDepth: 0,
             children: [
+                "/DesignPattern/",
                 "/DesignPattern/发布订阅模式.md",
                 "/DesignPattern/观察者模式.md",
                 "/DesignPattern/单例模式.md",

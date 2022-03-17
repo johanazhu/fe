@@ -69,56 +69,51 @@ function FrontEndSideBar() {
             ],
         },
         {
-            text: "Docker",
-            link: "/Docker/",
+            text: "性能优化",
+            link: "/Performance/",
         },
         {
-            text: "Git",
-            link: "/Git/",
+            text: "面试真题",
+            link: "/Interview/",
         },
         {
-            text: "Linux",
-            link: "/Linux/",
+            text: "运维部署",
+            children: [
+                "/Docker/",
+                "/Git/",
+                "/Linux/",
+                "/DevOps/",
+            ],
         },
         {
-            text: "DevOps",
-            link: "/DevOps/",
+            text: "计算机基础打底",
+            children: [
+                "/CSBasic/",
+                "/DesignPattern/",
+            ],
         },
         {
-            text: "计算机基础",
-            link: "/CSBasic/",
+            text: "前端基础三件套",
+            children: [
+                "/HTML/",
+                "/CSS/",
+                "/Jquery/",
+            ],
         },
         {
-            text: "设计模式",
-            link: "/DesignPattern/",
+            text: "源码读书课程",
+            children: [
+                "/Read/code/",
+                "/Read/book/",
+                "/Read/course/",
+            ],
         },
         {
-            text: "HTML",
-            link: "/HTML/",
-        },
-        {
-            text: "CSS",
-            link: "/CSS/",
-        },
-        {
-            text: "JQuery",
-            link: "/Jquery/",
-        },
-        {
-            text: "读书目录",
-            link: "/Read/book/",
-        },
-        {
-            text: "源码目录",
-            link: "/Read/code/",
-        },
-        {
-            text: "软实力",
-            link: "/Others/",
-        },
-        {
-            text: "关于我",
-            link: "/About/",
+            text: "其他",
+            children: [
+                "/Others/",
+                "/About/",
+            ],
         },
     ];
 }
