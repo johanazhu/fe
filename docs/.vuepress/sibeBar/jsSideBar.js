@@ -30,6 +30,7 @@ function jsSideBar() {
                 "/JavaScript/闭包.md",
                 "/JavaScript/原型.md",
                 "/JavaScript/原型与原型链.md",
+                "/JavaScript/new改变了对象.md",
                 "/JavaScript/Function&Object鸡蛋问题.md",
                 "/JavaScript/构造函数、原型、实例、类.md",
                 "/JavaScript/继承.md",
