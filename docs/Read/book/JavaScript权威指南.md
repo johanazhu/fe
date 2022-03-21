@@ -71,13 +71,13 @@ var empty = {}; // 没有任何属性的对象
 var point = { x: 0, y: 0 }; // 两个属性
 var point = { x: point.x, y: point.y + 1 }; // 更复杂的值
 var book = {
-    "main title": "JavaScript", // 属性名字里有空格，必须用字符串表示
-    "sub-title": "The Definitive Guide", // 属性名字里有连字符，必须用字符串表示
-    for: "all audiences", // “for”是保留字，因此必须用引号
+    'main title': 'JavaScript', // 属性名字里有空格，必须用字符串表示
+    'sub-title': 'The Definitive Guide', // 属性名字里有连字符，必须用字符串表示
+    for: 'all audiences', // “for”是保留字，因此必须用引号
     author: {
         // 这个属性的值是一个对象
-        firstname: "johnny", // 注意，这里的属性名都没有引号
-        surname: "joestar",
+        firstname: 'johnny', // 注意，这里的属性名都没有引号
+        surname: 'joestar',
     },
 };
 ```
@@ -87,7 +87,7 @@ new 运算符创建并初始化一个新对象。关键字 new 后跟随一个�
 ```javascript
 var a = new Array(); // 创建一个空数组，和[]一样
 var d = new Date(); // 创建一个表示当前时间的Date对象
-var r = new RegExp("js"); // 创建一个可以进行模式匹配的RegExp对象
+var r = new RegExp('js'); // 创建一个可以进行模式匹配的RegExp对象
 ```
 
 每一个 JavaScript 对象(null 除外)都和另一个对象相关联。“另一个”对象就是我们熟知的原型，每一个对象都从原型继承属性。
@@ -124,7 +124,7 @@ function inherit(p) {
         // 如果Object.create()存在
         return Object.create(p); // 直接使用它
     var t = typeof p; // 否则进行进一步检测
-    if (t !== "object" && t !== "function") throw TypeError();
+    if (t !== 'object' && t !== 'function') throw TypeError();
     function f() {} // 定义一个空构造函数
     f.prototype = p; // 将其原型属性设置为p
     return new f(); // 使用f()创建p的继承对象
@@ -135,8 +135,8 @@ function inherit(p) {
 
 ```javascript
 function classof(o) {
-    if (o === null) return "Null";
-    if (o === undefined) return "Undefined";
+    if (o === null) return 'Null';
+    if (o === undefined) return 'Undefined';
     return Object.prototype.toString.call(o).slice(8, -1);
 }
 ```
@@ -154,10 +154,10 @@ join()：将数组中所有元素都转化为字符串并连接在一起，返�
 ```javascript
 var a = [1, 2, 3];
 a.join(); // 1,2,3
-a.join(" "); // 1 2 3
-a.join(""); // 123
+a.join(' '); // 1 2 3
+a.join(''); // 123
 var b = new Array(10);
-b.join("-"); // ------------
+b.join('-'); // ------------
 ```
 
 reverse()：将数组中的元素颠倒顺序，返回逆序的数组
@@ -213,7 +213,7 @@ a.splice(1, 1); // 返回[4] a [1]
 
 ```javascript
 var a = [1, 2, 3, 4, 5];
-a.splice(2, 0, "a", "b"); //返回[] a [1, 2, 'a', 'b', 3, 4, 5]
+a.splice(2, 0, 'a', 'b'); //返回[] a [1, 2, 'a', 'b', 3, 4, 5]
 a.splice(2, 2, [1, 2], 3); //返回['a', 'b'] a [1, 2, [1, 2], 3, 3, 4, 5]
 ```
 

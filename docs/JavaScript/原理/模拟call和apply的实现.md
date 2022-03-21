@@ -103,7 +103,7 @@ function bar(name, age) {
     console.log(this.value);
 }
 
-bar.call(foo, "johan", 22);
+bar.call(foo, 'johan', 22);
 // johan
 // 22
 // 1
@@ -126,7 +126,7 @@ bar.call(foo, "johan", 22);
 // 因为 arguments 是类数组对象，所以可以用 for 循环
 var args = [];
 for (var i = 1, len = arguments.length; i < len; i++) {
-    args.push("arguments[" + i + "]");
+    args.push('arguments[' + i + ']');
 }
 // 执行后 args 为 ["arguments[1]", "arguments[2]", "arguments[3]"]
 ```
@@ -135,14 +135,14 @@ for (var i = 1, len = arguments.length; i < len; i++) {
 
 ```javascript
 // 将数组里的元素作为多个参数放进函数的形参里
-context.fn(args.join(","));
+context.fn(args.join(','));
 // 但这个方法肯定不行
 ```
 
 也许有人想到用 ES6 的方法，不过 call 是 ES3 的方法，我们要为了模拟实现 ES3 的方法，要用到 ES6 的方法，好像......，可以是可以，但这次我们用 eval 方法拼成一个函数，类似于这样：
 
 ```javascript
-eval("context.fn(" + args + ")");
+eval('context.fn(' + args + ')');
 ```
 
 这里的 args 会自动调用 Array.toString() 方法
@@ -154,9 +154,9 @@ Function.prototype.mycall2 = function (context) {
     context.fn = this;
     var args = [];
     for (var i = 0, len = arguments.length; i < len; i++) {
-        args.push("arguments[" + i + "]");
+        args.push('arguments[' + i + ']');
     }
-    eval("context.fn(" + args + ")");
+    eval('context.fn(' + args + ')');
     delete context.fn;
 };
 
@@ -171,7 +171,7 @@ function bar(name, age) {
     console.log(this.value);
 }
 
-bar.mycall2(foo, "elaine", 22);
+bar.mycall2(foo, 'elaine', 22);
 // elaine
 // 22
 // 2
@@ -216,7 +216,7 @@ function bar(name, age) {
     };
 }
 
-console.log(bar.call(foo, "johan", 22));
+console.log(bar.call(foo, 'johan', 22));
 // {
 //		value: 1,
 // 		name: 'johan',
@@ -233,10 +233,10 @@ Function.prototype.mycall3 = function (context) {
 
     var args = [];
     for (var i = 0, len = arguments.length; i < len; i++) {
-        args.push("arguments[" + i + "]");
+        args.push('arguments[' + i + ']');
     }
 
-    var result = eval("context.fn(" + args + ")"); // eval 不能用双引号
+    var result = eval('context.fn(' + args + ')'); // eval 不能用双引号
 
     delete context.fn;
     return result;
@@ -256,7 +256,7 @@ function bar(name, age) {
     };
 }
 bar.mycall3(null);
-console.log(bar.mycall3(foo, "johan", 22));
+console.log(bar.mycall3(foo, 'johan', 22));
 // {
 //		value: 3,
 // 		name: 'johan',
@@ -297,9 +297,9 @@ Function.prototype.myApply = function (context, arr) {
     } else {
         var args = [];
         for (var i = 0, len = arr.length; i < len; i++) {
-            args.push("arr[" + i + "]");
+            args.push('arr[' + i + ']');
         }
-        result = eval("context.fn(" + args + ")");
+        result = eval('context.fn(' + args + ')');
     }
 
     delete context.fn;

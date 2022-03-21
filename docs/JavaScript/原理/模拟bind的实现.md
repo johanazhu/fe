@@ -75,7 +75,7 @@ function bar(name, age) {
     console.log(age);
 }
 
-var bindFoo = bar.bind(foo, "elaine");
+var bindFoo = bar.bind(foo, 'elaine');
 
 bindFoo(22);
 // 1
@@ -126,15 +126,15 @@ var foo = {
 };
 
 function bar(name, age) {
-    this.habit = "shopping";
+    this.habit = 'shopping';
     console.log(this.value);
     console.log(this.name);
     console.log(this.age);
 }
 
-bar.prototype.friend = "johan";
+bar.prototype.friend = 'johan';
 
-var bindFoo = bar.bind(foo, "elaine");
+var bindFoo = bar.bind(foo, 'elaine');
 
 var obj = new bindFoo(18);
 // undefined
@@ -161,7 +161,7 @@ Function.prototype.bind2 = function (context) {
         // 当作为普通函数时，this 指向 window，此时结果为 false，将绑定函数的 this 指向 context
         return self.apply(
             this instanceof fBound ? this : context,
-            args.concat(bindArgs)
+            args.concat(bindArgs),
         );
     };
     // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
@@ -198,7 +198,7 @@ Function.prototype.bind2 = function (context) {
         var bindArgs = Array.prototype.slice.call(arguments);
         return self.apply(
             this instanceof fNOP ? this : context,
-            args.concat(bindArgs)
+            args.concat(bindArgs),
         );
     };
 
@@ -219,7 +219,7 @@ Function.prototype.bind2 = function (context) {
         var bindArgs = Array.prototype.slice.call(arguments);
         return self.apply(
             this instanceof fBound ? this : context,
-            args.concat(bindArgs)
+            args.concat(bindArgs),
         );
     };
     fBound.prototype = JSON.parse(JSON.stringify(this.prototype)); // 使用最简单的深拷贝
@@ -232,9 +232,9 @@ Function.prototype.bind2 = function (context) {
 不行，我们要报错！
 
 ```javascript
-if (typeof this !== "function") {
+if (typeof this !== 'function') {
     throw new Error(
-        "Function.prototype.bind - what is trying to be bound is not callable"
+        'Function.prototype.bind - what is trying to be bound is not callable',
     );
 }
 ```
@@ -243,9 +243,9 @@ if (typeof this !== "function") {
 
 ```javascript
 Function.prototype.bind2 = function (context) {
-    if (typeof this !== "function") {
+    if (typeof this !== 'function') {
         throw new Error(
-            "Function.prototype.bind - what is trying to be bound is not callable"
+            'Function.prototype.bind - what is trying to be bound is not callable',
         );
     }
 
@@ -259,7 +259,7 @@ Function.prototype.bind2 = function (context) {
         var bindArgs = Array.prototype.slice.call(arguments);
         return self.apply(
             this instanceof fNOP ? this : context,
-            args.concat(bindArgs)
+            args.concat(bindArgs),
         );
     };
     fNOP.prototype = this.prototype;
@@ -281,7 +281,7 @@ PS: 因为拷贝那个比较简单，所以我们用空函数进行中装为例
 Function.prototype.myBind = function (context, ...args1) {
     if (this === Function.prototype) {
         throw new TypeError(
-            "Function.prototype.bind - what is trying to be bound is not callable"
+            'Function.prototype.bind - what is trying to be bound is not callable',
         );
     }
     const _this = this;
@@ -303,15 +303,15 @@ var foo = {
 };
 
 function bar(name, age) {
-    this.habit = "shopping";
+    this.habit = 'shopping';
     console.log(this.value);
     console.log(this.name);
     console.log(this.age);
 }
 
-bar.prototype.friend = "johan";
+bar.prototype.friend = 'johan';
 
-var bindFoo = bar.myBind(foo, "elaine");
+var bindFoo = bar.myBind(foo, 'elaine');
 
 var obj = new bindFoo(18);
 // undefined

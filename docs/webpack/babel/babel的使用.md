@@ -31,7 +31,7 @@ ps:某些浏览器没有 isArray api，polyfill 用浏览器能识别的方法�
 ```javascript
 Array.isArray = function (arg) {
     var toString = {}.toString;
-    return toString.call(arg).slice(8, -1) == "Array";
+    return toString.call(arg).slice(8, -1) == 'Array';
 };
 ```
 

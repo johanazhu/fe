@@ -13,15 +13,15 @@
         console.log(index);
     }}
     list={[
-        { id: "1", title: "理财产品" },
-        { id: "2", title: "我的资产" },
+        { id: '1', title: '理财产品' },
+        { id: '2', title: '我的资产' },
     ]}
 />
 ```
 
 ```jsx
 <TabBar activeIndex={active}>
-    <TabBar.Item icon="back" onClick={() => console.log("aa")}>
+    <TabBar.Item icon="back" onClick={() => console.log('aa')}>
         标签1
     </TabBar.Item>
     <TabBar.Item icon="setting">标签2</TabBar.Item>

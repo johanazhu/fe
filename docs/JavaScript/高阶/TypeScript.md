@@ -55,7 +55,7 @@ tsc hello.ts
 function sayHello(person: string) {
     return `Hello ${person}`;
 }
-let user = "To,";
+let user = 'To,';
 console.log(sayHello(user));
 ```
 

@@ -12,6 +12,6 @@ jquery
 
 ## 参考资料
 
-- [github 上有哪些值得读源码的 react 项目?](https://www.zhihu.com/question/286834630/answer/453846426?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128&utm_content=group3_Answer&utm_campaign=shareopn)
+-   [github 上有哪些值得读源码的 react 项目?](https://www.zhihu.com/question/286834630/answer/453846426?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128&utm_content=group3_Answer&utm_campaign=shareopn)
 
-- [GitHub 上有什么好玩又有挑战的前端项目？](https://www.zhihu.com/question/30470886/answer/1236822414)
+-   [GitHub 上有什么好玩又有挑战的前端项目？](https://www.zhihu.com/question/30470886/answer/1236822414)

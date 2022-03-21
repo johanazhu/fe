@@ -96,12 +96,12 @@ const createElement = (type, props = {}, ...children) => {
 ES6 的 class 转换为 ES5 中的 prototype 具体代表着什么
 
 ```javascript
-const name = "johan";
+const name = 'johan';
 const obj1 = {
     sayhello: function () {
-        console.log("sayhello");
+        console.log('sayhello');
     },
-    verson: "v1",
+    verson: 'v1',
 };
 
 class A {
@@ -110,7 +110,7 @@ class A {
         this.obj1 = obj1;
     }
     sayA() {
-        console.log("sayA");
+        console.log('sayA');
     }
 }
 const a = new A();
@@ -125,12 +125,12 @@ new 的意思就是实例化，实例化代表
 可以看出，sayA 方法是公共方法，而
 
 ```javascript
-const name = "johan";
+const name = 'johan';
 function A() {
     this.name = name;
 }
 A.prototype.sayA = function () {
-    console.log("sayA");
+    console.log('sayA');
 };
 ```
 

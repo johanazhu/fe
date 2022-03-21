@@ -1,46 +1,46 @@
-const jsSideBar = require("./sibeBar/jsSideBar");
-const reactSideBar = require("./sibeBar/reactSideBar");
-const bigFrondSideBar = require("./sibeBar/bigFrondSideBar");
-const ArmorySideBar = require("./sibeBar/ArmorySideBar");
-const HttpSideBar = require("./sibeBar/HttpSideBar");
-const DockerSideBar = require("./sibeBar/DockerSideBar");
-const frontEndBasicSideBar = require("./sibeBar/frontEndBasicSideBar");
-const webpackSideBar = require("./sibeBar/webpackSideBar");
-const nodeSideBar = require("./sibeBar/nodeSideBar");
-const ES6SideBar = require("./sibeBar/ES6SideBar");
-const BrowserSideBar = require("./sibeBar/BrowserSideBar");
-const PerformanceSideBar = require("./sibeBar/PerformanceSideBar");
-const designPatternSideBar = require("./sibeBar/designPatternSideBar");
-const csBasicSideBar = require("./sibeBar/csBasicSideBar");
-const AboutSideBar = require("./sibeBar/AboutSideBar");
-const FrontEndSideBar = require("./sibeBar/FrontEndSideBar");
-const EngineeredSideBar = require("./sibeBar/EngineeredSideBar");
-const ReadSideBar = require("./sibeBar/ReadSideBar");
-const InterviewSideBar = require("./sibeBar/InterviewSideBar");
+const jsSideBar = require('./sibeBar/jsSideBar');
+const reactSideBar = require('./sibeBar/reactSideBar');
+const bigFrondSideBar = require('./sibeBar/bigFrondSideBar');
+const ArmorySideBar = require('./sibeBar/ArmorySideBar');
+const HttpSideBar = require('./sibeBar/HttpSideBar');
+const DockerSideBar = require('./sibeBar/DockerSideBar');
+const frontEndBasicSideBar = require('./sibeBar/frontEndBasicSideBar');
+const webpackSideBar = require('./sibeBar/webpackSideBar');
+const nodeSideBar = require('./sibeBar/nodeSideBar');
+const ES6SideBar = require('./sibeBar/ES6SideBar');
+const BrowserSideBar = require('./sibeBar/BrowserSideBar');
+const PerformanceSideBar = require('./sibeBar/PerformanceSideBar');
+const designPatternSideBar = require('./sibeBar/designPatternSideBar');
+const csBasicSideBar = require('./sibeBar/csBasicSideBar');
+const AboutSideBar = require('./sibeBar/AboutSideBar');
+const FrontEndSideBar = require('./sibeBar/FrontEndSideBar');
+const EngineeredSideBar = require('./sibeBar/EngineeredSideBar');
+const ReadSideBar = require('./sibeBar/ReadSideBar');
+const InterviewSideBar = require('./sibeBar/InterviewSideBar');
 
 module.exports = {
-    title: "五年前端三年面试",
+    title: '五年前端三年面试',
     keywords:
-        "Jahan johnnyjoestar azhubaby js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端",
+        'Jahan johnnyjoestar azhubaby js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端',
     // 网页描述
-    description: "前端知识地图",
+    description: '前端知识地图',
     head: [
         // icon
-        ["link", { rel: "icon", href: "/favicon.ico" }],
+        ['link', { rel: 'icon', href: '/favicon.ico' }],
         // meta
-        ["meta", { name: "robots", content: "all" }],
-        ["meta", { name: "author", content: "johan" }],
+        ['meta', { name: 'robots', content: 'all' }],
+        ['meta', { name: 'author', content: 'johan' }],
         [
-            "meta",
+            'meta',
             {
-                name: "keywords",
+                name: 'keywords',
                 content:
-                    "jahan johnnyjoestar azhubaby js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端",
+                    'jahan johnnyjoestar azhubaby js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端',
             },
         ],
-        ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
+        ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         [
-            "script",
+            'script',
             {},
             `
         var _hmt = _hmt || [];
@@ -61,7 +61,7 @@ module.exports = {
     },
 
     // 主题和它的配置
-    theme: "@vuepress/theme-default",
+    theme: '@vuepress/theme-default',
     themeConfig: {
         // logo:"/logo.png",
         // contributors:false,
@@ -73,16 +73,16 @@ module.exports = {
         // docsBranch:"main",
         // docsDir:"docs",
         // 最后更新时间
-        lastUpdated: "最后更新时间",
+        lastUpdated: '最后更新时间',
         // 仓库链接label
-        repoLabel: "Github",
+        repoLabel: 'Github',
         sidebarDepth: 0,
         // 导航
         navbar: [
-            { text: "Introduction", link: "/Introduction/" },
-            { text: "JavaScript", link: "/JavaScript/" },
-            { text: "React", link: "/React/" },
-            { text: "Interview", link: "/Interview/" },
+            { text: 'Introduction', link: '/Introduction/' },
+            { text: 'JavaScript', link: '/JavaScript/' },
+            { text: 'React', link: '/React/' },
+            { text: 'Interview', link: '/Interview/' },
             // { text: "Node", link: "/Node/" },
             // {
             //     text: "More",
@@ -102,62 +102,62 @@ module.exports = {
             //     ],
             // },
             {
-                text: "Github",
-                link: "https://github.com/johanazhu/fe",
+                text: 'Github',
+                link: 'https://github.com/johanazhu/fe',
             },
         ],
         sidebar: {
-            "/JavaScript": jsSideBar(),
-            "/ES6": ES6SideBar(),
-            "/Browser": BrowserSideBar(),
-            "/Performance": PerformanceSideBar(),
-            "/React": reactSideBar(),
-            "/Node": nodeSideBar(),
-            "/Koa2": nodeSideBar(),
-            "/Express": nodeSideBar(),
-            "/PM2": nodeSideBar(),
-            "/MongoDB": nodeSideBar(),
-            "/Mysql": nodeSideBar(),
-            "/Redis": nodeSideBar(),
-            "/GO": nodeSideBar(),
-            "/webpack": webpackSideBar(),
-            "/WebApp": bigFrondSideBar(),
-            "/Flutter": bigFrondSideBar(),
-            "/ReactNative": bigFrondSideBar(),
-            "/WeChat": bigFrondSideBar(),
-            "/MiniApp": bigFrondSideBar(),
-            "/Interview": InterviewSideBar(),
-            "/HTML": frontEndBasicSideBar(),
-            "/CSS": frontEndBasicSideBar(),
-            "/Jquery": frontEndBasicSideBar(),
-            "/HTTP": HttpSideBar(),
-            "/Docker": DockerSideBar(),
-            "/Git": ArmorySideBar(),
-            "/Linux": ArmorySideBar(),
-            "/DevOps": ArmorySideBar(),
-            "/Engineered": EngineeredSideBar(),
-            "/MicroFrontend": EngineeredSideBar(),
-            "/StandardGuide": EngineeredSideBar(),
-            "/DesignPattern": designPatternSideBar(),
-            "/CSBasic": csBasicSideBar(),
-            "/Read": ReadSideBar(),
-            "/About": AboutSideBar(),
-            "/Others": AboutSideBar(),
-            "/Introduction": FrontEndSideBar(),
+            '/JavaScript': jsSideBar(),
+            '/ES6': ES6SideBar(),
+            '/Browser': BrowserSideBar(),
+            '/Performance': PerformanceSideBar(),
+            '/React': reactSideBar(),
+            '/Node': nodeSideBar(),
+            '/Koa2': nodeSideBar(),
+            '/Express': nodeSideBar(),
+            '/PM2': nodeSideBar(),
+            '/MongoDB': nodeSideBar(),
+            '/Mysql': nodeSideBar(),
+            '/Redis': nodeSideBar(),
+            '/GO': nodeSideBar(),
+            '/webpack': webpackSideBar(),
+            '/WebApp': bigFrondSideBar(),
+            '/Flutter': bigFrondSideBar(),
+            '/ReactNative': bigFrondSideBar(),
+            '/WeChat': bigFrondSideBar(),
+            '/MiniApp': bigFrondSideBar(),
+            '/Interview': InterviewSideBar(),
+            '/HTML': frontEndBasicSideBar(),
+            '/CSS': frontEndBasicSideBar(),
+            '/Jquery': frontEndBasicSideBar(),
+            '/HTTP': HttpSideBar(),
+            '/Docker': DockerSideBar(),
+            '/Git': ArmorySideBar(),
+            '/Linux': ArmorySideBar(),
+            '/DevOps': ArmorySideBar(),
+            '/Engineered': EngineeredSideBar(),
+            '/MicroFrontend': EngineeredSideBar(),
+            '/StandardGuide': EngineeredSideBar(),
+            '/DesignPattern': designPatternSideBar(),
+            '/CSBasic': csBasicSideBar(),
+            '/Read': ReadSideBar(),
+            '/About': AboutSideBar(),
+            '/Others': AboutSideBar(),
+            '/Introduction': FrontEndSideBar(),
         },
     },
     configureWebpack: {
         resolve: {
             // 静态资源的别名
             alias: {
-                "@images": "./public/images",
+                '@images': './public/images',
                 // "@public": "./public",
             },
         },
     },
     smoothScroll: true,
     markdown: {
-        linkify: true
+        linkify: true,
     },
     // plugins: [
     //     '@vuepress/search',

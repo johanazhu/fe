@@ -47,7 +47,7 @@ React 的**提交阶段**也需要做两件事
 
 ```jsx
 const element = <h1 title="hello">Hello World!</h1>;
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 ReactDOM.render(element, container);
 ```
 
@@ -77,11 +77,11 @@ ReactDOM.render(element, container);
 
 ```js
 React.createElement(
-    "h1",
+    'h1',
     {
-        title: "hello",
+        title: 'hello',
     },
-    "Hello World!"
+    'Hello World!',
 );
 ```
 
@@ -126,7 +126,7 @@ export function createElement(type, config, children) {
             ref = config.ref;
         }
         if (hasValidKey(config)) {
-            key = "" + config.key;
+            key = '' + config.key;
         }
 
         self = config.__self === undefined ? null : config.__self;
@@ -172,7 +172,7 @@ export function createElement(type, config, children) {
         self,
         source,
         ReactCurrentOwner.current,
-        props
+        props,
     );
 }
 ```
@@ -202,11 +202,11 @@ const ReactElement = function (type, key, ref, self, source, owner, props) {
 
 ```javascript
 const element = {
-    type: "h1",
+    type: 'h1',
     props: {
-        title: "hello",
+        title: 'hello',
         // createElement 第三个及之后参数移到 props.children
-        children: "Hello World!",
+        children: 'Hello World!',
     },
 };
 ```
@@ -262,13 +262,13 @@ const element = (
 );
 // 等价转换 👇
 const element = React.createElement(
-    "div",
-    { id: "foo" },
-    React.createElement("a", null, "bar"),
-    React.createElement("b")
+    'div',
+    { id: 'foo' },
+    React.createElement('a', null, 'bar'),
+    React.createElement('b'),
 );
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 ReactDOM.render(element, container);
 ```
 
@@ -304,8 +304,8 @@ function createHostInstance(reactElement) {
 在我们的例子中，React 会这样做：
 
 ```javascript
-let domNode = document.createElement("button");
-domNode.className = "blue";
+let domNode = document.createElement('button');
+domNode.className = 'blue';
 
 domContainer.appendChild(domNode);
 ```
@@ -319,7 +319,7 @@ domContainer.appendChild(domNode);
 ```jsx
 ReactDOM.render(
     <button className="blue" />,
-    document.getElementById("container")
+    document.getElementById('container'),
 );
 
 // ... 之后 ...
@@ -328,7 +328,7 @@ ReactDOM.render(
 // 还是在已有的 button 上更新属性？
 ReactDOM.render(
     <button className="red" />,
-    document.getElementById("container")
+    document.getElementById('container'),
 );
 ```
 
@@ -337,12 +337,12 @@ ReactDOM.render(
 有两种方式可以解决。简化版的 React 会丢弃已经存在的树然后从头开始创建它
 
 ```javascript
-let domContainer = document.getElementById("container");
+let domContainer = document.getElementById('container');
 // 清除掉原来的树
-domContainer.innerHTML = "";
+domContainer.innerHTML = '';
 // 创建新的宿主实例树
-let domNode = document.createElement("button");
-domNode.className = "red";
+let domNode = document.createElement('button');
+domNode.className = 'red';
 domContainer.appendChild(domNode);
 ```
 
@@ -351,7 +351,7 @@ domContainer.appendChild(domNode);
 ```javascript
 let domNode = domContainer.firstChild;
 // 更新已有的宿主实例
-domNode.className = "red";
+domNode.className = 'red';
 ```
 
 ...
@@ -437,7 +437,7 @@ React.render(
         </h1>
         <h2 />
     </div>,
-    container
+    container,
 );
 ```
 

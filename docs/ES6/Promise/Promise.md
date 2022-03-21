@@ -37,7 +37,7 @@ Promise 引出 Event Loop
 #### JavaScript 的回调函数
 
 ```javascript
-getAsync("fileA.txt", function (error, result) {
+getAsync('fileA.txt', function (error, result) {
     if (error) {
         //  失败时的处理
         throw err;
@@ -51,7 +51,7 @@ Node.Js 的规则是在 JavaScript 的回调函数的第一个参数为 `Error` 
 #### 使用 Promise 进行异步处理
 
 ```javascript
-var promise = getAsyncPromise("fileA.txt");
+var promise = getAsyncPromise('fileA.txt');
 promise
     .then(function (result) {
         // 获取文件内容成功后的处理
@@ -66,7 +66,7 @@ promise.then(
     },
     function (error) {
         // 获取文件内容失败后的处理
-    }
+    },
 );
 ```
 
@@ -90,7 +90,7 @@ promise 是异步编程的一种解决方案，比传统的回调函数和事件
 function promise() {
     return new Promise(function (resolve, reject) {
         setTimeout(function () {
-            resolve("成功");
+            resolve('成功');
         }, 1000);
     });
 }
@@ -163,7 +163,7 @@ function fn() {
 const foo = async function () {
     const t = await fn();
     console.log(t);
-    console.log("next code");
+    console.log('next code');
 };
 
 foo();
@@ -180,7 +180,7 @@ const foo = function () {
     fn().then(function (res) {
         console.log(res);
     });
-    console.log("next code");
+    console.log('next code');
 };
 // 输出结果
 // 1s 之后依次输出

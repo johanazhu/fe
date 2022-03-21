@@ -18,7 +18,7 @@
 
 ```javascript
 let bar = {
-    myName: "johan",
+    myName: 'johan',
 };
 function foo() {
     console.log(this.myName);
@@ -35,15 +35,15 @@ foo.call(bar); // johan
 ```javascript
 Function.prototype.johanCall = function (context = window, ...params) {
     // 判断是函数才能调用call方法
-    if (typeof this !== "function") {
-        return new TypeError("类型错误");
+    if (typeof this !== 'function') {
+        return new TypeError('类型错误');
     }
     // 将this也就是被调用的函数，通过赋值给传入的对象，来达到将被调用的函数添加到传入的对象上的目的
     context.fun = this;
     // 用传入的对象来调用需要被调用的函数，并保留返回结果
     const result = context.fun(...params);
     // 删除传入对象上被添加的函数，防止内存泄漏
-    Reflect.deleteProperty(context, "fun");
+    Reflect.deleteProperty(context, 'fun');
     // 返回结果
     return result;
 };
@@ -110,15 +110,15 @@ foo.apply(obj, param1, param2,...,paramN) // 参数非数组，传入一串参�
 ```javascript
 Function.prototype.johanApply = function (context = window, params = []) {
     // 判断是函数才能调用apply方法
-    if (typeof this !== "function") {
-        return new TypeError("类型错误");
+    if (typeof this !== 'function') {
+        return new TypeError('类型错误');
     }
     // 将this也就是被调用的函数，通过赋值给传入的对象，来达到将被调用的函数添加到传入的对象上的目的
     context.fun = this;
     // 用传入的对象来调用需要被调用的函数，并保留返回结果
     const result = context.fun(...params);
     // 删除传入对象上被添加的函数，防止内存泄漏
-    Reflect.deleteProperty(context, "fun");
+    Reflect.deleteProperty(context, 'fun');
     // 返回结果
     return result;
 };

@@ -215,7 +215,7 @@ docker run -d --name koa_server_container -p 3011:3010  johanbo/koa_server:v1.0.
 
 ```javascript
 app.use(async (ctx) => {
-    ctx.body = "hello, docker, jenkins";
+    ctx.body = 'hello, docker, jenkins';
 });
 ```
 

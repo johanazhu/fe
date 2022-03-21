@@ -27,7 +27,7 @@ var Person = function (living, age, gender) {
     };
 };
 // 实例化 Person 对象，并将它保存到 johan 变量
-var johan = new Person(true, 26, "male");
+var johan = new Person(true, 26, 'male');
 console.log(johan);
 ```
 
@@ -67,26 +67,26 @@ JavaScript 包含 9 个原生（或内置）对象构造函数。
 
 ```javascript
 // 使用原始值的时候，不会创建对象，注意没有使用 new 关键字
-var primitiveString1 = "foo";
-var primitiveString2 = String("foo");
+var primitiveString1 = 'foo';
+var primitiveString2 = String('foo');
 var primitiveNumber1 = 10;
-var primitiveNumber2 = Number("10");
+var primitiveNumber2 = Number('10');
 var primitiveBoolean1 = true;
-var primitiveBoolean2 = Boolean("true");
+var primitiveBoolean2 = Boolean('true');
 console.log(typeof primitiveString1, typeof primitiveString2); // 输出 'string, string'
 console.log(typeof primitiveNumber1, typeof primitiveNumber2); // 输出 'number, number'
 console.log(typeof primitiveBoolean1, typeof primitiveBoolean2); // 输出 'boolean,boolean'
 
 // 对比创建对象的构造函数和 new 关键字用法
 var myNumber = new Number(23);
-var myString = new String("male");
+var myString = new String('male');
 var myBoolean = new Boolean(false);
 var myObject = new Object();
-var myArray = new Array("foo", "bar");
-var myFunction = new Function("x", "y", "return x * y");
+var myArray = new Array('foo', 'bar');
+var myFunction = new Function('x', 'y', 'return x * y');
 var myDate = new Date();
-var myRegExp = new RegExp("\\bt[a-z]+\\b");
-var myError = new Error("Johan!");
+var myRegExp = new RegExp('\\bt[a-z]+\\b');
+var myError = new Error('Johan!');
 console.log(
     typeof myNumber, // obejct
     typeof myString, // obejct
@@ -96,7 +96,7 @@ console.log(
     typeof myFunction, // function
     typeof myDate, // object
     typeof myRegExp, // function
-    typeof myError // object
+    typeof myError, // object
 );
 ```
 
@@ -105,7 +105,7 @@ console.log(
 ### 1.9 如何存储和复制原始值
 
 ```javascript
-var myString = "foo";
+var myString = 'foo';
 var myStringCopy = myString;
 var myString = null;
 console.log(myString, myStringCopy); // 输出 'null foo'
@@ -127,15 +127,15 @@ console.log(myString, myStringCopy); // 输出 'null foo'
 
 ```javascript
 var object = {
-    myString: "string",
+    myString: 'string',
     myNumber: 10,
     myBoolean: false,
     myNull: null,
     myUndefined: undefined,
 };
-var array = ["string", 10, false, null, undefined];
+var array = ['string', 10, false, null, undefined];
 // 相比简单的原始值，原始值不能表示复杂值，而复杂值可以封装任意 JavaScript 值
-var myString = "string";
+var myString = 'string';
 var myNumber = 10;
 var myBoolean = false;
 var myNull = null;
@@ -163,13 +163,13 @@ var myUndefined = undefined;
 复杂对象只有在引用想听的对象(即有相同的地址)时才相等。包括相同对象的两个变量彼此不相等，因为它们并不指向同一个对象。
 
 ```javascript
-var objectFoo = { same: "same" };
-var objectBar = { same: "same" };
+var objectFoo = { same: 'same' };
+var objectBar = { same: 'same' };
 // 输出 fasle， JS并不关注它们的类型是否相同
 console.log(objectFoo === objectBar);
 
 // 复杂对象如何相等，引用同一个对象
-var objectA = { foo: "bar" };
+var objectA = { foo: 'bar' };
 var objectB = objectA;
 console.log(objectA === objectB);
 ```
@@ -201,7 +201,7 @@ console.log(foo.constructor); // 指向 Object() 构造函数
 
 // 自定义 构造函数
 function CustomConstructor() {
-    return "Wow!";
+    return 'Wow!';
 }
 var instanceOfCustructor = new CustomConstructor();
 console.log(instanceOfCustructor.constructor === CustomConstructor); // true
@@ -214,7 +214,7 @@ console.log(instanceOfCustructor.constructor); // function CustomConstructor() {
 
 ```javascript
 function CustomConstructor() {
-    this.foo = "bar";
+    this.foo = 'bar';
 }
 var instanceOfConstructor = new CustomConstructor();
 console.log(instanceOfConstructor instanceof CustomConstructor); //true
@@ -280,7 +280,7 @@ Object() 对象实例拥有以下属性和方法
 注意： 原型链以 Object.prototype 结尾（指向 null），因此，Object() 的所有属性和方法（如上所示）被所有的 JavaScript 对象继承。
 
 ```javascript
-var str1 = "hanbo";
+var str1 = 'hanbo';
 console.log(str1.toString());
 var num1 = 11;
 console.log(num1.toString());
@@ -290,8 +290,8 @@ console.log(num1.toString());
 #### 3.6 所有对象都继承自 Object.prototype
 
 ```javascript
-Object.prototype.foo = "foo";
-var myString = "bar";
+Object.prototype.foo = 'foo';
+var myString = 'bar';
 var myNumber = 11;
 console.log(myString.foo); // 输出 'foo' 通过原型链在 Object.prototype.foo 上找到
 consolelog(myNumber.foo); // 同上
@@ -334,7 +334,7 @@ function sayHi(f) {
     f();
 }
 sayHi(function () {
-    console.log("hi");
+    console.log('hi');
 });
 ```
 
@@ -346,7 +346,7 @@ sayHi(function () {
 
 ```javascript
 var sayWord = (function () {
-    console.log("hello, word");
+    console.log('hello, word');
 })();
 ```
 
@@ -379,7 +379,7 @@ function sayHi() {copnsole.log('hi'); }()
 var speak = (function () {
     sayYo();
     function sayYo() {
-        console.log("Yo");
+        console.log('Yo');
     }
 })();
 
@@ -407,7 +407,7 @@ this 对其函数的作用域时可见的，而且它是函数属性/方法所�
 
 ```javascript
 var myObject = {
-    myProperty: "I can see the light",
+    myProperty: 'I can see the light',
     myMethod: function () {
         var that = this; // myMethod 作用域中，保存 this 引用(that 即 myObject)
         var helperFunction = (function () {
@@ -427,8 +427,8 @@ var myFunction = function (param1, param2) {
     this.bar = param2;
     console.log(this);
 };
-myFuntion.call(myObject, "foo", "bar");
-myFunction.apply(myObject, ["foo", "bar"]);
+myFuntion.call(myObject, 'foo', 'bar');
+myFunction.apply(myObject, ['foo', 'bar']);
 ```
 
 ## 第七章 作用域和闭包
@@ -458,7 +458,7 @@ var myFunction = (function () {
 #### 7.2 作用域链（词法作用域）
 
 ```javascript
-var sayHiText = "howdy";
+var sayHiText = 'howdy';
 var func1 = (function () {
     var func2 = (function () {
         console.log(sayHiText); // func2 作用域，但在全局作用域中查找到了 sayHiText
@@ -482,7 +482,7 @@ var func1 = (function () {
 
 ```javascript
 var parentFunction = function () {
-    var foo = "foo";
+    var foo = 'foo';
     return function () {
         // 返回匿名函数
         console.log(foo); // 输出 ‘foo'
@@ -501,7 +501,7 @@ nestedFunction(); // 输出 foo，因为返回的函数可以通过作用域链�
 
 ```javascript
 var parentFunction = function () {
-    var foo = "foo";
+    var foo = 'foo';
     return function () {
         console.log(foo);
     };

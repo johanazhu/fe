@@ -29,10 +29,10 @@ setState 的过程
 **在定义 React 组件或者书写 React 相关代码，不管代码中有没有用到 React 这个对象，我们都必须将其 import 进来，这是为什么？**
 
 ```javascript
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
 ```
 
 因为 React 将 App 解析成 vnode
@@ -125,9 +125,9 @@ const test = (
 
 ```javascript
 function createElement(type, props, ...children) {
-    console.log("type", type);
-    console.log("props", props);
-    console.log("children", children);
+    console.log('type', type);
+    console.log('props', props);
+    console.log('children', children);
 }
 // 源码中，是会输出 $$typeof,key,ref,props,children,_owner,_self,_source 等等
 ```

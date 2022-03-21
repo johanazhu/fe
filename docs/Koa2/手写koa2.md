@@ -9,37 +9,37 @@
 之前阅读 Koa2 的源码得知， Koa 的服务应用是基于 Node 原生的 HTTP 模块，对其进行封装形成的，我们先用原生 Node 实现 HTTP 服务
 
 ```javascript
-const http = require("http");
+const http = require('http');
 
 const server = http.createServer((req, res) => {
     res.writeHead(200);
-    res.end("hello world");
+    res.end('hello world');
 });
 
 server.listen(3000, () => {
-    console.log("监听3000端口");
+    console.log('监听3000端口');
 });
 ```
 
 再看看用 Koa2 实现 HTTP 服务
 
 ```javascript
-const Koa = require("Koa");
+const Koa = require('Koa');
 const app = new Koa();
 
 app.use((ctx, next) => {
-    ctx.body = "hello world";
+    ctx.body = 'hello world';
 });
 
 app.listen(3000, () => {
-    console.log("3000请求成功");
+    console.log('3000请求成功');
 });
 ```
 
 实现 Koa 的第一步，就是对 原生 HTTP 服务进行封装，我们按照 Koa 源码的结构，新建 `lib/application.js` 文件，代码如下：
 
 ```javascript
-const http = require("http");
+const http = require('http');
 
 class Application {
     constructor() {
@@ -63,17 +63,17 @@ module.exports = Application;
 我们引入手写的 Koa，并写个 demo
 
 ```javascript
-const Koa = require("./lib/application");
+const Koa = require('./lib/application');
 
 const app = new Koa();
 
 app.use((req, res) => {
     res.writeHead(200);
-    res.end("hello world");
+    res.end('hello world');
 });
 
 app.listen(3000, () => {
-    console.log("3000请求成功");
+    console.log('3000请求成功');
 });
 ```
 
@@ -87,7 +87,7 @@ request、response、context 对象分别对应 request.js、response.js、conte
 
 ```javascript
 // request
-let url = require("url");
+let url = require('url');
 module.exports = {
     get query() {
         return url.parse(this.req.url, true).query;
@@ -108,8 +108,8 @@ module.exporrs = {
         return this.res.statusCode;
     },
     set status(statusCode) {
-        if (typeof statusCode !== "number") {
-            throw new Error("statusCode must be a number");
+        if (typeof statusCode !== 'number') {
+            throw new Error('statusCode must be a number');
         }
         this.res.statusCode = statusCode;
     },
@@ -225,7 +225,7 @@ app.use(async (ctx, next) => {
 
 app.use(async (ctx, next) => {
     console.log(3);
-    ctx.body = "hello world";
+    ctx.body = 'hello world';
     console.log(4);
 });
 // 结果 123456
@@ -245,7 +245,7 @@ function compose(middleware) {
         function dispatch(i) {
             if (i <= index)
                 return Promise.reject(
-                    new Error("next() called multiple times")
+                    new Error('next() called multiple times'),
                 );
             index = i;
             let fn = middleware[i];

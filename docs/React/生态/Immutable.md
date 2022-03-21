@@ -6,8 +6,6 @@ Immutable Data 就是一旦创建，就不能再被更改的数据。对 Immutab
 
 ## 为什么要不可变
 
-
-
 JS 因为设计初衷所以，可以 XXX
 
 基础类型可以改变
@@ -18,17 +16,17 @@ JS 因为设计初衷所以，可以 XXX
 
 浅拷贝方法
 
- 对象
+对象
 
- Object.assign()
+Object.assign()
 
- 解构赋值
+解构赋值
 
- 数组
+数组
 
- slice(0)
+slice(0)
 
- a.concat(b)
+a.concat(b)
 
 引申出 JavaScript 中有哪些方法会改变原数组，哪些返回返回值
 
@@ -52,14 +50,9 @@ react 为什么不能直接修改 state？
 
 总结因为 react 的底层是 diff，所以要保持数据的不可变性，如何让数据不可变呢？基本类型直接复制，引用类型就拷贝（浅拷贝四个方法），但是嵌套对象就不好办了，这个时候就要用到 immutable 之类的库，无论是函数时写法，还是纯函数概念，react 一直在推崇，本质是数据的不可变性
 
-
-
-
-
 ## 参考资料
 
 -   [15 分钟学会 Immutable](https://mp.weixin.qq.com/s/8-xfY45DLqKDKAhvP16sUw)
 -   [不能修葺的房子](https://mp.weixin.qq.com/s/APqvWcqhT5GSYsho_-sEtA)
 -   [不可变数据结构（immutable data）](https://github.com/sunyongjian/blog/issues/33)
 -   [React 为什么不能直接修改 state?](https://www.zhihu.com/question/440916294/answer/1715903878)
-

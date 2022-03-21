@@ -8,10 +8,6 @@
 
 项目重要还是基础重要，肯定基础重要，有东西就可以做项目，但是基础的话，你不懂就是不懂
 
-我在阿里做技术面试官的一些经验
-
-https://github.com/lihongxun945/myblog/issues/40
-
 问面试官
 
 -   团队的一些技术栈和所承担的业务
@@ -19,6 +15,7 @@ https://github.com/lihongxun945/myblog/issues/40
 
 ### 反向面试
 
-技术面试最后反问面试官的话
+## 参考资料
 
-https://github.com/yifeikong/reverse-interview-zh
+-   [技术面试最后反问面试官的话](https://github.com/yifeikong/reverse-interview-zh)
+-   [我在阿里做技术面试官的一些经验](https://github.com/lihongxun945/myblog/issues/40)

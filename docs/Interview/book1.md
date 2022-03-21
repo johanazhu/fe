@@ -19,16 +19,16 @@ JavaScript 手写系列，防抖节流
 
 ```javascript
 function dobounce(func, wait, flag) {
-  let timer = null;
-  return function (...args) {
-    clearTimeout(timer);
-    if (!timer && flag) {
-      func.apply(this, args);
-    }
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, wait);
-  };
+    let timer = null;
+    return function (...args) {
+        clearTimeout(timer);
+        if (!timer && flag) {
+            func.apply(this, args);
+        }
+        timer = setTimeout(() => {
+            func.apply(this, args);
+        }, wait);
+    };
 }
 ```
 
@@ -44,13 +44,13 @@ flag 是否立即执行
 
 ```javascript
 function throttle(func, wait) {
-  let pre = 0;
-  return function (...args) {
-    if (Date.now() - pre > wait) {
-      pre = Data.now();
-      func.apply(this, args);
-    }
-  };
+    let pre = 0;
+    return function (...args) {
+        if (Date.now() - pre > wait) {
+            pre = Data.now();
+            func.apply(this, args);
+        }
+    };
 }
 ```
 
@@ -58,15 +58,15 @@ function throttle(func, wait) {
 
 ```javascript
 function throttle(func, wait) {
-  let timer = null;
-  return function (...args) {
-    if (!timer) {
-      timer = setTimeout(() => {
-        timer = null;
-        func.apply(this, args);
-      }, wait);
-    }
-  };
+    let timer = null;
+    return function (...args) {
+        if (!timer) {
+            timer = setTimeout(() => {
+                timer = null;
+                func.apply(this, args);
+            }, wait);
+        }
+    };
 }
 ```
 
@@ -74,20 +74,20 @@ function throttle(func, wait) {
 
 ```javascript
 function throttle(func, wait) {
-  let pre = 0,
-    timer = null;
-  return function (...args) {
-    if (Date.now() - pre > wait) {
-      clearTimeot(timer);
-      timer = null;
-      pre = Data.now();
-      func.apply(this, args);
-    } else if (!timer) {
-      timer = setTimeout(() => {
-        func.apply(this, args);
-      }, wait);
-    }
-  };
+    let pre = 0,
+        timer = null;
+    return function (...args) {
+        if (Date.now() - pre > wait) {
+            clearTimeot(timer);
+            timer = null;
+            pre = Data.now();
+            func.apply(this, args);
+        } else if (!timer) {
+            timer = setTimeout(() => {
+                func.apply(this, args);
+            }, wait);
+        }
+    };
 }
 ```
 
@@ -100,19 +100,19 @@ apply 手写
 
 ```javascript
 function myApply(context = window, args) {
-  if (this === Function.prototype) {
-    return undefined;
-  }
-  let fn = Symbol();
-  context[fn] = this;
-  let result;
-  if (Array.isArray(args)) {
-    result = context[fn](...args);
-  } else {
-    result = context[fn]();
-  }
-  delete context[fn];
-  return result;
+    if (this === Function.prototype) {
+        return undefined;
+    }
+    let fn = Symbol();
+    context[fn] = this;
+    let result;
+    if (Array.isArray(args)) {
+        result = context[fn](...args);
+    } else {
+        result = context[fn]();
+    }
+    delete context[fn];
+    return result;
 }
 ```
 
@@ -227,14 +227,14 @@ css 放头部、script 放尾部，使用 async
 
 ```javascript
 function add(x, y, z) {
-  return x + y + z;
+    return x + y + z;
 }
 
 const curried = (fn, ...args) => {
-  if (args.length >= fn.length) {
-    return fn(...args);
-  }
-  return (...args2) => curried(fn, ...args, ...arg2);
+    if (args.length >= fn.length) {
+        return fn(...args);
+    }
+    return (...args2) => curried(fn, ...args, ...arg2);
 };
 
 const curriedAdd = curried(add);
@@ -319,3 +319,12 @@ flex: 1 表示剩余空间有余的时候等比扩展，剩余空间不足的时
 自我介绍（show time，3 分钟展示自己的时间，把最闪亮的你展现出来）
 你知道/用过/遇到过 xx 问题么？（不仅会技术的使用，还了解技术的实现原理）
 你还有什么问题么？（你对团队的了解、好奇，对未来的个人成长有什么期待？）
+
+性能优化
+性能指标
+FP：首次渲染时间
+FCP：首次渲染内容时间（包括文字、图像）
+FMP：首次绘制有效内容时间
+TTI：应用可交互时间
+
+优化手段我归纳为 5 类：small（更小）、pre（更早）、delay（更晚）、concurrent（并发）、cache（缓存）

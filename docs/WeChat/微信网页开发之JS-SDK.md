@@ -104,8 +104,8 @@ wx.error(function (res) {
 封装为方法
 
 ```javascript
-import wxsdk from "weixin-js-sdk";
-import { fetchSignature } from "@/services";
+import wxsdk from 'weixin-js-sdk';
+import { fetchSignature } from '@/services';
 
 const initShareConfig = (detailInfo, configInfo) => {
     wxsdk.config({
@@ -114,7 +114,7 @@ const initShareConfig = (detailInfo, configInfo) => {
         timestamp: configInfo.timestamp, // 必填，生成签名的时间戳
         nonceStr: configInfo.nonceStr, // 必填，生成签名的随机串
         signature: configInfo.signature, // 必填，签名
-        jsApiList: ["updateAppMessageShareData", "updateTimelineShareData"], // 必填，需要使用的JS接口列表
+        jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'], // 必填，需要使用的JS接口列表
     });
     wxsdk.ready(() => {
         // “分享给朋友”及“分享到QQ”按钮的分享内容
@@ -140,13 +140,13 @@ const initShareConfig = (detailInfo, configInfo) => {
 };
 
 const initWxShare = async ({
-    name = "长泽雅美",
-    desc = "长泽雅美至上主义者",
+    name = '长泽雅美',
+    desc = '长泽雅美至上主义者',
     img = wxLogo,
-    link = "",
+    link = '',
 }) => {
     const params = {
-        url: encodeURIComponent(window.location.href.split("#")[0]),
+        url: encodeURIComponent(window.location.href.split('#')[0]),
     };
     let configInfo = await fetchSignature(params);
     const { href: realUrl } = window.location;
@@ -171,13 +171,13 @@ export default initWxShare;
 
 ```javascript
 // 仅做演示
-import initWxShare from "@/utils/wechat";
+import initWxShare from '@/utils/wechat';
 useEffect(() => {
     initWxShare({
-        name: "好友向您推荐了长泽雅美写真集",
-        desc: "长泽雅美新电影《行骗天下·英雄片》",
-        img: "给个图",
-        link: "这里根据需求写当前连接或者要跳转的链接",
+        name: '好友向您推荐了长泽雅美写真集',
+        desc: '长泽雅美新电影《行骗天下·英雄片》',
+        img: '给个图',
+        link: '这里根据需求写当前连接或者要跳转的链接',
     });
 }, []);
 ```
@@ -188,13 +188,13 @@ useEffect(() => {
 
 ```javascript
 // 这里仅提供主要代码
-router.get("/jsapi", async (ctx) => {
+router.get('/jsapi', async (ctx) => {
     const { url } = ctx.request.query;
     const config = await sign(decodeURIComponent(url));
     ctx.body = config;
 });
 async function sign(url) {
-    const ticket = await redis.get(process.env.WX_TICKET || "wx_ticket");
+    const ticket = await redis.get(process.env.WX_TICKET || 'wx_ticket');
     if (ticket) {
         const obj = {
             nonceStr: createNonceStr(),
@@ -208,7 +208,7 @@ async function sign(url) {
         obj.appId = APPID;
         return obj;
     } else {
-        throw "ticket获取失败";
+        throw 'ticket获取失败';
     }
 }
 
@@ -217,7 +217,7 @@ const createNonceStr = () => {
 };
 
 const createTimestamp = () => {
-    return parseInt(new Date().getTime() / 1000) + "";
+    return parseInt(new Date().getTime() / 1000) + '';
 };
 // 签名规则
 const raw = (obj) => {
@@ -227,9 +227,9 @@ const raw = (obj) => {
     keys.forEach((key) => {
         newObj[key.toLowerCase()] = obj[key];
     });
-    let string = "";
+    let string = '';
     for (let k in newObj) {
-        string += "&" + k + "=" + newObj[k];
+        string += '&' + k + '=' + newObj[k];
     }
     string = string.substr(1);
     return string;

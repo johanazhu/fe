@@ -23,4 +23,6 @@
 -test ：添加或修正测试
 举例 git commit -m 'feat: add list'
 
-https://github.com/pigcan/blog/issues/15
+## 参考资料
+
+-   [用工具思路来规范化 git commit message ](https://github.com/pigcan/blog/issues/15)

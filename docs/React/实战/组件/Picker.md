@@ -116,7 +116,7 @@ const maskStyle = {
 const wrapperStyle = {
     transform: `translate3d(0, ${this.offset + this.baseOffset}px, 0)`,
     transitionDuration: `${this.duration}ms`,
-    transitionProperty: this.duration ? "all" : "none",
+    transitionProperty: this.duration ? 'all' : 'none',
     lineHeight: `${this.itemHeight}px`,
 };
 <div class="jingqb-picker-column">

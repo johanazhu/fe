@@ -111,7 +111,7 @@ export const createStore = (reducer, initState) => {
 搞个测试用例
 
 ```javascript
-import { createStore } from "../redux/index.js";
+import { createStore } from '../redux/index.js';
 
 const initState = {
     count: 0,
@@ -119,12 +119,12 @@ const initState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "INCREMENT":
+        case 'INCREMENT':
             return {
                 ...state,
                 count: state.count + 1,
             };
-        case "DECREMENT":
+        case 'DECREMENT':
             return {
                 ...state,
                 count: state.count - 1,
@@ -138,11 +138,11 @@ const store = createStore(reducer, initState);
 
 store.subscribe(() => {
     let state = store.getState();
-    console.log("state", state);
+    console.log('state', state);
 });
 
 store.dispatch({
-    type: "INCREMENT",
+    type: 'INCREMENT',
 });
 ```
 
@@ -154,7 +154,7 @@ store.dispatch({
 
 ```javascript
 dispatch({
-    type: "INCREMENT",
+    type: 'INCREMENT',
 });
 // store 中的 count + 1
 ```
@@ -257,10 +257,10 @@ export const applyMiddleware = (...middlewares) => {
 ```javascript
 // 记录日志
 export const loggerMiddleware = (store) => (next) => (action) => {
-    console.log("this.state", store.getState());
-    console.log("action", action);
+    console.log('this.state', store.getState());
+    console.log('action', action);
     next(action);
-    console.log("next state", store.getState());
+    console.log('next state', store.getState());
 };
 
 // 记录异常
@@ -268,13 +268,13 @@ export const exceptionMiddleware = (store) => (next) => (action) => {
     try {
         next(action);
     } catch (error) {
-        console.log("错误报告", error);
+        console.log('错误报告', error);
     }
 };
 
 // 时间戳
 export const timeMiddleware = (store) => (next) => (action) => {
-    console.log("time", new Date().getTime());
+    console.log('time', new Date().getTime());
     next(action);
 };
 ```
@@ -282,12 +282,12 @@ export const timeMiddleware = (store) => (next) => (action) => {
 引入项目中，并运行
 
 ```javascript
-import { createStore, applyMiddleware } from "../redux/index.js";
+import { createStore, applyMiddleware } from '../redux/index.js';
 import {
     loggerMiddleware,
     exceptionMiddleware,
     timeMiddleware,
-} from "./middleware.js";
+} from './middleware.js';
 
 const initState = {
     count: 0,
@@ -295,12 +295,12 @@ const initState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "INCREMENT":
+        case 'INCREMENT':
             return {
                 ...state,
                 count: state.count + 1,
             };
-        case "DECREMENT":
+        case 'DECREMENT':
             return {
                 ...state,
                 count: state.count - 1,
@@ -313,16 +313,16 @@ const reducer = (state, action) => {
 const store = createStore(
     reducer,
     initState,
-    applyMiddleware(loggerMiddleware, exceptionMiddleware, timeMiddleware)
+    applyMiddleware(loggerMiddleware, exceptionMiddleware, timeMiddleware),
 );
 
 store.subscribe(() => {
     let state = store.getState();
-    console.log("state", state);
+    console.log('state', state);
 });
 
 store.dispatch({
-    type: "INCREMENT",
+    type: 'INCREMENT',
 });
 ```
 
@@ -334,10 +334,10 @@ store.dispatch({
 
 ```javascript
 export const loggerMiddleware = (store) => (next) => (action) => {
-    console.log("this.state", store.getState());
-    console.log("action", action);
+    console.log('this.state', store.getState());
+    console.log('action', action);
     next(action);
-    console.log("next state", store.getState());
+    console.log('next state', store.getState());
 };
 ```
 
@@ -399,11 +399,11 @@ export const combinReducers = (...reducers) => {
 // reducer.js
 export default (state, action) => {
     switch (action.type) {
-        case "INCREMENT":
+        case 'INCREMENT':
             return {
                 count: state.count + 1,
             };
-        case "DECREMENT": {
+        case 'DECREMENT': {
             return {
                 count: state.count - 1,
             };
@@ -418,12 +418,12 @@ export default (state, action) => {
 // info.js
 export default (state, action) => {
     switch (action.type) {
-        case "SET_NAME":
+        case 'SET_NAME':
             return {
                 ...state,
                 name: action.name,
             };
-        case "SET_DESCRIPTION":
+        case 'SET_DESCRIPTION':
             return {
                 ...state,
                 description: action.description,
@@ -437,8 +437,8 @@ export default (state, action) => {
 合并导出
 
 ```javascript
-import counterReducer from "./counter.js";
-import infoReducer from "./info.js";
+import counterReducer from './counter.js';
+import infoReducer from './info.js';
 
 export { counterReducer, infoReducer };
 ```
@@ -450,21 +450,21 @@ import {
     createStore,
     applyMiddleware,
     combinReducers,
-} from "../redux/index.js";
+} from '../redux/index.js';
 import {
     loggerMiddleware,
     exceptionMiddleware,
     timeMiddleware,
-} from "./middleware.js";
-import { counterReducer, infoReducer } from "./reducer/index.js";
+} from './middleware.js';
+import { counterReducer, infoReducer } from './reducer/index.js';
 
 const initState = {
     counter: {
         count: 0,
     },
     info: {
-        name: "johan",
-        description: "前端之虎",
+        name: 'johan',
+        description: '前端之虎',
     },
 };
 
@@ -476,11 +476,11 @@ const reducer = combinReducers({
 const store = createStore(
     reducer,
     initState,
-    applyMiddleware(loggerMiddleware, exceptionMiddleware, timeMiddleware)
+    applyMiddleware(loggerMiddleware, exceptionMiddleware, timeMiddleware),
 );
 
 store.dispatch({
-    type: "INCREMENT",
+    type: 'INCREMENT',
 });
 ```
 
@@ -503,11 +503,11 @@ export default (state, action) => {
         state = initState;
     }
     switch (action.type) {
-        case "INCREMENT":
+        case 'INCREMENT':
             return {
                 count: state.count + 1,
             };
-        case "DECREMENT": {
+        case 'DECREMENT': {
             return {
                 count: state.count - 1,
             };
@@ -522,8 +522,8 @@ export default (state, action) => {
 // info.js
 let initState = {
     info: {
-        name: "johan",
-        description: "前端之虎",
+        name: 'johan',
+        description: '前端之虎',
     },
 };
 
@@ -532,12 +532,12 @@ export default (state, action) => {
         state = initState;
     }
     switch (action.type) {
-        case "SET_NAME":
+        case 'SET_NAME':
             return {
                 ...state,
                 name: action.name,
             };
-        case "SET_DESCRIPTION":
+        case 'SET_DESCRIPTION':
             return {
                 ...state,
                 description: action.description,
@@ -575,13 +575,13 @@ export const createStore = (reducer, initState, enhancer) => {
 主文件中
 
 ```javascript
-import { createStore, applyMiddleware, combinReducers } from "./redux/index.js";
+import { createStore, applyMiddleware, combinReducers } from './redux/index.js';
 import {
     loggerMiddleware,
     exceptionMiddleware,
     timeMiddleware,
-} from "./middleware.js";
-import { counterReducer, infoReducer } from "./reducer/index.js";
+} from './middleware.js';
+import { counterReducer, infoReducer } from './reducer/index.js';
 
 const reducer = combinReducers({
     counter: counterReducer,
@@ -590,7 +590,7 @@ const reducer = combinReducers({
 
 const store = createStore(
     reducer,
-    applyMiddleware(loggerMiddleware, exceptionMiddleware, timeMiddleware)
+    applyMiddleware(loggerMiddleware, exceptionMiddleware, timeMiddleware),
 );
 
 console.dir(store.getState());
@@ -647,7 +647,7 @@ const compose = (...funcs) => {
     return funcs.reduce(
         (a, b) =>
             (...args) =>
-                a(b(...args))
+                a(b(...args)),
     );
 };
 ```
@@ -682,11 +682,11 @@ const bindActionCreator = (actionCreator, dispatch) => {
 };
 
 export const bindActionCreators = (actionCreators, dispatch) => {
-    if (typeof actionCreators === "function") {
+    if (typeof actionCreators === 'function') {
         return bindActionCreator(actionCreators, dispatch);
     }
 
-    if (typeof actionCreators !== "object" || actionCreators === null) {
+    if (typeof actionCreators !== 'object' || actionCreators === null) {
         throw new Error();
     }
 
@@ -695,10 +695,10 @@ export const bindActionCreators = (actionCreators, dispatch) => {
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
         const actionCreator = actionCreators[key];
-        if (typeof actionCreator === "function") {
+        if (typeof actionCreator === 'function') {
             boundActionCreators[key] = bindActionCreator(
                 actionCreator,
-                dispatch
+                dispatch,
             );
         }
     }
@@ -752,9 +752,9 @@ npx create-react-app demo-5-react
 在 `App.js` 中引入 createStore，并写好初始数据和 reducer，在 useEffect 中监听数据，监听好之后当发起一个 action 时，数据就会改变，看代码：
 
 ```javascript
-import React, { useEffect, useState } from "react";
-import { createStore } from "./redux";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import { createStore } from './redux';
+import './App.css';
 
 const initState = {
     count: 0,
@@ -762,12 +762,12 @@ const initState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "INCREMENT":
+        case 'INCREMENT':
             return {
                 ...state,
                 count: state.count + 1,
             };
-        case "DECREMENT":
+        case 'DECREMENT':
             return {
                 ...state,
                 count: state.count - 1,
@@ -795,9 +795,9 @@ function App() {
 
     const onHandle = () => {
         store.dispatch({
-            type: "INCREMENT",
+            type: 'INCREMENT',
         });
-        console.log("store", store.getState().count);
+        console.log('store', store.getState().count);
     };
     return (
         <div className="App">
@@ -835,7 +835,7 @@ export default App;
             <button id="btn">add</button>
         </div>
         <script type="module">
-            import { createStore } from "./redux/index.js";
+            import { createStore } from './redux/index.js';
 
             const initState = {
                 count: 0,
@@ -843,12 +843,12 @@ export default App;
 
             const reducer = (state, action) => {
                 switch (action.type) {
-                    case "INCREMENT":
+                    case 'INCREMENT':
                         return {
                             ...state,
                             count: state.count + 1,
                         };
-                    case "DECREMENT":
+                    case 'DECREMENT':
                         return {
                             ...state,
                             count: state.count - 1,
@@ -860,11 +860,11 @@ export default App;
 
             const store = createStore(reducer, initState);
 
-            let count = document.getElementById("count");
-            let add = document.getElementById("btn");
+            let count = document.getElementById('count');
+            let add = document.getElementById('btn');
             add.onclick = function () {
                 store.dispatch({
-                    type: "INCREMENT",
+                    type: 'INCREMENT',
                 });
             };
             // 渲染视图
@@ -875,7 +875,7 @@ export default App;
             // 监听数据
             store.subscribe(() => {
                 let state = store.getState();
-                console.log("state", state);
+                console.log('state', state);
                 render();
             });
         </script>
@@ -893,9 +893,9 @@ export default App;
 
 ```javascript
 function* helloWorldGenerator() {
-    yield "hello";
-    yield "world";
-    yield "ending";
+    yield 'hello';
+    yield 'world';
+    yield 'ending';
 }
 
 const helloWorld = helloWorldGenerator();

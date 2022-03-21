@@ -203,7 +203,7 @@ lazy 允许你定义一个动态加载的组件。这有助于缩减 bundle 的�
 
 ```jsx
 // 这个组件是动态加载的
-const SomeComponent = React.lazy(() => import("./SomeComponent"));
+const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
 请注意，渲染 lazy 组件依赖该组件渲染树上层的 `<React.Suspense>` 组件。这是指定加载指示器（loading indicator）的方法
@@ -220,7 +220,7 @@ React.Suspense 可以指定加载指示器（loading indicator），以防其组
 
 ```jsx
 // 该组件是动态加载的
-const OtherComponent = React.lazy(() => import("./OtherComponent"));
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
     return (
@@ -237,10 +237,10 @@ function MyComponent() {
 fallback 属性接受任何在组件加载过程中你想展示的 React 元素，你可以将 Suspense 组件置于懒加载组件之上的任何位置。你甚至可以用一个 Subspense 组件包裹多个懒加载组件
 
 ```jsx
-import React, { Suspense } from "react";
+import React, { Suspense } from 'react';
 
-const OtherComponent = React.lazy(() => import("./OtherComponent"));
-const AnotherComponent = React.lazy(() => import("./AnotherComponent"));
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
 
 function MyComponent() {
     return (
@@ -353,7 +353,7 @@ Context 提供了一个无需为每层组件手动添加 props，就能在组件
 1. 先注册一个变量
 
 ```jsx
-const ThemeContext = React.createContext("light");
+const ThemeContext = React.createContext('light');
 ```
 
 2. 在要用的地方注入

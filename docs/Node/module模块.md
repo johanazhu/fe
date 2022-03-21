@@ -43,12 +43,12 @@ module.exports 通过模块系统创建。
 
 ```javascript
 exports.a = 123;
-exports.b = "hello";
+exports.b = 'hello';
 exports.c = function () {
-    console.log("ccc");
+    console.log('ccc');
 };
 exports.d = {
-    foo: "bar",
+    foo: 'bar',
 };
 ```
 
@@ -56,9 +56,9 @@ exports.d = {
 
 ```javascript
 module.exports = {
-    foo: "bar",
+    foo: 'bar',
     add: function () {
-        console.log("aa");
+        console.log('aa');
     },
 };
 ```
@@ -66,7 +66,7 @@ module.exports = {
 导出单个成员（拿到的就是：函数，字符串）
 
 ```javascript
-module.exports = "hello";
+module.exports = 'hello';
 ```
 
 以下情况会覆盖：

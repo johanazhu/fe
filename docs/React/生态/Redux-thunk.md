@@ -7,7 +7,7 @@ function createThunkMiddleware(extraArgument) {
     return ({ dispatch, getState }) =>
         (next) =>
         (action) => {
-            if (typeof action === "function") {
+            if (typeof action === 'function') {
                 return action(dispatch, getState, extraArgument);
             }
 
@@ -32,7 +32,7 @@ const store = createStore(
 ```
 
 ```javascript
-const INCREMENT_COUNTER = "INCREMENT_COUNTER";
+const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 
 function increment() {
     return {

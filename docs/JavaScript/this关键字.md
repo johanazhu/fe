@@ -1,8 +1,10 @@
 # this 关键字
 
-先说结论：**谁调用它，this 就指向谁**。
+先说结论：**谁调用它，this 就指向谁**
 
-前言：在讲作用域的时候，我们讲到了 this，因为 JavaScript 中的作用域是词法作用域，在哪里定义，就在那里形成作用域。而与词法作用域相对应的还有一个作用域叫动态作用域，调用时去寻找它所处的位置。那个时候我就说道 this 机制 和动态作用域很像。
+## 前言
+
+在讲函数、作用域的时候，我们都讲到了 this，因为 JavaScript 中的作用域是词法作用域，在哪里定义，就在那里形成作用域。而与词法作用域相对应的还有一个作用域叫动态作用域，调用时去寻找它所处的位置。那个时候我就说道 this 机制 和动态作用域很像
 
 ## 关于 this
 
@@ -21,11 +23,11 @@ function speak() {
 }
 
 var me = {
-    name: "johan",
+    name: 'johan',
 };
 
 var you = {
-    name: "elaine",
+    name: 'elaine',
 };
 
 identify.call(me); // JOHAN
@@ -73,7 +75,7 @@ this 到底是一种什么样的机制。
 
 ```javascript
 var people = {
-    name: "elaine",
+    name: 'elaine',
     age: 26,
     sayName: function () {
         console.log(this.name);
@@ -98,7 +100,7 @@ sayAge(5);
 
 ```javascript
 var people = {
-    name: "elaine",
+    name: 'elaine',
     age: 26,
     sayName: function (age) {
         var sayAge = function (age) {
@@ -116,7 +118,7 @@ age; // 5
 
 ```javascript
 var people = {
-    name: "elaine",
+    name: 'elaine',
     age: 26,
     sayName: function (age) {
         var that = this;
@@ -135,7 +137,7 @@ age; // 没有定义
 
 ```javascript
 var people = {
-    name: "elaine",
+    name: 'elaine',
     age: 26,
     sayName: (age) => {
         var sayAge = function (age) {
@@ -187,7 +189,7 @@ console.log(johan) { name: "johan1", age: 261 }
 在上面的例子中，我们使用构造函数生成了一个对象 elaine，该对象同时具有 sayName 方法；使用对象字面量创建了另一个对象 johan，我们看到使用 apply 可以将 elaine 上的方法应用到 johan 上，这时候 this 也被绑定到对象 johan 上，另一个 call 也具备相同的功能，不同的是最后的参数不是作为一个数组统一传入，而是分开传入的
 
 ```javascript
-elaine.sayName.call(johan, "johan1", 261);
+elaine.sayName.call(johan, 'johan1', 261);
 ```
 
 回过头来看，apply 和 call 的语义就是 elaine 的方法 sayName 作用于 johan ，sayName 需要传入的参数，我从第二个参数开始传值；或者说 johan 调用 elaine 的 sayName 方法，从第二个参数开始传值
@@ -203,9 +205,9 @@ elaine.sayName.call(johan, "johan1", 261);
 其实箭头函数很简单，和我们之前说作用域时谈到的动态作用域和静态作用域（词法作用域）有关系。this 本身的机制和动态作用域很像，而箭头函数的出现，某种程度上规避了 JavaScript 的设计缺陷（正确的设计方式应该是内部函数的 this 应该绑定到其外层函数对应的对象上）
 
 ```javascript
-"use strict"; // 严格模式下
+'use strict'; // 严格模式下
 var people = {
-    name: "eliane",
+    name: 'eliane',
     age: 26,
     sayName: () => console.log(this.name, this),
     sayName2: function () {
@@ -275,16 +277,14 @@ bar.call(foo);
 
 call 能硬核掰弯 this 指向，将 this 指向第一个参数，所以这段代码中，this 代指 foo ， foo 上有 value，所以打印结果是 1
 
-针对 js 中的 this 指向问题，知乎上有人曾经回答过：
-
-https://www.zhihu.com/question/412637481/answer/1539325572
+针对 JavaScript 中的[this 指向问题](https://www.zhihu.com/question/412637481/answer/1539325572)，知乎上有人曾经回答过：
 
 -   this 的灵活指向，属于 JS 自己发明的语言
 -   this 指向存在的问题是公认的
 -   this 的这种设计既不利于代码可读性，也不利于性能优化，完全可对其世家强制性
 -   this 设计问题的更远，是产品营销需求与设计师个人偏好之间的冲突
 
-this 是万恶之源，大家都是（词法）静态作用域，就他是动态的.
+this 是万恶之源，大家都是（词法）静态作用域，就它是动态的
 
 ## 参考资料
 

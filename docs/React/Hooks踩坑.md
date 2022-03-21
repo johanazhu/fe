@@ -72,17 +72,17 @@ function handleClick() {
 function sayHi(person) {
     const name = person.name;
     setTimeout(() => {
-        alert("Hello," + name);
+        alert('Hello,' + name);
     }, 3000);
 }
 
-let someone = { name: "Johan" };
+let someone = { name: 'Johan' };
 sayHi(someone);
 
-someone = { name: "elaine" };
+someone = { name: 'elaine' };
 sayHi(someone);
 
-someone = { name: "xiaowo" };
+someone = { name: 'xiaowo' };
 sayHi(someone);
 // Hello, johan
 // Hello, elaine

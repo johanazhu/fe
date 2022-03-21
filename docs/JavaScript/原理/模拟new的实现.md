@@ -54,7 +54,7 @@ function new2(Constructor, ...args) {
     // (4)、执行构造函数内部的代码
     var result = Constructor.apply(obj, args);
     // (5)、如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象
-    return typeof result === "object" ? result : obj;
+    return typeof result === 'object' ? result : obj;
 }
 ```
 
@@ -74,7 +74,7 @@ function objectFactory() {
     obj = new F(); // 指向正确的原型
 
     var ret = Constructor.apply(obj, arguments); // 借用外部传入的构造器给obj设置属性
-    return typeof ret === "object" ? ret : obj; // 确保构造器总是返回一个对象
+    return typeof ret === 'object' ? ret : obj; // 确保构造器总是返回一个对象
 }
 ```
 
@@ -85,7 +85,7 @@ function User(firstname, lastname) {
     this.firstname = firstname;
     this.lastname = lastname;
 }
-const user = new User("johnny", "joestar");
+const user = new User('johnny', 'joestar');
 ```
 
 ```javascript
@@ -99,7 +99,7 @@ function User(firstname, lastname) {
     this.lastname = lastname;
 }
 
-const user = new2(User, "johnny", "joestar");
+const user = new2(User, 'johnny', 'joestar');
 ```
 
 ## 参考资料

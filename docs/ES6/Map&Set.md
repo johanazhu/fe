@@ -13,7 +13,7 @@
 ```javascript
 var map = new Map();
 map.set(1, 2);
-map.set({ name: "johan" }, true);
+map.set({ name: 'johan' }, true);
 // set(key, value)
 ```
 
@@ -39,11 +39,11 @@ Map 是一个带键的数据项的集合，就像一个 Object 一样，但是�
 
 ```javascript
 const m = new Map([
-    ["Johan", 26],
-    ["Elaine", 26],
-    ["Bob", 12],
+    ['Johan', 26],
+    ['Elaine', 26],
+    ['Bob', 12],
 ]);
-m.get("Johan"); // 26
+m.get('Johan'); // 26
 ```
 
 ### 算法中是使用

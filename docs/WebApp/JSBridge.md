@@ -74,16 +74,16 @@ H5 调用 Native 方法的伪代码实例，如：
 
 ```javascript
 params = {
-    api_version: "xxx", // API 版本
-    title: "xxx", // 标题
-    filename: "xxx", // 文件名称
-    image: "xxx", // 图片链接
-    url: "xxx", // 网址链接
+    api_version: 'xxx', // API 版本
+    title: 'xxx', // 标题
+    filename: 'xxx', // 文件名称
+    image: 'xxx', // 图片链接
+    url: 'xxx', // 网址链接
     success: function (res) {
         xxx; // 调用成功后执行
     },
     fail: function (err) {
-        if (err.code == "-2") {
+        if (err.code == '-2') {
             fail && fail(err); //	调用了当前客户端中不存在的 API 版本
         } else {
             const msg = err.msg; //异常信息
@@ -98,10 +98,10 @@ window.NativeApi.share(params);
 
 ```javascript
 window.NativeApi.xxx({
-    api_version: "",
-    name: "xxx",
-    path: "xxx",
-    id: "xxx",
+    api_version: '',
+    name: 'xxx',
+    path: 'xxx',
+    id: 'xxx',
     success: function (res) {
         console.log(res);
     },

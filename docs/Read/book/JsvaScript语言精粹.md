@@ -89,9 +89,9 @@ Javascript 包含一种原型链的特性，允许对象继承另一个对象的
 #### 基础类型
 
 ```javascript
-var a = "hanbo";
+var a = 'hanbo';
 var b = a;
-a = "fuchan";
+a = 'fuchan';
 console.log(b); // hanbo
 //
 ```
@@ -100,7 +100,7 @@ console.log(b); // hanbo
 
 ```javascript
 var x = stooge;
-x.nickname = "Gurly";
+x.nickname = 'Gurly';
 var nick = stooge.nickname;
 // 因为 x 和 stooge 是指向同一个对象的引用，所以 nick 为 'Gurly'
 var a = {},
@@ -132,7 +132,7 @@ a = b = c = {};
 ```javascript
 var friend = new Person();
 Person.prototype.sayHi = function () {
-    alert("hi");
+    alert('hi');
 };
 friend.sayHi(); // "hi"
 ```
@@ -152,17 +152,17 @@ function Person(name, age, job) {
         alert(this.name);
     };
 }
-var zhangsan = new Person("张三", 15, "屠夫");
-var lisi = new Person("李四", 14, "肉贩");
+var zhangsan = new Person('张三', 15, '屠夫');
+var lisi = new Person('李四', 14, '肉贩');
 ```
 
 #### 原型模式
 
 ```javascript
 function Person() {}
-Person.prototype.name = "zhangsan";
+Person.prototype.name = 'zhangsan';
 Person.prototype.age = 15;
-Person.prototype.job = "屠夫";
+Person.prototype.job = '屠夫';
 Person.prototype.sayName = function () {
     alert(this.name);
 };
@@ -198,9 +198,9 @@ function Person(name, age, job) {
 
 ```javascript
 function Man() {}
-Man.prototype.gender = "男人";
+Man.prototype.gender = '男人';
 Man.prototype.sayGender = function () {
-    alert("我是男人");
+    alert('我是男人');
 };
 var xiaoming = new Man();
 xiaoming.gender; // '男人'
@@ -340,7 +340,7 @@ var add = function (a, b) {
 var myObject = {
     value: 0,
     increment: function (inc) {
-        this.value += typeof inc === "number" ? inc : 1;
+        this.value += typeof inc === 'number' ? inc : 1;
     },
 };
 myObject.increment();
@@ -423,7 +423,7 @@ return 语句可用来使函数提前返回。当 return 被执行时，函数�
 
 ```javascript
 function test() {
-    console.log("hello, world");
+    console.log('hello, world');
 }
 test();
 // 返回的结果往往是：
@@ -505,7 +505,7 @@ JavaScript 没有一个好的机制来区别数组和对象。我们可以通过
 
 ```javascript
 var is_array = function (value) {
-    return value && typeof value === "object" && value.constructor === "Array";
+    return value && typeof value === 'object' && value.constructor === 'Array';
 };
 ```
 
@@ -513,7 +513,7 @@ var is_array = function (value) {
 
 ```javascript
 var is_array = function (value) {
-    return Object.prototype.toString.apply(value) === "[object Array]";
+    return Object.prototype.toString.apply(value) === '[object Array]';
 };
 ```
 
@@ -538,8 +538,8 @@ JavaScript 包含了一套小型的可用在标准类型上的标准方法集。
 concat 方法产生一个新数组，它包含一份 array 的浅复制（shallow copy）并把一个或多个参数 item 附加在气候。如果参数 item 是一个数组，那么它的每个元素会被分别添加。与它功能类似的 array.push(item...)方法
 
 ```javascript
-var a = ["a", "b", "c"];
-var b = ["x", "y", "z"];
+var a = ['a', 'b', 'c'];
+var b = ['x', 'y', 'z'];
 var c = a.concat(b, true);
 // c 变成 ['a', 'b', 'c', 'x', 'y', 'z', true]
 ```

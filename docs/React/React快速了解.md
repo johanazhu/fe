@@ -74,7 +74,7 @@ JSX 其实是 `React.createElement(compoent, props,...children)` 函数的语法
 会编译为：
 
 ```javascript
-React.createElement(MyButton, { color: "blue", shadowSize: 2 }, "Click Me");
+React.createElement(MyButton, { color: 'blue', shadowSize: 2 }, 'Click Me');
 ```
 
 [在线 Babel 编译器](https://babeljs.io/repl/#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.6&spec=false&loose=false&code_lz=GYVwdgxgLglg9mABACwKYBt1wBQEpEDeAUIogE6pQhlIA8AJjAG4B8AEhlogO5xnr0AhLQD0jVgG4iAXyJA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&version=7.15.5&externalPlugins=&assumptions=%7B%7D) 可以玩一玩

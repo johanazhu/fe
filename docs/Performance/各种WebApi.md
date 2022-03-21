@@ -6,18 +6,18 @@
 
 ```javascript
 // 窗口激活状态监听
-let vEvent = "visibilitychange";
+let vEvent = 'visibilitychange';
 if (document.webkitHidden != undefined) {
-    vEvent = "webkitvisibilitychange";
+    vEvent = 'webkitvisibilitychange';
 }
 
 function visibilityChanged() {
     if (document.hidden || document.webkitHidden) {
-        document.title = "客官，别走啊~";
-        console.log("Web page is hidden.");
+        document.title = '客官，别走啊~';
+        console.log('Web page is hidden.');
     } else {
-        document.title = "客官，你又回来了呢~";
-        console.log("Web page is visible.");
+        document.title = '客官，你又回来了呢~';
+        console.log('Web page is visible.');
     }
 }
 
@@ -33,7 +33,7 @@ const observer = new PerformanceObserver((list) => {
     }
 });
 
-observer.observe({ entryTypes: ["longtask"] });
+observer.observe({ entryTypes: ['longtask'] });
 ```
 
 ### 监听网络变化
@@ -49,13 +49,13 @@ var type = connection.effectiveType;
 
 function updateConnectionStatus() {
     console.log(
-        "Connection type changed from " +
+        'Connection type changed from ' +
             type +
-            " to " +
-            connection.effectiveType
+            ' to ' +
+            connection.effectiveType,
     );
     type = connection.effectiveType;
 }
 
-connection.addEventListener("change", updateConnectionStatus);
+connection.addEventListener('change', updateConnectionStatus);
 ```

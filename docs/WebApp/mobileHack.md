@@ -57,13 +57,13 @@ setTimeout(function () {
 
 ```javascript
 window.location =
-    "intent://" +
+    'intent://' +
     schemeUrl +
-    "#Intent;scheme=" +
+    '#Intent;scheme=' +
     scheme +
-    ";package=" +
+    ';package=' +
     self.package +
-    ";end";
+    ';end';
 ```
 
 ## 参考资料

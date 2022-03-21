@@ -24,16 +24,16 @@ Koa 可被视为 nodejs 的 HTTP 模块的抽象
 Koa2 启动服务
 
 ```javascript
-const Koa = require("koa");
+const Koa = require('koa');
 
 const app = new Koa();
 
 app.use((ctx) => {
-    ctx.body = "Hello World";
+    ctx.body = 'Hello World';
 });
 
 app.listen(3000, () => {
-    console.log("3000端口已启动");
+    console.log('3000端口已启动');
 });
 ```
 

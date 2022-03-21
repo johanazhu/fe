@@ -6,12 +6,6 @@
 
 [模拟 call 和 apply 的实现](./模拟call和apply的实现)
 
-
-
-
-
-
-
 ## 手写 ajax
 
 ## 手写 call
@@ -21,9 +15,9 @@ function Person(name, age) {
     this.name = name;
     this.age = age;
 }
-var person = new Person("zhang", 23);
+var person = new Person('zhang', 23);
 var obj = {};
-Person.call(obj, "wang", 30); // this指向obj
+Person.call(obj, 'wang', 30); // this指向obj
 // obj = {age:30,name:"wang"}
 ```
 
@@ -52,7 +46,7 @@ function create() {
     // 绑定 this，执行构造函数
     let result = Con.apply(obj, arguments);
     // 确保 new 出来是个对象
-    return typeof result === "object" ? result : obj;
+    return typeof result === 'object' ? result : obj;
 }
 ```
 

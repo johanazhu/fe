@@ -2,14 +2,14 @@
 
 这是一个基础结构问题，一个完整的 JavaScript 包括：ECMAScript 、文档对象模型（DOM）、浏览器对象模型（BOM），本章正是研究的 ECMAScript 。如果对 DOM 感兴趣，请移步——[DOM](../Browser/DOM.md) 。如果对 BOM 感兴趣，请移步——[BOM](../Browser/BOM.md)。
 
- ECMAScript 规定这门语言由以下组成：
+ECMAScript 规定这门语言由以下组成：
 
 1.  语法
-2. 变量和数据类型
-3. 关键字和保留字
-4. 操作符
-5. 语句
-6. 对象
+2.  变量和数据类型
+3.  关键字和保留字
+4.  操作符
+5.  语句
+6.  对象
 
 也就是说，这六大模块组成了这门语言，就好比你学习英语，要掌握基本的单词和语法，才能说基础英语
 
@@ -25,7 +25,7 @@
 
 引用类型是一种数据结构，在别的语言中被称为类，但是在 JavaScript 中实际上没有类（基于原型链继承 Object）。原生的引用类型有 `Object` 、`Function`、`Array` 、`Date`、`RegExp`、`Error`
 
- ![数据类型分类](../.vuepress/public/images/JavaScript/数据类型分类.png)
+![数据类型分类](../.vuepress/public/images/JavaScript/数据类型分类.png)
 
 JavaScript 内置了一些构造函数和对象，详情的可以到 MDN（[JavaScript 的内置函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)）上看一眼，其最主要的九个原生对象构造函数：
 
@@ -46,24 +46,24 @@ JavaScript 内置了一些构造函数和对象，详情的可以到 MDN（[Java
 
 以上就是 ECMAScript 中最重要的东西。
 
-注意：JavaScript 内置对象有很多，具体参考MDN的这篇文章——[JavaScript 标准内置对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)
+注意：JavaScript 内置对象有很多，具体参考 MDN 的这篇文章——[JavaScript 标准内置对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)
 
 我们可以看一下以下代码：
 
 ```javascript
-var string1 = "foo";
-var string2 = String("foo");
+var string1 = 'foo';
+var string2 = String('foo');
 var number1 = 10;
-var number2 = Number("10");
+var number2 = Number('10');
 var boolean1 = true;
-var boolean2 = Boolean("true");
+var boolean2 = Boolean('true');
 
 console.log(typeof string1, typeof string2); // 输出 'string, string'
 console.log(typeof number1, typeof number2); // 输出 'number, number'
 console.log(typeof boolean1, typeof boolean2); // 输出 'boolean, boolean'
 
 // 如果使用创建对象的构造函数和new关键字
-var myString = new String("male");
+var myString = new String('male');
 var myNumber = new Number(23);
 var myBoolean = new Boolean(false);
 console.log(typeof myString, typeof myNumber, typeof myBoolean);
@@ -84,10 +84,10 @@ console.log(typeof myString, typeof myNumber, typeof myBoolean);
 // 基本类型/值类型/原始值/原始类型	叫法不同意思一致
 var null1 = null;
 var undefined1 = undefined;
-var string1 = "foo";
-var number1 = Number("10");
-var boolean1 = Boolean("true");
-var symbol1 = Symbol("foo");
+var string1 = 'foo';
+var number1 = Number('10');
+var boolean1 = Boolean('true');
+var symbol1 = Symbol('foo');
 console.log(typeof null1); // object, 需要注意
 console.log(typeof undefined1); // undefined
 console.log(typeof string1); // string
@@ -96,15 +96,15 @@ console.log(typeof boolean1); // boolean
 console.log(typeof symbol1); // symbol
 
 // 引用类型/复杂值
-var myString = new String("male");
+var myString = new String('male');
 var myNumber = new Number(23);
 var myBoolean = new Boolean(false);
 var myObject = new Object();
-var myArray = new Array("foo", "bar");
-var myFunction = new Function("x", "y", "return x * y");
+var myArray = new Array('foo', 'bar');
+var myFunction = new Function('x', 'y', 'return x * y');
 var myDate = new Date();
-var myRegExp = new RegExp("\\bt[a-z]+\\b");
-var myError = new Error("error");
+var myRegExp = new RegExp('\\bt[a-z]+\\b');
+var myError = new Error('error');
 
 console.log(typeof myString); // 输出 object
 console.log(typeof myNumber); // 输出 object
@@ -127,7 +127,7 @@ console.log(typeof myError); // 输出 object
 随便一说，这也是我们看很多源码或者自己写代码时常用 typeof 来判断 function 类型
 
 ```javascript
-if (typeof XXX === "function") {
+if (typeof XXX === 'function') {
     // 如果XXX是function的话做什么操作
 }
 ```
@@ -148,18 +148,18 @@ if (typeof XXX === "function") {
 
 ```javascript
 // 案例1
-var string1 = "foo";
+var string1 = 'foo';
 var string2 = string1;
-string1 = "bar";
+string1 = 'bar';
 console.log(string1, string2); // 输出 bar, foo
 
 // 案例2
 var object1 = {
-    name: "johan",
+    name: 'johan',
     age: 23,
 };
 var object2 = object1;
-object1.name = "elaine";
+object1.name = 'elaine';
 object2.age = 22;
 console.log(object1, object2);
 // 输出 { name: 'elaine', age: 23 } { name: 'elaine', age: 23 }
@@ -174,14 +174,13 @@ console.log(object1, object2);
 ```javascript
 var obj1 = {};
 var obj2 = obj1;
-obj1.name = "elaine";
+obj1.name = 'elaine';
 obj2.age = 23;
 console.log(obj1); // { name: 'elaine', age: 22};
 console.log(obj2); // { name: 'elaine', age: 22};
 ```
 
 > 衍生思考：虽然说 JavaScript 的动态性很是方便，但是如果一些新手修改了对象类型的值而不告知，那么就成了灾难。因为动态性+全局作用域，所有变量命名就成了问题，所以一般的库都是用匿名函数立即执行来破局，再后面就有了 模块化的概念，其本质是为了解决变量命名、语言动态性的问题
->
 
 光知道 JavaScript 的数据类型不够，我们需要准确定位每一个变量是什么数据类型才行
 
@@ -204,7 +203,7 @@ function People(name, age) {
     this.age = age;
 }
 
-const elaine = new People("elaine", 23);
+const elaine = new People('elaine', 23);
 console.log(elaine instanceof People);
 console.log(elaine instanceof Object);
 ```
@@ -217,7 +216,7 @@ instanceof 运算符能让我们找到它的爸爸是谁（谁制造了他，从
 
 ```javascript
 function sayHello() {
-    console.log("hello");
+    console.log('hello');
 }
 ```
 

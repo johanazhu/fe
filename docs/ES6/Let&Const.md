@@ -6,13 +6,13 @@
 
 ```javascript
 // bad
-var foo = "bar";
+var foo = 'bar';
 
 // good
-let foo = "bar";
+let foo = 'bar';
 
 // better
-const foo = "bar";
+const foo = 'bar';
 ```
 
 let 和 const 引起块作用域。在 ES6 之前，只有两种作用域（全局作用域和函数作用域，eval 作用域不算）。

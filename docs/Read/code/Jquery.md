@@ -1,9 +1,7 @@
-# Jquery 源码解读
+# JQuery 源码解读
 
-从架构入手轻松读懂框架源码：以 jQuery，Zepto，Vue 和 lodash-es 为例
+## 参考资料
 
-https://juejin.cn/post/6844904071862681607
+-   [从架构入手轻松读懂框架源码](https://juejin.cn/post/6844904071862681607)
 
-jquery
-
-https://lxchuan12.gitee.io/jquery/
+[学习 jQuery 源码整体架构，打造属于自己的 js 类库](https://lxchuan12.gitee.io/jquery/)

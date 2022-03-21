@@ -87,7 +87,7 @@ JSX 转换到函数调用这个阶段是由 React 团队提供，后面因为 ba
 babel 转换
 
 ```javascript
-h("div", { id: "foo" }, "Hello!", h("br"));
+h('div', { id: 'foo' }, 'Hello!', h('br'));
 ```
 
 而 h 是个函数，输入就有输出，输出的即使一个特殊类型的数据结构，它就是 Virtual DOM

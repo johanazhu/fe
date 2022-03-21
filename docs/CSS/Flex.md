@@ -48,7 +48,7 @@ flex 是一种布局方式，在 CSS3 之后开始有。它主要由父容器和
 ## flex 语法
 
 ```css
-flex: none | auto | [< "flex-grow" > < "flex-shrink" >? || < "flex-basis" > ];
+flex: none | auto | [< 'flex-grow' > < 'flex-shrink' >? || < 'flex-basis' > ];
 ```
 
 单管道符 `|` ，表示排他。也就是这个符号前后的属性值都是支持的，且不能同时出现。因此，下面这些语法都是支持的：
@@ -57,7 +57,7 @@ flex: none | auto | [< "flex-grow" > < "flex-shrink" >? || < "flex-basis" > ];
 flex: auto;
 flex: none;
 
-flex: [< "flex-grow" > < "flex-shrink" >? || < "flex-basis" >];
+flex: [< 'flex-grow' > < 'flex-shrink' >? || < 'flex-basis' >];
 ```
 
 方括号 `[...]` 表示范围。支持的属性在这个范围内

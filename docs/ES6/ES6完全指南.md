@@ -31,7 +31,7 @@ function func(name = '', age = ''){
 Old：
 
 ```javascript
-var introduction = "my name is" + name + ", my age is" + age;
+var introduction = 'my name is' + name + ', my age is' + age;
 ```
 
 Now:
@@ -45,7 +45,7 @@ var introduction = `my name is ${name}, my age is ${age}`;
 Old：
 
 ```javascript
-var data = axios.get("xxx").data,
+var data = axios.get('xxx').data,
     name = data.name,
     age = data.age;
 ```
@@ -53,7 +53,7 @@ var data = axios.get("xxx").data,
 Now：
 
 ```javascript
-var { name, age } = axios.get("xxx").data;
+var { name, age } = axios.get('xxx').data;
 ```
 
 **字符串解构**：`const [a, b, c, d, e] = "hello"`
@@ -89,7 +89,7 @@ Old：
 
 ```javascript
 var that = this;
-$(".btn").click(function () {
+$('.btn').click(function () {
     that.getData();
 });
 ```
@@ -97,7 +97,7 @@ $(".btn").click(function () {
 Now：
 
 ```javascript
-$(".btn").click(() => {
+$('.btn').click(() => {
     this.getData();
 });
 ```
@@ -122,12 +122,12 @@ ES2015 引入了 for..of 循环，它结合了 forEach 的简洁性和中断循�
 ```javascript
 // 例子 6-1
 
-for (const v of ["a", "b", "c"]) {
+for (const v of ['a', 'b', 'c']) {
     console.log(v);
 }
 // a b c
 
-for (const [i, v] of ["a", "b", "c"].entries()) {
+for (const [i, v] of ['a', 'b', 'c'].entries()) {
     console.log(i, v);
 }
 // 0 "a"
@@ -197,9 +197,9 @@ const [...a2] = a1;
 #### 合并数组
 
 ```javascript
-const arr1 = ["a", "b"];
-const arr2 = ["c"];
-const arr3 = ["d", "e"];
+const arr1 = ['a', 'b'];
+const arr2 = ['c'];
+const arr3 = ['d', 'e'];
 
 // ES5 的合并数组
 arr1.concat(arr2, arr3);
@@ -224,7 +224,7 @@ a = list[0], rest = list.slice(1)
 扩展运算符还可以将字符串转为真正的数组。
 
 ```javascript
-[..."hello"];
+[...'hello'];
 // [ "h", "e", "l", "l", "o" ]
 ```
 
@@ -262,7 +262,7 @@ a = list[0], rest = list.slice(1)
 keys：
 
 ```javascript
-var arr = ["a", , "c"];
+var arr = ['a', , 'c'];
 
 var sparseKeys = Object.keys(arr);
 console.log(sparseKeys); // ['0', '2']
@@ -274,7 +274,7 @@ console.log(denseKeys); // [0, 1, 2]
 entries
 
 ```javascript
-var arr = ["a", "b", "c"];
+var arr = ['a', 'b', 'c'];
 var iterator = arr.entries();
 
 for (let e of iterator) {
@@ -285,7 +285,7 @@ for (let e of iterator) {
 values
 
 ```javascript
-let arr = ["w", "y", "k", "o", "p"];
+let arr = ['w', 'y', 'k', 'o', 'p'];
 let eArr = arr.values();
 
 for (let letter of eArr) {
@@ -298,16 +298,16 @@ includes
 ```javascript
 // bad
 function test(fruit) {
-    if (fruit == "apple" || fruit == "strawberry") {
-        console.log("red");
+    if (fruit == 'apple' || fruit == 'strawberry') {
+        console.log('red');
     }
 }
 
 // good
 function test(fruit) {
-    const redFruits = ["apple", "strawberry", "cherry", "cranberries"];
+    const redFruits = ['apple', 'strawberry', 'cherry', 'cranberries'];
     if (redFruits.includes(fruit)) {
-        console.log("red");
+        console.log('red');
     }
 }
 ```
@@ -316,13 +316,13 @@ find
 
 ```javascript
 var inventory = [
-    { name: "apples", quantity: 2 },
-    { name: "bananas", quantity: 0 },
-    { name: "cherries", quantity: 5 },
+    { name: 'apples', quantity: 2 },
+    { name: 'bananas', quantity: 0 },
+    { name: 'cherries', quantity: 5 },
 ];
 
 function findCherries(fruit) {
-    return fruit.name === "cherries";
+    return fruit.name === 'cherries';
 }
 
 console.log(inventory.find(findCherries)); // { name: 'cherries', quantity: 5 }

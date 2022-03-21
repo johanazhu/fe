@@ -153,7 +153,7 @@ onHandleClick() {
 
 ```jsx
 this.setState((state) => {
-    console.log("函数模式", state.count);
+    console.log('函数模式', state.count);
     return { count: state.count + 1 };
 });
 ```

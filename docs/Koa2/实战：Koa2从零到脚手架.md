@@ -11,16 +11,16 @@
 ## 最简单的 Koa 服务器
 
 ```javascript
-const Koa = require("koa");
+const Koa = require('koa');
 
 const app = new Koa();
 
 app.use((ctx) => {
-    ctx.body = "Hello World";
+    ctx.body = 'Hello World';
 });
 
 app.listen(3000, () => {
-    console.log("3000端口已启动");
+    console.log('3000端口已启动');
 });
 ```
 
@@ -85,13 +85,13 @@ NPM 包地址：[koa-router](https://www.npmjs.com/package/koa-router) 、[@koa/
 ```javascript
 class HomeController {
     static home(ctx) {
-        ctx.body = "hello world";
+        ctx.body = 'hello world';
     }
     static async login(ctx) {
-        ctx.body = "Login Controller";
+        ctx.body = 'Login Controller';
     }
     static async register(ctx) {
-        ctx.body = "Register Controller";
+        ctx.body = 'Register Controller';
     }
 }
 
@@ -103,14 +103,14 @@ module.exports = HomeController;
 再创建 routes 文件夹，用于把控制器挂载到对应的路由上面，创建 home.js
 
 ```javascript
-const Router = require("koa-router");
-const { home, login, register } = require("../controllers/home");
+const Router = require('koa-router');
+const { home, login, register } = require('../controllers/home');
 
 const router = new Router();
 
-router.get("/", home);
-router.post("/login", login);
-router.post("/register", register);
+router.get('/', home);
+router.post('/login', login);
+router.post('/register', register);
 
 module.exports = router;
 ```
@@ -120,10 +120,10 @@ module.exports = router;
 在 routes 中创建 index.js，以后所有的路由都放入 routes，我们创建 index.js 的目的是为了让结构更加整齐，index.js 负责所有路由的注册，它的兄弟文件负责各自的路由
 
 ```javascript
-const fs = require("fs");
+const fs = require('fs');
 module.exports = (app) => {
     fs.readdirSync(__dirname).forEach((file) => {
-        if (file === "index.js") {
+        if (file === 'index.js') {
             return;
         }
         const route = require(`./${file}`);
@@ -179,31 +179,31 @@ cnpm i koa-parameter -S
 ```
 
 ```javascript
-const path = require("path");
-const Koa = require("koa");
-const bobyParser = require("koa-bodyparser");
-const koaStatic = require("koa-static");
-const cors = require("@koa/cors");
-const error = require("koa-json-error");
-const parameter = require("koa-parameter");
-const routing = require("./routes");
+const path = require('path');
+const Koa = require('koa');
+const bobyParser = require('koa-bodyparser');
+const koaStatic = require('koa-static');
+const cors = require('@koa/cors');
+const error = require('koa-json-error');
+const parameter = require('koa-parameter');
+const routing = require('./routes');
 
 const app = new Koa();
 
 app.use(
     error({
         postFormat: (e, { stack, ...rest }) =>
-            process.env.NODE_ENV === "production" ? rest : { stack, ...rest },
-    })
+            process.env.NODE_ENV === 'production' ? rest : { stack, ...rest },
+    }),
 );
 app.use(bobyParser());
-app.use(koaStatic(path.join(__dirname, "public")));
+app.use(koaStatic(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(parameter(app));
 routing(app);
 
 app.listen(3000, () => {
-    console.log("3000端口已启动");
+    console.log('3000端口已启动');
 });
 ```
 
@@ -220,7 +220,7 @@ cnpm install koa-jwt jsonwebtoken -S
 创建 `config/index.js` ，用来存放 JWT Secret 常量，代码如下：
 
 ```javascript
-const JWT_SECRET = "secret";
+const JWT_SECRET = 'secret';
 
 module.exports = {
     JWT_SECRET,
@@ -239,23 +239,23 @@ module.exports = {
 class UserController {
     static async create(ctx) {
         ctx.status = 200;
-        ctx.body = "create";
+        ctx.body = 'create';
     }
     static async find(ctx) {
         ctx.status = 200;
-        ctx.body = "find";
+        ctx.body = 'find';
     }
     static async findById(ctx) {
         ctx.status = 200;
-        ctx.body = "findById";
+        ctx.body = 'findById';
     }
     static async update(ctx) {
         ctx.status = 200;
-        ctx.body = "update";
+        ctx.body = 'update';
     }
     static async delete(ctx) {
         ctx.status = 200;
-        ctx.body = "delete";
+        ctx.body = 'delete';
     }
 }
 
@@ -267,26 +267,26 @@ module.exports = UserController;
 用户的增删改查都安排上了，语义很明显了，其次我们在 routes 文件中创建 user.js，这里展示与 users 路由相关的代码：
 
 ```javascript
-const Router = require("koa-router");
-const jwt = require("koa-jwt");
+const Router = require('koa-router');
+const jwt = require('koa-jwt');
 const {
     create,
     find,
     findById,
     update,
     delete: del,
-} = require("../controllers/user");
+} = require('../controllers/user');
 
-const router = new Router({ prefix: "/users" });
-const { JWT_SECRET } = require("../config/");
+const router = new Router({ prefix: '/users' });
+const { JWT_SECRET } = require('../config/');
 
 const auth = jwt({ JWT_SECRET });
 
-router.post("/", create);
-router.get("/", find);
-router.get("/:id", findById);
-router.put("/:id", auth, update);
-router.delete("/:id", auth, del);
+router.post('/', create);
+router.get('/', find);
+router.get('/:id', findById);
+router.put('/:id', auth, update);
+router.delete('/:id', auth, del);
 
 module.exports = router;
 ```
@@ -316,8 +316,8 @@ cnpm i mongoose -S
 在 `config/index.js` 中添加 connectionStr 变量，代表 mongoose 连接的数据库地址
 
 ```javascript
-const JWT_SECRET = "secret";
-const connectionStr = "mongodb://127.0.0.1:27017/basic";
+const JWT_SECRET = 'secret';
+const connectionStr = 'mongodb://127.0.0.1:27017/basic';
 
 module.exports = {
     JWT_SECRET,
@@ -328,8 +328,8 @@ module.exports = {
 创建 `db/index.js`
 
 ```javascript
-const mongoose = require("mongoose");
-const { connectionStr } = require("../config/");
+const mongoose = require('mongoose');
+const { connectionStr } = require('../config/');
 
 module.exports = {
     connect: () => {
@@ -338,12 +338,12 @@ module.exports = {
             useUnifiedTopology: true,
         });
 
-        mongoose.connection.on("error", (err) => {
+        mongoose.connection.on('error', (err) => {
             console.log(err);
         });
 
-        mongoose.connection.on("open", () => {
-            console.log("Mongoose连接成功");
+        mongoose.connection.on('open', () => {
+            console.log('Mongoose连接成功');
         });
     },
 };
@@ -368,14 +368,14 @@ db.connect()
 在根目录下创建 `models` 目录，用来存放数据模型定义文件，在其中创建 `User.js`，代表用户模型，代码如下：
 
 ```javascript
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
     username: { type: String },
     password: { type: String },
 });
 
-module.exports = mongoose.model("User", schema);
+module.exports = mongoose.model('User', schema);
 ```
 
 具体可以看看 [Mongoose](../Node/Mongoose.md) 这篇文章，这里我们就看行为，以上代码表示建立了一个数据对象，供操作器来操作数据库
@@ -385,7 +385,7 @@ module.exports = mongoose.model("User", schema);
 然后就可以在 Controller 中进行数据的增删改查操作。首先我们打开 `constrollers/user.js`
 
 ```javascript
-const User = require("../models/User");
+const User = require('../models/User');
 
 class UserController {
     static async create(ctx) {
@@ -407,7 +407,7 @@ class UserController {
     static async update(ctx) {
         const model = await User.findByIdAndUpdate(
             ctx.params.id,
-            ctx.request.body
+            ctx.request.body,
         );
         ctx.status = 200;
         ctx.body = model;

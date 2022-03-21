@@ -87,11 +87,11 @@ int x; // null
 // JavaScript
 var myNull = null;
 if (!myNull) {
-    console.log("null为false");
+    console.log('null为false');
 }
 var zero = 0;
 if (!zero) {
-    console.log("0是false");
+    console.log('0是false');
 }
 ```
 

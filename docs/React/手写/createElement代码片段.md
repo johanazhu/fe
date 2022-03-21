@@ -21,7 +21,7 @@ export function createElement(type, config, children) {
             }
         }
         if (hasValidKey(config)) {
-            key = "" + config.key;
+            key = '' + config.key;
         }
 
         self = config.__self === undefined ? null : config.__self;
@@ -67,8 +67,8 @@ export function createElement(type, config, children) {
     if (__DEV__) {
         if (key || ref) {
             const displayName =
-                typeof type === "function"
-                    ? type.displayName || type.name || "Unknown"
+                typeof type === 'function'
+                    ? type.displayName || type.name || 'Unknown'
                     : type;
             if (key) {
                 defineKeyPropWarningGetter(props, displayName);
@@ -90,7 +90,7 @@ export function createElement(type, config, children) {
         self,
         source,
         ReactCurrentOwner.current,
-        props
+        props,
     );
 }
 ```

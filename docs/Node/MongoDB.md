@@ -104,20 +104,20 @@ cnpm i mongoose -S
 ### 使用 mongoose
 
 ```javascript
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 // const db = mongoose.connect("mongodb://user:pass@ip:port/database")
 
-mongoose.connect("mongodb://localhost:27017/school", {
+mongoose.connect('mongodb://localhost:27017/school', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-mongoose.connection.on("error", (err) => {
+mongoose.connection.on('error', (err) => {
     console.log(err);
 });
 
-mongoose.connection.on("open", () => {
-    console.log("Mongoose连接成功");
+mongoose.connection.on('open', () => {
+    console.log('Mongoose连接成功');
 });
 ```
 
@@ -159,7 +159,7 @@ const personSchema = new Schema({
 Model 是由通过 Schema 构造而成 除了具有 Schema 定义的数据库骨架以外，还可以操作数据库。如何通过 Schema 来创建 Modal，如下：
 
 ```javascript
-let User = mongoose.model("User", schema);
+let User = mongoose.model('User', schema);
 ```
 
 ### 图形工具推荐

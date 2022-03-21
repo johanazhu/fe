@@ -4,10 +4,6 @@ JavaScript 的基本功面试题无非包括 闭包、原型链、继承、作�
 
 它的手写面试题包括
 
-
-
-
-
 # 数组扁平化、去重、排序
 
 已知如下数组：var arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10];
@@ -86,13 +82,9 @@ function flatten(arr) {
 }
 ```
 
-
-
 ## 如何实现浏览器内多个标签页之间的通信?
 
 三种。监听 localStorage、webworker、sharedworker
-
-
 
 ```javascript
 window.onstorage = (e: any) => {
@@ -100,15 +92,13 @@ window.onstorage = (e: any) => {
 };
 ```
 
-
-
 ### js 延迟加载的方式有哪些？
 
 defer 和 async
 
- 什么是 defer？
+什么是 defer？
 
- 什么是 async？
+什么是 async？
 
 动态创建 DOM 方式
 
@@ -129,23 +119,23 @@ const html = document.querySelector('html');
 const htmlChild = html.children;
 let obj = {};
 function fn(children) {
-  for (let i of children) {
-    if (obj.hasOwnProperty(i.tagName)) {
-      obj[i.tagName] = obj[i.tagName] + 1;
-    } else {
-      obj[i.tagName] = 1;
+    for (let i of children) {
+        if (obj.hasOwnProperty(i.tagName)) {
+            obj[i.tagName] = obj[i.tagName] + 1;
+        } else {
+            obj[i.tagName] = 1;
+        }
+        const child = i.children;
+        if (child.length !== 0) {
+            fn(child);
+        }
     }
-    const child = i.children;
-    if (child.length !== 0) {
-      fn(child);
-    }
-  }
 }
 fn(htmlChild);
 let tag = Object.entries(obj).sort((a, b) => b[1] - a[1]);
 
 function result(array) {
-  return array.slice(0, 3);
+    return array.slice(0, 3);
 }
 console.log(result(tag));
 ```
@@ -190,10 +180,10 @@ var obj = {}
 
 ## 参考资料
 
-- [夯实 JS 主要知识点](https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
-- [44 道 JS 难题，做对一半就是高手](https://www.jianshu.com/p/e161bd720e64)
-- [JS 20 道概念虽老但也略有收获的 JS 基础题](https://www.cnblogs.com/echolun/p/13363457.html)
-- [精选十道前端面试题](https://zhuanlan.zhihu.com/p/373484984)
-- [字节跳动最爱考的前端面试题：JavaScript 基础](https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ)
-- [一网打尽那些经常被问到的手写题](https://mp.weixin.qq.com/s/YhPAOl1blr03XyiNpKTcKw)
-- [三刷红宝书之 JavaScript 的引用类型](https://juejin.cn/post/6844903910541361165)
+-   [夯实 JS 主要知识点](https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+-   [44 道 JS 难题，做对一半就是高手](https://www.jianshu.com/p/e161bd720e64)
+-   [JS 20 道概念虽老但也略有收获的 JS 基础题](https://www.cnblogs.com/echolun/p/13363457.html)
+-   [精选十道前端面试题](https://zhuanlan.zhihu.com/p/373484984)
+-   [字节跳动最爱考的前端面试题：JavaScript 基础](https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ)
+-   [一网打尽那些经常被问到的手写题](https://mp.weixin.qq.com/s/YhPAOl1blr03XyiNpKTcKw)
+-   [三刷红宝书之 JavaScript 的引用类型](https://juejin.cn/post/6844903910541361165)

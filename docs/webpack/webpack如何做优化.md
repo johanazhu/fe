@@ -17,8 +17,8 @@
                 ```javascript
                 // 入口文件
                 if (module.hot) {
-                    module.hot.accept(["./App"], () => {
-                        render(<App />, document.getElementById("app"));
+                    module.hot.accept(['./App'], () => {
+                        render(<App />, document.getElementById('app'));
                     });
                 }
                 ```
@@ -33,7 +33,7 @@
                 ​
 
                 ```javascript
-                const HotModuleReplacementPlugin = require("webpack/lib/HotModuleReplacementPlugin");
+                const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
                 module.exports = webpackMerge(baseConfig, {
                     plugins: [new HotModuleReplacementPlugin()],
                     devServer: {
@@ -48,12 +48,12 @@
                         // 将热更新代码注入到模块中
                         inline: true,
                         // 如果你希望服务器外部可访问
-                        host: "0.0.0.0",
+                        host: '0.0.0.0',
                         // 设置 proxy 代理
                         proxy: {
-                            context: ["/api"],
-                            target: "//www.proxy.com",
-                            pathRewrite: { "^/api": "" },
+                            context: ['/api'],
+                            target: '//www.proxy.com',
+                            pathRewrite: { '^/api': '' },
                         },
                         // 设置 https
                         https: true,
@@ -65,7 +65,7 @@
 
             ```javascript
             module.exports = {
-                devtool: "source-map",
+                devtool: 'source-map',
             };
             ```
 
@@ -79,7 +79,7 @@
             module.exports = {
                 // 减小模块的查找范围
                 resolve: {
-                    modules: [path.resolve(__dirname, "node_modules")],
+                    modules: [path.resolve(__dirname, 'node_modules')],
                 },
                 module: {
                     rules: [
@@ -87,15 +87,15 @@
                             test: /\.js?$/,
                             use: [
                                 {
-                                    loader: "babel-loader",
+                                    loader: 'babel-loader',
                                     query: {
                                         // 将 babel 编译过的模块缓存在 webpack_cache 目录下，下次优先复用
-                                        cacheDirectory: "./webpack_cache/",
+                                        cacheDirectory: './webpack_cache/',
                                     },
                                 },
                             ],
                             // 减少 babel 编译范围，忘记设置会让 webpack 编译慢上好几倍
-                            include: path.resolve(__dirname, "src"),
+                            include: path.resolve(__dirname, 'src'),
                         },
                     ],
                 },
@@ -153,19 +153,19 @@
                     rules: [
                         {
                             test: /\.js?$/,
-                            use: ["happypack/loader?id=babel"],
-                            include: path.resolve(__dirname, "src"),
+                            use: ['happypack/loader?id=babel'],
+                            include: path.resolve(__dirname, 'src'),
                         },
                     ],
                 },
                 plugins: [
                     new HappyPack({
-                        id: "babel",
+                        id: 'babel',
                         loaders: [
                             {
-                                loader: "babel-loader",
+                                loader: 'babel-loader',
                                 query: {
-                                    cacheDirectory: "./webpack_cache/",
+                                    cacheDirectory: './webpack_cache/',
                                 },
                             },
                         ],

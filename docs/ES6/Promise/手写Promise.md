@@ -40,7 +40,7 @@ function Promise(fn) {
 
 ```javascript
 const fn = (resolve) => {
-    console.log("fn");
+    console.log('fn');
     setTimeout(() => {
         resolve(1);
     }, 500);

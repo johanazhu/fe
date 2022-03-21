@@ -287,17 +287,17 @@ Content-Language：语言
 #### Redirect
 
 ```javascript
-if (request.url === "/") {
+if (request.url === '/') {
     response.writeHead(302, {
-        Location: "/new",
+        Location: '/new',
     });
-    response.end("");
+    response.end('');
 }
-if (request.url === "/new") {
+if (request.url === '/new') {
     response.writeHead(200, {
-        "Content-Type": "text/html",
+        'Content-Type': 'text/html',
     });
-    response.end("<div>hello,world</div>");
+    response.end('<div>hello,world</div>');
 }
 ```
 

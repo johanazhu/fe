@@ -13,7 +13,7 @@ Ref 就是能获取到该元素的原始 dom
 -   集成第三方 DOM 库
 
 ```tsx
-import React, { forwardRef } from "react";
+import React, { forwardRef } from 'react';
 
 // Refs 的使用
 // 什么是 Refs, Refs 提供了一种方法，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素
@@ -46,7 +46,7 @@ class MyComponent1 extends React.Component {
     }
     componentDidMount() {
         const node = this.myRef.current;
-        console.log("node", node);
+        console.log('node', node);
     }
     render() {
         return (
@@ -108,7 +108,7 @@ class Parent extends React.Component {
     }
     render() {
         // 代码不能运行
-        return <MyFunctionComponent ref={this.textInput} value={"11111"} />;
+        return <MyFunctionComponent ref={this.textInput} value={'11111'} />;
     }
 }
 // 也就是说如果你要在外部通过ref控制函数组件ref的话，就可以用 forwwardRef 来实现，它一般与
