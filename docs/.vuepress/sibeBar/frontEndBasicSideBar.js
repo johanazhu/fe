@@ -32,7 +32,7 @@ function frontEndBasicSideBar() {
             sidebarDepth: 0,
             children: [
                 '/Jquery/',
-                '/Jquery/高效jquery.md',
+                '/Jquery/高效jQuery.md',
                 '/Jquery/如何设计一个JS插件.md',
                 '/Jquery/阅读源码.md',
             ],
