@@ -1,8 +1,8 @@
-# CSS 常见面试点
+# CSS 面试题
 
 > 面试过程思路清晰，面试官给出关键字，能够快速反应出相关的技术要点，但是也要避免滔滔不绝，说一堆无关紧要的东西。举例来说，当时勾股老师面试我的时候，问了我一个左图右文的布局做法，我的回答是：我自己总结过 7 种方案，其中比较好用的是基于 BFC 的，float 的以及 flex 的三种。之后把关键 CSS 口喷了一下，然后 CSS 就面完了
 
-CSS 方面的知识点，说起来也就这几点：
+CSS 方面的知识点，说来说去就这几点：
 
 [选择器](#选择器)
 
@@ -19,12 +19,9 @@ CSS 方面的知识点，说起来也就这几点：
 [各种布局](#布局)
 
 -   [flex 布局](#flex)
-
 -   [grid 布局](#grid)
-
 -   [水平垂直居中](#水平垂直居中)
 -   [左边固定宽，右边自适应](#左边固定宽，右边自适应)
--   [左图右文布局](左图右文布局)
 -   [瀑布流效果](#瀑布流效果)
 -   [圣杯、双飞翼](#圣杯、双飞翼)
 
@@ -86,7 +83,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
 }
 ```
 
-[线上 demo](https://codepen.io/jojobo/pen/XWaKwMy)
+[codepen demo](https://codepen.io/jojobo/pen/XWaKwMy)、[线上demo](https://azhubaby.com/demo/三角形.html)
 
 ## 盒模型
 
@@ -101,7 +98,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
     -   width = border + padding + content 宽度
     -   height = border + padding + content 高度
 
-在浏览器中，默认是标准盒模型，css 的写法是 `box-sizing: content-box`。如果要切换成 IE 模式（也叫怪异盒子），写法为 `box-sizing: border-box`。
+在浏览器中，默认是标准盒模型，CSS 的写法是 `box-sizing: content-box`。如果要切换成 IE 模式（也叫怪异盒子），写法为 `box-sizing: border-box`。
 
 ## 外边距重叠
 
@@ -120,7 +117,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
           margin-top: 87px;
         }
         </style>
-
+    
         <p>下边界范围会...</p>
         <p>...会跟这个元素的上边界范围重叠。</p>
         ```
@@ -135,16 +132,16 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
                 margin-top: 13px;
                 margin-bottom: 87px;
             }
-
+    
             header {
                 margin-top: 87px;
             }
-
+    
             footer {
                 margin-bottom: 13px;
             }
         </style>
-
+    
         <section>
             <header>上边界重叠 87</header>
             <main></main>
@@ -166,7 +163,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
           margin-bottom: 87px;
         }
         </style>
-
+        
         <p>上边界范围是 87 ...</p>
         <div></div>
         <p>... 上边界范围是 87</p>
@@ -203,6 +200,8 @@ BFC 有什么不足？
 
 已经过时，现在用 flex 布局能代替 BFC 的作用，并且更加强大
 
+具体分析可看——[CSS世界中的解决——BFC](./BFC是什么.md)
+
 ## 清除浮动
 
 在父元素后面添加一个伪元素，设置为 block，并清除左右浮动
@@ -225,22 +224,11 @@ BFC 有什么不足？
 
 ### [左边固定宽，右边自适应](./左边固定宽，右边自适应.md)
 
-### [左图右文布局](./左图右文布局.md)
-
 ### [瀑布流效果](./瀑布流效果.md)
 
 ### [圣杯、双飞翼](./圣杯、双飞翼.md)
 
-## block、inline-block、inline 对比
 
--   block
-    -   块级元素，独占一行
-    -   常见元素：div、p、h1...h6、ul、ol、dl、address、blockquote
--   inline-block
-    -   行内块元素，不独占一行，又可以设置宽度和高度
--   inline
-    -   行内元素，相连的排在一行，拍不下时换行
-    -   常见元素：span、a、input、select、textarea、img、br、strong、em、label
 
 ## 参考资料
 
