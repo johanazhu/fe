@@ -1,5 +1,31 @@
 # HTTP 面试题
 
+
+
+## Q：http1、2、3 的区别
+
+A: 
+
+
+
+## Q: http2.0 做了哪些改进
+
+A:
+
+
+
+## Q：HTTP缓存机制
+
+A：强缓存和协商缓存，在http1.0中强缓存 cache-control，http1.1是 expires。协商缓存时 http1.0的 last-modified 和 http1.1的etag
+
+
+
+## Q: http 状态码有哪些
+
+A：
+
+
+
 ## GET 和 POST 的区别在哪里？
 
 -   从缓存角度看，GET 会被缓存，POST 不会被缓存
