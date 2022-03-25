@@ -167,6 +167,20 @@ module.exports = {
         linkify: true,
     },
     plugins: [
+        [
+            '@vuepress/plugin-docsearch',
+            {
+                appId: 'LE7T3Q08D4',
+                apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
+                indexName: 'azhubaby',
+                // searchParameters: {
+                //     facetFilters: ['tags:v2'],
+                // },
+                locales: {
+                    placeholder: "搜索文档"
+                },
+            },
+        ],
         // vuepress2 暂不支持 sitmap
         // [
         //     'sitemap',
@@ -201,19 +215,19 @@ module.exports = {
     ]
     // plugins: [
     //     '@vuepress/search',
-    //     // [
-    //     //     '@vuepress/plugin-docsearch',
-    //     //     {
-    //     //         apiKey: '3f380ab4ce077e42f47b8ccd34e94a65',
-    //     //         indexName: 'shengxinjing',
-    //     //         searchParameters: {
-    //     //             facetFilters: ['tags:v2'],
-    //     //         },
-    //     //         locales: {
-    //     //             placeholder: "搜索文档"
-    //     //         },
-    //     //     },
-    //     // ],
+    //     [
+    //         '@vuepress/plugin-docsearch',
+    //         {
+    //             apiKey: '3f380ab4ce077e42f47b8ccd34e94a65',
+    //             indexName: 'shengxinjing',
+    //             searchParameters: {
+    //                 facetFilters: ['tags:v2'],
+    //             },
+    //             locales: {
+    //                 placeholder: "搜索文档"
+    //             },
+    //         },
+    //     ],
     // ],
     // typora 中使用图片资源转译成乱码
     // markdown: {
