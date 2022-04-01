@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // add(1)(2)(3) = 6
+        // const add = (x) => (y) => (z) => x + y + z
+
+        // 同时满足
+        // add(1, 2, 3);
+        // add(1, 2)(3);
+        // add(1)(2, 3);
+
+        // const add = (x) => (y) => (z) => {
+        //     return x + y + z
+        // }
+
+        const curry = (fn, ...args) => {
+            return args.length >= fn.length ? fn(...args) : (..._args) => curry(fn, ...args, ..._args)
+        }
+
+        // const curry = (fn, ...args) =>
+        //     // 函数的参数个数可以直接通过函数数的.length属性来访问
+        //     args.length >= fn.length // 这个判断很关键！！！
+        //         // 传入的参数大于等于原始函数fn的参数个数，则直接执行该函数
+        //         ? fn(...args)
+        //         /**
+        //          * 传入的参数小于原始函数fn的参数个数时
+        //          * 则继续对当前函数进行柯里化，返回一个接受所有参数（当前参数和剩余参数） 的函数
+        //         */
+        //         : (..._args) => curry(fn, ...args, ..._args);
+
+
+        function add1(x, y, z) {
+            return x + y + z
+        }
+        const add = curry(add1)
+        // console.log('add', add)
+
+        // console.log(add(1, 2, 3));
+        // console.log(add(1)(2)(3));
+        // console.log(add(1, 2)(3));
+        // console.log(add(1)(2, 3));
+
+        // function add2(...args) {
+        //     const result = args.reduce((att, item) => att + item)
+        //     return this;
+        //     return () => {
+        //         return result
+        //     }
+        // }
+
+        class Operator {
+            constructor(num) {
+                this.num = num
+            }
+
+            add(value) {
+                this.num = this.num + value;
+                return this;
+            }
+
+            minus(value) {
+                this.num = this.num - value;
+                return this
+            }
+        }
+
+        // var op = new Operator(1)
+        // op.add(3).minus(2).multi(2).divide(1)
+
+        // const myPromise = val => Promise.resolve(val);
+        // const delay = duration => { /**/ };
+        // myPromise(`hello`).then(delay(1000)).then(val => console.log(val));
+        // // Promise.resolve(val) return new Promise()
+
+
+
+
+        const delay = duration => {
+            return (val) => (
+                new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve(val)
+                    }, duration)
+                })
+            )
+        }
+
+
+        class A { }
+        class B extends A { }
+
+        const b = new B();
+
+        b.__proto__ = B.prototype
+        // 如果是 class 的 extends 继承的话，B.__proto__ === A
+
+
+
+        var jobs = [];
+
+        for (let i = 0; i < 8; i++) {
+
+            // jobs.push(async function () {
+            //     setTimeout(function () {
+            //         console.log("this is " + i)
+            //     }, 1000)
+            // });
+
+            // jobs.push(() => {
+            //     setTimeout(function () {
+            //         console.log("this is " + i)
+            //     }, 1000)
+            // });
+
+            // jobs.push(function () {
+            //     // debugger;
+            //     new Promise((resolve, reject) => {
+            //         setTimeout(function () {
+            //             resolve()
+            //             console.log("this is " + i)
+            //         }, 1000)
+            //     })
+            // });
+
+            jobs.push(function () {
+                // debugger;
+                return new Promise((resolve, reject) => {
+                    setTimeout(function () {
+                        resolve()
+                        console.log("this is " + i)
+                    }, 1000)
+                })
+            });
+            // jobs.push(async function () {
+            //     return new Promise((resolve, reject) => {
+            //         setTimeout(function () {
+            //             resolve()
+            //             console.log("this is " + i)
+            //         }, 1000)
+            //     })
+            // });
+            // jobs.push(() => {
+            //     return new Promise((resolve, reject) => {
+            //         setTimeout(function () {
+            //             resolve()
+            //             console.log("this is " + i)
+            //         }, 1000)
+            //     })
+            // })
+        }
+
+        // console.log('jobs', jobs);
+        (async function () {
+            for (const job of jobs) {
+                await job()
+            }
+        })();
+
+
+        // currying 柯里化
+        // ex: add(1)(2)(3) 
+        // add(1, 2)(3) add(1)(2, 3)
+        function sum(a, b, c) {
+            return a + b + c;
+        }
+
+        const currying = (fn, ...args) => {
+            if (args.length >= fn.length) {
+                return fn(...args)
+            }
+            return (...args2) => currying(fn, ...args, ...args2)
+        }
+
+        let curriedSum = currying(sum);
+
+        // alert(curriedSum(1, 2, 3)); // 6，仍然可以被正常调用
+        // alert(curriedSum(1)(2, 3)); // 6，对第一个参数的柯里化
+        // alert(curriedSum(1)(2)(3));
+
+        // 防抖、节流
+        // 防抖是什么
+        // 不管事件触发多少次，都在n秒后执行
+        // 用处：用户触发高频事件过于频繁，只要最后一次操作
+        // 应用场景：搜索关键字、窗口大小、表单提交
+        // 使用：dobounce(handleClick, 1000)
+        // flag 是否立即执行
+        function dobounce(func, wait, flag) {
+            let timer = null;
+            return function (...args) {
+                clearTimeout(timer);
+                // 第一次
+                if (flag && !timer) {
+                    func.apply(this, args)
+                }
+                // 后续更新
+                timer = setTimeout(() => {
+                    func.apply(this, args)
+                }, wait)
+            }
+        }
+
+        // 节流
+        // 节流是什么
+        // 每隔一段时间执行一次
+        // 时间戳实现
+        function throttle(func, wait) {
+            let pre = 0;
+            return function (...args) {
+                if (Date.now() - pre > wait) {
+                    pre = Data.now()
+                    func.apply(this, args)
+                }
+            }
+        }
+        // 定时器
+        function throttle(func, wait) {
+            let timer = null;
+            return function (...args) {
+                if (!timer) {
+                    timer = setTimeout(() => {
+                        timer = null;
+                        func.apply(this, args)
+                    }, wait)
+                }
+            }
+        }
+
+        // 时间戳
+        // 场景：下拉加载
+        // 节流，某个时间段执行一次
+        // 第一次触发，最后一次不触发
+        function throttle(func, wait) {
+            let pre = 0;
+            return (...args) => {
+                if (Date.now() - pre > wait) {
+                    pre = Date.now()
+                    func.apply(this, args)
+                }
+            }
+        }
+
+        // 定时器
+        // 第一次不会触发，最后一次触发
+        function throttle(func, wait) {
+            let timer = null;
+            return function (...args) {
+
+                if (!timer) {
+                    timer = setTimeout(() => {
+                        timer = null;
+                        func.apply(this, args)
+                    }, wait)
+                }
+            }
+        }
+
+        function throttle(func, wait) {
+            let pre = 0;
+            let timer = null;
+            return function (...args) {
+                if (Date.now() - pre > wait) {
+                    clearTimeout(timer)
+                    pre = Date.now()
+                    func.apply(this, wait)
+                } else if (!timer) {
+                    timer = setTimeout(() => {
+                        func.apply(this, args)
+                    }, wait)
+                }
+            }
+        }
+
+
+        // 手写call/apply/bind
+        // http
+        // 性能优化
+        // React 相关复习
+        // 首屏 性能指标
+        // jingui相关 皮肤概念、如何做一个组件思考
+        // 移动端web相关 适配方案
+        // flex、bfc、
+
+        // person.call(this, "johan", 28) 
+        // 
+        function myCall(context = window, ...args) {
+            if (this === Function.prototype) {
+                return undefined;
+            }
+            const fn = Symbol()
+            context[fn] = this;
+            const result = context[fn](...args)
+            delete context[fn]
+            return result;
+        }
+
+        // 手写 apply
+        function myApply(context = window, ...args) {
+            if (this === Function.prototype) {
+                return undefined;
+            }
+            const fn = Symbol();
+            context[fn] = this;
+            let result;
+            if (!Array.isArray(args)) {
+                result = context[fn]()
+            } else {
+                result = context[fn](...args)
+            }
+            delete context[fn]
+            return result;
+        }
+
+        // 手写 bind
+        function myBind(context, ...args) {
+            if (this === Function.prototype) {
+                throw new TypeError('不能使用')
+            }
+            const _this = this;
+            return function F() {
+                if (this instanceof F) {
+                    return new _this(...args, ...arguments)
+                } else {
+                    return this.apply(this, ...args, ...arguments)
+                }
+            }
+        }
+
+        // http
+        // http 的历程
+        // http1.0 http1.1 http2 http3 https http缓存
+        // http1.0 的
+
+
+        // react 复习
+        //  React 性能优化手段
+
+        // 使用 React.memo 来缓存组件。
+        // 使用 React.useMemo 缓存大量的计算。
+        // 避免使用匿名函数。
+        // 利用 React.lazy 和 React.Suspense 延迟加载不是立即需要的组件。
+        // 尽量使用 CSS 而不是强制加载和卸载组件。
+        // 使用 React.Fragment 避免添加额外的 DOM。
+
+
+        // 九、性能优化
+        // 代码层面：
+        // 共同
+        // 防抖和节流（resize，scroll，input）。
+        // 非框架
+        // 减少回流（重排）和重绘。
+        // CSS书写顺序、在传统写法中（非框架）离线操作
+        // 事件委托
+        // css 放 ，js 脚本放  最底部。
+        // 减少 DOM 操作
+        // React 下
+        // 按需加载，比如 React 中使用 React.lazy 和 React.Suspense ，通常需要与 webpack 中的 splitChunks 配合。
+        // 使用 React.memo 来缓存组件。
+        // 使用 React.useMemo 缓存大量的计算。
+        // 跳过不必要的组件更新
+        // PureComponent、React.memo
+        // shouldComponentUpdate
+        // 避免使用匿名函数（每次组件渲染会重新渲染一边函数）
+        // React.lazy 和 React.Suspense 懒加载
+        // 懒渲染：列表实现虚拟列表
+        // 使用 React.Fragment 避免添加额外的 DOM。
+        // 需要写死的方法和
+        // 向下移动State
+        // 内容提升
+        // 以上俩点都是在写代码注意的
+
+
+
+        // 构建方面：
+
+        // 压缩代码文件，
+        // 在 webpack 中使用 terser-webpack-plugin 压缩 Javascript 代码；
+        // 使用 css-minimizer-webpack-plugin 压缩 CSS 代码；使用 html-webpack-plugin 压缩 html 代码。
+        // 开启 gzip 压缩，webpack 中使用 compression-webpack-plugin ，node 作为服务器也要开启，使用 compression。
+        // 常用的第三方库使用 CDN 服务，在 webpack 中我们要配置 externals，
+        // 将比如 React， Vue 这种包不打倒最终生成的文件中。而是采用 CDN 服务。
+
+        // 其它：
+
+        // 使用 http2。因为解析速度快，头部压缩，多路复用，服务器推送静态资源。
+        // 使用服务端渲染。
+        // 图片压缩。
+        // 使用 http 缓存，比如服务端的响应中添加 Cache-Control / Expires 。
+
+        // 异步编程
+        // 回调函数-promise-async await
+        // 其实还有 generator 函数 暂停-执行
+        // yield 暂停，实例.next() 执行
+        // async await 是 generator 的语法糖，并对 generator 函数进行了改进（返回值是 promise）
+
+        // 错误捕获
+        // JS 执行错误 
+        // try catch 
+        // 可预见错误
+        // 捕获不到具体的语法错误和异步错误
+        // window.error
+        // 能捕获预料之外的语法错误
+        // 捕获不到资源加载异常和接口异常
+        // 资源加载异常
+        // addEventListener("error", callback, true)
+        // promise 异常
+        //  window.addEventListener("onhandledrejection")
+        // React 异常
+        // 做个 错误边界（Error Boundaries）
+        // class 组件中的两个生命周期
+        // static getDerviedStateFromError 展示错误UI
+        // componentDidCatch 上报错误给服务器
+
+
+        // 为什么不再条件语句中的写hooks
+        // hooks 是以链表的形式相连，使用 for 语句、if，会使得后续的状态没法更新
+
+        // jingui 皮肤
+        // sass less
+        // css 变量 --
+        // 按需加载 webpack babel-plugin-import
+        // 如何做一个组件、组件库
+        // 移动端web相关 适配方案
+        // flexible(rem布局) vw 布局 px 布局
+        // 
+        // 防抖节流
+        // 防抖 dobounce
+        // 一段时间内执行代码，  以最后一次为准
+        function dobounce(func, wait, flag) {
+            let timer = null;
+            return function (...args) {// 扩展运算符
+                clearTimeout(timer);
+                if (!timer && flag) {
+                    func.apply(this, args)
+                }
+                timer = setTimeout(() => {
+                    func.apply(this, ...args)
+                }, wait)
+            }
+        }
+
+
+        // 节流 throttle
+        // 一段时间内执行一次，有节制的进行
+        // 时间戳
+        function throttle(func, wait) {
+            let pre = 0;
+            if (Date.now - pre > wait) {
+                pre = Date.now()
+                return function (...args) {
+                    func.apply(this, args)
+                }
+            }
+        }
+        function throttle(func, wait) {
+            let pre = 0;
+            let timer = null;
+            return function (...args) {
+                if (Date.now() - pre > wait) {
+                    pre = Date.now()
+                    clearTimeout(timer)
+                    func.apply(this, args)
+                } else if (!timer) {
+                    timer = setTimeout(() => {
+                        func.apply(this, args)
+                    }, wait)
+                }
+            }
+        }
+        // 错误捕获
+        // js 代码异常
+            // try/catch
+            // window.error
+        // 资源加载错误
+            // window.addEventListen("error", callback)
+        // Promise 错误
+            // window.addEventListen("unhandlerejectedtion")
+        // React 错误
+            // 错误捕获
+            // static getDerviedStateFromProps componentDidCatch
+        
+        // 图片懒加载
+        // 最开始用placeholder图或者loading图来代替，真正的图片放在data-img属性上，等到图片需要展示的时候再替换img.src
+        // 监听所有scroll，为了性能，200ms 拉动一次
+        // 循环所有的图片，判断他们的偏移高度与视窗高度+滚动高度之和，如果小于，则说明图片已经显示在视图中，那么就展示
+        // 通过 getBoundingClientRect，也是循环所有图片，但是是通过拿到该元素的getBoundingClientRect 来判断是否出现再视图中
+        // intersectionObserver 交叉观察器，异步
+        
+        // 类数组与数组的区别
+        // 类数组有哪些 arguments、dom 对象列表（document.querySelectorAll）
+        // 类数组有 length，但实际上是对象
+        // slice(arrayLike, 0)
+        // ...扩展运算符
+        // Arrayll.from(arrayLike)
+
+        // 事件循环 EventLoop
+        // 先宏任务，宏任务执行完去执行微任务，微任务完了再在任务队列中取出第一个，在执行，执行完后再看微任务队列里是否有任务，执行完微任务队列中的任务后再的...
+
+        // HTTP 缓存
+        // 分为强缓存和协商缓存
+        // 强缓存怎么样
+        // 协商缓存怎么样
+
+        // BFC 是什么？
+        // 块级格式化上下文，就是
+
+
+    </script>
+
+</body>
+
+</html>
