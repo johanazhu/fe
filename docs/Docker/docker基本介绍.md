@@ -10,9 +10,9 @@ Container: 一个完整的操作系统
 
 ## docker 是什么？
 
-​ docker 是用 Go 语言实现的开源项目，可以让我们方便的创建和使用容器，docker 将程序以及程序所有的依赖都打包到 docker container，这样你的程序可以在任何环节都会有一致的表现，这里程序运行的依赖也就是容器就好比集装箱，容器所处的操作系统环境就好比货船或港口，**程序的表现只和集装箱有关系（容器），和集装箱放在哪个货船或者哪个港口（操作系统）没有关系**
+docker 是用 Go 语言实现的开源项目，可以让我们方便的创建和使用容器，docker 将程序以及程序所有的依赖都打包到 docker container，这样你的程序可以在任何环节都会有一致的表现，这里程序运行的依赖也就是容器就好比集装箱，容器所处的操作系统环境就好比货船或港口，**程序的表现只和集装箱有关系（容器），和集装箱放在哪个货船或者哪个港口（操作系统）没有关系**
 
-​ 容器技术**只隔离应用程序的运行时环境但容器之间可以共享一个操作系统**，这里的运行时环境指的是程序运行依赖的各种库以及配置
+容器技术**只隔离应用程序的运行时环境但容器之间可以共享一个操作系统**，这里的运行时环境指的是程序运行依赖的各种库以及配置
 
 注意，容器是一种通用技术，docker 只是其中的一种实现
 
@@ -20,14 +20,14 @@ Container: 一个完整的操作系统
 
 1. 环境隔离
     - docker 实现了资源隔离，实现一台机器运行多个容器互不影响。基于容器来开发、部署、运行应用程序
-2. 更快速的交付部署
+2. 更快速地交付部署
     - 使用 docker ，开发者可以利用镜像快速构建一套标准的研发环境，开发完成后，测试和运维人员可以直接通过使用此镜像部署代码
 3. 更高效的资源利用
     - docker 的运行不需要额外的虚拟化管理程序的支持，它是内核级的虚拟化，可以实现更高的性能，同时对资源的额外需求很低
 4. 更易迁移扩展
     - docker 几乎可以在任意平台上运行
 5. 更简单的更新管理
-    - 使用 dockerfile，只需要小小的配置修改，就可以代替意外大量的更新工作，并且所有修改都是以增量的方式进行分发和更新，从而实现自动化和搞笑的容器管理
+    - 使用 dockerfile，只需要小小的配置修改，就可以代替以往大量的更新工作，并且所有修改都是以增量的方式进行分发和更新，从而实现自动化和高效的容器管理
 6. 重启更快
     - docker 的启动只需要几秒，虚拟机要几分钟
 
@@ -39,23 +39,23 @@ docker 的整个生命周期由三部分组成：镜像（image）+ 容器（con
 
 ### 镜像（Image）
 
-​ 类似于虚拟机上的镜像，是一个包含有文件系统的面向 docker 引擎的**只读**模板。任何应用程序运行都需要环境，而镜像就是用来提供这种运行环境的。例如一个 Ubuntu 镜像就是一个包含 Ubuntu 操作系统环境的模板（安装包），同理在该镜像上装上 Apache 软件，就可以称为 Apache 镜像
+类似于虚拟机上的镜像，是一个包含有文件系统的面向 docker 引擎的**只读**模板。任何应用程序运行都需要环境，而镜像就是用来提供这种运行环境的。例如一个 Ubuntu 镜像就是一个包含 Ubuntu 操作系统环境的模板（安装包），同理在该镜像上装上 Apache 软件，就可以称为 Apache 镜像
 
 ### 容器（Container）
 
-​ 类似于一个轻量级的沙盒，可以将其看作一个极简的 Linux 系统环境（包括 root 权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序。Docker 引擎利用容器来运行，隔离各个应用。容器是镜像创建的应用实例，可以创建、启动、停止、删除容器，各个容器之间是相互隔离的，互不影响。
+类似于一个轻量级的沙盒，可以将其看作一个极简的 Linux 系统环境（包括 root 权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序。Docker 引擎利用容器来运行，隔离各个应用。容器是镜像创建的应用实例，可以创建、启动、停止、删除容器，各个容器之间是相互隔离的，互不影响。
 
-​ 注意：镜像本身是只读的，容器从镜像启动时，Docker 在镜像的上层创建一个可写层，镜像本身不变。
+注意：镜像本身是只读的，容器从镜像启动时，Docker 在镜像的上层创建一个可写层，镜像本身不变。
 
 ### 仓库（Repository）
 
-​ 类似于代码仓库，这里是镜像仓库，是 Docker 用来集中存放镜像文件的地方。
+类似于代码仓库，这里是镜像仓库，是 Docker 用来集中存放镜像文件的地方。
 
-​ 注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用 tag 进行区分，比如 Ubuntu 仓库存放有多个版本（12.04、14.04 等）的 Ubuntu 镜像
+注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用 tag 进行区分，比如 Ubuntu 仓库存放有多个版本（12.04、14.04 等）的 Ubuntu 镜像
 
 ## 传统的虚拟机与容器对比
 
-![虚拟机和容器](../.vuepress/public/images/Docker/虚拟机和容器.jpg)
+![虚拟机和容器](https://s2.loli.net/2022/04/23/LvHYhegzBnAOoDJ.jpg)
 
 可以看出，传统的虚拟机是每开一个虚拟机，相当于运行一个系统，这种是非常占用系统资源的，但容器（以 docker 为例）。也起到了应用之间的隔离效果
 
@@ -65,7 +65,7 @@ docker 的整个生命周期由三部分组成：镜像（image）+ 容器（con
 
 这样做除了资源分配合理外，还能做到应用程序的环境统一化
 
-![repository、image和container](../.vuepress/public/images/Docker/repository、image和container.png)
+![repository、image和container](https://s2.loli.net/2022/04/23/cK6ol4PtvaeDCZp.png)
 
 ## 基于 docker 的开发过程
 
@@ -79,7 +79,7 @@ cgroup 解决计算机资源使用上的隔离
 
 ## 架构图
 
-![docker架构图](../.vuepress/public/images/Docker/docker架构图.jpg)
+![docker架构图](https://s2.loli.net/2022/04/23/uYm2lQ5oEVb4Csw.jpg)
 
 ## docker 是如何工作的
 
@@ -91,13 +91,13 @@ docker 使用的是常见的 CS 架构，也就是 client-server 模式，docker
 
 当我们写完 dockerfile 交给 docker“编译”时使用这个命令，那么 client 在接收到请求后转发给 docker daemon，接着 docker daemon 根据 dockerfile 创建出“可执行程序”image
 
-![docker_build](../.vuepress/public/images/Docker/docker_build.png)
+![docker build](https://s2.loli.net/2022/04/23/fk9RCL7drGzZA3q.png)
 
 ### docker run
 
 有了“可执行程序”image 后就可以运行程序了，接下来使用命令 docker run，docker daemon 接收到该命令后找到具体的 image，然后加载到内存可以执行，image 执行起来就是所谓的 container
 
-![docker_run](../.vuepress/public/images/Docker/docker_run.png)
+![docker run](https://s2.loli.net/2022/04/23/fexGAJcKCuHv3sd.png)
 
 ### docker pull
 
@@ -107,4 +107,4 @@ docker pull 是什么意思，学过 git 的同学都知道有 git pull，从远
 
 这个命令的实现很简单，用户通过 docker client 发送命令，docker daemon 接受到命令后向 docker registry 发送 image 下载请求，下载后存放在本地，这样我们就可以使用 image 了
 
-![docker_pull](../.vuepress/public/images/Docker/docker_pull.png)
+![docker pull](https://s2.loli.net/2022/04/23/B2QxWC9An4yRorG.png)

@@ -6,7 +6,7 @@ function DockerSideBar() {
             sidebarDepth: 0,
             children: [
                 '/Docker/',
-                '/Docker/docker基础介绍.md',
+                '/Docker/docker基本介绍.md',
                 '/Docker/如何安装docker.md',
                 '/Docker/docker常见命令.md',
                 '/Docker/dockerfile指令.md',

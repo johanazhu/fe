@@ -39,6 +39,44 @@
 
 
 
+小程序的性能优化考察点：
+
+https://developers.weixin.qq.com/miniprogram/dev/framework/audits/performance.html#11.%20%E5%9B%BE%E7%89%87%E8%AF%B7%E6%B1%82%E6%95%B0
+
+1.首屏时间
+
+2.渲染时间
+
+3.脚本执行时间
+
+4.setState 调用频率
+
+5.setState数据大小
+
+6.WXML节点数
+
+7.图片缓存
+
+8.图片大小
+
+9.请求耗时
+
+10.网络请求数
+
+11.图片请求数
+
+12.网络请求缓存
+
+
+
+
+
+
+
+
+
+
+
 ## 参考资料
 
 - [15 条前端必备的性能优化方法，你知道哪些](https://zhuanlan.zhihu.com/p/85310910)
@@ -76,6 +114,8 @@
 - [前端性能优化](https://mp.weixin.qq.com/s/J60NkG8A_E-vI3RpKQSTmw)
 
 - [15 年双 11 手淘前端技术巡演 - H5 性能最佳实践](https://github.com/amfe/article/issues/21#)
+
+- [7000字前端性能优化总结 | 干货建议收藏](https://mp.weixin.qq.com/s/aByfm9pnp5IPaz8zJyTuYg)
 
   
 
