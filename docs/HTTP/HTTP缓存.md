@@ -4,11 +4,11 @@
 
 速度、速度，还是速度，一个网站要想体验好，就必须在第一时间以最快的速度显示出来。mysql查询慢，就加一层 redis 做缓存，网站资源加载慢，怎么做，使用 HTTP缓存 
 
-HTTP缓存自 HTTP1.0 就开始有，为了是减少服务器压力，加快网页响应速度
+HTTP缓存自 HTTP/1.0 就开始有，为了是减少服务器压力，加快网页响应速度
 
 ## 缓存发展史
 
-HTTP1.0 提出缓存概念，即强缓存 Expires 和协商缓存 Last-Modified。后 HTTP1.1 又有了更好的方案，即强缓存 Cache-Control（缓存控制）和协商缓存 ETag
+HTTP/1.0 提出缓存概念，即强缓存 Expires 和协商缓存 Last-Modified。后 HTTP/1.1 又有了更好的方案，即强缓存 Cache-Control（缓存控制）和协商缓存 ETag
 
 为什么 Expires 和 Last-Modified 不适用呢？
 
