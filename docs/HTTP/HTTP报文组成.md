@@ -14,7 +14,7 @@
 
 一个完整的 HTTP 报文就如下图所示，注意在 header 和 body 之间又一个空行
 
-![62e061618977565c22c2cf09930e1d3c.62e06161](https://s2.loli.net/2022/04/08/ystGFaB78dZMDvO.png)
+![报文信息](https://s2.loli.net/2022/04/08/ystGFaB78dZMDvO.png)
 
 
 

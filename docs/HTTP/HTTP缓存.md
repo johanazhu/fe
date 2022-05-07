@@ -4,60 +4,104 @@
 
 速度、速度，还是速度，一个网站要想体验好，就必须在第一时间以最快的速度显示出来。mysql查询慢，就加一层 redis 做缓存，网站资源加载慢，怎么做，使用 HTTP缓存 
 
-HTTP缓存自 HTTP/1.0 就开始有，为了是减少服务器压力，加快网页响应速度
+HTTP缓存自 HTTP/1.0 就开始有，为的是减少服务器压力，加快网页响应速度
+
+
+
+## 缓存操作的目标
+
+HTTP 缓存只能存储 GET 请求的响应，而对其他类型的请求无能为力
 
 ## 缓存发展史
 
-HTTP/1.0 提出缓存概念，即强缓存 Expires 和协商缓存 Last-Modified。后 HTTP/1.1 又有了更好的方案，即强缓存 Cache-Control（缓存控制）和协商缓存 ETag
+HTTP/1.0 提出缓存概念，即强缓存 Expires 和协商缓存 Last-Modified。后 HTTP/1.1 又有了更好的方案，即强缓存 Cache-Control 和协商缓存 ETag
 
 为什么 Expires 和 Last-Modified 不适用呢？
 
 Expires 即过期时间，但问题是这个时间点是服务器的时间，如果客户端的时间和服务器时间有差，就不准确。所以用 Cache-Control 来代替，它表示过期时长，这就没歧义了
 
-Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也就是说如果在1秒内改变多次，内容文件虽然改变了，但展示还是之前的，也有不准确的场景；所以就有了 ETag，通过内容给资源打标识来判断资源是否变化
+Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也就是说如果在1秒内改变多次，内容文件虽然改变了，但展示还是之前的，存在不准确的场景，所以就有了 ETag，通过内容给资源打标识来判断资源是否变化
 
 以下表格利于对比理解
 
-| 版本    | 强缓存        | 协商缓存      |
-| ------- | ------------- | ------------- |
-| HTTP1.0 | Expires       | Last-Modified |
-| HTTP1.1 | Cache-Control | ETag          |
+| 版本     | 强缓存        | 协商缓存      |
+| -------- | ------------- | ------------- |
+| HTTP/1.0 | Expires       | Last-Modified |
+| HTTP/1.1 | Cache-Control | ETag          |
 
 
 
 ## 两大缓存类型对比
 
-前文已经介绍不同版本下的缓存类型。当时提了有一句强缓存和协商缓存，但没具体介绍。现在来讲讲这两种缓存类型
+前文已介绍不同版本下的缓存类型。当时提了有一句强缓存和协商缓存，但没具体介绍。现在来讲讲这两种缓存类型
 
 ### 强缓存
 
 #### Cache-Control
 
 - HTTP/1.1
-- 通过过期时长控制缓存，对应的字段是 max-age
-  - 例如 Cache-Control: max-age=3600，表示缓存时间为3600秒，过期失效
-- max-age 的用法
-  - max-age: private
-    - 只能浏览器缓存，中间的代理不能缓存
-  - max-age: no-cache
-    - 跳过当前的强缓存，发送HTTP请求，即直接进入 **协商缓存阶段**
-  - max-age: no-store
-    - 不进行任何形式的缓存
-  - max-age: s-maxage
-    - 针对代理服务器的缓存时间
-  - max-age: must-revalidate
-    - 一旦缓存过期，必须回到源服务器验证
 
-- > 更多指令参考[指令大全](https://link.juejin.cn/?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FHTTP%2FHeaders%2FCache-Control)
+- 通过过期时长控制缓存，对应的字段有很多，例如 max-age
+  - 例如 Cache-Control: max-age=3600，表示缓存时间为3600秒，过期失效
+  
+- 缓存请求指令：
+  
+  - ```http
+    Cache-Control: max-age=<seconds>
+    Cache-Control: max-stale[=<seconds>]
+    Cache-Control: min-fresh=<seconds>
+    Cache-control: no-cache
+    Cache-control: no-store
+    Cache-control: no-transform
+    Cache-control: only-if-cached
+    ```
+
+- 缓存响应指令：
+
+  - ```http
+    Cache-control: must-revalidate
+    Cache-control: no-cache
+    Cache-control: no-store
+    Cache-control: no-transform
+    Cache-control: public
+    Cache-control: private
+    Cache-control: proxy-revalidate
+    Cache-Control: max-age=<seconds>
+    Cache-control: s-maxage=<seconds>
+    ```
+
+
+- 其中关键点：
+
+  - `Cache-control: no-cache`
+    - 跳过当前的强缓存，发送 HTTP 请求（如有协商缓存标识即直接进入**协商缓存阶段**）
+    - no-cache 的含义和 `max-age=0` 一样 ，即跳过强缓存，强制刷新
+  - `Cache-control: no-store`
+    - 不使用缓存（包括协商缓存）
+  - `Cache-Control: public, max-age=31536000`
+    - 一般用于缓存静态资源
+    - public：响应可以被中间代理、CDN 等缓存
+    - private：专用于个人的缓存，中间代理、CDN等能换缓存此响应
+    - max-age：单位是秒
+
+- > 更多指令参考[指令大全](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)
 
 #### Expires
 
 - HTTP/1.0
 
+- 语法：
+
+  - ```http
+    Expires: <http-date>
+    ```
+
 - 即过期时间，存在于服务器返回的响应头里
   - Expires: Mon, 11 Apr 2022 06:57:18 GMT
-  - 表示资源在2022年4月2号3点18分 过期，过期了就会往服务端发请求
-  
+  - 表示资源在2022年4月11号6点57分过期，过期了就会往服务端发请求
+
+- 如果在`Cache-Control`响应头设置了 "max-age" 或者 "s-max-age" 指令，那么 `Expires` 头会被忽略
+
 - 缺点：服务器时间与浏览器时间可能不一致
 
 - > 更多指令参考[指令大全](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires)
@@ -66,53 +110,84 @@ Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也
 
 - Cache-Control 较之 Expires 更为精准
 - 同时存在时，Cache-Control 优先级大于 Expires
-- Expires 是 HTTP/1.0 提出，其浏览器兼容性更好，Cache-Control 是 HTTP/1.1 提出，其可同时存在，当有不支持 Cache-Control 浏览器时会以 Expires 为准
+- Expires 是 HTTP/1.0 提出，其浏览器兼容性更好，Cache-Control 是 HTTP/1.1 提出，可同时存在，当有不支持 Cache-Control 的浏览器时会以 Expires 为准
 
 ### 协商缓存
 
-协商缓存需要配合强缓存使用，使用协商缓存的前提是设置强缓存中 `Cache-Control: no-cache`或者 `pragma: no-cache` 告诉浏览器不走强缓存
+协商缓存需要配合强缓存使用，使用协商缓存的前提是设置强缓存设置 `Cache-Control: no-cache`或者 `pragma: no-cache`或者 `max-age=0`  告诉浏览器不走强缓存
 
-> pragma 是 HTTP1.0 中禁止网页缓存的字段，其取值为 no-cache 和 Cache-Control 的 no-cache 效果一样
+> pragma 是 HTTP/1.0 中禁止网页缓存的字段，其取值为 no-cache 和 Cache-Control 的 no-cache 效果一样
 
-#### ETag
+#### ETag/If-None-Match
 
 - HTTP/1.1
 - 即生成文件唯一标识来判断是否过期。只要内容改变，这个值就会变
 - 与 `If-None-Match` 配合，ETag是请求服务器后返回给每个资源文件的唯一标识，客户端会将此标识存在客户端（即浏览器）中，下次请求时会在请求头的 `If-Nono-Match` 中将其值带上，服务器判断 `If-None-Match` 是否与自身服务器上的 ETag 一致，如果一致则返回 304，重定向跳转使用本地缓存；不一致，则返回200，将最新资源返回给客户端，并带上 ETag
 - 更多指令参考[指令大全](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/ETag)
 
-#### Last-Modified
+#### Last-Modified/If-Modified-Since
 
 - HTTP/1.0
 - 最后修改时间，即通过最后修改时间来判断是否过期。在浏览器第一次给服务器发送请求后，服务器会在响应头上加上这个字段
-- 和`If-Modified-Since` 配合，客户端访问服务器资源时，服务器端会将 Last-Modified 放入响应头中，即这个资源在服务器上的最后修改时间，客户端缓存这个值，等下次请求这个资源时，浏览器会检测到请求头中的 Last-Modified，于是乎添加 `If-Modified-Since`，如果 `If-Modified-Since` 的值与服务器中这个资源的最后修改时间一致，则返回 304，重定向跳转使用本地缓存；不一致，则返回200，将最新资源返回给客户端，并带上 Last-Modified
+- 与 `If-Modified-Since` 配合，客户端访问服务器资源时，服务器端会将 Last-Modified 放入响应头中，即这个资源在服务器上的最后修改时间，客户端缓存这个值，等下次请求这个资源时，浏览器会检测到请求头中的 Last-Modified，于是乎添加 `If-Modified-Since`，如果 `If-Modified-Since` 的值与服务器中这个资源的最后修改时间一致，则返回 304，重定向跳转使用本地缓存；不一致，则返回200，将最新资源返回给客户端，并带上 Last-Modified
 - 缺点：
   - 文件虽然被修改，但最后的内容没有变化，这样文件修改时间还是会更新
   - 有些文件修改频率在秒以内，这样以秒粒度来记录就不适用了
   - 有些服务器无法精准获取文件的最后修改时间
 - 更多指令参考[指令大全](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified)
 
-那么什么时候用强缓存，什么时候用协商缓存呢？
+#### ETag VS Last-Modified
 
-当这些所有的字段都存在时，强缓存的权重大于协商缓存，而如果HTTP协议中带有强缓存标识，则会使用缓存（即强缓存作用）；如强缓存失效，则会进入 HTTP 请求，需要和服务器进行协商，判断是否使用缓存
+- 精确度
+  - ETag > Last-Modified。ETag 是通过内容给资源打标识来判断资源是否变化，而 Last-Modified不一样，在某些场景下准确度会失效。例如编辑文件，但是文件内容未变，缓存会失效；或者在1秒内改变多次，Last-Modified能感知的单位时间是秒
+- 性能
+  - Last-Modified > ETag。Last-Modified 仅仅记录一个时间点，而 ETag需要根据文件的具体内容生成哈希值
+- 如果两个都支持的话，服务器会优先选择ETag
 
-如图所示，我的[五年前端三年面试](https://fe.azhubaby.com/)放在 github 服务器上，F12进入 Network中，能看到返回头中的信息
+### 协商缓存的条件请求
 
-Cache-Control、Expires、ETag、Last-Modified都存在
+前文说到协商缓存是在请求头添加 `If-None-Match` 或 `If-Modified-Since`，这些请求头是什么，添加有什么用？
+
+强缓存是通过具体时间到期或过期时长来控制缓存，这就有个问题了，如果其中的一些文件修改了，因为强缓存，浏览器展示的还是原来的数据，所以对那种常变化的数据不能使用强缓存做缓存策略，于是乎，就有了协商缓存，通过文件变化告诉浏览器缓存失效，使用前需去服务器验证是否是最新版？
+
+这样，浏览器就要连续发送两个请求来验证：
+
+1. 先是 HEAD 请求，获取资源的修改时间、hash值等元信息，然后与缓存数据比较，如果没有改动就使用缓存
+2. 否则就再发一个 GET 请求，获取最新的版本
+
+但这样的两个请求的网络成本太高，所以 HTTP 协议就定义了一系列 If 开头的条件请求字段，专门用来检查验证资源是否过期，把两个请求合并在一个请求中做。而且验证的责任也交给服务器
+
+- If-Modified-Since：和 Last-modified 比较，是否已经修改了
+- If-None-Match：和 ETag 比较，唯一标识是否一致
+- If-Unmodified-Since：和 Last-modified 对比，是否修改
+- If-Match：和 ETag 比较是否匹配
+- If-Range
+
+其中，最常见的当属是 If-Modified-Since 和 If-None-Match。它们分别对应Last-Modified 和 ETag。需要第一次的响应报文预先提供 Last-Modified 和 ETag，然后第二次请求时就可以带上缓存里的原址，验证资源是否是最新的
+
+如果资源没有变，服务器就回应一个 304 Not Modified ，表示缓存依然有效，浏览器就可以更新一个有效期，然后使用缓存了
+
+![缓存流程](https://s2.loli.net/2022/04/25/7KxHO64YUJWsqnr.png)
+
+### 什么时候用强缓存，什么时候用协商缓存？
+
+首先强缓存的权重大于协商缓存，当强缓存存在时，协商缓存只能看着；其次 HTTP/1.1 中的缓存标识符大于 HTTP/1；所以当 Cache-Control 存在时，看它的，如果它不存在，则看 Expires，如果将强缓存设置为 `Cache-Control：no-cache`、`Cache-Control：max-age=0`、`pragma: no-cache`，即告诉浏览器不走强缓存，则进入协商缓存。
+
+判断上次响应中是否有ETag，如果有，则发起请求，请求头中带有条件请求 `If-None-Match`，如果没有，则再判断上次响应中是否有Last-Modified，如果有，则发起请求头中带`If-Modified-Since` 的条件请求，如果没有，则说明没有协商缓存，发起 HTTP 请求即可。无论是带`If-None-Match`的请求还是 `If-Modified-Since` 的请求，都会返回状态（由服务器端判读资源是否变化），如果是304，说明缓存资源未变，使用本地缓存；如果是200，则说明资源改变，发起 HTTP 请求，并记住响应头中的 ETag/Last-Modified
+
+大致流程图如下所示：
+
+![缓存判断流程图](https://s2.loli.net/2022/04/26/4Q2LaJynO6wRxdb.png)
+
+
+
+那么哪些资源要采用强缓存，哪些资源采用协商缓存呢？
+
+像静态资源这类我们长期不会去变动的资源应该用强缓存，不难理解；而像我们常修改的文件应该采用协商缓存，如果资源没变，那么当用户第二次进去还是用该资源，如果资源修改，用户进入发起 HTTP 请求获取最新资源
+
+我们在访问网站时，如果留心都能在 F12 中观察到一二。如图所示，我的[五年前端三年面试](https://fe.azhubaby.com/)放在 github 服务器上，F12进入 Network中，能看到返回头中的信息。Cache-Control、Expires、ETag、Last-Modified都存在
 
 ![五年前端三年面试](https://s2.loli.net/2022/04/11/qiVQvOkDPuBmeg3.png)
-
-缓存优先就是HTTP1.1 的大于 HTTP1.0的，有强缓存的大于协商缓存的
-
-Cache-Control 的优先级最高，比如 `Cache-Control：no-cache`，就直接进入到协商缓存的步骤，如果 `Cache-Control：max-age=xxx`，就会先比较当前时间和上次返回 200 时的时间差，如果没有超过缓存时长（max-age），则命中强缓存，不发请求直接从本地缓存读取该文件（这里需要注意，如果没有 cache-control，会取 expires 的值，来对比是否过期），过期的话会进入下一个阶段——协商缓存
-
-协议缓存阶段，则向服务器发送请求头带有 If-None-Match 或 If-Modified-Since 的请求，服务器会比较 Etag，如果相同，命中协商缓存，返回 304 了如果不一致则有改动，直接返回新的资源文件带上新的 Etag 值并返回 200；同理，当 ETag不存在时，会对比 Last-Modified，如果（与If-Modified-Since）相同，则命中协商缓存，返回 304，在本地缓存中读取资源，不一致则返回最新资源并在返回头中带上Last-Modified信息
-
-权重对比如下所示：
-
-Cache-Control > Expires > ETag > Last-Modified
-
-
 
 ## 缓存位置
 
@@ -143,8 +218,6 @@ Cache-Control > Expires > ETag > Last-Modified
 
 优先级：Service Worker-->Memory Cache-->Disk Cache-->Push Cache。
 
-
-
 ## 实践
 
 说了这么多理论知识，等实战的时候却一头雾水，怎么破？
@@ -168,45 +241,84 @@ webpack 中的哈希有三种：hash、chunkHash、contentHash
 
 - contentHash：根据文件内容来定义hash，文件内容不变，则 contentHash 不变
 
-
+这边需要把 CSS 用 contentHash 处理，其他资源用 chunkHash 做处理
 
 ### 非前端工程化项目
 
-加版本号（app-v2.min.js）或者时间戳（time=1626226...）
+即传统的前端页面，一般放在静态服务器中，那么就要对修改的文件做版本控制，例如在入口文件 index.js 上加版本号（index-v2.min.js）或者加时间戳（time=1626226），以此做缓存策略
 
+### 后端缓存实践
 
+真正起到缓存作用的是在后端，后端来设置缓存策略，告诉浏览器能否做缓存。这里我们对强缓存和协商缓存做个demo来实验下，
 
+#### 强缓存方案
 
-
-### 后端方案
-
-浏览器是根据响应头的相关字段来决定缓存的方案的。所以，后端的关键就在于，根据不同的请求返回对应的缓存字段。以 NodeJS 为例，如果需要浏览器强缓存，我们可以这样设置：
-
-```
-res.setHeader(Cache-Control, public,max-age=xxx );
-```
-
-如果需要协商缓存，则可以这样设置：
+代码如下：
 
 ```javascript
-res.setHeader(Cache-Control, public, max-age=0);
-res.setHeader(Last-Modified, xxx);
-res.setHeader(ETag, xxx);
+const express = require('express');
+const app = express();
+var options = { 
+  etag: false, // 禁用协商缓存
+  lastModified: false, // 禁用协商缓存
+  setHeaders: (res, path, stat) => {
+    res.set('Cache-Control', 'max-age=10'); // 强缓存超时时间为10秒
+  },
+};
+app.use(express.static((__dirname + '/public'), options));
+app.listen(3008);
 ```
+
+> PS：代码来源自：[图解 HTTP 缓存](https://juejin.cn/post/6844904153043435533)，在做测试时，需要注意，强缓存下，刷新页面是测不出来，点击后返回方能有效
+
+![强缓存效果](https://s2.loli.net/2022/04/26/sdXPHy7ljLeBCTN.gif)
+
+
+
+#### 协商缓存方案
+
+代码如下：
+
+```javascript
+const express = require('express');
+const app = express();
+var options = {
+    etag: true, // 开启协商缓存
+    lastModified: true, // 开启协商缓存
+    setHeaders: (res, path, stat) => {
+        res.set({
+            'Cache-Control': 'max-age=00', // 浏览器不走强缓存
+            'Pragma': 'no-cache', // 浏览器不走强缓存
+        });
+    },
+};
+app.use(express.static((__dirname + '/public'), options));
+app.listen(3001);
+```
+
+效果如下：
+
+![协商缓存效果](https://s2.loli.net/2022/04/26/jw1bythDvuJcq94.gif)
 
 
 
 ## 总结
 
-HTTP 为什么要缓存，为了分担服务器压力，也为了放页面加载更快。
+HTTP 为什么要缓存，为了分担服务器压力，也为了让页面加载更快
 
-有什么手段？HTTP强缓存和协商缓存，强缓存作用与那些不怎么变化的资源（如引入的库，js，css等），协商缓存适用常更新的文件（例如 html）
+有什么手段？HTTP 的强缓存和协商缓存，强缓存作用于那些不怎么变化的资源（如引入的库，js，css等），协商缓存适用常更新的文件（例如 html）
 
-强缓存是什么？在 HTTP1.0 中以 Expires 为依据，但它不准确，HTTP升级成1.1后，用新标识符 Cache-Control 来代替，但两者可以同时存在，Cache-Control 的权重更大一些
+强缓存是什么？在 HTTP/1.0 中以 Expires 为依据，但它不准确，HTTP 协议升级成1.1后，用新标识符 Cache-Control 来代替，但两者可以同时存在，Cache-Control 的权重更大一些
 
-协商缓存是什么？在 HTTP1.0 中以 Last-Modified 为依据，即最后过期修改时间，它也不准确，HTTP升级成1.1后，用新标识 ETag 来代替，两者可同时存在，后者的权重更大
+协商缓存是什么？在 HTTP/1.0 中以 Last-Modified 为依据，即最后过期修改时间，它也不准确，HTTP升级成1.1后，用新标识符 ETag 来代替，两者可同时存在，后者的权重更大
 
-无论是 Expires ，还是 Last-Modified，都是以时间点来依据，理论上是不出问题，但却出问题了，所以就有了新的方案，现在浏览器为了兼容老版本，在请求头和响应头里会塞入一大堆字段指令，对其中概念有所了解即可
+无论是 Expires ，还是 Last-Modified，都是以时间点来依据，理论上是不出问题，但却出问题了，所以就有了新的方案
+
+其中强缓存存在时，浏览器会采用强缓存标识符来缓存，当将强缓存设置为失效时，浏览器则会采用协商缓存来做缓存策略
+
+以上，即使笔者所理解的 HTTP 缓存
+
+附上[demo地址](https://github.com/johanazhu/demo/tree/master/%E7%BD%91%E7%BB%9C%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5)
 
 
 
@@ -219,3 +331,4 @@ HTTP 为什么要缓存，为了分担服务器压力，也为了放页面加载
 -   [node 实践彻底搞懂强缓存和协商缓存](https://juejin.cn/post/6942264171870289956)
 -   [浅析 HTTP 缓存](https://juejin.cn/post/6944891188826603528)
 -   [MDN web docs](https://developer.mozilla.org/zh-CN/)
+-   [图解 HTTP 缓存](https://juejin.cn/post/6844904153043435533)

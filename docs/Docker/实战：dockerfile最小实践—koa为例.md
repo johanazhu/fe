@@ -2,7 +2,7 @@
 
 ## 前言
 
-最小实践，意味着将链路打通，站在更高的层面看问题，问题就变得清晰，这一章，我将带你实现一个最简单的 koa 服务，并将其部署至服务器上。
+最小实践，意味着将链路打通，站在更高的层面看问题，问题就变得清晰，此文笔者将带诸位实现一个最简单的 koa 服务，并将其部署至服务器上。
 
 先决知识：对[docker 有一定的了解](./docker基本介绍.md)
 
@@ -72,7 +72,7 @@ npm run start
 
 看到如下图所示：
 
-![dockerfile_脚本](../.vuepress/public/images/Docker/dockerfile最小实现/dockerfile_脚本.png)
+![dockerfile_脚本](https://s2.loli.net/2022/04/24/TuNCImfzXSarUtK.png)
 
 浏览器访问正常
 
@@ -129,7 +129,7 @@ docker build . -t johan/koa_server:v1.0.0
 
 效果如下图所示：
 
-![docker_build](../.vuepress/public/images/Docker/dockerfile最小实现/docker_build.png)
+![docker_build](https://s2.loli.net/2022/04/24/vl3Lykm9aEGMJOw.png)
 
 查看镜像是否有了
 
@@ -162,7 +162,7 @@ docker ps -a
 docker save johan/koa_server:v1.0.0 > koa_server.tar
 ```
 
-![导出镜像](../.vuepress/public/images/Docker/dockerfile最小实现/导出镜像.png)
+![导出镜像](https://s2.loli.net/2022/04/24/Yu9O8RoQPsNTliw.png)
 
 ## 第六步：在服务器上跑通
 
@@ -174,7 +174,7 @@ docker save johan/koa_server:v1.0.0 > koa_server.tar
 rz
 ```
 
-![lrzsz上传镜像](../.vuepress/public/images/Docker/dockerfile最小实现/lrzsz上传镜像.png)
+![lrzsz上传镜像](https://s2.loli.net/2022/04/24/QIeUMBkXolxvjhE.png)
 
 解开此压缩包（导入）
 
@@ -182,7 +182,7 @@ rz
 docker load < koa_server.tar
 ```
 
-![导入镜像](../.vuepress/public/images/Docker/dockerfile最小实现/导入镜像.png)
+![导入镜像](https://s2.loli.net/2022/04/24/K3zMUmT7Y86kWSQ.png)
 
 基于此容器生成容器
 
@@ -198,7 +198,7 @@ docker ps -a
 
 在浏览器中输入域名，bingo
 
-以上就是一个 `dockerfile` 的最小实现，是不是很简单。当然，你可以再第五步时将镜像上传至`docker hub`，第六步从 `dockerfile` 拉取镜像，再生成容器。如下
+以上就是一个 `dockerfile` 的最小实现，是不是很简单。当然，你可以在第五步时将镜像上传至`docker hub`，第六步从 `dockerfile` 拉取镜像，再生成容器。如下
 
 ## 另一种方法第五步：上传镜像
 
@@ -220,7 +220,7 @@ docker tag johan/koa_server:v1.0.0 johanbo/koa_server:v1.0.0
 docker push johanbo/koa_server:v1.0.0
 ```
 
-![docker_push](../.vuepress/public/images/Docker/dockerfile最小实现/docker_push.png)
+![docker_push](https://s2.loli.net/2022/04/24/Rnrp2lqJfH5xYCF.png)
 
 ## 另一种方法第六步：拉取镜像
 
@@ -230,7 +230,7 @@ docker push johanbo/koa_server:v1.0.0
 docker pull johanbo/koa_server:v1.0.0
 ```
 
-![docker_pull](../.vuepress/public/images/Docker/dockerfile最小实现/docker_pull.png)
+![docker_pull](https://s2.loli.net/2022/04/24/HuOKXxSF1l3hMqs.png)
 
 > **注意**：这里需要打标签，否则会默认拉取 latest
 
@@ -248,4 +248,4 @@ docker run -d --name koa_server_container -p 3010:3010 johan/koa_server:v1.0.0
 
 你可以在 `dockerfile` 里配置你所需的环境变量，镜像生成的容器是个 "mini 服务器"，怎么倒腾都行，和整个服务器没有关系，所以你的应用不受环境影响。
 
-在这里说一个痛点：即使你解决了环境问题，但是 CICD 也是个问题，如何更快捷的集成呢？接下来的一节我会介绍下，docker 与 jenkins 的结合，通过 docker 生成 jenkins，jenkins 赋能 CICD
+在这里说一个痛点：即使你解决了环境问题，但是 CICD 也是个问题，如何更快捷地集成呢？接下来的一节我会介绍下，docker 与 jenkins 的结合，通过 docker 生成 jenkins，jenkins 赋能 CICD

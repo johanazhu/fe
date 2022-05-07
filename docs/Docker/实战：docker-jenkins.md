@@ -1,10 +1,10 @@
 # 实战：docker-jenkins
 
-上篇，我们讲到了 dockerfile 的最小实现，但也抛出了一个问题，即使 docker 解决了环境和部署问题，但 CICD 还是让人感到心累，本章通过 docker 生成 jenkins 容器，并将 jenkins 与 github 结合，实现 一定程度上的 CI
+上篇，我们讲到了 [dockerfile 的最小实现](./实战：dockerfile最小实践—koa为例.md)，但也抛出了一个问题，即使 docker 解决了环境和部署问题，但 CICD 还是让人感到心累，本章通过 docker 生成 jenkins 容器，并将 jenkins 与 github 结合，实现 一定程度上的 CI
 
 ## 希望达到的效果
 
-我希望我再 git push 后，代码推送至 jenkins ，在 jenkins 点击 发布，就能将我的代码推送至 服务器，我浏览页面，马上就能看到效果
+我希望我在 git push 后，代码推送至 jenkins ，在 jenkins 点击 发布，就能将我的代码推送至 服务器，我浏览页面，马上就能看到效果
 
 git push 到仓库，在 jenkins 上点击发布就能发布。
 
@@ -18,7 +18,7 @@ git push 到 仓库后，jenkins 监听到，执行脚本
 
 它是 java 语言写的 cicd，
 
-他是一套用 java 写的 cicd 系统，通过 ssh 可以与服务器打交道
+它是一套用 java 写的 cicd 系统，通过 ssh 可以与服务器打交道
 
 ## 实现思路
 
@@ -80,17 +80,17 @@ docker logs jenkins
 
 ### 配合 jenkins
 
-![docker_jenkins安装推荐的插件](../.vuepress/public/images/Docker/jenkins/docker_jenkins安装推荐的插件.png)
+![docker_jenkins安装推荐的插件](https://s2.loli.net/2022/04/25/ZAP7h9KdLGYF5EO.png)
 
 需要等一段时间，下载这些插件
 
-![docker_jenkins新手](../.vuepress/public/images/Docker/jenkins/docker_jenkins新手.png)
+![docker_jenkins新手](https://s2.loli.net/2022/04/25/j3JUkLx5TctPYub.png)
 
 **报错就重试，咔咔就是干**
 
 ### 创建管理员账号
 
-![docker_jenkins创建账号](../.vuepress/public/images/Docker/jenkins/docker_jenkins创建账号.png)
+![docker_jenkins创建账号](https://s2.loli.net/2022/04/25/PI1vk6nUzNybFoj.png)
 
 保存成功，开始使用 jenkins
 
@@ -100,7 +100,7 @@ docker logs jenkins
 
 前往 系统管理 ——> 插件管理 ——> 高级 ——> 拉到最下面
 
-![docker_jenkins换源](../.vuepress/public/images/Docker/jenkins/docker_jenkins换源.png)
+![docker_jenkins换源](https://s2.loli.net/2022/04/25/inAJ68CsFcfvQP4.png)
 
 ### 下载 ssh 插件
 
@@ -108,17 +108,17 @@ docker logs jenkins
 
 搜索 "Publish over SSH"，并安装
 
-![docker_jenkins下载ssh插件](../.vuepress/public/images/Docker/jenkins/docker_jenkins下载ssh插件.png)
+![docker_jenkins下载ssh插件](https://s2.loli.net/2022/04/25/3BWNFyp8JqdZztY.png)
 
 ### 配置 ssh
 
 前往 系统管理 ——> 系统配置——> 拉到最下面（Publish over SSH）
 
-![docker_jenkins配置ssh2](../.vuepress/public/images/Docker/jenkins/docker_jenkins配置ssh2.png)
+![docker_jenkins配置ssh2](https://s2.loli.net/2022/04/25/9OXJgE1MLa2SFhw.png)
 
 使用密码
 
-![docker_jenkins设置服务器上的ssh](../.vuepress/public/images/Docker/jenkins/docker_jenkins设置服务器上的ssh.png)
+![docker_jenkins设置服务器上的ssh](https://s2.loli.net/2022/04/25/tSAblr4fsK9au2Y.png)
 
 点击 Test Configuration，已经和服务器接通
 
@@ -134,7 +134,7 @@ node 插件在跑 node 项目时需要使用，这里先安装好
 
 前往 系统管理 ——> 全局工具配置 ——> NodeJS
 
-![docker_jenkins安装node插件1](../.vuepress/public/images/Docker/jenkins/docker_jenkins安装node插件1.png)
+![docker_jenkins安装node插件1](https://s2.loli.net/2022/04/25/1LbaU872FEdBGoe.png)
 
 应用并保存它
 
@@ -160,21 +160,21 @@ git push -u origin master
 
 ### 创建一个任务
 
-![jenkins新建任务](../.vuepress/public/images/Docker/jenkins/jenkins新建任务.png)
+![jenkins新建任务](https://s2.loli.net/2022/04/25/Fihea7EWtySL48l.png)
 
 ### 起任务名
 
-![jenkins起任务名字](../.vuepress/public/images/Docker/jenkins/jenkins起任务名字.png)
+![jenkins起任务名字](https://s2.loli.net/2022/04/25/FjS2EtdcJC9Zhw5.png)
 
 ### 任务描述
 
-![jenkins任务描述1](../.vuepress/public/images/Docker/jenkins/jenkins任务描述1.png)
+![jenkins任务描述1](https://s2.loli.net/2022/04/25/JkIsXdMNFDm1CQp.png)
 
-![jenkins任务描述2](../.vuepress/public/images/Docker/jenkins/jenkins任务描述2.png)
+![jenkins任务描述2](https://s2.loli.net/2022/04/25/3J2vBIXWrfECmLg.png)
 
-![jenkins任务描述3](../.vuepress/public/images/Docker/jenkins/jenkins任务描述3.png)
+![jenkins任务描述3](https://s2.loli.net/2022/04/25/3ny8Xafrt5whNvC.png)
 
-![jenkins任务描述5](../.vuepress/public/images/Docker/jenkins/jenkins任务描述5.png)
+![jenkins任务描述5](https://s2.loli.net/2022/04/25/t1r6Ed8hP3zaxSC.png)
 
 代码如下：
 
@@ -207,7 +207,7 @@ docker run -d --name koa_server_container -p 3011:3010  johanbo/koa_server:v1.0.
 
 ### 立即构建服务
 
-![jenkins控制台输出](../.vuepress/public/images/Docker/jenkins/jenkins控制台输出.png)
+![jenkins控制台输出](https://s2.loli.net/2022/04/25/koaEIWOrUL9Ruqc.png)
 
 发现成功，并且能看到“hello，docker“
 
@@ -223,11 +223,13 @@ app.use(async (ctx) => {
 
 通过 jenkins 再次部署 node 服务
 
-![jenkins立即构建](../.vuepress/public/images/Docker/jenkins/jenkins立即构建.png)
+![jenkins立即构建](https://s2.loli.net/2022/04/25/seUBLPV5wdaNAcF.png)
 
 构建完成，刷新浏览器，发现内容已经更换
 
-![jenkins部署成功](../.vuepress/public/images/Docker/jenkins/jenkins部署成功.png)
+![jenkins部署成功](https://s2.loli.net/2022/04/25/x1myqfR4VeKJAEU.png)
+
+> PS：此服务现已下架
 
 ## 总结
 
