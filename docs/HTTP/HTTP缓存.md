@@ -249,7 +249,7 @@ webpack 中的哈希有三种：hash、chunkHash、contentHash
 
 ### 后端缓存实践
 
-真正起到缓存作用的是在后端，后端来设置缓存策略，告诉浏览器能否做缓存。这里我们对强缓存和协商缓存做个demo来实验下，
+真正起到缓存作用的是在后端，后端来设置缓存策略，告诉浏览器能否做缓存。这里我们对强缓存和协商缓存做个demo来实验下
 
 #### 强缓存方案
 
@@ -272,8 +272,6 @@ app.listen(3008);
 > PS：代码来源自：[图解 HTTP 缓存](https://juejin.cn/post/6844904153043435533)，在做测试时，需要注意，强缓存下，刷新页面是测不出来，点击后返回方能有效
 
 ![强缓存效果](https://s2.loli.net/2022/04/26/sdXPHy7ljLeBCTN.gif)
-
-
 
 #### 协商缓存方案
 
@@ -300,7 +298,11 @@ app.listen(3001);
 
 ![协商缓存效果](https://s2.loli.net/2022/04/26/jw1bythDvuJcq94.gif)
 
+附上两个 demo 地址供君参考
 
+- [强缓存](https://strong-cache.vercel.app/)
+
+- [协商缓存](https://negotiate-cache.vercel.app/)
 
 ## 总结
 
@@ -317,8 +319,6 @@ HTTP 为什么要缓存，为了分担服务器压力，也为了让页面加载
 其中强缓存存在时，浏览器会采用强缓存标识符来缓存，当将强缓存设置为失效时，浏览器则会采用协商缓存来做缓存策略
 
 以上，即使笔者所理解的 HTTP 缓存
-
-附上[demo地址](https://github.com/johanazhu/demo/tree/master/%E7%BD%91%E7%BB%9C%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5)
 
 
 

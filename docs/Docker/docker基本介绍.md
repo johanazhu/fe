@@ -1,5 +1,13 @@
 # docker 基本介绍
 
+## 简介
+
+Docker 是一种虚拟机技术，比传统虚拟机（如 vmware、virtualbox）要更加简单、轻量
+
+- 启动快
+- 资源占用少
+- 体积小
+
 ## 一句话总结
 
 dockerfile：类似于“package.json”
