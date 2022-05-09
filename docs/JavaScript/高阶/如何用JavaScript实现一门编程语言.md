@@ -1,4 +1,4 @@
-# 如何用JavaScript实现一门编程语言 
+# 如何用 JavaScript 实现一门编程语言
 
 V8 是用 C++写的，是 js 的解析器
 
@@ -6,4 +6,4 @@ V8 是用 C++写的，是 js 的解析器
 
 ## 参考资料
 
--   [如何用JavaScript实现一门编程语言](https://mp.weixin.qq.com/s/K-R8L90x0Dfw-zie9c4dJQ)
+-   [如何用 JavaScript 实现一门编程语言](https://mp.weixin.qq.com/s/K-R8L90x0Dfw-zie9c4dJQ)

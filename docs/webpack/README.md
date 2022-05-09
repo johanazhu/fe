@@ -13,17 +13,17 @@ https://mp.weixin.qq.com/s/2rUjUM6Zfu1I7cjRUDschg
 
 第零篇：webpack 是什么，为何要用 webpack
 
- 扫盲，模块化的进程（这个可以单独拿出来讲），
+扫盲，模块化的进程（这个可以单独拿出来讲），
 
- mode:
+mode:
 
- entry
+entry
 
- output
+output
 
- loader
+loader
 
- plugins
+plugins
 
 第一篇 搭建 webpack4+react16 全家桶+babel7
 
@@ -51,19 +51,9 @@ clean-webpack-plugin 清除 dist 文件
 
 第五篇：
 
-
-
-
-
-
-
 初探前端工程化--讲课版
 
 https://www.yuque.com/zhangalan/totnp7/nc37qg
-
-
-
-
 
 Webapck5 核心打包原理全流程解析，看这一篇就够了
 

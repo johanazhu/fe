@@ -33,9 +33,9 @@ js 的作用域是词法作用域，其特点是在那里定义它就作用在�
 
 ```css
 .parent:after {
-  content: '';
-  clear: both;
-  display: block;
+    content: '';
+    clear: both;
+    display: block;
 }
 ```
 
@@ -70,35 +70,35 @@ js 的作用域是词法作用域，其特点是在那里定义它就作用在�
 
 ```javascript
 function throttle(event, wait) {
-  let pre = 0,
-    timer = null;
-  return function (...args) {
-    if (new Date() - pre > wait) {
-      clearTimeout(timer);
-      timer = null;
-      pre = new Date();
-      event.apply(this, args);
-    } else {
-      timer = setTimeout(() => {
-        event.apply(this, args);
-      }, wait);
-    }
-  };
+    let pre = 0,
+        timer = null;
+    return function (...args) {
+        if (new Date() - pre > wait) {
+            clearTimeout(timer);
+            timer = null;
+            pre = new Date();
+            event.apply(this, args);
+        } else {
+            timer = setTimeout(() => {
+                event.apply(this, args);
+            }, wait);
+        }
+    };
 }
 ```
 
 ```javascript
 function debounce(event, wait, flag) {
-  let timer = null;
-  return function (...args) {
-    clearTimeout(timer);
-    if (flag && !timer) {
-      event.apply(this, args);
-    } else {
-      timer = setTimeout(() => {
-        event.apply(this, args);
-      }, wait);
-    }
-  };
+    let timer = null;
+    return function (...args) {
+        clearTimeout(timer);
+        if (flag && !timer) {
+            event.apply(this, args);
+        } else {
+            timer = setTimeout(() => {
+                event.apply(this, args);
+            }, wait);
+        }
+    };
 }
 ```

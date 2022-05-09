@@ -1,28 +1,24 @@
 # 脚手架
 
-
-
 脚手架的实现原理
 
-- 脚手架的优点：自动化、标准化、数据化
+-   脚手架的优点：自动化、标准化、数据化
 
 最简单的一个脚手架
 
-- 开发流程
-- 使用流程
+-   开发流程
+-   使用流程
 
 Lerna 模式下的脚手架
 
-- 多 package 项目管理通电和解决方案
-- 基于 Lerna 脚手架框架搭建
-  - 什么是 Lerna
-  - Lerna 源码分析
+-   多 package 项目管理通电和解决方案
+-   基于 Lerna 脚手架框架搭建
+    -   什么是 Lerna
+    -   Lerna 源码分析
 
 azhu-cli 脚手架需求分析和架构设计，架构设计图脚手架架构设计
 
-
-
-## Lerna 
+## Lerna
 
 第一步：初始化 npm 项目
 
@@ -48,7 +44,7 @@ lerna init
 第四步：lerna create 创建 package
 
 ```shell
-lerna create core 
+lerna create core
 lerna create utils
 ```
 
@@ -80,13 +76,13 @@ lerna link 将依赖软链接
 
 ```json
 {
-  "dependencies": {
-    "@azhu-cli-dev/utils": "^1.0.0"
-  }
+    "dependencies": {
+        "@azhu-cli-dev/utils": "^1.0.0"
+    }
 }
 ```
 
-执行命令行 `lerna link`，将packages文件下的包链接给指定包，当你修改utils包下的文件后，执行`lerna link` ，即能获取 utils 文件下最新的文件
+执行命令行 `lerna link`，将 packages 文件下的包链接给指定包，当你修改 utils 包下的文件后，执行`lerna link` ，即能获取 utils 文件下最新的文件
 
 其他命令
 
@@ -103,7 +99,7 @@ lerna run // 执行 npm 命令
 
 ![image-20220505104149889](https://s2.loli.net/2022/05/05/zaGbKSWReU9H1gY.png)
 
-第八步：发布npm 社区
+第八步：发布 npm 社区
 
 ```shell
 lerna publish
@@ -113,7 +109,7 @@ lerna publish
 
 ![发布项目](https://s2.loli.net/2022/05/05/DvTMUOAFVPkgQjR.png)
 
-注意，以上是错误的，因为我们使用的是global的形式发布npm包，默认情况下都是私有的，要想在npm社区中看到，需要修改 `package.json`，将其改为
+注意，以上是错误的，因为我们使用的是 global 的形式发布 npm 包，默认情况下都是私有的，要想在 npm 社区中看到，需要修改 `package.json`，将其改为
 
 ```json
 ...
@@ -122,6 +118,6 @@ lerna publish
 }
 ```
 
-再次提交至远程库后，执行命令`lerna publish`，就能将包发至npm社区
+再次提交至远程库后，执行命令`lerna publish`，就能将包发至 npm 社区
 
 ![发布成功](https://s2.loli.net/2022/05/05/AWMa3i6IOHxrYTB.png)

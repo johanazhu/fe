@@ -83,7 +83,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
 }
 ```
 
-[codepen demo](https://codepen.io/jojobo/pen/XWaKwMy)、[线上demo](https://azhubaby.com/demo/三角形.html)
+[codepen demo](https://codepen.io/jojobo/pen/XWaKwMy)、[线上 demo](https://azhubaby.com/demo/三角形.html)
 
 ## 盒模型
 
@@ -117,7 +117,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
           margin-top: 87px;
         }
         </style>
-    
+
         <p>下边界范围会...</p>
         <p>...会跟这个元素的上边界范围重叠。</p>
         ```
@@ -132,16 +132,16 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
                 margin-top: 13px;
                 margin-bottom: 87px;
             }
-    
+
             header {
                 margin-top: 87px;
             }
-    
+
             footer {
                 margin-bottom: 13px;
             }
         </style>
-    
+
         <section>
             <header>上边界重叠 87</header>
             <main></main>
@@ -163,7 +163,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
           margin-bottom: 87px;
         }
         </style>
-        
+
         <p>上边界范围是 87 ...</p>
         <div></div>
         <p>... 上边界范围是 87</p>
@@ -200,7 +200,7 @@ BFC 有什么不足？
 
 已经过时，现在用 flex 布局能代替 BFC 的作用，并且更加强大
 
-具体分析可看——[CSS世界中的解决——BFC](./BFC是什么.md)
+具体分析可看——[CSS 世界中的解决——BFC](./BFC是什么.md)
 
 ## 清除浮动
 
@@ -227,8 +227,6 @@ BFC 有什么不足？
 ### [瀑布流效果](./瀑布流效果.md)
 
 ### [圣杯、双飞翼](./圣杯、双飞翼.md)
-
-
 
 ## 参考资料
 

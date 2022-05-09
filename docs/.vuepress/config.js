@@ -29,14 +29,30 @@ module.exports = {
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }],
         ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-        ['link', { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }],
+        [
+            'link',
+            {
+                rel: 'mask-icon',
+                href: '/safari-pinned-tab.svg',
+                color: '#5bbad5',
+            },
+        ],
         // meta
         ['meta', { name: 'msapplication-TileColor', content: '#da532c' }],
         ['meta', { name: 'theme-color', content: '#ffffff' }],
         ['meta', { name: 'robots', content: 'all' }],
         ['meta', { name: 'author', content: 'johan' }],
-        ['meta', { name: 'baidu-site-verification', content: 'code-46tFIW7e9e' }],
-        ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+        [
+            'meta',
+            { name: 'baidu-site-verification', content: 'code-46tFIW7e9e' },
+        ],
+        [
+            'meta',
+            {
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1',
+            },
+        ],
         [
             'meta',
             {
@@ -177,7 +193,7 @@ module.exports = {
                 //     facetFilters: ['tags:v2'],
                 // },
                 locales: {
-                    placeholder: "搜索文档"
+                    placeholder: '搜索文档',
                 },
             },
         ],
@@ -199,20 +215,23 @@ module.exports = {
         //     },
         // ],
         [
-            'seo', {
+            'seo',
+            {
                 siteTitle: (_, $site) => '五年前端三年面试',
-                title: $page => $page.title,
-                description: $page => $page.frontmatter.description,
+                title: ($page) => $page.title,
+                description: ($page) => $page.frontmatter.description,
                 author: (_, $site) => '约翰',
-                twitterCard: _ => 'summary_large_image',
-                type: $page => 'article',
+                twitterCard: (_) => 'summary_large_image',
+                type: ($page) => 'article',
                 url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
-                image: ($page, $site) => "https://fe.azhubaby.com/favicon.ico",
-                publishedAt: $page => $page.frontmatter.date && new Date($page.frontmatter.date),
-                modifiedAt: $page => $page.lastUpdated && new Date($page.lastUpdated),
-            }
-        ]
-    ]
+                image: ($page, $site) => 'https://fe.azhubaby.com/favicon.ico',
+                publishedAt: ($page) =>
+                    $page.frontmatter.date && new Date($page.frontmatter.date),
+                modifiedAt: ($page) =>
+                    $page.lastUpdated && new Date($page.lastUpdated),
+            },
+        ],
+    ],
     // plugins: [
     //     '@vuepress/search',
     //     [

@@ -20,17 +20,17 @@ applyMiddleware 函数，装饰器模式
 
 ```javascript
 function mybind(context = window, ...args) {
-  if (this === Function.prototype) {
-    return new TypeError('不能使用');
-  }
-  let _this = this;
-  return function F() {
-    if (this instanceof F) {
-      return new _this(...args, ...arguments);
-    } else {
-      return this.apply(this, ...args, ...arguments);
+    if (this === Function.prototype) {
+        return new TypeError('不能使用');
     }
-  };
+    let _this = this;
+    return function F() {
+        if (this instanceof F) {
+            return new _this(...args, ...arguments);
+        } else {
+            return this.apply(this, ...args, ...arguments);
+        }
+    };
 }
 ```
 
@@ -94,42 +94,42 @@ http3 解决 tcp 的队头阻塞
 
 ```javascript
 class EventPubSub {
-  constructor() {
-    this.event = {};
-  }
-
-  on(type, callback) {
-    if (!this.event[type]) {
-      this.event[type] = [callback];
-    } else {
-      this.event[type].push(callback);
+    constructor() {
+        this.event = {};
     }
-  }
 
-  off(type, callback) {
-    if (!this.event[type]) {
-      return;
+    on(type, callback) {
+        if (!this.event[type]) {
+            this.event[type] = [callback];
+        } else {
+            this.event[type].push(callback);
+        }
     }
-    this.event[type] = this.event[type].filter((item) => {
-      return item != callback;
-    });
-  }
 
-  emit(type, ...args) {
-    if (!this.event[type]) {
-      return;
+    off(type, callback) {
+        if (!this.event[type]) {
+            return;
+        }
+        this.event[type] = this.event[type].filter((item) => {
+            return item != callback;
+        });
     }
-    this.event[type].forEach((callback) => {
-      callback.apply(this, args);
-    });
-  }
 
-  once(type, callback) {
-    function f() {
-      callback();
-      this.off(type, f);
+    emit(type, ...args) {
+        if (!this.event[type]) {
+            return;
+        }
+        this.event[type].forEach((callback) => {
+            callback.apply(this, args);
+        });
     }
-    this.on(tyoe, f);
-  }
+
+    once(type, callback) {
+        function f() {
+            callback();
+            this.off(type, f);
+        }
+        this.on(tyoe, f);
+    }
 }
 ```

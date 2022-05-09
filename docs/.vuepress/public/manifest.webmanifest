@@ -8,12 +8,12 @@
     "background_color": "#ffffff",
     "icons": [
         {
-            "src": "android-chrome-128x128.png",
+            "src": "/android-chrome-128x128.png",
             "sizes": "128x128",
             "type": "image/png"
         },
         {
-            "src": "android-chrome-128x128.png",
+            "src": "/android-chrome-128x128.png",
             "sizes": "384x384",
             "type": "image/png"
         }

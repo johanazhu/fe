@@ -1,12 +1,10 @@
 # 五年前端三年面试
 
-这里是约翰的前端知识地图，名为[五年前端三年面试](https://fe.azhubaby.com/)，记录 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化以及面试等等方面的知识
+这里是 Johnny 的前端知识地图，名曰 [五年前端三年面试](https://fe.azhubaby.com/)，记录 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化等等方面的前端知识
 
-这里收录了[博客](https://blog.azhubaby.com)中的文章，如果你想快速定位文章，可以前往我的博客——[Azhubaby Blog](https://blog.azhubaby.com/) 搜索，如果你想更加系统的了解（我的）前端知识体系，不妨看看这个文档
+此文档是笔者自19年起整理并动笔，文笔拙略，如有不顺，请在 ISSUES 中提出
 
-本人是从19年开始整理并编写文章，文笔拙略，敬请谅解
-
-这里贴几篇个人觉得写的比较好的文章
+这里贴几篇几篇个人喜欢以及受欢迎的文章
 
 ### JavaScript 方面
 
@@ -22,7 +20,9 @@
 
 
 
-### 浏览器方面
+### 浏览器/HTTP方面
+
+[面试常客：HTTP 缓存](https://fe.azhubaby.com/HTTP/HTTP%E7%BC%93%E5%AD%98.html)
 
 [从 url 输入到返回请求的过程](https://fe.azhubaby.com/Browser/从url输入到返回请求的过程.html)
 
@@ -31,6 +31,14 @@
 ### 后端方面
 
 [从浅入深了解Koa2源码](https://fe.azhubaby.com/Koa2/源码分析.html)
+
+
+
+### Docker方面
+
+[实战：构建自己的镜像](https://fe.azhubaby.com/Docker/%E5%AE%9E%E6%88%98%EF%BC%9A%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F.html)
+
+[实战：dockerfile 最小实践](https://fe.azhubaby.com/Docker/%E5%AE%9E%E6%88%98%EF%BC%9Adockerfile%E6%9C%80%E5%B0%8F%E5%AE%9E%E8%B7%B5.html)
 
 
 
@@ -44,6 +52,6 @@
 
 这一刻，偎着五三让我们静静的渡过
 
-有兴趣的话，可以加我的公众号——随朱波流，这里记录的不仅仅只有前端
+有兴趣的话，可以加我的公众号——随朱波流，这里记录不仅前端
 
-![qrcode_for_gh_8f9e10e4661a_258](https://s2.loli.net/2022/03/24/GsVP9mbAqXRzMD3.jpg)
+![微信公众号二维码](https://s2.loli.net/2022/03/24/GsVP9mbAqXRzMD3.jpg)

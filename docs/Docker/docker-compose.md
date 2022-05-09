@@ -1,7 +1,5 @@
 # docker-compose
 
-
-
 ## 介绍
 
 软件设计和开发，有单一职责原则。Docker 也一样，每个容器只负责一个服务
@@ -21,32 +19,32 @@ docker-compose 解决了容器与容器之间如何管理编排的问题
 新建 `docker-compose.yml` 文件
 
 ```yml
-version: "3"
+version: '3'
 services:
-   db:
-     image: mysql:5.7
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     environment:
-       MYSQL_ROOT_PASSWORD: somewordpress
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
+    db:
+        image: mysql:5.7
+        volumes:
+            - db_data:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: somewordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
 
-   wordpress:
-     depends_on:
-       - db
-     image: wordpress:latest
-     ports:
-       - "5555:80"
-     restart: always
-     environment:
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
+    wordpress:
+        depends_on:
+            - db
+        image: wordpress:latest
+        ports:
+            - '5555:80'
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
 volumes:
-  db_data:
+    db_data:
 ```
 
 docker-cpmpose 基本结构

@@ -6,8 +6,6 @@
 
 > PS：必须是 `Dockerfile` 这个文件名，必须在项目的根目录
 
-
-
 ## 语法
 
 ```dockerfile
@@ -28,17 +26,17 @@ ENV K1=V1
 ENV K2=V2
 ```
 
-- `FROM`：基于什么
-- `WORKDIR xx` ：进入工作目录
+-   `FROM`：基于什么
+-   `WORKDIR xx` ：进入工作目录
 
-- `ADD . xx` ：复制文件至容器
+-   `ADD . xx` ：复制文件至容器
 
-- `RUN xx ` ：构建镜像时的步骤
+-   `RUN xx ` ：构建镜像时的步骤
 
-- `EXPOSE` ：暴露的端口
+-   `EXPOSE` ：暴露的端口
 
-- `COPY` ：复制
-- `VOLUME` 定义匿名数据卷
+-   `COPY` ：复制
+-   `VOLUME` 定义匿名数据卷
 
 > `RUN` 是构建镜像（images），CMD 是容器（container）启动
 >
@@ -47,8 +45,6 @@ ENV K2=V2
 > CMD 在 docker run 时运行
 
 `CMD` 类似于 RUN 指令，用于运行程序，它最后的语法是要阻塞后台的命令
-
-
 
 ## VOLUME
 

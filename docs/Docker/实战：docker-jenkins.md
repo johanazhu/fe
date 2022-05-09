@@ -215,7 +215,7 @@ docker run -d --name koa_server_container -p 3011:3010  johanbo/koa_server:v1.0.
 
 ```javascript
 app.use(async (ctx) => {
-  ctx.body = 'hello, docker, jenkins';
+    ctx.body = 'hello, docker, jenkins';
 });
 ```
 
@@ -241,9 +241,9 @@ app.use(async (ctx) => {
 
 ## 参考文章
 
-- [怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？](https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms)
-- [【手把手系列之】Jenkins+Docker 自动化部署 vue 项目](https://juejin.im/post/6844903984419831815)
-- [Failed to add SSH key. Message “invalid privatekey” 问题](http://www.wallcopper.com/linux/3689.html)
-- [jenkins 配置 publish over ssh 遇到的问题](https://zhuanlan.zhihu.com/p/39549204)
-- [Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow](https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow)
-- [Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie](https://www.youtube.com/watch?v=mszE-OCI2V4)
+-   [怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？](https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms)
+-   [【手把手系列之】Jenkins+Docker 自动化部署 vue 项目](https://juejin.im/post/6844903984419831815)
+-   [Failed to add SSH key. Message “invalid privatekey” 问题](http://www.wallcopper.com/linux/3689.html)
+-   [jenkins 配置 publish over ssh 遇到的问题](https://zhuanlan.zhihu.com/p/39549204)
+-   [Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow](https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow)
+-   [Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie](https://www.youtube.com/watch?v=mszE-OCI2V4)

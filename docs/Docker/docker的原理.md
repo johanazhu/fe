@@ -1,14 +1,6 @@
 # docker 的原理
 
-
-
-
-
 ![docker 的原理](https://i.loli.net/2021/09/12/POZnXMptGBL3NRr.png)
-
-
-
-
 
 ## 技术实现原理
 
