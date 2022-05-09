@@ -1,4 +1,4 @@
-# 实战：dockerfile 最小实践——koa 为例
+# 实战：dockerfile 最小实践
 
 ## 前言
 

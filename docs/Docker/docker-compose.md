@@ -1,17 +1,28 @@
 # docker-compose
 
-服务（`service`）：一个应用的容器，实际上可以包括若干相同镜像的容器实例
 
-项目（`project`）：由一组关联的应用容器组成的一个完整业务单元，在 `docker-compose.yml` 文件中定义
 
-`compose` 的默认管理对象是项目，通过子命令对项目的一组容器进行便捷的生命周期管理
+## 介绍
 
-创建`docker-compose.yml` 文件
+软件设计和开发，有单一职责原则。Docker 也一样，每个容器只负责一个服务
 
-```shell
+如果开发环境需要多个服务（nodejs mysql mongodb redis），就需要启动多个 Docker 容器
+
+要连同着多个 Docker 容器，就需要 docker-compose
+
+docker-compose 解决了容器与容器之间如何管理编排的问题
+
+## 安装
+
+一行命令即可安装。完成之后运行 `docker-compose --version` 可以看到当前版本
+
+## 配置文件
+
+新建 `docker-compose.yml` 文件
+
+```yml
 version: "3"
 services:
-
    db:
      image: mysql:5.7
      volumes:
@@ -38,12 +49,14 @@ volumes:
   db_data:
 ```
 
-## 构建并运行项目
+docker-cpmpose 基本结构
 
-运行 `docker-compose up -d` Compose 就会拉取镜像再创建我们所需要的镜像，然后启动 `wordpress` 和数据库容器。 接着浏览器访问 `127.0.0.1:5555` 端口就能看到 `WordPress` 安装界面了。
+![docker-cpmpose 基本结构](https://i.loli.net/2021/09/13/EpdCZlwPauW5tBU.png)
 
-### 什么是 docker-compose
+## 语法
 
-通过 docker-compose 用户可以很容器地用一个配置文件定义一个多容器的应用
+服务（`service`）：一个应用的容器，实际上可以包括若干相同镜像的容器实例
 
-docker-compose 解决了容器与容器之间如何管理编排的问题
+项目（`project`）：由一组关联的应用容器组成的一个完整业务单元，在 `docker-compose.yml` 文件中定义
+
+`compose` 的默认管理对象是项目，通过子命令对项目的一组容器进行便捷的生命周期管理

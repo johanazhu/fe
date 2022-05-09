@@ -1,6 +1,6 @@
 # 实战：docker-jenkins
 
-上篇，我们讲到了 [dockerfile 的最小实现](./实战：dockerfile最小实践—koa为例.md)，但也抛出了一个问题，即使 docker 解决了环境和部署问题，但 CICD 还是让人感到心累，本章通过 docker 生成 jenkins 容器，并将 jenkins 与 github 结合，实现 一定程度上的 CI
+上篇，我们讲到了 [dockerfile 的最小实现](./实战：dockerfile最小实践.md)，但也抛出了一个问题，即使 docker 解决了环境和部署问题，但 CICD 还是让人感到心累，本章通过 docker 生成 jenkins 容器，并将 jenkins 与 github 结合，实现 一定程度上的 CI
 
 ## 希望达到的效果
 
@@ -215,7 +215,7 @@ docker run -d --name koa_server_container -p 3011:3010  johanbo/koa_server:v1.0.
 
 ```javascript
 app.use(async (ctx) => {
-    ctx.body = 'hello, docker, jenkins';
+  ctx.body = 'hello, docker, jenkins';
 });
 ```
 
@@ -241,9 +241,9 @@ app.use(async (ctx) => {
 
 ## 参考文章
 
--   [怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？](https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms)
--   [【手把手系列之】Jenkins+Docker 自动化部署 vue 项目](https://juejin.im/post/6844903984419831815)
--   [Failed to add SSH key. Message “invalid privatekey” 问题](http://www.wallcopper.com/linux/3689.html)
--   [jenkins 配置 publish over ssh 遇到的问题](https://zhuanlan.zhihu.com/p/39549204)
--   [Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow](https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow)
--   [Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie](https://www.youtube.com/watch?v=mszE-OCI2V4)
+- [怎样用 Jenkins、Docker 和 CI/CD 构建无服务器应用程序？](https://www.infoq.cn/article/0sueQNsY9tLDVi79UZms)
+- [【手把手系列之】Jenkins+Docker 自动化部署 vue 项目](https://juejin.im/post/6844903984419831815)
+- [Failed to add SSH key. Message “invalid privatekey” 问题](http://www.wallcopper.com/linux/3689.html)
+- [jenkins 配置 publish over ssh 遇到的问题](https://zhuanlan.zhihu.com/p/39549204)
+- [Build, Publish, Deploy and Test Docker images and containers with Jenkins Workflow](https://www.slideshare.net/Docker/build-publish-deploy-and-test-docker-images-and-containers-with-jenkins-workflow)
+- [Building Docker Images using Jenkins step by step | Devops Integration Live Demo | JavaTechie](https://www.youtube.com/watch?v=mszE-OCI2V4)

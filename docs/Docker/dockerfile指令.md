@@ -1,29 +1,54 @@
-# dockerfile 指令
+# dockerfile
 
-## 指令速查
+## 介绍
 
-`FROM` 基于什么
+一个简单的配置文件，描述如何构建一个新的 image 镜像
 
-`LABEL` 制作者的信息
+> PS：必须是 `Dockerfile` 这个文件名，必须在项目的根目录
 
-`ADD . xx` 复制文件至容器
 
-`WORKDIR xx` 进入工作目录
 
-`RUN npm install` 安装依赖包
+## 语法
 
-`EXPOSE` 端口
+```dockerfile
+FROM node:14
+WORKDIR /app
+COPY . /app
 
-`COPY` 复制
+# 构建镜像时，一般用于做一些系统配置，安装必要的软件。可有多个 RUN
+RUN XXX
+RUN XXX
+RUN XXX
 
-`RUN` 后面跟着命令行命令
+# 启动容器时，只能由一个 CMD
+CMD XXX
 
-`CMD` 类似于 RUN 指令，用于运行程序
+# 环境变量
+ENV K1=V1
+ENV K2=V2
+```
 
--   CMD 在 docker run 时运行
--   RUN 是在 docker build
+- `FROM`：基于什么
+- `WORKDIR xx` ：进入工作目录
 
-`VOLUME` 定义匿名数据卷
+- `ADD . xx` ：复制文件至容器
+
+- `RUN xx ` ：构建镜像时的步骤
+
+- `EXPOSE` ：暴露的端口
+
+- `COPY` ：复制
+- `VOLUME` 定义匿名数据卷
+
+> `RUN` 是构建镜像（images），CMD 是容器（container）启动
+>
+> RUN 是在 docker build
+>
+> CMD 在 docker run 时运行
+
+`CMD` 类似于 RUN 指令，用于运行程序，它最后的语法是要阻塞后台的命令
+
+
 
 ## VOLUME
 
@@ -41,12 +66,6 @@ VOLUME ["<路径1>", "路径2"...]
 ```
 
 在启动容器 docker run 的时候，我们可以通过 -v 参数修改挂载点
-
-## LABEL
-
-```
-LABEL version="1.0" description="这是一个Web服务器" by="IT笔录
-```
 
 ## 例子
 

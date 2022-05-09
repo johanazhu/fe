@@ -16,28 +16,47 @@ Image：类似于”Win7 纯净版.rar“
 
 Container: 一个完整的操作系统
 
-## docker 是什么？
 
-docker 是用 Go 语言实现的开源项目，可以让我们方便的创建和使用容器，docker 将程序以及程序所有的依赖都打包到 docker container，这样你的程序可以在任何环节都会有一致的表现，这里程序运行的依赖也就是容器就好比集装箱，容器所处的操作系统环境就好比货船或港口，**程序的表现只和集装箱有关系（容器），和集装箱放在哪个货船或者哪个港口（操作系统）没有关系**
 
-容器技术**只隔离应用程序的运行时环境但容器之间可以共享一个操作系统**，这里的运行时环境指的是程序运行依赖的各种库以及配置
+## 基本概念
 
-注意，容器是一种通用技术，docker 只是其中的一种实现
+之前使用虚拟机（vmware、virtualbox）时，步骤如下
 
-## docker 的优点
+- 下载一个 `centos.iso` 文件
 
-1. 环境隔离
-    - docker 实现了资源隔离，实现一台机器运行多个容器互不影响。基于容器来开发、部署、运行应用程序
-2. 更快速地交付部署
-    - 使用 docker ，开发者可以利用镜像快速构建一套标准的研发环境，开发完成后，测试和运维人员可以直接通过使用此镜像部署代码
-3. 更高效的资源利用
-    - docker 的运行不需要额外的虚拟化管理程序的支持，它是内核级的虚拟化，可以实现更高的性能，同时对资源的额外需求很低
-4. 更易迁移扩展
-    - docker 几乎可以在任意平台上运行
-5. 更简单的更新管理
-    - 使用 dockerfile，只需要小小的配置修改，就可以代替以往大量的更新工作，并且所有修改都是以增量的方式进行分发和更新，从而实现自动化和高效的容器管理
-6. 重启更快
-    - docker 的启动只需要几秒，虚拟机要几分钟
+- 使用 vmware 安装一个系统 A
+- 使用 vmware 安装一个系统 B
+- ...
+
+此处的 `centos.ios` 文件就是一个 image 镜像，安装出来的系统就是一个一个 container 容器
+
+docker 的所有 image 都可以在 https://hub.docker.com/ 搜索并下载，还可以自定义 image 上传到这个仓库
+
+![一图概述docker](https://i.loli.net/2021/09/12/LoxTrBCjHymvEia.png)
+
+
+
+### 为什么要用 docker
+
+![虚拟机VSDocker](https://i.loli.net/2021/08/18/UwI9zfLo7pmKHJO.png)
+
+![虚拟机和容器](https://s2.loli.net/2022/04/23/LvHYhegzBnAOoDJ.jpg)
+
+如上两图所示，容器技术将常见的技术封装到容器中，并通过 namespace 和 control groups 对每个容器进行分离，将重复的资源公有化，除此之外，还能做到应用程序的环境统一化
+
+> 容器是一种通用技术，docker 只是其中的一种实现
+
+### docker 是什么
+
+docker 是用 Go 语言实现的开源项目，可以让我们方便的创建和使用容器，docker 将程序以及程序所有的依赖都打包到 docker container，这样你的程序可以在任何环节都会有一致的表现
+
+### docker 的优点
+
+环境隔离、更快速地交付部署、更高效的资源利用、更易迁移扩展、更简单的更新管理、重启更快
+
+## 启动一个Docker 容器
+
+如果没有安装，可以再 [play with docker](https://labs.play-with-docker.com/) 或者 [freeaihub](https://www.freeaihub.com/kubernetes/setup.html) 体验一下
 
 ## docker 的三个概念
 
@@ -61,58 +80,21 @@ docker 的整个生命周期由三部分组成：镜像（image）+ 容器（con
 
 注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用 tag 进行区分，比如 Ubuntu 仓库存放有多个版本（12.04、14.04 等）的 Ubuntu 镜像
 
-## 传统的虚拟机与容器对比
 
-![虚拟机和容器](https://s2.loli.net/2022/04/23/LvHYhegzBnAOoDJ.jpg)
-
-可以看出，传统的虚拟机是每开一个虚拟机，相当于运行一个系统，这种是非常占用系统资源的，但容器（以 docker 为例）。也起到了应用之间的隔离效果
-
-它的底层是通过 namespace（命名空间）和 control groups 来实现
-
-其本质就是将重复的资源公有化，让资源分配更加合理
-
-这样做除了资源分配合理外，还能做到应用程序的环境统一化
-
-![repository、image和container](https://s2.loli.net/2022/04/23/cK6ol4PtvaeDCZp.png)
 
 ## 基于 docker 的开发过程
 
 开发者通过 dockerfile 生成（build）一个镜像（image），通过 `docker run ...` 生成一个容器（constainer），可以把这个镜像推送至远程仓库上（`docker push`），既可以供别人下载（`docker pull`）再 run 生成容器。而一些环境变量可以写进 dockerfile 中，这样就保持了环境的一致性，可移植到任何服务器上
 
-## 技术实现原理
 
-namespace 解决的问题是环境隔离问题
 
-cgroup 解决计算机资源使用上的隔离
-
-## 架构图
+## docker 架构图
 
 ![docker架构图](https://s2.loli.net/2022/04/23/uYm2lQ5oEVb4Csw.jpg)
 
-## docker 是如何工作的
 
-docker 使用的是常见的 CS 架构，也就是 client-server 模式，docker client 负责处理用户输入的各种命令，比如 docker build、docker run，真正工作的其实是 server，也就是 docker daemon（守护进程），值得注意的是，docker client 和 docker daemon 可以运行在同一台机器上
 
-我们用几个命令来解释下 docker 工作流程：
 
-### docker build
 
-当我们写完 dockerfile 交给 docker“编译”时使用这个命令，那么 client 在接收到请求后转发给 docker daemon，接着 docker daemon 根据 dockerfile 创建出“可执行程序”image
 
-![docker build](https://s2.loli.net/2022/04/23/fk9RCL7drGzZA3q.png)
 
-### docker run
-
-有了“可执行程序”image 后就可以运行程序了，接下来使用命令 docker run，docker daemon 接收到该命令后找到具体的 image，然后加载到内存可以执行，image 执行起来就是所谓的 container
-
-![docker run](https://s2.loli.net/2022/04/23/fexGAJcKCuHv3sd.png)
-
-### docker pull
-
-其实 docker build 和 docker run 是两个最核心的命令，会用这两个命令基本上 docker 就可以用起来，剩下的就是一些补充。
-
-docker pull 是什么意思，学过 git 的同学都知道有 git pull，从远端仓库拉数据，你可以将你的 image 放到 docker hub 上，我们使用 docker pull，就是从 docker hub 上下载 image
-
-这个命令的实现很简单，用户通过 docker client 发送命令，docker daemon 接受到命令后向 docker registry 发送 image 下载请求，下载后存放在本地，这样我们就可以使用 image 了
-
-![docker pull](https://s2.loli.net/2022/04/23/B2QxWC9An4yRorG.png)
