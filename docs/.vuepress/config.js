@@ -1,3 +1,8 @@
+const { defaultTheme } = require('@vuepress/theme-default');
+const { sitemapPlugin } = require("vuepress-plugin-sitemap2");
+const { pwaPlugin } = require('@vuepress/plugin-pwa');
+const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup')
+
 const jsSideBar = require('./sibeBar/jsSideBar');
 const reactSideBar = require('./sibeBar/reactSideBar');
 const bigFrondSideBar = require('./sibeBar/bigFrondSideBar');
@@ -29,14 +34,7 @@ module.exports = {
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }],
         ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-        [
-            'link',
-            {
-                rel: 'mask-icon',
-                href: '/safari-pinned-tab.svg',
-                color: '#5bbad5',
-            },
-        ],
+        ['link', { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }],
         // meta
         ['meta', { name: 'msapplication-TileColor', content: '#da532c' }],
         ['meta', { name: 'theme-color', content: '#ffffff' }],
@@ -62,19 +60,19 @@ module.exports = {
             },
         ],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-        [
-            'script',
-            {},
-            `
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?ba0bbc21ba293c7cf67f60c2d4889ee5";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-          `,
-        ],
+        // [
+        //     'script',
+        //     {},
+        //     `
+        // var _hmt = _hmt || [];
+        // (function() {
+        //   var hm = document.createElement("script");
+        //   hm.src = "https://hm.baidu.com/hm.js?ba0bbc21ba293c7cf67f60c2d4889ee5";
+        //   var s = document.getElementsByTagName("script")[0];
+        //   s.parentNode.insertBefore(hm, s);
+        // })();
+        //   `,
+        // ],
     ],
     // 端口号
     port: 3000,
@@ -84,8 +82,8 @@ module.exports = {
     },
 
     // 主题和它的配置
-    theme: '@vuepress/theme-default',
-    themeConfig: {
+    theme: defaultTheme({
+        // 在这里进行配置
         // logo:"/logo.png",
         // contributors:false,
         // contributorsText: '贡献者',
@@ -168,7 +166,7 @@ module.exports = {
             '/Others': AboutSideBar(),
             '/Introduction': FrontEndSideBar(),
         },
-    },
+    }),
     configureWebpack: {
         resolve: {
             // 静态资源的别名
@@ -183,6 +181,19 @@ module.exports = {
         linkify: true,
     },
     plugins: [
+        pwaPlugin({
+            // 配置项
+            skipWaiting: true,
+        }),
+        pwaPopupPlugin({
+            // 配置项
+            message: '发现新内容可用',
+            buttonText: '刷新',
+        }),
+        sitemapPlugin({
+            // 配置选项
+            hostname: 'https://fe.azhubaby.com/'
+        }),
         [
             '@vuepress/plugin-docsearch',
             {
@@ -193,45 +204,25 @@ module.exports = {
                 //     facetFilters: ['tags:v2'],
                 // },
                 locales: {
-                    placeholder: '搜索文档',
+                    placeholder: "搜索文档"
                 },
             },
         ],
-        // vuepress2 暂不支持 sitmap
-        // [
-        //     'sitemap',
-        //     {
-        //         hostname: 'https://fe.azhubaby.com'
-        //     }
-        // ]
-        // [
-        //     '@vuepress/pwa',
-        //     {
-        //         skipWaiting: true,
-        //         updatePopup: {
-        //             message: "发现新内容可用",
-        //             buttonText: "刷新"
-        //         }
-        //     },
-        // ],
         [
-            'seo',
-            {
+            'seo', {
                 siteTitle: (_, $site) => '五年前端三年面试',
-                title: ($page) => $page.title,
-                description: ($page) => $page.frontmatter.description,
+                title: $page => $page.title,
+                description: $page => $page.frontmatter.description,
                 author: (_, $site) => '约翰',
-                twitterCard: (_) => 'summary_large_image',
-                type: ($page) => 'article',
+                twitterCard: _ => 'summary_large_image',
+                type: $page => 'article',
                 url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
-                image: ($page, $site) => 'https://fe.azhubaby.com/favicon.ico',
-                publishedAt: ($page) =>
-                    $page.frontmatter.date && new Date($page.frontmatter.date),
-                modifiedAt: ($page) =>
-                    $page.lastUpdated && new Date($page.lastUpdated),
-            },
-        ],
-    ],
+                image: ($page, $site) => "https://fe.azhubaby.com/favicon.ico",
+                publishedAt: $page => $page.frontmatter.date && new Date($page.frontmatter.date),
+                modifiedAt: $page => $page.lastUpdated && new Date($page.lastUpdated),
+            }
+        ]
+    ]
     // plugins: [
     //     '@vuepress/search',
     //     [
