@@ -84,11 +84,11 @@ dart 语法介绍
 
 从 redux 到 flutter 数据管理
 
-​ redux ：咸鱼的 flutter-redux
+ redux ：咸鱼的 flutter-redux
 
-​ 官方推荐的 bloc
+ 官方推荐的 bloc
 
-​ 其他的方式
+ 其他的方式
 
 实战一个项目需要注意什么
 
@@ -127,3 +127,11 @@ Flutter 入门基础知识
 表单输入与富文本
 
 调用硬件、第三方服务以及平台交互、通知
+
+
+
+2022年最新flutter课程
+
+https://www.bilibili.com/video/BV1YL4y1L723
+
+https://tangguo.feishu.cn/docs/doccnOEucSIUzgNSEZj4OKwVNHf

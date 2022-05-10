@@ -61,3 +61,4 @@
 -   [MobX 入门教程](https://github.com/sorrycc/blog/issues/2)
 -   [MobX 原理](https://github.com/sorrycc/blog/issues/3)
 -   https://github.com/chenxiaochun/blog/issues/51
+-   [MobX 的实现原理是？](https://mp.weixin.qq.com/s/zWp-qSVeOjzHKiOYLi2s0g)

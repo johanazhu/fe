@@ -58,7 +58,7 @@ function reactSideBar() {
                 '/React/生态/Redux-thunk.md',
                 '/React/生态/Dva.md',
                 '/React/生态/Mobx.md',
-                '/React/生态/各个状态库对比.md',
+                '/React/生态/状态管理.md',
                 '/React/生态/ReactRouter.md',
                 '/React/生态/ReactSSR.md',
             ],
