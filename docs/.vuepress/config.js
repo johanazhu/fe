@@ -28,7 +28,7 @@ module.exports = {
         // icon
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }],
-        ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+        // ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
         ['link', { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }],
         // meta
         ['meta', { name: 'msapplication-TileColor', content: '#da532c' }],
@@ -46,19 +46,19 @@ module.exports = {
             },
         ],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-        [
-            'script',
-            {},
-            `
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?ba0bbc21ba293c7cf67f60c2d4889ee5";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-          `,
-        ],
+        // [
+        //     'script',
+        //     {},
+        //     `
+        // var _hmt = _hmt || [];
+        // (function() {
+        //   var hm = document.createElement("script");
+        //   hm.src = "https://hm.baidu.com/hm.js?ba0bbc21ba293c7cf67f60c2d4889ee5";
+        //   var s = document.getElementsByTagName("script")[0];
+        //   s.parentNode.insertBefore(hm, s);
+        // })();
+        //   `,
+        // ],
     ],
     // 端口号
     port: 3000,
@@ -68,7 +68,7 @@ module.exports = {
     },
 
     // 主题和它的配置
-    theme: '@vuepress/theme-default',
+    // theme: '@vuepress/theme-default',
     themeConfig: {
         // logo:"/logo.png",
         // contributors:false,
@@ -166,53 +166,53 @@ module.exports = {
     markdown: {
         linkify: true,
     },
-    plugins: [
-        [
-            '@vuepress/plugin-docsearch',
-            {
-                appId: 'LE7T3Q08D4',
-                apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
-                indexName: 'azhubaby',
-                // searchParameters: {
-                //     facetFilters: ['tags:v2'],
-                // },
-                locales: {
-                    placeholder: "搜索文档"
-                },
-            },
-        ],
-        // vuepress2 暂不支持 sitmap
-        // [
-        //     'sitemap',
-        //     {
-        //         hostname: 'https://fe.azhubaby.com'
-        //     }
-        // ]
-        // [
-        //     '@vuepress/pwa',
-        //     {
-        //         skipWaiting: true,
-        //         updatePopup: {
-        //             message: "发现新内容可用",
-        //             buttonText: "刷新"
-        //         }
-        //     },
-        // ],
-        [
-            'seo', {
-                siteTitle: (_, $site) => '五年前端三年面试',
-                title: $page => $page.title,
-                description: $page => $page.frontmatter.description,
-                author: (_, $site) => '约翰',
-                twitterCard: _ => 'summary_large_image',
-                type: $page => 'article',
-                url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
-                image: ($page, $site) => "https://fe.azhubaby.com/favicon.ico",
-                publishedAt: $page => $page.frontmatter.date && new Date($page.frontmatter.date),
-                modifiedAt: $page => $page.lastUpdated && new Date($page.lastUpdated),
-            }
-        ]
-    ]
+    // plugins: [
+    //     [
+    //         '@vuepress/plugin-docsearch',
+    //         {
+    //             appId: 'LE7T3Q08D4',
+    //             apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
+    //             indexName: 'azhubaby',
+    //             // searchParameters: {
+    //             //     facetFilters: ['tags:v2'],
+    //             // },
+    //             locales: {
+    //                 placeholder: "搜索文档"
+    //             },
+    //         },
+    //     ],
+    //     // vuepress2 暂不支持 sitmap
+    //     // [
+    //     //     'sitemap',
+    //     //     {
+    //     //         hostname: 'https://fe.azhubaby.com'
+    //     //     }
+    //     // ]
+    //     // [
+    //     //     '@vuepress/pwa',
+    //     //     {
+    //     //         skipWaiting: true,
+    //     //         updatePopup: {
+    //     //             message: "发现新内容可用",
+    //     //             buttonText: "刷新"
+    //     //         }
+    //     //     },
+    //     // ],
+    //     [
+    //         'seo', {
+    //             siteTitle: (_, $site) => '五年前端三年面试',
+    //             title: $page => $page.title,
+    //             description: $page => $page.frontmatter.description,
+    //             author: (_, $site) => '约翰',
+    //             twitterCard: _ => 'summary_large_image',
+    //             type: $page => 'article',
+    //             url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
+    //             image: ($page, $site) => "https://fe.azhubaby.com/favicon.ico",
+    //             publishedAt: $page => $page.frontmatter.date && new Date($page.frontmatter.date),
+    //             modifiedAt: $page => $page.lastUpdated && new Date($page.lastUpdated),
+    //         }
+    //     ]
+    // ]
     // plugins: [
     //     '@vuepress/search',
     //     [
