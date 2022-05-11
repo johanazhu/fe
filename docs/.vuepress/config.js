@@ -17,6 +17,7 @@ const BrowserSideBar = require('./sibeBar/BrowserSideBar');
 const PerformanceSideBar = require('./sibeBar/PerformanceSideBar');
 const designPatternSideBar = require('./sibeBar/designPatternSideBar');
 const AboutSideBar = require('./sibeBar/AboutSideBar');
+console.log('AboutSideBar', AboutSideBar)
 const csBasicSideBar = require('./sibeBar/csBasicSideBar');
 const FrontEndSideBar = require('./sibeBar/FrontEndSideBar');
 const EngineeredSideBar = require('./sibeBar/EngineeredSideBar');
