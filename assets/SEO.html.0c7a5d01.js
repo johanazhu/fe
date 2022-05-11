@@ -1,0 +1,1 @@
+const e={key:"v-1f6a4b72",path:"/HTML/SEO.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"SEO",slug:"seo",children:[{level:3,title:"\u54E5\u98DE",slug:"\u54E5\u98DE",children:[]}]}],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:2}]},filePathRelative:"HTML/SEO.md"};export{e as data};

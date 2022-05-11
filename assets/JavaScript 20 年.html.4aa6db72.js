@@ -1,0 +1,1 @@
+const a={key:"v-47ff0e7e",path:"/Read/book/JavaScript%2020%20%E5%B9%B4.html",title:"JavaScript 20 \u5E74",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:1},{name:"johanazhu",email:"t511069160@qq.com",commits:1}]},filePathRelative:"Read/book/JavaScript 20 \u5E74.md"};export{a as data};

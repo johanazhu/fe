@@ -1,0 +1,1 @@
+const t={key:"v-262cc3f4",path:"/Nginx/nginx%E5%B7%A5%E5%85%B7.html",title:"Nginx \u5DE5\u5177",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:2},{name:"johnny",email:"t511069160@qq.com",commits:1}]},filePathRelative:"Nginx/nginx\u5DE5\u5177.md"};export{t as data};

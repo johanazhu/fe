@@ -1,0 +1,35 @@
+import{_ as n,e as s}from"./app.873f0dc8.js";const a={},e=s(`<h1 id="dockerfile" tabindex="-1"><a class="header-anchor" href="#dockerfile" aria-hidden="true">#</a> dockerfile</h1><h2 id="\u4ECB\u7ECD" tabindex="-1"><a class="header-anchor" href="#\u4ECB\u7ECD" aria-hidden="true">#</a> \u4ECB\u7ECD</h2><p>\u4E00\u4E2A\u7B80\u5355\u7684\u914D\u7F6E\u6587\u4EF6\uFF0C\u63CF\u8FF0\u5982\u4F55\u6784\u5EFA\u4E00\u4E2A\u65B0\u7684 image \u955C\u50CF</p><blockquote><p>PS\uFF1A\u5FC5\u987B\u662F <code>Dockerfile</code> \u8FD9\u4E2A\u6587\u4EF6\u540D\uFF0C\u5FC5\u987B\u5728\u9879\u76EE\u7684\u6839\u76EE\u5F55</p></blockquote><h2 id="\u8BED\u6CD5" tabindex="-1"><a class="header-anchor" href="#\u8BED\u6CD5" aria-hidden="true">#</a> \u8BED\u6CD5</h2><div class="language-docker ext-docker line-numbers-mode"><pre class="language-docker"><code><span class="token instruction"><span class="token keyword">FROM</span> node:14</span>
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /app</span>
+<span class="token instruction"><span class="token keyword">COPY</span> . /app</span>
+
+<span class="token comment"># \u6784\u5EFA\u955C\u50CF\u65F6\uFF0C\u4E00\u822C\u7528\u4E8E\u505A\u4E00\u4E9B\u7CFB\u7EDF\u914D\u7F6E\uFF0C\u5B89\u88C5\u5FC5\u8981\u7684\u8F6F\u4EF6\u3002\u53EF\u6709\u591A\u4E2A RUN</span>
+<span class="token instruction"><span class="token keyword">RUN</span> XXX</span>
+<span class="token instruction"><span class="token keyword">RUN</span> XXX</span>
+<span class="token instruction"><span class="token keyword">RUN</span> XXX</span>
+
+<span class="token comment"># \u542F\u52A8\u5BB9\u5668\u65F6\uFF0C\u53EA\u80FD\u7531\u4E00\u4E2A CMD</span>
+<span class="token instruction"><span class="token keyword">CMD</span> XXX</span>
+
+<span class="token comment"># \u73AF\u5883\u53D8\u91CF</span>
+<span class="token instruction"><span class="token keyword">ENV</span> K1=V1</span>
+<span class="token instruction"><span class="token keyword">ENV</span> K2=V2</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li><p><code>FROM</code>\uFF1A\u57FA\u4E8E\u4EC0\u4E48</p></li><li><p><code>WORKDIR xx</code> \uFF1A\u8FDB\u5165\u5DE5\u4F5C\u76EE\u5F55</p></li><li><p><code>ADD . xx</code> \uFF1A\u590D\u5236\u6587\u4EF6\u81F3\u5BB9\u5668</p></li><li><p><code>RUN xx </code> \uFF1A\u6784\u5EFA\u955C\u50CF\u65F6\u7684\u6B65\u9AA4</p></li><li><p><code>EXPOSE</code> \uFF1A\u66B4\u9732\u7684\u7AEF\u53E3</p></li><li><p><code>COPY</code> \uFF1A\u590D\u5236</p></li><li><p><code>VOLUME</code> \u5B9A\u4E49\u533F\u540D\u6570\u636E\u5377</p></li></ul><blockquote><p><code>RUN</code> \u662F\u6784\u5EFA\u955C\u50CF\uFF08images\uFF09\uFF0CCMD \u662F\u5BB9\u5668\uFF08container\uFF09\u542F\u52A8</p><p>RUN \u662F\u5728 docker build</p><p>CMD \u5728 docker run \u65F6\u8FD0\u884C</p></blockquote><p><code>CMD</code> \u7C7B\u4F3C\u4E8E RUN \u6307\u4EE4\uFF0C\u7528\u4E8E\u8FD0\u884C\u7A0B\u5E8F\uFF0C\u5B83\u6700\u540E\u7684\u8BED\u6CD5\u662F\u8981\u963B\u585E\u540E\u53F0\u7684\u547D\u4EE4</p><h2 id="volume" tabindex="-1"><a class="header-anchor" href="#volume" aria-hidden="true">#</a> VOLUME</h2><p><code>VOLUME</code> \uFF1A\u6570\u636E\u5377</p><p>\u4F5C\u7528\uFF1A</p><ul><li>\u907F\u514D\u91CD\u8981\u7684\u6570\u636E\uFF0C\u56E0\u5BB9\u5668\u91CD\u542F\u800C\u4E22\u5931\uFF0C\u8FD9\u662F\u975E\u5E38\u81F4\u547D\u7684</li><li>\u907F\u514D\u5BB9\u5668\u4E0D\u65AD\u53D8\u5927</li></ul><p>\u53EF\u4EE5\u7406\u89E3\u4E3A<strong>\u6587\u4EF6\u6620\u5C04</strong></p><p>\u683C\u5F0F\uFF1A</p><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>VOLUME <span class="token punctuation">[</span><span class="token string">&quot;&lt;\u8DEF\u5F841&gt;&quot;</span>, <span class="token string">&quot;\u8DEF\u5F842&quot;</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>\u5728\u542F\u52A8\u5BB9\u5668 docker run \u7684\u65F6\u5019\uFF0C\u6211\u4EEC\u53EF\u4EE5\u901A\u8FC7 -v \u53C2\u6570\u4FEE\u6539\u6302\u8F7D\u70B9</p><p><img src="https://i.loli.net/2021/09/13/QiMyCPFlIEjaq7p.png" alt="\u6570\u636E\u5377"></p><h2 id="\u4F8B\u5B50" tabindex="-1"><a class="header-anchor" href="#\u4F8B\u5B50" aria-hidden="true">#</a> \u4F8B\u5B50</h2><div class="language-docker ext-docker line-numbers-mode"><pre class="language-docker"><code><span class="token comment"># base image</span>
+<span class="token instruction"><span class="token keyword">FROM</span> johanbo/ubuntu_node:v1</span>
+
+<span class="token comment"># \u590D\u5236\u6587\u4EF6\u5230\u5BB9\u5668</span>
+<span class="token instruction"><span class="token keyword">ADD</span> . /var/www</span>
+
+<span class="token comment"># \u8FDB\u5165\u5DE5\u4F5C\u76EE\u5F55</span>
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /var/www</span>
+
+<span class="token comment"># \u5B89\u88C5\u9879\u76EE\u4F9D\u8D56\u5305</span>
+<span class="token instruction"><span class="token keyword">RUN</span> npm install --registry=https://registry.npm.taobao.org</span>
+
+<span class="token comment"># \u66B4\u9732 \u7AEF\u53E3</span>
+<span class="token instruction"><span class="token keyword">EXPOSE</span> 3010</span>
+
+<span class="token comment"># \u5F00\u59CB\u547D\u4EE4</span>
+<span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">&quot;pm2&quot;</span>, <span class="token string">&quot;start&quot;</span>, <span class="token string">&quot;app.js&quot;</span>, <span class="token string">&quot;--no-daemon&quot;</span>]</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div>`,20);function p(c,l){return e}var o=n(a,[["render",p],["__file","dockerfile\u6307\u4EE4.html.vue"]]);export{o as default};

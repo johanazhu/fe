@@ -1,0 +1,1 @@
+const t={key:"v-1b6cc663",path:"/HTTP/HTTP%E7%8A%B6%E6%80%81%E7%A0%81.html",title:"HTTP \u72B6\u6001\u7801",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:165207967e4,contributors:[{name:"johan",email:"t511069160@qq.com",commits:3}]},filePathRelative:"HTTP/HTTP\u72B6\u6001\u7801.md"};export{t as data};

@@ -1,0 +1,1 @@
+const e={key:"v-0556d8f4",path:"/ES6/Promise/",title:"Promise \u5BFC\u822A",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:1}]},filePathRelative:"ES6/Promise/README.md"};export{e as data};

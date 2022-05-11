@@ -1,0 +1,1 @@
+const t={key:"v-e5083920",path:"/CSBasic/%E4%BC%A0%E8%BE%93%E5%B1%82.html",title:"\u521B\u8F93\u5C42",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:1},{name:"johnny",email:"t511069160@qq.com",commits:1}]},filePathRelative:"CSBasic/\u4F20\u8F93\u5C42.md"};export{t as data};

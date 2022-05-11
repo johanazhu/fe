@@ -1,0 +1,1 @@
+const t={key:"v-12651646",path:"/Flutter/StatefulWidget.html",title:"StatefulWidget",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:2},{name:"johnny",email:"t511069160@qq.com",commits:2}]},filePathRelative:"Flutter/StatefulWidget.md"};export{t as data};

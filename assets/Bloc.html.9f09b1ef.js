@@ -1,0 +1,1 @@
+const t={key:"v-27684baf",path:"/Flutter/Bloc.html",title:"\u72B6\u6001\u7BA1\u7406",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:2},{name:"johanazhu",email:"t511069160@qq.com",commits:1}]},filePathRelative:"Flutter/Bloc.md"};export{t as data};

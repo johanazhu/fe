@@ -1,0 +1,1 @@
+const t={key:"v-7205da3c",path:"/React/React18.html",title:"React 18",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u53C2\u8003\u8D44\u6599",slug:"\u53C2\u8003\u8D44\u6599",children:[]}],git:{updatedTime:165207967e4,contributors:[{name:"johan",email:"t511069160@qq.com",commits:4}]},filePathRelative:"React/React18.md"};export{t as data};

@@ -1,0 +1,1 @@
+const e={key:"v-0f97a5f1",path:"/Engineered/Scaffold/",title:"\u811A\u624B\u67B6",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"Lerna",slug:"lerna",children:[]}],git:{updatedTime:165207967e4,contributors:[{name:"johan",email:"t511069160@qq.com",commits:2}]},filePathRelative:"Engineered/Scaffold/README.md"};export{e as data};

@@ -1,0 +1,1 @@
+const a={key:"v-a686174a",path:"/webpack/",title:"Webpack \u5BFC\u822A",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:165207967e4,contributors:[{name:"johanazhu",email:"t511069160@qq.com",commits:5},{name:"johan",email:"t511069160@qq.com",commits:4}]},filePathRelative:"webpack/README.md"};export{a as data};

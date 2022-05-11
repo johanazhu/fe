@@ -1,0 +1,1 @@
+const e={key:"v-fe504a34",path:"/Engineered/StandardGuide/VSCode%E9%85%8D%E7%BD%AE.html",title:"VSCode \u6B66\u88C5\u4F60\u7684\u4EE3\u7801",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:1}]},filePathRelative:"Engineered/StandardGuide/VSCode\u914D\u7F6E.md"};export{e as data};

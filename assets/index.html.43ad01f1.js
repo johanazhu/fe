@@ -1,0 +1,1 @@
+const a={key:"v-7f05f4a2",path:"/JavaScript/%E9%AB%98%E9%98%B6/",title:"JavaScript \u9AD8\u9636",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:1},{name:"johanazhu",email:"t511069160@qq.com",commits:1}]},filePathRelative:"JavaScript/\u9AD8\u9636/README.md"};export{a as data};

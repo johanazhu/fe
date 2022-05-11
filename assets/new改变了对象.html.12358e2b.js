@@ -1,0 +1,1 @@
+const t={key:"v-58d2119f",path:"/JavaScript/new%E6%94%B9%E5%8F%98%E4%BA%86%E5%AF%B9%E8%B1%A1.html",title:"new \u6539\u53D8\u4E86\u5BF9\u8C61",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647860032e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:2}]},filePathRelative:"JavaScript/new\u6539\u53D8\u4E86\u5BF9\u8C61.md"};export{t as data};

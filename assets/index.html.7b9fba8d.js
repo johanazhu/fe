@@ -1,0 +1,1 @@
+const e={key:"v-459bb098",path:"/Browser/%E9%9D%A2%E8%AF%95%E9%A2%98/",title:"\u6D4F\u89C8\u5668\u9762\u8BD5\u9898",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1647415462e3,contributors:[{name:"johan",email:"t511069160@qq.com",commits:1}]},filePathRelative:"Browser/\u9762\u8BD5\u9898/README.md"};export{e as data};

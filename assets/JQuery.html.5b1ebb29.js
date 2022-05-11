@@ -1,0 +1,1 @@
+const e={key:"v-1cd3a5b9",path:"/Read/code/JQuery.html",title:"JQuery \u6E90\u7801\u89E3\u8BFB",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u53C2\u8003\u8D44\u6599",slug:"\u53C2\u8003\u8D44\u6599",children:[]}],git:{updatedTime:null,contributors:[]},filePathRelative:"Read/code/JQuery.md"};export{e as data};
