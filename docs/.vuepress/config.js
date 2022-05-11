@@ -6,6 +6,8 @@ const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup')
 const jsSideBar = require('./sibeBar/jsSideBar');
 const reactSideBar = require('./sibeBar/reactSideBar');
 const bigFrondSideBar = require('./sibeBar/bigFrondSideBar');
+const AboutSideBar = require('./sibeBar/AboutSideBar');
+console.log('AboutSideBar', AboutSideBar)
 const ArmorySideBar = require('./sibeBar/ArmorySideBar');
 const HttpSideBar = require('./sibeBar/HttpSideBar');
 const DockerSideBar = require('./sibeBar/DockerSideBar');
@@ -16,8 +18,6 @@ const ES6SideBar = require('./sibeBar/ES6SideBar');
 const BrowserSideBar = require('./sibeBar/BrowserSideBar');
 const PerformanceSideBar = require('./sibeBar/PerformanceSideBar');
 const designPatternSideBar = require('./sibeBar/designPatternSideBar');
-const AboutSideBar = require('./sibeBar/AboutSideBar');
-console.log('AboutSideBar', AboutSideBar)
 const csBasicSideBar = require('./sibeBar/csBasicSideBar');
 const FrontEndSideBar = require('./sibeBar/FrontEndSideBar');
 const EngineeredSideBar = require('./sibeBar/EngineeredSideBar');

@@ -4,8 +4,16 @@ function AboutSideBar() {
             text: '关于',
             collapsable: false,
             sidebarDepth: 0,
-            children: ['/About/', '/About/Book.md'],
+            children: [
+                '/About/',
+            ],
         },
+        // {
+        //     text: '关于',
+        //     collapsable: false,
+        //     sidebarDepth: 0,
+        //     children: ['/About/', '/About/Book.md'],
+        // },
         // {
         //     text: '简历面试',
         //     collapsable: false,
