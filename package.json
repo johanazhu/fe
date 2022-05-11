@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "bash ./deploy.sh",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,scss,md,json}\""
   },
   "gitHooks": {
