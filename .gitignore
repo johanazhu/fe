@@ -6,3 +6,10 @@ docs/.vuepress/.temp
 
 yarn.lock
 yarn-error.log
+
+pnpm.yaml
+pnpm-lock.yaml
+
+.vercel
+
+.vercel

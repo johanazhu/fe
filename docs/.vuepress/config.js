@@ -17,7 +17,7 @@ const BrowserSideBar = require('./sibeBar/BrowserSideBar');
 const PerformanceSideBar = require('./sibeBar/PerformanceSideBar');
 const designPatternSideBar = require('./sibeBar/designPatternSideBar');
 const csBasicSideBar = require('./sibeBar/csBasicSideBar');
-const AboutSideBar = require('./sibeBar/AboutSideBar');
+// const AboutSideBar = require('./sibeBar/AboutSideBar');
 const FrontEndSideBar = require('./sibeBar/FrontEndSideBar');
 const EngineeredSideBar = require('./sibeBar/EngineeredSideBar');
 const ReadSideBar = require('./sibeBar/ReadSideBar');
@@ -162,8 +162,8 @@ module.exports = {
             '/DesignPattern': designPatternSideBar(),
             '/CSBasic': csBasicSideBar(),
             '/Read': ReadSideBar(),
-            '/About': AboutSideBar(),
-            '/Others': AboutSideBar(),
+            // '/About': AboutSideBar(),
+            // '/Others': AboutSideBar(),
             '/Introduction': FrontEndSideBar(),
         },
     }),
