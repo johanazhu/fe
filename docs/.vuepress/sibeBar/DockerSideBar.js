@@ -15,7 +15,6 @@ function DockerSideBar() {
                 '/Docker/实战：构建自己的镜像.md',
                 '/Docker/实战：dockerfile最小实践.md',
                 '/Docker/实战：docker-jenkins.md',
-                '/Docker/教程：李瓶儿讲docker.md',
             ],
         },
     ];
