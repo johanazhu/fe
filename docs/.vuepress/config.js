@@ -1,7 +1,8 @@
 const { defaultTheme } = require('@vuepress/theme-default');
 const { sitemapPlugin } = require("vuepress-plugin-sitemap2");
 const { pwaPlugin } = require('@vuepress/plugin-pwa');
-const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup')
+const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup');
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
 
 const jsSideBar = require('./sibeBar/jsSideBar');
 const reactSideBar = require('./sibeBar/reactSideBar');
@@ -194,20 +195,32 @@ module.exports = {
             // 配置选项
             hostname: 'https://fe.azhubaby.com/'
         }),
-        [
-            '@vuepress/plugin-docsearch',
-            {
-                appId: 'LE7T3Q08D4',
-                apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
-                indexName: 'azhubaby',
-                // searchParameters: {
-                //     facetFilters: ['tags:v2'],
-                // },
-                locales: {
-                    placeholder: "搜索文档"
-                },
+        docsearchPlugin({
+            // 配置项
+            appId: 'LE7T3Q08D4',
+            apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
+            indexName: 'azhubaby',
+            // searchParameters: {
+            //     facetFilters: ['tags:v2'],
+            // },
+            locales: {
+                placeholder: "搜索文档"
             },
-        ],
+        }),
+        // [
+        //     '@vuepress/plugin-docsearch',
+        //     {
+        //         appId: 'LE7T3Q08D4',
+        //         apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
+        //         indexName: 'azhubaby',
+        //         // searchParameters: {
+        //         //     facetFilters: ['tags:v2'],
+        //         // },
+        //         locales: {
+        //             placeholder: "搜索文档"
+        //         },
+        //     },
+        // ],
         [
             'seo', {
                 siteTitle: (_, $site) => '五年前端三年面试',
