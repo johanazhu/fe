@@ -2,7 +2,8 @@ const { defaultTheme } = require('@vuepress/theme-default');
 const { sitemapPlugin } = require("vuepress-plugin-sitemap2");
 const { pwaPlugin } = require('@vuepress/plugin-pwa');
 const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup');
-const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch');
+const { seoPlugin } = require('vuepress-plugin-seo2')
 
 const jsSideBar = require('./sibeBar/jsSideBar');
 const reactSideBar = require('./sibeBar/reactSideBar');
@@ -207,34 +208,19 @@ module.exports = {
                 placeholder: "搜索文档"
             },
         }),
-        // [
-        //     '@vuepress/plugin-docsearch',
-        //     {
-        //         appId: 'LE7T3Q08D4',
-        //         apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
-        //         indexName: 'azhubaby',
-        //         // searchParameters: {
-        //         //     facetFilters: ['tags:v2'],
-        //         // },
-        //         locales: {
-        //             placeholder: "搜索文档"
-        //         },
-        //     },
-        // ],
-        [
-            'seo', {
-                siteTitle: (_, $site) => '五年前端三年面试',
-                title: $page => $page.title,
-                description: $page => $page.frontmatter.description,
-                author: (_, $site) => '约翰',
-                twitterCard: _ => 'summary_large_image',
-                type: $page => 'article',
-                url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
-                image: ($page, $site) => "https://fe.azhubaby.com/favicon.ico",
-                publishedAt: $page => $page.frontmatter.date && new Date($page.frontmatter.date),
-                modifiedAt: $page => $page.lastUpdated && new Date($page.lastUpdated),
-            }
-        ]
+        seoPlugin({
+            hostname: 'https://fe.azhubaby.com/',
+            siteTitle: (_, $site) => '五年前端三年面试',
+            title: $page => $page.title,
+            description: $page => $page.frontmatter.description,
+            author: (_, $site) => '约翰',
+            twitterCard: _ => 'summary_large_image',
+            type: $page => 'article',
+            url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
+            image: ($page, $site) => "https://fe.azhubaby.com/favicon.ico",
+            publishedAt: $page => $page.frontmatter.date && new Date($page.frontmatter.date),
+            modifiedAt: $page => $page.lastUpdated && new Date($page.lastUpdated),
+        })
     ]
     // plugins: [
     //     '@vuepress/search',
