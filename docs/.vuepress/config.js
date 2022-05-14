@@ -183,11 +183,10 @@ module.exports = {
         linkify: true,
     },
     plugins: [
-        pwaPlugin(),
-        // pwaPlugin({
-        //     // 配置项
-        //     skipWaiting: true,
-        // }),
+        pwaPlugin({
+            // 配置项
+            skipWaiting: true,
+        }),
         pwaPopupPlugin({
             // 配置项
             message: '发现新内容可用',

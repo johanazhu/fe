@@ -19,7 +19,7 @@ function ES6SideBar() {
                 '/ES6/Iterator&Generator.md',
                 '/ES6/Let&Const.md',
                 '/ES6/Map&Set.md',
-                '/ES6/ES6+.md',
+                '/ES6/ES6至ES12的新特性.md',
                 '/ES6/Proxy.md',
             ],
         },
