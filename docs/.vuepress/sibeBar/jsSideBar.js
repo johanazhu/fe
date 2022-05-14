@@ -65,7 +65,7 @@ function jsSideBar() {
                 '/JavaScript/原理/发布订阅.md',
                 '/JavaScript/原理/图片懒加载.md',
                 '/JavaScript/原理/实现模板引擎.md',
-                '/JavaScript/原理/0.1+0.2为什么不等于0.3.md',
+                '/JavaScript/原理/0.1加0.2为什么不等于0.3.md',
                 '/JavaScript/原理/JSONP——从理论到实践.md',
                 '/JavaScript/原理/模拟MVVM的实现.md',
                 '/JavaScript/原理/模拟数组方法.md',
