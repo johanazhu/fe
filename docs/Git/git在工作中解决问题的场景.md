@@ -20,7 +20,7 @@ git rebase 让你的提交记录更加清晰可读
 
 
 
-## 时光穿梭机
+## 时光机
 
 查看所有分支的所有操作记录（包括已经被删除的 commit 记录和 reset 的操作）
 
@@ -36,9 +36,19 @@ git cherry-pick <branch-name>
 
 
 
+## 使用 git revert 回滚某次的提交
+
+删除对应的 commit
+
+
+
+
+
 
 
 ## 参考资料
 
 -   [git 时光穿梭机](https://github.com/airuikun/blog/issues/5)
 -   [我在工作中是如何使用 git 的](https://juejin.cn/post/6974184935804534815#heading-6)
+-   [程序员必会的六条黄金 Git 命令，让你效率提高百分之百](https://mp.weixin.qq.com/s/DsdXGz8qb3B23Ra10ElKug)
+-   [Oh Shit, Git!?!](https://ohshitgit.com/zh)
