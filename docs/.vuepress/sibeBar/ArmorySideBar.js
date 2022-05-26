@@ -6,7 +6,7 @@ function ArmorySideBar() {
             sidebarDepth: 0,
             children: [
                 '/Git/',
-                '/Git/git常见命令.md',
+                '/Git/常见命令.md',
                 '/Git/git工作流程.md',
                 '/Git/git提交规范.md',
                 '/Git/教程.md',
