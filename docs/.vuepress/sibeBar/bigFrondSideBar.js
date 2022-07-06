@@ -10,6 +10,7 @@ function bigFrondSideBar() {
                 '/WebApp/分辨率浅析.md',
                 '/WebApp/1px问题.md',
                 '/WebApp/H5页面的适配方案.md',
+                '/WebApp/网页长按保存图片及识别二维码.md',
                 '/WebApp/适配方案.md',
                 '/WebApp/flexible源码解析.md',
                 '/WebApp/offset、scroll、client.md',
