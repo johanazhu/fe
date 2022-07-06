@@ -1,12 +1,12 @@
-# 工作中使用 Git 解决问题的场景
+# 工作中使用Git解决问题的场景
 
 
 
-简单来说，就着七点：
+简单来说，就这七点：
 
 - 使用 git rebase 让提交记录更加清晰可读
 
-- 使用  git reflog + git reset 跳到任一 commit
+- 使用  git reflog + git reset 跳到任意 commit
 
 - 使用 git cherry-pick 获取指定的 commit
 
@@ -49,15 +49,15 @@ Vue 的作者尤雨溪就是说：[多用 rebase](https://www.zhihu.com/question
 
 merge 翻译为合并，即 `git merge branchname`，即合并分支代码，这种方法会保存每次 commit 的，当你使用 gitk 查看时就发现好几条颜色的线
 
-另一种是 rebase，即去除一系列的提交记录，”复制“它们，然偶再另一个地方逐个放下去
+另一种是 rebase，即去除一系列的提交记录，“复制”它们，然后在另一个地方逐个放下去
 
 所以 rebase 的优势就明了了，它能创造更清晰的提交记录
 
-但 merge 会保留你所有的 commit 的历史时间，当开发人员一多，历史记录就会变得乱
+但 merge 会保留你所有的 commit 的历史时间，当开发人员一多，历史记录就会变得混乱
 
 ### rebase 的交互模式
 
-在开发中，常会在一个分支上产生很多无效的提交，这种情况下使用 rebase 的交互模式可以把多次 commit 压缩成一次提交，得到一个干净的提交历史
+在开发中，通常会在一个分支上产生很多无效的提交，这种情况下使用 rebase 的交互模式可以把多次 commit 压缩成一次提交，得到一个干净的提交历史
 
 ```shell
 # 先看提交
@@ -74,9 +74,9 @@ git rebase -i <base-commit>
 
 > 也有人称之为后悔药功能，即你无论写什么 commit，最后都可以修改，无论提交什么，都可以合并，DIY性强
 
-## 使用  git reflog + git reset 跳到任一 commit
+## 使用  git reflog + git reset 跳到任意 commit
 
-换个说法叫时光机，即通过查找所有分支的所有操作记录（包括已经被删除的 commit 记录和 reset 的操作），通过 reset HEAD 跳到制定 commit
+换个说法叫时光机，即通过查找所有分支的所有操作记录（包括已经被删除的 commit 记录和 reset 的操作），通过 reset HEAD 跳到指定 commit
 
 ```shell
 git reflog
@@ -91,11 +91,11 @@ git reset HEAD@{10}
 
 ## 使用 git cherry-pick 获取指定的 commit
 
-意为”挑拣”提交，和 merge 合并一个分支的所有提交不同，它会获取某个分支的单个提交，并作为一个新的提交接入到当前分支上
+意为“挑拣”提交，和 merge 合并一个分支的所有提交不同，它会获取某个分支的单个提交，并作为一个新的提交接入到当前分支上
 
 这个需要故事背景才容易理解
 
-张三在分支上开发功能，每个功能点提交一次commit，共六个提交六个功能点（分别是 feature1~feature6），再回到第一个提交点，即他使用 `git reset --hard feature1` 跳转第一个 commit，再此基础上开发一个新功能，即 feature7，那么如果把 feature7 合并到 feature6 上怎么做？
+张三在分支上开发功能，每个功能点提交一次commit，共六个提交六个功能点（分别是 feature1~feature6），再回到第一个提交点，即他使用 `git reset --hard feature1` 跳转第一个 commit，在此基础上开发一个新功能，即 feature7，那么如果把 feature7 合并到 feature6 上怎么做？
 
 ```shell
 git reflog
@@ -132,7 +132,7 @@ git commit --amend --no-edit
 
 ## 使用 git revert 回滚某次的提交
 
-上文提到一个回滚操作：`git reset --hard xxx`，能回到某次的 commit 处从，除此之外，还有一种则是能撤销某次 commit
+上文提到一个回滚操作：`git reset --hard xxx`，能回到某次的 commit，除此之外，还有一种则是能撤销某次 commit
 
 ```shell
 # 先找到你想撤销的那个 commit hash值
@@ -144,7 +144,7 @@ git revert <commit-id>
 
 而 git reset 会直接提交记录退回到指定的 commit 上。
 
-所以就个人开发或个人 feature 分支而言，可以使用 `git reset` 来回滚代码，但在多人写作的集成分支上，`git revert` 更适合。这样，提交的历史记录不会被抹去，可以安全的进行撤回
+所以就个人开发或个人 feature 分支而言，可以使用 `git reset` 来回滚代码，但在多人协作的集成分支上，`git revert` 更适合。这样，提交的历史记录不会被抹去，可以安全地进行撤回
 
 ## 使用 git stash 来暂存文件
 
@@ -162,7 +162,7 @@ git revert <commit-id>
 - Respository（本地仓库）：当你 `git clone 地址`，就将远程仓库克隆到本地仓库。它是存在本地的版本库，其中HEAD指向最新放入仓库的版本。当你执行 `git commit`，文件改动就到本地仓库
 - Remote（远程仓库）：类似Github、Gitlab、码云等放在代码托管平台
 
-常见的场景是你还在开发一个功能点的时候，突然有个线上 bug 需要你紧急修复，这次你可以git commit 提交到本地仓库，后续通过 `git commit --amend ` 继续在原 commit 上修改内容。但这里还有一种方法，即将代码存在暂存区，等 bug 修复完后，在从暂存区取出
+常见的场景是你还在开发一个功能点的时候，突然有个线上 bug 需要你紧急修复，这次你可以git commit 提交到本地仓库，后续通过 `git commit --amend ` 继续在原 commit 上修改内容。但这里还有一种方法，即将代码存在暂存区，等 bug 修复完后，再从暂存区取出
 
 基本命令如下：
 
@@ -170,7 +170,7 @@ git revert <commit-id>
 git stash # 将本地的改动暂存
 git stash save "message" # 执行存储时，添加备注
 git stash pop # 应用最近一次暂存，并删除暂存记录
-git stash apply #恢复最近的存储，但不会把存储从存储列表中删除，某人使用第一个存储，即 stash@{0}，如果要使用其他各，git stash apply stash@{$num}
+git stash apply #恢复最近的存储，但不会把存储从存储列表中删除，某人使用第一个存储，即 stash@{0}，如果要使用其他，git stash apply stash@{$num}
 git stash list # 查看 stash 了哪些存储
 git stash clear #删除所有缓存的 stash
 git ls-files --stage #查看 index 暂存区
@@ -178,7 +178,7 @@ git ls-files --stage #查看 index 暂存区
 
 ## 配置 git alias 提升工作效率
 
-主要时为了简化命令，它的基本用法是 `git config --global alias.<简化的字符> 原始命令`
+主要是为了简化命令，它的基本用法是 `git config --global alias.<简化的字符> 原始命令`
 
 如下面的例子：
 
