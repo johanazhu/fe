@@ -11,7 +11,7 @@ function ArmorySideBar() {
                 '/Git/git提交规范.md',
                 '/Git/教程.md',
                 '/Git/原理.md',
-                '/Git/专题：时光穿梭机.md',
+                '/Git/工作中使用Git解决问题的场景.md',
             ],
         },
         {

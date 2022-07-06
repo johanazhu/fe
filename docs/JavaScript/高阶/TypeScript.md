@@ -1,9 +1,116 @@
 # TypeScript 学习笔记
 
-我是 typescript
 
-ts 最佳实践
-做个 todolist
+
+## 快速浏览笔记
+
+
+
+### 泛型
+
+泛型是指在定义函数、接口或类时，不预先指定具体的类型，而在使用的时候再指定类型的一种特性
+
+
+
+### 接口
+
+
+
+`interface`
+
+
+
+interface 和 type 的区别
+
+1基础数据类型与接口不同，类型别名还可以用于其他类型，如基本类型（原始值）、联合类型、元组
+
+```typescript
+// primitive
+type Name = string;
+
+// union
+type PartialPoint = PartialPointX | PartialPointY;
+
+// tuple
+type Data = [number, string];
+
+// dom
+let div = document.createElement("div");
+type B = typeof div;
+
+```
+
+2.重复定义
+
+接口可以定义多次，会被自动合并为单个接口 。类型别名不可以重复定义
+
+```typescript
+interface Point {
+  x: number;
+}
+interface Point {
+  y: number;
+}
+const point: Point = { x: 1, y: 2 };
+```
+
+3.扩展 接口可以扩展类型别名，同理，类型别名页可以扩展接口。但是两者实现扩展的方式不同
+
+接口的扩展时继承，通过 extends 实现。类型别名的扩展是交叉类型，通过 & 来实现
+
+```typescript
+// 接口扩展接口
+interface PointX {
+  x: number;
+}
+
+interface Point extends PointX {
+  y: number;
+}
+// ----
+// 类型别名扩展类型别名
+type PointX = {
+  x: number;
+};
+
+type Point = PointX & {
+  y: number;
+};
+// ----
+// 接口扩展类型别名
+type PointX = {
+  x: number;
+};
+interface Point extends PointX {
+  y: number;
+}
+// ----
+// 类型别名扩展接口
+interface PointX {
+  x: number;
+}
+type Point = PointX & {
+  y: number;
+};
+
+```
+
+4.实现 类无法实现定义了联合类型的类型别名
+
+```typescript
+type PartialPoint = { x: number } | { y: number };
+
+// A class can only implement an object type or
+// intersection of object types with statically known members.
+class SomePartialPoint implements PartialPoint {
+  // Error
+  x = 1;
+  y = 2;
+}
+
+```
+
+
 
 ## 一.简介：
 
@@ -73,6 +180,15 @@ TypeScript 是 javaScript 的超集其实就是原生 ES 语法+Type 类型
 -   引用第三方类库：第三方库如果不是 `TypeScript` 写的，没有提供声明文件，就需要去为第三方库编写声明文件
 -   新概念：`TypeScript` 中引入的类型（Types）、类（Classes）、泛型（Generics）、接口（Interfaces）以及枚举（Enums）
 
+
+
+我是 typescript
+
+ts 最佳实践
+做个 todolist
+
+
+
 ## 参考资料
 
 -   [TypeScript 入门教程](https://ts.xcatliu.com/)
@@ -85,6 +201,6 @@ TypeScript 是 javaScript 的超集其实就是原生 ES 语法+Type 类型
 -   [30 个小知识让你更清楚 TypeScript](https://mp.weixin.qq.com/s/TzkAQrDYR2O2VeauYCSWhw)
 -   [了不起的 tsconfig.json 指南](https://zhuanlan.zhihu.com/p/285270177)
 -   [字节 React + TypeScript 实践总结篇](https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ)
--   [最全的 TypeScript 学习指南](https://mp.weixin.qq.com/s/B7sdfzu6ZBbfwSdB34rGGA)
+-   [最全的 TypeScript 学习指南](https://juejin.cn/post/7031787942691471396)
 -   [一篇让你完全够用TS的指南](https://mp.weixin.qq.com/s/ATtC01f1jnV6lDsZoxWOnQ)
 

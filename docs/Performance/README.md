@@ -51,6 +51,42 @@ https://developers.weixin.qq.com/miniprogram/dev/framework/audits/performance.ht
 
 12.网络请求缓存
 
+
+
+
+
+打包优化
+
+- webpack
+  - loader
+  - dll
+  - happypack
+  - 代码压缩
+  - tree shaking
+  - scope hositing
+  - code splitting
+- 图片 base64，cdn
+
+网络优化
+
+- dns
+- cdn
+- 缓存
+- preload/prefetch/懒加载
+- ssr
+
+代码优化
+
+- loading/骨架屏
+- web worker
+- 虚拟列表
+- 懒加载
+- dom/style 批量更新
+
+
+
+
+
 ## 参考资料
 
 -   [15 条前端必备的性能优化方法，你知道哪些](https://zhuanlan.zhihu.com/p/85310910)
