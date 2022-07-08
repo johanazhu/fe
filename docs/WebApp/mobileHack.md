@@ -66,6 +66,38 @@ window.location =
     ';end';
 ```
 
+
+
+## 神奇的 iframe
+
+Flutter 开发的App引用，打开企业微信客服，返回时会白屏
+
+起初用的是 location.href
+
+例如
+
+```javascript
+location.href = 'https://work.weixin.qq.com/kfid/xxx'
+```
+
+不行，后来同事用 iframe 打开可以
+
+我很惊讶，iframe 不是嵌入代码吗，怎么能打开，于是向同事要了代码
+
+```html
+<iframe id="iframe" frameborder="0" style="opacity: 0;position: absolute;"></iframe>
+<script>
+  const iframe = document.getElementById('iframe');
+  iframe.setAttribute('src', 'https://work.weixin.qq.com/kfid/xxxx');
+</script>	
+```
+
+神奇，给 iframe 赋值，竟然能唤起企业微信
+
+这不 hack 吗
+
+
+
 ## 参考资料
 
 -   [iOS 使用 scheme 协议调起 APP](https://js8.in/2013/12/16/ios%E4%BD%BF%E7%94%A8schema%E5%8D%8F%E8%AE%AE%E8%B0%83%E8%B5%B7app/)
