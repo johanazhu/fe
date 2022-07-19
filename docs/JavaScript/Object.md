@@ -1,178 +1,167 @@
-# 对象
+# Object（对象）
 
-在前面几节或多或少看到有关 Object 的使用，让我们通过几行代码来认识 Object
+先回顾下之前一节所讲知识
 
-```javascript
-var cody = new Object(); // 创建一个不带属性的空对象
-for (key in cody) {
-    // 确认 cody 对象是普通的空对象
-    if (cody.hasOwnProperty(key)) {
-        // 检查它自身上的属性和方法
-        console.log(key); // 没有任何输出，因为 cody 本身不包含任何属性
-    }
-}
-```
+- 引用类型指的是 object
+- object 包括内置对象、宿主对象、自定义对象
+- 内置对象中有 Object、Function、Array、String、Number、Boolean 等原生对象构造函数
+- 所以说在 JavaScript 中，一切皆对象（除 undefined、null外）
 
-通过 `Object() 构造函数` 创建出来名为 `cody` 的普通对象。可以把 `Object() 构造函数` 想象成饼干模型，该模型用来创建没有预定义属性或方法的空对象（当然，除了哪些继承自原型链的属性或方法）
+无论是内置对象，还是自定义对象，都是基于 Object 来创建，其中的原理是原型继承，所以笔者一直称 Object 为“始祖巨人”，一切力量源于尤弥尔
 
-```javascript
-var cody = {}; // 等效于 var cody = new Object(); {} 是语法糖
-```
+这节，我们看看 Object 是什么，它能做什么，并将其扩展，联系与 Object 相关的知识点，并逐一联系。知识列表如下：
 
-> PS： Object() 构造函数本身对象，即构造函数是基于 Function 构造函数创建的对象。有点混乱，但是要记住，像 Array 构造函数那样，Object 构造函数只是创建了`空白对象`，我们可以随性所以地创建任何`空对象`。然后像 `cody` 这样的空对象与创建拥有预定义属性的构造函数非常不同。
+- 属性与方法
 
-## 参数
 
-`Object()构造函数` 采用一个可选参数。该参数是要创建的值。如果不提供任何参数，那么将假定一个有 null 或 undefined 值
+- 如何创建对象
 
-```javascript
-var cody1 = new Object();
-var cody2 = new Object(undefined);
-var cody3 = new Object(null);
-console.log(typeof cody1, typeof cody2, typeof cody3); // 'object object object'
-```
 
-我们可以使用 `Object()构造函数` 来创建任何其他拥有构造函数的原生对象
+- 如何拷贝对象
+
+
+- 对象继承的秘密——原型
+
+
+- 继承的六种方法
+
+
+## 属性与方法
+
+> JavaScript对象可以从一个称为原型的对象里继承属性。对象的方法通常是继承的属性。这种”原型式继承“（prototypal inheritance）是 JavaScript 的核心特征
+
+可以看下这个例子
 
 ```javascript
-console.log(new Object('foo'));
-console.log(new Obejct(1));
-console.log(new Object([]));
-console.log(new Object(function () {}));
-console.log(new Object(true));
-console.log(new Object(/\bt[a-z]+\b/));
-// 使用 Object() 构造函数创建 string, number, array, function, boolean, regex 对象
-// 提醒：这些是例子，仅作演示，内置函数有9个，都可以用Object()构造函数创建
+var johan = {name: 'johan'}
+console.dir(johan)
 ```
 
-## 属性和方法
+![属性与方法](https://s2.loli.net/2022/07/16/imQTkLKrvhHlgUB.png)
 
-Object() 对象具有以下属性（不包括继承的属性和方法）。
+能看出，我们使用对象字面量的方法创建了一个对象实例 johan，并赋予了一个属性 name，值为 johan，当打印日志时，发现多了一个对象`[[Prototype]]`，并且这个对象中有很多对象
 
-**属性** (如 Object.prototype)
+这是因为「对象字面量」创建的实例，在底层已经做了「隐式继承」的操作，它和 `new Object('johan')` 是一个意思，除此之外，如果使用 new ，会进行原型继承，`[[prototype]]` 正是继承 Object 的原型（即 Object.prototype）
 
--   prototype
+这里，不妨多说一句，实例是继承 Object.prototype，而不是 Object，原型才会被继承，构造函数是个空壳，不信，你答应 Object 和 Object.prototype，看看内容
 
-## 实例属性和方法
+`console.dir(Object)`如下图所示：
 
-Object() 对象实例拥有下列属性和方法。
+![console.dir(Object)](https://s2.loli.net/2022/07/16/IoMXpZcviF2J5We.png)
 
-**实例属性** （如 var myObject = { }; myObject.constructor）;
+`console.dir(Object.prototype)`如下图所示
 
--   constructor
+![console.dir(Object.prototype)](https://s2.loli.net/2022/07/16/HPsW8NSKZmBEQVx.png)
 
-**实例方法** （如 var myObject = { }; myObject.toString()）;
+johan的 `[[prototype]]` 和 Object 的 prototype 的内容一致
 
--   hasOwnProperty()
--   isPrototypeOf()
--   propertyIsEnumerable()
--   toLocaleString()
--   toString()
--   valueOf()
+关于原型和继承的内容后文会详细说明，这里埋个伏笔
 
-注意：原型链以 Object.prototype 结尾，因此，Object() 的所有属性和方法（如上所示）被所有的 JavaScript 对象继承
+看以上例子，你能发现 Object 的属性和方法不少，而且它的实例也有属性和方法，这里对其进行说明注解
+
+### 静态方法
+
+- `Object.assign()`：通过复制一个或多个对象来创建一个新的对象
+- `Object.create()`：使用指定的原型对象和属性创建一个新对象
+- `Object.defineProperty()`：给对象添加一个属性并指定该属性的配置
+- `Object.defineProperties()`：给对象添加多个属性并分别指定它们的配置
+- `Object.entries()`：返回给定对象自身可枚举属性的 `[key, value]` 数组
+- `Object.keys()`：返回一个包含所有给定对象自身可枚举属性名称的数组
+- `Object.values()`：返回给定对象自身可枚举值的数组
+
+### 实例属性
+
+- `Object.prototype.constructor`：一个引用值，指向 Object 构造函数
+- `Object.prototype.__proto__`：指向一个对象，当一个 object 实例化时，使用该对象作为实例化对象的原型
+
+### 实例方法
+
+- `Object.prototype.hasOwnProperty()`：返回一个布尔值，用于表示一个对象自身是否包含指定的属性，该方法并不会查找原型链上继承来的属性
+  - 用 `hasOwnProperty` 就能检测出，它能区别自身属性与继承属性
+- `Object.prototype.isPrototypeOf()`：返回一个布尔值，用于表示该方法所调用的对象是否在指定对象的原型链中
+- `Object.prototype.toString()`：返回一个代表该对象的字符串。
+- `Object.prototype.valueOf()`：返回指定对象的原始值
+
+更多信息可以查看[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+了解Object 的属性、方法，以及基于它创建的实例属性和方法后，我们去看看如何创建对象
+
+## 创建对象
+
+有三种方法。对象直接量、关键字new和 `Object.create` 函数来创建对象
+
+### 对象直接量
+
+创建一个新对象的最简单的方法，就是用对象直接量，就如使用以下语句：
 
 ```javascript
-console.log(Object.prototype); // 可以查找所有的 Object() 构造函数上的属性和方法
+var obj = {}
 ```
 
-## 所有对象都继承自 Object.prototype
+`{}` 表示的 `new Object()`
 
-Object() 构造函数在 JavaScript 中是特殊的，因为它的 prototype 属性在原型链中是最后一个
+### 关键字new
 
-下面的代码，我将 foo 属性添加到 Object.prototype 上，然后创建一个字符串
+使用 new 创建新对象，一般要跟随一个函数调用。这里的函数称为构造函数（constructor），构造函数用以初始化一个新创建的对象。例如：
 
 ```javascript
-Object.prototype.foo = 'foo';
-var myString = 'bar';
-console.log(myString.foo); // foo
-// 先在myString 实例上找foo属性，找不到往 myString.__proto__ 上找，也就是 String.prototype 上找，再找不到往 myString.__proto__.__proto__ 上找，也就是在 Object.prototype 上找
-// myString.__proto__ === String.prototype
-// myString.__proto__.__proto__ === String.prototype.__proto__ === Object.prototype
-// 原型链的奥秘会在后续文章中详细说明
+var obj = new Object() // 效果如同 var obj = {}
 ```
 
-注意：添加至 Object.prototype 的任何内容都将出现在 for in 循环和原型链中。因此，更该 Obejct.prototype 是被禁止的
+更多内容，可查看这篇[new改变了对象](./new改变了对象.md)
 
-## 构造函数实例上的属性——Constructor
+### Object.create
 
-介绍：返回创建实例对象的 `Object` 构造函数的引用
-
-描述：所有对象都会从它的原型能上继承一个 `constructor` 属性
+此方法是 ECMAScript 5 定义了，它牵扯到原型、继承等方面的知识。简单来说，它创造了一个新对象，其中第一个参数就是这个对象的原型。而第二个可选参数，是对其属性的更多描述。例如：
 
 ```javascript
-var o = {};
-o.constructor === Object; // true
-
-var a = [];
-a.constructor === Array; // true
-
-var n = new Number(3);
-n.constructor === Number; // true
+var obj = Object.create({name: 'johan', age: 23}) // obj 继承了属性name 和 age
+var obj2 = Object.create(null) // obj2 不继承任何属性和方法
+var obj3 = Object.create(Object.prototype) // 与 {} 和 new Object() 一个意思
 ```
+
+更多内容，可查看这篇[Object.create](./Object.create.md)
+
+之所以将 new 和 Object.create 单独拿出来说，是因为两则都是比较重要的知识点，非一两句就能说明白
+
+了解 Object 是如何创造的之后，我们看看如何赋值
+
+## 如何拷贝对象
+
+赋值是简单的，但赋值后的再赋值，就会引起源对象被修改
 
 ```javascript
-function People(name) {
-    this.name = name;
-}
-var elaine = new People('elaine');
-console.log(elaine.constructor); // People
+var o1 = {name: 'johan'}
+var o2 = o1;
+o2.name = 'elaine'
+console.log(o1) // {name: 'elaine'}
+console.log(o2) // {name: 'elaine'}
 ```
 
-说白了，它的作用就是告诉你，谁创造了你。
+之前文章也说过，因为 Object 是引用类型，引用类型的拷贝拷贝的是引用地址，所以当 o2 被修改时，o1 也随之被修改
 
-我的记忆方法是谁构造了你，即谁生了你，即母亲生你，即构造函数（构造器）即母亲，而原型（prototype）则是父亲，你的财富来源于你的父亲（比喻不太洽淡，我想说的是继承）
+针对如何拷贝对象，这篇文章 [拷贝的秘密](./拷贝的秘密.md) 会对其进行说明
 
-但是它是不可靠的，因为可以改变它的指针，除了 String，Number，Boolean 等只读的原生构造函数，其他的都可以被改变，举个例子
+## 对象继承的秘密——原型
 
-```javascript
-function People(name) {
-    this.name = name;
-}
-var func = function () {};
-func.constructor = People;
-console.log(a.constructor === People); // true
-// javascript 可以动态赋值，所有的引用对象都不靠谱，因为都能被动态替换掉值
-```
+要想说明其 JavaScript 中为什么大多数元素都是对象，所有内置对象都继承自 Object，就必须先知道原型。JavaScript 是一门基于原型的语言——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层，以此类推。这种关系常被称为原型链
 
-> 注意：ES6 中的 `Class` 中有个 constructor() 方法，是另一码事
+有关原型和原型链的知识，会归纳总结为一篇——[原型及原型链](./原型及原型链.md)
 
-## 构造函数实例上的方法——hasOwnProperty
+## 继承的六种方法
 
-介绍：这个对象是否有它自身的属性或方法
+原型是实现继承的方法之一，当然 JavaScript 还有其他的方法，总共六种
 
-一般用法: `obj.hasOwnProperty('XX')`
+- 原型链继承
+- 盗用构造函数
+- 组合继承（原型链+盗用构造函数）
+- 原型式继承
+- 寄生式继承
+- 寄生式组合继承
 
-```javascript
-var foo = {}; // 创建一个空对象
-foo.name = 'johan'; // 给 foo对象 动态赋值
-foo.sayHello = function () {
-    console.log('hello world');
-};
-console.log(foo.hasOwnProperty('name')); // true
-console.log(foo.hasOwnProperty('age')); // false
-console.log(foo.hasOwnProperty('sayHello')); // true
-console.log(foo.hasOwnProperty('toStrig')); // false
-```
+具体的文章会在[继承](./继承.md)说明
 
-解读：如果本身有这个属性或者方法，用 `hasOwnProperty` 就能检测出，它能区别 `自身属性与继承属性`
+## 总结
 
-在之前一章中我们谈到如何深拷贝时，我们就用到了它，用它遍历对象的所有自身属性
+这一节，我们就 Object 进行展开，详细说明了 Object 及其实例的属性与方法。并对如何创建对象、如何拷贝对象、原型、继承等进行说明分析，因篇幅以及知识点聚焦问题，本节不做过多说明，下一节，我们从如何创建对象之new说起
 
-```javascript
-// 截取深拷贝中的一段
-function clone(source) {
-    var target = {};
-    // 如果目标对象是对象的话
-    for (let prop in source) {
-        if (source.hasOwnProperty(prop) && target[prop] === 'object') {
-            target[prop] = deepClone(source[prop]);
-        } else {
-            target[prop] = source[prop];
-        }
-    }
-    return target;
-}
-```
-
-未完待续

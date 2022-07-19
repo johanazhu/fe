@@ -8,40 +8,40 @@ React 式声明式 UI 库，负责将 State 转换为页面结构（虚拟 DOM �
 
 React 的**调和阶段**需要做两件事：
 
--   计算出目标 state 对应的虚拟 DOM 结构
--   寻找 【将虚拟 DOM 结构修改为目标虚拟 DOM 结构】的最有更新方案
+- 计算出目标 state 对应的虚拟 DOM 结构
+- 寻找 【将虚拟 DOM 结构修改为目标虚拟 DOM 结构】的最有更新方案
 
 React 按照深度优先遍历虚拟 DOM 树的方式，在一个虚拟 DOM 上完成两件事的计算后，再计算下一个虚拟 DOM。第一件事主要调用类组件的 render 方法活函数组件自身。第二件事为 React 内部实现的 Diff 算法，Diff 算法会记录虚拟 DOM 的更新方法（如 Update、Mount、Unmount），为提交阶段做准备
 
 React 的**提交阶段**也需要做两件事
 
--   将调和阶段记录的更新方案应用到 DOM 中
--   调用暴露给开发者的钩子方法，如 componentDidUpdate、useLayoutEffect 等
+- 将调和阶段记录的更新方案应用到 DOM 中
+- 调用暴露给开发者的钩子方法，如 componentDidUpdate、useLayoutEffect 等
 
 提交
 
 目录总览
 
--   从一次简单的 React 渲染说起
--   实现 createElement 函数
--   实现 render 函数
--   并发模式/ Concurrent Mode
--   Fibers 数据结构
--   render 和 commit 阶段
--   更新和删除节点/Reconciliation
--   函数组件
--   函数组件 Hooks
+- 从一次简单的 React 渲染说起
+- 实现 createElement 函数
+- 实现 render 函数
+- 并发模式/ Concurrent Mode
+- Fibers 数据结构
+- render 和 commit 阶段
+- 更新和删除节点/Reconciliation
+- 函数组件
+- 函数组件 Hooks
 
 要实现以下功能：
 
--   createElement（Virtual DOM）
--   render
--   可中断渲染
--   Fibers
--   Render and Commit Phases
--   协调（Diff 算法）
--   函数组件
--   hooks
+- createElement（Virtual DOM）
+- render
+- 可中断渲染
+- Fibers
+- Render and Commit Phases
+- 协调（Diff 算法）
+- 函数组件
+- hooks
 
 ## 从一次最简单的 React 渲染说起
 
@@ -57,9 +57,9 @@ ReactDOM.render(element, container);
 
 这里就有三个疑问
 
--   element 组件是什么
--   element 输出什么
--   ReactDOM.render 做了什么
+- element 组件是什么
+- element 输出什么
+- ReactDOM.render 做了什么
 
 回答问题之前，我们先了解下 JSX
 
@@ -77,11 +77,11 @@ ReactDOM.render(element, container);
 
 ```js
 React.createElement(
-    'h1',
-    {
-        title: 'hello',
-    },
-    'Hello World!',
+  'h1',
+  {
+    title: 'hello',
+  },
+  'Hello World!',
 );
 ```
 
@@ -111,69 +111,69 @@ key、ref 不错说，p
 
 ```javascript
 export function createElement(type, config, children) {
-    let propName;
+  let propName;
 
-    // Reserved names are extracted
-    const props = {};
+  // Reserved names are extracted
+  const props = {};
 
-    let key = null;
-    let ref = null;
-    let self = null;
-    let source = null;
+  let key = null;
+  let ref = null;
+  let self = null;
+  let source = null;
 
-    if (config != null) {
-        if (hasValidRef(config)) {
-            ref = config.ref;
-        }
-        if (hasValidKey(config)) {
-            key = '' + config.key;
-        }
-
-        self = config.__self === undefined ? null : config.__self;
-        source = config.__source === undefined ? null : config.__source;
-        // Remaining properties are added to a new props object
-        for (propName in config) {
-            if (
-                hasOwnProperty.call(config, propName) &&
-                !RESERVED_PROPS.hasOwnProperty(propName)
-            ) {
-                props[propName] = config[propName];
-            }
-        }
+  if (config != null) {
+    if (hasValidRef(config)) {
+      ref = config.ref;
+    }
+    if (hasValidKey(config)) {
+      key = '' + config.key;
     }
 
-    // Children can be more than one argument, and those are transferred onto
-    // the newly allocated props object.
-    const childrenLength = arguments.length - 2;
-    if (childrenLength === 1) {
-        props.children = children;
-    } else if (childrenLength > 1) {
-        const childArray = Array(childrenLength);
-        for (let i = 0; i < childrenLength; i++) {
-            childArray[i] = arguments[i + 2];
-        }
-        props.children = childArray;
+    self = config.__self === undefined ? null : config.__self;
+    source = config.__source === undefined ? null : config.__source;
+    // Remaining properties are added to a new props object
+    for (propName in config) {
+      if (
+        hasOwnProperty.call(config, propName) &&
+        !RESERVED_PROPS.hasOwnProperty(propName)
+      ) {
+        props[propName] = config[propName];
+      }
     }
+  }
 
-    // Resolve default props
-    if (type && type.defaultProps) {
-        const defaultProps = type.defaultProps;
-        for (propName in defaultProps) {
-            if (props[propName] === undefined) {
-                props[propName] = defaultProps[propName];
-            }
-        }
+  // Children can be more than one argument, and those are transferred onto
+  // the newly allocated props object.
+  const childrenLength = arguments.length - 2;
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    const childArray = Array(childrenLength);
+    for (let i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 2];
     }
+    props.children = childArray;
+  }
 
-    return ReactElement(
-        type,
-        key,
-        ref,
-        self,
-        source,
-        ReactCurrentOwner.current,
-        props,
-    );
+  // Resolve default props
+  if (type && type.defaultProps) {
+    const defaultProps = type.defaultProps;
+    for (propName in defaultProps) {
+      if (props[propName] === undefined) {
+        props[propName] = defaultProps[propName];
+      }
+    }
+  }
+
+  return ReactElement(
+    type,
+    key,
+    ref,
+    self,
+    source,
+    ReactCurrentOwner.current,
+    props,
+  );
 }
 ```
 
@@ -181,20 +181,20 @@ export function createElement(type, config, children) {
 
 ```javascript
 const ReactElement = function (type, key, ref, self, source, owner, props) {
-    const element = {
-        // This tag allows us to uniquely identify this as a React Element
-        $$typeof: REACT_ELEMENT_TYPE,
+  const element = {
+    // This tag allows us to uniquely identify this as a React Element
+    $$typeof: REACT_ELEMENT_TYPE,
 
-        // Built-in properties that belong on the element
-        type: type,
-        key: key,
-        ref: ref,
-        props: props,
+    // Built-in properties that belong on the element
+    type: type,
+    key: key,
+    ref: ref,
+    props: props,
 
-        // Record the component responsible for creating this element.
-        _owner: owner,
-    };
-    return element;
+    // Record the component responsible for creating this element.
+    _owner: owner,
+  };
+  return element;
 };
 ```
 
@@ -202,12 +202,12 @@ const ReactElement = function (type, key, ref, self, source, owner, props) {
 
 ```javascript
 const element = {
-    type: 'h1',
-    props: {
-        title: 'hello',
-        // createElement 第三个及之后参数移到 props.children
-        children: 'Hello World!',
-    },
+  type: 'h1',
+  props: {
+    title: 'hello',
+    // createElement 第三个及之后参数移到 props.children
+    children: 'Hello World!',
+  },
 };
 ```
 
@@ -245,9 +245,9 @@ const container = document.getElementById("root");
 
 我们可回答一开始留下的疑问，一个组件
 
--   element 组件是什么
--   element 输出什么
--   ReactDOM.render 做了什么
+- element 组件是什么
+- element 输出什么
+- ReactDOM.render 做了什么
 
 ## createElement
 
@@ -255,17 +255,17 @@ const container = document.getElementById("root");
 
 ```jsx
 const element = (
-    <div id="foo">
-        <a>bar</a>
-        <b />
-    </div>
+  <div id="foo">
+    <a>bar</a>
+    <b />
+  </div>
 );
 // 等价转换 👇
 const element = React.createElement(
-    'div',
-    { id: 'foo' },
-    React.createElement('a', null, 'bar'),
-    React.createElement('b'),
+  'div',
+  { id: 'foo' },
+  React.createElement('a', null, 'bar'),
+  React.createElement('b'),
 );
 
 const container = document.getElementById('root');
@@ -281,10 +281,10 @@ ReactDOM.render(element, container);
  * @param {container} 真实 DOM
  */
 function render(element, container) {
-    // 省略
-    // 遍历所有子节点，并进行渲染
-    element.props.children.forEach((child) => render(child, dom));
-    // 省略
+  // 省略
+  // 遍历所有子节点，并进行渲染
+  element.props.children.forEach((child) => render(child, dom));
+  // 省略
 }
 ```
 
@@ -295,9 +295,9 @@ React 会查看 reactElement.type （在我们的例子中是 button）然后告
 ```javascript
 // 在 ReactDOM 渲染器内部（简化版）
 function createHostInstance(reactElement) {
-    let domNode = document.createElement(reactElement.type);
-    domNode.className = reactElement.props.className;
-    return domNode;
+  let domNode = document.createElement(reactElement.type);
+  domNode.className = reactElement.props.className;
+  return domNode;
 }
 ```
 
@@ -318,8 +318,8 @@ domContainer.appendChild(domNode);
 
 ```jsx
 ReactDOM.render(
-    <button className="blue" />,
-    document.getElementById('container'),
+  <button className="blue" />,
+  document.getElementById('container'),
 );
 
 // ... 之后 ...
@@ -327,8 +327,8 @@ ReactDOM.render(
 // 应该替换掉 button 宿主实例吗？
 // 还是在已有的 button 上更新属性？
 ReactDOM.render(
-    <button className="red" />,
-    document.getElementById('container'),
+  <button className="red" />,
+  document.getElementById('container'),
 );
 ```
 
@@ -364,11 +364,11 @@ https://overreacted.io/zh-hans/react-as-a-ui-runtime/
 
 老架构分两层
 
--   Reconciler（协调器）
-    -   负责找出变化的组件
-    -   reconcile（diff 算法）
--   Renderer（渲染器）
-    -   负责将变化的组件渲染到页面上
+- Reconciler（协调器）
+  - 负责找出变化的组件
+  - reconcile（diff 算法）
+- Renderer（渲染器）
+  - 负责将变化的组件渲染到页面上
 
 起因：在 React15 及以前，Reconciler 采用递归的方式创建虚拟 DOM，递归过程时不能中断的，如果组件树的曾经很深，递归会占用线程很多时间。造成卡顿，为了解决这个问题，React16 将递归的无法中断的更新重构为可中断更新。
 
@@ -378,12 +378,12 @@ https://overreacted.io/zh-hans/react-as-a-ui-runtime/
 
 他由三部分组成
 
--   Scheduler（调度器）
-    -   用于调度任务，分配优先级
--   Reconciler（协调器）
-    -   用于计算任务造成的副作用
--   Renderer（渲染器）
-    -   用于在宿主环境执行副作用
+- Scheduler（调度器）
+  - 用于调度任务，分配优先级
+- Reconciler（协调器）
+  - 用于计算任务造成的副作用
+- Renderer（渲染器）
+  - 用于在宿主环境执行副作用
 
 Scheduler 调度器的作用是允许中断渲染工作，如果有优先级更高的工作插入，则暂停中断浏览器渲染，待完成该工作后，恢复渲染器渲染
 
@@ -393,20 +393,20 @@ Scheduler 调度器的作用是允许中断渲染工作，如果有优先级更�
 
 > window.requestIdleCallback 将在浏览器的空闲时段内调用的函数排队。这使开发者能够在主时间循环上执行后台和低优先级工作，而不会影响延迟关键时间，如动画和输入影响
 
-React 目前已鲸[不用这个 API](https://github.com/facebook/react/issues/11171#issuecomment-417349573) 了，而是用 [调度器（Scheduler）](https://github.com/facebook/react/tree/main/packages/scheduler)这个包，自己实现调度算法。但他们核心思路是类似的，简化起见用 requestIdleCallback
+React 目前已经[不用这个 API](https://github.com/facebook/react/issues/11171#issuecomment-417349573) 了，而是用 [调度器（Scheduler）](https://github.com/facebook/react/tree/main/packages/scheduler)这个包，自己实现调度算法。但他们核心思路是类似的，简化起见用 requestIdleCallback
 
 ```javascript
 let nextUnitOfWork = null;
 
 function workLoop(deadline) {
-    let shouldYield = false;
-    while (nextUnitOfWork && !shouldYield) {
-        nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
-        // 回调函数入参 deadline 可以告诉我们在这个渲染周期还剩多少时间可用
-        // 剩余时间小于1毫秒就退出回调，等待浏览器再次空闲
-        shouldYield = deadline.timeRemaining() < 1;
-    }
-    requestIdleCallback(workLoop);
+  let shouldYield = false;
+  while (nextUnitOfWork && !shouldYield) {
+    nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
+    // 回调函数入参 deadline 可以告诉我们在这个渲染周期还剩多少时间可用
+    // 剩余时间小于1毫秒就退出回调，等待浏览器再次空闲
+    shouldYield = deadline.timeRemaining() < 1;
+  }
+  requestIdleCallback(workLoop);
 }
 
 requestIdleCallback(workLoop);
@@ -430,14 +430,14 @@ Fiber 不仅做为架构，而且它还有其他两层含义，一是作为静�
 
 ```jsx
 React.render(
-    <div>
-        <h1>
-            <p />
-            <a />
-        </h1>
-        <h2 />
-    </div>,
-    container,
+  <div>
+    <h1>
+      <p />
+      <a />
+    </h1>
+    <h2 />
+  </div>,
+  container,
 );
 ```
 
@@ -540,28 +540,28 @@ function performUnitOfWork(fiber) {
 
 React 可以看作是三部分的组合：
 
--   scheduler，调度器，用于调度任务
--   reconciler，协调器，用于计算任务造成的副作用
--   renderer，渲染器，用于再宿主环境执行副作用
+- scheduler，调度器，用于调度任务
+- reconciler，协调器，用于计算任务造成的副作用
+- renderer，渲染器，用于再宿主环境执行副作用
 
 这三者都是独立的包，我们项目里引入的 ReactDOM 可以看作是一下三部分代码打包而成：
 
--   scheduler 的主要逻辑
--   reconciler 部分逻辑
--   ReactDOM renderer 的主要逻辑
+- scheduler 的主要逻辑
+- reconciler 部分逻辑
+- ReactDOM renderer 的主要逻辑
 
 ## 参考资料
 
--   [Preact（React）核心原理详解](https://mp.weixin.qq.com/s?__biz=MzU0ODk0MDg4Nw==&mid=2247483951&idx=1&sn=b4fbae59bd89c442c7c8fdaa97d0eca7&chksm=fbb63f17ccc1b60187019619a7ae0c8eee9e9a6a0ac12d02bb5d882b97f0426eb2d5c1a288ae&mpshare=1&scene=1&srcid=1219E4YN8Tw4TU6zNCpHO6Qi&sharer_sharetime=1576748110521&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
--   [从 0 实现一个 tiny react](https://github.com/ykforerlang/tinyreact)
--   [手写系列-实现一个铂金段位的 React](https://mp.weixin.qq.com/s/C4pjEzYPZocRnJOaF1q0Jg)
--   [React 技术揭秘](https://react.iamkasong.com/)
--   [用 90 行 javascript 代码构建自己的 react](https://www.html.cn/web/javascript/19259.html)
--   [simple-react](https://github.com/hujiulong/simple-react)
--   [从零开始的 React 再造之旅](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490304&idx=1&sn=ff1210a10d747ee4a467572cb479003e&source=41#wechat_redirect)
--   [从 0 实现 React 系列(一)：React 的架构设计](https://mp.weixin.qq.com/s?__biz=Mzg4MTYwMzY1Mw==&mid=2247496377&idx=1&sn=0949ca28eee0fac69c8afcce76424cae&source=41#wechat_redirect)
--   [React 源码解析](https://github.com/AttackXiaoJinJin/reactExplain)
--   [从零开始的 React 再造之旅](https://segmentfault.com/a/1190000021689852)
--   [build-your-own-react](https://pomb.us/build-your-own-react/)
--   [自己造一个 ReactDOM](https://mp.weixin.qq.com/s/kmJWbNriGouztcGx4be8BQ)
--   [React 性能优化 | 包括原理、技巧、Demo、工具使用](https://juejin.cn/post/6935584878071119885)
+- [Preact（React）核心原理详解](https://mp.weixin.qq.com/s?__biz=MzU0ODk0MDg4Nw==&mid=2247483951&idx=1&sn=b4fbae59bd89c442c7c8fdaa97d0eca7&chksm=fbb63f17ccc1b60187019619a7ae0c8eee9e9a6a0ac12d02bb5d882b97f0426eb2d5c1a288ae&mpshare=1&scene=1&srcid=1219E4YN8Tw4TU6zNCpHO6Qi&sharer_sharetime=1576748110521&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+- [从 0 实现一个 tiny react](https://github.com/ykforerlang/tinyreact)
+- [手写系列-实现一个铂金段位的 React](https://mp.weixin.qq.com/s/C4pjEzYPZocRnJOaF1q0Jg)
+- [React 技术揭秘](https://react.iamkasong.com/)
+- [用 90 行 javascript 代码构建自己的 react](https://www.html.cn/web/javascript/19259.html)
+- [simple-react](https://github.com/hujiulong/simple-react)
+- [从零开始的 React 再造之旅](https://mp.weixin.qq.com/s?__biz=Mzk0MDMwMzQyOA==&mid=2247490304&idx=1&sn=ff1210a10d747ee4a467572cb479003e&source=41#wechat_redirect)
+- [从 0 实现 React 系列(一)：React 的架构设计](https://mp.weixin.qq.com/s?__biz=Mzg4MTYwMzY1Mw==&mid=2247496377&idx=1&sn=0949ca28eee0fac69c8afcce76424cae&source=41#wechat_redirect)
+- [React 源码解析](https://github.com/AttackXiaoJinJin/reactExplain)
+- [从零开始的 React 再造之旅](https://segmentfault.com/a/1190000021689852)
+- [build-your-own-react](https://pomb.us/build-your-own-react/)
+- [自己造一个 ReactDOM](https://mp.weixin.qq.com/s/kmJWbNriGouztcGx4be8BQ)
+- [React 性能优化 | 包括原理、技巧、Demo、工具使用](https://juejin.cn/post/6935584878071119885)

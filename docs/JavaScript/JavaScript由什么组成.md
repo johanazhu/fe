@@ -1,6 +1,6 @@
 # JavaScript 由什么组成
 
-这是一个基础结构问题，一个完整的 JavaScript 包括：ECMAScript 、文档对象模型（DOM）、浏览器对象模型（BOM），本章正是研究的 ECMAScript 。如果对 DOM 感兴趣，请移步——[DOM](../Browser/DOM.md) 。如果对 BOM 感兴趣，请移步——[BOM](../Browser/BOM.md)。
+这是一个基础结构问题，一个完整的 JavaScript 包括：ECMAScript 、文档对象模型（DOM）、浏览器对象模型（BOM），本章讲解 ECMAScript 。如果对 DOM 感兴趣，请移步——[DOM](../Browser/DOM.md) 。如果对 BOM 感兴趣，请移步——[BOM](../Browser/BOM.md)。
 
 [ECMAScript](https://zh.wikipedia.org/wiki/ECMAScript) 规定这门语言由以下组成：
 
@@ -11,98 +11,23 @@
 5.  语句
 6.  对象
 
-也就是说，这六大模块组成了这门语言，就好比你学习英语，要掌握基本的单词和语法，才能说基础英语
+也就是说，这六大模块组成了这门语言
 
-这六大支柱中，像「语法」、「变量」和「数据类型」、「关键字」和「保留字」、「操作符」、「语句」都是极好理解的，只「对象」有点复杂，下文会对其进行介绍，这里我们就数据类型来初探 JavaScript
+这六大支柱中，像「语法」、「变量」和「数据类型」、「关键字」和「保留字」、「操作符」、「语句」都是极好理解的，只「对象」有点复杂，下节会对其进行说明，这里我们来看看「数据类型」
 
 ## 数据类型
 
 JavaScript 的数据类型分为「基本类型」和 「引用类型」
 
-基本类型在不同的书（教程中）叫法不同，被称为基本类型/值类型/原始值/原始类型，当然引用类型也有不一样的叫法，叫唤为对象类型/复杂类型
+基本类型在不同的书（教程中）叫法不同，它同样被叫做基本类型/值类型/原始值/原始类型。当然引用类型也有不一样的叫法，如对象类型/复杂类型
 
-[基本类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive)包含 `undefined `、`null`、`string`、`number`、`boolean`、`symbol`（ES6 新增）、`bigint`（ES10新增）
+基本类型包含 undefined 、null、string、number、boolean、symbol（ES6 新增）、bigint（ES10新增）
 
-引用类型是一种数据结构，在别的语言中被称为类，但是在 JavaScript 中实际上没有类（基于原型链继承 Object）
+引用类型则是object（一组属性的集合）
 
-[原生的引用类型](http://www.codebaoku.com/it-js/it-js-yisu-601953.html)有 `Object` 、`Function`、`Array` 、`Date`、`RegExp`、`Error`、基本包装类型（Boolean、Number、String）、单体内置对象（Global、Math）等
-
-而这些也被称为[内置函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)，在 MDN上有对其介绍，其最主要的九个原生对象构造函数：
-
--   String()
--   Number()
--   Boolean()
--   Object()
--   Array()
--   Function()
--   Date()
--   RegExp()
--   Error()
-
-两个比较重要的对象：
-
--   Math
--   JSON
-
-> 注意：JavaScript 内置对象有很多，具体参考 MDN 的这篇文章——[JavaScript 标准内置对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)
-
-以上看起来有点恍惚，不过先放一下，看一下以下代码：
-
-```javascript
-var string1 = 'foo';
-var string2 = String('foo');
-var number1 = 10;
-var number2 = Number('10');
-var boolean1 = true;
-var boolean2 = Boolean('true');
-
-console.log(typeof string1, typeof string2); // 输出 'string, string'
-console.log(typeof number1, typeof number2); // 输出 'number, number'
-console.log(typeof boolean1, typeof boolean2); // 输出 'boolean, boolean'
-
-// 如果使用创建对象的构造函数和new关键字
-var myString = new String('male');
-var myNumber = new Number(23);
-var myBoolean = new Boolean(false);
-console.log(typeof myString, typeof myNumber, typeof myBoolean);
-// object, object, object
-```
-
-我们看到如果使用字面量语法创建值，**那么基本类型的输出结果就是基本类型**；
-
-如果使用 new 关键字创建 String()、Number()、Boolean() 值时，**创建的对象实际上是一个对象（引用类型）**
-
-这说明 new 关键字做了一些手脚，具体可以在这篇[new 改变了对象](./new 改变了对象.md)查看一二
-
-我们先停止思考，就像[卡兹](https://www.bilibili.com/video/BV1RJ41177Es)那样
-
------
-
-基本类型中的string、number、boolean，与引用类型中的 String、Number、Boolean 有什么联系呢？
-
-在 [JavaScript Info ](https://zh.javascript.info/primitives-methods)中笔者找到了答案
-
-> 以下是 JavaScript 创建者面临的悖论：
+> 特此说明：
 >
-> - 人们可能想对诸如字符串或数字之类的原始类型执行很多操作。最好使用方法来访问它们。
-> - 原始类型必须尽可能的简单轻量。
->
-> 而解决方案看起来多少有点尴尬，如下：
->
-> 1. 原始类型仍然是原始的。与预期相同，提供单个值
-> 2. JavaScript 允许访问字符串，数字，布尔值和 symbol 的方法和属性。
-> 3. 为了使它们起作用，创建了提供额外功能的特殊“对象包装器”，使用后即被销毁。
->
-> “对象包装器”对于每种原始类型都是不同的，它们被称为 `String`、`Number`、`Boolean`、`Symbol` 和 `BigInt`。因此，它们提供了不同的方法。
-
-所以说 JavaScript 会为那些基本类型提供方法，供它们使用，当他们使用完后即销毁掉，这些基本类型所占的内容还是”轻量“的
-
-这里我们积攒了几个问题
-
-- 上文例子中的 typeof 操作符是什么
-- 为什么要区别数据类型？两者有什么不同？如何区分？
-
-第一个问题的答案在第二个回答内，所以先回答下第二个问题
+> 在《JavaScript 高级程序设计第四版》中曾把数据类型归纳为驼峰形式的Undefined、Null、Boolean、Number、String 、 Symbol、BigInt、Object，而在网站[现代 JavaScript 教程](https://zh.javascript.info/types)、[MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Primitive)中则以小写的形式展示展示数据类型，笔者这里以网站为更大权重
 
 ## 基本类型和引用类型的区别
 
@@ -217,7 +142,7 @@ if (typeof XXX === 'function') {
 }
 ```
 
-> PS：在《JavaScript 启示录》里第一章第八节里说 RegExp() 的类型返回的是 function，但是我检验后发现并不是，我猜测是因为老版本的浏览器对 RegExp 的判断为 funtion，而我用的 chrome 浏览器（V8 引擎）表示 RegExp 的类型为 object
+> PS：在《JavaScript 启示录》里第一章第八节里 RegExp() 的类型返回的是 function，但是笔者检验后发现并不是，笔者猜测因为老版本的浏览器对 RegExp 的判断为 funtion，而笔者用的 chrome 浏览器（V8 引擎）表示 RegExp 的类型为 object
 
 ### instanceof 运算符
 
@@ -264,7 +189,7 @@ class HelloWorld extends React.Component {
 }
 ```
 
-这里的意思很明白，`HelloWorld` 组件继承了 `React.Component` 组件，`constructor（props）` 意味着调用了父类的构造函数，并将 props 传递给 HelloWorld，使用 `super` 是因为在派生类中，必须调用 `super` 才能使用 `this`，当然，这部分就关系到 class 的知识，感兴趣可以移步到——[Class 类](../ES6/Class.md)
+这里的意思很明白，`HelloWorld` 组件继承了 `React.Component` 组件，`constructor(props)` 意味着调用了父类的构造函数，并将 props 传递给 HelloWorld，使用 `super` 是因为在派生类中，必须调用 `super` 才能使用 `this`，当然，这部分就关系到 class 的知识，感兴趣可以移步到——[Class 类](../ES6/Class.md)
 
 说完题外话，我们继续来看 `constructor` 能否检验数据类型吗
 
@@ -374,17 +299,17 @@ function getType(target) {
 
 从语言上分它包括语法，变量和数据类型，关键字和保留字，操作符，语句，对象。
 
-从数据类型上分，它分为基本类型（简单类型/值类型）和引用类型（复杂类型）。其中基本类型有 number、string、boolean、null、undefined 、Symbol、bigInt，引用类型则基于对象，像 Object、Function、Array等都是引用类型。不仅如此，JavaScript 还内置了基本包装类型，像 Boolean、Number、String，等；还有单体内置对象，如 Global、Math 等...
+从数据类型上分，它分为基本类型（简单类型/值类型）和引用类型（复杂类型）。其中基本类型有 number、string、boolean、null、undefined 、Symbol、bigInt，引用类型则称为object
 
-而怎么判断数据类型呢？总结了四种方法
+那如何判断数据类型呢？笔者总结四种方法
 
 | 名称                        | 能检测                                                       | 不能检测                                       |
 | --------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
 | typeof                      | string、number、boolean、undefined 以及 function             | null 以及除 function 外的对象，结果都为 object |
 | constructor                 | string、number、boolean、array、object、function 以及 构造函数 | undefined、null。不安全，因为 指向可以改变     |
 | instanceof                  | 准确地判断复杂引用数据类型                                   | 不能正确判断基础数据类型                       |
-| Object.prototype.toString() | 内置构造函数函数                                             | 自定义构造函数                                 |
+| Object.prototype.toString() | 内置构造函数                                                 | 自定义构造函数                                 |
 
-我们知道
+我们知道了解了基本类型、引用类型、以及它们的区别以及如何区别它们，但基本类型是简单的，而引用类型虽然只有 object，但它却在 JavaScript 占了大头，此乃非对称性，只有掌握 object，才不枉称自己学过 JavaScript
 
-下一节，我们讲走进对象的世界，看看 JavaScript 中最大的王——[对象](./一切皆对象.md)
+下一节，我们讲讲 JavaScript 中的 KING—— [对象](./一切皆对象.md)

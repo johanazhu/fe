@@ -36,7 +36,7 @@ function ArmorySideBar() {
             children: [
                 '/DevOps/',
                 '/DevOps/部署.md',
-                '/DevOps/异常监控系统.md',
+                '/DevOps/建设前端性能监控系统.md',
                 '/DevOps/jenkins.md',
                 '/DevOps/sentry.md',
             ],
