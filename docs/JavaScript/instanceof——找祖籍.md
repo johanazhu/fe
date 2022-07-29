@@ -29,7 +29,7 @@ console.log(johan instanceof Object); // true
 
 粗暴一点讲，左边为实例，不是由右边 new 出来，就是右边的原型 new 出来（在其原型链上）
 
-ps：如果对原型以及原型链不太了解，可以看看这篇 [原型与原型链](../原型与原型链.md)
+ps：如果对原型以及原型链不太了解，可以看看这篇 [原型](../原型.md)
 
 ```javascript
 // 第一版
@@ -109,4 +109,3 @@ function myInstanceof(left, right) {
 
 while 的用法比俺高级多了
 
-下一章，我们讲讲 new ，其实 new 就是生儿子，与 instanceof 找祖籍有一点关联

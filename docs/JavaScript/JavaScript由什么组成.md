@@ -129,6 +129,8 @@ console.log(typeof myRegExp); // 输出 object
 console.log(typeof myError); // 输出 object
 ```
 
+> 提示：typeof xxx 和 typeof(xxx) 效果一致
+
 通过 `typeof` 操作符能判断出使用的值的类型。需要注意判断引用类型时的问题
 
 1. null 类型会返回 object

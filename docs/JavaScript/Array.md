@@ -184,7 +184,7 @@ Array() 对象具有以下属性（不包括继承的属性和方法）
 
     -   ```javascript
         const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
-
+    
         console.log(animals.slice(2)); // ["camel", "duck", "elephant"]
         console.log(animals.slice(2, 4)); // ["camel", "duck"]
         console.log(animals.slice(1, 5)); // ["bison", "camel", "duck", "elephant"]
@@ -252,6 +252,80 @@ arr.find();
 arr.entries();
 ```
 
+
+
+
+
+## 数组扁平化
+
+需求：多维数组 ——> 一维数组
+
+```javascript
+let arr = [1, [2, [3, [4, 5]]], 6]; // -> [1, 2, 3, 4, 5, 6]
+let str = JSON.stringify(arr);
+```
+
+### 1. ES6 中的 flat 方法
+
+```javascript
+arr = arr.flat(Infinity);
+```
+
+### 2. replace + split
+
+```javascript
+arr = str.replace(/(\[|\])/g, '').split(',');
+```
+
+### 3. replace + JSON.parse
+
+```javascript
+str = str.replace(/(\[|\])/g, '');
+str = '[' + str + ']';
+arr = JSON.parse(str);
+```
+
+### 4.普通递归
+
+```
+let result = [];
+let fn = function (arr) {
+	for (let i = 0; i < arr.length; i++) {
+		let item = arr[i];
+		if (Array.isArray(item)) {
+			fn(item)
+		} else {
+			result.push(item)
+		}
+	}
+}
+```
+
+### 5.reduce 函数迭代
+
+```javascript
+function flatten(arr) {
+    return arr.reduce((pre, cur) => {
+        return pre.concat(Array.isArray(cur) ? flatten(cur) : cur);
+    }, []);
+}
+```
+
+### 6.扩展运算符
+
+```javascript
+while (arr.some(Array.isArray)) {
+    arr = [].concat(...arr);
+}
+```
+
+
+
+
+
+
+
 ## 参考资料
 
 -   [超级详细的 js 数组方法详解](https://juejin.cn/post/6907109642917117965)
+-   [(建议精读)原生 JS 灵魂之问(中)，检验自己是否真的熟悉 JavaScript？](https://juejin.cn/post/6844903986479251464)
