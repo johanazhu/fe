@@ -1,4 +1,4 @@
-# 立即执行函数的魅力
+# 立即执行函数（IIFE）
 
 ## 一句话解释
 
@@ -14,7 +14,7 @@
 
 ## 什么是立即执行函数
 
-来自 MDN 的回答是
+来自 [MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/IIFE) 的回答是
 
 > **IIFE**（ 立即调用函数表达式）是一个在定义时就会立即执行的 JavaScript 函数)。
 
@@ -321,4 +321,4 @@ for (var i = 0; i < 6; i++) {
 
 ## 参考资料
 
--   [揭秘 IIFE 语法](https://juejin.im/entry/6844903429735727111?utm_source=gold-miner&utm_medium=readme&utm_medium=readme&utm_campaign=github%3Futm_source%3Dgold-miner&utm_campaign=github)
+-   [揭秘 IIFE 语法](https://juejin.cn/post/6844903429735727111)

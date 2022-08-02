@@ -32,7 +32,7 @@ var johan = { name: 'johan' };
 console.dir(johan);
 ```
 
-![属性与方法](https://s2.loli.net/2022/07/16/imQTkLKrvhHlgUB.png)
+![Object的属性与方法](https://s2.loli.net/2022/07/16/imQTkLKrvhHlgUB.png)
 
 能看出，我们使用对象字面量的方法创建了一个对象实例 johan，并赋予了一个属性 name，值为 johan，当打印日志时，发现多了一个对象`[[Prototype]]`，并且这个对象中有很多对象
 

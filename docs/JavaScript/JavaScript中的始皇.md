@@ -36,11 +36,11 @@ Object instanceof Function // true
 
 所以它们的原型链关系图是
 
-![image-20220728150703060](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20220728150703060.png)
+![原型链关系图](https://s2.loli.net/2022/08/01/iZPRJ5LHjhTQkoV.png)
 
 又因为 Function 是函数，所以它有 prototype 属性。因为函数也是对象，所以 Function 也有 constructor 和 [[Prototype]]，它的关系图是
 
-![image-20220728150837979](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20220728150837979.png)
+![Function关系图是](https://s2.loli.net/2022/08/01/GLBdS3krH74mTWv.png)
 
 所以就有了
 
@@ -50,7 +50,7 @@ Function.__proto__ === Function.prototype
 
 即：
 
-![image-20220729102217620](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20220729102217620.png)
+![Function.__proto__ === Function.prototype](https://s2.loli.net/2022/08/01/AejpUXQlau9c3mF.png)
 
 在 [原型](./原型.md) 中，我们讲到了原型链，因为每个对象都有[[Prototype]]属性，它会指向它的原型对象，一层一层，最终指向 null。而 null 的上一站是 Object.prototype
 
@@ -75,15 +75,15 @@ func.__proto__.__proto__ === Object.prototype // true
 
 它们的原型链关系图如下所示：
 
-![image-20220728153704151](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20220728153704151.png)
+![原型链关系图1](https://s2.loli.net/2022/08/01/LYpfSAkE2ohPUql.png)
 
-![image-20220729092451094](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20220729092451094.png)
+![原型链关系图2](https://s2.loli.net/2022/08/01/gclzM5Hsao2JK7G.png)
 
 所以看代码和图我们知道，所有原型继承的源头都在 Object.prototype，Object.prototype 对象上的属性，会被任何值使用，所以判断类型最准确的办法是 `Object.prototype.toString.call(source)`
 
 如果我们将构造函数的源头和原型的源头结合一下，就成了这样：
 
-![image-20220729094113885](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20220729094113885.png)
+![构造函数的源头和原型的源头结合](https://s2.loli.net/2022/08/01/jKCDMudhVeEiYXt.png)
 
 此图和 Object Layout 的图大差不差，关键在于 Object 和 Function
 
@@ -110,7 +110,7 @@ Function instanceof Object // true
 
 ## 总结
 
-谁是始皇，无疑。Object.prototype 才是真正的始皇，任何原型都源自它；而 Function.prototype 是仅次于 Object.prototype 的存在，它是内置构造函数的创建者，任何构造函数都由它
+谁是始皇，无疑。Object.prototype 才是真正的始皇，任何原型都源自它；而 Function.prototype 是仅次于 Object.prototype 的存在，它是内置构造函数的创建者，任何构造函数都源自它
 
 
 

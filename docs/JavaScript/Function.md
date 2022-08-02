@@ -1,135 +1,55 @@
 # Function（函数）
 
-在[JavaScript 中的始皇](./JavaScript中的始皇.md) 一文中，笔者有个观点：
+在 [JavaScript 中的始皇](./JavaScript中的始皇.md) 一文中，笔者有个观点：
 
-> Object.prototype 是真正的始皇，任何原型都源自它；而 Function.prototype 是仅次于 Object.prototype 的存在，它是内置构造函数的创建者，任何构造函数都由它
+> Object.prototype 是真正的始皇，任何原型都源自它；而 Function.prototype 是仅次于 Object.prototype 的存在，它是内置构造函数的创建者，任何构造函数都源自它
 
-所以，函数是一等公民并不奇怪
+所以 Function 的原型有一定的重要性，Function（构造函数） 与 Function.prototype（原型）又是相生相伴的关系，从构造函数层面，它已经比 Array、String、Number 等重要了，虽然比不上 Object，但也是仅次于它的存在
 
+难道仅凭这点就说它是一等公民吗？
 
+不仅如此，函数能做的事情有很多。首先，它是个对象，这一知识点我们在 [一切皆对象](./一切皆对象.md) 中解释过，所以它像对象一样，也有属性，也可以赋值给变量。除此之外，函数可以自身当作参数传递，也具有返回值的特性
 
-## 前言
+总之，对象能做的它都能做，它还有自身的特性，能做更多的事情（例如：能作为参数传递，有返回值）
 
-函数是一等公民，在 JavaScript 中，它就是皇
+在解释函数的特性之前，先了解下它的属性和方法
 
-函数中牵扯的内容太多，比如 this、（词法）作用域、作用域链、原型、原型链、闭包、立即执行函数。柯里化...
+## 属性和方法
 
-函数的概念：执行一个明确的动作并提供一个返回值的独立代码块。函数可以接受作为值传递给它的**参数（arguments）**，函数可以被用来提供**返回值（return value）**，也可以通过**调用（invoking）**被多次执行
-
-函数是代码语句的容器，可以使用圆括号操作符`()`来调用。调用函数时，参数可以在圆括号内传递，以便函数中的语句可以访问这些特定值
-
-有两种创建函数的写法
+看例子说话
 
 ```javascript
-// new 写法
-var funcA = new Function('num1', 'num2', 'return num1 + num2');
-// 字面量写法，更常用
-var funcB = function (num1, num2) {
-    return num1 + num2;
-};
-// 无论哪一种，都实例化了函数
-// 函数在对象中的别名叫方法
+function func() {}
+console.dir(func)
 ```
 
-函数可用于返回值、构建对象，或者作为一种机制简单运行代码。JavaScript 的函数有很多种用途，但从最基本的形式来说，函数只是可执行语句的唯一作用域
+![Function的属性与方法](https://s2.loli.net/2022/08/01/Gf4w6npJvcdZbYQ.png)
 
-### 属性和方法
+我们用函数声明的形式创建了一个普通函数 func，打印它。虽然我们没有对其进行任何的赋值操作，但它自身自带了各种属性，很显然，Function 是没有静态方法的，它只有实例属性和实例方法，都继承自 Function.prototype。我们看到函数 func 上有 `arguments`、`caller`、`length`、`name` ，这些都是继承自 Function.prototype，在 `func.__proto__` 中你能找到同样的属性，这其中的秘密是`Function.__proto__ === Function.prototype`，具体可看 [JavaScript 中的始皇](./JavaScript中的始皇.md) 了解
 
-函数对象具有以下属性（不包括继承的属性和方法）
+### 实例属性
 
-**属性**（如 Function.prototypes）
+-   `Function.prototype.arguments`：对应传递给函数的参数数组
+-   `Function.prototype.constructor`：指向构造函数
+-   `Function.prototype.length`：参数数量
 
--   prototype
+### 实例方法
 
-## 对象实例属性和方法
+-   `Function.prototype.apply(thisArg [, argsArray])`：调用一个函数并将其 `this` 值设置为提供的传参，第二个参数以数组对象传入
+-   `Function.prototype.call(thisArg [, arg1, arg2, ...argN])`：调用一个函数并将其 `this` 值设置为提供的传参，也可以选择传输新参数
+-   `Function.prototype.bind(thisArg[, arg1[, arg2[, ...argN]])`：创建一个新函数，该函数在调用时，会将 this 设置为提供的`thisArg`。在调用新绑定的函数时，可选的参数序列（`[, arg1[, arg2[, ...argN]]]`）会被提前添加到参数序列中
+-   `Function.prototype.toString()`：返回表示函数源码的字符串。覆盖了 `Object.prototype.toString` 方法
 
-函数对象实例拥有以下属性和方法
+更多信息可以查看[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
-**实例属性**
+了解 Function 的实例属性和方法后，我们去看看如何创建函数
 
--   arguments
--   constructor
--   length
+## 创建函数
 
-**实例方法**
-
--   apply()
--   call()
--   toString()
-
-## 函数是“一等公民”
-
-在 JavaScript 中，函数是对象。这意味着函数可以存储在一个变量、数组或对象中。同时，函数可以传递给函数，并由函数返回。函数拥有属性，因为它是一个对象。所有这些因素使函数在 JavaScript 中成为 “一等公民”。补充一点，因为函数的本质作用是执行代码，它创造了函数作用域
+创建函数有四种方法：函数构建函数、函数声明、函数表达式、箭头函数
 
 ```javascript
-// 1. 函数可以保存在变量(funcA)、数组(funcB)和对象中(funcC)
-var funcA = function () {}; // 调用方法: funcA()
-var funcB = [function () {}]; // 调用方法: funcB[0]()
-var funcC = { method: function () {} }; // funcC.method()
-
-///2. 函数可以作为参数传递，也可以作为返回值返回
-var funcD = function (func) {
-    return func;
-};
-var runFuncPassedToFuncD = funcD(function () {
-    console.log('转');
-});
-
-runFuncPassedToFuncD(); // 转
-
-///3. 函数是对象，也就意味着函数也拥有属性
-var funcE = function () {};
-funcE.answer = 'bingo'; // 实例化属性
-console.log(funcE.answer); // bingo
-
-// 4. 函数作用域
-var str = 'elaine';
-function funcF() {
-    var funcStr = 'johan';
-    console.log(str); // elaine
-}
-console.log(funcStr); // funcStr is not defined
-// 作用域：函数内能访问函数外变量，函数外不能调用函数内的变量
-```
-
-## this 和 arguments 适用于所有函数
-
-在所有函数的作用域/函数体内，`this` 和 `arguments` 值都是可用的
-
-`arguments` 是类数组对象，它包含所有传递给函数的参数。
-
-```javascript
-var add = function () {
-    return arguments[0] + arguments[1];
-};
-console.log(add(1, 1)); // 2
-```
-
-传递给所有函数的 this 关键字都是对包含函数的对象的引用。换句话说，**谁引用它，this 就指向谁。**
-
-当函数在全局作用域中定义时， this 值就是全局对象。具体讲 `this` 的内容我们下一节再讲
-
-```javascript
-var myObj = {
-    name: 'elaine',
-    method: function () {
-        console.log(this);
-    },
-};
-myObj.method(); // myObj 谁调用它，this指向谁。myObj调用它，this指向它
-
-var myObj2 = function () {
-    console.log(this);
-};
-myObj2(); // window
-```
-
-## 定义函数
-
-函数的定义由三种不同的方式： 函数构造函数、函数语句和函数表达式
-
-```javascript
-// 函数构造函数：最后一个参数为函数逻辑，之前的都时参数
+// 函数构造函数：最后一个参数为函数逻辑，之前的都是参数
 var add = new Function('x', 'y', 'return x + y');
 
 // 函数声明
@@ -140,49 +60,65 @@ function add2(x, y) {
 var add3 = function (x, y) {
     return x + y;
 };
+// 箭头函数
+var add4 = (x, y) => x + y
 ```
+
+这里需要说明的是，在正常开发中，函数构造函数基本用不到。开发中用的比较多的是函数声明、函数表达式、箭头函数，那么三者有什么区别呢？
+
+先对比函数声明和函数表达式
+
+- 函数声明会引起函数提升（且优先级比变量提升高）
+
+再对比箭头函数与普通函数
+
+- 没有自己的 this 对象，函数体内的 this 是定义时所在的对象而不是使用时所在的对象
+- 不可以当作构造函数。也就是说，箭头函数不能使用 new 命令，否则会抛出一个错误
+- 不可以使用 arguments 对象，该对象在函数体内不存在。如果有用，可以用 reset 参数代替
+- 不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数
+- 返回对象时必须在对象外面加上括号
+
+创建函数就是如此，创建了如何调用函数呢？
 
 ## 调用函数
 
-使用 6 种不同的场景调用函数
+在不同的场景下，调用函数各显不同，以下几种为调用函数的方式
 
 -   作为函数
 -   作为方法
 -   作为构造函数
--   使用 apply() 或者 call()
--   自调用
+-   使用  call/apply/bind
+-   自调用函数
 
 ```javascript
-// 函数模式
-var myFuntion = function () {
+// 作为函数
+var func1 = function () {
     return 'foo';
 };
-console.log(myFunction1); // foo
+console.log(func1); // foo
 
-// 方法模式
-var myObject = {
-    myFunction: function () {
+// 作为方法，即对象中的函数被称为方法
+var obj1 = {
+    func2: function () {
         return 'bar';
     },
 };
-console.log(myObject.myFunction()); // bar
+console.log(obj1.func2()); // bar
 
-// 构造函数模式
-function Cody() {
-    this.living = true;
-    this.age = 26;
+// 作为构造函数
+function Person() {
+    this.name = 'johnny'
+    this.age = 28;
     this.gender = 'female';
-    this.getGender = function () {
-        return this.gender;
+    this.getName = function () {
+        return this.name;
     };
 }
 var cody = new Cody(); // 调用构造函数
 console.log(cody);
 
-// apply() 和 call() 模式
-// 随便一说： apply() 方法接受 一个包含多个参数的数组
-// call() 方法接受 一个参数列表
-var myObj = {
+// 使用 call/apply 调用
+var obj2 = {
     sayHello: function () {
         console.log(this.name, arguments[0], arguments[1]);
     },
@@ -191,84 +127,83 @@ var johan = { name: 'johan' };
 var elaine = { name: 'elaine' };
 
 // 在 johan 对象上调用 sayHello
-myObj.sayHello.call(johan, 'foo', 'bar'); // johan, foo, bar
+obj2.sayHello.call(johan, 'foo', 'bar'); // johan, foo, bar
 
-myObj.sayHello.apply(elaine, ['foo', 'bar']); // elaine, foo, bar
+obj2.sayHello.apply(elaine, ['foo', 'bar']); // elaine, foo, bar
 
-// 无论用call() 还是apply(), 意思都是在说this指向我或者说我来调用
-// johan 调用 myObj.sayHello 方法，
-// elaine 调用 myObj.sayHello 方法
-```
-
-看出来为什么说 `Fucntion` 是 JavaScript 的”皇“了吧，关用它就有 6 种方法，便利即王道
-
-## 匿名函数
-
-匿名函数是一种没有给出标识符的函数。
-
-匿名函数主要用于将函数作为参数传递给另一个函数
-
-```javascript
-// 创建一个函数来执行匿名函数
-var sayHi = function (f) {
-    // 函数表达式
-    f(); // 调用匿名函数
-};
-// 将匿名函数作为参数传递
-sayHi(function () {
-    console.log('hi');
-}); // hi
-```
-
-## 自调用的函数表达式
-
-通过圆括号操作符，可以在定义函数表达式后立即执行该函数表达式（除了由 Function()构造函数创建的函数）
-
-```javascript
-var sayHello = (function () {
-    console.log('hello,world');
-})(); // hello, world
-```
-
-这里要多说一句
-
-```javascript
-var myFunction = function () {
-    console.log('hello,world');
-};
-// myFunction 是函数表达式
-// 让函数表达式执行代码，只需要 myFunction()
-myFunction();
-// 结合到一起就是
-var myFunction = (function () {
-    console.log('hello,world');
+// 自调用
+(function() {
+    console.log('自调用函数');
 })();
-// 这就是自调用的函数表达式
 ```
 
-## 自调用的匿名函数语句
+无论是创建函数，还是调用函数，能有什么用，能证明函数是一等公民吗？
+
+## 函数为什么是一等公民
+
+接下来，我们来解释为什么说函数是一等公民？
+
+首先，函数是对象，这意味着函数可以存储在一个变量、数组或对象中。其次，因为是对象，所以它也拥有对象的特性，即它拥有属性。除了对象的特征外，作为函数本身，它可以作为参数传递，也可以作为返回值返回。如此，这些因素就构成了函数成为 JavaScript 中的”一等公民“
 
 ```javascript
-// 最经常使用的匿名函数
-(function (msg) {
-    console.loh(msg);
-})('Hi')(
-    // 看起啦有点不一样，但效果一样
-    (function (msg) {
-        console.log(msg);
-    })('Hi'),
-);
+// 函数作为值保存在变量、数组、对象中
+var funcA = function () {} // 作为变量
+var funcB = [function(){}] // 作为数组变量
+var funcC = { method: function() {} } // 作为对象方法
 
-// 更简短的方式
-!(function sayHi(msg) {
-    console.log(msg);
-})('Hi');
+// 函数也是对象，意味着可以拥有属性
+var funcD = function () {}
+funcD.name = 'funcD' // 赋值name
+
+console.log(funcD.name) // funcD
+
+// 函数可以作为参数传递
+var funcE = function(func) {
+    func()
+}
+funcE(function () {
+    console.log('函数作为参数传递')
+})
+
+// 也可以作为返回值返回
+var funcF = function (x, y) {
+    return x + y // 函数特性，有返回值
+}
+console.log(funF(1,2)) // 3
 ```
 
-如果要立即调用函数，需要使用函数外面的圆括号（或任何将函数转换为表达式的符号）
+其中函数作为参数传递和有返回值的特性，使其成为函数式编程的基础
 
-我们从 Function() 是什么，介绍到它能做什么？解释了它为什么是 JavaScript 中的皇，并且我们知道了各个特征。但是这还不够，我们没有对 this 关键字，作用域，原型以及闭包等一些难点做分析，接下来让我们走进 `this` 关键字的时候，来看一看让人头疼的 this
+因为函数不仅有对象的能力，而且还有参数传递和有返回值的独有特性，所以使得它成为一等公民。不仅如此，函数还有其他的特性
 
-## 衍生阅读
+## 函数特性
 
--   [JAVASCRIPT FUNCTIONS](https://www.zoo.team/article/javascript-functions)
+函数作用域：JavaScript 中的作用域分为全局作用域、函数作用域和块级作用域，块级作用域是ES6之后出现的解决变量提升存在变量覆盖、变量污染等设计缺陷而出的特性。在此之前，只有全局作用域和函数作用域，全局只有一个作用域好理解。函数作用域是认识 JavaScript 重要知识点——闭包的基础，有关作用域的知识点，可以看这篇文章——[作用域](./作用域.md)
+
+this 是什么，在写原型、构造函数时，我们曾经在构造函数中使用过 this，并在 new 实例化它时，说 new 关键字会将构造函数中的 this 指向新对象并执行构造函数中的代码，那么 this 和什么有关呢？
+
+它和作用域有点像，但不完全一致，它是与执行上下文绑定的，主要分为全局执行上下文、函数执行上下文和 eval 执行上下文，全局和 eval 好理解，函数执行上下文有点搞头，[this关键字](./this关键字.md) 会对其进行说明解释
+
+讲了作用域、就会衍生出作用域链。讲了this关键字，就会引出执行上下文，两者一结合，就解释了[闭包](./闭包.md)，闭包是 JavaScript 中的难点。如果说原型是”少女杀手“，那么闭包就是”师母杀手“
+
+函数有多种形式，如IIFE，即[立即执行函数](./立即执行函数（IIFE）.md)，为什么它这么做，这么做为了避免变量被污染。而后的 AMD/CMD，ES中的模块化，都是为了让代码能独立不被别的文件影响
+
+总之，函数有很多特性，因为这些特性，函数才能成为在 JavaScript 中叱诧风云的”人物“
+
+
+
+## 总结
+
+我们就函数的属性、方法说起，介绍了 Function 内置的属性和方法，这样是为了方便开发者调用。接着我们介绍如何创建函数，介绍了四种方法，创建了函数就调用函数，分五种情况介绍。最后我们介绍了函数为什么成为一等公民。成为一等公民，首先是因为它是对象，拥有对象的”能力“，其次，它自身有一些特性让其变得独一无二，例如能作为参数传递，有返回值，这两者是函数式编程的基础
+
+你以为函数就这么简单？那你小瞧函数了
+
+函数的特性还有函数作用域，相对全局作用域，块级作用域，函数作用域的实际用处高达90%；还有this，Function 的原型方法中的 call/apply/bind 就是为了修改 this 而存在的，说明修改 this 指向是个高频操作，this 的解释会引出执行上下文，与作用域中的作用域链结合，就能解释闭包行为。闭包又能衍生出词法环境、执行上下文与调用栈、以及闭包的应用防抖与节流、柯里化。垃圾回收机制等等
+
+总之，函数在 JavaScript 的重要性是很高的
+
+
+
+## 参考资料
+
+- [如何理解在 JavaScript 中 "函数是第一等公民" 这句话?](https://www.zhihu.com/question/67652709/answer/728078694)

@@ -4,7 +4,7 @@
 
 ## 前言
 
-在讲函数、作用域的时候，我们都讲到了 this，因为 JavaScript 中的作用域是词法作用域，在哪里定义，就在那里形成作用域。而与词法作用域相对应的还有一个作用域叫动态作用域，调用时去寻找它所处的位置。那个时候我就说道 this 机制 和动态作用域很像
+在讲 [Function](./Function.md)、[作用域](./作用域.md) 时，我们都讲到了 this，因为 JavaScript 中的作用域是词法作用域，在哪里定义，就在那里形成作用域。而与词法作用域相对应的还有一个作用域叫动态作用域，调用时去寻找它所处的位置。那个时候笔者就说 this 机制和动态作用域很像
 
 ## 关于 this
 
@@ -55,15 +55,15 @@ identify(you); // ELAINE
 speak(me); // Hello, I'm JOHAN
 ```
 
-看到这里你也许明白了，this 是一种更为优雅的”传递”对象引用的方式。这个例子还过于简单，当你遇到 7.8 个甚至 10 几个函数（或叫方法）之间的调用时，显式传值无疑会变得混乱。除此之外，在原型中，函数自动引入合适的上下文对象是极为重要的，这个我们放在原型章中在讲。
+看到这里你也许明白了，this 是一种更为优雅的”传递”对象引用的方式。这个例子还过于简单，当你遇到 n 个函数（或叫方法）之间的调用时，显式传值无疑会变得混乱。除此之外，在原型中，构造函数会自动引入合适的上下文对象是极为重要的
 
 ### this 到底是什么
 
-this 到底是一种什么样的机制。
+this 到底是一种什么样的机制
 
-1. this 是在运行时进行绑定的，并不是在编写时绑定，它的上下文取决于函数调用时的各种条件。
-2. this 的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式
-3. 当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包含函数在哪里被调用（调用栈）、函数的调用方式、传入的参数等信息。this 就是这个记录的一个属性，会在函数执行的过程中用到。
+1. this 是在运行时进行绑定的，并不是在编写时绑定，它的上下文取决于函数调用时的各种条件；
+2. this 的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式；
+3. 当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包含函数在哪里被调用（调用栈）、函数的调用方式、传入的参数等信息。this 就是这个记录的一个属性，会在函数执行的过程中用到
 
 ## 调用位置
 
@@ -164,12 +164,12 @@ function People(name, age) {
 }
 ```
 
-### 使用 apply 或 call 调用
+### 使用 call 或 apply 调用
 
-让我们再一次重申，在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。这两个方法异常强大，他们允许切换函数执行的上下文环境（context）,即 this 绑定的对象。很多 JavaScript 中的技巧以及类库都用到了该方法。让我们看一个具体的例子：
+让我们再一次重申，在 JavaScript 中函数也是对象，对象则有方法，call 和 apply 就是函数对象的方法。这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。很多 JavaScript 中的技巧以及类库都用到了该方法。让我们看一个具体的例子：
 
 ```javascript
-function People(name, age) {
+function Person(name, age) {
     this.name = name;
     this.age = age;
     this.sayName = function(name, age) {
@@ -177,13 +177,13 @@ function People(name, age) {
         this.age = age;
     }
 }
-var elaine = new People('elaine', 26);
-var johan = {name: 'johan', age: 26};
-elaine.sayName('elaine1', 261);
-elaine.sayName.apply(johan, ['johan1', 261])
+var elaine = new Person('elaine', 28);
+var johan = {name: 'johan', age: 28};
+elaine.sayName('elaine1', 281);
+elaine.sayName.apply(johan, ['johan1', 281])
 console.log(elaine.name) // elaine1;
-console.log(elaine.age) // 261
-console.log(johan) { name: "johan1", age: 261 }
+console.log(elaine.age) // 281
+console.log(johan) // { name: "johan1", age: 281 }
 ```
 
 在上面的例子中，我们使用构造函数生成了一个对象 elaine，该对象同时具有 sayName 方法；使用对象字面量创建了另一个对象 johan，我们看到使用 apply 可以将 elaine 上的方法应用到 johan 上，这时候 this 也被绑定到对象 johan 上，另一个 call 也具备相同的功能，不同的是最后的参数不是作为一个数组统一传入，而是分开传入的
@@ -198,9 +198,9 @@ elaine.sayName.call(johan, 'johan1', 261);
 
 ### 箭头函数
 
-与箭头函数相关的语法和特征我们会在 ES6 篇中着重描述，这里，我们只讲箭头函数与 this 的关系。在“作为函数调用”小节中我们使用箭头函数，试图让它绑定，但是却感觉错了
+与箭头函数相关的语法和特征我们会在 ES6 系列文章中介绍。这里，我们只讲箭头函数与 this 的关系。在“作为函数调用”小节中我们使用箭头函数，试图让它绑定，但是却感觉错了
 
-网上对箭头函数与 this 关系的解释是：箭头函数会默认帮我们绑定外层 this 的值，所以在箭头函数中的 this 的值和外层的 this 是一样的。这个解释很困扰我，就好比你看高中政治课本，一谈到马克思主义思想浪潮时虽然文字都看的懂，但是连在一起却那么的神奇，让人疑惑不止。
+网上对箭头函数与 this 关系的解释是：箭头函数会默认帮我们绑定外层 this 的值，所以在箭头函数中的 this 的值和外层的 this 是一样的。这个解释很困扰我，就好比你看高中政治课本，一谈到马克思主义思想浪潮时虽然文字都看的懂，但是连在一起却那么的神奇，让人疑惑不止
 
 其实箭头函数很简单，和我们之前说作用域时谈到的动态作用域和静态作用域（词法作用域）有关系。this 本身的机制和动态作用域很像，而箭头函数的出现，某种程度上规避了 JavaScript 的设计缺陷（正确的设计方式应该是内部函数的 this 应该绑定到其外层函数对应的对象上）
 
@@ -233,7 +233,7 @@ foo.bar.a(); // window
 
 我们之前一直在讲一件事，this 是如何被调用的，也说了 this 是什么，那么我们来看看，一个函数被执行时会发生什么？
 
-一个函数被执行时，会创建一个执行环境（或叫活动记录，或叫执行上下文，英文名 ExecutionContext），函数所有的行为都发生在此执行环境中，构建该执行环境时，JavaScript 首先会创建 arguments 变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，首先初始化函数的形参表，值为 arguments 变量中对应的值，如果 arguments 变量中没有对应值，则该形参初始化为 undefined。如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ ExecutionContext ）创建成功后，函数执行时才会执行，这点对于我们理解 JavaScript 中的变量作用域非常重要。
+一个函数被执行时，会创建一个执行环境（或叫活动记录，或叫执行上下文，英文名 ExecutionContext），函数所有的行为都发生在此执行环境中，构建该执行环境时，JavaScript 首先会创建 arguments 变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，首先初始化函数的形参表，值为 arguments 变量中对应的值，如果 arguments 变量中没有对应值，则该形参初始化为 undefined。如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ ExecutionContext ）创建成功后，函数执行时才会执行，这点对于我们理解 JavaScript 中的变量作用域非常重要
 
 最后是 this 变量赋值，如前所述，会根据函数调用方式的不同，赋给 this 全局对象，当前对象等。至此函数的执行环境（ ExecutionContext ）创建成功，函数开始逐行执行，所需变量均从之前构建好的执行环境（ ExecutionContext ）中读取
 
@@ -243,15 +243,13 @@ foo.bar.a(); // window
 
 函数执行上下文中：this 指向了调用该函数的对象，减少的参数的传递，原来如何需要在函数内部操作被调用对象，当然还需要将对象作为参数传递进去，而又了 `this`，就不需要了，直接拿 `this` 就可以操作该调用对象的属性
 
-## 结语
+## 总结
 
-结语就留给后面的自己吧
-
-构造函数就是个模式，this 未来会指向 new 出来的对象。创建 Person 的实例时，this.name 将引用新创建的对象，并将一个名为 `name` 的属性放入新对象中。
+构造函数就是个模式，this 未来会指向 new 出来的对象。创建 Person 的实例时，this.name 将引用新创建的对象，并将一个名为 name 的属性放入新对象中。
 
 this 其实很好理解，它就是一个代词，表示”这个“。
 
-生活中遇到一些事物规律，我们归纳总结，得出结论，用一个名词代替这个规律，例如马太效应，墨菲定律，我们约定俗成，这个词就是表示这些意。这样一抽象，彼此信息消耗就减少了。this 其实很好理解，this 就是”这个“。
+生活中遇到一些事物规律，我们归纳总结，得出结论，用一个名词代替这个规律，例如马太效应，墨菲定律，我们约定俗成，这个词就是表示这些意。这样一抽象，彼此信息消耗就减少了。this 其实很好理解，this 就代指”这个“
 
 ```javascript
 var foo = {
@@ -275,11 +273,11 @@ function bar() {
 bar.call(foo);
 ```
 
-call 能硬核掰弯 this 指向，将 this 指向第一个参数，所以这段代码中，this 代指 foo ， foo 上有 value，所以打印结果是 1
+call/apply 能硬核掰弯 this 指向，将 this 指向第一个参数，所以这段代码中，this 代指 foo ， foo 上有 value，所以打印结果是 1
 
 针对 JavaScript 中的[this 指向问题](https://www.zhihu.com/question/412637481/answer/1539325572)，知乎上有人曾经回答过：
 
--   this 的灵活指向，属于 JS 自己发明的语言
+-   this 的灵活指向，属于 JavaScript 自己发明的语言
 -   this 指向存在的问题是公认的
 -   this 的这种设计既不利于代码可读性，也不利于性能优化，完全可对其世家强制性
 -   this 设计问题的更远，是产品营销需求与设计师个人偏好之间的冲突
@@ -292,4 +290,4 @@ this 是万恶之源，大家都是（词法）静态作用域，就它是动态
 
 -   [完整梳理 this 指向](https://mp.weixin.qq.com/s?__biz=MzA3MTI3Mjk3NA==&mid=2247483660&idx=1&sn=4cc5c66b988e79f39587af46f51b9e95&chksm=9f315e6da846d77b89863afbab30e3dc5d0396bac49aad6e7c9da72882ba378e782a8cd8f61b&mpshare=1&scene=1&srcid=&sharer_sharetime=1566956479051&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
 
--   [面试三板斧——this](https://mp.weixin.qq.com/s?__biz=MzI1MDU0Mjc4Mg==&mid=2247484550&idx=1&sn=af613bef12e5bc102c18ddf676f07a34&chksm=e981eb57def66241ae4bb7cc5e13ec1da19366c4c91d3e2e165fd1c5b1bdfad6ac16a7cbbf56&mpshare=1&scene=1&srcid=1125l5w8RfTcp1c9J9kwF8J3&sharer_sharetime=1606309812635&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6&key=ace5dede87a40e70e8ec3f2b27f8d5f648045f478663a9b5bdb970b747a925858c239a1fadb7a1e65e20df924ad496d9cba48daffdb2519236be9316b87a50632a9c4921dbea221ee67b52f84f84c40366c3eb9f76a65d5626d5b01457cd9c07c8c506d8797fa045ff7eb415daf60cd87275db57cee345515e5b12a43d76e811&ascene=1&uin=MTA0NTY0NDM2MQ%3D%3D&devicetype=Windows+10+x64&version=6300002f&lang=zh_CN&exportkey=AeAM2n1g%2B%2Bpt8l519bMnx0E%3D&pass_ticket=NobQ5TAx7Olw6LadlkMu5zuU5DSWS1XhNGE4KCNN4gFe7KsugULfw02vrvAelJJ5&wx_header=0)
+-   [面试三板斧——this](https://mp.weixin.qq.com/s?__biz=Mzk0OTIwOTc5Ng==&mid=2247486796&idx=1&sn=4dafaba462e11b32791a7ed629af9bfc&source=41#wechat_redirect)
