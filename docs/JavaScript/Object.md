@@ -5,11 +5,11 @@
 - 引用类型指的是 object
 - object 包括内置对象、宿主对象、自定义对象
 - 内置对象中有 Object、Function、Array、String、Number、Boolean 等原生对象构造函数
-- 所以说在 JavaScript 中，一切皆对象（除 undefined、null 外）
+- 在 JavaScript 中，一切皆对象（除 undefined、null 外）
 
-无论是内置对象，还是自定义对象，都是基于 Object 来创建，其中的原理是原型继承，所以笔者一直称 Object 为“始祖巨人”，一切力量源于尤弥尔
+无论是内置对象，还是自定义对象，都是基于 Object 来创建，其中的原理是原型继承，所以笔者喜欢称 Object.prototype 为“始祖巨人”，一切力量源于尤弥尔
 
-这节，我们看看 Object 是什么，它能做什么，并将其扩展，联系与 Object 相关的知识点，并逐一联系。知识列表如下：
+我们看看 Object 是什么，它能做什么，并将其扩展，联系与 Object 相关的知识点，并逐一联系。知识列表如下：
 
 - 属性与方法
 
@@ -19,7 +19,7 @@
 
 * 对象继承的秘密——原型
 
-- 继承的六种方法
+- 继承的九种方法
 
 ## 属性与方法
 
@@ -77,7 +77,7 @@ johan 的 `[[prototype]]` 和 Object 的 prototype 的内容一致
 - `Object.prototype.toString()`：返回一个代表该对象的字符串。
 - `Object.prototype.valueOf()`：返回指定对象的原始值
 
-更多信息可以查看[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+更多信息可以查看 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 了解 Object 的属性、方法，以及基于它创建的实例属性和方法后，我们去看看如何创建对象
 
@@ -103,7 +103,7 @@ var obj = {};
 var obj = new Object(); // 效果如同 var obj = {}
 ```
 
-更多内容，可查看这篇[new 做了什么](./new做了什么.md)
+更多内容，可查看这篇 [new 做了什么](./new做了什么.md)
 
 ### Object.create
 
@@ -115,7 +115,7 @@ var obj2 = Object.create(null); // obj2 不继承任何属性和方法
 var obj3 = Object.create(Object.prototype); // 与 {} 和 new Object() 一个意思
 ```
 
-更多内容，可查看这篇[Object.create](./Object.create.md)
+更多内容，可查看这篇 [Object.create](./Object.create.md)
 
 之所以将 new 和 Object.create 单独拿出来说，是因为两则都是比较重要的知识点，非一两句就能说明白
 
@@ -139,7 +139,7 @@ console.log(o2); // {name: 'elaine'}
 
 ## 对象继承的秘密——原型
 
-要想说明其 JavaScript 中为什么大多数元素都是对象，所有内置对象都继承自 Object，就必须先知道原型。JavaScript 是一门基于原型的语言——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层，以此类推。这种关系常被称为原型链
+要想解释 JavaScript 中为什么大多数元素都是对象，就必须先知道原型。JavaScript 是一门基于原型的语言——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层，以此类推。这种关系常被称为原型链
 
 有关原型和原型链的知识，会归纳总结为一篇——[原型](./原型.md)
 
@@ -161,8 +161,8 @@ console.log(o2); // {name: 'elaine'}
 
 - 类继承
 
-具体的文章会在[继承](./继承.md)说明
+具体的文章会在 [继承 ](./继承.md)说明
 
 ## 总结
 
-这一节，我们就 Object 进行展开，详细说明了 Object 及其实例的属性与方法。并对如何创建对象、如何拷贝对象、原型、继承等进行说明分析，因篇幅以及知识点聚焦问题，本节不做过多说明，下一节，我们从如何创建对象之 new 说起
+这一节，我们就 Object 进行展开，详细说明了 Object 及其实例的属性与方法。并对如何创建对象、如何拷贝对象、原型、继承等进行说明分析，因篇幅以及知识点聚焦问题，本节不做过多说明，下一节，我们从如何创建对象之 [new](./new做了什么.md) 说起

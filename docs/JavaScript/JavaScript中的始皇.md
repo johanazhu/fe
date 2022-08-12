@@ -2,7 +2,7 @@
 
 ## 前言
 
-笔者在[继承](./继承.md)中发了一题关于原型链关系图的题，题目来源自颜海镜的[如何回答面试中的JavaScript原型链问题](https://zhuanlan.zhihu.com/p/356980105)，这题确实很好，当画完它时，会有种看到这幅图的感觉
+笔者在 [继承](./继承.md) 中发了一题关于原型链关系图的题，题目来源自颜海镜的 [如何回答面试中的JavaScript原型链问题](https://zhuanlan.zhihu.com/p/356980105)，这题确实很好，当画完它时，会有种看到这幅图的感觉
 
 ![Object Layout](https://i.loli.net/2021/06/08/BjVYFWQr1lfkHd8.png)
 
@@ -19,11 +19,11 @@ Function instanceof Object // true
 
 在知乎曾讨论过这个话题，[JS中先有Object还是先有Function？](https://www.zhihu.com/question/35442532)
 
-这里，笔者写一写谁才是最先出现的始皇
+这里，笔者查一查谁是最先出现的皇
 
 ## 正文
 
-在写[一切皆对象](./一切皆对象.md)时，笔者阐释 JavaScript 中的对象有内置对象，而这些内置对象是语言内部创建，这些内置对象都是构造函数，即又被称为内置构造函数，它们存在的目的是为了让开发者更方便的书写代码。这些内置构造函数包括 Object、Function、Array、String、Number、RegExp 等等
+在写 [一切皆对象](./一切皆对象.md) 时，笔者阐释 JavaScript 中的对象有内置对象，而这些内置对象是语言内部创建，这些内置对象都是构造函数，即又被称为内置构造函数，它们存在的目的是为了让开发者更方便的书写代码。这些内置构造函数包括 Object、Function、Array、String、Number、RegExp 等等
 
 因为它们是构造函数，所以它们必然属于函数，因为是函数，所以它们都是 Function 创建的，因为是 Function 创建的，所以它们都是 Function 的实例，即
 

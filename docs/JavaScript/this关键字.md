@@ -63,11 +63,11 @@ this 到底是一种什么样的机制
 
 1. this 是在运行时进行绑定的，并不是在编写时绑定，它的上下文取决于函数调用时的各种条件；
 2. this 的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式；
-3. 当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包含函数在哪里被调用（调用栈）、函数的调用方式、传入的参数等信息。this 就是这个记录的一个属性，会在函数执行的过程中用到
+3. 当一个函数被调用时，JavaScript 会创建一执行上下文，携带所有的信息（包括 this、词法环境、变量环境）。this 就是执行上下文（context）中的一条信息，它代表是谁调用它
 
-## 调用位置
+## 调用方式
 
-正如上面所讲，this 是在运行时绑定的，它的上下文取决于函数调用时的各个条件。在 JavaScript 中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，和使用 apply 或者 call 调用。下面我们按照调用方式不同，分别讨论 this 的含义
+正如上面所讲，this 是在运行时绑定的，它的上下文取决于函数调用时的各个条件。在 JavaScript 中函数的调用有以下几种方式：作为对象方法调用，作为函数调用，作为构造函数调用，和使用  call / apply / bind调用。下面我们按照调用方式不同，分别讨论 this 的含义
 
 ### 作为对象方法调用
 
@@ -76,7 +76,7 @@ this 到底是一种什么样的机制
 ```javascript
 var people = {
     name: 'elaine',
-    age: 26,
+    age: 28,
     sayName: function () {
         console.log(this.name);
     },
@@ -96,12 +96,12 @@ sayAge(5);
 // age 已经成为一个值为 5 的全局变量
 ```
 
-对于内部函数，即声明在另外一个函数体内的函数，这种绑定到全局对象的方式会产生另外一个问题。我们仍然以前提到的 people 对象为例，这次我们希望在 sayName 方法内定义一个函数，函数打印年龄。结果可能出乎大家意料，不仅年龄没有打印出，反而多了一个全局变量 age
+对于内部函数，即声明在另外一个函数体内的函数，这种绑定到全局对象的方式会产生另外一个问题。我们以前文所写的 people 对象为例，这次我们希望在 sayName 方法内定义一个函数，函数打印年龄。发现people.age 没有改变，而全局多了一个 age 变量
 
 ```javascript
 var people = {
     name: 'elaine',
-    age: 26,
+    age: 28,
     sayName: function (age) {
         var sayAge = function (age) {
             this.age = age;
@@ -110,16 +110,16 @@ var people = {
     },
 };
 people.sayName(5);
-people.age; // 26
+people.age; // 28
 age; // 5
 ```
 
-这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，为了规避这一设计缺陷，聪明的 JavaScript 程序员想出了变量代替的方式，约定俗成，该变量一般被称为 that
+这属于 JavaScript 的设计缺陷，正确的设计方式是内部函数的 this 应该绑定到其外层函数对应的对象上，为了规避这一设计缺陷，我们的办法是变量代替的方式，约定俗成，该变量一般被称为 that
 
 ```javascript
 var people = {
     name: 'elaine',
-    age: 26,
+    age: 28,
     sayName: function (age) {
         var that = this;
         var sayAge = function (age) {
@@ -133,13 +133,16 @@ people.age; // 5
 age; // 没有定义
 ```
 
-当然，当我们使用 ES6 中的箭头函数时，我们会发现箭头函数也能做到相同的效果
+### 作为箭头函数调用
+
+当然，我们使用 ES6 中的箭头函数时，觉得它也能实现同样的效果
 
 ```javascript
 var people = {
     name: 'elaine',
-    age: 26,
+    age: 28,
     sayName: (age) => {
+        console.log(this)
         var sayAge = function (age) {
             this.age = age;
         };
@@ -147,26 +150,91 @@ var people = {
     },
 };
 people.sayName(5);
-people.age; // 26
+people.age; // 28
 age; // 5
 ```
 
-可答案却让我匪夷所思，箭头函数难道不应该把 this 指向它的上一层吗？这个我们在后面会解释
+可答案却不如人意，箭头函数不应该没有 this 吗，它的 this 不是需要在外部词法环境中找吗
+
+其实箭头函数很简单，和我们之前说作用域时谈到的动态作用域和静态作用域（词法作用域）有关系。this 本身的机制和动态作用域很像，而箭头函数的出现，某种程度上规避了 JavaScript 的设计缺陷（理想中的设计方式应该是内部函数的 this 应该绑定到其外层函数对应的对象上）
+
+```javascript
+var people = {
+    name: 'eliane',
+    age: 28,
+    sayName: () => console.log(this.name, this),
+    sayName2: function () {
+        console.log(this.name, this);
+    },
+};
+people.sayName(); //  '', Window
+people.sayName2(); // elaine, {name: 'eliane', age: 28}
+```
+
+使用箭头函数后，就不用管调用者是谁，它只关心在哪里定义
+
+```javascript
+var foo = {
+    bar: {
+        a: () => console.log(this),
+    },
+};
+foo.bar.a(); // window
+```
+
+回头看这题：
+
+```javascript
+var people = {
+    name: 'elaine',
+    age: 28,
+    sayName: (age) => {
+        console.log(this)
+        var sayAge = function (age) {
+            this.age = age;
+        };
+        sayAge(age);
+    },
+};
+```
+
+箭头函数下，它函数下的 this 指向的是外部词法环境，与谁调用无关。而这题中 sayName 函数中的打印 this，往外找只能找到 window
+
+如果要实现题目的功能，应该将打印放在 sayAge 中，这样，this 才会指向它的外层 sayName 函数
+
+```javascript
+var people = {
+    name: 'elaine',
+    age: 28,
+    sayName: function(age) {
+        var sayAge = (age) => {
+          	console.log(this)
+           	this.age = age;
+        };
+        sayAge(age);
+    },
+};
+people.sayName(5);
+people.age; // 5
+age; // 没有定义
+```
 
 ### 作为构造函数调用
 
-JavaScript 支持面向对象式编程，与主流的面向对象式编程语言不同， JavaScript 并没有类（Class）的概念，而是使用基于原型（prototype-base）的继承方式（ES6 中的 Class 其实是原型继承的语法糖）。相应的，JavaScript 中的构造函数也很特殊，如果不适用 new 调用，则和普通函数一样。作为又一项约定俗成的准则，构造函数以大写字母开头，提醒调用者使用正确的方式调用。如果调用正确，this 绑定到新创建的对象上。
+JavaScript 支持面向对象编程，与主流的面向对象编程语言不同， JavaScript 并没有类（Class）的概念，而是使用基于原型（prototype-base）的继承方式。同样约定俗称，首字母大写的函数被称为构造函数，我们使用 new 调用时，this 会绑定到实例对象上
 
 ```javascript
 function People(name, age) {
     this.name = name;
     this.age = age;
 }
+var elaine = new People('elaine', 28)
+console.log(elaine) // {name: "elaine", age: 28}
 ```
 
-### 使用 call 或 apply 调用
+### 使用 call / apply / bind 调用
 
-让我们再一次重申，在 JavaScript 中函数也是对象，对象则有方法，call 和 apply 就是函数对象的方法。这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。很多 JavaScript 中的技巧以及类库都用到了该方法。让我们看一个具体的例子：
+让我们再一次重申，在 JavaScript 中函数也是对象，对象则有方法，call 、 apply 、 bind 就是函数对象的方法。这三个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。很多 JavaScript 中的技巧以及类库都用到了该方法。让我们看一个具体的例子：
 
 ```javascript
 function Person(name, age) {
@@ -181,6 +249,7 @@ var elaine = new Person('elaine', 28);
 var johan = {name: 'johan', age: 28};
 elaine.sayName('elaine1', 281);
 elaine.sayName.apply(johan, ['johan1', 281])
+// 如果用call elaine.sayName.call(johan, 'johan1', 281)
 console.log(elaine.name) // elaine1;
 console.log(elaine.age) // 281
 console.log(johan) // { name: "johan1", age: 281 }
@@ -188,54 +257,17 @@ console.log(johan) // { name: "johan1", age: 281 }
 
 在上面的例子中，我们使用构造函数生成了一个对象 elaine，该对象同时具有 sayName 方法；使用对象字面量创建了另一个对象 johan，我们看到使用 apply 可以将 elaine 上的方法应用到 johan 上，这时候 this 也被绑定到对象 johan 上，另一个 call 也具备相同的功能，不同的是最后的参数不是作为一个数组统一传入，而是分开传入的
 
-```javascript
-elaine.sayName.call(johan, 'johan1', 261);
-```
-
 回过头来看，apply 和 call 的语义就是 elaine 的方法 sayName 作用于 johan ，sayName 需要传入的参数，我从第二个参数开始传值；或者说 johan 调用 elaine 的 sayName 方法，从第二个参数开始传值
 
-**call 和 apply 具有掰弯 this 指向的能力**
-
-### 箭头函数
-
-与箭头函数相关的语法和特征我们会在 ES6 系列文章中介绍。这里，我们只讲箭头函数与 this 的关系。在“作为函数调用”小节中我们使用箭头函数，试图让它绑定，但是却感觉错了
-
-网上对箭头函数与 this 关系的解释是：箭头函数会默认帮我们绑定外层 this 的值，所以在箭头函数中的 this 的值和外层的 this 是一样的。这个解释很困扰我，就好比你看高中政治课本，一谈到马克思主义思想浪潮时虽然文字都看的懂，但是连在一起却那么的神奇，让人疑惑不止
-
-其实箭头函数很简单，和我们之前说作用域时谈到的动态作用域和静态作用域（词法作用域）有关系。this 本身的机制和动态作用域很像，而箭头函数的出现，某种程度上规避了 JavaScript 的设计缺陷（正确的设计方式应该是内部函数的 this 应该绑定到其外层函数对应的对象上）
-
-```javascript
-'use strict'; // 严格模式下
-var people = {
-    name: 'eliane',
-    age: 26,
-    sayName: () => console.log(this.name, this),
-    sayName2: function () {
-        console.log(this.name, this);
-    },
-};
-people.sayName(); // undefined Window {...}
-people.sayName2(); // elaine, peole {...}
-```
-
-使用箭头函数后，就不用管调用者是谁，它只关心在哪里调用
-
-```javascript
-var foo = {
-    bar: {
-        a: () => console.log(this),
-    },
-};
-foo.bar.a(); // window
-```
+call、apply 、bind 具有掰弯 this 指向的能力。有关 call/apply/bind 更详细的介绍，笔者会在这篇文章——[call、apply、bind 三大将](./call、apply、bind三大将.md)中详细描写
 
 ## 函数的执行环境
 
-我们之前一直在讲一件事，this 是如何被调用的，也说了 this 是什么，那么我们来看看，一个函数被执行时会发生什么？
+我们之前一直在讲一件事，this 是如何被调用的，也说了 this 是什么，那么我们来看看，当一个函数被执行时会发生什么
 
-一个函数被执行时，会创建一个执行环境（或叫活动记录，或叫执行上下文，英文名 ExecutionContext），函数所有的行为都发生在此执行环境中，构建该执行环境时，JavaScript 首先会创建 arguments 变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，首先初始化函数的形参表，值为 arguments 变量中对应的值，如果 arguments 变量中没有对应值，则该形参初始化为 undefined。如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ ExecutionContext ）创建成功后，函数执行时才会执行，这点对于我们理解 JavaScript 中的变量作用域非常重要
+一个函数被执行时，会创建一个执行环境（或叫执行上下文，英文名 ExecutionContext），函数所有的行为都发生在此执行环境中，构建该执行环境时，JavaScript 首先会创建 arguments 变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，首先初始化函数的形参表，值为 arguments 变量中对应的值，如果 arguments 变量中没有对应值，则该形参初始化为 undefined。如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ ExecutionContext ）创建成功后，函数执行时才会执行，这点对于我们理解 JavaScript 中的变量作用域非常重要
 
-最后是 this 变量赋值，如前所述，会根据函数调用方式的不同，赋给 this 全局对象，当前对象等。至此函数的执行环境（ ExecutionContext ）创建成功，函数开始逐行执行，所需变量均从之前构建好的执行环境（ ExecutionContext ）中读取
+最后是 this 变量赋值，如前所述，会根据函数调用方式的不同，赋给 this 全局对象，当前对象等。至此函数的执行环境（ ExecutionContext ）创建成功，函数开始逐行执行，所需变量均从之前构建好的执行环境（ ExecutionContext ）中读取。其更详细地介绍会在 [执行上下文与调用栈](./执行上下文与调用栈.md) 一文中详细介绍
 
 ## this 有什么作用
 
@@ -245,9 +277,9 @@ foo.bar.a(); // window
 
 ## 总结
 
-构造函数就是个模式，this 未来会指向 new 出来的对象。创建 Person 的实例时，this.name 将引用新创建的对象，并将一个名为 name 的属性放入新对象中。
+构造函数就是个模板，this 未来会指向 new 出来的对象。创建 Person 的实例时，this.name 将引用新创建的对象，并将一个名为 name 的属性放入新对象中
 
-this 其实很好理解，它就是一个代词，表示”这个“。
+this 其实很好理解，它就是一个代词，表示“这个”
 
 生活中遇到一些事物规律，我们归纳总结，得出结论，用一个名词代替这个规律，例如马太效应，墨菲定律，我们约定俗成，这个词就是表示这些意。这样一抽象，彼此信息消耗就减少了。this 其实很好理解，this 就代指”这个“
 
@@ -275,14 +307,14 @@ bar.call(foo);
 
 call/apply 能硬核掰弯 this 指向，将 this 指向第一个参数，所以这段代码中，this 代指 foo ， foo 上有 value，所以打印结果是 1
 
-针对 JavaScript 中的[this 指向问题](https://www.zhihu.com/question/412637481/answer/1539325572)，知乎上有人曾经回答过：
+针对 JavaScript 中的 [this 指向问题](https://www.zhihu.com/question/412637481/answer/1539325572)，知乎上有人曾经回答过：
 
 -   this 的灵活指向，属于 JavaScript 自己发明的语言
 -   this 指向存在的问题是公认的
 -   this 的这种设计既不利于代码可读性，也不利于性能优化，完全可对其世家强制性
 -   this 设计问题的更远，是产品营销需求与设计师个人偏好之间的冲突
 
-this 是万恶之源，大家都是（词法）静态作用域，就它是动态的
+this 是万恶之源，大家都是（词法）静态作用域，就它玩动态
 
 ## 参考资料
 

@@ -1,6 +1,6 @@
 # Object.create
 
-> 2006年，Douglas Grockford 写了一篇文章：[《JavaScript 中的原型式继承》](https://www.crockford.com/javascript/prototypal.html)（”Prototypal Inheritance in JavaScript“）。这篇文章介绍了一种不涉及严格意义上构造函数的继承方法。他的出发点式即使不自定义类型也可以通过原型继承对象之间的信息共享。文章最终给出了一个函数：
+> 2006年，Douglas Grockford 写了一篇文章：[《JavaScript 中的原型式继承》](https://www.crockford.com/javascript/prototypal.html)（”Prototypal Inheritance in JavaScript“）。这篇文章介绍了一种不涉及严格意义上构造函数的继承方法。他的出发点是即使不自定义类型也可以通过原型继承对象之间的信息共享。文章最终给出了一个函数：
 >
 > ```javascript
 > function object(o) {
@@ -89,3 +89,4 @@ var obj = Object.create(null)
 
 不信，你可以打印 obj 试试
 
+讲完了 new 和 Object.create ，我们来看看 [原型](./原型.md)
