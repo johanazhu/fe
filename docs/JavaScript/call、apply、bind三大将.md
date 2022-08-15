@@ -22,93 +22,63 @@ foo.call(bar); // johnny
 
 首先 call 是个原型方法，所以一个函数能很自然的使用此方法，即 foo 的 call 方法继承自 Function.prototype.call。其次，call 方法中传入的值会成为 foo 函数的 this 未来指向的对象
 
-打个比喻，foo 函数就是家业，call 方法就是传承、继承，call 中的值就是被授予者，例如爸爸把家业传给了儿子
-
-
-
-
-
-
-
-
-
-
+其本质是改变 this 指向，将 this 指向了（call 的）传入值
 
 ### 实现 call
 
-咱们根据这个结论来实现一下 call
+我们根据之前的描述来实现 call
 
 ```javascript
-Function.prototype.call1 = function (context = window, ...params) {
-    // 判断是函数才能调用call方法
-    if (typeof this !== 'function') {
-        return new TypeError('类型错误');
+Function.prototype.mycall = function(context = window, ...args) {
+    if (this === Function.prototype) {
+        return undefined // 防止 Function.prototype.mycall 直接调用
     }
-    // 将this也就是被调用的函数，通过赋值给传入的对象，来达到将被调用的函数添加到传入的对象上的目的
-    context.fun = this;
-    // 用传入的对象来调用需要被调用的函数，并保留返回结果
-    const result = context.fun(...params);
-    // 删除传入对象上被添加的函数，防止内存泄漏
-    Reflect.deleteProperty(context, 'fun');
-    // 返回结果
-    return result;
-};
+    const fn = Symbol()
+    context[fn] = this;
+    const result = context[fn](...args)
+    delete context[fn]
+    return result
+}
 ```
 
-其核心很简单，关键在一个点上，即 `context.fun = this` , 怎么理解这句话
-
-注意，我们之前讲 this 篇章的时候，就讲过 this 亘古不变的指向原则——谁调用我，我指向谁
-
-在例子中，foo.call(bar)，即 foo 调用了 call，call 方法中的 this 指向的就是 foo 函数，所以 this 代指被调用的函数
-
-梳理一下：
-
--   将被调用的函数作为一个属性添加到传入的对象上
--   从而可以实现在传入的对象上，调用需要被调用的函数
--   其核心原理还是 this 的指向原理：**谁调用我，我指向谁**
-
-实现 call
+我们一步步分析，首先不支持`Function.prototype.mycall` 直接调用，
 
 ```javascript
-Function.prototype.call2 = function(context) {
-    // 首先要获取调用call2的函数，用 this 可以获取
-    context.fn = this;
-    context.fn();
-    delete context.fn;
-}
-
-var foo = {
-    value: 1;
-}
-
-function bar() {
-    console.log(this.value)
-}
-bar.call2(foo); // 1
+Function.prototype.call(bar) // undefined
 ```
 
-最开始，我们会疑惑，context.fn 怎么来的，但是别忘记了，this 的指向为谁调用它就指向谁。
-
-那么在 `bar.call2(foo)` 中，我们可以看出，调用 call2 函数的是 bar，所以 call2 中的 this 指向的是 bar
-
-context.fn 的意思是
+这个很好理解，Function.prototype 中本来就没有 this，调用了也XXX
 
 ```javascript
-// 伪代码
-context.fn = function bar() {
-    console.log(this.value);
-};
+let context = context || window
 ```
 
-`context.fn()` 即执行 bar
+因为要考虑如果 context 传入的是 null 呢
 
-## apply
+```javascript
+foo.call(null);
+```
 
-> [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)：apply() 方法调用一个具有给定 this 值的函数，以及以一个数组（或一个类数组对象的形式提供的参数
+如果是 null 的话，context 就指向 window，这个很好理解，防御性代码
 
+```javascript
+const fn = Symbol()
+context[fn] = this;
+const result = context[fn](...args)
+```
 
+在传入的 context 中设置一个属性，将 this 赋值给它，接着执行它
 
-使用方法：
+这是 call 函数的关键所在，我们在前文讲 call 示例时，就说到 call 会改变 this 指向，讲 this 指向传入的 context，所以我们在模式实现 call 时，就可以先将 this 存在 context 上的一个属性上，再执行它，this 的规则是谁调用它，它指向谁。这样 this 就指向了 context
+
+```javascript
+delete context[fn]
+return result
+```
+
+删除 context 属性，释放内存，并返回结果值 result
+
+call 实现就是如此，测试一波
 
 ```javascript
 let bar = {
@@ -117,46 +87,69 @@ let bar = {
 function foo() {
     console.log(this.name)
 }
-foo.call(bar); // johan
+foo.mycall(bar);
 ```
 
-也就是说：调用 foo 函数的时候，调用使用 call()，并且传入 bar，使得 foo 函数内部的 this 指向了 bar
+## apply
+
+> [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)：apply() 方法调用一个具有给定 this 值的函数，以及以一个数组（或一个类数组对象的形式提供的参数
+
+使用方法：
+
+```javascript
+let bar = {
+    name: 'johnny'
+}
+function foo(age, hobby) {
+    console.log(this.name, age, hobby)
+}
+foo.apply(bar, [28, 'sleep']); // johnny 28 sleep
+// call 使用方法
+// foo.call(bar, 28, 'sleep');
+```
+
+apply 和 call 使用上差不太多，只是传参方式不同
+
+```javascript
+foo.call(obj, param1, param2,...,paramN) // 传入一串参数
+foo.apply(obj, [param1, param2,...,paramN]) // 第二参数为类数组
+```
+
+所以实现上 和 call 大差不差
 
 ### 实现 apply
 
-apply 其实和 call 差不多，只不过传递参数的方式不同
-
 ```javascript
-foo.call(obj, [param1, param2,...,paramN]) // 参数为数组
-foo.apply(obj, param1, param2,...,paramN) // 参数非数组，传入一串参数
-```
-
-咱们对上面的 call 稍微修改以下就是 apply 了
-
-```javascript
-Function.prototype.Apply1 = function (context = window, params = []) {
-    // 判断是函数才能调用apply方法
-    if (typeof this !== 'function') {
-        return new TypeError('类型错误');
+Function.prototype.myapply = function (context = window, args) {
+    if (this === Function.prototype) {
+        return undefined
     }
-    // 将this也就是被调用的函数，通过赋值给传入的对象，来达到将被调用的函数添加到传入的对象上的目的
-    context.fun = this;
-    // 用传入的对象来调用需要被调用的函数，并保留返回结果
-    const result = context.fun(...params);
-    // 删除传入对象上被添加的函数，防止内存泄漏
-    Reflect.deleteProperty(context, 'fun');
-    // 返回结果
-    return result;
-};
+    const fn = Symbol()
+    context[fn] = this
+    
+    let result;
+    if (!Array.isArray(args)) {
+        result = context[fn]()
+    } else {
+        result = context[fn](...args)
+    }
+   
+    delete context[fn]
+    return result
+}
 ```
 
+测试一波 myapply
 
-
-> 思考题：数组和类数组有什么区别？
-
-
-
-
+```javascript
+let bar = {
+    name: 'johnny'
+}
+function foo(age, hobby) {
+    console.log(this.name, age, hobby)
+}
+foo.myapply(bar, [28, 'sleep']); // johnny 28 sleep
+```
 
 ## bind
 
@@ -168,15 +161,122 @@ Function.prototype.Apply1 = function (context = window, params = []) {
 let bar = {
     name: 'johnny'
 }
-function foo() {
-    console.log(this.name)
+function foo(age) {
+    console.log(this.name, age)
 }
-foo.call(bar); // johan
+// 返回一个函数
+let bindBar = foo.bind(bar)
+
+bindBar(28) // johnny 28
+```
+
+与 call、apply 一样，它是函数的原型方法，不过与它们不同的是，它是 ES5 新增的方法，它返回的是一个函数（并且它还支持传参）
+
+看到返回的是一个函数，就说明 bind 方法是一个闭包
+
+### 实现 bind
+
+```javascript
+Function.prototype.mybind = function (context, ...args1) {
+    if (this === Function.prototype) {
+        throw new TypeError('Error')
+    }
+   	const _this = this
+    return function F(...args2) {
+        if (this instanceof F) {
+            return new _this(...args1, ...args2)
+        }
+        return _this.apply(context, args1.concat(args2))
+    }
+}
+```
+
+我们分析如何实现 bind
+
+首先 bind 不能原型方法调用，如果使用就提示报错
+
+其次我们根据 bind 的一个特性，对其的使用分为两种
+
+> 一个绑定函数也能使用 new 操作符创建对象：这种行为就像把原函数当作构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数
+
+也就是说，我们要判断它是否为构造函数调用，如果是则用 new 调用当前函数；如果不是，则使用 apply 来出现 context 
+
+```javascript
+// 判断是否是构造函数
+if (this instanceof F) {
+    // 如果是构造函数，则以 foo（即_this）为构造器调用函数
+    return new _this(...args1, ...args2)
+}
+// 如果非构造函数，则用 apply 指向代码
+return _this.apply(context, args1.concat(args2))
+```
+
+测试一波
+
+```javascript
+// 测试非构造函数使用
+let bar = {
+    name: 'johnny'
+}
+function foo(age, hobby) {
+    console.log(this.name, age, hobby)
+}
+// 返回一个函数
+let bindBar = foo.mybind(bar, 28)
+
+bindBar('sleep') // johnny 28 sleep
+```
+
+```javascript
+// 测试构造函数时使用
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.sayName = function() {
+    console.log('my name is ' + this.name)
+}
+let emptyObj = {}
+var FakerPerson = Person.mybind(emptyObj)
+
+var johnny = new FakerPerson('johnny', 28)
+johnny.sayName() // my name is johnny
 ```
 
 
 
+## 总结
 
+call、apply、bind 三者都能修改 this 指向，其中 call、apply 在 ECMAScript 3 时定义，它们满足开发者的大部分需求，即改变 this 的指向，其原理是在将 this 赋值给 context（传入的值）的一个属性，并执行它（谁调用 this，this 指向谁）
+
+而这两者的区别就是调用方法不同，call 自第二个参数开始传入一连串参数，apply 的第二个参数是一个数组，接受所有参数
+
+它们也是实现 [继承](./继承.md) 的一种方法——借用构造函数 
+
+而 bind 则是在 ECMAScript 5 出现，是对修改 this 指向的一种补充，它以闭包的形式存在，它有三个特点
+
+- 返回的是一个函数
+- 可以传入参数（使用bind和经bind生成的函数都可以传参）
+- 使用 bind 生成的函数作为构造函数时，bind 时的指定 this 会失效，但传入的参数依然生效
+
+
+
+## 衍生
+
+> 思考题：数组和类数组有什么区别？
+
+1. 类数组是拥有 length 属性和索引属性的对象
+2. 不具有数组所具有的方法
+
+类数组是个普通对象，而真实的数组是 Array 类型，所以类数组的原型关系和数组不同
+
+常见的类数组有：arguments、DOM 对象列表（document.querySelectorAll）
+
+类数组转换为数组
+
+- Array.prototype.slice.call(arrayLike, 0)
+- [...arrayLike]（扩展运算符）
+- Array.from(arrayLike)
 
 
 

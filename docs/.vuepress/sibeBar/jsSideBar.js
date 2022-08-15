@@ -50,9 +50,6 @@ function jsSideBar() {
             children: [
                 '/JavaScript/原理/',
                 '/JavaScript/原理/手写各种源码.md',
-                '/JavaScript/原理/模拟call和apply的实现.md',
-                '/JavaScript/原理/模拟bind的实现.md',
-                '/JavaScript/原理/call、apply、bind的应用.md',
                 '/JavaScript/原理/0.1加0.2为什么不等于0.3.md',
                 '/JavaScript/原理/发布订阅.md',
                 '/JavaScript/原理/图片懒加载.md',
