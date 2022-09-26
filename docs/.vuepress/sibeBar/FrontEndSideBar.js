@@ -64,7 +64,7 @@ function FrontEndSideBar() {
                 '/Node/Mysql.md',
                 '/Node/Redis.md',
                 '/Node/Python/',
-                '/Node/Go.md',
+                '/Node/Go/',
                 '/Node/Nest.js.md',
             ],
         },

@@ -84,7 +84,7 @@
 
 [Python](../Node/Python)
 
-[Go](../Node/Go.md)
+[Go](../Node/Go/)
 
 [Nest.js](../Node/Nest.js)
 

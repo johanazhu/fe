@@ -1,9 +1,9 @@
 const { defaultTheme } = require('@vuepress/theme-default');
-const { sitemapPlugin } = require("vuepress-plugin-sitemap2");
+const { sitemapPlugin } = require('vuepress-plugin-sitemap2');
 const { pwaPlugin } = require('@vuepress/plugin-pwa');
 const { pwaPopupPlugin } = require('@vuepress/plugin-pwa-popup');
 const { docsearchPlugin } = require('@vuepress/plugin-docsearch');
-const { seoPlugin } = require('vuepress-plugin-seo2')
+const { seoPlugin } = require('vuepress-plugin-seo2');
 
 const jsSideBar = require('./sibeBar/jsSideBar');
 const reactSideBar = require('./sibeBar/reactSideBar');
@@ -36,7 +36,14 @@ module.exports = {
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }],
         ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-        ['link', { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }],
+        [
+            'link',
+            {
+                rel: 'mask-icon',
+                href: '/safari-pinned-tab.svg',
+                color: '#5bbad5',
+            },
+        ],
         // meta
         ['meta', { name: 'msapplication-TileColor', content: '#da532c' }],
         ['meta', { name: 'theme-color', content: '#ffffff' }],
@@ -81,6 +88,7 @@ module.exports = {
     markdown: {
         // 代码块行号
         lineNumbers: true,
+        linkify: true,
     },
 
     // 主题和它的配置
@@ -142,7 +150,8 @@ module.exports = {
             '/MongoDB': nodeSideBar(),
             '/Mysql': nodeSideBar(),
             '/Redis': nodeSideBar(),
-            '/GO': nodeSideBar(),
+            '/Go': nodeSideBar(),
+            '/Python': nodeSideBar(),
             '/webpack': webpackSideBar(),
             '/WebApp': bigFrondSideBar(),
             '/Flutter': bigFrondSideBar(),
@@ -179,9 +188,6 @@ module.exports = {
         },
     },
     smoothScroll: true,
-    markdown: {
-        linkify: true,
-    },
     plugins: [
         pwaPlugin({
             // 配置项
@@ -194,7 +200,7 @@ module.exports = {
         }),
         sitemapPlugin({
             // 配置选项
-            hostname: 'https://fe.azhubaby.com/'
+            hostname: 'https://fe.azhubaby.com/',
         }),
         docsearchPlugin({
             // 配置项
@@ -205,23 +211,25 @@ module.exports = {
             //     facetFilters: ['tags:v2'],
             // },
             locales: {
-                placeholder: "搜索文档"
+                placeholder: '搜索文档',
             },
         }),
         seoPlugin({
             hostname: 'https://fe.azhubaby.com/',
             siteTitle: (_, $site) => '五年前端三年面试',
-            title: $page => $page.title,
-            description: $page => $page.frontmatter.description,
+            title: ($page) => $page.title,
+            description: ($page) => $page.frontmatter.description,
             author: (_, $site) => '约翰',
-            twitterCard: _ => 'summary_large_image',
-            type: $page => 'article',
+            twitterCard: (_) => 'summary_large_image',
+            type: ($page) => 'article',
             url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
-            image: ($page, $site) => "https://fe.azhubaby.com/favicon.ico",
-            publishedAt: $page => $page.frontmatter.date && new Date($page.frontmatter.date),
-            modifiedAt: $page => $page.lastUpdated && new Date($page.lastUpdated),
-        })
-    ]
+            image: ($page, $site) => 'https://fe.azhubaby.com/favicon.ico',
+            publishedAt: ($page) =>
+                $page.frontmatter.date && new Date($page.frontmatter.date),
+            modifiedAt: ($page) =>
+                $page.lastUpdated && new Date($page.lastUpdated),
+        }),
+    ],
     // plugins: [
     //     '@vuepress/search',
     //     [

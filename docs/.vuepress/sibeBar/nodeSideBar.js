@@ -56,14 +56,19 @@ function nodeSideBar() {
         },
         {
             text: 'Go',
-            link: '/Node/Go/',
-            link: '/Node/Go/极简学习.md',
-            link: '/Node/Go/Go项目学习.md',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+                '/Node/Go/',
+                '/Node/Go/极简学习.md',
+                '/Node/Go/Go项目学习.md',
+            ],
         },
         {
             text: 'Python',
-            link: '/Node/Python/',
-            link: '/Node/Python/Python基础.md',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: ['/Node/Python/', '/Node/Python/Python基础.md'],
         },
         {
             text: 'Nest.js',
