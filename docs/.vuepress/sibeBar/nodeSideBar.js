@@ -56,11 +56,14 @@ function nodeSideBar() {
         },
         {
             text: 'Go',
-            link: '/Node/Go.md',
+            link: '/Node/Go/',
+            link: '/Node/Go/极简学习.md',
+            link: '/Node/Go/Go项目学习.md',
         },
         {
             text: 'Python',
             link: '/Node/Python/',
+            link: '/Node/Python/Python基础.md',
         },
         {
             text: 'Nest.js',

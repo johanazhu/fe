@@ -78,7 +78,7 @@ function FrontEndSideBar() {
         },
         {
             text: '运维部署',
-            children: ['/Docker/', '/Git/', '/Linux/', '/DevOps/'],
+            children: ['/Docker/', '/Git/', '/Nginx', '/Linux/', '/DevOps/'],
         },
         {
             text: '计算机基础打底',

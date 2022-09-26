@@ -352,3 +352,4 @@ console.log(inventory.find(findCherries)); // { name: 'cherries', quantity: 5 }
 -   [JS 中使用扩展运算符的 10 种方法，好家伙，点个赞呗！](https://segmentfault.com/a/1190000038998504)
 -   [前端开发者不得不知的 ES6 十大特性](http://www.alloyteam.com/2016/03/es6-front-end-developers-will-have-to-know-the-top-ten-properties/)
 -   [老司机也会在闭包相关知识点翻车（上）](https://gitbook.cn/gitchat/column/5c91c813968b1d64b1e08fde/topic/5c99a9a3ccb24267c1d01960)
+-   [面试官——什么时候不能使用箭头函数？](https://mp.weixin.qq.com/s/l7oio3AIRJB8pG07lig9MA)

@@ -39,7 +39,7 @@ JavaScript 的数据类型分为「基本类型」和 「引用类型」
 
 引用类型花销的内存大，所以拷贝引用地址
 
-![类型存储](../.vuepress/public/images/JavaScript/类型存储.png)
+![类型存储](https://s2.loli.net/2022/08/17/xh5w8ld4BHEWsTO.png)
 
 ```javascript
 // 案例1
@@ -57,7 +57,7 @@ var object2 = object1;
 object1.name = 'elaine';
 object2.age = 22;
 console.log(object1, object2);
-// 输出 { name: 'elaine', age: 23 } { name: 'elaine', age: 23 }
+// 输出 { name: 'elaine', age: 22 } { name: 'elaine', age: 22 }
 ```
 
 因为基本类型是存放在栈内存中，string1 赋值给 string2 后，相当于开了一个独立空间给 string2，string1 和 string2 是完全独立的两个个体，再给 string1 赋值什么，都与 string2 无关
@@ -261,7 +261,7 @@ console.log(Object.prototype.toString.call(myRegExp)); //[object RegExp]
 console.log(Object.prototype.toString.call(myError)); //[object Error]
 ```
 
-我们可以看到它返回 [object NativeConstructorName] 格式的字符串，它能清晰的判断我们所需要的原生构造函数。同样，它的缺点是不能检测非原生构造函数
+我们可以看到它返回 `[object NativeConstructorName]` 格式的字符串，它能清晰的判断我们所需要的原生构造函数。同样，它的缺点是不能检测非原生构造函数
 
 在 jquery 中的$.type() 是内部的原理用的就是 Object.prototype.toString.call()，让我们手写一个类型判断的小小工具库吧
 

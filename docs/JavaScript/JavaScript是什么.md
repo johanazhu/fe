@@ -1,6 +1,6 @@
 # JavaScript 是什么？
 
-Brendan Eich 花了 10 天事件，设计完成的一门语言。它是个大杂烩，参考了多个语言，例如：
+Brendan Eich 花了 10 天时间，设计完成的一门语言。它是个大杂烩，参考了多个语言，例如：
 
 - 基本语法：借鉴 C 语言和 Java 语言
 - 数据结构：借鉴 Java 语言，包括将值分成原始值和对象两大类
@@ -29,7 +29,7 @@ JavaScript = ECMAScript + 文档对象模型（DOM）+  浏览器对象模型（
 
 ECMAScript：语言本身，由语法、类型、语句、关键字、保留字、操作符、全局对象组成
 
-文档对象模型（DOM）：操作 HTML 的 API，名字有多又长，可查文档——[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
+文档对象模型（DOM）：操作 HTML 的 API，名字又多又长，可查文档——[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
 
 浏览器对象模型（BOM）：操作 浏览器的 API，如 Window、Screen、Location、History、Navigator、弹出框、Timing、Cookies
 

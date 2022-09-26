@@ -1,85 +1,51 @@
 # Python
 
-一切皆对象（Object）
+## 前言
 
-有自己从属的数据类型
+只要你学过其他编程语言，上手 Python 真的都很容易，3 - 7 天就能学会。
 
-有属性（attribute）和方法（method）/函数（function）
 
-### Python 标准的数据类型 Data Types
 
--   数字（Number）
--   字符（String）
--   列表（List）
--   字典（Dictionary）
--   元组（Tuple）
--   集合（Set）
 
-### Number
 
-#### 整数（integer）
+安装简单的，可以看[菜鸟教程](https://www.runoob.com/python/python-install.html)的教程，需要注意的是安装路径和勾选环境配置，默认会安装 pip，它是 python 的包管理工具，可以理解为i node 中的 npm
 
--   0.1
+在命令行中输入以下命令：
 
-浮点数（float）
+```shell
+python --version
+# Python 3.10.6
 
-# Python
+pip --version
+# pip 22.2.1 from D:\Program Files (x86)\Python\lib\site-packages\pip (python 3.10)
 
-展哥视频课程：
-
-https://www.bilibili.com/video/av23687046
-
-书：
-
-笨方法学 python
-
-廖雪峰的 python3 教程
-
-https://www.liaoxuefeng.com/wiki/1016959663602400/1016966022717728
-
-### 数据类型
-
-#### 整数
-
-#### 浮点数
-
-#### 字符串
-
-#### 布尔值
-
-布尔值可以用 `and` 、 `or` 和 `not` 运算。
-
-#### 空值
-
-空值是 Python 里一个特殊的值，用`None`表示。`None`不能理解为`0`，因为`0`是有意义的，而`None`是一个特殊的空值。
-
-### 变量
-
-变量不仅可以是数字，还可以是任意数据类型。
-
-它是个动态语言
-
-本量本身类型不固定
-
-#### 内存
-
-```python
-a = 'ABC'
+pip list
+# 查看有哪些包
+# Package    Version
+# ---------- -------
+# pip        22.2.2
+# setuptools 63.2.0
 ```
 
-python 解释器干了两件事请：
+下载其他的包，例如 Django、Flask
 
-1. 在内存中创建了一个`'ABC'` 的字符串；
-2. 在内存中创建了一个名为 `a` 的变量，并把它指向 `'ABC'`
-
-#### 常数
-
-所谓常量就是不能变的变量，比如常用的数学常数 π 就是一个常量。
-
-```python
-PI = 3.14159265359
+```shell
+pip install Django
+#Looking in indexes: https://pypi.doubanio.com/simple/
+#Collecting Django
+#  Downloading #https://pypi.doubanio.com/packages/80/5c/884f9fed747679a1f70321465e664f3dc1602e8b7a6e96a21163894018b3/Django-4.1.1-py3-none-any.whl (8.1 MB)
+#     ---------------------------------------- 8.1/8.1 MB 602.3 kB/s eta #0:00:00
+pip install Flask
 ```
 
-注意：Python 的整数没有大小限制，而某些语言的整数根据其存储长度是有大小限制的，例如 Java 对 32 位整数的范围限制在`-2147483648`-`2147483647`。
+默认会从豆瓣源中下载
 
-Python 的浮点数也没有大小限制，但是超出一定范围就直接表示为`inf`（无限大）
+
+
+
+
+
+
+## 参考资料
+
+- [人生苦短，我用 Python](https://github.com/jobbole/awesome-python-cn)

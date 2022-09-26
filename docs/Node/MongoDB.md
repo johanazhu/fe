@@ -34,7 +34,7 @@ use database_name
 切换到 scholl 数据库下
 
 ```shell
-use school
+use scholl 
 ```
 
 #### 查看所有数据库
@@ -162,7 +162,7 @@ Model 是由通过 Schema 构造而成 除了具有 Schema 定义的数据库骨
 let User = mongoose.model('User', schema);
 ```
 
-### 图形工具推荐
+### 数据库图形化工具
 
 [Robo 3T（推荐）](https://robomongo.org/download)（免费）
 

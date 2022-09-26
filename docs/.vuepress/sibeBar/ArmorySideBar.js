@@ -25,8 +25,7 @@ function ArmorySideBar() {
                 '/Linux/目录结构.md',
                 '/Linux/防火墙知一二.md',
                 '/Linux/远程服务器相关操作.md',
-                '/Linux/Oeasy教linux.md',
-                '/Linux/shell.md',
+                '/Linux/Linux教程.md',
             ],
         },
         {

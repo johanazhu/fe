@@ -20,6 +20,71 @@ Redis 是一个开源（BSD 许可）的内存数据结构存储，用作数据�
 
 目前的场景就是当作缓存用
 
+
+
+`redis.cli -v`：查看 redis 版本
+
+
+
+
+
+启动 reids
+
+```shell
+redis-server
+```
+
+查看 reids 是否启动
+
+重新开个窗口
+
+```shell
+redis-cli
+```
+
+以上命令将打开以下终端：
+
+```shell
+redis 127.0.0.1:6379>
+```
+
+127.0.0.1 是本机 IP ，6379 是 redis 服务端口。现在我们输入 PING 命令。
+
+```shell
+redis 127.0.0.1:6379> ping
+PONG
+```
+
+退出 redis 终端
+
+CTRL+C 或者 exit
+
+![redis命令](https://s2.loli.net/2022/09/26/UzI9sCcKW3ERO1p.png)
+
+### 如何后台启动 redis
+
+修改 redis.conf 文件中的 daemonize 
+
+开启 `daemonize  yes` 报错退出
+
+如何找到 redis.conf
+
+```shell
+find / -name redis.conf
+```
+
+使用 redis-server 启动 redis.conf 配置文件
+
+```shell
+redis-server ./redis.conf
+```
+
+> PS：redis-server 为 bin 命令，在 redis.conf 目录下
+
+![redis.conf](https://s2.loli.net/2022/09/26/8gFKCVcT3UqG5H4.png)
+
+
+
 ## 常见命令行
 
 | 命令名        | 描述           |

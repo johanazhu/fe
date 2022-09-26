@@ -537,3 +537,74 @@ toilet  --gay oeasy | cowthink -n
 **我对管道的理解：就是下一步**
 
 后续就不用学了
+
+
+
+
+
+
+
+
+
+
+
+## 用户及文件权限管理
+
+### 查看用户
+
+- `who am i` 或者 `who mom likes` 
+- `who am i ` 与 `whoami` 的区别
+
+### 创建用户
+
+root 具有最高权限，可以新建和添加用户
+
+- `su <user>`：可以切换用户 user
+- `sudo <cmd>`：可以以特权级别运行 cmd 命令
+  - 需要当前用户属于 sudo 组，且需要输入当前用户的密码
+
+- `su - <user>`：切换用户，同时用户的环境变量和工作目录也随之改变 
+
+#### 新建用户
+
+`sudo adduser lilei`
+
+此命令会在 `/home` 目录下创建一个工作目录，名字与用户名相同
+
+#### 切换登录用户
+
+`su -l lilei`
+
+
+
+
+
+
+
+### 用户组
+
+```shell
+groups lilei
+sudo usermod -G sudo lilei
+groups lilei
+```
+
+将lilei 添加到 sudo 权限中
+
+查看用户组：`groups lilei`
+
+删除用户：`sudo deluser lilei --remove-home`
+
+- `--remove-home` 参数在删除用户时候会一并将该用户的工作目录一并删除
+
+
+
+## 用户及文件权限管理
+
+`ls -l`
+
+修改文件权限：`chmod 600 xxxx`
+
+
+
+## 目录结构及文件基本操作

@@ -1,4 +1,60 @@
-# docker 实战
+# docker 初步体验
+
+
+
+先安装成功，其次再用命令行：
+
+```shell
+docker run -d -p 8081:80 docker/getting-started
+```
+
+没报错说明安装成功，输入命令行`docker ps` 查看正在启动的容器：
+
+![docker ps](https://s2.loli.net/2022/09/10/g7UelOvsJWq3r9Y.png)
+
+在浏览器中输入`http://localhost:8081`，能查看到启动的 docker 的教程页面
+
+## 安装 mysql 
+
+先去 [dockerhub](https://hub.docker.com/) 上搜索 mysql 镜像，输入命令行：
+
+```shell
+docker run --name mysql1 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.39
+```
+
+没报错说明已启动，进入容器
+
+```shell
+docker exec -it mysql1 bash
+```
+
+![进入容器](https://s2.loli.net/2022/09/10/6LAu2PlMarS1YEg.png)
+
+试一试 mysql 是否可以用，先登录 mysql
+
+```shell
+mysql -u root -p
+```
+
+输入密码123456
+
+![查看容器中的mysql](https://s2.loli.net/2022/09/10/6PT8b2Xuel5wCoN.png)
+
+成功登录
+
+## 安装 nginx 
+
+先去 [dockerhub](https://hub.docker.com/) 上搜索 nginx 镜像，输入命令行：
+
+```shell
+docker run --name nginx1 -d -p 8080:80 nginx:1.23.1
+```
+
+在浏览器中输入`http://localhost:8080`，如果能看到`Welcome to nginx!` 等字眼，说明容器已经启动
+
+
+
+
 
 docker 是什么？
 

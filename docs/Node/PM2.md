@@ -13,7 +13,9 @@
 
 ## 常用命令
 
-`pm2 start [app.js]` 启动
+`pm2 start [app.js]`：启动
+
+- `pm2 start app.js --name blog`
 
 `pm2 restart [app.js]` 重启
 
