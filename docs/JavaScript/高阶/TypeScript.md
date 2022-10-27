@@ -253,4 +253,5 @@ class SomePartialPoint implements PartialPoint {
 -   [编写高质量可维护的代码：Awesome TypeScript](https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw)
 -   [字节 React + TypeScript 实践总结篇](https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ)
 -   [最全的 TypeScript 学习指南](https://juejin.cn/post/7031787942691471396)
+-   [如何优雅地在 React 中使用TypeScript，看这一篇就够了！](https://mp.weixin.qq.com/s/0aJmPyh_Npn3CiGJuyd5aw)
 

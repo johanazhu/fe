@@ -167,7 +167,7 @@
 
 
         // currying 柯里化
-        // ex: add(1)(2)(3) 
+        // ex: add(1)(2)(3)
         // add(1, 2)(3) add(1)(2, 3)
         function sum(a, b, c) {
             return a + b + c;
@@ -285,12 +285,11 @@
         // 性能优化
         // React 相关复习
         // 首屏 性能指标
-        // jingui相关 皮肤概念、如何做一个组件思考
         // 移动端web相关 适配方案
         // flex、bfc、
 
-        // person.call(this, "johan", 28) 
-        // 
+        // person.call(this, "johan", 28)
+        //
         function myCall(context = window, ...args) {
             if (this === Function.prototype) {
                 return undefined;
@@ -402,8 +401,8 @@
         // async await 是 generator 的语法糖，并对 generator 函数进行了改进（返回值是 promise）
 
         // 错误捕获
-        // JS 执行错误 
-        // try catch 
+        // JS 执行错误
+        // try catch
         // 可预见错误
         // 捕获不到具体的语法错误和异步错误
         // window.error
@@ -423,14 +422,13 @@
         // 为什么不再条件语句中的写hooks
         // hooks 是以链表的形式相连，使用 for 语句、if，会使得后续的状态没法更新
 
-        // jingui 皮肤
         // sass less
         // css 变量 --
         // 按需加载 webpack babel-plugin-import
         // 如何做一个组件、组件库
         // 移动端web相关 适配方案
         // flexible(rem布局) vw 布局 px 布局
-        // 
+        //
         // 防抖节流
         // 防抖 dobounce
         // 一段时间内执行代码，  以最后一次为准
@@ -486,14 +484,14 @@
         // React 错误
             // 错误捕获
             // static getDerviedStateFromProps componentDidCatch
-        
+
         // 图片懒加载
         // 最开始用placeholder图或者loading图来代替，真正的图片放在data-img属性上，等到图片需要展示的时候再替换img.src
         // 监听所有scroll，为了性能，200ms 拉动一次
         // 循环所有的图片，判断他们的偏移高度与视窗高度+滚动高度之和，如果小于，则说明图片已经显示在视图中，那么就展示
         // 通过 getBoundingClientRect，也是循环所有图片，但是是通过拿到该元素的getBoundingClientRect 来判断是否出现再视图中
         // intersectionObserver 交叉观察器，异步
-        
+
         // 类数组与数组的区别
         // 类数组有哪些 arguments、dom 对象列表（document.querySelectorAll）
         // 类数组有 length，但实际上是对象

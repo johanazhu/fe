@@ -8,9 +8,25 @@
 
 ### JavaScript 方面
 
-[词法环境](https://fe.azhubaby.com/JavaScript/词法环境.html)
+[深入理解JavaScript——JavaScript 由什么组成](https://fe.azhubaby.com/JavaScript/JavaScript由什么组成.html)
 
-[执行上下文与作用域](https://fe.azhubaby.com/JavaScript/作用域与执行上下文.html)
+[深入理解JavaScript——Object.create](https://fe.azhubaby.com/JavaScript/Object.create.html)
+
+[深入理解JavaScript——原型](https://fe.azhubaby.com/JavaScript/原型.html)
+
+[深入理解JavaScript——JavaScript 中的始皇](https://fe.azhubaby.com/JavaScript/JavaScript中的始皇.html)
+
+[深入理解JavaScript——Function](https://fe.azhubaby.com/JavaScript/Function.html)
+
+[深入理解JavaScript-this关键字](https://fe.azhubaby.com/JavaScript/this关键字.html)
+
+[深入理解JavaScript——词法环境](https://fe.azhubaby.com/JavaScript/词法环境.html)
+
+[深入理解JavaScript——执行上下文与调用栈](https://fe.azhubaby.com/JavaScript/作用域与执行上下文.html)
+
+[深入理解JavaScript——闭包](https://fe.azhubaby.com/JavaScript/闭包.html)
+
+[深入理解JavaScript——函数式编程](https://fe.azhubaby.com/JavaScript/函数式编程.html)
 
 ### React 方面
 
@@ -55,3 +71,17 @@
 有兴趣的话，可以加我的公众号——随朱波流，这里记录不仅前端
 
 ![微信公众号二维码](https://s2.loli.net/2022/03/24/GsVP9mbAqXRzMD3.jpg)
+
+
+
+## 请我喝咖啡:coffee:
+
+如果您觉得这个项目能够帮助到您，可以给我个 star🌟，也可以推荐给您的朋友
+
+持续更新中～ 🚀🚀🚀
+
+<img src="https://s2.loli.net/2022/10/09/31kvp8HRJuoBCfc.jpg" height="300px" width="300px" />
+
+## License
+
+MIT

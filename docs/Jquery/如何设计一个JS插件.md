@@ -9,3 +9,4 @@
 -   [如何动手写一个 JQuery 插件](http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html#1)
 -   [设计一个 JS 插件系统](https://juejin.cn/post/6871077497044205575)
 -   [如何设计一个 JavaScript 插件系统，编程思维比死磕 API 更重要](https://zhuanlan.zhihu.com/p/231848209?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128&utm_content=sec)
+-   [循序渐进，如何优雅地编写一个高逼格的JS插件？](https://mp.weixin.qq.com/s/9s1GrxMonMuKGpWU4Jm3SQ)
