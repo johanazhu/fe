@@ -86,7 +86,7 @@ function FrontEndSideBar() {
         },
         {
             text: '前端基础三件套',
-            children: ['/HTML/', '/CSS/', '/Jquery/'],
+            children: ['/HTML/', '/CSS/', '/JQuery/'],
         },
         {
             text: '源码读书课程',

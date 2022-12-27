@@ -283,6 +283,25 @@ end
 
 
 
+### Class
+
+def = define 定义 的意思
+
+```ruby
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def hi(target)
+    p "Hi #{target}, I am #{@name}"
+  end
+end
+
+u1 = User.new 'johan'
+u1.hi 'jack'
+```
+
 
 
 ## 参考资料

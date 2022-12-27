@@ -6,7 +6,7 @@
 
 underscore
 
-jquery
+jQuery
 
 我的有局限性，最好的方式是自己学会搜索引擎，在 Google、知乎搜索 “Github 源码 前端” 关键字
 
