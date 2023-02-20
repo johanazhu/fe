@@ -57,7 +57,7 @@
 
   - 因为考虑到 commit 的整洁性，会使用 rebase 来合并 commit
 
-  - ```shell
+  - ```bash
     git fetch upstream dev
     git rebase upstream/dev
     git commit
@@ -78,25 +78,25 @@
 
 - 切换到 master 分支
 
-  ```shell
+  ```bash
   git checkout master
   ```
 
 - 以 master 分支为铆点拉去 upstream 远程分支最新的代码
 
-  ```shell
+  ```bash
   git pull upstream master
   ```
 
 - 切换回 branch1（自己的开发分支）
 
-  ```shell
+  ```bash
   git checkout branch1
   ```
 
 - 把 master 的 commit 合并到 branch1：
 
-  ```shell
+  ```bash
   git merge master
   // 或
   git rebase master
@@ -104,7 +104,7 @@
 
 - 把更新的代码提交到自己的远程仓库：
 
-  ```shell
+  ```bash
   git push origin branch1
   ```
 

@@ -30,7 +30,7 @@ Redis 是一个开源（BSD 许可）的内存数据结构存储，用作数据�
 
 启动 reids
 
-```shell
+```bash
 redis-server
 ```
 
@@ -38,19 +38,19 @@ redis-server
 
 重新开个窗口
 
-```shell
+```bash
 redis-cli
 ```
 
 以上命令将打开以下终端：
 
-```shell
+```bash
 redis 127.0.0.1:6379>
 ```
 
 127.0.0.1 是本机 IP ，6379 是 redis 服务端口。现在我们输入 PING 命令。
 
-```shell
+```bash
 redis 127.0.0.1:6379> ping
 PONG
 ```
@@ -69,13 +69,13 @@ CTRL+C 或者 exit
 
 如何找到 redis.conf
 
-```shell
+```bash
 find / -name redis.conf
 ```
 
 使用 redis-server 启动 redis.conf 配置文件
 
-```shell
+```bash
 redis-server ./redis.conf
 ```
 

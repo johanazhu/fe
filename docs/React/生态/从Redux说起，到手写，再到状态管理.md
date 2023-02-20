@@ -743,7 +743,7 @@ export const bindActionCreators = (actionCreators, dispatch) => {
 
 先创建项目
 
-```shell
+```bash
 npx create-react-app demo-5-react
 ```
 

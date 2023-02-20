@@ -70,7 +70,7 @@ ctx.status; // 相当于 ctx.response.status
 
 #### 下载 npm 包
 
-```shell
+```bash
 npm install koa-router --save
 ```
 
@@ -170,7 +170,7 @@ app.listen(3000);
 -   koa-json-error —— 处理错误
 -   koa-parameter —— 参数校验
 
-```shell
+```bash
 cnpm i koa-bodyparser -S
 cnpm i koa-static -S
 cnpm i @koa/cors -S
@@ -213,7 +213,7 @@ JSON Web Token（JWT）是一种流行的 RESTful API 鉴权方案
 
 先安装相关的 npm 包
 
-```shell
+```bash
 cnpm install koa-jwt jsonwebtoken -S
 ```
 
@@ -307,7 +307,7 @@ module.exports = router;
 
 ### 下载 mongoose
 
-```shell
+```bash
 cnpm i mongoose -S
 ```
 
@@ -441,7 +441,7 @@ module.exports = UserController;
 
 ### 下载 npm 包——bcrypt
 
-```shell
+```bash
 cnpm i bcrypt --save
 ```
 

@@ -10,7 +10,7 @@
 
 #### 如何查找本机的内核
 
-```shell
+```bash
 uname
 ```
 
@@ -21,7 +21,7 @@ uname
 
 查找更多请输入选项 **--help**
 
-```shell
+```bash
 uname --help
 ```
 
@@ -33,7 +33,7 @@ uname --help
 
 我们可以通过 uname -a 得到全部信息
 
-```shell
+```bash
 uname -a
 ```
 
@@ -49,7 +49,7 @@ uname -a
 
 只靠 linux 内核，我们无法做任何事情，只有内核和各种应用程序在一起，我们才能使用。
 
-发行版 (distro) 的英文原文是 distribution, 是内核和应用程序的集合。一个典型的 Linux 发行版包括：Linux 内核，一些 GNU 程序库和工具，命令行 shell, 也会包含图形界面。
+发行版 (distro) 的英文原文是 distribution, 是内核和应用程序的集合。一个典型的 Linux 发行版包括：Linux 内核，一些 GNU 程序库和工具，命令行 bash, 也会包含图形界面。
 
 发行版非常多，你可以去 [distrowatch](https://distrowatch.com/) 去看看各种个样的发行版的介绍！
 
@@ -106,7 +106,7 @@ Mint 也是长期霸榜的存在，收入主要靠 t 恤和赞助
 
 #### 如何查看发行版的版本号
 
-```shell
+```bash
 ls /etc/*release
 ```
 
@@ -151,7 +151,7 @@ proc 指的是 process（进程）， 进程就是被内核从硬盘加载到内
 -   顾名思义 `whatis` 你是干嘛的？
 -   `whatis` 可以告我们某条命令是干什么用的
 
-```shell
+```bash
 whatis uname
 ```
 
@@ -169,13 +169,13 @@ whatis uname
 
 ### 这儿都有啥 ls
 
-```shell
+```bash
 ls -a
 ```
 
 这下我们看到隐藏文件（以"."开头的）了！
 
-```shell
+```bash
 ls -l
 ```
 
@@ -197,19 +197,19 @@ ls -la
 -   人们可以使用 k,m,g,t 等存储容量单位来观察了
 -   h 的意思是 Human Readable
 
-```shell
+```bash
 ls -h
 ```
 
 #### 递归查询文件
 
-```shell
+```bash
 ls -R
 ```
 
 ### 那啥在哪 whereis
 
-```shell
+```bash
 whereis ls
 ```
 
@@ -217,7 +217,7 @@ whereis ls
 
 查看绝对路径
 
-```shell
+```bash
 which java
 ```
 
@@ -231,7 +231,7 @@ which java
 
 接下来我们来对 `cat` 命令，试试这个灵魂三问：
 
-```shell
+```bash
 whatis cat
 whereis cat
 which cat
@@ -320,13 +320,13 @@ apt 是 advanced package tools 的意思，apt 是 debian 系发行版的软件�
 
 下载
 
-```shell
+```bash
 sudo apt install linuxlogo
 ```
 
 展示
 
-```shell
+```bash
 linuxlogo
 ```
 
@@ -341,7 +341,7 @@ linuxlogo
 
 查找
 
-```shell
+```bash
 apt search large character
 ```
 
@@ -353,7 +353,7 @@ sudo apt install figlet
 
 使用
 
-```shell
+```bash
 figlet elaine
 ```
 
@@ -361,7 +361,7 @@ figlet elaine
 
 查找所有的模板文字
 
-```shell
+```bash
 sudo find / -name "*.flf"
 ```
 
@@ -369,37 +369,37 @@ sudo find / -name "*.flf"
 
 查找（搜索）
 
-```shell
+```bash
 apt search toilet
 ```
 
 展示信息
 
-```shell
+```bash
 apt show toilet
 ```
 
 下载
 
-```shell
+```bash
 sudo apt install toilet
 ```
 
 使用
 
-```shell
+```bash
 toilet elaine
 ```
 
 查找所有的模板文字
 
-```shell
+```bash
 sudo find / -name "*.tlf"
 ```
 
 ### 蒸汽汽车 sl
 
-```shell
+```bash
 sudo apt install sl
 sl
 sl -l
@@ -416,7 +416,7 @@ sl -F
 
 下载
 
-```shell
+```bash
 sudo apt install cmatrix
 ```
 
@@ -430,7 +430,7 @@ sudo apt install cmatrix
 -   `-C`: 后面加上想要的颜色 (Color) 模式
     -   目前支持红绿蓝青品黄黑白
 
-```shell
+```bash
 cmatrix -b
 cmatrix -u 9
 cmatrix -C blue
@@ -440,13 +440,13 @@ cmatrix -C blue
 
 下载
 
-```shell
+```bash
 sudo apt install bb
 ```
 
 使用
 
-```shell
+```bash
 bb
 ```
 
@@ -454,14 +454,14 @@ bb
 
 显示和搜索
 
-```shell
+```bash
 apt show hollywood
 apt search hollywood
 ```
 
 更新源信息及下载 hollywood
 
-```shell
+```bash
 sudo apt update	#更新源信息
 apt show hollywood
 sudo apt install hollywood
@@ -469,7 +469,7 @@ sudo apt install hollywood
 
 使用
 
-```shell
+```bash
 hollywood
 ```
 
@@ -485,13 +485,13 @@ hollywood
 
 下载
 
-```shell
+```bash
 sudo apt install cowsay
 ```
 
 使用
 
-```shell
+```bash
 cowsay johan
 ```
 
@@ -504,7 +504,7 @@ cowsay johan
 -   `-t` 闭眼的
 -   `-e` 设置眼睛 eye 字符 后面眼睛字符
 
-```shell
+```bash
 cowsay -p johan
 cowsay -s johan
 cowsay -e *- johan
@@ -512,7 +512,7 @@ cowsay -e *- johan
 
 除了 cowsay 之外，cowthink 也可以使用
 
-```shell
+```bash
 cowthink -p joahan
 ```
 
@@ -530,7 +530,7 @@ pipe 原理
 -   cowsay 接收到了流过来的 figlet 的结果做为参数
 -   cowsay 的输出结果最终流到了屏幕 (stdout) 上
 
-```shell
+```bash
 toilet  --gay oeasy | cowthink -n
 ```
 
@@ -583,7 +583,7 @@ root 具有最高权限，可以新建和添加用户
 
 ### 用户组
 
-```shell
+```bash
 groups lilei
 sudo usermod -G sudo lilei
 groups lilei

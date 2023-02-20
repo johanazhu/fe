@@ -12,7 +12,7 @@
 
 在命令行中输入以下命令：
 
-```shell
+```bash
 python --version
 # Python 3.10.6
 
@@ -29,7 +29,7 @@ pip list
 
 下载其他的包，例如 Django、Flask
 
-```shell
+```bash
 pip install Django
 #Looking in indexes: https://pypi.doubanio.com/simple/
 #Collecting Django

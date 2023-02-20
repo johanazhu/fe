@@ -24,7 +24,7 @@ MongoDB 与 Mysql 的区别
 
 #### 使用数据库
 
-```shell
+```bash
 use database_name
 ```
 
@@ -33,25 +33,25 @@ use database_name
 
 切换到 scholl 数据库下
 
-```shell
+```bash
 use scholl 
 ```
 
 #### 查看所有数据库
 
-```shell
+```bash
 show dbs
 ```
 
 -   备注：我们刚创建的数据库 `school` 如果不在列表内，要显示它，我们需要向 `school` 数据库插入一些数据
 
-```shell
+```bash
 db.students.insert({name: 'johan', age: 18})
 ```
 
 #### 查看当前使用的数据库
 
-```shell
+```bash
 db
 ```
 
@@ -59,7 +59,7 @@ db
 
 #### 删除数据库
 
-```shell
+```bash
 db.dropDatabase()
 ```
 
@@ -67,7 +67,7 @@ db.dropDatabase()
 
 #### 查找集合帮助
 
-```shell
+```bash
 db.students.help()
 ```
 
@@ -75,7 +75,7 @@ db.students.help()
 
 #### insert
 
-```shell
+```bash
 db.student.insert({name: "elaine", age: 20})
 ```
 
@@ -83,7 +83,7 @@ db.student.insert({name: "elaine", age: 20})
 
 保存
 
-```shell
+```bash
 db.student.save({name: "elaine", age: 20})
 ```
 
@@ -97,7 +97,7 @@ db.student.save({name: "elaine", age: 20})
 
 ### 安装 mongoose
 
-```shell
+```bash
 cnpm i mongoose -S
 ```
 

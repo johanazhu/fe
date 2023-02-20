@@ -308,11 +308,23 @@ P92
 
 
 
+## 3天搞定Linux，1天搞定Shell，清华学神带你通关
+
+
+
+
+
+
+
 
 
 
 
 ## 参考资料
+
+
+
+- [3天搞定Linux，1天搞定Shell，清华学神带你通关](https://www.bilibili.com/video/BV1WY4y1H7d3)
 
 
 

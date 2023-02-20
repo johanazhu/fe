@@ -15,3 +15,10 @@
 
 - [来，跟我一起做 Go 项目！建议两倍速，并开启AI字幕播放！](https://www.bilibili.com/video/BV1mu411R7qw)
 
+
+
+
+
+Go 语言学习感想
+
+https://baya.github.io/2019/04/15/go%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3.html

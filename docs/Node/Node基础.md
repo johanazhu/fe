@@ -52,7 +52,7 @@ process 全局对象可以说是 Node.js 的灵魂，它是管理当前 Node.js 
 >
 > 可以在 Node REPL 中尝试一下这些对象。像上面说的那样进入 REPL（你的输出很有可能跟我的不一样）：
 >
-> ```shell
+> ```bash
 > $ node
 > Welcome to Node.js v12.10.0.
 > Type ".help" for more information.

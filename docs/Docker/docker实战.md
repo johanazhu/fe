@@ -4,7 +4,7 @@
 
 先安装成功，其次再用命令行：
 
-```shell
+```bash
 docker run -d -p 8081:80 docker/getting-started
 ```
 
@@ -18,13 +18,13 @@ docker run -d -p 8081:80 docker/getting-started
 
 先去 [dockerhub](https://hub.docker.com/) 上搜索 mysql 镜像，输入命令行：
 
-```shell
+```bash
 docker run --name mysql1 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.39
 ```
 
 没报错说明已启动，进入容器
 
-```shell
+```bash
 docker exec -it mysql1 bash
 ```
 
@@ -32,7 +32,7 @@ docker exec -it mysql1 bash
 
 试一试 mysql 是否可以用，先登录 mysql
 
-```shell
+```bash
 mysql -u root -p
 ```
 
@@ -46,7 +46,7 @@ mysql -u root -p
 
 先去 [dockerhub](https://hub.docker.com/) 上搜索 nginx 镜像，输入命令行：
 
-```shell
+```bash
 docker run --name nginx1 -d -p 8080:80 nginx:1.23.1
 ```
 

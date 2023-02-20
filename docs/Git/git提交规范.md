@@ -45,7 +45,7 @@ git commit 规范主要可以帮助开发人员在 code reivew 期间更容易�
 
 具体配置：
 
-```shell
+```bash
 # 安装 commitlint cli 和 conventional config
 npm install --save-dev @commitlint/{config-conventional,cli}
 # Windows:

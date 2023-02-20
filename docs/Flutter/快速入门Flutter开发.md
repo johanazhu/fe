@@ -176,7 +176,7 @@ _getIPAddress() async {
 
 -   命令行
 
-    -   ```shell
+    -   ```bash
         flutter create <projectname>
         ```
 
@@ -186,7 +186,7 @@ _getIPAddress() async {
 
 -   命令行
 
-    -   ```shell
+    -   ```bash
         flutter run -d 'iPhone X'
         ```
 

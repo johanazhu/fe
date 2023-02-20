@@ -59,7 +59,7 @@ merge 翻译为合并，即 `git merge branchname`，即合并分支代码，这
 
 在开发中，通常会在一个分支上产生很多无效的提交，这种情况下使用 rebase 的交互模式可以把多次 commit 压缩成一次提交，得到一个干净的提交历史
 
-```shell
+```bash
 # 先看提交
 git log 
 # f9f6f3b commit 3
@@ -78,7 +78,7 @@ git rebase -i <base-commit>
 
 换个说法叫时光机，即通过查找所有分支的所有操作记录（包括已经被删除的 commit 记录和 reset 的操作），通过 reset HEAD 跳到指定 commit
 
-```shell
+```bash
 git reflog
 #afa2f45 HEAD@{10}: checkout: moving from 今天 to 明天
 #4abcda5 HEAD@{11}: commit: 打通1800处仙窍
@@ -97,7 +97,7 @@ git reset HEAD@{10}
 
 张三在分支上开发功能，每个功能点提交一次commit，共六个提交六个功能点（分别是 feature1~feature6），再回到第一个提交点，即他使用 `git reset --hard feature1` 跳转第一个 commit，在此基础上开发一个新功能，即 feature7，那么如果把 feature7 合并到 feature6 上怎么做？
 
-```shell
+```bash
 git reflog
 # git reflog 查看所有分支的所有操作记录（包括已经被删除的 commit 记录和 reset 的操作）
 # 找到 feature7 的 commit 4c97ff3
@@ -115,7 +115,7 @@ git cherry-pick 4c97ff3
 
 amend 的意思是修正
 
-```shell
+```bash
 # 继续改动你的文件
 git add . 
 git commit --amend --no-edit
@@ -134,7 +134,7 @@ git commit --amend --no-edit
 
 上文提到一个回滚操作：`git reset --hard xxx`，能回到某次的 commit，除此之外，还有一种则是能撤销某次 commit
 
-```shell
+```bash
 # 先找到你想撤销的那个 commit hash值
 git log
 git revert <commit-id>
@@ -166,7 +166,7 @@ git revert <commit-id>
 
 基本命令如下：
 
-```shell
+```bash
 git stash # 将本地的改动暂存
 git stash save "message" # 执行存储时，添加备注
 git stash pop # 应用最近一次暂存，并删除暂存记录
@@ -182,7 +182,7 @@ git ls-files --stage #查看 index 暂存区
 
 如下面的例子：
 
-```shell
+```bash
 git config --global alias.co checkout
 git config --global alias.ci commit
 git config --global alias.br branch
@@ -190,7 +190,7 @@ git config --global alias.br branch
 
 当然，另一种方法是在 .gitconfig 文件中设置
 
-```shell
+```bash
 [alias]
 st = status -sb
 co = checkout

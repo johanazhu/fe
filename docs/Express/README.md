@@ -24,7 +24,7 @@ Express 是基于 [Node.js](https://nodejs.org/en/) 平台，快速、开放、�
 
 ## 安装
 
-```shell
+```bash
 npm i express -S
 ```
 

@@ -4,7 +4,7 @@ Shell 是连接用户和操作系统的应用软件，Shell 脚本
 
 例子1：输入两个整数 m 和 n，计算从 m 到 n 的整数求和结果
 
-```shell
+```bash
 #! /usr/bin/bash
 printf 'm = '
 read m

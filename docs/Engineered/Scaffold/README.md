@@ -22,20 +22,20 @@ azhu-cli 脚手架需求分析和架构设计，架构设计图脚手架架构�
 
 第一步：初始化 npm 项目
 
-```shell
+```bash
 npm init -y
 ```
 
 第二步：全局下载 lerna
 
-```shell
+```bash
 cnpm i lerna -g
 cnpm i lerna -D
 ```
 
 第三步：lerna init 初始化项目
 
-```shell
+```bash
 lerna init
 ```
 
@@ -43,14 +43,14 @@ lerna init
 
 第四步：lerna create 创建 package
 
-```shell
+```bash
 lerna create core
 lerna create utils
 ```
 
 第五步：lerna add 安装依赖
 
-```shell
+```bash
 lerna add lodash
 ```
 
@@ -60,7 +60,7 @@ lerna add lodash
 
 可以指定包
 
-```shell
+```bash
 lerna add underscore --scope=@azhu-cli-dev/core
 // 或者
 lerna add underscore packages/core
@@ -86,10 +86,10 @@ lerna link 将依赖软链接
 
 其他命令
 
-```shell
+```bash
 lerna clean // 清除安装包
 lerna bootstrap // 重新下载依赖
-lerna exec // 执行 shell 脚本
+lerna exec // 执行 bash 脚本
 lerna run // 执行 npm 命令
 ```
 
@@ -101,7 +101,7 @@ lerna run // 执行 npm 命令
 
 第八步：发布 npm 社区
 
-```shell
+```bash
 lerna publish
 ```
 

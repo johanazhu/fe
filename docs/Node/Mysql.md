@@ -20,13 +20,13 @@ SQLyog、Navicat 这两个我都有用
 
 登录mysql
 
-```shell
+```bash
 mysql -u root -p
 ```
 
 本地登录mysql
 
-```shell
+```bash
 mysql -u root -p -h IP地址
 ```
 
@@ -139,7 +139,7 @@ SET SQL_SAFE_UPDATES=0;
 
 ### 2. 连接远程数据库
 
-```shell
+```bash
 mysql -h ip <数据库名> -u 用户名 -p
 ```
 

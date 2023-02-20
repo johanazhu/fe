@@ -18,7 +18,7 @@
 
 运行 Docker Desktop ，右下角会出现小鲸鱼的 logo，打开终端
 
-```shell
+```bash
 docker version
 ```
 

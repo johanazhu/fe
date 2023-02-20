@@ -16,37 +16,37 @@
 
 查看 flutter 、dart 安装目录
 
-```shell
+```bash
 where flutter dart
 ```
 
 查看 flutter
 
-```shell
+```bash
 flutter doctor
 ```
 
 验证 flutter 是否识别你连接的 Android 设备
 
-```shell
+```bash
 flutter devices
 ```
 
 运行启动项目
 
-```shell
+```bash
 flutter run
 ```
 
 起一个 flutter 项目
 
-```shell
+```bash
 flutter create my_app
 ```
 
 运行 flutter
 
-```shell
+```bash
 flutter run XX
 ```
 

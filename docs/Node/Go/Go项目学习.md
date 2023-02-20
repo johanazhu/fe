@@ -16,20 +16,20 @@ Go官网下载地址：https://golang.org/dl/
 
 #### 查看是否安装成功
 
-```shell
+```bash
 go version
 ```
 
 #### 配置 Go 配置
 
-```shell
+```bash
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 ```
 
 #### 安装 gowatch
 
-```shell
+```bash
 go get github.com/silenceper/gowatch
 ```
 
@@ -67,7 +67,7 @@ func main(){  // main函数，是程序执行的入口
 
 所以我们先生成 go.mod，
 
-```shell
+```bash
 go mod init
 ```
 
@@ -77,7 +77,7 @@ go mod init
 
 当然，如果要实时查看编译结果，就需要用 gowatch
 
-```shell
+```bash
 gowatch run .
 // 或者 gowatch
 ```
@@ -191,7 +191,7 @@ func main() {
 
 ### 初始化项目
 
-```shell
+```bash
 go mod init github.com/johanazhu/go-demo
 ```
 

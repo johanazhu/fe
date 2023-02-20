@@ -38,25 +38,25 @@ jenkins
 
 先从 dockerhub 上拉取 jenkins
 
-```shell
+```bash
 docker pull jenkins/jenkins:lts
 ```
 
 创建一个 jenkins 目录
 
-```shell
+```bash
 mkdir /home/johan/www/jenkins
 ```
 
 提高此文件的权限
 
-```shell
+```bash
 sudo chmod -R 777 /home/johan/www/jenkins
 ```
 
 以 jenkins/jenkins:lts 为镜像生成一容器
 
-```shell
+```bash
 docker run --name jenkins -p 8080:8080 -p 50000:50000 -d -v /home/johan/www/jenkins:/var/jenkins_home jenkins/jenkins:lts
 ```
 
@@ -66,7 +66,7 @@ docker run --name jenkins -p 8080:8080 -p 50000:50000 -d -v /home/johan/www/jenk
 
 查看容器内部日志
 
-```shell
+```bash
 docker logs jenkins
 ```
 
@@ -148,7 +148,7 @@ node 插件在跑 node 项目时需要使用，这里先安装好
 
 将 dockerfile_koa_demo 上传至 github
 
-```shell
+```bash
 git init
 git add .
 git commit -m 'first_commit'
@@ -178,7 +178,7 @@ git push -u origin master
 
 代码如下：
 
-```shell
+```bash
 docker stop koa_server_container
 docker rm koa_server_container
 docker rmi johanbo/koa_server:v.1.0.0

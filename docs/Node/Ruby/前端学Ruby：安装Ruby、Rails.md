@@ -55,13 +55,13 @@ ruby 3.1.3
 
 1. 拉取 ruby 镜像
 
-```shell
+```bash
 docker pull ruby
 ```
 
 2. 基于 ruby 镜像生产一个容器
 
-```shell
+```bash
 docker run -it 
 ```
 
@@ -113,8 +113,17 @@ gem sources -l
 用 --add 添加地址，--remove 删除地址
 
 ```bash
- gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 ```
+
+### 国内其他镜像源
+
+```bash
+阿里：https://mirrors.aliyun.com/rubygems/
+清华：https://mirrors.tuna.tsinghua.edu.cn/rubygems/
+```
+
+
 
 ### gem 命令
 
@@ -123,6 +132,29 @@ gem sources -l
 - gem uninstall：卸载应用包
 - gem sources：查看当前镜像
 
+
+
+## RVM
+
+管理 ruby 的不同版本，目前也作为标准的 ruby 安装工具
+
+```bash
+# 设置为系统默认版本
+rvm use --default 2.2.3
+# 在其他版本之前切换
+rvm use 2.2.1
+# 卸载一个指定版本
+rvm uninstall 2.2.1
+```
+
+
+
+### 命令行
+
+当安装完 ruby 后，打开命令行输入 irb，即可进入irb 运行环境，这就像输入 node 进入 node 运行环境，输入 python ，进入 python 运行环境
+
+
+
 ## 安装 Rails
 
 Rails 是什么？
@@ -130,13 +162,13 @@ Rails 是什么？
 Rails 是使用 Ruby 语言写的 Web 应用框架。它有两大指导“思想”
 
 - 不要自我重复（DRY）
-- 多约定，少配置
+- 多约定，少配置（约定大于配置）
 
 因为有包管理工具，所以下载就可以
 
 github 源码地址：https://github.com/rails/rails
 
-```shell
+```bash
 gem install rails
 ```
 
@@ -152,6 +184,8 @@ rails -v
 ```bash
 rails new blog # 生成一个 blog 项目
 rails new --api blog # 以 API 形式生成一 blog 项目
+rails new --css bootstrap blog # 以 bootstrap 作为css生成一 blog 项目
+rails new --database postgresql blog # 以 postgressql 作为数据库生成项目
 rails new -h # 查看所有命令行选项
 rails new --api --database=postgresql --skip-test blog # 创建一个数据库为 postgresql 的跳过测试的 api 博客（blog）项目
 ```
@@ -160,7 +194,7 @@ rails new --api --database=postgresql --skip-test blog # 创建一个数据库�
 
 ## 第一个程序
 
-使用 rails 新建项目，它就像 express-generator 一样，所有的配置都帮你弄好，你要写东西就很方便
+使用 rails 新建项目，它就像 express-generator 一样，所有的配置都帮你弄好，你要写代码就可以
 
 ```bash
 rails new first_app
@@ -194,15 +228,15 @@ rails new first_app
 
 [其原因](https://stackoverflow.com/questions/74685832/command-rails-server-doesnt-work-cmd-throws-error-with-bootsnap)是在路径中使用了中文，所以换个路径就好
 
-也有些人因为没有FQ技术，所以下载依赖的速度很慢，可以把`Gemfile` 中顶部的 `source "https://rubygems.org"` 换成国内镜像`source "https://gems.ruby-china.com/"`，并且删掉 `Gemfile.lock`，重新下载依赖
-
 下载依赖是通过 `bundle install` ，相当于前端的 `npm install`
 
 ```bash
 bundle install 
 ```
 
-如何启动项目呢，在前端开发中，有 package.json，能在 script 中写命令。而 rails 不同，它的 `Gemfile` 没有运行文件的命令，但是它自身的命令行就带有启动文件的快捷键：
+> 可以使用 bundle --help 查看 bundle 的其他命令行，笔者会用 `bundle install --verbose` 查看下载过程
+
+如何启动项目呢，在前端开发中，有 package.json，能在 script 中写命令。而 rails 不同，它的 `Gemfile` 没有运行文件的命令，它是通过命令行来启动项目：
 
 ```bash
 rails server # 启动服务
@@ -215,31 +249,16 @@ rails s -p 8080 # s 为 server 缩写，-p 8080 表示指定8080的端口
 
 
 
-## 官方官网
-
-ruby （中文）官网：https://www.ruby-lang.org
-
-rails 官网网站：https://rubyonrails.org/
-
-中文版：http://www.ruby-lang.org/zh_cn
-
-Ruby 中国：https://ruby-china.org/
-
-anesome-ruby：https://github.com/markets/awesome-ruby
-
-awesome-ruby-china（停更3年）：https://github.com/liukun-lk/awesome-ruby-china
-
 
 
 ## 总结
 
 本文的主要目的是让 ruby on rails 能在 window 上运行起来，在 window 上运行确实还有坑，即使没有4、5年前那么多，但还是有个坑让我踩进去了，这里仅作记录
 
-我们现在已经安装了 ruby、rails，并且启动项目，但到现在一行代码都不会写，下一篇，我们熟悉 ruby 的语法——智人取火
+我们现在已经安装了 ruby、rails，并且启动项目，但到现在一行代码都不会写，下一篇，我们熟悉 ruby 的语法
 
 
 
 ## 参考资料
 
 - [Rails 入门](https://ruby-china.github.io/rails-guides/getting_started.html)
-

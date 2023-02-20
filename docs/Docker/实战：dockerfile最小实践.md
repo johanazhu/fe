@@ -18,7 +18,7 @@
 
 第五步：如果通，就导出此镜像
 
-第六步：xshell 连接服务器上（假设服务器上已安装 docker），导入此镜像，通过此镜像生成一容器
+第六步：xbash 连接服务器上（假设服务器上已安装 docker），导入此镜像，通过此镜像生成一容器
 
 这就是最小实现
 
@@ -30,7 +30,7 @@
 
 新建一个 dockerfile_koa_demo 文件，npm init -y 生成 package.json。下载 koa 包，新建 app.js
 
-```shell
+```bash
 mkdir dockerfile_koa_demo
 cd dockerfile_koa_demo
 npm init -y
@@ -66,7 +66,7 @@ app.listen(3010, () => {
 
 启动脚本
 
-```shell
+```bash
 npm run start
 ```
 
@@ -80,7 +80,7 @@ npm run start
 
 新建一个 Dockerfile 文件
 
-```shell
+```bash
 touch Dockerfile
 ```
 
@@ -114,7 +114,7 @@ CMD ["node", "./app.js"]
 
 为了加快构建速度，我们先生成 `.dockerignore` ，并往里写上 `node_modules`
 
-```shell
+```bash
 touch .dockerignore
 ```
 
@@ -122,7 +122,7 @@ touch .dockerignore
 
 通过命令行生成镜像，命名 johan/koa_server:v1.0.0
 
-```shell
+```bash
 docker build . -t johan/koa_server:v1.0.0
 # -t 就是给镜像起名
 ```
@@ -133,7 +133,7 @@ docker build . -t johan/koa_server:v1.0.0
 
 查看镜像是否有了
 
-```shell
+```bash
 docker images
 ```
 
@@ -141,7 +141,7 @@ docker images
 
 命令行生成一容器
 
-```shell
+```bash
 docker run -d --name koa_server_container -p 3010:3010 johan/koa_server:v1.0.0
 # -d 后台运行
 # --name 给容器起名字
@@ -150,7 +150,7 @@ docker run -d --name koa_server_container -p 3010:3010 johan/koa_server:v1.0.0
 
 查看镜像是否生成
 
-```shell
+```bash
 docker ps -a
 ```
 
@@ -158,7 +158,7 @@ docker ps -a
 
 ## 第五步：导出此镜像
 
-```shell
+```bash
 docker save johan/koa_server:v1.0.0 > koa_server.tar
 ```
 
@@ -168,9 +168,9 @@ docker save johan/koa_server:v1.0.0 > koa_server.tar
 
 这里我们假设服务器上已经安装了 docker 以及 lrzsz 包（本文具体不展开）
 
-通过 xshell 连接服务器，通过命令 rz 上传 tar 包
+通过 xbash 连接服务器，通过命令 rz 上传 tar 包
 
-```shell
+```bash
 rz
 ```
 
@@ -178,7 +178,7 @@ rz
 
 解开此压缩包（导入）
 
-```shell
+```bash
 docker load < koa_server.tar
 ```
 
@@ -186,13 +186,13 @@ docker load < koa_server.tar
 
 基于此容器生成容器
 
-```shell
+```bash
 docker run -d --name koa_server_container -p 3010:3010 johan/koa_server:v1.0.0
 ```
 
 并查看跑通的容器
 
-```shell
+```bash
 docker ps -a
 ```
 
@@ -204,19 +204,19 @@ docker ps -a
 
 命令行登录 dockerhub（首先要先注册）
 
-```shell
+```bash
 docker login
 ```
 
 给镜像命名
 
-```shell
+```bash
 docker tag johan/koa_server:v1.0.0 johanbo/koa_server:v1.0.0
 ```
 
 将镜像上传至 docker hub
 
-```shell
+```bash
 docker push johanbo/koa_server:v1.0.0
 ```
 
@@ -226,7 +226,7 @@ docker push johanbo/koa_server:v1.0.0
 
 登录服务器，并拉取镜像
 
-```shell
+```bash
 docker pull johanbo/koa_server:v1.0.0
 ```
 
@@ -236,7 +236,7 @@ docker pull johanbo/koa_server:v1.0.0
 
 启动容器
 
-```shell
+```bash
 docker run -d --name koa_server_container -p 3010:3010 johan/koa_server:v1.0.0
 ```
 

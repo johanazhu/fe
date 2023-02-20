@@ -8,7 +8,7 @@
 
 首先我们需要初始化一个项目，
 
-```shell
+```bash
 npm init -y
 ```
 

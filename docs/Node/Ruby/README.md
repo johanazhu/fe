@@ -2,313 +2,106 @@
 
 
 
-在 Ruby 中，（几乎）所有东西都是对象
+写在前面，笔者是一名前端，现在来学习 ruby，打算写一系列的文章，将自己学习 ruby on rails 的经验分享出来，于是就有了这一系列文章：「**前端学Ruby：七天搞定**」
 
-```ruby
-# 数字是对象
-3.class #=> Interger
-3.to_s #=> "3"
+第一天 安装 Ruby、Rails
 
-# 字符串是对象
-"Hello".class #=> String
+第二天 熟悉 Ruby 语法
 
-# 方法也是对象
-"Hello".method(:class).class => Method
-```
+第三天 熟悉 Rails
 
+第四天 唐诗API 项目
 
+第五天 部署优化
 
-### 算术操作
+第六天 论坛全栈项目
 
-```ruby
-1 + 1 #=>2
-7 - 1 #=> 6
-10 * 9 #=> 90
-42 / 7 #=> 6
-2 ** 5 #=> 32 2的5次方
-5 % 3 #=> 2
-```
+第七天 词云/文案狗/朋友圈项目
 
 
 
-### 位运算符
+## 为什么要学 Ruby
 
-```ruby
-3 & 5 #=> 1
-3 | 5 #=> 7
-3 ^ 5 #=> 6
-```
+因为笔者的榜样们学习过 Ruby，而且它的学习成本低。就想着花不了多少时间就能掌握一门后端语言。何乐而不为呢？
 
 
 
+## 官方官网
 
+ruby （中文）官网：https://www.ruby-lang.org
 
-## 打印输出
+rails 官网网站：https://rubyonrails.org/
 
-打印输出，并在末尾家换行符
+中文版：http://www.ruby-lang.org/zh_cn
 
-```ruby
-puts "I'm printing!"
-#=> I'm printing!
-#=> nil
-```
+Ruby 中国：https://ruby-china.org/
 
-打印输出，不加换行符
+Ruby Toolbox：https://www.ruby-toolbox.com/
 
-```ruby
-print "I'm printing!"
-#=> I'm printing! => nil
-```
+Gems 仓库（类似于https://www.npmjs.com/）：https://rubygems.org/
 
+anesome-ruby：https://github.com/markets/awesome-ruby
 
+awesome-ruby-china（停更3年）：https://github.com/liukun-lk/awesome-ruby-china
 
-### 变量
+railstutorial 教程网：https://www.railstutorial.org/
 
-```ruby
-x = 25 #=> 25
-x #=> 25
-```
+rails 论坛：https://discuss.rubyonrails.org/
 
-> 注意赋值语句返回了赋的值，这意味着你可以用多重赋值语句
 
 
+## 书籍
 
-```ruby
-x = y = 10 #=> 10
-x #=> 10
-y #=> 10
-```
+Ruby相关的书：https://github.com/EZLippi/practical-programming-books#ruby
 
+别人总结的书单：https://github.com/dingyi-History/learn-Ruby-rails/tree/master/docs
 
+《Ruby on Rails Tutorial》中文版：https://zuoming.gitbooks.io/-ruby-on-rails-tutorial-/content/
 
-### 命名风格
+Ruby on Rails 实战圣经（繁体版）：https://ihower.tw/rails/index.html
 
-通常使用 snake_case 风格的变量名
+- 中文版：https://www.bookstack.cn/read/ihower-ruby-on-rails/preface.md
 
-> snake_case 风格即短语内的各个单词之间以下划线做间隔
 
-使用有意义的变量名
+《笨方法学 Ruby》
 
-```ruby
-path_to_project_root = '/good/name/'
-path = '/bad/name/'
-```
+《[应用Rails进行敏捷Web开发](https://book.douban.com/subject/1839273/)》
 
 
 
-### 数组
+## 教程
 
-```ruby
-array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
-```
+菜鸟教程：https://www.runoob.com/ruby/ruby-intro.html
 
-数组可以包含不同类型的元素
+Rails 使用 Rails 构建 API 实践：https://ruby-china.org/topics/25822
 
-```ruby
-[1, "hello", false] #=> [1, "hello", false]
-```
+B站：重力不足的 Ruby 教程
 
-数组可以被索引，从前面开始
 
-```ruby
-array[0] #=> 1
-array.first #=> 1 # 牛逼，这样都可以，array.second 是不是 hello
-array[12] #=> nil # nil 就是 js 中的 null 的意思吧
-```
 
+## 如何学习
 
+Ruby 社区有人写的[如何从零开始学会 Ruby on Rails](https://ruby-china.org/wiki/start_leaning_rails)
 
-### 哈希表
+一个月时间。
 
-哈希表是 Ruby 的主要键/值对表示法
+**以下步骤请一步一步来，切勿心急跳过，最好连我上面的链接都不要提前点击！**
 
-哈希表由大括号表示
+1. 看完 [https://ruby-china.github.io/rails-guides/getting_started.html](https://ruby-china.github.io/rails-guides/getting_started.html/) 
+2. 通过学习 Rails Guides 实现一个博客系统，包涵完整的功能(包括UI)，预计两周
+3. 从头到尾一字不漏的看完 《[应用Rails进行敏捷Web开发](https://book.douban.com/subject/1839273/)》
+4. 回头审视之前的博客设计和《应用Rails进行敏捷Web开发》的区别，可以再重新搞个博客
+5. 看完 《[Getting Real](https://web.archive.org/web/20120104065141/http://gettingreal.37signals.com/GR_chn.php)》，预计两个小时
+6. 搞明白 Gem, RVM, Bundler 是什么
+7. 看完 《Rework》，重来，微信读书上有
+8. 看 [http://railscasts.com](http://railscasts.com/) 的视频教程，从第一页开始看，可以学到很多技巧，以免走弯路。
 
-```ruby
-hash = {"color" => "green", "number" => 5}
 
-hash.keys #=> ['color', 'number']
 
-# 哈希表可以通过键快速地查询
-hash['color'] #=> 'green'
-hash['number'] #=> 5
+## 我的学习路径
 
-# 查询一个不存在的键会返回 nil
-hash['nothing here'] #=> nil
-```
 
 
+项目方面：先按照官网做了个blog
 
-
-
-### 控制流
-
-```ruby
-if true
-    "if statement"
-elsif false
-    "else if, optional"
-else
-    "else, alse optional"
-end
-```
-
-
-
-### 循环
-
-```ruby
-for counter in 1..5
-    puts "iteration #{counter}"
-end
-
-#=> iteration 1
-#=> iteration 2
-#=> iteration 3
-#=> iteration 4
-#=> iteration 5
-
-# 但是，没有人用 for 循环，因为有 “each" 方法，它使用起来更符合 js 的写法
-(1..5).each do |counter|
-    puts "iteration #{counter}"
-end
-#=> iteration 1
-#=> iteration 2
-#=> iteration 3
-#=> iteration 4
-#=> iteration 5
-
-# 你也可以将块包含在一个大括号中：
-(1..5).each { |counter| puts "iteration #{counter}" }
-```
-
-
-
-
-
-### 函数
-
-```ruby
-def double(x)
-    x * 2
-end
-
-# 函数（以及所在的块）隐式地返回最后语句的值
-double(2) #=> 4
-
-# 当不存在歧义的时候括号可有可无
-double 3 #=> 6
-
-double double 3 #=> 12
-
-def sum(x, y)
-    x + y
-end
-
-# 方法的参数通过逗号分隔
-sum 3, 4 #=> 7
-
-sum sum(3, 4), 5 => 12
-
-# yield 
-# 所有的方法都有一个隐式的，可选的块参数
-# 可以用 ‘yield’ 关键字调用
-
-def surround
-    puts "{"
-    yield
-    puts "}"
-end
-
-surround { puts "hello world" }
-
-# {
-# hello world
-# }
-# => nil
-
-```
-
-
-
-
-
-### 类
-
-用 class 关键字定义一个类
-
-```ruby
-class Human
-    # 一个类变量，它被这个类的所有实例变量共享
-    @@species = "H. sapiens"
-    
-    # 基本构造函数
-    def initialize(name, age = 0)
-        #将参数值赋值给实例变量 "name"
-        @name = name
-        #如果没有给出 age，那么会采用参数列表中的默认值
-        @age = age
-    end
-    
-    # 基本的 setter 方法
-    def name=(name)
-        @name = name
-    end
-    
-    #基本的 getter 方法
-    def name
-        @name
-    end
-    
-    # 以上的功能也可以用下面的 attr_accessor 来封装
-  	attr_accessor :name
-
-    # Getter/setter 方法也可以像这样单独创建
-    attr_reader :name
-    attr_writer :name
-
-    # 类方法通过使用 self 与实例方法区别开来。
-    # 它只能通过类来调用，不能通过实例调用。
-    def self.say(msg)
-       puts "#{msg}"
-    end
-
-    def species
-       @@species
-    end
-end
-```
-
-
-
-
-
-### Class
-
-def = define 定义 的意思
-
-```ruby
-class User
-  def initialize(name)
-    @name = name
-  end
-
-  def hi(target)
-    p "Hi #{target}, I am #{@name}"
-  end
-end
-
-u1 = User.new 'johan'
-u1.hi 'jack'
-```
-
-
-
-## 参考资料
-
-- [Y分钟速成X](https://learnxinyminutes.com/docs/zh-cn/ruby-cn/)
-
-
-
-
-
+https://ruby-china.github.io/rails-guides/getting_started.html

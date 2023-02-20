@@ -10,7 +10,7 @@ https://mp.weixin.qq.com/s/dte9oRimIWlZp0pd-ZF-WQ
 
 ### 卸载
 
-```shell
+```bash
 # 移除 nginx
 $ apt-get --purge remove nginx
 
@@ -29,7 +29,7 @@ $ sudo find / -name nginx*
 
 ### 安装
 
-```shell
+```bash
 安装依赖库
 
 # gcc g++
