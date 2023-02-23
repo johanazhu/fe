@@ -62,7 +62,7 @@ ctx.status; // 相当于 ctx.response.status
 
 > 更多 Context 属性请参考 [Context API 文档](https://github.com/koajs/koa/blob/master/docs/api/context.md)
 
-中间件的第二个参数便是 `next` 函数：用来把控制权转交给下一个中间件。但它与 Express 的 `next` 函数本质的区别在于， **Koa 的 `next` 函数返回的是一个 Promise** ，在这个 Promise 进入完成状态（Fulfilled）后，就会去执行中间件中第二个阶段的代码。具体可以看这一篇—— [手写 koa2](./手写koa2.md)
+中间件的第二个参数便是 `next` 函数：用来把控制权转交给下一个中间件。但它与 Express 的 `next` 函数本质的区别在于， **Koa 的 `next` 函数返回的是一个 Promise** ，在这个 Promise 进入完成状态（Fulfilled）后，就会去执行中间件中第二个阶段的代码。具体可以看这一篇—— [手写 Koa2](./手写Koa2.md)
 
 ## 有哪些常见的中间件
 
@@ -378,7 +378,7 @@ const schema = new mongoose.Schema({
 module.exports = mongoose.model('User', schema);
 ```
 
-具体可以看看 [Mongoose](../Node/Mongoose.md) 这篇文章，这里我们就看行为，以上代码表示建立了一个数据对象，供操作器来操作数据库
+具体可以看看 [Mongoose](../../BackEnd/MongoDB.md) 这篇文章，这里我们就看行为，以上代码表示建立了一个数据对象，供操作器来操作数据库
 
 ### 在 Controller 中操作数据库
 

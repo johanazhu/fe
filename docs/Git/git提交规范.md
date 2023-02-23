@@ -2,7 +2,7 @@
 
 git commit 规范主要可以帮助开发人员在 code reivew 期间更容易理解提交的内容，现在大部分主流 commit 都是基于 Angular 团队的规范而衍生出来的，它的 message 格式如下：
 
-```git
+```markdown
 <type>(<scope>): <subject>
 <BLANK LINE>
 <body>

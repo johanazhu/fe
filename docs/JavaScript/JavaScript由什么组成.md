@@ -161,7 +161,7 @@ console.log(elaine instanceof People);
 console.log(elaine instanceof Object);
 ```
 
-instanceof 运算符能让我们找到它的爸爸是谁（谁制造了它，从生理上讲应该是妈妈是谁），以及它的祖宗十八代，这也是面试中常遇到的——[instanceof 的原理是什么](./原理/instanceof——找祖籍.md)
+instanceof 运算符能让我们找到它的爸爸是谁（谁制造了它，从生理上讲应该是妈妈是谁），以及它的祖宗十八代，这也是面试中常遇到的——[instanceof 的原理是什么](./instanceof——找祖籍.md)
 
 ### constructor 构造方法
 

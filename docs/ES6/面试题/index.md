@@ -5,7 +5,7 @@
 -   箭头函数没有自己的 this 对象，函数体内的 this 是定义时所在的对象而不是使用时所在的对象
 -   不可以当作构造函数，也就是说，不可以对箭头函数使用 new 命令，否者会抛出一个错误
 -   不可以使用 arguments 对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替（[ES6 完全指南](../ES6完全指南.md)）
--   不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数（[迭代器与生成器](../Iterator&Generator/md)）
+-   不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数（[迭代器与生成器](../Iterator&Generator.md)）
 
 ### Q： class B 继承 class A 翻译成 es5 应该是什么样子
 

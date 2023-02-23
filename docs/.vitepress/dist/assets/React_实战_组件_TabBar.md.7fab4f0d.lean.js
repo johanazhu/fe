@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,d as p}from"./app.590c1fbf.js";const A=JSON.parse('{"title":"TabBar 组件","description":"","frontmatter":{},"headers":[],"relativePath":"React/实战/组件/TabBar.md"}'),l={name:"React/实战/组件/TabBar.md"},o=p("",24),e=[o];function t(r,c,D,F,y,i){return n(),a("div",null,e)}const b=s(l,[["render",t]]);export{A as __pageData,b as default};

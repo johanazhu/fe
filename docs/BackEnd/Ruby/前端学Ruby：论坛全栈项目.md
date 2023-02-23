@@ -40,11 +40,11 @@ rails new --database postgresql --css bootstrap --skip-test buddha
 
 项目建好后，命令行`rails s`，报错：
 
-![image-20230219100440385](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20230219100440385.png)
+![报错信息](https://s2.loli.net/2023/02/23/Sh3HK8JRGjLE2wa.png)
 
 说明我们数据库没连上，创建postgresql 的用户名和数据库名
 
-![image-20230219101011756](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20230219101011756.png)
+![创建postgresql](https://s2.loli.net/2023/02/23/gStElfdCm6DLIOk.png)
 
 再去 `config/database.yml` 中修改开发环境时的数据库
 
@@ -67,7 +67,7 @@ development:
 rails g model topic
 ```
 
-![image-20230219112326889](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20230219112326889.png)
+![建模](https://s2.loli.net/2023/02/23/Oy7ziYSfwAo4ZGT.png)
 
 修改` db/migrate/20230219025936_create_topics.rb` 的内容
 
@@ -103,7 +103,7 @@ end
 
 GET /api/v3/hello 简单的 API 测试接口
 
-![image-20230219113328782](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20230219113328782.png)
+![测试接口](https://s2.loli.net/2023/02/23/fIjgH9oC6AxVUtb.png)
 
 （图中的rils是cmder显示不正确，应该是rails）
 

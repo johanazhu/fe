@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,d as l}from"./app.590c1fbf.js";const F=JSON.parse('{"title":"Shell 编程","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/Shell.md"}'),p={name:"Linux/Shell.md"},e=l("",7),o=[e];function r(c,t,i,D,y,C){return a(),n("div",null,o)}const b=s(p,[["render",r]]);export{F as __pageData,b as default};

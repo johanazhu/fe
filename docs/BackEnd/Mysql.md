@@ -61,7 +61,7 @@ mysql -u root -p -h IP地址
 
 #### 增
 
-```mysql
+```sql
 insert into users(username, `password`, realname) values('lisi', '123', '李四')
 ```
 
@@ -69,37 +69,37 @@ insert into users(username, `password`, realname) values('lisi', '123', '李四'
 
 查 users 表所有信息
 
-```mysql
+```sql
 select * from users;
 ```
 
 查 users 表中其中 id 和 username 的信息
 
-```mysql
+```sql
 select id, username from users;
 ```
 
 查符合条件的项 where
 
-```mysql
+```sql
 select * from users where username='zhangsan'
 ```
 
 查符合条件的项多个条件 `and` 和 `or`
 
-```mysql
+```sql
 select * from users where username='zhangsan' and realname='111'
 ```
 
 模糊查询 `like`
 
-```mysql
+```sql
 select * from users where username like '%zhang%'
 ```
 
 查 排序 `order by id` 默认正序，如果倒序 在 id 后加 desc `order by id desc`
 
-```mysql
+```sql
 select * from users where username like '%zhang%' order by id desc;
 ```
 
@@ -110,13 +110,13 @@ select * from users where username like '%zhang%' order by id desc;
 
 更新 id 为 3 的 realname 为张三
 
-```mysql
+```sql
 update users set realname='张三' where id='3'
 ```
 
 #### 删
 
-```mysql
+```sql
 delete from users where realname='李四'
 ```
 
@@ -125,7 +125,7 @@ delete from users where realname='李四'
 > PS：如果你的更新和删除出现 error：1175 处于安全模式，先使用以下代码解除安全模式
 >
 
-```mysql
+```sql
 SET SQL_SAFE_UPDATES=0;
 ```
 

@@ -105,7 +105,7 @@ HOC 的原理其实很简单，它就是一个函数，且它接受一个组件�
 
 write is cheap，show you code
 
-```react
+```jsx
 function Wrapper(WrappedComponent) {
     return class extends React.Component {
         componentDidMount() {
@@ -123,7 +123,7 @@ function Wrapper(WrappedComponent) {
 }
 ```
 
-```react
+```jsx
 import "./styles.css";
 import React from "react";
 import Wrapper from "./Wrapper";
@@ -356,7 +356,7 @@ function Counter() {
 
 同步
 
-```react
+```jsx
 // 用来替代constructor初始化状态
 useState()
 
@@ -413,7 +413,7 @@ useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
 
 区别：useCallback 和 useMemo 的区别是 useCallback 返回一个函数，当把它返回的这个函数作为子组件使用时，可以笔名每次父组件更新时重新渲染这个子组件
 
-```react
+```jsx
 const renderButton = useCallback(
      () => (
          <Button type="link">
@@ -426,7 +426,7 @@ const renderButton = useCallback(
 
 useMemo 返回的是一个值，用于避免在每次渲染时都进行高开销的计算
 
-```react
+```jsx
 // 仅当num改变时才重新计算结果
 const result = useMemo(() => {
     for (let i = 0; i < 100000; i++) {
@@ -468,7 +468,7 @@ const countRef = useRef < number > count;
 
 点击加一个按钮 3 次，再点弹框显示 1 次，再点加按钮 2 次，最终 alert 会是什么结果？
 
-```react
+```jsx
 import React, { useState } from 'react'
 
 const Counter = () => {

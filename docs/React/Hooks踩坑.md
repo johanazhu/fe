@@ -33,7 +33,7 @@ const [show, setState] = useState(false);
 
 ### 如何绕过 Capture Value
 
-```react
+```jsx
 const [flag, setFlag] = useState(false)
 function handleClick() {
     setFlag(!flag);
@@ -46,7 +46,7 @@ function handleClick() {
 
 首次点击按钮后，产生一个快照 ：
 
-```react
+```jsx
 // ...
 falg = false;
 

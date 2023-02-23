@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,d as e}from"./app.590c1fbf.js";const m=JSON.parse('{"title":"防火墙知一二","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/防火墙知一二.md"}'),l={name:"Linux/防火墙知一二.md"},p=e("",29),o=[p];function t(r,c,i,d,C,y){return n(),a("div",null,o)}const u=s(l,[["render",t]]);export{m as __pageData,u as default};

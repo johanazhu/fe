@@ -59,7 +59,7 @@ react-router 的注入方式是在组件树顶层放一个 Router 组件，然�
 -   **路由匹配组件**: `<Route>` 和 `<Switch>`，路由匹配组件通过匹配 path，渲染对应组件。
 -   **导航组件**: `<Link>` 和 `<NavLink>`，导航组件起到类似 `a` 标签跳转页面的作用。在后续对源码的讲解中，也将分别以这六个组件代码的解析为线索，来一窥 React Router 的整体实现。看回我们的代码，对于我们开头实现的原生路由，如果用 React Router 改写，应该是怎样的写法呢：
 
-```react
+```jsx
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 // HashRouter 和 BrowserRouter 二者的使用方法几乎没有差别，这里只演示其一
 
@@ -134,7 +134,7 @@ React-Router 借用了 history 解决了第一个问题
 
 实现 ReactRouter 前，先去看一下 ReactRouter 的写法
 
-```react
+```jsx
 <Switch>
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
@@ -151,7 +151,7 @@ React-Router 借用了 history 解决了第一个问题
 
 这就好比
 
-```react
+```jsx
 class Route extends React.Component {
    render() {
        const { exact, path, component, children,render } = this.props;
@@ -183,7 +183,7 @@ class Route extends React.Component {
 
 主要是
 
-```react
+```jsx
 <RouterContext.Provider
     value={{
         history: this.props.history,
@@ -205,7 +205,7 @@ class Route extends React.Component {
 
 匹配模式：
 
-```react
+```jsx
 // 精确匹配
 // 严格匹配
 // 大小写敏感
@@ -216,7 +216,7 @@ class Route extends React.Component {
 
 路径 path 写法：
 
-```react
+```jsx
 // 字符串形式
 // 命名参数
 // 数组形式
@@ -227,7 +227,7 @@ class Route extends React.Component {
 
 渲染方式：
 
-```react
+```jsx
 // 通过子组件渲染
 // 通过 props.component 渲染
 // 通过 props.render 渲染

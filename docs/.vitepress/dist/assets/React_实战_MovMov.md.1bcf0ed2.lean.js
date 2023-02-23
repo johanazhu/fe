@@ -1,0 +1,1 @@
+import{_ as e,c as p,o as a,d as t}from"./app.590c1fbf.js";const h=JSON.parse('{"title":"MovMov 项目笔记","description":"","frontmatter":{},"headers":[],"relativePath":"React/实战/MovMov.md"}'),o={name:"React/实战/MovMov.md"},r=t("",24),i=[r];function s(c,n,_,v,l,m){return a(),p("div",null,i)}const b=e(o,[["render",s]]);export{h as __pageData,b as default};

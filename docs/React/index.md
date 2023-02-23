@@ -9,26 +9,25 @@
 这些面试题基本和基础知识点中的知识点有所联系，
 
 -   [常见面试题](./面试题/)
--   [代码题](./面试题/代码题.md)
+-   [代码题](./面试题/代码题)
 
--   [渲染十万条数据解决方案](./面试题/渲染十万条数据解决方案.md)
+-   [渲染十万条数据解决方案](./面试题/渲染十万条数据解决方案)
 
 ## React 各种知识点
 
--   [React 快速了解](./React快速了解.md)
--   [核心 API](./核心API.md)
-
+-   [React 快速了解](./React快速了解)
+-   [核心 API](./核心API)
     -   Component
     -   pureComponent
     -   createElement
         -   JSX 就是通过 babel 转换为 createElement
     -   cloneElement
-    -   [Ref](./Ref.md)
+    -   [Refs](./Refs.md)
     -   portal 传送门
     -   context
     -   children
     -   ...
-
+    
 -   [VirtualDOM](./VirtualDOM.md)
     -   是什么？
     -   它的作用？
@@ -57,7 +56,7 @@
     -   为什么要了解
 -   [性能优化](./性能优化.md)
     -   方法
--   [Ref](./Ref.md)
+-   [Refs](./Refs.md)
     -   是什么？
     -   不同阶段 ref 的用法
 -   [生命周期](./生命周期.md)
@@ -70,13 +69,13 @@
 
 -   [Immutable](./生态/Immutable.md)
     -   数据不可变是什么
--   [Redux](./生态/Redux.md)
+-   [ReactRedux](./生态/ReactRedux.md)
     -   是什么？ 单向数据流
     -   有什么用？
     -   手写
--   [ReactRedux](./生态/ReactRedux.md)
     -   连接 React 与 Redux
     -   手写
+
 -   [Redux-Sage](./生态/Redux-Sage.md)
     -   Redux 异步解决方案
     -   手写
@@ -89,7 +88,7 @@
 -   [Mobx](./生态/Mobx.md)
     -   是什么？另一个状态库
     -   原理
--   [各个状态库对比](./生态/各个状态库对比.md)
+-   [各个状态库对比](./生态/状态管理)
 -   [ReactRouter](./生态/ReactRouter.md)
     -   单页面路由的本质
     -   手写

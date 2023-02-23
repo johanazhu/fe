@@ -20,7 +20,7 @@ thunk.withExtraArgument = createThunkMiddleware;
 
 ### 如何使用
 
-```react
+```jsx
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reducer';

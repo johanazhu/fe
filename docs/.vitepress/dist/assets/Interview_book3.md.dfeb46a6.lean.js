@@ -1,0 +1,1 @@
+import{_ as o,c as e,o as t,d as r}from"./app.590c1fbf.js";const C=JSON.parse('{"title":"模拟题三","description":"","frontmatter":{},"headers":[],"relativePath":"Interview/book3.md"}'),a={name:"Interview/book3.md"},l=r("",34),i=[l];function p(n,s,c,d,m,_){return t(),e("div",null,i)}const u=o(a,[["render",p]]);export{C as __pageData,u as default};

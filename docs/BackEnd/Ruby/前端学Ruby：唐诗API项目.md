@@ -258,7 +258,7 @@ docker run -d --name tangpoetry_container -p 3000:3000 tangpoetry
 
 ![tangpoetry 容器](https://s2.loli.net/2023/02/03/3Xj7CQyd5Ylact8.png)
 
-我们访问（http://localhost:3000）首页，是能看到 Hi 的
+我们访问（`http://localhost:3000`）首页，是能看到 Hi 的
 
 > 为了测试方便，我们新建一个根路由，返回一个 json：{ message: 'Hi' }
 
@@ -428,7 +428,7 @@ Rails 在项目初始化的时候就会在根目录`config` 下生成 `master.ke
 
 关系为：
 
-```text
+```markdown
 master.key + keys => encrypted
 encrypted + master.key => keys
 ```
@@ -458,7 +458,7 @@ $env:EDITOR="code --wait"
 rails credentials:edit
 ```
 
-![image-20230209111135688](C:/Users/hanbo/AppData/Roaming/Typora/typora-user-images/image-20230209111135688.png)
+![编写credentials](https://s2.loli.net/2023/02/23/aFuOhvIWEZ4RMzD.png)
 
 此时会生成一个临时文件，我们将 `demo:12345` 修改为 `demo:123456`，保存并删除临时文件，会发现文件 `credentials.yml.enc` 发生了变化
 
@@ -473,7 +473,7 @@ rails credentials:edit  --environment production
 
 会得到两个文件：
 
-```txt
+```markdown
 config/credentials/production.key （被加入 .gitignore）
 config/credentials/production.yml.enc
 ```
@@ -486,7 +486,7 @@ rails c
 Rails.application.credentials.secret_key_base
 ```
 
-![image-20230206180256285](https://s2.loli.net/2023/02/09/CHghpamYekbI1Ls.png)
+![查看production下的密钥](https://s2.loli.net/2023/02/09/CHghpamYekbI1Ls.png)
 
 最佳实践是什么？
 

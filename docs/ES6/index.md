@@ -6,7 +6,7 @@
 
 先大致介绍 ES 的所有知识点，例如 let、Symbol、块级作用域等我称之为[ES6 完全指南](./ES6完全指南.md)
 
-个人认为 ES6 中最常见的面试题是 Promise，所以 Promise 首当其冲，我写下介绍 [Promise](./Promise/Promise.md) 是什么、[Promise 常见面试题](./Promise/Promise面试题.md)、再来一个[手写 Promise](./Promise/手写Promise.md)，Promise 大致上能明白个 7788。
+个人认为 ES6 中最常见的面试题是 Promise，所以 Promise 首当其冲，我写下介绍 [Promise](./Promise/Promise.md) 是什么、[Promise 常见面试题](./面试题/Promise面试题.md)、再来一个[手写 Promise](./Promise/手写Promise.md)，Promise 大致上能明白个 7788。
 
 说完 Promise，自然想到它的语法糖——[Async/Await](./Promise/Async.md)，它是什么？
 

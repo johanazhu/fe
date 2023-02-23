@@ -43,7 +43,7 @@ jsx 转换成 abstract dom tree 的时候，需要 `React.createElement`，引�
 
 ## 组件和声明周期
 
-```react
+```jsx
 function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;
 }
@@ -65,7 +65,7 @@ React 是一个库，它主要做的事情，就是管理试图 UI，
 
 https://zh-hans.reactjs.org/
 
-```react
+```jsx
 class HelloMessage extends React.Component {
   render() {
     return (
@@ -84,7 +84,7 @@ ReactDOM.render(
 
 如果不加 JSX 的话，同样的意思
 
-```react
+```jsx
 class HelloMessage extends React.Component {
   render() {
     return React.createElement(
@@ -150,7 +150,7 @@ function createElement(type, props, ...children) {
 
 二将真实 dom 插入到页面中
 
-```react
+```jsx
 function render(vnode, container) {
     // 第一步：创建真实dom vnode -> node
 	const node = createNode(vnode)

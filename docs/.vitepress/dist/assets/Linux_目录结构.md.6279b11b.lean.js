@@ -1,0 +1,1 @@
+import{_ as t,c as d,o as i,d as l}from"./app.590c1fbf.js";const p=JSON.parse('{"title":"Linux目录结构","description":"","frontmatter":{},"headers":[],"relativePath":"Linux/目录结构.md"}'),r={name:"Linux/目录结构.md"},e=l("",3),o=[e];function n(a,s,u,c,_,h){return i(),d("div",null,o)}const b=t(r,[["render",n]]);export{p as __pageData,b as default};

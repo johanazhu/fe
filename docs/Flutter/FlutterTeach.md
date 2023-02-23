@@ -79,7 +79,7 @@ new Image.network(	'https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/p
 
 自上到下排列
 
-```dar
+```dart
 ListView(
 	children: <Widget>[
         new ListTile(

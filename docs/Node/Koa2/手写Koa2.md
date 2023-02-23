@@ -1,6 +1,6 @@
 # 一步一步来：手写 Koa2
 
-之前讲过[什么是 Koa2](./Koa2基础.md)，以及[源码解读](../源码分析.md)
+之前讲过[什么是 Koa2](./Koa2基础.md)，以及[源码解读](./源码分析.md)
 
 这篇文章讲解如何手写一个 Koa2
 
@@ -116,7 +116,7 @@ module.exporrs = {
 };
 ```
 
-这里我们在 request 中只做了 query 处理，在 response 中只做了 body、status 的处理。无论是 request 还是 response，我们都使用了 ES6 的 get、set，具体可以去[这篇文章](../ES6/)看看，简单来说，get/set 就是能对一个 key 进行取值和赋值
+这里我们在 request 中只做了 query 处理，在 response 中只做了 body、status 的处理。无论是 request 还是 response，我们都使用了 ES6 的 get、set，具体可以去[这篇文章](../../ES6/)看看，简单来说，get/set 就是能对一个 key 进行取值和赋值
 
 现在我们已经实现了 request、response，获取了 request、response 对象和它们的封装方法，接下来我们来写 context。我们在源码分析时曾经说过，context 继承了 request 和 response 对象的参数，既有请求体中的方法，又有响应体中的方法，例如既能 ctx.query 查询请求体中 url 上的参数，又能通过 ctx.body 返回数据。
 

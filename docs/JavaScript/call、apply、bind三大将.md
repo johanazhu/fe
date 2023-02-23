@@ -1,6 +1,6 @@
 # call、apply、bind三大将
 
-之前在讲 [this 关键字](../this关键字.md) 时，我们介绍过这三个 api，我们得出这样的结论：**call、apply 和 bind 都拥有"掰弯" this 指向的能力**
+之前在讲 [this 关键字](./this关键字.md) 时，我们介绍过这三个 api，我们得出这样的结论：**call、apply 和 bind 都拥有"掰弯" this 指向的能力**
 
 介于当时的重点是 this，对这三个 api 没有详细介绍，本文，我们来了解一下函数中所谓不多的原型方法——call、apply、bind
 

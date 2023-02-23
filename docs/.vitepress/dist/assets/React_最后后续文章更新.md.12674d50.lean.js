@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a,d as p}from"./app.590c1fbf.js";const d=JSON.parse('{"title":"组件最佳实现","description":"","frontmatter":{},"headers":[],"relativePath":"React/最后后续文章更新.md"}'),r={name:"React/最后后续文章更新.md"},o=p("",17),n=[o];function s(i,c,m,_,h,u){return a(),t("div",null,n)}const f=e(r,[["render",s]]);export{d as __pageData,f as default};

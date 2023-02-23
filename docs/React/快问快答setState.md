@@ -69,7 +69,7 @@ https://juejin.cn/post/6844903781813993486#heading-5
 
 一、如下的代码，它的 a 的值是多少？组件 C 又 render 了几次
 
-```react
+```jsx
 class C extends React.Component {
   state = {
     a: 0
@@ -124,7 +124,7 @@ componentDidMount 钩子函数中的执行顺序：
 
 二、看看这道题，console 中的值是什么？组件 App 又渲染了几次
 
-```react
+```jsx
 class App extends React.Component {
   state = {
     val: 0

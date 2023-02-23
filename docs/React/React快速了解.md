@@ -65,7 +65,7 @@ Class 中的 Render 方法是个纯函数，不做任何直接渲染的事情。
 
 JSX 其实是 `React.createElement(compoent, props,...children)` 函数的语法糖。如下 JSX 代码：
 
-```react
+```jsx
 <MyButton color="blue" shadowSize={2}>
     Click Me
 </MyButton>

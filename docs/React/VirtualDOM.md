@@ -88,7 +88,7 @@ React 的[理念之一](./React快速了解.md)是 UI = f(data) ，我们通过�
 
 而我们写的 React 大概是这样：
 
-```react
+```jsx
 function Demo() {
     return (
     	<ul id="list">

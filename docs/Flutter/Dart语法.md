@@ -73,7 +73,7 @@ int number = 1;
 - runes(Unicode字符串)
 - symbols 符号
 
-```dar
+```dart
 vord main(){
     String str1 = "str1";
     int num1 = 1;
@@ -123,7 +123,7 @@ printStr3(sex: "男")
 
 输出：
 
-```shel
+```shell
 Name is null sex is 男 address is null
 ```
 
@@ -131,7 +131,7 @@ Name is null sex is 男 address is null
 
 ##### 可选参数
 
-```dar
+```dart
 void printStr1([String name, int age=25]) {
     print("Name is $name age is $age")
 }
