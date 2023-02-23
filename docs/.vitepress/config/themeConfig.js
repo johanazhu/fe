@@ -34,4 +34,11 @@ export default {
             placeholder: '搜索文档',
         },
     },
+    me: {
+        // wechat:"https://cdn.jsdelivr.net/gh/shengxinjing/static/wechat.jpg"
+        // wechat: "https://cdn.jsdelivr.net/gh/shengxinjing/static/jingu2.png"
+        // wechat: '/wechat2.png',
+        gongzhonghao: '/gongzhonghao.jpeg',
+        // wechat:"https://cdn.jsdelivr.net/gh/shengxinjing/static/xiao3.jpg"
+    },
 };
