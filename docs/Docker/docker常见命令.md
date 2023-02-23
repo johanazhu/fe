@@ -87,5 +87,13 @@
 
 - 退出容器：
   -   exit
-- 查看容器的虚拟ip地址
-  - `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id`
+  
+- 查看容器的虚拟ip地址：
+
+  - ```bash
+    docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
+    ```
+
+    
+
+    

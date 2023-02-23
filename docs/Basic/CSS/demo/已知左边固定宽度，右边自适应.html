@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>已知左边固定宽度，右边自适应</title>
+</head>
+<style>
+    *{
+	margin: 0;
+	padding: 0;
+}
+.box {
+	/* width:200px; */
+	border: 1px solid #000;
+    /* overflow: hidden; */
+    /* position: relative; */
+    display: flex;
+}
+.zhanan {
+	width: 50px;
+	height: 50px;
+	background: yellow;
+    float: left;
+}
+.info {
+    background: #f1f1f1;
+    color: #222;
+    flex: 1;
+    /* position: absolute; */
+    /* transform: translateX(50px); */
+    /* margin-left: 50px; */
+    /* overflow: hidden; */
+    /* float: left; */
+}
+/* .box:after {
+    content: '';
+    clear: both;
+} */
+</style>
+<body>
+    <div class="box">
+        <div class="zhanan">渣男</div>
+        <p class="info">资产100000000，上海三套房，劳斯莱斯两辆，上市公司CEO,肖战相貌，彭于晏身材，只爱你一个人...</p>
+    </div>
+</body>
+</html>

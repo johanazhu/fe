@@ -30,7 +30,7 @@ Serverfull 就是服务端运维全由我们自己负责，Serverless 则是服�
 
 第二种：广义 Serverless = 服务端免运维 = 具备 Serverless 特性的云服务
 
-![image-20200523095830121](../.vuepress/public/images/Serverless/定义.png)
+![image-20200523095830121](../public/images/Serverless/定义.png)
 
 广义 Serverless，其实就是指服务端免运维，也是未来的主要趋势。
 

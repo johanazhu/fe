@@ -1,0 +1,143 @@
+export default function BackEndSideBar() {
+    return [
+        {
+            text: 'Node专区',
+            // collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Node专区',
+                    link: '/Node/',
+                },
+            ],
+        },
+        {
+            text: '前端学后端',
+            collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: '后端导航',
+                    link: '/BackEnd/',
+                },
+                {
+                    text: 'RESTful',
+                    link: '/BackEnd/RESTful',
+                },
+                {
+                    text: 'session与JWT',
+                    link: '/BackEnd/session与JWT',
+                },
+            ],
+        },
+        {
+            text: 'Ruby',
+            collapsable: false,
+            sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Ruby导航',
+                    link: '/BackEnd/Ruby/',
+                },
+                {
+                    text: '前端学Ruby：安装Ruby、Rails',
+                    link: '/BackEnd/Ruby/前端学Ruby：安装Ruby、Rails',
+                },
+                {
+                    text: '前端学Ruby：熟悉Ruby语法',
+                    link: '/BackEnd/Ruby/前端学Ruby：熟悉Ruby语法',
+                },
+                {
+                    text: '前端学Ruby：熟悉Rails',
+                    link: '/BackEnd/Ruby/前端学Ruby：熟悉Rails',
+                },
+                {
+                    text: '前端学Ruby：唐诗API项目',
+                    link: '/BackEnd/Ruby/前端学Ruby：唐诗API项目',
+                },
+                {
+                    text: '前端学Ruby：论坛全栈项目',
+                    link: '/BackEnd/Ruby/前端学Ruby：论坛全栈项目',
+                },
+            ],
+        },
+        {
+            text: 'Go',
+            collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Go导航',
+                    link: '/BackEnd/Go/',
+                },
+                {
+                    text: '极简学习',
+                    link: '/BackEnd/Go/极简学习',
+                },
+                {
+                    text: 'Go项目学习',
+                    link: '/BackEnd/Go/Go项目学习',
+                },
+            ],
+        },
+        {
+            text: 'Python',
+            collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Python导航',
+                    link: '/BackEnd/Python/',
+                },
+                {
+                    text: 'Python基础',
+                    link: '/BackEnd/Python/Python基础',
+                },
+            ],
+        },
+        {
+            text: 'MongoDB',
+            collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: 'MongoDB',
+                    link: '/BackEnd/MongoDB',
+                },
+            ],
+        },
+        {
+            text: 'Mysql',
+            collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Mysql',
+                    link: '/BackEnd/Mysql',
+                },
+            ],
+        },
+        {
+            text: 'Redis',
+            collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Redis',
+                    link: '/BackEnd/Redis',
+                },
+            ],
+        },
+        {
+            text: 'Nginx',
+            collapsable: false,
+            // sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Nginx',
+                    link: '/BackEnd/Nginx/',
+                },
+            ],
+        },
+    ];
+}
