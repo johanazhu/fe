@@ -1,8 +1,8 @@
 .vscode
 node_modules*
-docs/.vuepress/dist
-docs/.vuepress/.cache
-docs/.vuepress/.temp
+docs/.vitepress/dist
+docs/.vitepress/.cache
+docs/.vitepress/.temp
 
 yarn.lock
 yarn-error.log
