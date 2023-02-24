@@ -172,10 +172,6 @@ export default function reactSideBar() {
                     text: 'React代码整洁之道',
                     link: '/React/实战/React代码整洁之道',
                 },
-                // {
-                //     text: '搭建我的React+TS最佳实践',
-                //     link: '/React/实战/搭建我的React+TS最佳实践',
-                // },
                 {
                     text: '自动化测试',
                     link: '/React/实战/自动化测试',
