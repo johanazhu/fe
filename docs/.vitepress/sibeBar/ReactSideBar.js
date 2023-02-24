@@ -173,6 +173,10 @@ export default function reactSideBar() {
                     link: '/React/实战/React代码整洁之道',
                 },
                 {
+                    text: 'React全家桶最佳实践2023年版',
+                    link: '/React/实战/React全家桶最佳实践2023年版',
+                },
+                {
                     text: '自动化测试',
                     link: '/React/实战/自动化测试',
                 },
