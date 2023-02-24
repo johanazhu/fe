@@ -25,16 +25,18 @@
 //         // setup hook. all composition APIs are available here.
 //     },
 // };
+// 切换成这种模式：https://github.com/vite-pwa/vitepress/tree/main/examples/pwa-prompt
 import { h } from 'vue'
 import Theme from 'vitepress/theme'
 
 import RegisterSW from './RegisterSW.vue'
+import ReloadPrompt from './ReloadPrompt.vue'
 
 export default {
   ...Theme,
   Layout() {
     return h(Theme.Layout, null, {
-      'layout-bottom': () => h(RegisterSW)
+      'layout-bottom': () => h(ReloadPrompt)
     })
   }
 }
