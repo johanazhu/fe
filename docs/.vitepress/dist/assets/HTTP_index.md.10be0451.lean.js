@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as r,d as t}from"./app.590c1fbf.js";const s=JSON.parse('{"title":"HTTP 导航","description":"","frontmatter":{},"headers":[],"relativePath":"HTTP/index.md"}'),T={name:"HTTP/index.md"},h=t("",9),n=[h];function P(o,p,l,_,d,H){return r(),a("div",null,n)}const c=e(T,[["render",P]]);export{s as __pageData,c as default};

@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as _,d as a}from"./app.590c1fbf.js";const m=JSON.parse('{"title":"学习原则","description":"","frontmatter":{},"headers":[],"relativePath":"Others/学习原则.md"}'),p={name:"Others/学习原则.md"},r=a("",9),s=[r];function o(c,n,d,i,h,l){return _(),t("div",null,s)}const u=e(p,[["render",o]]);export{m as __pageData,u as default};

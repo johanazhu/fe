@@ -1,1 +1,0 @@
-import{_ as p,c as t,o as e,d as a}from"./app.590c1fbf.js";const d=JSON.parse('{"title":"仿 TapTap 默认颜色取海报颜色","description":"","frontmatter":{},"headers":[],"relativePath":"React/实战/仿TapTap默认颜色取海报颜色.md"}'),r={name:"React/实战/仿TapTap默认颜色取海报颜色.md"},o=a("",31),s=[o];function c(n,h,_,i,l,f){return e(),t("div",null,s)}const g=p(r,[["render",c]]);export{d as __pageData,g as default};

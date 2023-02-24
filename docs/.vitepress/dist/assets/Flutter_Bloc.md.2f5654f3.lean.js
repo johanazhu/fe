@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as r,d as a}from"./app.590c1fbf.js";const f=JSON.parse('{"title":"状态管理","description":"","frontmatter":{},"headers":[],"relativePath":"Flutter/Bloc.md"}'),o={name:"Flutter/Bloc.md"},p=a("",9),_=[p];function c(n,s,d,i,l,h){return r(),t("div",null,_)}const m=e(o,[["render",c]]);export{f as __pageData,m as default};

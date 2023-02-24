@@ -1,5 +1,6 @@
 {
   "name": "fe",
+  "private": true,
   "version": "1.0.0",
   "description": "五年前端三年面试",
   "main": "index.js",
@@ -7,22 +8,16 @@
     "dev": "vitepress dev docs",
     "start": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs",
-    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,scss,md,json}\""
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{md}": [
-      "prettier --write"
-    ]
+    "preview": "vitepress preview docs"
   },
   "author": "johan",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^7.0.4",
+    "@vite-pwa/vitepress": "^0.0.5",
+    "vite": "^4.1.4",
+    "vite-plugin-pwa": "^0.14.4",
     "vitepress": "1.0.0-alpha.46",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "workbox-window": "^6.5.4"
   }
 }

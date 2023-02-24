@@ -10,3 +10,8 @@
 
 ## 正文
 
+
+
+
+
+好麻烦，把 ruby on rails 部署到 vercel 上

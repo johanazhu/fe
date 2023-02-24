@@ -1,1 +1,0 @@
-import{_ as a,c as e,o,d as t}from"./app.590c1fbf.js";const x=JSON.parse('{"title":"Koa2 导航","description":"","frontmatter":{},"headers":[],"relativePath":"Node/Koa2/index.md"}'),r={name:"Node/Koa2/index.md"},s=t("",8),p=[s];function d(_,c,h,n,i,l){return o(),e("div",null,p)}const K=a(r,[["render",d]]);export{x as __pageData,K as default};

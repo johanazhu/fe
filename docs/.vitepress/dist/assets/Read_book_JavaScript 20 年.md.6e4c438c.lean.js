@@ -1,1 +1,0 @@
-import{_ as e,c as r,o as t,d as a}from"./app.590c1fbf.js";const g=JSON.parse('{"title":"JavaScript 20 年","description":"","frontmatter":{},"headers":[],"relativePath":"Read/book/JavaScript 20 年.md"}'),o={name:"Read/book/JavaScript 20 年.md"},c=a("",12),p=[c];function i(n,s,h,d,l,_){return t(),r("div",null,p)}const f=e(o,[["render",i]]);export{g as __pageData,f as default};

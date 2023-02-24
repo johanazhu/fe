@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,d as p}from"./app.590c1fbf.js";const y=JSON.parse('{"title":"如何思考做组件","description":"","frontmatter":{},"headers":[],"relativePath":"React/实战/组件/如何思考做组件.md"}'),l={name:"React/实战/组件/如何思考做组件.md"},e=p("",20),o=[e];function t(c,r,i,D,F,d){return n(),a("div",null,o)}const b=s(l,[["render",t]]);export{y as __pageData,b as default};

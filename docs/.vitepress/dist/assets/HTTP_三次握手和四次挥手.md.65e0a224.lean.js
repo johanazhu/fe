@@ -1,1 +1,0 @@
-import{_ as e,c as p,o as a,d as i}from"./app.590c1fbf.js";const T=JSON.parse('{"title":"三次握手和四次挥手","description":"","frontmatter":{},"headers":[],"relativePath":"HTTP/三次握手和四次挥手.md"}'),s={name:"HTTP/三次握手和四次挥手.md"},t=i("",24),l=[t];function c(r,d,_,o,n,h){return a(),p("div",null,l)}const P=e(s,[["render",c]]);export{T as __pageData,P as default};

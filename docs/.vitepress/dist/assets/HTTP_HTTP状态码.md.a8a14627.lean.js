@@ -1,1 +1,0 @@
-import{_ as p,c as t,o as e,d as a}from"./app.590c1fbf.js";const P=JSON.parse('{"title":"HTTP 状态码","description":"","frontmatter":{},"headers":[],"relativePath":"HTTP/HTTP状态码.md"}'),o={name:"HTTP/HTTP状态码.md"},i=a("",23),r=[i];function _(s,n,c,l,T,d){return e(),t("div",null,r)}const u=p(o,[["render",_]]);export{P as __pageData,u as default};

@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,d as l}from"./app.590c1fbf.js";const A=JSON.parse('{"title":"代码题","description":"","frontmatter":{},"headers":[],"relativePath":"React/面试题/代码题.md"}'),p={name:"React/面试题/代码题.md"},o=l("",12),e=[o];function t(c,r,F,y,D,C){return a(),n("div",null,e)}const b=s(p,[["render",t]]);export{A as __pageData,b as default};

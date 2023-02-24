@@ -1,1 +1,0 @@
-import{_ as p,c as e,o as t,d as s}from"./app.590c1fbf.js";const l=JSON.parse('{"title":"什么是微前端？","description":"","frontmatter":{},"headers":[],"relativePath":"Engineered/MicroFrontend/微前端调研.md"}'),r={name:"Engineered/MicroFrontend/微前端调研.md"},a=s("",50),n=[a];function o(c,i,_,d,h,m){return t(),e("div",null,n)}const f=p(r,[["render",o]]);export{l as __pageData,f as default};

@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as p,d as i}from"./app.590c1fbf.js";const l=JSON.parse('{"title":"webview","description":"","frontmatter":{},"headers":[],"relativePath":"WebApp/webview.md"}'),r={name:"WebApp/webview.md"},h=i("",29),d=[h];function t(n,s,c,b,o,w){return p(),a("div",null,d)}const f=e(r,[["render",t]]);export{l as __pageData,f as default};

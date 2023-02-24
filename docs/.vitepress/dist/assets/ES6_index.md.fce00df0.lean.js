@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as t,d as r}from"./app.590c1fbf.js";const f=JSON.parse('{"title":"ES6 导航","description":"","frontmatter":{},"headers":[],"relativePath":"ES6/index.md"}'),s={name:"ES6/index.md"},o=r("",13),p=[o];function m(h,i,n,l,S,_){return t(),a("div",null,p)}const d=e(s,[["render",m]]);export{f as __pageData,d as default};
