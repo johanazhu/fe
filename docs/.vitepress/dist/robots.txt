@@ -1,5 +1,0 @@
-# Algolia-Crawler-Verif: 46BF7AEAC1C1A60C
-
-User-agent: *
-Allow: /
-Sitemap: https://www.algoia.com/sitemap.xml

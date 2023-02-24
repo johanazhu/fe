@@ -1,0 +1,14 @@
+{
+    "cSpell.words": [
+      "birpc",
+      "unmock"
+    ],
+    "editor.formatOnSave": false,
+    "[json]": {
+      "editor.formatOnSave": false
+    },
+    "[markdown]": {
+      "editor.formatOnSave": false
+    },
+    "prettier.enable": false
+  }
