@@ -362,6 +362,209 @@ Rails提供了一个非常优秀的ORM工具，它就是ActiveRecord，也就是
 
 
 
+# 麦子学院 Ruby on rails 框架 笔记
+
+
+
+Rails 的特点
+
+- 不要重复你自己
+- 约定大于配置
+- REST 是最好的
+
+
+
+MVC 设计思想
+
+- 什么是MVC？
+
+- 概念
+  - Model 模型：对数据库的数据进去操作
+  - View 试图：显示数据
+  - Controller 控制器：调度模型，显示数据视图
+
+
+
+如何在 Rails 中使用 MVC
+
+```shell
+rails generate controller welcome # 生成 welcome 控制器所有配套的文件
+rails destroy controller welcome # 销毁 welcome 控制器所有配套的文件
+```
+
+
+
+RESTful应用程序
+
+- Web 应用的本质
+  - 用户 client
+  - 服务 server
+- 定义
+  - 表现层状态转化
+    - 资源、表现层、状态转化
+- RESTful
+  - 使用REST 架构风格的应用程序
+  - 标准化URL
+  - 扩展性强
+  - 跨平台
+
+
+
+### Rails 资源
+
+```shell
+rake routes # 查看 rails 项目中的所有路由
+```
+
+在 routes.rb 中，使用关键字 resources （资源），能生成完整的 restful 路由
+
+```ruby
+Rails.application.routes.draw do
+    resources :posts
+    ...
+end
+```
+
+
+
+Rails 脚手架：一件生成所有内容
+
+```shell
+rails generatate scaffold Post content:text
+```
+
+生成脚手架中所有的文件，MVC+路由都有
+
+数据库迁移
+
+```shell
+rails db:migrate
+```
+
+
+
+
+
+### Rails 路由
+
+Rails 路由文件
+
+Rails 路由的基本功能
+
+- 接受并识别HTTP请求
+- 处理URL附加参数
+- 识别 link_to 和 redireact_to
+
+Rails 路由的种类
+
+- 一般路由
+- 命名路由
+- 资源路由
+  - 资源路由更加常见
+  - 路由+命名
+  - action 的类型
+    - 渲染视图
+    - 不渲染视图
+  - 添加资源路由扩展
+    - 集合路由：posts/recent
+    - 成员路由：posts/:id/recent
+
+添加资源路由扩展
+
+```ruby
+Rails.application.routes.draw do
+   
+    resources :post do
+    	get 'recent', :om => :collection
+    end
+    # 或者
+    resources :post do
+    	collection do 
+            get 'recent'
+        end
+    end
+end
+```
+
+成员路由
+
+```ruby
+Rails.application.routes.draw do
+    resources :post do
+    	member do
+            get 'recent'
+        end
+    end
+end
+```
+
+
+
+### Rails 数据交互
+
+ActiveRecord
+
+- ORM类型
+  - 数据库的高级封装
+  - 不使用SQL语句
+- 数据库表 - 类
+- 行记录 - 实例对象
+- 字段 - 对象的属性
+
+ActiveRecord类
+
+- 基本使用方法
+- 模型的添加和管理
+  - 用户模型
+  - 数据的创建和存储
+  - 数据的访问
+
+```ruby
+# 查看错误信息
+@user.errors.full.messages
+```
+
+验证
+
+```ruby
+class User < ActiveRecord::Base 
+	validates :userName, presence: true # 不为空
+    validates :userName, presence: true, length: { maximum: 20} # 不为空，且长度不能超过20
+    validates :email, presence: true, length: {maximum: 255}, format: { width: /\A[...]/} # format: {width: 正则表达式}
+    uniqueness: { case——senstive: false} # 唯一性
+end
+```
+
+ruby框架介绍 第十四章 数据交互3
+
+
+
+Rails 的 ActiveView
+
+Rails 的 helpers 方法
+
+Rails Bundle 和 Gemfile
+
+Rails 测试
+
+Rails 框架总结
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 参考资料

@@ -77,6 +77,8 @@ Rails 使用 Rails 构建 API 实践：https://ruby-china.org/topics/25822
 
 B站：重力不足的 Ruby 教程
 
+麦子学院Ruby 全栈：https://space.bilibili.com/286293946
+
 
 
 ## 如何学习

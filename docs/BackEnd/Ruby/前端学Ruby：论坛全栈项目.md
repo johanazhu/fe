@@ -4,17 +4,17 @@
 
 ## 前言
 
-我们上个项目做了一个 api 项目，只用到了 ruby on rails 中的一部分能力。这篇文章，笔者将做一个论坛类的全栈项目，用 ruby on rails 来全栈开发
+我们上个项目做了一个 API 项目，只用到了 ruby on rails 中的一部分能力。这篇文章，笔者将做一个论坛类的全栈项目
 
-因为笔者是前端的缘故，所以对数据库设计这块比较薄弱，所以本次开发的UI和API都是模仿来的，严格意义来说，这是一次基于别人的 API 以及别人的 UI 而模仿做的一此论坛项目
+因为笔者是前端的缘故，对数据库设计方面较薄弱，所以本次开发的UI和API都是模仿，严格意义来说，这是一次基于别人的 API、UI 模仿做的论坛项目
 
-此项目 API 方面考察了 [cnodejs](https://cnodejs.org/api)、[ruby-china](https://api.ruby-china.org/) 以及 [v2ex](https://www.v2ex.com/help/api) 这三个论坛的 API，最后打算采用ruby-china 的 api 作为本项目的参考对象，v2ex 公开的 api 数量太少，cnode 相较 ruby-china 的 api 简单，笔者想弄个稍微复杂点的，能对自己能力有所提高的项目，以及 ruby-china 是用 [ruby on rails](https://github.com/ruby-china/homeland) 写的，多多少少可以参考一下，所以 API 这块就参考 ruby-china
+API 方面考察了 [cnodejs](https://cnodejs.org/api)、[ruby-china](https://api.ruby-china.org/) 以及 [v2ex](https://www.v2ex.com/help/api) 三个论坛的 API，最后打算采用ruby-china 的 API 作为本项目的参考对象，v2ex 公开的 API 数量太少，cnode 相较 ruby-china 的 API 简单，笔者想弄个稍微复杂点的，能对自己能力有所提高的项目，以及 ruby-china 是用 [ruby on rails](https://github.com/ruby-china/homeland) 写的，多多少少可以参考一下，所以 API 这块就参考 ruby-china
 
 UI 方面，笔者从 [ruby on rails 论坛](https://discuss.rubyonrails.org/) 以及 [小众软件论坛](https://meta.appinn.net/) 得知了 [discourse](https://www.discourse.org/)，它是用 ruby on rails 写的开源论坛 sass 应用，项目地址：https://github.com/discourse/discourse。
 
-UI 和 API 设计以及数据库（同API一样参考 ruby-china）有了参考对象后，论坛项目就能正式开始了
+UI 和 API 设计以及数据库（同 API 一样参考 ruby-china）有了参考对象后，论坛项目就能正式开始了
 
-笔者将此论坛称为菩萨（Buddha），有人会问文字这么大，其实，笔者一项有乱起名字的爱好，所以这次项目也延续以往的传统
+笔者将此论坛称为菩萨（Buddha），有人会问项目名这么大阿？其实，笔者一项有乱起名字的爱好，所以这次项目也延续以往的传统
 
 ## 知识点总结
 
@@ -22,7 +22,17 @@ rails 最佳实践
 
 注册登录
 
-jwt、数据库的连接、单元测试、接口文档、部署
+jwt
+
+数据库的连接
+
+单元测试
+
+接口文档
+
+持续集成
+
+持续部署
 
 
 
@@ -33,7 +43,7 @@ jwt、数据库的连接、单元测试、接口文档、部署
 ## 初始化项目
 
 ```bash
-rails new --database postgresql --css bootstrap --skip-test buddha
+rails new --database postgresql --skip-test buddha
 ```
 
 > 上个项目没有做单元测试，这个项目中会使用
@@ -42,7 +52,7 @@ rails new --database postgresql --css bootstrap --skip-test buddha
 
 ![报错信息](https://s2.loli.net/2023/02/23/Sh3HK8JRGjLE2wa.png)
 
-说明我们数据库没连上，创建postgresql 的用户名和数据库名
+说明我们数据库没连上，创建 postgresql 的用户名和数据库名
 
 ![创建postgresql](https://s2.loli.net/2023/02/23/gStElfdCm6DLIOk.png)
 
@@ -95,7 +105,7 @@ end
 
 ```
 
-命令`rails db:migrate`，将修改同步到数据库中
+命令 `rails db:migrate`，将修改同步到数据库中
 
 
 
@@ -107,11 +117,41 @@ GET /api/v3/hello 简单的 API 测试接口
 
 （图中的rils是cmder显示不正确，应该是rails）
 
-创建好
+
+
+先做 话题
+
+先在 `routes.rb` 中写入以下内容，它的意思
+
+```ruby
+Rails.application.routes.draw do
+
+  root 'hello#index'
+
+  namespace :api do
+    namespace :v1 do
+      resources :topics
+
+    end
+  end
+end
+```
+
+
+
+![image-20230307170536412](D:\Documents\PicGo Files\image-20230307170536412.png)
+
+先生成控制器
+
+```shell
+rails generate controller api/v1/topics
+```
 
 
 
 
+
+先添加视图
 
 
 
@@ -263,46 +303,3 @@ GET 获取指定主题 topics/:topic_id/replies
 
 
 
-
-
-### cnode api 设计
-
-主题：
-
-get /topics 主题首页
-
-get /topic/:id 主题详情
-
-post /topics 新建主题
-
-post /topics/update 编辑主题
-
-主题收藏：
-
-post /topic_collect/collect 收藏主题
-
-post /topic_collect/de_collect 取消主题收藏
-
-get /topic_collect/:loginname 用户所收藏的主题
-
-评论：
-
-post /topic/:topic_id/replies 新建评论
-
-post /reply/:reply_id/ups 为评论点赞
-
-用户：
-
-get /user/:loginname 用户详情
-
-post /accesstoken 验证 accessToken 的正确性
-
-消息通知：
-
-get /message/count 获取未读消息数
-
-bvgget /messages 获取已读和未读消息
-
-post /message/mark_all 标记全部已读
-
-post /message/mark_one/:msg_id 标记单个消息为已读

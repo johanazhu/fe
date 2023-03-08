@@ -15,3 +15,15 @@
 
 
 好麻烦，把 ruby on rails 部署到 vercel 上
+
+
+
+在 Fly.io 部署 Rails 应用
+
+https://geeknote.net/Rei/posts/387
+
+
+
+查看网站的状态
+
+https://geeknote.statuspage.io

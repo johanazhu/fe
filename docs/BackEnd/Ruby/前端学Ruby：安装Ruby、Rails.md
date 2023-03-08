@@ -18,9 +18,9 @@ Ruby 是一个注重均衡的语言，它的发明者[松本行弘](https://matz
 
 笔者所用的电脑是 window，在此基础上有多种方法安装、使用 ruby，一是直接下载 window 版的 ruby；二是先安装 docker，后下载 linux 镜像，在 linux 环境中安装 ruby；三是安装 docker 后，直接下载 ruby 镜像
 
-如果是在 window 中，先在[下载地址](https://rubyinstaller.org/downloads/)里下载自己想要的版本
+如果是在 Window 中，可以在[官网](https://rubyinstaller.org/downloads/)或者[国内镜像源](https://rubyinstaller.cn/)处下载使用
 
-如果是在 linux （docker 中或者服务器）中
+如果是在 Linux 中，可以在[官网](http://www.ruby-lang.org/zh_cn/downloads/)里下载
 
 1. 下载最新版的 Ruby 压缩文件
 
@@ -51,7 +51,7 @@ ruby -v
 ruby 3.1.3
 ```
 
-如果是下载 ruby 镜像
+如果用 docker 
 
 1. 拉取 ruby 镜像
 
@@ -65,7 +65,59 @@ docker pull ruby
 docker run -it 
 ```
 
-当然，也可以用 [vscode + dev-container](https://blog.azhubaby.com/2022/12/10/2022-12-10-%E6%8F%90%E9%AB%98%E5%BC%80%E5%8F%91%E4%BD%93%E9%AA%8C%EF%BC%9Adev-container/) 来在 vscode 中生成一个 linux，linux 安装 ruby 来做开发
+当然，也可以用 [vscode + dev-container](https://blog.azhubaby.com/2022/12/10/2022-12-10-%E6%8F%90%E9%AB%98%E5%BC%80%E5%8F%91%E4%BD%93%E9%AA%8C%EF%BC%9Adev-container/) 来在 vscode 中生成一个 Linux，Linux 安装 ruby 来做开发
+
+除了直接下载 ruby 外，还可以下载 RVM，它可以管理多个版本的 Ruby，就像前端概念里的 nvm
+
+## RVM
+
+[RVM](http://rvm.io/) 能在系统中安装和管理多个 Ruby 版本。同时还能管理不同的 gem 集。支持 macOS、Linux 和其它类 UNIX 操作系统
+
+安装 RVM，无论是 Window 还是 Linux 或者 Mac 都适用
+
+https://www.cnblogs.com/fireblackman/p/15718782.html
+
+https://ithelp.ithome.com.tw/articles/10216350
+
+https://github.com/rvm/rvm
+
+```shell
+gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+```
+
+```shell
+\curl -sSL https://get.rvm.io | bash -s stable
+```
+
+
+
+
+
+1. `sudo apt-get install curl`
+2. `curl -L https://get.rvm.io | bash -s stable`
+3. `source ~/.rvm/scripts/rvm`
+4. `rvm requirements`
+
+
+
+
+
+
+
+```bash
+# 设置为系统默认版本
+rvm use --default 2.2.3
+# 在其他版本之前切换
+rvm use 2.2.1
+# 卸载一个指定版本
+rvm uninstall 2.2.1
+```
+
+
+
+
+
+
 
 ## RubyGems
 
@@ -133,19 +185,6 @@ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 - gem sources：查看当前镜像
 
 
-
-## RVM
-
-管理 ruby 的不同版本，目前也作为标准的 ruby 安装工具
-
-```bash
-# 设置为系统默认版本
-rvm use --default 2.2.3
-# 在其他版本之前切换
-rvm use 2.2.1
-# 卸载一个指定版本
-rvm uninstall 2.2.1
-```
 
 
 
