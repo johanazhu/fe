@@ -1,8 +1,10 @@
 # 前端学Ruby
 
+> 人与人的区别不是”受过教育“和”没受过教育“，而是”喜欢阅读“和”不喜欢阅读“ ——《纳瓦尔宝典》
 
 
-写在前面，笔者是一名前端，现在来学习 ruby，打算写一系列的文章，将自己学习 ruby on rails 的经验分享出来，于是就有了这一系列文章：「**前端学Ruby：七天搞定**」
+
+写在前面，笔者是一名前端，现在来学习 ruby，打算写一系列的文章，将自己学习 ruby on rails 的经验分享出来，于是就有了这一系列文章：「**前端学Ruby：七天笔记**」
 
 第一天 安装 Ruby、Rails
 
@@ -12,11 +14,11 @@
 
 第四天 唐诗API 项目
 
-第五天 部署优化
+第五天 唐诗项目部署优化
 
-第六天 论坛全栈项目
+第六天 论坛全栈项目（一）
 
-第七天 词云/文案狗/朋友圈项目
+第七天 论坛全栈项目（二）
 
 
 
@@ -28,9 +30,11 @@
 
 ## 官方官网
 
-ruby （中文）官网：https://www.ruby-lang.org
+Ruby （中文）官网：https://www.ruby-lang.org
 
-rails 官网网站：https://rubyonrails.org/
+Rails 官网网站：https://rubyonrails.org/
+
+Rails API文档：https://api.rubyonrails.org/
 
 中文版：http://www.ruby-lang.org/zh_cn
 
@@ -42,11 +46,11 @@ Gems 仓库（类似于https://www.npmjs.com/）：https://rubygems.org/
 
 anesome-ruby：https://github.com/markets/awesome-ruby
 
-awesome-ruby-china（停更3年）：https://github.com/liukun-lk/awesome-ruby-china
+awesome-ruby-china（已停更，老贴精华不少）：https://github.com/liukun-lk/awesome-ruby-china
 
-railstutorial 教程网：https://www.railstutorial.org/
+railstutorial 教程网（Ruby on Rails 教程此书的母网）：https://www.railstutorial.org/
 
-rails 论坛：https://discuss.rubyonrails.org/
+Rails 论坛：https://discuss.rubyonrails.org/
 
 
 
@@ -62,22 +66,54 @@ Ruby on Rails 实战圣经（繁体版）：https://ihower.tw/rails/index.html
 
 - 中文版：https://www.bookstack.cn/read/ihower-ruby-on-rails/preface.md
 
+[《笨方法学 Ruby》](http://lrthw.github.io/)
 
-《笨方法学 Ruby》
+[《应用Rails进行敏捷Web开发》](https://book.douban.com/subject/1839273/)
 
-《[应用Rails进行敏捷Web开发](https://book.douban.com/subject/1839273/)》
+[免费编程图书列表](https://ebookfoundation.github.io/free-programming-books/books/free-programming-books-zh.html#ruby)
 
 
 
 ## 教程
 
+李笑来当初五万的全栈营（已免费）⭐：https://fullstack.qzy.camp/
+
+方应杭 Vue3+Rails 全栈项目⭐：https://www.bilibili.com/video/BV1AZ4y1r7eU
+
 菜鸟教程：https://www.runoob.com/ruby/ruby-intro.html
 
 Rails 使用 Rails 构建 API 实践：https://ruby-china.org/topics/25822
 
-B站：重力不足的 Ruby 教程
+B站：重力不足的 Ruby 教程：https://space.bilibili.com/25990460
 
 麦子学院Ruby 全栈：https://space.bilibili.com/286293946
+
+
+
+## 牛人
+
+[DHH](https://dhh.dk/)：Rails 的创造者，丹麦人
+
+- 赛车手，2014年二十四小时汽车耐力赛冠军
+- 作家，他还是[《Rework》](https://book.douban.com/subject/3889178/)（重来）和[《Remote》](https://book.douban.com/subject/21362627/)作者
+- 黑客，2005获得谷歌最佳黑客
+- 他现在还在[更文](https://world.hey.com/dhh)，Rails 也收到了一些[危机](https://geeknote.net/Rei/posts/397)
+- 看他简介，吓得要死，什么都会，而且都获得了很好的成就。古云生子当如孙仲谋，DHH 简直当代孙权
+
+[TJ](https://github.com/tj)：熟悉前端的人都知道他
+
+- 开源狂魔：开源几百个npm包
+- 异于常人的勤奋：曾经1年10000多commit
+- express 和 koa 的作者
+- 后来创建公司去搞 Go 了，不过他的传说一直留在前端界
+
+[方应杭](https://fangyinghang.com)：看了他的视频介绍（就是上面的Vue3+Rails 全栈项目）才决定学 Ruby 的
+
+[Rei](https://chloerei.com/)：[Ruby China 中文社区](https://ruby-china.org/Rei)的管理员，现阶段也在 [BiliBili](https://www.bilibili.com/video/BV1QD4y1A75x/) 上传道
+
+[张文细](https://ihower.tw)：台湾人，[Ruby on Rails 實戰聖經](https://ihower.tw/rails) 作者，他的 [博客](https://ihower.tw/blog/) 一直在更新，老码农了
+
+[1c7](https://1c7.me/)：著有[中国独立开发者项目列表](https://github.com/1c7/chinese-independent-developer)，也是 ruby 开发者
 
 
 
@@ -89,21 +125,17 @@ Ruby 社区有人写的[如何从零开始学会 Ruby on Rails](https://ruby-chi
 
 **以下步骤请一步一步来，切勿心急跳过，最好连我上面的链接都不要提前点击！**
 
-1. 看完 [https://ruby-china.github.io/rails-guides/getting_started.html](https://ruby-china.github.io/rails-guides/getting_started.html/) 
-2. 通过学习 Rails Guides 实现一个博客系统，包涵完整的功能(包括UI)，预计两周
+1. 看完 [https://ruby-china.github.io/rails-guides/getting_started.html](https://ruby-china.github.io/rails-guides/getting_started.html) 
+2. 通过学习 Rails Guides 实现一个博客系统，包涵完整的功能（包括UI），预计两周
 3. 从头到尾一字不漏的看完 《[应用Rails进行敏捷Web开发](https://book.douban.com/subject/1839273/)》
 4. 回头审视之前的博客设计和《应用Rails进行敏捷Web开发》的区别，可以再重新搞个博客
 5. 看完 《[Getting Real](https://web.archive.org/web/20120104065141/http://gettingreal.37signals.com/GR_chn.php)》，预计两个小时
-6. 搞明白 Gem, RVM, Bundler 是什么
-7. 看完 《Rework》，重来，微信读书上有
+6. 搞明白 Gem，RVM，Bundler 是什么
+7. 看完 《Rework》，中译文《重来》（微信读书上有）
 8. 看 [http://railscasts.com](http://railscasts.com/) 的视频教程，从第一页开始看，可以学到很多技巧，以免走弯路。
 
 
 
 ## 我的学习路径
 
-
-
-项目方面：先按照官网做了个blog
-
-https://ruby-china.github.io/rails-guides/getting_started.html
+以上推荐的书、视频多多少少看过，不过有些看完，有些没看完。当笔者完成「如何从零开始学会 Ruby on Rails」后，又想着再精进，搜搜找找，发现的教程不是太老就是全是英文，中文的项目教程太少。后在一篇文章上看到“learn by making”学习方法论，就想着要不自己边做边学，把自己想法库中的项目完成，于是就有了这一系列文章

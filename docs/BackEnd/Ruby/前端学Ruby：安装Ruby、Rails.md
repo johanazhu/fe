@@ -16,7 +16,7 @@ Ruby 是一个注重均衡的语言，它的发明者[松本行弘](https://matz
 
 ## 如何安装 ruby
 
-笔者所用的电脑是 window，在此基础上有多种方法安装、使用 ruby，一是直接下载 window 版的 ruby；二是先安装 docker，后下载 linux 镜像，在 linux 环境中安装 ruby；三是安装 docker 后，直接下载 ruby 镜像
+笔者所用的电脑是 window，在此基础上有多种方法安装、使用 ruby，一是直接下载 window 版的 ruby；二是先安装 docker，后下载 Linux 镜像，在 Linux 环境中安装 ruby；三是安装 docker 后，直接下载 ruby 镜像
 
 如果是在 Window 中，可以在[官网](https://rubyinstaller.org/downloads/)或者[国内镜像源](https://rubyinstaller.cn/)处下载使用
 
@@ -73,36 +73,23 @@ docker run -it
 
 [RVM](http://rvm.io/) 能在系统中安装和管理多个 Ruby 版本。同时还能管理不同的 gem 集。支持 macOS、Linux 和其它类 UNIX 操作系统
 
-安装 RVM，无论是 Window 还是 Linux 或者 Mac 都适用
-
-https://www.cnblogs.com/fireblackman/p/15718782.html
-
-https://ithelp.ithome.com.tw/articles/10216350
-
-https://github.com/rvm/rvm
-
 ```shell
 gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 ```
 
 ```shell
-\curl -sSL https://get.rvm.io | bash -s stable
+\curl -sSL https://get.rvm.io | sudo bash -s stable
 ```
 
+```shell
+# 当 rvm 安装好后，看下图的提示操作
+sudo usermod -a -G rvm johan # 将当前用户添加到 rvm 组中
+su root # 切换到root，相当于先注销 johan
+su johan # 切换会johan，相当于登录 johan
+source /etc/profile.d/rvm.sh # 让命令生效
+```
 
-
-
-
-1. `sudo apt-get install curl`
-2. `curl -L https://get.rvm.io | bash -s stable`
-3. `source ~/.rvm/scripts/rvm`
-4. `rvm requirements`
-
-
-
-
-
-
+![安装完rvm后的提示](https://s2.loli.net/2023/03/08/59NaFCtPhqEinXR.png)
 
 ```bash
 # 设置为系统默认版本
@@ -115,11 +102,7 @@ rvm uninstall 2.2.1
 
 
 
-
-
-
-
-## RubyGems
+## Gems
 
 RubyGems 是 Ruby 项目的包管理工具。有很多有用的代码库（包括 Rails）都可以通过包（或叫做 gem）的形式获取
 
@@ -130,7 +113,7 @@ gem -v
 #3.3.26
 ```
 
-> 很有意思：ruby 的英语意思是红宝石，gem 的意思是宝石
+> 有意思的是：ruby 的英语意思是红宝石，gem 的意思是宝石
 
 ### Ruby镜像源替换
 
@@ -170,12 +153,13 @@ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 
 ### 国内其他镜像源
 
-```bash
+> 在部署时，ruby-china 的源会抖动连接不上，可以通过换源或者在开发时将源下载下来，用本地源来代替（唐诗项目遇到的坑）
+
+中科大：http://mirrors.ustc.edu.cn/help/rubygems.html 
+
+清华：https://mirrors.tuna.tsinghua.edu.cn/help/rubygems/ 
+
 阿里：https://mirrors.aliyun.com/rubygems/
-清华：https://mirrors.tuna.tsinghua.edu.cn/rubygems/
-```
-
-
 
 ### gem 命令
 
@@ -184,15 +168,9 @@ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 - gem uninstall：卸载应用包
 - gem sources：查看当前镜像
 
-
-
-
-
 ### 命令行
 
 当安装完 ruby 后，打开命令行输入 irb，即可进入irb 运行环境，这就像输入 node 进入 node 运行环境，输入 python ，进入 python 运行环境
-
-
 
 ## 安装 Rails
 
@@ -233,7 +211,7 @@ rails new --api --database=postgresql --skip-test blog # 创建一个数据库�
 
 ## 第一个程序
 
-使用 rails 新建项目，它就像 express-generator 一样，所有的配置都帮你弄好，你要写代码就可以
+使用 rails 新建项目，它就像 [express-generator](https://expressjs.com/en/starter/generator.html) 一样，所有的配置都帮你弄好，你要写代码就可以
 
 ```bash
 rails new first_app
@@ -275,7 +253,7 @@ bundle install
 
 > 可以使用 bundle --help 查看 bundle 的其他命令行，笔者会用 `bundle install --verbose` 查看下载过程
 
-如何启动项目呢，在前端开发中，有 package.json，能在 script 中写命令。而 rails 不同，它的 `Gemfile` 没有运行文件的命令，它是通过命令行来启动项目：
+如何启动项目呢，在前端开发中，有 package.json，能在 script 中写命令。而 rails 不同，它的 `Gemfile` 没有运行文件的命令，但它自带了很多命令行，如：
 
 ```bash
 rails server # 启动服务
@@ -288,11 +266,9 @@ rails s -p 8080 # s 为 server 缩写，-p 8080 表示指定8080的端口
 
 
 
-
-
 ## 总结
 
-本文的主要目的是让 ruby on rails 能在 window 上运行起来，在 window 上运行确实还有坑，即使没有4、5年前那么多，但还是有个坑让我踩进去了，这里仅作记录
+本文的主要目的是让 Ruby on Rails 能运行，在 window 上运行确实还有坑，即使没有几年前那么多，但还是有个坑让我踩进去了，这里作记录
 
 我们现在已经安装了 ruby、rails，并且启动项目，但到现在一行代码都不会写，下一篇，我们熟悉 ruby 的语法
 

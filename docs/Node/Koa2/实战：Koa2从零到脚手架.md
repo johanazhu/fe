@@ -646,4 +646,4 @@ Github 地址：[koa-basic](https://github.com/johanazhu/koa-basic)
 
 ## 参考资料
 
--   [一杯茶的时间，上手 Koa2 + MySQL 开发](https://tuture.co/2020/05/22/fac8401/)
+-   [一杯茶的时间，上手 Koa2 + MySQL 开发](https://zhuanlan.zhihu.com/p/143998174)

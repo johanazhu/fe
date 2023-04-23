@@ -78,7 +78,7 @@ Node 实现了一个简单模块记在系统。在 Node 中，文件和模块是
 
 ### 参考资料
 
-- [一杯茶的时间，上手 Node.js](https://tuture.co/2019/12/03/892fa12/)
+- [一杯茶的时间，上手 Node.js](https://segmentfault.com/a/1190000021987355)
 
 - [Node.js 后端工程师学习路径](https://github.com/tuture-dev/nodejs-roadmap)
 

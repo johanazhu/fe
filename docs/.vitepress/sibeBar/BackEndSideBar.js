@@ -56,8 +56,16 @@ export default function BackEndSideBar() {
                     link: '/BackEnd/Ruby/前端学Ruby：唐诗API项目',
                 },
                 {
-                    text: '前端学Ruby：论坛全栈项目',
-                    link: '/BackEnd/Ruby/前端学Ruby：论坛全栈项目',
+                    text: '前端学Ruby：唐诗项目部署优化',
+                    link: '/BackEnd/Ruby/前端学Ruby：唐诗项目部署优化',
+                },
+                {
+                    text: '前端学Ruby：论坛全栈项目一',
+                    link: '/BackEnd/Ruby/前端学Ruby：全栈论坛（地宫）项目一',
+                },
+                {
+                    text: '前端学Ruby：论坛全栈项目二',
+                    link: '/BackEnd/Ruby/前端学Ruby：全栈论坛（地宫）项目二',
                 },
             ],
         },

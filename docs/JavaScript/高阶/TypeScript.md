@@ -248,7 +248,7 @@ class SomePartialPoint implements PartialPoint {
 
 -   [TypeScript 入门教程](https://ts.xcatliu.com/)
 -   [使用 TypeScript 常见困惑：interface 和 type 的区别是什么？](https://blog.fundebug.com/2021/06/28/typescript-the-difference-between-interface-and-type/)
--   [图雀的 typescript 教程](https://tuture.co/tags/Typescript/)
+-   [图雀的 typescript 教程](https://segmentfault.com/a/1190000022282306)
 -   [4000 字讲清 《深入理解 TypeScript》一书 【基础篇】](https://segmentfault.com/a/1190000021210413)
 -   [编写高质量可维护的代码：Awesome TypeScript](https://mp.weixin.qq.com/s/gAwvcmSNYMwQKk6RY-GaEw)
 -   [字节 React + TypeScript 实践总结篇](https://mp.weixin.qq.com/s/v7uZrEmEaPVfL76PHGD1oQ)

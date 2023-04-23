@@ -20,6 +20,6 @@
 
 [Docker 1 小时快速上手教程，无废话纯干货文档](https://docker.easydoc.net/)
 
-[一杯茶的时间，上手 Docker](https://tuture.co/2020/01/01/442cc8d/)
+[一杯茶的时间，上手 Docker](https://segmentfault.com/a/1190000022132491)
 
 [Docker — 从入门到实践](https://yeasy.gitbook.io/docker_practice/)

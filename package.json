@@ -14,9 +14,9 @@
   "license": "ISC",
   "devDependencies": {
     "@vite-pwa/vitepress": "^0.0.5",
-    "vite": "^4.1.4",
-    "vite-plugin-pwa": "^0.14.4",
-    "vitepress": "1.0.0-alpha.46",
+    "vite": "^4.3.1",
+    "vite-plugin-pwa": "^0.14.7",
+    "vitepress": "1.0.0-alpha.73",
     "vue": "^3.2.47",
     "workbox-window": "^6.5.4"
   }

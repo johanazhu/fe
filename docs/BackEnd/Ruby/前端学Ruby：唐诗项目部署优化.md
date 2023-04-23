@@ -14,7 +14,7 @@
 
 
 
-好麻烦，把 ruby on rails 部署到 vercel 上
+找到方法了，就是`Fly.io`，刚刚部署了一个`https://list101.fly.dev/`
 
 
 

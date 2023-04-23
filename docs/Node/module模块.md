@@ -90,7 +90,7 @@ module.exports.foo = 'bar'
 
 ## 参考资料
 
--   [一杯茶的时间，上手 Node.js](https://tuture.co/2019/12/03/892fa12/)
+-   [一杯茶的时间，上手 Node.js](https://segmentfault.com/a/1190000021987355)
 -   [「万字整理 」这里有一份 Node.js 入门指南和实践,请注意查收](https://juejin.cn/post/6844904029219192839)
 -   [Node.js 模块系统源码探微](https://mp.weixin.qq.com/s?__biz=MzI0NTE5NzYyMw==&mid=2247483885&idx=1&sn=eb4dd408d58774dc1587f0d6705eb8a2&chksm=e9537fb5de24f6a310a36b8d46623ec534a94a5ff09d7deb6191124e14c39b0667ef465059e4&mpshare=1&scene=1&srcid=&sharer_sharetime=1575817441587&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
 -   [require 和 import 的区别是什么？看这个你就懂了](https://segmentfault.com/a/1190000014434944)

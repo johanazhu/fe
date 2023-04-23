@@ -1,5 +1,7 @@
 # 前端学 Ruby：熟悉Rails
 
+前端学 Ruby：熟悉 Ruby 语法
+
 
 
 ## 前言
@@ -63,13 +65,11 @@ end
 
 数据库表就是一个类，行记录就是实例对象，字段就是对象的属性
 
-- 数据库-ActiveRecord- 例子
-
-- 表-类-articles
-
-- 行-实例对象-`obj={id:1, title:'标题', desc: '描述'}`
-
-- 字段-对象属性-`obj.title`
+| 数据库 | ActiveRecord | 例子                                   |
+| ------ | ------------ | -------------------------------------- |
+| 表     | 类           | articles                               |
+| 行     | 实例对象     | obj={id:1, title:'标题', desc: '描述'} |
+| 字段   | 对象属性     | obj.title                              |
 
 > 这里需要注意的是：Rails 中的模型类名是单数，查找的数据表为复数。例如模型类名为 Article，数据表是 articles
 
@@ -377,4 +377,3 @@ activeadmin：管理工具
 - [Ruby 官网 rails 教程](https://ruby-china.github.io/rails-guides/getting_started.html)
 - [Rails 风格指南](https://github.com/bbatsov/rails-style-guide)
 - [Rails 风格指南中文版](https://github.com/JuanitoFatas/rails-style-guide/blob/master/README-zhCN.md)
-
