@@ -28,6 +28,7 @@
 // 切换成这种模式：https://github.com/vite-pwa/vitepress/tree/main/examples/pwa-prompt
 import { h } from 'vue'
 import Theme from 'vitepress/theme'
+import Layout from './Layout.vue'
 
 import RegisterSW from './RegisterSW.vue'
 import ReloadPrompt from './ReloadPrompt.vue'
@@ -35,7 +36,7 @@ import ReloadPrompt from './ReloadPrompt.vue'
 export default {
   ...Theme,
   Layout() {
-    return h(Theme.Layout, null, {
+    return h(Layout, null, {
       'layout-bottom': () => h(ReloadPrompt)
     })
   }

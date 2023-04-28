@@ -11,4 +11,4 @@ pnpm.yaml
 pnpm-lock.yaml
 
 .vercel
-
+.env

@@ -27,18 +27,14 @@ export default {
     },
 
     algolia: {
-        appId: 'LE7T3Q08D4',
-        apiKey: 'b1b28febea61eaf77ca3c462d41cb629',
+        appId: process.env.ALGOLIA_APPID ,
+        apiKey: process.env.ALGOLIA_APIKEY,
         indexName: 'azhubaby',
         locales: {
             placeholder: '搜索文档',
         },
     },
     // me: {
-    //     // wechat:"https://cdn.jsdelivr.net/gh/shengxinjing/static/wechat.jpg"
-    //     // wechat: "https://cdn.jsdelivr.net/gh/shengxinjing/static/jingu2.png"
-    //     // wechat: '/wechat2.png',
-    //     gongzhonghao: '/gongzhonghao.jpeg',
-    //     // wechat:"https://cdn.jsdelivr.net/gh/shengxinjing/static/xiao3.jpg"
+    //     wechat: "https://s2.loli.net/2022/03/25/VqfD2ScLuKzjbR8.jpg"
     // },
 };

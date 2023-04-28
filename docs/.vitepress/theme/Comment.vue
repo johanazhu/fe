@@ -9,7 +9,7 @@ onMounted(() => {
   script.setAttribute('repo', 'johanazhu/fe');
   script.setAttribute('issue-term', 'pathname');
   script.setAttribute('label', 'Comment');
-  script.setAttribute('theme', 'github-dark');
+  script.setAttribute('theme', 'preferred-color-scheme');
   document.querySelector('#comment').appendChild(script);
 
 })

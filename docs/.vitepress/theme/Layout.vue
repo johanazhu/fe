@@ -1,24 +1,26 @@
 <script setup>
 import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import Comment from '../components/Comment.vue';
+import Comment from './Comment.vue';
 
 const data = useData();
 const { Layout } = DefaultTheme;
-const { theme, frontmatter } = data;
+const { theme, frontmatter, page } = data;
+
 </script>
 
 <template>
     <Layout>
+         <template #doc-footer-before>
+            <Comment :key="page.relativePath"></Comment>
+        </template>
+
         <template #aside-outline-after>
             <div class="about-me">
-                <!-- <p class="item">真男人 & 不推广</p> -->
                 <img :src="theme.me.wechat" alt="" />
             </div>
         </template>
-        <template #doc-footer-before>
-            <Comment :key="page.relativePath"></Comment>
-        </template>
+
     </Layout>
 </template>
 <style scoped>
