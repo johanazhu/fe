@@ -34,7 +34,7 @@ export default {
             placeholder: '搜索文档',
         },
     },
-    // me: {
-    //     wechat: "https://s2.loli.net/2022/03/25/VqfD2ScLuKzjbR8.jpg"
-    // },
+    me: {
+        wechat: "https://s2.loli.net/2022/03/25/VqfD2ScLuKzjbR8.jpg"
+    },
 };

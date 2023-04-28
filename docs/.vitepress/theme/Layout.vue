@@ -15,11 +15,11 @@ const { theme, frontmatter, page } = data;
             <Comment :key="page.relativePath"></Comment>
         </template>
 
-        <!-- <template #aside-outline-after>
+        <template #aside-outline-after>
             <div class="about-me">
                 <img :src="theme.me.wechat" alt="" />
             </div>
-        </template> -->
+        </template>
 
     </Layout>
 </template>
