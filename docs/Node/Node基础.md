@@ -76,6 +76,30 @@ Node 实现了一个简单模块记在系统。在 Node 中，文件和模块是
 
 简单来说，commonJS 导出的是值的拷贝，而非值的引用，这与 [ES6 中的模块化](../ES6/模块化历程.md)是不一样的
 
+
+
+
+
+
+
+
+
+[核心基础课程](https://nodeschool.io/zh-cn/)：
+
+learnyounode：学习 Node.js 的基础：如异步I/O、http 等
+
+how to npm：学习如何使用和创建 npm 模块
+
+stream-adventure：学习使用 .pipe() 流（streaming）的相关接口
+
+[You don’t know Node](https://medium.com/@samerbuna/you-dont-know-node-6515a658a1ed)：https://github.com/Walikrence/-/blob/master/TODO/you-dont-know-node.md
+
+you-dont-know-node：https://github.com/azat-co/you-dont-know-node
+
+
+
+
+
 ### 参考资料
 
 - [一杯茶的时间，上手 Node.js](https://segmentfault.com/a/1190000021987355)

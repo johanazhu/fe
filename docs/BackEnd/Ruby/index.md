@@ -1,4 +1,4 @@
-# 前端学Ruby
+# Ruby 导航
 
 > 人与人的区别不是”受过教育“和”没受过教育“，而是”喜欢阅读“和”不喜欢阅读“ ——《纳瓦尔宝典》
 
@@ -28,7 +28,7 @@
 
 
 
-## 官方官网
+## 官方网站
 
 Ruby （中文）官网：https://www.ruby-lang.org
 
@@ -54,7 +54,7 @@ Rails 论坛：https://discuss.rubyonrails.org/
 
 
 
-## 书籍
+## 书籍推荐
 
 Ruby相关的书：https://github.com/EZLippi/practical-programming-books#ruby
 

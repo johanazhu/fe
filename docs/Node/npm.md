@@ -43,6 +43,14 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 -   --save-dev（或者 -D），会在 devDependencies 属性下添加 X
     -   开发环境下使用
 
+
+
+包管理工具的演进
+
+https://zhuanlan.zhihu.com/p/582229306
+
+
+
 ## 参考资料
 
 -   [nodejs 中文文档](http://nodejs.cn/website2/learn/update-all-the-nodejs-dependencies-to-their-latest-version/)

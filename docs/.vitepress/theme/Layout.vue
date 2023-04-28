@@ -1,9 +1,11 @@
 <script setup>
 import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
+import Comment from '../components/Comment.vue';
+
 const data = useData();
 const { Layout } = DefaultTheme;
-const { theme } = data;
+const { theme, frontmatter } = data;
 </script>
 
 <template>
@@ -13,6 +15,9 @@ const { theme } = data;
                 <!-- <p class="item">真男人 & 不推广</p> -->
                 <img :src="theme.me.wechat" alt="" />
             </div>
+        </template>
+        <template #doc-footer-before>
+            <Comment :key="page.relativePath"></Comment>
         </template>
     </Layout>
 </template>
