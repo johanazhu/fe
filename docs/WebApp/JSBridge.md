@@ -149,4 +149,4 @@ JSBridge 就字如其意，它是 Native 和 H5 交互的一种手段，可以�
 
 -   [WebView 与 APP 交互实战记录](https://segmentfault.com/a/1190000018208609)
 
--   [小白必看，JSBridge](https://mp.weixin.qq.com/s?__biz=MzI0NTE5NzYyMw==&mid=2247484005&idx=1&sn=43b97435aa13b4427c82bf87a9165c05&chksm=e9537c3dde24f52ba8f59e7ea837ac6b23d8bc8376cb6d5e7a34214ed49b6820fe67ab80416b&mpshare=1&scene=1&srcid=&sharer_sharetime=1582500333067&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+-   [小白必看，JSBridge](https://mp.weixin.qq.com/s?__biz=Mzg3NTcwMTUzNA==&mid=2247486243&idx=1&sn=09ef07381ca8ce3f9d58dfd2b29c3b77&source=41#wechat_redirect)

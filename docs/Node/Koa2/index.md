@@ -13,3 +13,5 @@
 对于 Koa2 来说，我们也是从这几步来着手，首先我们要了解 [Koa2 基础](./Koa2基础.md) ；其次，我们做个实战项目——[实战：Koa2 从零到脚手架](./实战：Koa2从零到脚手架.md)；最后，我们[手写一个 Koa2](./手写Koa2.md)，不过再次之前，我们先去读一下 [Koa2 的源码](./源码分析.md)
 
 无论是 Koa2，还是 [Express](../Express/)、[Redux](../../Read/code/Redux.md)，在读过它们的源码后，我们有了对比，就能分析出优秀框架是怎么做出的——[对比 Express、Koa2、Redux](./对比Express、Koa2、Redux.md)。
+
+另外的实战：[实战：vercel部署node服务](./实战：vercel部署node服务.md)、[实战：李瓶儿博客开发](./实战：李瓶儿博客开发.md)

@@ -17,6 +17,7 @@ const { theme, frontmatter, page } = data;
 
         <template #aside-outline-after>
             <div class="about-me">
+                <p>不要关注</p>
                 <img :src="theme.me.wechat" alt="" />
             </div>
         </template>
@@ -29,6 +30,10 @@ const { theme, frontmatter, page } = data;
     font-size: 14px;
 }
 .about-me p {
+    width: 120px;
+    font-size: 12px;
+    color: #eee;
+    text-align: center;
     margin: 5px 0;
 }
 .about-me a {
@@ -38,6 +43,7 @@ const { theme, frontmatter, page } = data;
     transition: color 0.25s;
 }
 .about-me img {
+    text-align: center;
     width: 150px;
     margin-left: -8px;
 }

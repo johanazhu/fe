@@ -40,7 +40,7 @@ bash-it
 
 
 
-```shell
+```bash
 #!/bin/bash 
 
 echo "which useage do you want to konw?"

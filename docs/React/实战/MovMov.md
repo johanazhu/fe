@@ -6,21 +6,21 @@ MovMov
 
 原型
 
-​ 数据已经有了，需要展示什么部分，UI 参考 TapTap 的话需要做什么
+ 数据已经有了，需要展示什么部分，UI 参考 TapTap 的话需要做什么
 
 设计
 
-​ bulma 或者 Tailwind 来做
+ bulma 或者 Tailwind 来做
 
 基础脚手架搭建 TypeScript + React Hooks + immuable
 
-​ TypeScript 语法学习
+ TypeScript 语法学习
 
-​ React 以及 hooks 的使用
+ React 以及 hooks 的使用
 
-​ 相关的优化学习
+ 相关的优化学习
 
-​ immuable 数据不可变的学习
+ immuable 数据不可变的学习
 
 TapTap 默认的颜色取自海报颜色
 
@@ -45,3 +45,7 @@ umi-plugin-keep-alive
 tab
 
 tabpanel
+
+https://github.com/tastejs/next-movies
+
+https://next-movies-zeta.vercel.app/?category=Popular&page=1

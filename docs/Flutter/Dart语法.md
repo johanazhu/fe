@@ -123,7 +123,7 @@ printStr3(sex: "男")
 
 输出：
 
-```shell
+bash
 Name is null sex is 男 address is null
 ```
 

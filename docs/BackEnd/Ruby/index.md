@@ -88,6 +88,10 @@ B站：重力不足的 Ruby 教程：https://space.bilibili.com/25990460
 
 麦子学院Ruby 全栈：https://space.bilibili.com/286293946
 
+rubyonrails教程：https://guides.rubyonrails.org/
+
+hotrails教程：https://www.hotrails.dev/turbo-rails
+
 
 
 ## 牛人

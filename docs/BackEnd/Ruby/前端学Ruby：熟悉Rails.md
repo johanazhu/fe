@@ -207,7 +207,7 @@ LInk_to 的用法
 
 一般使用命令行不仅能生成控制器，也能把视图生成出来
 
-```shell
+```bash
 rails g controller Calendar show
 ```
 

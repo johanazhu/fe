@@ -92,7 +92,7 @@ https://juejin.im/post/5d8440ebe51d4561eb0b2751
 
 jenkins + docker +vue 项目的自动化部署环境
 
-https://juejin.im/post/5d369d6e5188253a2e1b93ff#heading-16
+https://juejin.im/post/5d369d6e5188253a2e1b93ff
 
 发布镜像到阿里云容器服务
 

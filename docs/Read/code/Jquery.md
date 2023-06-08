@@ -451,6 +451,12 @@ jQuery 最核心的功能是操作 DOM，所有疑似 DOM 的东西都可以扔�
 
 
 
+jQuery 设计思想
+
+https://icodeq.com/2022/ba3c0710acd5/
+
+
+
 ## 参考资料
 
 -   [前端的jquery在2022年还适合学习吗?](https://www.zhihu.com/question/538344155/answer/2550522380)

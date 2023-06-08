@@ -110,3 +110,4 @@ $("#test").hide() // 隐藏 id="test" 的元素
 
 -   [如何动手写一个 jQuery 插件](http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html#1)
 -   [jQuery 都过时了，那我还学它干嘛？](https://fangyinghang.com/why-still-jquery/)
+-   [从 jQuery 中学习设计模式](https://meathill.com/gitbook-design-patterns-in-jquery/)

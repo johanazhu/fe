@@ -72,12 +72,8 @@ export default function NodeSideBar() {
                     link: '/Node/Express/',
                 },
                 {
-                    text: 'Express源码解析',
-                    link: '/Node/Express/Express源码解析',
-                },
-                {
-                    text: '手写Express',
-                    link: '/Node/Express/手写express',
+                    text: '如何将 Express API 部署到 Vercel',
+                    link: '/Node/Express/如何将 Express API 部署到 Vercel',
                 },
             ],
         },

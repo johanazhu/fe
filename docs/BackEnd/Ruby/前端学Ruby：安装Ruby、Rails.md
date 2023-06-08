@@ -73,15 +73,15 @@ docker run -it
 
 [RVM](http://rvm.io/) 能在系统中安装和管理多个 Ruby 版本。同时还能管理不同的 gem 集。支持 macOS、Linux 和其它类 UNIX 操作系统
 
-```shell
+```bash
 gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 ```
 
-```shell
+```bash
 \curl -sSL https://get.rvm.io | sudo bash -s stable
 ```
 
-```shell
+```bash
 # 当 rvm 安装好后，看下图的提示操作
 sudo usermod -a -G rvm johan # 将当前用户添加到 rvm 组中
 su root # 切换到root，相当于先注销 johan

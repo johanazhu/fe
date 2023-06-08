@@ -23,7 +23,7 @@ JavaScript 的数据类型分为「基本类型」和 「引用类型」
 
 基本类型包含 undefined 、null、string、number、boolean、symbol（ES6 新增）、bigint（ES10新增）
 
-引用类型则是object（一组属性的集合）
+引用类型则是 object（一组属性的集合）
 
 > 特此说明：
 >
@@ -321,7 +321,7 @@ console.log(undefined1.toString()); // Cannot read properties of undefined (read
 | 名称                        | 能检测                                                       | 不能检测                                       |
 | --------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
 | typeof                      | string、number、boolean、undefined 以及 function             | null 以及除 function 外的对象，结果都为 object |
-| instanceof                  | 准确地判断复杂引用数据类型                                   | 不能正确判断基础数据类型                       |
+| instanceof                  | 能判断引用数据类型                                           | 不能判断基础数据类型                           |
 | constructor                 | string、number、boolean、array、object、function 以及 构造函数 | undefined、null。不安全，因为指向可以改变      |
 | Object.prototype.toString() | 内置（原生）构造函数                                         | 自定义构造函数                                 |
 
