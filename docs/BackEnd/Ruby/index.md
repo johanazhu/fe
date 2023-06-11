@@ -80,17 +80,17 @@ Ruby on Rails 实战圣经（繁体版）：https://ihower.tw/rails/index.html
 
 方应杭 Vue3+Rails 全栈项目⭐：https://www.bilibili.com/video/BV1AZ4y1r7eU
 
-菜鸟教程：https://www.runoob.com/ruby/ruby-intro.html
-
-Rails 使用 Rails 构建 API 实践：https://ruby-china.org/topics/25822
-
 B站：重力不足的 Ruby 教程：https://space.bilibili.com/25990460
 
-麦子学院Ruby 全栈：https://space.bilibili.com/286293946
+麦子学院 Ruby 全栈：https://space.bilibili.com/286293946
 
 rubyonrails教程：https://guides.rubyonrails.org/
 
 hotrails教程：https://www.hotrails.dev/turbo-rails
+
+Rails 使用 Rails 构建 API 实践：https://ruby-china.org/topics/25822
+
+菜鸟教程：https://www.runoob.com/ruby/ruby-intro.html
 
 
 
@@ -111,7 +111,7 @@ hotrails教程：https://www.hotrails.dev/turbo-rails
 - express 和 koa 的作者
 - 后来创建公司去搞 Go 了，不过他的传说一直留在前端界
 
-[方应杭](https://fangyinghang.com)：看了他的视频介绍（就是上面的Vue3+Rails 全栈项目）才决定学 Ruby 的
+[方应杭](https://fangyinghang.com)：看了他的视频介绍（就是上面的 Vue3+Rails 全栈项目）才决定学 Ruby 的
 
 [Rei](https://chloerei.com/)：[Ruby China 中文社区](https://ruby-china.org/Rei)的管理员，现阶段也在 [BiliBili](https://www.bilibili.com/video/BV1QD4y1A75x/) 上传道
 
@@ -119,13 +119,15 @@ hotrails教程：https://www.hotrails.dev/turbo-rails
 
 [1c7](https://1c7.me/)：著有[中国独立开发者项目列表](https://github.com/1c7/chinese-independent-developer)，也是 ruby 开发者
 
+当然还有一些大牛，只是对其不了解，欢迎留言补充
+
 
 
 ## 如何学习
 
 Ruby 社区有人写的[如何从零开始学会 Ruby on Rails](https://ruby-china.org/wiki/start_leaning_rails)
 
-一个月时间。
+大致花一个月时间
 
 **以下步骤请一步一步来，切勿心急跳过，最好连我上面的链接都不要提前点击！**
 
@@ -142,4 +144,4 @@ Ruby 社区有人写的[如何从零开始学会 Ruby on Rails](https://ruby-chi
 
 ## 我的学习路径
 
-以上推荐的书、视频多多少少看过，不过有些看完，有些没看完。当笔者完成「如何从零开始学会 Ruby on Rails」后，又想着再精进，搜搜找找，发现的教程不是太老就是全是英文，中文的项目教程太少。后在一篇文章上看到“learn by making”学习方法论，就想着要不自己边做边学，把自己想法库中的项目完成，于是就有了这一系列文章
+以上推荐的书、视频多多少少看过，不过有些看完，有些没看完。当笔者完成「[如何从零开始学会 Ruby on Rails](https://ruby-china.org/wiki/start_leaning_rails)」后，想着再精进精进。找了半天，发现的教程不是太老就是全英文。笔者在某日某刻看到一篇“learn by making”的学习方法，想着以练代学的方式，把自己原先想做的项目通过 ruby 实现，慢慢地就有了这一系列文章

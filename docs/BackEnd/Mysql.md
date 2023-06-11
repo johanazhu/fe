@@ -30,6 +30,12 @@ mysql -u root -p
 mysql -u root -p -h IP地址
 ```
 
+修改密码（MySQL 8.0 之后）：
+
+```bash
+ALTER USER 'username'@'localhost' IDENTIFIED BY 'newpassword';
+```
+
 
 
 ## 命令行操作数据库
@@ -41,11 +47,11 @@ mysql -u root -p -h IP地址
 - `show columns from customers;`：查看表结构
 - `drop database blog;`：删除数据库
 - `mysqldump -h localhost -u root -p blog > D:\blog.sql`：导出数据库 blog 的结构和数据
-- `mysqldump -h localhost -u root -p blog -d> D:\blog_stru.sql`：导出数据库 blog 的结构（加-d 参数）
+- `mysqldump -h localhost -u root -p blog -d > D:\blog_stru.sql`：导出数据库 blog 的结构（加-d 参数）
 - `mysqldump -h localhost -u root -p blog customers > D:\customers.sql`：导出数据库 blog 中的 customers 表的结构和数据
-- `mysql -h localhost -u root -p blog < D:\blog.sql`：向数据库 blog 导入数据库文件 blog.sql
+- `mysql -h localhost -u root -p blog < D:\blog.sql`：向数据库 blog 导入数据库文件 `blog.sql`
 
-> MySQL命令终止符为分号 **;** 。
+> MySQL命令终止符为分号 ;
 
 ## 数据库操作
 

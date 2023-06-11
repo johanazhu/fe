@@ -81,7 +81,7 @@ rails g model poet name:string
 - 用诗的题目查询：/poetry/title/静夜思
 - 列出这个诗人的所有诗：/poetry/author/李白
 - 列出这个诗人的这首诗：/poetry/author/张若虚/title/春江花月夜
-- 通过创作数量排名：/poet/list/createnum
+- 通过创作数量排名：/poet/list/createnum（没做）
 
 确定好要做的 API 后，我们就去实现，先在命令行中执行以下代码来创建控制器（Controller）
 
@@ -110,15 +110,19 @@ end
 
 > 访问 url，应用匹配 route，routes 匹配 controller，controller 操作 model，并返回对应的数据给路由
 
-现在我们要回到最开始的疑问，怎么把全唐诗中的sql转化为 postgresql？
+现在我们要回到最开始的疑问，怎么把全唐诗中的 sql 转化为 postgresql？
 
 笔者经过一些尝试，发现可以转换，数据是有的，数据结构也一致，无非原本是用 mysql 写的，现在将其改成 postgresql。而现在我们已经有数据库的两张表了，只要插入数据即可，用 pgAdmin 也好，用其他工具也罢，用 postgresql 语法把数据插入数据库中
+
+在仓库中分别提供 mysql 的数据`tang_poetry.sql` 和 postgresql 的数据 `tangpoetry.sql`
 
 ```postgresql
 INSERT INTO poets (id,name,created_at,updated_at) VALUES (1,'李世民','2014-06-02 11:47:52','2014-06-02 11:47:52'),(...)
 
 INSERT INTO poetries (id,poet_id,content,title, created_at, updated_at) VALUES (2,1,'塞外悲风切，交河冰已结。瀚海百重波，阴山千里雪。迥戍危烽火，层峦引高节。悠悠卷旆旌，饮马出长城。寒沙连骑迹，朔吹断边声。胡尘清玉塞，羌笛韵金钲。绝漠干戈戢，车徒振原隰。都尉反龙堆，将军旋马邑。扬麾氛雾静，纪石功名立。荒裔一戎衣，灵台凯歌入。','饮马长城窟行','2014-06-02 11:47:52','2014-06-02 11:47:52'),(...)
 ```
+
+> 如何导入数据：使用 pgAdmin ，可以选择要导入数据的数据库、右键单击该数据库并选择“Restore...”选项，之后选择要导入的数据文件并执行导入操作
 
 ## 实现第一个接口
 
@@ -217,9 +221,7 @@ Poetry.where({poet_id:  @author[:id]})
 
 本地开发结束了，现部署上线
 
-不少教程里说使用 [Heroku](https://www.heroku.com/) 能快速部署，但是我注册不了，只能曲线救国
-
-笔者先说说部署的思路：
+之前我们能在  [Heroku](https://www.heroku.com/) 快速部署，但现在它已经要收费了，所以笔者决定部署到服务器上，思路是：
 
 先使用本地 docker 部署服务，本地跑通后，再上传源码，通过 Dockerfile 构建运行环境，在运行环境中运行源代码
 
@@ -556,15 +558,21 @@ docker exec tangpoetry_container bash db:create db:migrate
 
 如此，我们的项目就算成功上线了
 
+如有问题可访问项目地址：https://github.com/johanazhu/tangpoetry 
+
+
+
 ## 后续
 
 如果，我是说如果，我们希望加上随机一页的效果，或者说每天更新一首诗，本地开发，成功，推到 git 仓库，并在服务器上删除原有镜像，生成新镜像，再根据新镜像打包
 
 要是项目迭代频繁，会不会觉得，好麻烦
 
-这样麻烦，我都不想搞了~~
+这篇文章花了笔者很多时间，好不容易才上线
 
-下个项目，我们用 shell 命令部署服务器，重复的工作交给代码执行就好
+> 如现在2023年6月份，距离笔者完成初稿已经3个月，笔者也找到了新的免费的部署方式——[fly.io](https://fly.io/)
+
+
 
 
 

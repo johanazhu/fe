@@ -652,8 +652,6 @@ fly open
 ```bash
 # 进入控制台
 flyctl ssh console
-# 进入项目
-cd rails
 # 迁入数据
 bin/rails db:migrate
 ```
