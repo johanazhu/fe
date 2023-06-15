@@ -11,23 +11,15 @@ export default function NodeSideBar() {
                 },
                 {
                     text: 'Node基础',
-                    link: '/Node/Node基础',
+                    link: '/Node/Node走马观花',
                 },
                 {
-                    text: '事件触发器events模块',
-                    link: '/Node/事件触发器events模块',
-                },
-                {
-                    text: 'module模块',
-                    link: '/Node/module模块',
+                    text: 'NPM包管理器',
+                    link: '/Node/NPM包管理器',
                 },
                 {
                     text: '脚手架',
                     link: '/Node/脚手架',
-                },
-                {
-                    text: '包管理器',
-                    link: '/Node/npm',
                 },
             ],
         },
@@ -57,31 +49,24 @@ export default function NodeSideBar() {
                     link: '/Node/Koa2/手写Koa2',
                 },
                 {
+                    text: '实战：vercel部署node服务',
+                    link: '/Node/Koa2/实战：vercel部署node服务',
+                },
+                {
                     text: '对比Express、Koa2、Redux',
                     link: '/Node/Koa2/对比Express、Koa2、Redux',
                 },
             ],
         },
         {
-            text: 'Express',
+            text: '其他',
             collapsable: false,
             sidebarDepth: 0,
             items: [
                 {
-                    text: 'Express导航',
-                    link: '/Node/Express/',
+                    text: 'Express',
+                    link: '/Node/Express',
                 },
-                {
-                    text: '如何将 Express API 部署到 Vercel',
-                    link: '/Node/Express/如何将 Express API 部署到 Vercel',
-                },
-            ],
-        },
-        {
-            text: 'PM2',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
                 {
                     text: 'PM2',
                     link: '/Node/PM2',

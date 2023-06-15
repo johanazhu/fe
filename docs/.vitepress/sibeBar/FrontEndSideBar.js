@@ -76,7 +76,7 @@ export default function FrontEndSideBar() {
                 },
                 {
                     text: 'Express',
-                    link: '/Node/Express/',
+                    link: '/Node/Express',
                 },
                 {
                     text: 'PM2',

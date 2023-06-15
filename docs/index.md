@@ -26,7 +26,13 @@ hero:
       text: BackEnd
       link: /BackEnd/
     - theme: alt
-      text: blog
+      text: Node
+      link: /Node/
+    - theme: alt
+      text: 大前端
+      link: /WebApp/
+    - theme: alt
+      text: 博客
       link: https://blog.azhubaby.com/
 features:
   - title: 允许一切如其所是
