@@ -37,7 +37,7 @@ vercel
 
 ```json
 {
-  "version": 2,
+  "version": 3,
   "rewrites": [
     {
       "source": "/",
@@ -46,6 +46,8 @@ vercel
   ]
 }
 ```
+
+> 最新的版本是3，相关文档：https://vercel.com/docs/build-output-api/v3
 
 ## 本地调试
 

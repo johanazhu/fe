@@ -78,6 +78,8 @@ vercel
 
 当使用 `vercel --prod` 后，就能更新 [easy-express-vercel.vercel.app](https://easy-express-vercel.vercel.app/) 内容与第二次内容一致
 
+这里我们使用的是通过 vercel cli 命令行来部署，相关文档可看：https://vercel.com/docs/cli
+
 ### 连接 git
 
 我希望我们的代码能与 git 连接，当我们推送到 github 后，自动发布。这也是[Vercel 部署 Node 服务](https://juejin.cn/post/7094911994226016292)没有说到的点

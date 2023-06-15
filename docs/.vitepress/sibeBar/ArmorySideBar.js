@@ -10,8 +10,8 @@ export default function ArmorySideBar() {
                     link: '/Git/',
                 },
                 {
-                    text: '常见命令',
-                    link: '/Git/常见命令',
+                    text: '常用命令',
+                    link: '/Git/常用命令',
                 },
                 {
                     text: 'git工作流程',
@@ -63,11 +63,7 @@ export default function ArmorySideBar() {
                 {
                     text: '远程服务器相关操作',
                     link: '/Linux/远程服务器相关操作',
-                },
-                {
-                    text: 'Linux教程',
-                    link: '/Linux/Linux教程',
-                },
+                }
             ],
         },
         {

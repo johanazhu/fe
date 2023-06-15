@@ -39,26 +39,29 @@
 
 ### 应用开发部分
 
-- Express
+- [Express](./Express.md)
 
-  - [实战：如何将 Express API 部署到 Vercel](./实战：如何将 Express API 部署到 Vercel.md)
 - Koa
 
-  - 实战：Koa2 从零到脚手架
-  - 源码分析
-  - 手写 Koa2
-  - [Node.js从入门到上线](https://www.bookstack.cn/books/liuxing-node-blog)
-- NextJS ⭐
+  -  [Koa2 基础](./Koa2/Koa2基础.md) 
+  -  [实战：Koa2 从零到脚手架](./Koa2/实战：Koa2从零到脚手架.md)
+  -  [Koa2 的源码分析](./Koa2/源码分析.md)
+  - [手写Koa2](./Koa2/手写Koa2.md)
+  - [实战：vercel部署node服务](./Koa2/实战：vercel部署node服务.md)
+  - [实战：李瓶儿博客开发](./Koa2/实战：李瓶儿博客开发.md)
+  
+- 实战
+
+  - [实战：serverless-vercel](./应用开发/实战：serverless-vercel.md)（vercel）
+  - [实战：如何将 Express API 部署到 Vercel](./应用开发/实战：如何将 Express API 部署到 Vercel.md)（express vercel）
+  - [实战：爬虫每日日报](./应用开发/实战：爬虫每日日报.md)（爬虫、vercel serverless）
+  - [实战：聊天室](./应用开发/实战：聊天室.md)（NextJS、socket.io）
+
   - 爬虫，TK、E大 微博爬虫（https://github.com/Python3Spiders/WeiboSuperSpider/tree/master）
-  - 每日日报（别人做的python爬虫：https://github.com/zkeq/news）
-  - 每日早安+微信公众号（完成）
+  - 每日早安+微信公众号
   - ahr 999 结合微信公众号（server酱）：检测 ahr 999 数据，如果低于可定投区域，就通知
   - 谐音成语（文案狗）项目
   - realworld 项目（已经有不少项目这样做了）
-
-https://github.com/joschan21/nextjs-realtime-chat
-
-nextjs+ redis。https://upstash.com/（可以）
 
 
 - 自动化测试
@@ -146,8 +149,6 @@ Node.js实战（第2版）
 如做 realworld 项目，有十几个接口，七八个页面，小细节也不少。从开始做，到部署上线，完成，说明 Node.js 入门了
 
 接着是大项目，个人认为做个类似 bailiccangdu 的 ele 项目就算大项目吗，六十多个接口，四十五个页面，工程量之大，如果能吃下来，如果我是面试官，会觉得你有两把刷子
-
-
 
 
 

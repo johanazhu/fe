@@ -586,7 +586,7 @@ docker exec tangpoetry_container bash db:create db:migrate
 - [How to run 'rails credentials:edit' on Windows 10 without installing a Linux Subsystem](https://stackoverflow.com/questions/57402435/how-to-run-rails-credentialsedit-on-windows-10-without-installing-a-linux-sub)
 - [Why can't I connect to Postgres in Docker?](https://unix.stackexchange.com/questions/566456/why-cant-i-connect-to-postgres-in-docker)
 - [Postgresql9.1 suddenly could not connect to server: No route to host](https://stackoverflow.com/questions/11183355/postgresql9-1-suddenly-could-not-connect-to-server-no-route-to-host)
-- [Capistrano: ArgumentError: Missing `secret_key_base` for 'production' environment, set this string with `bin/rails credentials:edit`](https://railsnotes.org/28-capistrano-argumenterror-missing-secret-key-base-for-production-environment-set-this-string-with-bin-rails-credentials-edit)
+- [Capistrano: ArgumentError: Missing secret_key_base for 'production' environment, set this string with bin/rails credentials:edit](https://railsnotes.org/28-capistrano-argumenterror-missing-secret-key-base-for-production-environment-set-this-string-with-bin-rails-credentials-edit)
 - [How to get a Docker container's IP address from the host](https://stackoverflow.com/questions/17157721/how-to-get-a-docker-containers-ip-address-from-the-host)
 - [Rails + PostgreSQL + Docker](https://www.knowbe4.com/careers/engineering/railspostgresqldocker)
 - [caching-all-native-gem-platforms](https://www.thegnar.com/blog/caching-all-native-gem-platforms)
