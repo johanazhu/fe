@@ -11,7 +11,7 @@ export default function CSBasicSideBar() {
                 },
                 {
                     text: '计算机的起源',
-                    link: '/CSBasic/计算机的组成',
+                    link: '/CSBasic/计算机的起源',
                 },
                 {
                     text: '计算机的组成',

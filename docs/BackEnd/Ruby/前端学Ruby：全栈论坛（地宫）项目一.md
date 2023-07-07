@@ -1,6 +1,6 @@
 # 前端学Ruby：全栈论坛（地宫）项目一
 
-本来想做 buddha（菩萨）论坛的，发现自己参考的项目太难实现，猝
+本来想做 [buddha](https://github.com/johanazhu/buddha)（菩萨）论坛的，发现自己参考的项目太难实现，猝
 
 笔者回炉重修了一番，正好发现了 realworld，遂决定将 realworld 项目代替原先的 buddha 项目，还是要量力而行，不要一意孤行（项目规划太大，浪费太多时间学习）
 

@@ -632,7 +632,7 @@ end
 
 样式是好了，但还是是英文的，所以还需要按照 i18n，所以还要安装 [kaminari-i18n](https://www.ruby-toolbox.com/projects/kaminari-i18n)，安装好 kaminari-i18n，UI 就成了我们想要的样子了
 
-![加上i18n以及bootstrap5之后的kaminari](D:\Documents\PicGo Files\image-20230408074857093.png)
+![加上i18n以及bootstrap5之后的kaminari](https://s2.loli.net/2023/06/21/aieorEHPUc9nZ6u.png)
 
 ## 再次部署
 

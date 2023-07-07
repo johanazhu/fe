@@ -58,6 +58,8 @@
 
 > PS：如果 `docker images` 出现 REPOSITORY 是 `<none>` 的情况，可以运行 `docker image prune` 删除
 
+Linux 中，如果使用默认的 overlay2 存储驱动，Docker 镜像会保存在 `/var/lib/docker/overlay2` 目录下
+
 ## Container 容器
 
 - 启动容器：`docker run -p xxx:xxx -v=hostPath:containerPath -d --name <container --name> <image-name>`
@@ -97,3 +99,4 @@
     
 
     
+

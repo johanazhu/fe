@@ -1,4 +1,4 @@
-# TypeScript 类型兼容
+# TypeScript 的类型兼容
 
 > 人生自古谁无死，留取喷嚏照汗青
 >

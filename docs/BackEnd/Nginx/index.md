@@ -45,6 +45,16 @@ https://github.com/jaywcjlove/nginx-tutorial
 
 
 
+## nginx 报错
+
+去 `error.log` 里查看日志
+
+```bash
+tail -f -n 100 error.log
+```
+
+
+
 
 
 Nginx 是主流的、开源的、高性能的 HTTP 和反向代理 web 服务器，可以用于挂载网站、请求转发、负载均衡、网关路由等。前后端开发同学都需要学习，在后端开发的面试中有时会考到。
@@ -82,3 +92,9 @@ Nginx 的基本使用非常简单，甚至不需要看任何的视频，跟着�
   - Nginx 中文文档：https://www.nginx.cn/doc/index.html
 - 工具
   - Nginx 配置在线生成：https://www.digitalocean.com/community/tools/nginx?global.app.lang=zhCN
+
+
+
+
+
+https://www.yuque.com/aceld/fpknid/avhs14

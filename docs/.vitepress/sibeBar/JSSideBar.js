@@ -186,9 +186,40 @@ export default function JSSideBar() {
                     text: '如何用JavaScript实现一门编程语言',
                     link: '/JavaScript/高阶/如何用JavaScript实现一门编程语言',
                 },
+            ],
+        },
+        {
+            text: 'TypeScript',
+            collapsable: false,
+            sidebarDepth: 0,
+            items: [
                 {
-                    text: 'TypeScript',
-                    link: '/JavaScript/高阶/TypeScript',
+                    text: 'TypeScript 全面投降',
+                    link: '/JavaScript/TypeScript/',
+                },
+                {
+                    text: 'TypeScript 是什么',
+                    link: '/JavaScript/TypeScript/TypeScript 是什么',
+                },
+                {
+                    text: 'TypeScript 的运行与调试',
+                    link: '/JavaScript/TypeScript/TypeScript 的运行与调试',
+                },
+                {
+                    text: 'TypeScript 的​数据类型',
+                    link: '/JavaScript/TypeScript/TypeScript 的数据类型',
+                },
+                {
+                    text: 'TypeScript 的类型运算',
+                    link: '/JavaScript/TypeScript/TypeScript 的类型运算',
+                },
+                {
+                    text: 'TypeScript 的类型兼容',
+                    link: '/JavaScript/TypeScript/TypeScript 的类型兼容',
+                },
+                {
+                    text: 'TypeScript 最佳实践',
+                    link: '/JavaScript/TypeScript/TypeScript 最佳实践',
                 },
             ],
         },

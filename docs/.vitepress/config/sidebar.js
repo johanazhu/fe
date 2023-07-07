@@ -24,6 +24,7 @@ import {
 export default {
     '/Interview': InterviewSideBar(),
     '/JavaScript': JSSideBar(),
+    '/TypeScript': JSSideBar(),
     '/ES6': ES6SideBar(),
     '/Browser': BrowserSideBar(),
     '/Performance': PerformanceSideBar(),
