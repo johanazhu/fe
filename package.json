@@ -19,5 +19,10 @@
     "vitepress": "1.0.0-alpha.73",
     "vue": "^3.2.47",
     "workbox-window": "^6.5.4"
+  },
+  "dependencies": {
+    "fabric": "^5.3.0",
+    "ua-parser-js": "^1.0.35",
+    "vue-router": "^4.2.4"
   }
 }
