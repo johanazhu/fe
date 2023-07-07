@@ -12,7 +12,7 @@
           绿色的方块都可以点击进入详情
         </p>
         <button class="download-btn" @click="downloadCanvas">导出图片</button>
-        <canvas ref="canvasRef" :height="height" width="640" />
+        <canvas ref="canvasRef" :height="height" width="780" />
       </div>
     </div>
   </template>

@@ -1,6 +1,6 @@
 import {
   __commonJS
-} from "./chunk-RSJERJUL.js";
+} from "./chunk-76J2PTFD.js";
 
 // browser-external:jsdom
 var require_jsdom = __commonJS({
@@ -162,10 +162,10 @@ var require_fabric = __commonJS({
         return this;
       }
       function _once(eventName, handler) {
-        var _handler = function() {
+        var _handler = (function() {
           handler.apply(this, arguments);
           this.off(eventName, _handler);
-        }.bind(this);
+        }).bind(this);
         this.on(eventName, _handler);
       }
       function once(eventName, handler) {
@@ -9512,10 +9512,10 @@ var require_fabric = __commonJS({
             wrapper.removeChild(this.lowerCanvasEl);
             this.contextCache = null;
             this.contextTop = null;
-            ["upperCanvasEl", "cacheCanvasEl"].forEach(function(element) {
+            ["upperCanvasEl", "cacheCanvasEl"].forEach((function(element) {
               fabric.util.cleanUpJsdomNode(this[element]);
               this[element] = void 0;
-            }.bind(this));
+            }).bind(this));
             if (wrapper.parentNode) {
               wrapper.parentNode.replaceChild(this.lowerCanvasEl, this.wrapperEl);
             }
@@ -16141,10 +16141,10 @@ var require_fabric = __commonJS({
             this.removeTexture(this.cacheKey);
             this.removeTexture(this.cacheKey + "_filtered");
             this._cacheContext = void 0;
-            ["_originalElement", "_element", "_filteredEl", "_cacheCanvas"].forEach(function(element) {
+            ["_originalElement", "_element", "_filteredEl", "_cacheCanvas"].forEach((function(element) {
               fabric.util.cleanUpJsdomNode(this[element]);
               this[element] = void 0;
-            }.bind(this));
+            }).bind(this));
           },
           /**
            * Get the crossOrigin value (of the corresponding image element)

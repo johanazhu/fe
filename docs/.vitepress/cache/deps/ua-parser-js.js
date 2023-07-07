@@ -1,6 +1,6 @@
 import {
   __commonJS
-} from "./chunk-RSJERJUL.js";
+} from "./chunk-76J2PTFD.js";
 
 // node_modules/.pnpm/ua-parser-js@1.0.35/node_modules/ua-parser-js/src/ua-parser.js
 var require_ua_parser = __commonJS({

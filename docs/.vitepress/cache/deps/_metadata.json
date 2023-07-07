@@ -1,38 +1,47 @@
 {
-  "hash": "7b950b9c",
-  "browserHash": "4be05e3c",
+  "hash": "dfc90b2f",
+  "browserHash": "5fb464cc",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "6e8b3596",
+      "fileHash": "695db417",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@6.5.0/node_modules/@vue/devtools-api/lib/esm/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "a0eb00b7",
       "needsInterop": false
     },
     "ua-parser-js": {
       "src": "../../../../node_modules/.pnpm/ua-parser-js@1.0.35/node_modules/ua-parser-js/src/ua-parser.js",
       "file": "ua-parser-js.js",
-      "fileHash": "7719c17d",
+      "fileHash": "f358b090",
       "needsInterop": true
     },
     "vue-router": {
-      "src": "../../../../node_modules/.pnpm/vue-router@4.2.4_vue@3.2.47/node_modules/vue-router/dist/vue-router.mjs",
+      "src": "../../../../node_modules/.pnpm/vue-router@4.2.4_vue@3.3.4/node_modules/vue-router/dist/vue-router.mjs",
       "file": "vue-router.js",
-      "fileHash": "a849a244",
+      "fileHash": "ee166667",
       "needsInterop": false
     },
     "fabric": {
       "src": "../../../../node_modules/.pnpm/fabric@5.3.0/node_modules/fabric/dist/fabric.js",
       "file": "fabric.js",
-      "fileHash": "6391cc7f",
+      "fileHash": "43f99f6c",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-LZPJ5JBW": {
-      "file": "chunk-LZPJ5JBW.js"
+    "chunk-67UUJLDS": {
+      "file": "chunk-67UUJLDS.js"
     },
-    "chunk-RSJERJUL": {
-      "file": "chunk-RSJERJUL.js"
+    "chunk-OQKHIZIR": {
+      "file": "chunk-OQKHIZIR.js"
+    },
+    "chunk-76J2PTFD": {
+      "file": "chunk-76J2PTFD.js"
     }
   }
 }

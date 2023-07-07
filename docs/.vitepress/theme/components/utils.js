@@ -1,6 +1,6 @@
 import { fabric } from 'fabric'
 export const RECT = {
-  w: 100,
+  w: 140,
   h: 40,
   bgColor: ['#78c386', '#e48484', '#c28976'],// 语雀绘图的配色  绿=》红=》棕
   lineColor: '#69b1e4',
@@ -47,90 +47,67 @@ function drawInfo() {
   })
   return group
 }
+
 function drawQrcode(canvas) {
 
 
-  const title = `关注公众号，学习不迷路
-    来源:https://shengxinjing.cn
-    好好学习，天天向上`
-  const x = 0
-  const y = 20
-  const width = 200
-  const height = 100
-  const { textColor, fontSize, origin } = RECT
-  const rect = new fabric.Rect({
-    fill: RECT.infoBg,
-    originX: origin,
-    originY: origin,
-    rx: '5',
-    shadow: 'rgba(0,0,0,.2) 2px 2px 2px',
-    width,
-    height,
-  })
-  const text = new fabric.Text(title, {
-    fill: textColor,
-    left: 15,
-    originY: origin,
-    originX: 'right',
-    fontWeight: '500',
-    lineHeight: 1.5,
-    fontSize: 12,
-    fontFamily: RECT.fontFamily
-  })
+    const title = `  关注公众号，学习不迷路
+  来源:https://shengxinjing.cn
+  好好学习，天天向上`
+    const x = 0
+    const y = 20
+    const width = 300
+    const height = 100
+    const { textColor, fontSize, origin } = RECT
+    fabric.Image.fromURL('https://s2.loli.net/2022/03/25/VqfD2ScLuKzjbR8.jpg', img => {
+      img.set({
+        left: 660,
+        top: 30,
+        opacity: 0.8,
+        scaleX: 0.32,
+        scaleY: 0.32
+      })
 
-  const group = new fabric.Group([rect, text], {
-    left: 350,
-    top: y,
-    lockMovementX: true,
-    lockMovementY: true
-  })
-//   fabric.Image.fromURL('/qrcode.jpeg', img => {
-//     img.set({
-//       left: 610,
-//       top: 30,
-//       opacity: 0.8,
-//       scaleX: 0.32,
-//       scaleY: 0.32
-//     })
+      const rect = new fabric.Rect({
+        fill: RECT.infoBg,
+        originX: origin,
+        originY: origin,
+        rx: '5',
+        shadow: 'rgba(0,0,0,.2) 2px 2px 2px',
+        width,
+        height,
+      })
+      const text = new fabric.Text(title, {
+        fill: textColor,
+        left:15,
+        originY: origin,
+        originX: 'right',
+        fontWeight: '500',
+        lineHeight: 1.5,
+        fontSize: 12,
+        fontFamily: RECT.fontFamily
+      })
 
-//     const rect = new fabric.Rect({
-//       fill: RECT.infoBg,
-//       originX: origin,
-//       originY: origin,
-//       rx: '5',
-//       shadow: 'rgba(0,0,0,.2) 2px 2px 2px',
-//       width,
-//       height,
-//     })
-//     const text = new fabric.Text(title, {
-//       fill: textColor,
-//       left: 15,
-//       originY: origin,
-//       originX: 'right',
-//       fontWeight: '500',
-//       lineHeight: 1.5,
-//       fontSize: 12,
-//       fontFamily: RECT.fontFamily
-//     })
+      const group = new fabric.Group([rect, text], {
+        left: 450,
+        top: y,
+        lockMovementX: true,
+        lockMovementY: true
+      })
 
-//     const group = new fabric.Group([rect, text], {
-//       left: 350,
-//       top: y,
-//       lockMovementX: true,
-//       lockMovementY: true
-//     })
+      canvas.add(group)
+      canvas.add(img)
 
-//     canvas.add(group)
-//     canvas.add(img)
-
-//   })
+    })
 
 
-  return
+    return
 
 
-  // canvas.add(group)
+    // canvas.add(group)
 }
+
+
 export function drawMap(dom, data) {
   const rects = []
   const lines = []
@@ -181,9 +158,9 @@ export function drawMap(dom, data) {
       const isEven = !(len & 1) //是不是偶数
       children.filter(v => v).forEach((child, i) => {
         if (direction == 'left') {
-          child.x = parent.left + child.x - 250 + depth * 45
+          child.x = parent.left + child.x - 210 + depth * 45
         } else {
-          child.x = parent.left + child.x + 272 - depth * 45
+          child.x = parent.left + child.x + 240 - depth * 45
         }
         let y = (parent.top - (Math.floor(len / 2) - i) * (RECT.h+9-depth*10))+ (child.y || 0)
         y += isEven ? RECT.h / 2 : 0
@@ -282,14 +259,6 @@ function drawRect(item, canvas) {
   canvas.add(group)
 
   if (tag) {
-    // const r = new fabric.Rect({
-    //   fill: tag=='❌'?RECT.infoBg:bgColor[depth],
-    //   originX:'origin',
-    //   originY:origin,
-    //   rx:'5',
-    //   width:2,
-    //   height:20,
-    // })
     const t = new fabric.Text(tag, {
       fill: textColor,
       originY: origin,
@@ -299,7 +268,6 @@ function drawRect(item, canvas) {
       fontFamily: RECT.fontFamily
 
     })
-
     const g = new fabric.Group([t], {
       left: x <= 400 ? (x + 5) : (x + width - 15),
       top: y + 3,
@@ -359,7 +327,7 @@ export function c(title, options, children) {
 
   }
 
-  const [y = 0,x = 0, w = 100, h = 40] = options
+  const [y = 0,x = 0, w = 120, h = 40] = options
   const { bgColor, textColor } = RECT
   const ret = {
     title, x, y,w, h, bgColor, textColor, children
