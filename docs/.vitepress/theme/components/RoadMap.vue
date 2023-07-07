@@ -47,6 +47,7 @@
 
   function downloadCanvas() {
     const canvas = canvasRef.value
+    console.log('canvas', canvas)
     const dataURL = canvas.toDataURL({
       width: canvas.width,
       height: canvas.height,
@@ -71,9 +72,6 @@
       console.log('热更新？')
     }
   })
-  // onUnmounted(()=>{
-  //   canvas.off("mouse:down", canvasClick)
-  // }
 
   </script>
 
@@ -92,7 +90,7 @@
   }
   .download-btn{
     position: absolute;
-    right:39px;
+    right: -40px;
     top:-20px;
     display: inline-block;
     margin-left:36px;

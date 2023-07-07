@@ -1,14 +1,50 @@
 import { fabric } from 'fabric'
+
+
+// bgColor: ['#78c386', '#e48484', '#c28976'],// 语雀绘图的配色  绿=》红=》棕
+// https://www.happyhues.co/palettes/13
+// 主色调 二级颜色 三级颜色
+// const bgColor = [
+//     '#ff8906',
+//     '#f25f4c',
+//     '#e53170'
+// ]
+// // lineColor: '#69b1e4',
+// const  lineColor = '#a7a9be'
+// const  textColor = 'white'
+
+
+// const bgColor = [
+//     '#ffd803',
+//     '#e3f6f5',
+//     '#bae8e8'
+// ]
+// const lineColor = '#2d334a'
+// const textColor = '#272343'
+// const infoBg = '#595959';
+// const infoTextColor = 'white';
+
+const bgColor = [
+    '#3da9fc',
+    '#90b4ce',
+    '#ef4565'
+]
+const lineColor = '#094067'
+const textColor = '#fffffe'
+const infoBg = '#595959';
+const infoTextColor = 'white';
+
+
 export const RECT = {
   w: 140,
   h: 40,
-  bgColor: ['#78c386', '#e48484', '#c28976'],// 语雀绘图的配色  绿=》红=》棕
-  lineColor: '#69b1e4',
-  textColor: 'white',
+  bgColor,
+  lineColor,
+  textColor,
   fontSize: 16,
   origin: 'center',
-  // infoBg:'#fce5a2',
-  infoBg: '#595959',
+  infoBg,
+  infoTextColor,
   fontFamily: " Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif"
 }
 function drawInfo() {
@@ -20,7 +56,7 @@ function drawInfo() {
   const y = 20
   const width = 300
   const height = 100
-  const { textColor, fontSize, origin, infoBg } = RECT
+  const { infoTextColor, fontSize, origin, infoBg } = RECT
   const rect = new fabric.Rect({
     fill: infoBg,
     originX: origin,
@@ -31,7 +67,7 @@ function drawInfo() {
     height,
   })
   const text = new fabric.Text(title, {
-    fill: textColor,
+    fill: infoTextColor,
     originY: origin,
     originX: origin,
     fontWeight: '500',
@@ -51,14 +87,14 @@ function drawInfo() {
 function drawQrcode(canvas) {
 
 
-    const title = `  关注公众号，学习不迷路
-  来源:https://shengxinjing.cn
+    const title = `  关注公众号：随朱波流
+  来源:https://fe.azhubaby.com
   好好学习，天天向上`
     const x = 0
     const y = 20
     const width = 300
     const height = 100
-    const { textColor, fontSize, origin } = RECT
+    const { infoTextColor, fontSize, origin } = RECT
     fabric.Image.fromURL('https://s2.loli.net/2022/03/25/VqfD2ScLuKzjbR8.jpg', img => {
       img.set({
         left: 660,
@@ -78,8 +114,8 @@ function drawQrcode(canvas) {
         height,
       })
       const text = new fabric.Text(title, {
-        fill: textColor,
-        left:15,
+        fill: infoTextColor,
+        left: 20,
         originY: origin,
         originX: 'right',
         fontWeight: '500',
@@ -225,7 +261,9 @@ function drawRect(item, canvas) {
   let color = tag == '❌' ? RECT.infoBg : bgColor[depth]
   if(!item.link && depth==0){
     // color = '#81c2c3'
-    color = '#78b0df'
+    // color = '#78b0df'
+    // 第一个元素
+    color = bgColor[0]
   }
   const rect = new fabric.Rect({
     fill: color,
