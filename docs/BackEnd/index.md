@@ -1,59 +1,45 @@
 # 后端知识点汇总
 
-在 前端学习完之后，学习 [Node](../Node/)，对后端有所认知后，去了解其他语言，例如 Ruby、Go、Python 等
+作为一名前端出生的程序开发者，要如何学习后端方面的知识点呢？这里分享笔者对后端知识点的理解，
 
 
 <RoadMap :data="[
-{ title:'⭐热门技术', x:320,y:240,
+    // { title:'三五路线图',x:320,y:200 ,download:true},
+    { title:'⭐后端学习', x:320,y:240,
+    // download:true,
+    link:'/BackEnd/',
     left:[
-      ['Rust',[
-        ['swc']
+      [{ title: 'Ruby',  link:'./Ruby/' },[
+        ['rails']
+        ]
+      ],
+      [ { title: 'Goland',  link:'./Go/' },[
+        ['待学习']
       ]],
-      ['IDE'],
-      ['智能化',[
-        ['imgcook']
+       [{ title: 'Python', link:'./Python/' },[
+        ['Flask'],
+        ['Django']
       ]],
-    //   ['可视化',[
-    //     ['Echarts'],['Antv']
-    //   ]],
-    //   ['Web Assembly'],
-    //   ['Webgl',[
-    //     ['Three.js'],
-    //     ['Babylon.js']
-    //   ]],
-    //   ['Go',[
-    //     ['esbuild']
-    //   ]],
-    //   ['游戏',[
-    //     ['小游戏'],
-    //     ['cocos2D'],
-    //   ]],
-    //   ['智能化',[
-    //     ['imgcook']
-    //   ]],
     ],
     right:[
-      ['可视化',[
-        ['Echarts'],['Antv']
+      ['数据库',[
+        ['Mysql'],
+        ['Postgres'],['MongoDB']
       ]],
-      ['Web Assembly'],
-      ['Webgl',[
-        ['Three.js'],
-        ['Babylon.js']
-      ]],
-      ['Go',[
-        ['esbuild']
-      ]],
-      ['游戏',[
-        ['小游戏'],
-        ['cocos2D'],
-      ]],
-      ['智能化',[
-        ['imgcook']
-      ]],
+      ['内存'],
+      ['进程线程'],
+      ['缓存缓存系统'],
+      ['Redis'],
     ],
   } ,
-  {title:'了解学习'}
+  { title:'共同知识点',  link:'/BackEnd/Ruby/',
+        left:[
+            [{ title: 'HTTP 协议', link:'/HTTP/'}],
+            [{ title: 'Session', link:'./session与JWT'}],
+            [{ title: 'RESTful', link:'./RESTful'}]
+        ]
+  },
+    {title:'全栈开发者'}
 ]" />
 
 在 前端学习完之后，学习 [Node](../Node/)，对后端有所认知后，去了解其他语言，例如 Ruby、Go、Python 等

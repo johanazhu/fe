@@ -21,7 +21,7 @@
   import UAParser from 'ua-parser-js'
   import { ref, onMounted, onUnmounted,computed } from 'vue'
   import {useRoute} from 'vue-router'
-  import { drawMap, c } from './utils'
+  import { drawMap } from './utils'
   const props = defineProps({
     height: Number,
     data: Object
@@ -30,7 +30,7 @@
   const route = useRoute()
   let parser = new UAParser()
   let result = parser.getResult()
-  console.log('route', route)
+//   console.log('route', route)
   const isIndex = ref(route?.path==='/')
   const showImg=ref(result.device.type&&isIndex.value)
 
@@ -47,7 +47,7 @@
 
   function downloadCanvas() {
     const canvas = canvasRef.value
-    console.log('canvas', canvas)
+    // console.log('canvas', canvas)
     const dataURL = canvas.toDataURL({
       width: canvas.width,
       height: canvas.height,
