@@ -1,44 +1,44 @@
 {
-  "hash": "dfc90b2f",
-  "browserHash": "5fb464cc",
+  "hash": "e132c023",
+  "browserHash": "a859a593",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "695db417",
+      "fileHash": "a53807e6",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
-      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@6.5.0/node_modules/@vue/devtools-api/lib/esm/index.js",
+      "src": "../../../../node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "a0eb00b7",
+      "fileHash": "0e0f5f9c",
       "needsInterop": false
     },
     "ua-parser-js": {
-      "src": "../../../../node_modules/.pnpm/ua-parser-js@1.0.35/node_modules/ua-parser-js/src/ua-parser.js",
+      "src": "../../../../node_modules/ua-parser-js/src/ua-parser.js",
       "file": "ua-parser-js.js",
-      "fileHash": "f358b090",
+      "fileHash": "1ec75a01",
       "needsInterop": true
     },
     "vue-router": {
-      "src": "../../../../node_modules/.pnpm/vue-router@4.2.4_vue@3.3.4/node_modules/vue-router/dist/vue-router.mjs",
+      "src": "../../../../node_modules/vue-router/dist/vue-router.mjs",
       "file": "vue-router.js",
-      "fileHash": "ee166667",
+      "fileHash": "84e198cd",
       "needsInterop": false
     },
     "fabric": {
-      "src": "../../../../node_modules/.pnpm/fabric@5.3.0/node_modules/fabric/dist/fabric.js",
+      "src": "../../../../node_modules/fabric/dist/fabric.js",
       "file": "fabric.js",
-      "fileHash": "43f99f6c",
+      "fileHash": "1f9b980a",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-67UUJLDS": {
-      "file": "chunk-67UUJLDS.js"
+    "chunk-V634PGSD": {
+      "file": "chunk-V634PGSD.js"
     },
-    "chunk-OQKHIZIR": {
-      "file": "chunk-OQKHIZIR.js"
+    "chunk-J4VLYDXT": {
+      "file": "chunk-J4VLYDXT.js"
     },
     "chunk-76J2PTFD": {
       "file": "chunk-76J2PTFD.js"

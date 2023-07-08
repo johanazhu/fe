@@ -16,13 +16,13 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-67UUJLDS.js";
+} from "./chunk-V634PGSD.js";
 import {
   setupDevtoolsPlugin
-} from "./chunk-OQKHIZIR.js";
+} from "./chunk-J4VLYDXT.js";
 import "./chunk-76J2PTFD.js";
 
-// node_modules/.pnpm/vue-router@4.2.4_vue@3.3.4/node_modules/vue-router/dist/vue-router.mjs
+// node_modules/vue-router/dist/vue-router.mjs
 var isBrowser = typeof window !== "undefined";
 function isESModule(obj) {
   return obj.__esModule || obj[Symbol.toStringTag] === "Module";

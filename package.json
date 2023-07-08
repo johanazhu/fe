@@ -8,8 +8,9 @@
     "dev": "vitepress dev docs",
     "start": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
-  },
+    "preview": "vitepress preview docs",
+    "vercel-build": "yum install gcc-c++ cairo-devel pango-devel libjpeg-turbo-devel giflib-devel"
+    },
   "author": "johan",
   "license": "ISC",
   "devDependencies": {
@@ -21,8 +22,11 @@
     "workbox-window": "^7.0.0"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.30",
     "fabric": "^5.3.0",
-    "ua-parser-js": "^1.0.35",
+    "canvas": "^2.11.0",
+    "jsdom": "^20.0.3",
+    "ua-parser-js": "1.0.35",
     "vue-router": "^4.2.4"
   }
 }
