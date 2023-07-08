@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "start": "vitepress dev docs",
-    "build": "./setup.sh && vitepress build docs",
-    "preview": "vitepress preview docs"
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "vercel-build": "yum install gcc-c++ cairo-devel pango-devel libjpeg-turbo-devel giflib-devel"
   },
   "author": "johan",
   "license": "ISC",
