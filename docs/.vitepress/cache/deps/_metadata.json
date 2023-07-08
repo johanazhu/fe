@@ -1,35 +1,35 @@
 {
-  "hash": "29359364",
-  "browserHash": "ad247bb5",
+  "hash": "e343bf1a",
+  "browserHash": "4fde256a",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "2c928b11",
+      "fileHash": "708694a3",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/@vue+devtools-api@6.5.0/node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "4ceae36a",
+      "fileHash": "7db0b67a",
       "needsInterop": false
     },
     "ua-parser-js": {
       "src": "../../../../node_modules/.pnpm/ua-parser-js@1.0.35/node_modules/ua-parser-js/src/ua-parser.js",
       "file": "ua-parser-js.js",
-      "fileHash": "0f7408b9",
+      "fileHash": "5b1a7406",
       "needsInterop": true
     },
     "vue-router": {
       "src": "../../../../node_modules/.pnpm/vue-router@4.2.4_vue@3.3.4/node_modules/vue-router/dist/vue-router.mjs",
       "file": "vue-router.js",
-      "fileHash": "50bbaced",
+      "fileHash": "33384659",
       "needsInterop": false
     },
     "fabric": {
       "src": "../../../../node_modules/.pnpm/fabric@5.3.0/node_modules/fabric/dist/fabric.js",
       "file": "fabric.js",
-      "fileHash": "9c66084c",
+      "fileHash": "c37dddc2",
       "needsInterop": true
     }
   },
