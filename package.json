@@ -9,7 +9,8 @@
     "start": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "vercel-build": "yum install gcc-c++ cairo-devel pango-devel libjpeg-turbo-devel giflib-devel"
+    "vercel-build1": "yum install gcc-c++ cairo-devel pango-devel libjpeg-turbo-devel giflib-devel",
+    "vercel-build": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/"
   },
   "author": "johan",
   "license": "ISC",
