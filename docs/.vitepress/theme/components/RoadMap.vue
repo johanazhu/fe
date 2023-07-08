@@ -5,7 +5,6 @@
         <p>
           移动端长图绘制较慢，显示静态图片，大家请在PC端打开
         </p>
-        <!-- <img src="/all.png" alt=""> -->
       </div>
       <div v-else>
         <p v-if="isIndex">
