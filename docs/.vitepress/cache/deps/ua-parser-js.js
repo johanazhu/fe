@@ -2,9 +2,9 @@ import {
   __commonJS
 } from "./chunk-76J2PTFD.js";
 
-// node_modules/ua-parser-js/src/ua-parser.js
+// node_modules/.pnpm/ua-parser-js@1.0.35/node_modules/ua-parser-js/src/ua-parser.js
 var require_ua_parser = __commonJS({
-  "node_modules/ua-parser-js/src/ua-parser.js"(exports, module) {
+  "node_modules/.pnpm/ua-parser-js@1.0.35/node_modules/ua-parser-js/src/ua-parser.js"(exports, module) {
     (function(window2, undefined) {
       "use strict";
       var LIBVERSION = "1.0.35", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 350;

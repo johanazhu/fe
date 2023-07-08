@@ -41,9 +41,9 @@ var require_utils2 = __commonJS({
   }
 });
 
-// node_modules/fabric/dist/fabric.js
+// node_modules/.pnpm/fabric@5.3.0/node_modules/fabric/dist/fabric.js
 var require_fabric = __commonJS({
-  "node_modules/fabric/dist/fabric.js"(exports) {
+  "node_modules/.pnpm/fabric@5.3.0/node_modules/fabric/dist/fabric.js"(exports) {
     var fabric = fabric || { version: "5.3.0" };
     if (typeof exports !== "undefined") {
       exports.fabric = fabric;
