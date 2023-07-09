@@ -25,10 +25,8 @@
     "workbox-window": "^7.0.0"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
-    "fabric": "3.6.3",
-    "jsdom": "^20.0.3",
-    "node-gyp": "^9.4.0",
+    "fabric-pure-browser": "^5.1.0",
+    "jsdom": "^22.1.0",
     "ua-parser-js": "1.0.35",
     "vue-router": "^4.2.4"
   }

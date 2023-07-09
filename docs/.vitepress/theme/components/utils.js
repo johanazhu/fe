@@ -1,4 +1,4 @@
-import { fabric } from 'fabric'
+import { fabric } from 'fabric-pure-browser'
 
 
 // bgColor: ['#78c386', '#e48484', '#c28976'],// 语雀绘图的配色  绿=》红=》棕
