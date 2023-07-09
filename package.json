@@ -25,6 +25,7 @@
     "workbox-window": "^7.0.0"
   },
   "dependencies": {
+    "canvas": "^2.11.2",
     "fabric": "3.6.3",
     "jsdom": "^20.0.3",
     "node-gyp": "^9.4.0",
