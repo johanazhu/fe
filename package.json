@@ -7,11 +7,12 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "start": "vitepress dev docs",
-    "build": "./setup.sh && vitepress build docs",
+    "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "vercel-build1": "yum install gcc-c++ cairo-devel pango-devel libjpeg-turbo-devel giflib-devel",
     "vercel-build2": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/",
-    "vercel-build": "yum install libuuid-devel libmount-devel"
+    "vercel-build3": "yum install libuuid-devel libmount-devel",
+    "vercel-build": "yum install libuuid-devel libmount-devel zlib && cp /lib64/{libuuid,libmount,libblkid,libz}.so.1 node_modules/canvas/build/Release/ && pnpm run build"
   },
   "author": "johan",
   "license": "ISC",
@@ -29,10 +30,5 @@
     "node-gyp": "^9.4.0",
     "ua-parser-js": "1.0.35",
     "vue-router": "^4.2.4"
-  },
-  "binary": {
-    "host": "https://www.npmjs.com/package/@mapbox/node-pre-gyp",
-    "module_name": "x",
-    "module_path": "。、"
   }
 }
