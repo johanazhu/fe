@@ -37,15 +37,17 @@ function canvasClick(e) {
         if (e.target.download) {
             downloadCanvas()
         }
+        console.log('e.target', e.target)
         if (e.target.link) {
             location.href = e.target.link
         }
     }
 }
 
+
 function downloadCanvas() {
     const canvas = canvasRef.value
-    // console.log('canvas', canvas)
+
     const dataURL = canvas.toDataURL({
         width: canvas.width,
         height: canvas.height,
@@ -91,7 +93,7 @@ h1 {
 
 .download-btn {
     position: absolute;
-    right: -40px;
+    right: -70px;
     top: -20px;
     display: inline-block;
     margin-left: 36px;

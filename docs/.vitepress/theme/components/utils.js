@@ -96,7 +96,7 @@ function drawQrcode(canvas) {
     const width = 280
     const height = 100
     const { infoTextColor, fontSize, origin } = RECT
-    fabric.Image.fromURL('https://s2.loli.net/2022/03/25/VqfD2ScLuKzjbR8.jpg', img => {
+    fabric.Image.fromURL('/qrcode.jpg', img => {
         img.set({
             left: 665,
             top: 30,
