@@ -98,7 +98,7 @@ h1 {
     line-height: 1;
     white-space: nowrap;
     cursor: pointer;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     text-align: center;
     box-sizing: border-box;
     outline: 0;

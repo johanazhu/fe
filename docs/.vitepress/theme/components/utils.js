@@ -48,10 +48,14 @@ export const RECT = {
     fontFamily: " Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif"
 }
 function drawInfo() {
-    const title = `大梦谁先觉 平生我自知`
+    // 🔥 ❤️ 约翰个人觉得前端必须学习的知识点
+    const title = `✅ 约翰已经掌握的前端知识点
+🥺 约翰一知半解的知识点
+⭐ 收藏的内容，但还没来得及研究
+🤔 个人还没来得及学习的知识`
     const x = 35
     const y = 20
-    const width = 300
+    const width = 220
     const height = 100
     const { infoTextColor, fontSize, origin, infoBg } = RECT
     const rect = new fabric.Rect({
@@ -84,17 +88,17 @@ function drawInfo() {
 function drawQrcode(canvas) {
 
 
-    const title = `  关注公众号：随朱波流
-  来源:https://fe.azhubaby.com
-  好好学习，天天向上`
+    const title = `公众号：随朱波流
+来源：https://fe.azhubaby.com
+点击可跳转相应页面`
     const x = 0
     const y = 20
-    const width = 300
+    const width = 280
     const height = 100
     const { infoTextColor, fontSize, origin } = RECT
     fabric.Image.fromURL('https://s2.loli.net/2022/03/25/VqfD2ScLuKzjbR8.jpg', img => {
         img.set({
-            left: 660,
+            left: 665,
             top: 30,
             opacity: 0.8,
             scaleX: 0.32,
@@ -112,7 +116,7 @@ function drawQrcode(canvas) {
         })
         const text = new fabric.Text(title, {
             fill: infoTextColor,
-            left: 20,
+            left: 35,
             originY: origin,
             originX: 'right',
             fontWeight: '500',
@@ -122,7 +126,7 @@ function drawQrcode(canvas) {
         })
 
         const group = new fabric.Group([rect, text], {
-            left: 450,
+            left: 480,
             top: y,
             lockMovementX: true,
             lockMovementY: true
@@ -166,7 +170,6 @@ export function drawMap(dom, data) {
     data.forEach(item => {
 
         const rect = drawRect(item, canvas)
-        console.log('rect', rect)
         rect.link = item.link
         rects.push(rect)
 
@@ -252,7 +255,7 @@ function drawSubline(r1, r2) {
 }
 
 function drawRect(item, canvas) {
-    const tags = ['❌', '✅', '🔥', '⭐']
+    const tags = ['❌', '✅', '🔥', '⭐', '🥺', '🤔']
 
     let tag
     tags.forEach(t => {
@@ -276,7 +279,6 @@ function drawRect(item, canvas) {
         // 第一个元素
         color = bgColor[0]
     }
-    console.log('item', item)
     const rect = new fabric.Rect({
         fill: color,
         originX: 'origin',

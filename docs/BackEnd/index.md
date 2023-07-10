@@ -11,9 +11,8 @@
     left:[
       [{ title: 'Ruby',  link:'./Ruby/' },[
         ['rails']
-        ]
-      ],
-      [ { title: 'Goland',  link:'./Go/' },[
+    ]],
+      [{ title: 'Goland',  link:'./Go/' },[
         ['待学习']
       ]],
        [{ title: 'Python', link:'./Python/' },[
@@ -22,17 +21,19 @@
       ]],
     ],
     right:[
-      ['数据库',[
-        ['Mysql'],
-        ['Postgres'],['MongoDB']
-      ]],
-      ['内存'],
-      ['进程线程'],
-      ['缓存缓存系统'],
-      ['Redis'],
+        ['数据库',[
+            [{ title: 'Mysql', link:'./Mysql'}],
+            //  [{ title: 'Postgres', link:'./Postgres'}],
+            [{ title: 'MongoDB', link:'./MongoDB'}],
+        ]],
+        // ['内存'],
+        // ['进程线程'],
+        // ['缓存缓存系统'],
+        // ['Redis'],
+        [{ title: 'Redis', link:'./Redis'}],
     ],
   } ,
-  { title:'共同知识点',  link:'/BackEnd/Ruby/',
+  { title:'🥺 共同知识点',  link:'/BackEnd/Ruby/',
         left:[
             [{ title: 'HTTP 协议', link:'/HTTP/'}],
             [{ title: 'Session', link:'./session与JWT'}],
@@ -56,11 +57,3 @@
 
 [HTTP 协议](../HTTP/)
 
-
-## 其他语言
-
-[Ruby](./Ruby/)
-
-[Go](./Go/)
-
-[Python](./Python/)
