@@ -8,7 +8,7 @@ titleTemplate: Johnny的编程知识库
 hero:
   name: 五年前端三年面试
   text: Johnny的编程知识库
-  tagline: 一个自我成长的前端需要掌握哪些技能点
+  tagline: 一个自我成长的前端掌握的技能点
   image:
     src: ./logo.webp
     alt: challenges
@@ -23,7 +23,7 @@ hero:
       text: React
       link: /React/
     - theme: alt
-      text: BackEnd
+      text: 后端之海
       link: /BackEnd/
     - theme: alt
       text: Node
