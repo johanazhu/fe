@@ -10,8 +10,8 @@ export default function AboutSideBar() {
                     link: '/About/',
                 },
                 {
-                    text: '关于书',
-                    link: '/About/Book',
+                    text: '关于本站',
+                    link: '/About/website',
                 },
             ],
         },

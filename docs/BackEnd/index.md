@@ -5,41 +5,38 @@
 
 <RoadMap :data="[
     // { title:'三五路线图',x:320,y:200 ,download:true},
-    { title:'⭐后端学习', x:320,y:240,
+    { title:'⭐后端之海', x:320,y:240,
     // download:true,
-    link:'/BackEnd/',
-    left:[
-      [{ title: 'Ruby',  link:'./Ruby/' },[
-        ['rails']
-    ]],
-      [{ title: 'Goland',  link:'./Go/' },[
-        ['待学习']
-      ]],
-       [{ title: 'Python', link:'./Python/' },[
-        ['Flask'],
-        ['Django']
-      ]],
-    ],
-    right:[
-        ['数据库',[
-            [{ title: 'Mysql', link:'./Mysql'}],
-            //  [{ title: 'Postgres', link:'./Postgres'}],
-            [{ title: 'MongoDB', link:'./MongoDB'}],
-        ]],
-        // ['内存'],
-        // ['进程线程'],
-        // ['缓存缓存系统'],
-        // ['Redis'],
-        [{ title: 'Redis', link:'./Redis'}],
-    ],
-  } ,
-  { title:'🥺 共同知识点',  link:'/BackEnd/Ruby/',
+        link:'/BackEnd/',
+        left:[
+            [{ title: 'Ruby',  link:'./Ruby/' },[
+                ['rails']
+            ]],
+            [{ title: 'Goland',  link:'./Go/' }],
+            [{ title: 'Python', link:'./Python/' },[
+                ['Flask'],
+                ['Django']
+            ]],
+        ],
+        right:[
+            ['数据库',[
+                [{ title: 'Mysql', link:'./Mysql'}],
+                //  [{ title: 'Postgres', link:'./Postgres'}],
+                [{ title: 'MongoDB', link:'./MongoDB'}],
+            ]],
+            // ['内存'],
+            // ['进程线程'],
+            // ['缓存缓存系统'],
+            [{ title: 'Redis', link:'./Redis'}],
+        ],
+    },
+    {title:'共同知识点',
         left:[
             [{ title: 'HTTP 协议', link:'/HTTP/'}],
             [{ title: 'Session', link:'./session与JWT'}],
             [{ title: 'RESTful', link:'./RESTful'}]
         ]
-  },
+    },
     {title:'全栈开发者'}
 ]" />
 

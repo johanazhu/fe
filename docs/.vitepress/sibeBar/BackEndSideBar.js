@@ -135,17 +135,6 @@ export default function BackEndSideBar() {
                     link: '/BackEnd/Redis',
                 },
             ],
-        },
-        {
-            text: 'Nginx',
-            collapsable: false,
-            // sidebarDepth: 0,
-            items: [
-                {
-                    text: 'Nginx',
-                    link: '/BackEnd/Nginx/',
-                },
-            ],
-        },
+        }
     ];
 }

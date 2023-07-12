@@ -62,7 +62,7 @@ export default function FrontEndSideBar() {
             ],
         },
         {
-            text: '后端',
+            text: '后端之海',
             collapsable: false,
             sidebarDepth: 0,
             items: [
@@ -105,10 +105,6 @@ export default function FrontEndSideBar() {
                 {
                     text: 'Redis',
                     link: '/BackEnd/Redis',
-                },
-                {
-                    text: 'Nginx',
-                    link: '/BackEnd/Nginx/',
                 },
             ],
         },
@@ -249,6 +245,16 @@ export default function FrontEndSideBar() {
                 {
                     text: 'DevOps',
                     link: '/DevOps/',
+                },
+                {
+                    text: 'Nginx',
+                    collapsable: false,
+                    items: [
+                        {
+                            text: 'Nginx',
+                            link: '/DevOps/Nginx/',
+                        },
+                    ],
                 },
             ],
         },

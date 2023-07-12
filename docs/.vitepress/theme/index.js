@@ -35,13 +35,13 @@ import ReloadPrompt from './components/ReloadPrompt.vue'
 import RoadMap from './components/RoadMap.vue'
 
 export default {
-  ...DefaultTheme ,
-  Layout() {
-    return h(Layout, null, {
-      'layout-bottom': () => h(ReloadPrompt)
-    })
-  },
-  enhanceApp({ app }) {
-    app.component('RoadMap', RoadMap)
-  }
+    ...DefaultTheme,
+    Layout() {
+        return h(Layout, null, {
+            'layout-bottom': () => h(ReloadPrompt)
+        })
+    },
+    enhanceApp({ app }) {
+        app.component('RoadMap', RoadMap)
+    }
 }

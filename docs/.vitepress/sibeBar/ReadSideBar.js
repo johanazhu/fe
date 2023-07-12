@@ -65,8 +65,8 @@ export default function HTTPSideBar() {
                     link: '/Read/book/JavaScript权威指南',
                 },
                 {
-                    text: 'JsvaScript语言精粹',
-                    link: '/Read/book/JsvaScript语言精粹',
+                    text: 'JavaScript语言精粹',
+                    link: '/Read/book/JavaScript语言精粹',
                 },
                 {
                     text: 'UNIX编程艺术',

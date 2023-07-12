@@ -4,131 +4,151 @@
 
 在此写下对前端及其他编程知识的理解
 
-## JavaScript 方面
 
-[JavaScript 面试篇](../JavaScript/面试题/)
-
-[JavaScript 基础篇](../JavaScript/)
-
-[JavaScript 原理篇](../JavaScript/原理/)
-
-[JavaScript 高阶篇](../JavaScript/高阶/)
-
-[TypeScript](../JavaScript/TypeScript/)
-
-## React 方面
-
-[React 面试题](../React/面试题/)
-
-[React 基础篇](../React/)
-
-[React 生态篇](../React/生态/)
-
-[React 实战篇](../React/实战/)
-
-## 大前端方面
-
-[移动 H5 开发](../WebApp/)
-
-[微信公众号](../WebApp/WeChat/)
-
-[Flutter](../Flutter/)
-
-[微信小程序](../WebApp/MiniApp/)
-
-[React Native](../WebApp/ReactNative/)
-
-## 前端工程化
-
-[webpack](../webpack/)
-
-[微前端](../Engineered/MicroFrontend/)
-
-[代码规范](../Engineered/StandardGuide/)
-
-## ES6 方面
-
-[ES6 面试题](../ES6/面试题/)
-
-[ES6 知识点](../ES6/)
-
-[Promise 专栏](../ES6/Promise/)
-
-## 浏览器
-
-[Browser 面试题](../Browser/面试题/)
-
-[Browser 知识点](../Browser/)
-
-## HTTP
-
-[HTTP 面试题](../HTTP/面试题/)
-
-[HTTP 知识点](../HTTP/)
-
-## 后端方面
-
-[Node](../Node/)
-
-[Koa2](../Node/Koa2/)
-
-[Express](../Node/Express)
-
-[PM2](../Node/PM2)
-
-[Ruby](../BackEnd/Ruby/)
-
-[Go](../BackEnd/Go/)
-
-[Python](../BackEnd/Python/)
-
-[MongoDB](../BackEnd/MongoDB)
-
-[Mysql](../BackEnd/Mysql)
-
-[Redis](../BackEnd/Redis)
-
-[Nginx](../BackEnd/Nginx/)
-
-
-
-## [性能优化](../Performance/)
-
-## [面试真题](../Interview/)
-
-## 运维部署
-
-[Docker](../Docker/)
-
-[Git](../Git/)
-
-[Linux](../Linux/)
-
-[DevOps](../DevOps/)
-
-## 计算机基础打底
-
-[计算机基础](../CSBasic/)
-
-[设计模式](../DesignPattern/)
-
-## 前端基础三件套
-
-[HTML](../Basic/HTML/)
-
-[CSS](../Basic/CSS/)
-
-[JQuery](../Basic/JQuery/)
-
-## 源码读书课程
-
-[源码](../Read/code/)
-
-[读书](../Read/book/)
-
-
-## 其他
-
-[软实力](../Others/)
-
-[关于我](../About/)
+<RoadMap :data="[
+    { title:'三五知识图谱', x:300, y:80 ,download:true},
+    { title:'JavaScript', y:130, link:'/JavaScript/',
+    left: [
+      [{ title: '面试篇',  link:'/JavaScript/面试题/' }],
+      [{ title: '基础篇',  link:'/JavaScript/' }],
+      [{ title: '原理篇', link:'/JavaScript/原理/' }],
+      [{ title: '高阶篇', link:'/JavaScript/高阶/' }],
+    ],
+    right: [
+        [{ title: 'TypeScript', link:'/TypeScript/' }],
+    ],
+    } ,
+    { title:'React',  link:'/React/',
+        right: [
+            [{ title: '面试篇',  link:'/React/面试题/' }],
+            [{ title: '基础篇',  link:'/React/' }],
+            [{ title: '生态篇', link:'/React/生态/' }],
+            [{ title: '实战篇', link:'/React/实战/' }],
+        ]
+    },
+    { title:'大前端',  link:'/WebApp/', y:220, x:-100,
+        left: [
+            [{ title: '移动H5开发',  link:'/WebApp/' }],
+            [{ title: '微信公众号',  link:'/WebApp/WeChat/' }],
+            [{ title: '微信小程序', link:'/WebApp/MiniApp/' }],
+            [{ title: 'Flutter',  link:'/Flutter/' }],
+            [{ title: 'ReactNative',  link:'/WebApp/ReactNative/' }],
+        ],
+    },
+    { title:'前端工程化', y:1, x:240,
+        right: [
+              [{ title: 'webpack',  link:'/webpack/' }],
+            [{ title: '微前端',  link:'/Engineered/MicroFrontend/' }],
+            [{ title: '代码规范',  link:'/Engineered/StandardGuide/' }],
+        ],
+    },
+    { title:'ES6', link:'/ES6/', x:-162,y:170,
+        right: [
+            [{ title: 'ES6 面试题',  link:'/ES6/面试题/' }],
+            [{ title: 'ES6 知识点',  link:'/ES6/' }],
+            [{ title: 'Promise 专栏', link:'/ES6/Promise/' }],
+        ],
+    },
+    { title:'浏览器', link:'/Browser/',
+        left: [
+            [{ title: 'Browser 面试题',  link:'/Browser/面试题/' }],
+            [{ title: 'Browser 知识点',  link:'/Browser/' }],
+        ],
+        right: [
+            [{ title: 'HTTP', link:'/HTTP/'}],
+            [{ title: '性能优化',  link:'/Performance/' }]
+        ]
+    },
+    { title:'⭐后端之海', x: 10, y:200, link:'/Browser/',
+        left: [
+            [{ title: '本命 Node',  link:'/Node/' },
+                [-50],
+                [
+                    [{ title: 'Node 基础',  link:'/Node/' }],
+                    [{ title: 'Koa2',  link:'/Node/Koa2/' }],
+                    [{ title: 'Express',  link:'/Node/Express' }],
+                    [{ title: 'PM2',  link:'/Node/PM2' }]
+                ]
+            ],
+            [{ title: '其他语言',   },
+                [50],
+                [
+                    [{ title: 'Ruby',  link:'/BackEnd/Ruby/' }],
+                    [{ title: 'Go',  link:'/BackEnd/Go/' }],
+                    [{ title: 'Python',  link:'/BackEnd/Python/' }],
+                ]
+            ],
+        ],
+        right: [
+            [{ title: '数据库' },
+                // [-50],
+                [
+                    [{ title: 'Mysql', link:'/BackEnd/Mysql'}],
+                    [{ title: 'MongoDB', link:'/BackEnd/MongoDB'}],
+                ]
+            ],
+            // ['内存'],
+            // ['进程线程'],
+            // ['缓存缓存系统'],
+            [{ title: 'Redis', link:'/BackEnd/Redis'}],
+            [{ title: '共同知识点' },
+                [
+                    [{ title: 'HTTP', link:'/HTTP/'}],
+                    [{ title: 'Session', link:'/BackEnd/session与JWT'}],
+                    [{ title: 'RESTful', link:'/BackEnd/RESTful'}]
+                ]
+            ],
+        ],
+    },
+    { title:'运维天下', y:220,
+        left: [
+            [{ title: 'Linux',  link:'/Linux/' }],
+            [{ title: 'DevOps',  link:'/DevOps/' }],
+            [{ title: 'Nginx',  link:'/DevOps/Nginx/' }],
+        ],
+        right: [
+            [{ title: 'Docker', link:'/Docker/' }],
+            [{ title: 'Git',  link:'/Git/' }],
+        ]
+    },
+    { title:'计算机基础打底',
+        left: [
+            [{ title: '计算机基础',  link:'/CSBasic/' }]
+        ],
+        right: [
+            [{ title: '设计模式',  link:'/DesignPattern/' }],
+        ]
+    },
+    { title:'基础三件套',
+        left: [
+            [{ title: 'HTML',  link:'/Basic/HTML/' }],
+            [{ title: 'CSS',  link:'/Basic/CSS/' }],
+            [{ title: 'JQuery',  link:'/Basic/JQuery/' }]
+        ],
+        right: [
+            [{ title: '面试真题',  link:'/Interview/' }],
+        ]
+    },
+    { title:'源码读书课程',
+        left: [
+            [{ title: '阅读源码', link:'/Read/code/',  },
+                [
+                    [{ title: 'Jquery', link:'/Read/code/Jquery'}],
+                    [{ title: 'Redux', link:'/Read/code/Redux'}],
+                    [{ title: 'Underscore', link:'/Read/code/Underscore'}],
+                ]
+            ],
+        ],
+        right: [
+            [{ title: '读书笔记',  link:'/Read/book/' }],
+        ]
+    },
+    { title:'其他',
+        right: [
+            [{ title: '软实力',  link:'/Others/' }],
+            [{ title: '简历面试',  link:'/Others/Resume' }],
+            [{ title: '关于我',  link:'/About/' }]
+        ],
+    },
+    { title:'程序员的归宿' }
+]" />
