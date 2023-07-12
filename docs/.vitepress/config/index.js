@@ -7,7 +7,7 @@ export default withPwa(
     defineConfig({
         title: "五年前端三年面试",
         keywords:
-            "Jahan johnnyjoestar azhubaby js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端",
+            "Jahan johnnyjoestar azhubaby javascript js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端",
         description: "元前端，前端宇宙，前端知识地图",
 
         // lastUpdated: true,
@@ -55,7 +55,7 @@ export default withPwa(
                 {
                     name: "keywords",
                     content:
-                        "jahan johnnyjoestar azhubaby js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端",
+                        "jahan johnnyjoestar azhubaby javascript js react webpack babel browser html css jquery git http docker weapp miniapp flutter RN designPattern cssbasic about JavaScript学习路线 JavaScript知识体系 React框架 前端的一切 前端面试 知识体系 前端工程化 大前端",
                 },
             ],
             ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
@@ -65,6 +65,19 @@ export default withPwa(
                     src: "https://hm.baidu.com/hm.js?d62573a82a77fc885b0f1cbf8a6ab5e4",
                 },
             ],
+            // google analytics
+            [
+                'script',
+                {
+                    async: true,
+                    src: 'https://www.googletagmanager.com/gtag/js?id=G-03YTWDXVL1',
+                },
+            ],
+            [
+                'script',
+                {},
+                "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-03YTWDXVL1');",
+            ],
         ],
 
         // 端口号
@@ -73,6 +86,9 @@ export default withPwa(
             // 代码块行号
             lineNumbers: true,
             linkify: true,
+            externalLinks: {
+                target: '_blank', rel: 'noopener noreferrer'
+            }
         },
 
         themeConfig,
