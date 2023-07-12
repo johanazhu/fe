@@ -5,7 +5,7 @@ import { pwa } from '../script/pwa';
 
 export default withPwa(
     defineConfig({
-        title: "五年前端三年面试",
+        title: "五年前端三年面试 | Johnny的编程知识库",
         description: "约翰的前端前端，元前端，前端知识地图，取名为五年前端三年面试。这里记录着一个（前端）程序员的自我成长史",
         head: [
             // icon
@@ -47,19 +47,13 @@ export default withPwa(
                 "meta",
                 {
                     name: "keywords",
-                    content:
-                        `Jahan johnnyjoestar Johnny的编程知识库
-                    azhubaby javascript js React webpack babel
-                    browser html css jquery git http docker webapp
-                    miniapp flutter ReactNative designPattern
-                    Ruby on Rails goland python 实战
-                   JavaScript学习路线 JavaScript知识体系 面试 前端面试 知识体系 前端工程化 大前端`,
+                    content: `Jahan johnnyjoestar Johnny的编程知识库 azhubaby javascript js React webpack babel browser html css jquery git http docker webapp miniapp flutter ReactNative designPattern Ruby on Rails goland python 实战 JavaScript学习路线 JavaScript知识体系 面试 前端面试 知识体系 前端工程化 大前端`,
                 },
             ],
             ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
             // 百度搜索
             ["meta", { name: "baidu-site-verification", content: "codeva-nBcDOxSAzM" }],
-            ["meta", { name: "sogou_site_verification", content: "InAQmyzgXB" }],
+            ["meta", { name: "shenma-site-verification", content: "fe411010541768632c2c0f87027a13c6_1689156739" }],
             [
                 "script",
                 {
