@@ -69,7 +69,7 @@ export default withPwa(
             [
                 'script',
                 {
-                    async: true,
+                    async: '',
                     src: 'https://www.googletagmanager.com/gtag/js?id=G-03YTWDXVL1',
                 },
             ],
