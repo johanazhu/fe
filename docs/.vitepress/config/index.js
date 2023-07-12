@@ -87,7 +87,7 @@ export default withPwa(
             lineNumbers: true,
             linkify: true,
             externalLinks: {
-                target: '_blank', rel: 'noopener noreferrer'
+                target: '_blank', rel: 'nofollow noopener noreferrer'
             }
         },
 
