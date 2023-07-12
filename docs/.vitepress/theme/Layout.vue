@@ -8,8 +8,6 @@ const data = useData();
 const { Layout } = DefaultTheme;
 const { theme, frontmatter, page } = data;
 
-console.log('randomItem', randomItem)
-
 </script>
 
 <template>
