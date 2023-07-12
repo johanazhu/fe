@@ -58,7 +58,8 @@ export default withPwa(
             ],
             ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
             // 百度搜索
-            // ["meta", { name: "baidu-site-verification", content: "codeva-nBcDOxSAzM" }],
+            ["meta", { name: "baidu-site-verification", content: "codeva-nBcDOxSAzM" }],
+            ["meta", { name: "sogou_site_verification", content: "InAQmyzgXB" }],
             [
                 "script",
                 {
