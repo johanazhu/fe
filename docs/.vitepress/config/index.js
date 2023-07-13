@@ -1,7 +1,12 @@
 import { withPwa } from "@vite-pwa/vitepress";
-import { defineConfig } from "vitepress";
+import { defineConfig, PageData } from "vitepress";
 import themeConfig from "./themeConfig";
 import { pwa } from '../script/pwa';
+import { createWriteStream } from 'node:fs'
+import { resolve } from 'node:path'
+import { SitemapStream } from 'sitemap'
+
+const links = []
 
 export default withPwa(
     defineConfig({
@@ -89,32 +94,24 @@ export default withPwa(
         themeConfig,
 
         pwa,
+        lastUpdated: "上次更新",
+        // sitemap https://github.com/vuejs/vitepress/issues/520
+        // https://github.com/maomao1996/daily-notes/issues/39
+        transformHtml: (_, id, { pageData }) => {
+            if (!/[\\/]404\.html$/.test(id))
+                links.push({
+                    // you might need to change this if not using clean urls mode
+                    url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+                    lastmod: pageData.lastUpdated
+                })
+        },
+        buildEnd: async ({ outDir }) => {
+            const sitemap = new SitemapStream({ hostname: 'https://fe.azhubaby.com/' })
+            const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+            sitemap.pipe(writeStream)
+            links.forEach((link) => sitemap.write(link))
+            sitemap.end()
+            await new Promise((r) => writeStream.on('finish', r))
+        }
     })
 );
-
-// module.exports = {
-
-//     smoothScroll: true,
-//     plugins: [
-//         sitemapPlugin({
-//             // 配置选项
-//             hostname: 'https://fe.azhubaby.com/',
-//         }),
-//         seoPlugin({
-//             hostname: 'https://fe.azhubaby.com/',
-//             siteTitle: (_, $site) => '五年前端三年面试',
-//             title: ($page) => $page.title,
-//             description: ($page) => $page.frontmatter.description,
-//             author: (_, $site) => '约翰',
-//             twitterCard: (_) => 'summary_large_image',
-//             type: ($page) => 'article',
-//             url: (_, $site, path) => 'https://fe.azhubaby.com' + path,
-//             image: ($page, $site) => 'https://fe.azhubaby.com/favicon.ico',
-//             publishedAt: ($page) =>
-//                 $page.frontmatter.date && new Date($page.frontmatter.date),
-//             modifiedAt: ($page) =>
-//                 $page.lastUpdated && new Date($page.lastUpdated),
-//         }),
-//     ],
-
-// };

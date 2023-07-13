@@ -23,6 +23,7 @@
   "dependencies": {
     "fabric-pure-browser": "^5.1.0",
     "jsdom": "^22.1.0",
+    "sitemap": "^7.1.1",
     "ua-parser-js": "1.0.35",
     "vue-router": "^4.2.4"
   }
