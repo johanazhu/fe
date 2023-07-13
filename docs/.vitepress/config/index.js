@@ -47,6 +47,15 @@ export default withPwa(
             links.forEach((link) => sitemap.write(link))
             sitemap.end()
             await new Promise((r) => writeStream.on('finish', r))
+        },
+        // https://vitepress.dev/reference/site-config#transformhead
+        async transformHead({ pageData }) {
+            const head = []
+
+            head.push(['meta', { property: 'og:title', content: pageData.frontmatter.title }])
+            head.push(['meta', { property: 'og:description', content: pageData.frontmatter.description }])
+
+            return head
         }
     })
 );

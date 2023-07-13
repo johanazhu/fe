@@ -1,5 +1,4 @@
-# Algolia-Crawler-Verif: 46BF7AEAC1C1A60C
+
+Sitemap: https://fe.azhubaby.com/sitemap.xml
 
 User-agent: *
-Allow: /
-Sitemap: https://www.algoia.com/sitemap.xml
