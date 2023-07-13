@@ -1,4 +1,5 @@
 import { withPwa } from "@vite-pwa/vitepress";
+import Container from 'markdown-it-container'
 import { defineConfig, PageData } from "vitepress";
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
@@ -14,16 +15,48 @@ export default withPwa(
         title: "五年前端三年面试",
         description: "约翰的前端前端，元前端，前端知识地图，取名为五年前端三年面试。这里记录着一个（前端）程序员的自我成长史",
         head,
-
-        // 端口号
-        // port: 3000,
         markdown: {
-            // 代码块行号
             lineNumbers: true,
             linkify: true,
             externalLinks: {
                 target: '_blank', rel: 'nofollow noopener noreferrer'
-            }
+            },
+            theme: 'monokai',
+            config: md => {
+                md.use(Container, 'card', {
+                    render: (tokens, idx) => {
+                        const token = tokens[idx]
+
+                        const title = token.info.trim().slice(5).trim()
+
+                        const isCardBordered = token.attrs && token.attrs.some(([key, _]) => key === 'bordered')
+
+                        const titleHtml = md.render(`## ${title}`)
+                        const demoContent = title ? `<template #title>${titleHtml}</template>` : ''
+
+                        return token.nesting === 1 ? `<Demo :class="[${isCardBordered} && 'vp-demo-bordered']">${demoContent}` : '</Demo>\n'
+                    },
+                })
+
+                md.use(Container, 'code', {
+                    render: (tokens, idx) => {
+                        const token = tokens[idx]
+
+                        // console.log('token :>> ', token)
+                        const demoName = token.info.trim().slice(5).trim()
+
+                        return token.nesting === 1 ? `<template #demo><${demoName} /></template><template #code>` : '</template>\n'
+                    },
+                })
+
+                md.use(Container, 'after-demo', {
+                    render: (tokens, idx) => {
+                        const token = tokens[idx]
+
+                        return token.nesting === 1 ? '<template #after-demo>' : '</template>\n'
+                    },
+                })
+            },
         },
 
         themeConfig,
@@ -49,13 +82,16 @@ export default withPwa(
             await new Promise((r) => writeStream.on('finish', r))
         },
         // https://vitepress.dev/reference/site-config#transformhead
-        async transformHead({ pageData }) {
-            const head = []
+        // 等待官方完善
+        // async transformHead({ pageData }) {
+        //     const head = []
 
-            head.push(['meta', { property: 'og:title', content: pageData.frontmatter.title }])
-            head.push(['meta', { property: 'og:description', content: pageData.frontmatter.description }])
+        //     head.push(['meta', { property: 'og:title', content: pageData.frontmatter.title }])
+        //     head.push(['meta', { property: 'og:description', content: pageData.frontmatter.description }])
 
-            return head
-        }
+        //     return head
+        // }
     })
+    // https://github.com/vuejs/vitepress/issues/883
+    // application/ld+json 暂停等待官方支持
 );

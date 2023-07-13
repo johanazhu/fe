@@ -219,6 +219,27 @@ rails new first_app
 
 目录结构
 
+
+```
+.
+├─ app 
+│  bin
+│  config
+│  config.ru
+│  db
+│  Gemfile
+│  Gemfile.lock
+│  lib
+│  log
+│  public
+│  Rakefile
+│  README.md
+│  test
+│  tmp
+│  vendor
+└─ .gitignore
+```
+
 | 文件/文件夹               | 作用                                                         |
 | ------------------------- | ------------------------------------------------------------ |
 | `app/`                    | 包含应用的控制器、模型、视图、辅助方法、邮件程序、频道、作业和静态资源文件。这个文件夹是本文剩余内容关注的重点。 |
