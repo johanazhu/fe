@@ -45,7 +45,7 @@ export const head = [
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     // 百度搜索
     ["meta", { name: "baidu-site-verification", content: "codeva-nBcDOxSAzM" }],
-    ["meta", { name: "shenma-site-verification", content: "fe411010541768632c2c0f87027a13c6_1689208054" }],
+    // ["meta", { name: "shenma-site-verification", content: "fe411010541768632c2c0f87027a13c6_1689208054" }],
     [
         "script",
         {
@@ -66,32 +66,32 @@ export const head = [
         "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-03YTWDXVL1');",
     ],
     // 社交媒体
-    // [
-    //     'meta',
-    //     { property: 'og:type', content: 'website' }
-    // ],
-    // [
-    //     'meta',
-    //     { property: 'og:site_name', content: '五年前端三年面试' }
-    // ],
-    // [
-    //     'meta',
-    //     { property: 'og:title', content: '五年前端三年面试' }
-    // ],
-    // [
-    //     'meta',
-    //     { property: 'og:image', content: 'https://fe.azhubaby.com/site_logo.png' }
-    // ],
-    // [
-    //     'meta',
-    //     { property: 'og:description', content: '约翰的前端前端，元前端，前端知识地图，取名为五年前端三年面试。这里记录着一个（前端）程序员的自我成长史' }
-    // ],
-    // [
-    //     'meta',
-    //     { property: 'og:url', content: 'https://fe.azhubaby.com' }
-    // ],
-    // [
-    //     'meta',
-    //     { name: 'twitter:card', content: 'summary_large_image' }
-    // ]
+    [
+        'meta',
+        { property: 'og:type', content: 'website' }
+    ],
+    [
+        'meta',
+        { property: 'og:site_name', content: '五年前端三年面试' }
+    ],
+    [
+        'meta',
+        { property: 'og:title', content: '五年前端三年面试' }
+    ],
+    [
+        'meta',
+        { property: 'og:image', content: 'https://fe.azhubaby.com/site_logo.png' }
+    ],
+    [
+        'meta',
+        { property: 'og:description', content: '约翰的前端前端，元前端，前端知识地图，取名为五年前端三年面试。这里记录着一个（前端）程序员的自我成长史' }
+    ],
+    [
+        'meta',
+        { property: 'og:url', content: 'https://fe.azhubaby.com' }
+    ],
+    [
+        'meta',
+        { name: 'twitter:card', content: 'summary_large_image' }
+    ]
 ]
