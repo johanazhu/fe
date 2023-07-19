@@ -10,6 +10,7 @@
 -   [李文周](https://github.com/yangwenmai/learning-golang)
 -   [Go 语言设计与实现](https://draveness.me/golang/#/)
 -   [Go语言语法精练 [2022最新Go语言教程，没有废话，纯干货！]](https://www.bilibili.com/video/BV1Ca411L72p/?vd_source=55c655c3b4aed7bb7a250da7eea13eb8)
+-   [【Go 从入门到实战】](https://github.com/xinliangnote/Go/tree/master)
 
 ## 视频教程
 
@@ -61,6 +62,12 @@ Go 语言最突出之处是并发编程，Unix 老牌黑客罗勃·派克（Rob 
 
 
 https://www.yuque.com/aceld/mo95lb/haizwm
+
+
+
+[煎鱼](https://eddycjy.com/) 的文章
+
+[煎鱼](https://eddycjy.com/) 的例子https://github.com/eddycjy/go-gin-example
 
 
 

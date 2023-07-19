@@ -44,6 +44,8 @@ TypeScript编程 安道译
 
 [深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
 
+[简洁的TypeScript之书](https://github.com/gibbok/typescript-book/blob/main/README-zh_CN.md)
+
 
 
 ## 教程
@@ -51,7 +53,6 @@ TypeScript编程 安道译
 [Ts 全解（45个免费视频）](https://www.bilibili.com/video/BV1ig411k7pf/)
 
 [TypeScript全解（130个视频）](https://xiedaimala.com/courses/70264e2d-5a7b-4adc-b80c-aeb39d12dfb4/random/086c958b33?#/common)：收费
-
 
 
 
