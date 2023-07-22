@@ -40,7 +40,7 @@ features:
   - title: Nothing is Simple
     details: Things Change Roll With It
   - title: 不解释，不后悔，不抱怨
-    details: 想要佩服谁，我就照镜子
+    details: 除了生死，都是小事
 ---
 
 
