@@ -3,7 +3,7 @@ layout: home
 sidebar: false
 
 title: 五年前端三年面试
-titleTemplate: Johnny的编程知识库
+titleTemplate: Johnny的编程知识体系
 
 hero:
   name: 五年前端三年面试

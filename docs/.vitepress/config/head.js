@@ -91,7 +91,7 @@ export const head = [
     ],
     [
         'meta',
-        { property: 'og:description', content: '约翰的前端前端，元前端，前端知识地图，取名为五年前端三年面试。这里记录着一个（前端）程序员的自我成长史' }
+        { property: 'og:description', content: '这里是 Johnny 的前端知识地图，名曰五年前端三年面试，记录 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化等方面的编程知识' }
     ],
     [
         'meta',
