@@ -12,7 +12,7 @@ const links = []
 
 export default withPwa(
     defineConfig({
-        title: "五年前端三年面试：前端技能树",
+        title: "五年前端三年面试",
         description: "这里是 Johnny 的前端知识地图，名曰五年前端三年面试，记录 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化等方面的编程知识",
         head,
         markdown: {
