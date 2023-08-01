@@ -27,14 +27,26 @@ npm 菜鸟教程：[https://www.runoob.com/nodejs/nodejs-npm.html](https://www.r
 
 ### NPM 常用命令行
 
-| 命令                      | 说明                   |
-| ------------------------- | ---------------------- |
-| npm init                  | 初始化，加 -y 一键     |
-| npm install npm@latest -g | 升级到最新             |
-| npm cache clean -f        | npm 清除缓存           |
-| npm publist               | 讲包推送到远程仓库     |
-| npm update                | 升级包                 |
-| npm audit fix             | 修复包的安全漏洞并升级 |
+`npm init` 初始化，加 -y 一键  
+
+`npm install npm@latest -g` 升级到最新
+
+`npm cache clean -f` npm 清除缓存
+
+`npm publist` 将包推送到远程仓库
+
+`npm update` 升级包
+
+`npm audit fix` 修复包的安全漏洞并升级
+
+`pm2 monit <AppName>/<id> `监控这个进程的 CPU 和内存信息
+
+`pm2 delete <AppName>/<id>` 删掉
+
+
+### PNPM 常用命令行
+
+`pnpm root -g` 查看全局包地址
 
 ### cnpm
 

@@ -13,7 +13,7 @@
 
 ## 常用命令
 
-`pm2 start [app.js]`：启动
+`pm2 start [app.js]` 启动
 
 - `pm2 start app.js --name blog`
 
@@ -27,6 +27,6 @@
 
 `pm2 log <AppName>/<id>` 查看日志打印
 
-`pm2 monit <AppName>/<id> `监控这个进程的 CPU 和内存信息
+`pm2 monit <AppName>/<id>` 监控这个进程的 CPU 和内存信息
 
 `pm2 delete <AppName>/<id>` 删掉
