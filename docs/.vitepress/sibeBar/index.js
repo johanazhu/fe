@@ -1,7 +1,7 @@
 import AboutSideBar from './AboutSideBar';
 import ArmorySideBar from './ArmorySideBar';
 import BackEndSideBar from './BackEndSideBar';
-import BigFrondSideBar from './BigFrondSideBar';
+import BigFrontSideBar from './BigFrontSideBar';
 import BrowserSideBar from './BrowserSideBar';
 import CSBasicSideBar from './CSBasicSideBar';
 import DesignPatternSideBar from './DesignPatternSideBar';
@@ -23,7 +23,7 @@ export {
     AboutSideBar,
     ArmorySideBar,
     BackEndSideBar,
-    BigFrondSideBar,
+    BigFrontSideBar,
     BrowserSideBar,
     CSBasicSideBar,
     DesignPatternSideBar,

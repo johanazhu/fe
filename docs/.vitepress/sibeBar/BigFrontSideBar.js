@@ -1,4 +1,4 @@
-export default function BigFrondSideBar() {
+export default function BigFrontSideBar() {
     return [
         {
             text: 'WebApp',

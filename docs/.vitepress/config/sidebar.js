@@ -2,7 +2,7 @@ import {
     AboutSideBar,
     ArmorySideBar,
     BackEndSideBar,
-    BigFrondSideBar,
+    BigFrontSideBar,
     BrowserSideBar,
     CSBasicSideBar,
     DesignPatternSideBar,
@@ -36,8 +36,8 @@ export default {
 
     '/webpack': WebpackSideBar(),
 
-    '/WebApp': BigFrondSideBar(),
-    '/Flutter': BigFrondSideBar(),
+    '/WebApp': BigFrontSideBar(),
+    '/Flutter': BigFrontSideBar(),
 
     '/Basic': FrontEndBasicSideBar(),
 

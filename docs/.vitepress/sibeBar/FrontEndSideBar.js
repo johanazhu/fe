@@ -248,13 +248,14 @@ export default function FrontEndSideBar() {
                 },
                 {
                     text: 'Nginx',
-                    collapsable: false,
-                    items: [
-                        {
-                            text: 'Nginx',
-                            link: '/DevOps/Nginx/',
-                        },
-                    ],
+                    link: '/DevOps/Nginx/',
+                    // collapsable: false,
+                    // items: [
+                    //     {
+                    //         text: 'Nginx',
+                    //         link: '/DevOps/Nginx/',
+                    //     },
+                    // ],
                 },
             ],
         },
