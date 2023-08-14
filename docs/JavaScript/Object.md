@@ -38,7 +38,7 @@ console.dir(johan);
 
 这是因为「对象字面量」创建的实例，在底层已经做了「隐式继承」的操作，它和 `new Object('johan')` 是一个意思，除此之外，如果使用 new ，会进行原型继承，`[[prototype]]` 正是继承 Object 的原型（即 Object.prototype）
 
-这里，不妨多说一句，实例是继承 Object.prototype，而不是 Object，原型才会被继承，构造函数是个空壳，不信，你答应 Object 和 Object.prototype，看看内容
+这里，不妨多说一句，实例是继承 Object.prototype，而不是 Object，原型才会被继承，构造函数是个空壳，不信，你打印 Object 和 Object.prototype，看看内容
 
 `console.dir(Object)`如下图所示：
 
