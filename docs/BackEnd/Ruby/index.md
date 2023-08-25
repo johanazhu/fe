@@ -52,6 +52,10 @@ railstutorial 教程网（Ruby on Rails 教程此书的母网）：https://www.r
 
 Rails 论坛：https://discuss.rubyonrails.org/
 
+Ruby on Rails 现代学习网站：https://gorails.com/
+
+老牌Ruby on Rails 学习网站：http://railscasts.com/
+
 
 
 ## 书籍推荐
@@ -79,6 +83,8 @@ Ruby on Rails 实战圣经（繁体版）：https://ihower.tw/rails/index.html
 李笑来当初五万的全栈营（已免费）⭐：https://fullstack.qzy.camp/
 
 方应杭 Vue3+Rails 全栈项目⭐：https://www.bilibili.com/video/BV1AZ4y1r7eU
+
+gorails 面对初学者的视频教程（英文视频）⭐： https://gorails.com/start
 
 B站：重力不足的 Ruby 教程：https://space.bilibili.com/25990460
 
