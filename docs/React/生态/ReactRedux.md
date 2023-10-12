@@ -12,14 +12,14 @@ connect
 
 1. 从 `store` 里面获取读和写的 API
 2. 对拿到的接口进行封装。根据 `mapStateToProps` 和 `mapDispatchToProps` 进行封装
-3. 在家当的时候进行更新（精准更新）。只有`store` 发生变化，才对页面进行更新
+3. 在恰当的时候进行更新（精准更新）。只有`store` 发生变化，才对页面进行更新
 4. 渲染组件（订阅 redux，数据改变后广播通知）
 
 connect 就是一个高阶组件
 
 Provider 其实就是一个使用 context 上下文后的组件
 
-把 context 喝 store 结合起来，与欸的那个只能通过 `dispatch` 来进行修改，这样的话，每个组件既可以去 context 里面获取 store 从而获取状态，又不用担心它们乱改数据
+把 context 和 store 结合起来，组件中只能通过 `dispatch` 来进行修改，这样的话，每个组件既可以去 context 里面获取 store 从而获取状态，又不用担心它们乱改数据
 
 ## 参考资料
 
