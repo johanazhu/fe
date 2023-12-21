@@ -60,6 +60,15 @@ export const head = [
             src: 'https://www.googletagmanager.com/gtag/js?id=G-03YTWDXVL1',
         },
     ],
+    // plausible 统计
+    [
+        'script',
+        {
+            defer: true,
+            'data-domain': 'fe.azhubaby.com',
+            src: 'https://plausible.io/js/script.js'
+        }
+    ],
     // microsoft analytics
     [
         'script',
