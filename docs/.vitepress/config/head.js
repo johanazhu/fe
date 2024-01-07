@@ -69,6 +69,15 @@ export const head = [
             src: 'https://plausible.io/js/script.js'
         }
     ],
+    // 自定义埋点
+    [
+        'script',
+        {
+            defer: true,
+            'data-website-id': '2b207d38-0caa-41f2-9695-9699909c9d20',
+            src: 'https://analytics.azhubaby.com/script.js'
+        }
+    ],
     // microsoft analytics
     [
         'script',
