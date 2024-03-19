@@ -61,20 +61,20 @@ export const head = [
         },
     ],
     // plausible 统计
-    [
-        'script',
-        {
-            defer: true,
-            'data-domain': 'fe.azhubaby.com',
-            src: 'https://plausible.io/js/script.js'
-        }
-    ],
+    // [
+    //     'script',
+    //     {
+    //         defer: true,
+    //         'data-domain': 'fe.azhubaby.com',
+    //         src: 'https://plausible.io/js/script.js'
+    //     }
+    // ],
     // 自定义埋点
     [
         'script',
         {
             defer: true,
-            'data-website-id': '2b207d38-0caa-41f2-9695-9699909c9d20',
+            'data-website-id': 'dd16c39f-869b-4ff1-b117-43d88cd93eb4',
             src: 'https://analytics.azhubaby.com/script.js'
         }
     ],
