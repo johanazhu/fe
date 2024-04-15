@@ -60,15 +60,15 @@ export const head = [
             src: 'https://www.googletagmanager.com/gtag/js?id=G-03YTWDXVL1',
         },
     ],
-    // plausible 统计
-    // [
-    //     'script',
-    //     {
-    //         defer: true,
-    //         'data-domain': 'fe.azhubaby.com',
-    //         src: 'https://plausible.io/js/script.js'
-    //     }
-    // ],
+    // google 广告
+    [
+        'script',
+        {
+            async: '',
+            crossorigin: 'anonymous',
+            src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8924495239960816',
+        },
+    ],
     // 自定义埋点
     [
         'script',
@@ -90,6 +90,7 @@ export const head = [
         {},
         "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-03YTWDXVL1');",
     ],
+
     // 社交媒体
     [
         'meta',

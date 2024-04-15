@@ -83,7 +83,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
 }
 ```
 
-[codepen demo](https://codepen.io/jojobo/pen/XWaKwMy)、[线上 demo](https://azhubaby.com/demo/三角形.html)
+[codepen demo](https://codepen.io/jojobo/pen/XWaKwMy)、[线上 demo](https://demo.azhubaby.com/三角形.html)
 
 ## 盒模型
 

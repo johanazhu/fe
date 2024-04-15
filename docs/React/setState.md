@@ -193,7 +193,7 @@ setState 是同步还是异步？
 
 附上线上 demo 示例：
 
--   [setState 是同步还是异步](https://azhubaby.com/demo/setState是同步还是异步/build/index.html)
+-   [setState 是同步还是异步](https://demo.azhubaby.com/setState是同步还是异步/build/index.html)
 
 ## 参考资料
 

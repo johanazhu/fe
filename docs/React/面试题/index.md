@@ -205,13 +205,13 @@ A： React 是把真实的 DOM 树转换为 JS 对象树，也就是 Virtual DOM
 
 A：为了减少不必要的 DOM 渲染、跨平台、为函数式的 UI 编程打开了大门
 
-### Q：为什么 Virtual dom 会提高性能？
+### Q：为什么 Virtual Dom 会提高性能？
 
 A：因为 VM 并不是真实的操作 DOM，通过 diff 算法可以避免一些不变更的 DOM 操作，从而提高性能
 
-但是不一定会提高性能，他只是通过 diff 算法笔名了一些不需要变更的 DOM 操作，但最终还是要操作 DOM 的，并且 diff 的过程也需要成本
+但是不一定会提高性能，他只是通过 diff 算法避免了一些不需要变更的 DOM 操作，但最终还是要操作 DOM 的，并且 diff 的过程也需要成本
 
-## diff
+## Diff
 
 ### Q：简单介绍下 diff 算法
 
@@ -272,7 +272,7 @@ A：共三种模式，手写一个
 
 A：
 
-## 生命周期
+## 生命周期（2024年已过时）
 
 ### Q：简述下 React 的生命周期？每个声明周期都做了什么？
 
@@ -437,9 +437,19 @@ render() {
 
 2. 如果 key 不变，数据就不会变，如果两列数据为[1, 2, 3] ,[1, 2, 3, 4, 5, 6]点击第一组数据中的任意项，此数据标红，且展示第二组数据，如果展示 UI 时，key 为 index，那么前三是不会被替换的，你看的会是数据标红了且是第二条数据
 
-react 中 onClick={fun}和 onClick=>{()=>fun}有何区别呢？
+### Q: react 中 onClick={fun}和 onClick=>{()=>fun}有何区别呢？
 
-https://www.zhihu.com/question/504049336/answer/2294252770?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128&utm_content=group3_Answer&utm_campaign=shareopn
+如果是绑在 div 这种 Host Component 上表现的是没区别的。但如果是传给一个 React Composite Component 就会有区别了。
+
+由于后者每次在重新渲染的时候都会生成新的匿名函数，所以你对子组件做的例如 Memo、PureComponent 这些优化一定会失效。
+
+前者可以配合 useCallback 这种来保持更新前后同一份引用，所以在 func 不变的情况下，优化都可以生效。
+
+至于你说的 depositMoney(1000) 这种情况，React 和原生 JS 确实处理不一样，原生里面需要触发 click 才会执行 depositMoney，在 React 里面这样写就会导致这个函数立即被调用。
+
+这里的关键是 onClick 是一个函数，触发点击事件的时候才去执行这个函数，而非函数运行后的结果。
+
+见[这里](https://www.zhihu.com/question/504049336/answer/2294252770)
 
 ## 参考资料
 
@@ -448,3 +458,4 @@ https://www.zhihu.com/question/504049336/answer/2294252770?utm_source=wechat_ses
 -   [一年半经验，百度、有赞、阿里前端面试总结](https://github.com/yacan8/blog/issues/18)
 -   [React 灵魂 23 问，你能答对几个？](https://zhuanlan.zhihu.com/p/304213203)
 -   [新手学习 react 迷惑的点(完整版)](https://mp.weixin.qq.com/s?__biz=MzI1ODk2Mjk0Nw==&mid=2247484614&idx=1&sn=a2b5050136c2cd5e00db90a6cc8daaed&chksm=ea0167aadd76eebc0af31bf8de9ee7e5a35ecdb9e19045f5f36a0e5f8e3ae28e25e58eec0994&mpshare=1&scene=1&srcid=&sharer_sharetime=1567645123897&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
+-   [react中onClick={fun}和onClick=>{()=>fun}有何区别呢？](https://www.zhihu.com/question/504049336/answer/2294252770)
