@@ -2,6 +2,7 @@
   "name": "fe",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "description": "五年前端三年面试",
   "main": "index.js",
   "scripts": {
@@ -13,19 +14,19 @@
   "author": "johan",
   "license": "ISC",
   "devDependencies": {
-    "@vite-pwa/vitepress": "^0.2.0",
-    "vite": "^4.4.1",
-    "vite-plugin-pwa": "^0.16.4",
-    "vitepress": "1.0.0-beta.5",
-    "vue": "^3.3.4",
+    "@vite-pwa/vitepress": "^0.4.0",
+    "vite": "^5.2.9",
+    "vite-plugin-pwa": "^0.19.8",
+    "vitepress": "1.1.0",
+    "vue": "^3.4.23",
     "workbox-window": "^7.0.0"
   },
   "dependencies": {
     "fabric-pure-browser": "^5.1.0",
-    "jsdom": "^22.1.0",
-    "markdown-it-container": "^3.0.0",
+    "jsdom": "^24.0.0",
+    "markdown-it-container": "^4.0.0",
     "sitemap": "^7.1.1",
-    "ua-parser-js": "1.0.35",
-    "vue-router": "^4.2.4"
+    "ua-parser-js": "1.0.37",
+    "vue-router": "^4.3.1"
   }
 }

@@ -411,7 +411,7 @@ useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
 
 相同点：useCallback 和 useMemo 都是性能优化的手段，类似于类组件的 shouldComponentUpdate，在子组件中使用 shouldComponentUpdate，判断该组件的 props 和 state 有没有变化，从而避免每次父组件 render 时重新渲染子组件
 
-区别：useCallback 和 useMemo 的区别是 useCallback 返回一个函数，当把它返回的这个函数作为子组件使用时，可以笔名每次父组件更新时重新渲染这个子组件
+区别：useCallback 和 useMemo 的区别是 useCallback 返回一个函数，当把它返回的这个函数作为子组件使用时，可以避免每次父组件更新时重新渲染这个子组件
 
 ```jsx
 const renderButton = useCallback(

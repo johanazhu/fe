@@ -248,7 +248,7 @@ const f1 = (a: unknown) => {
 
 使用 unknown 类型定义的变量无法直接进行操作，需要使用**类型断言**或**类型保护**把其转换为更具体的类型之后才能对其进行操作
 
-unknown 等于所有类型（除了never、unknown、any、void外）的联合，而 any 是跳过了 TypeScript 的类型检查。当我们遇到不确定某个值的具体类型时，使用 unknown 类型比使用 nay 更加安全，因为 TypeScript 不会自动将 unknonw 类型的值视为任意类型，需要我们在使用这个值的时候，显式地进行类型检查或类型断言，笔名因为类型不匹配而导致程序运行时错误的风险
+unknown 等于所有类型（除了never、unknown、any、void外）的联合，而 any 是跳过了 TypeScript 的类型检查。当我们遇到不确定某个值的具体类型时，使用 unknown 类型比使用 nay 更加安全，因为 TypeScript 不会自动将 unknonw 类型的值视为任意类型，需要我们在使用这个值的时候，显式地进行类型检查或类型断言，避免因为类型不匹配而导致程序运行时错误的风险
 
 例如以下这个例子：
 

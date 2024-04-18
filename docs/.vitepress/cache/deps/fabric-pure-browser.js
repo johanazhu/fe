@@ -1,6 +1,6 @@
 import {
   __commonJS
-} from "./chunk-76J2PTFD.js";
+} from "./chunk-Y2F7D3TJ.js";
 
 // browser-external:jsdom
 var require_jsdom = __commonJS({
@@ -8,7 +8,7 @@ var require_jsdom = __commonJS({
     module.exports = Object.create(new Proxy({}, {
       get(_, key) {
         if (key !== "__esModule" && key !== "__proto__" && key !== "constructor" && key !== "splice") {
-          console.warn(`Module "jsdom" has been externalized for browser compatibility. Cannot access "jsdom.${key}" in client code. See http://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`);
+          console.warn(`Module "jsdom" has been externalized for browser compatibility. Cannot access "jsdom.${key}" in client code. See https://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`);
         }
       }
     }));
@@ -21,7 +21,7 @@ var require_utils = __commonJS({
     module.exports = Object.create(new Proxy({}, {
       get(_, key) {
         if (key !== "__esModule" && key !== "__proto__" && key !== "constructor" && key !== "splice") {
-          console.warn(`Module "jsdom/lib/jsdom/living/generated/utils" has been externalized for browser compatibility. Cannot access "jsdom/lib/jsdom/living/generated/utils.${key}" in client code. See http://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`);
+          console.warn(`Module "jsdom/lib/jsdom/living/generated/utils" has been externalized for browser compatibility. Cannot access "jsdom/lib/jsdom/living/generated/utils.${key}" in client code. See https://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`);
         }
       }
     }));
@@ -34,7 +34,7 @@ var require_utils2 = __commonJS({
     module.exports = Object.create(new Proxy({}, {
       get(_, key) {
         if (key !== "__esModule" && key !== "__proto__" && key !== "constructor" && key !== "splice") {
-          console.warn(`Module "jsdom/lib/jsdom/utils" has been externalized for browser compatibility. Cannot access "jsdom/lib/jsdom/utils.${key}" in client code. See http://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`);
+          console.warn(`Module "jsdom/lib/jsdom/utils" has been externalized for browser compatibility. Cannot access "jsdom/lib/jsdom/utils.${key}" in client code. See https://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`);
         }
       }
     }));
@@ -2246,7 +2246,7 @@ var require_fabric = __commonJS({
       }(), addMethods = function(klass, source, parent) {
         for (var property in source) {
           if (property in klass.prototype && typeof klass.prototype[property] === "function" && (source[property] + "").indexOf("callSuper") > -1) {
-            klass.prototype[property] = function(property2) {
+            klass.prototype[property] = /* @__PURE__ */ function(property2) {
               return function() {
                 var superclass = this.constructor.superclass;
                 this.constructor.superclass = parent;

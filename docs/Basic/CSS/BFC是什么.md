@@ -2,7 +2,7 @@
 
 ## BFC 是什么
 
-BFC 全称为 block formattng context，中文为“块级格式化上下文”。相对应的还有 IFC，也就是 inline formatting context，中文为“内联格式化上下文”。
+BFC 全称为 block formatting context，中文为“块级格式化上下文”。相对应的还有 IFC，也就是 inline formatting context，中文为“内联格式化上下文”。
 
 是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域
 

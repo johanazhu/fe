@@ -1,6 +1,6 @@
 import { withPwa } from "@vite-pwa/vitepress";
 import Container from 'markdown-it-container'
-import { defineConfig, PageData } from "vitepress";
+import { defineConfig } from "vitepress";
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'

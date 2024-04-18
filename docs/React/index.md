@@ -94,14 +94,14 @@
     -   手写
 -   [ReactSSR](./生态/ReactSSR.md)
 
-## 手写 React
+## 手写 React（未实现）
 
 -   JSX 和 虚拟 DOM
 -   组件和生命周期
 -   diff 算法
 -   异步的 setState
 
-## 实战
+## 实战（未实现）
 
 -   [React 代码整洁之道](./实战/React代码整洁之道.md)
 
@@ -122,6 +122,4 @@
     -   力求 star 1000 以上
 -   [仿 TapTap 默认颜色取海报颜色](./实战/仿TapTap默认颜色取海报颜色.md)
 
-React 前端工程师学习路径
 
-https://github.com/tuture-dev/react-roadmap

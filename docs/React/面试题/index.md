@@ -92,7 +92,7 @@ Component.prototype.isReactComponent = {};
     -   false：当前组件不进行 render
     -   用法：shouldComponentUpdate(nextProps, nextState)
 
--   将函数绑定放在构造函数、或者在定义阶段使用箭头函数绑定，可以笔名每次都绑定事件
+-   将函数绑定放在构造函数、或者在定义阶段使用箭头函数绑定，可以避免每次都绑定事件
 -   PureComponent 会对 props 和 state 进行前对比
 
 函数式组件
