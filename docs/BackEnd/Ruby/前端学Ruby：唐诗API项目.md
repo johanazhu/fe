@@ -116,7 +116,7 @@ end
 
 在仓库中分别提供 mysql 的数据`tang_poetry.sql` 和 postgresql 的数据 `tangpoetry.sql`
 
-```postgresql
+```sql
 INSERT INTO poets (id,name,created_at,updated_at) VALUES (1,'李世民','2014-06-02 11:47:52','2014-06-02 11:47:52'),(...)
 
 INSERT INTO poetries (id,poet_id,content,title, created_at, updated_at) VALUES (2,1,'塞外悲风切，交河冰已结。瀚海百重波，阴山千里雪。迥戍危烽火，层峦引高节。悠悠卷旆旌，饮马出长城。寒沙连骑迹，朔吹断边声。胡尘清玉塞，羌笛韵金钲。绝漠干戈戢，车徒振原隰。都尉反龙堆，将军旋马邑。扬麾氛雾静，纪石功名立。荒裔一戎衣，灵台凯歌入。','饮马长城窟行','2014-06-02 11:47:52','2014-06-02 11:47:52'),(...)

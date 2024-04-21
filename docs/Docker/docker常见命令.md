@@ -54,7 +54,7 @@
 
 - 删除镜像：`docker rmi <image-id>`
 
-- 上传镜像：`docker push <username>/<repository>:<tag>`，要先注册 [hub.docker.com](hub.docker.com)
+- 上传镜像：`docker push <username>/<repository>:<tag>`，要先注册 [hub.docker.com](https://hub.docker.com/)
 
 > PS：如果 `docker images` 出现 REPOSITORY 是 `<none>` 的情况，可以运行 `docker image prune` 删除
 

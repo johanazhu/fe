@@ -181,7 +181,7 @@ rails javascript:install:esbuild
 
  `unset` 不是 window 的命令，所以我们要改造，前往根目录下的 `Procfile.dev` 修改：
 
-```dev
+```txt
 web: set "PORT=" && rails s
 css: yarn build:css --watch
 js: yarn build --watch
