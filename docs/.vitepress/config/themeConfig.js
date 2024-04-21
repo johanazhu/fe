@@ -2,7 +2,8 @@ import nav from './nav';
 import sidebar from './sidebar';
 
 export default {
-    outlineTitle: '本页目录',
+    outline: [2, 4],
+    outlineTitle: '大纲',
     lastUpdatedText: '上次更新',
     logo: '/android-chrome-96x96.png',
 
