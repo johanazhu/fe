@@ -32,8 +32,8 @@ hero:
       text: 大前端
       link: /WebApp/
     - theme: alt
-      text: 博客
-      link: https://blog.azhubaby.com/
+      text: 面试真题
+      link: /Interview/
 features:
   - title: 允许一切如其所是
     details: 参差百态乃幸福之本源

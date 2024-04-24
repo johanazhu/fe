@@ -37,12 +37,16 @@ export default function JSSideBar() {
                     link: '/JavaScript/一切皆对象',
                 },
                 {
-                    text: 'Object',
+                    text: 'Object（对象）',
                     link: '/JavaScript/Object',
                 },
                 {
                     text: 'new做了什么',
                     link: '/JavaScript/new做了什么',
+                },
+                {
+                    text: 'Object.create',
+                    link: '/JavaScript/Object.create',
                 },
                 {
                     text: '拷贝的秘密',
@@ -77,12 +81,12 @@ export default function JSSideBar() {
                     link: '/JavaScript/this关键字',
                 },
                 {
-                    text: '立即执行函数（IIFE）',
-                    link: '/JavaScript/立即执行函数（IIFE）',
-                },
-                {
                     text: 'call、apply、bind三大将',
                     link: '/JavaScript/call、apply、bind三大将',
+                },
+                {
+                    text: '立即执行函数（IIFE）',
+                    link: '/JavaScript/立即执行函数（IIFE）',
                 },
                 {
                     text: '词法环境',
@@ -93,7 +97,7 @@ export default function JSSideBar() {
                     link: '/JavaScript/执行上下文与调用栈',
                 },
                 {
-                    text: '作用域与执行上下文',
+                    text: '作用域 VS 执行上下文',
                     link: '/JavaScript/作用域与执行上下文',
                 },
                 {
@@ -105,24 +109,24 @@ export default function JSSideBar() {
                     link: '/JavaScript/防抖与节流',
                 },
                 {
-                    text: '垃圾回收机制',
-                    link: '/JavaScript/垃圾回收机制',
-                },
-                {
                     text: '函数式编程',
                     link: '/JavaScript/函数式编程',
                 },
                 {
-                    text: 'Array',
-                    link: '/JavaScript/Array',
+                    text: '垃圾回收机制',
+                    link: '/JavaScript/垃圾回收机制',
                 },
                 {
-                    text: 'String',
-                    link: '/JavaScript/String',
+                    text: '数组',
+                    link: '/JavaScript/Array',
                 },
                 {
                     text: '循环都来这儿',
                     link: '/JavaScript/循环都来这儿',
+                },
+                {
+                    text: '字符串',
+                    link: '/JavaScript/String',
                 },
             ],
         },

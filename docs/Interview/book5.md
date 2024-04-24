@@ -60,35 +60,32 @@ CommonJS 模块是运行时加载，ES6 模块是编译时输出接口
 
 
 
-## 5.useCallback和useRefs区别
+## 5.React： useMemo、useCallback和useRefs区别
+
+React.memo、React.useCallback、React.usememo 的作用
+
+React.memo有什么优点缺点
 
 
 
-## 6. React 如何处理异常？
-
-考察点：异常处理
-
-Error Boundaries 错误边界，两个生命周期
-static getDerviedStateFromError，展示错误 UI
-componentDidCatch，上报错误日志
-
-其他的异常处理
-try catch：捕获预见错误，捕获不到具体的语法错误和异步错误
-window.error：能捕获意料之外的语法错误，但捕获不到资源加载错误和接口异常
-window.addEventListener('error')：捕获资源加载错误
-window.addEvent('onhandledrejection')：捕获 promise 错误
+## 6. React：说说你做的组件
 
 
 
-js 代码错误。try catch 只能针对已知错误
-window.addEventListener('error') 资源加载错误不可捕获，promise 错误不可捕获
-window.addEventListener('handleRejection') 捕获 promise 错误
-React 方面
-Error Boundying 错误捕获组件
-static XXX 渲染错误 UI
-componentDidCatch 上报错误日志
 
-## 8.html缓存了怎么更新，js和css缓存是怎么更新的
+
+## 7.html缓存了怎么更新，js和css缓存是怎么更新的
+
+
+
+
+
+## 8.babel 是什么，怎么做到的 ⭐
+
+考察点： babel 原理
+
+babel 是什么？一个 javascript 编译器
+babel 是一个转译器，感觉相对于编译器 compiler，叫转译器 transpiler 更准确
 
 
 

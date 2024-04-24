@@ -103,6 +103,6 @@ sayHi(someone);
 
 -   [React Hooks 踩坑之-- Capture Value 特性](https://mp.weixin.qq.com/s/eyFKOi3PTux6aTF0s557Rg)
 
--   [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
+-   [useEffect 完整指南](https://overreacted.io/a-complete-guide-to-useeffect/)
 
 -   [精读《useEffect 完全指南》](https://juejin.cn/post/6844903806090608647#heading-5)

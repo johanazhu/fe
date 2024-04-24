@@ -2,25 +2,35 @@
 
 
 
-## 1. flex:1  表示什么
+## 1. CSS：如何实现垂直居中？
 
-flex 弹性布局
-flex 为缩写，flex：1 表示 1 1 0
-flex 默认是 0 1 auto
-flex: 1 表示剩余空间有余的时候等比扩展，剩余空间不足的时候等比收缩，所谓的剩余空间就是指父元素宽度减去所有子元素的宽度
-第一个参数表示 flex-grow：扩展所侵蚀的空间是除去元素外剩余的空白间隙。默认值为 0，表示不占用剩余空间间隙扩展自己的宽度
-第二个参数表示 flex-shrink：收缩的意思，当 flex 容器空间不足时，单个元素的收缩比例。默认为 1，默认所有的 flex 子项都会收缩
-第三个参数表示 flex-basis，定义了分配剩余空间之前元素的大小。默认值为 auto，就是自动
+考察点：div 居中
+
+分三种情况，水平居中，垂直居中，水平垂直居中
+
+单水平居中而言，居中元素不定宽高
+absolute+transform
+flex 属性居中
+flex + 子项 margin auto
+grid 属性居中
+grid 子项 margin auto
+grid 子项属性居中
+-webkit-box 属性居中
+table-cell + text-align
+line-height + text-align
+writeing-mode
+table
+居中元素需定宽高
+须知宽高+absolute+负 margin
+须知宽高+absolute+calc
+须知宽高+absolute+margin auto
+局限性较大的全局居中
+须知宽高+fixed+transform
+须知宽高+fixed+负 margin
+须知宽高+fixed+calc
+须知宽高+fixed+margin auto
 
 
-
-考察点： flex 布局
-
-flex 弹性布局，布局更加简单
-
-flex: 1 是什么意思，flex：1 1 0
-扩展时剩余部分等比，收缩时，剩余部分等比
-flex 默认： 0 1 auto
 
 
 
@@ -77,28 +87,49 @@ next 继续执行
 
 
 
-## 6. 数据流
+## 6. 为什么有时 react 两次 setState，只执行了一次
+
+考察点：批处理
+
+
+
+## 7. 错误捕获
+
+js 代码异常
+
+try catch
+
+window.error
+
+资源加载错误
+
+window.addEventListen("error", callback)
+
+Promise 错误
+
+window.addEventListen("unhandlerejectedtion")
+
+React 错误
+
+错误捕获
+
+static getDerviedStateFromProps componentDidCatch
+
+
+
+## 7.微前端的沙箱机制是怎么实现的？ 
 
 
 
 
-
-## 7.微前端的沙箱机制是怎么实现的？ ⭐
-
-
-
-
-
-## 8. babel 是什么，怎么做到的 ⭐
-
-考察点： babel 原理
-
-babel 是什么？一个 javascript 编译器
-babel 是一个转译器，感觉相对于编译器 compiler，叫转译器 transpiler 更准确
 
 
 
 ## 9.十万条数据如何优化
+
+虚拟列表，10000 条数据 插入不卡的那种
+
+解决方案
 
 
 

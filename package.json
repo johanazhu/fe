@@ -24,8 +24,7 @@
   "dependencies": {
     "fabric-pure-browser": "^5.1.0",
     "jsdom": "^24.0.0",
-    "markdown-it-container": "^4.0.0",
-    "sitemap": "^7.1.1",
+    "markdown-it-mathjax3": "^4.3.2",
     "ua-parser-js": "1.0.37",
     "vue-router": "^4.3.1"
   }

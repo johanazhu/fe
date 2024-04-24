@@ -1,9 +1,5 @@
 import { withPwa } from "@vite-pwa/vitepress";
-import Container from 'markdown-it-container'
 import { defineConfig } from "vitepress";
-import { createWriteStream } from 'node:fs'
-import { resolve } from 'node:path'
-import { SitemapStream } from 'sitemap'
 import themeConfig from "./themeConfig";
 import { pwa } from '../script/pwa';
 import { head } from './head';
@@ -16,52 +12,71 @@ export default withPwa(
         description: "这里是 Johnny 的前端知识地图，名曰五年前端三年面试，记录 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化等方面的编程知识",
         head,
         markdown: {
-            lineNumbers: true,
-            linkify: true,
-            externalLinks: {
-                target: '_blank', rel: 'nofollow noopener noreferrer'
-            },
-            theme: 'monokai',
-            config: md => {
-                md.use(Container, 'card', {
-                    render: (tokens, idx) => {
-                        const token = tokens[idx]
+            // theme: 'dracula',
+            math: true,
+            codeTransformers: [
+                // We use `[!!code` in demo to prevent transformation, here we revert it back.
+                {
+                    postprocess(code) {
+                        return code.replace(/\[\!\!code/g, '[!code')
+                    }
+                }
+            ]
+            // lineNumbers: true,
+            // linkify: true,
+            // externalLinks: {
+            //     target: '_blank', rel: 'nofollow noopener noreferrer'
+            // },
+            // theme: 'monokai',
+            // config: md => {
+            //     md.use(Container, 'card', {
+            //         render: (tokens, idx) => {
+            //             const token = tokens[idx]
 
-                        const title = token.info.trim().slice(5).trim()
+            //             const title = token.info.trim().slice(5).trim()
 
-                        const isCardBordered = token.attrs && token.attrs.some(([key, _]) => key === 'bordered')
+            //             const isCardBordered = token.attrs && token.attrs.some(([key, _]) => key === 'bordered')
 
-                        const titleHtml = md.render(`## ${title}`)
-                        const demoContent = title ? `<template #title>${titleHtml}</template>` : ''
+            //             const titleHtml = md.render(`## ${title}`)
+            //             const demoContent = title ? `<template #title>${titleHtml}</template>` : ''
 
-                        return token.nesting === 1 ? `<Demo :class="[${isCardBordered} && 'vp-demo-bordered']">${demoContent}` : '</Demo>\n'
-                    },
-                })
+            //             return token.nesting === 1 ? `<Demo :class="[${isCardBordered} && 'vp-demo-bordered']">${demoContent}` : '</Demo>\n'
+            //         },
+            //     })
 
-                md.use(Container, 'code', {
-                    render: (tokens, idx) => {
-                        const token = tokens[idx]
+            //     md.use(Container, 'code', {
+            //         render: (tokens, idx) => {
+            //             const token = tokens[idx]
 
-                        // console.log('token :>> ', token)
-                        const demoName = token.info.trim().slice(5).trim()
+            //             // console.log('token :>> ', token)
+            //             const demoName = token.info.trim().slice(5).trim()
 
-                        return token.nesting === 1 ? `<template #demo><${demoName} /></template><template #code>` : '</template>\n'
-                    },
-                })
+            //             return token.nesting === 1 ? `<template #demo><${demoName} /></template><template #code>` : '</template>\n'
+            //         },
+            //     })
 
-                md.use(Container, 'after-demo', {
-                    render: (tokens, idx) => {
-                        const token = tokens[idx]
+            //     md.use(Container, 'after-demo', {
+            //         render: (tokens, idx) => {
+            //             const token = tokens[idx]
 
-                        return token.nesting === 1 ? '<template #after-demo>' : '</template>\n'
-                    },
-                })
-            },
+            //             return token.nesting === 1 ? '<template #after-demo>' : '</template>\n'
+            //         },
+            //     })
+            // },
         },
 
         themeConfig,
 
         pwa,
+        // sitemap: {
+        //     hostname: 'https://fe.azhubaby.com'
+        // },
+        sitemap: {
+            hostname: 'https://fe.azhubaby.com',
+            transformItems(items) {
+                return items.filter((item) => !item.url.includes('migration'))
+            }
+        },
         lastUpdated: true,
         // sitemap https://github.com/vuejs/vitepress/issues/520
         // https://github.com/maomao1996/daily-notes/issues/39
@@ -73,14 +88,14 @@ export default withPwa(
                     lastmod: pageData.lastUpdated
                 })
         },
-        buildEnd: async ({ outDir }) => {
-            const sitemap = new SitemapStream({ hostname: 'https://fe.azhubaby.com/' })
-            const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
-            sitemap.pipe(writeStream)
-            links.forEach((link) => sitemap.write(link))
-            sitemap.end()
-            await new Promise((r) => writeStream.on('finish', r))
-        },
+        // buildEnd: async ({ outDir }) => {
+        //     const sitemap = new SitemapStream({ hostname: 'https://fe.azhubaby.com/' })
+        //     const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
+        //     sitemap.pipe(writeStream)
+        //     links.forEach((link) => sitemap.write(link))
+        //     sitemap.end()
+        //     await new Promise((r) => writeStream.on('finish', r))
+        // },
         // https://vitepress.dev/reference/site-config#transformhead
         // 等待官方完善
         // async transformHead({ pageData }) {

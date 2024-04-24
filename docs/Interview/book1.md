@@ -257,9 +257,17 @@ then、
 
 什么是回调地狱，如何解决？引出 Promise async await
 
+Promise 链式调用，链式调用怎么写
+
 
 
 ## 5.React Hooks 实现原理
+
+
+
+为什么不能在循环中调用 hooks？react 中为什么不能在 for 循环、if 语句里使用 hooks，说下 react hooks 实现原理。
+
+hooks为什么只能写在顶层，不写在顶层会报错吗
 
 
 
@@ -452,6 +460,12 @@ useCallback 和 useMemo 有什么区别？
 从 http 角度，开启 http2（特点：对头阻塞），采用 http 缓存策略
 从服务器角度，开启 gzip 压缩，oss，cdn
 从页面渲染角度，css 放头部，js 放尾部，防抖节流等
+
+
+
+如何做性能优化，最大的性能优化就是随时升级各种库的版本
+
+webpack 的速度不如 bun ，bun 的速度不如 vite， vite 的速度不如用 rust 打包，总之随时在变化
 
 
 

@@ -358,7 +358,7 @@ domNode.className = 'red';
 
 如果相同的元素类型在同一个地方先后出现两次，React 会重用已有的宿主实例
 
-https://overreacted.io/zh-hans/react-as-a-ui-runtime/
+https://overreacted.io/react-as-a-ui-runtime/
 
 ## Fiber 架构之 Scheduler（调度器）
 

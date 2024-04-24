@@ -544,7 +544,7 @@ Hooks 的本质就是 JavaScript 函数，在使用它时需要遵守[两条规�
 
 -   [【React 深入】从 Mixin 到 HOC 再到 Hook](https://juejin.cn/post/6844903815762673671)
 
--   [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
+-   [useEffect 完整指南](https://overreacted.io/a-complete-guide-to-useeffect/)
 
 -   [useCallback、useMemo 分析以及差别](https://juejin.im/post/5dd64ae6f265da478b00e639)
 

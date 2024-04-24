@@ -404,7 +404,7 @@ A：一般和 lazy 结合，在页面加载出来前渲染
 
 ### Q：为什么 React 元素有一个 `$$typeof` 属性？
 
-A： Dan 写的[一篇文章](https://overreacted.io/zh-hans/why-do-react-elements-have-typeof-property/)，是为了防止 XSS 攻击。因为 JSON 不支持 Symbol 类型，所以服务器通过 JSON 攻击不会影响到 React
+A： Dan 写的[一篇文章](https://overreacted.io/why-do-react-elements-have-typeof-property/)，是为了防止 XSS 攻击。因为 JSON 不支持 Symbol 类型，所以服务器通过 JSON 攻击不会影响到 React
 
 ### Q：为什么 JSX 中的组件名要以大写字母开头
 

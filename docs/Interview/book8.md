@@ -58,7 +58,11 @@ class EventPubSub {
 
 
 
-## 3.数据类型 
+## 3.垃圾回收机制
+
+考察点：v8 垃圾回收
+
+https://febook.hzfe.org/awesome-interview/book2/browser-garbage
 
 
 
@@ -74,17 +78,11 @@ class EventPubSub {
 
 
 
-## 6.hooks为什么只能写在顶层，不写在顶层会报错吗
+## 6.React17、18 更新以及什么是服务端组件
 
 
 
-
-
-## 7.垃圾回收机制
-
-考察点：v8 垃圾回收
-
-https://febook.hzfe.org/awesome-interview/book2/browser-garbage
+## 7. interface 和 type 的区别
 
 
 

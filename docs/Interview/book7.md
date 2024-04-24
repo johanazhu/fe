@@ -39,7 +39,31 @@ props 类型不要用 React.FC 写法，因为[早已不推荐](https://github.c
 
 
 
-## 6.React.memo有什么优点缺点
+
+
+## 6. React 如何处理异常？
+
+考察点：异常处理
+
+Error Boundaries 错误边界，两个生命周期
+static getDerviedStateFromError，展示错误 UI
+componentDidCatch，上报错误日志
+
+其他的异常处理
+try catch：捕获预见错误，捕获不到具体的语法错误和异步错误
+window.error：能捕获意料之外的语法错误，但捕获不到资源加载错误和接口异常
+window.addEventListener('error')：捕获资源加载错误
+window.addEvent('onhandledrejection')：捕获 promise 错误
+
+
+
+js 代码错误。try catch 只能针对已知错误
+window.addEventListener('error') 资源加载错误不可捕获，promise 错误不可捕获
+window.addEventListener('handleRejection') 捕获 promise 错误
+React 方面
+Error Boundying 错误捕获组件
+static XXX 渲染错误 UI
+componentDidCatch 上报错误日志
 
 
 
@@ -51,11 +75,21 @@ props 类型不要用 React.FC 写法，因为[早已不推荐](https://github.c
 
 
 
-## 8.网站首页有大量的图片，加载很慢，如何优化呢？
+## 8.网站首页有大量的图片，加载很慢，如何优化呢？（图片懒加载）
 
 考察点：大量图片优化
 图片懒加载，显示的图片显示出来，还没出现的图片先用小图标展示
 图片放在 oss 上
+
+最开始用placeholder图或者loading图来代替，真正的图片放在data-img属性上，等到图片需要展示的时候再替换img.src
+
+监听所有scroll，为了性能，200ms 拉动一次
+
+循环所有的图片，判断他们的偏移高度与视窗高度+滚动高度之和，如果小于，则说明图片已经显示在视图中，那么就展示
+
+通过 getBoundingClientRect，也是循环所有图片，但是是通过拿到该元素的getBoundingClientRect 来判断是否出现再视图中
+
+intersectionObserver 交叉观察器，异步
 
 
 

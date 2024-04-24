@@ -2,33 +2,29 @@
 
 
 
-## 1. CSS：如何实现垂直居中？
 
-考察点：div 居中
 
-分三种情况，水平居中，垂直居中，水平垂直居中
+## 1. flex:1  表示什么
 
-单水平居中而言，居中元素不定宽高
-absolute+transform
-flex 属性居中
-flex + 子项 margin auto
-grid 属性居中
-grid 子项 margin auto
-grid 子项属性居中
--webkit-box 属性居中
-table-cell + text-align
-line-height + text-align
-writeing-mode
-table
-居中元素需定宽高
-须知宽高+absolute+负 margin
-须知宽高+absolute+calc
-须知宽高+absolute+margin auto
-局限性较大的全局居中
-须知宽高+fixed+transform
-须知宽高+fixed+负 margin
-须知宽高+fixed+calc
-须知宽高+fixed+margin auto
+flex 弹性布局
+flex 为缩写，flex：1 表示 1 1 0
+flex 默认是 0 1 auto
+flex: 1 表示剩余空间有余的时候等比扩展，剩余空间不足的时候等比收缩，所谓的剩余空间就是指父元素宽度减去所有子元素的宽度
+第一个参数表示 flex-grow：扩展所侵蚀的空间是除去元素外剩余的空白间隙。默认值为 0，表示不占用剩余空间间隙扩展自己的宽度
+第二个参数表示 flex-shrink：收缩的意思，当 flex 容器空间不足时，单个元素的收缩比例。默认为 1，默认所有的 flex 子项都会收缩
+第三个参数表示 flex-basis，定义了分配剩余空间之前元素的大小。默认值为 auto，就是自动
+
+
+
+考察点： flex 布局
+
+flex 弹性布局，布局更加简单
+
+flex: 1 是什么意思，flex：1 1 0
+扩展时剩余部分等比，收缩时，剩余部分等比
+flex 默认： 0 1 auto
+
+
 
 
 
@@ -47,6 +43,8 @@ table
 颜的原型图
 
 
+
+## 4.箭头函数和普通函数的区别
 
 
 
@@ -72,15 +70,13 @@ react fiber 是 React16 提出的新的 React 架构，是为了解决 React 16 
 
 
 
+## 6.函数式组件与类组件的区别
 
-
-## 6.为什么有时 react 两次 setState，只执行了一次
-
-考察点：批处理
-
+这竟然是最常见的问题，说了好几个点，没抓到重要，重点是 函数式组件能捕获每次渲染时的值，这个俗称 Capture Value。React 的主要开发者 Dan 写过一篇文章[函数式组件与类组件有何不同？](https://overreacted.io/how-are-function-components-different-from-classes/)
 
 
 
+## 7.浏览器：什么是同源策略以及跨源资源共享（CORS）？
 
 
 
