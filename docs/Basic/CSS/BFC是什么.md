@@ -20,14 +20,14 @@ BFC 的特征如结界一般，里面的人出不去，外面的人进不来
 -   行内块元素（元素的 display 为 inline-block）
 -   表格单元格（元素的 display 为 table-cell，HTML 表格单元格默认该值）
 -   表格标题（元素的 display 为 table-caption，HTML 表格标题默认为该值）
--   匿名表格单元格元素（元素的 [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 为 ` table、``table-row `、 ` table-row-group、``table-header-group、``table-footer-group `（分别是 HTML table、row、tbody、thead、tfoot 的默认属性）或 `inline-table`）
+-   匿名表格单元格元素（元素的 [ display 为 table、table-row 、  table-row-group、table-header-group、table-footer-group （分别是 HTML table、row、tbody、thead、tfoot 的默认属性）或 inline-table）
 -   overflow 不会 visible 的块级元素
 -   弹性元素（display 为 flex 或 inline-flex 元素的直接子元素）
 -   网格元素（display 为 grid 或 inline-grid 元素的直接子元素）
 
 还有其他的可以到[这里](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)查看
 
-换言之，只要元素符合上面任意一个元素，就无须使用 clear: both 属性去清除浮动的影响了。因为，不要见到一个 `<div>` 元素就加上类似.clearfix 的类名，否则只能暴雷你孱弱的 CSS 基本功
+换言之，只要元素符合上面任意一个元素，就无须使用 clear: both 属性去清除浮动的影响了。因为，不要见到一个 div 元素就加上类似.clearfix 的类名，否则只能暴雷你孱弱的 CSS 基本功
 
 ## BFC 的作用
 

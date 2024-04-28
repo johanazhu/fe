@@ -30,12 +30,12 @@ const { theme, frontmatter, page } = data;
             </div>
         </template>
 
-        <template #aside-outline-after>
+        <!-- <template #aside-outline-after>
             <div class="about-me">
                 <p>不要关注</p>
                 <img :src="theme.me.wechat" alt="" />
             </div>
-        </template>
+        </template> -->
 
     </Layout>
 </template>

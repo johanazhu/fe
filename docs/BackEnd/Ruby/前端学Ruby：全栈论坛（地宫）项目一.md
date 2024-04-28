@@ -83,7 +83,7 @@ Rails.application.routes.draw do
 end
 ```
 
-我们通过 fly.io 来部署我们的服务，对其不过多介绍，具体可看上篇文章——[前端学Ruby：唐诗项目部署优化](./前端学Ruby：唐诗项目部署优化.md)
+我们通过 fly.io 来部署我们的服务，对其不过多介绍，具体可看上篇文章——[前端学Ruby：唐诗项目部署优化](./前端学Ruby：唐诗项目部署优化)
 
 ```bash
 fly launch # 创建

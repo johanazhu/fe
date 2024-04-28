@@ -79,7 +79,7 @@
 - 手写源码：手写 apply、call、bind 
 - JavaScript 基础：谈谈变量提升
 - ES6特性：let 和 const
-- React：XXX
+- React：React 中的多次渲染如何优化
 - React： useEffect、useLayoutEffect、useLayoutEffect使用场景
 - WebApp：适配方案
 - 浏览器：Cookie、localStorage、sessionStorage、IndexedDB的区别
@@ -132,7 +132,7 @@
 - JavaScript 基础：history 和 hash 两种路由最大的区别是什么
 - ES6：展开运算符的作用
 - React： React 合成事件是什么
-- React： XXXX
+- React： React 的作用是什么？
 - 0.1 + 0.2 为什么不等于 0.3
 - 浏览器：Web 安全
 - 性能优化：当用户反馈页面加载慢，你是前端怎么排查这个问题
@@ -181,7 +181,6 @@
 自我介绍（show time，3 分钟展示自己的时间，把最闪亮的你展现出来）
 你知道/用过/遇到过 xx 问题么？（不仅会技术的使用，还了解技术的实现原理）
 你还有什么问题么？（你对团队的了解、好奇，对未来的个人成长有什么期待？）
-
 
 
 

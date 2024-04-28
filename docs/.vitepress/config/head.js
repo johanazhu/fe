@@ -74,8 +74,8 @@ export const head = [
         'script',
         {
             defer: true,
-            'data-website-id': 'dd16c39f-869b-4ff1-b117-43d88cd93eb4',
-            src: 'https://analytics.azhubaby.com/script.js'
+            'data-website-id': '234eb9cc-9737-415a-95ca-ee8ab0c57bc7',
+            src: 'https://us.umami.is/script.js'
         }
     ],
     // microsoft analytics

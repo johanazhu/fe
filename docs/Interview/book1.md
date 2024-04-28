@@ -5,23 +5,30 @@
 ## 1. CSS：BFC 是什么 ⭐
 
 - BFC 是什么
+- 如何触发
+- BFC的特征
 - BFC 有什么用
-- 触发条件
 - 谈谈你对 BFC 的理解
 
-盒模型、块级、块级格式化上下文、正常流
+### 文档流
+
+文档流分 定位流、浮动流、普通流
+
+BFC 属于普通流，其他的有
+
+- IFC：行级格式化上下文， inline 内联
+- GFC：网格布局格式化上下文，display: grid
+- FFC：自适应格式化上下文， display: flex，或 display: inline-flex
 
 ### BFC 是什么
 
-BFC 全称为 block formatting context，中文为“块级格式化上下文”。相对应的还有 IFC，也就是 inline formatting context，中文为“内联格式化上下文”。它是一个只有块级盒子参与的独立快递渲染区域，它规定了内部的块级盒子如何布局，且与区域外部无关
+块级格式化上下文，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域
 
-### BFC 有什么用
+具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 `BFC` 具有普通容器所没有的一些特性。
 
-- 修复浮动元素造成的高度塌陷问题
-- 避免非期望的外边距折叠
-- 实现灵活健壮的自适应布局
+通俗讲：BFC 是一个封闭的大箱子，箱子内部无论如何折腾，就不会影响到外部
 
-触发 BFC 的常见条件
+### 如何触发 BFC
 
 - 根元素（html）
 - 浮动元素（float 的值不为 none 的元素）
@@ -31,20 +38,25 @@ BFC 全称为 block formatting context，中文为“块级格式化上下文”
 - 表格标题（display 的值为 table-caption，HTML 表格标题默认值）
 - overflow 的值不为 visible 或 clip 块级元素
 - 弹性元素（display 的值为 flex 或 inline-flex 元素的直接子元素）
-- 网格元素（display 的值为 grid 或 inline-grid 元素的直接资源是）
+- 网格元素（display 的值为 grid 或 inline-grid 元素的直接子元素）
 
 详见：[MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_display/Block_formatting_context)
 
+### BFC的特征
 
+- BFC 是页面上的一个独立容器，容器里面的元素不会影响外面的元素
+- BFC 内部的块级盒会在垂直方向上一个接一个排列
+- 同一 BFC 下的相领块级元素可能发生外边距折叠，创建新的 BFC 可以避免外边距折叠
+- 每个元素的外边距盒（margin box）的左边与包含块边框盒（border box）的左边相接触（从右向左的格式的话，则相反），即使存在浮动
+- 浮动盒的区域不会和 BFC 重叠
+- 计算 BFC 的高度时，浮动元素也会参与计算
 
+### BFC 有什么用
 
-
-考察点：BFC
-
-什么是 BFC，块级格式化上下文。是一种布局方式？
-块级格式化上下文，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域
-如何形成 BFC：root 根节点、float 浮动元素（float 不会 none）、overflow 不会 visible 的块级元素、绝对定位元素（position 为 absolute 或 fixed）、display 的值为 table-cell、table-caption、flex、inline-flex、grid、inline-grid
-有什么用？清除内部浮动（父元素交 overflow：hidden）、垂直 margin 合并（利用同一个 BFC 的两个相邻盒子的 margin 会发生重叠）、自适应布局
+- 修复浮动元素造成的高度塌陷问题
+  - 子元素浮动，引起高度为0，父元素加上 BFC（overflow: hidden），撑起高度
+- 避免外边距折叠
+- 实现灵活健壮的自适应布局
 
 
 

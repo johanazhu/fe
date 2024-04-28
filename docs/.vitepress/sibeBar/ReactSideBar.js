@@ -103,9 +103,6 @@ export default function reactSideBar() {
                     text: 'Preact',
                     link: '/React/手写/Preact',
                 },
-                // 'React/手写/手写Redux.md',
-                // 'React/手写/源码分析React.md',
-                // 'React/手写/源码分析ReactRedux.md',
             ],
         },
         {
