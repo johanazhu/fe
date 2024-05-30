@@ -32,7 +32,7 @@ webview 是手机系统中，一个基于 webkit 内核，拥有渲染引擎和 
 
 ![image-20210611170126423](https://i.loli.net/2021/06/11/vpDFm1TSeMWA2Ji.png)
 
-简单来说，hybrid 技术就是通过 webview 和 file、schema 协议来实现页面的加载、渲染、现实，以及与 native、服务端的通信
+简单来说，hybrid 技术就是通过 webview 和 file、schema 协议来实现页面的加载、渲染、显示，以及与 native、服务端的通信
 
 ## 参考资料
 

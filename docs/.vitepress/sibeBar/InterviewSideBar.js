@@ -46,8 +46,8 @@ export default function InterviewSideBar() {
                     link: '/Interview/book9',
                 },
                 {
-                    text: '面试题汇总',
-                    link: '/Interview/面试题汇总',
+                    text: '五年以上进',
+                    link: '/Interview/五年以上前端面试',
                 },
             ],
         },

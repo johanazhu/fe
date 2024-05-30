@@ -2,7 +2,7 @@
 
 
 
-## 1. CSS：BFC 是什么 ⭐
+## 1. CSS：BFC 是什么
 
 - BFC 是什么
 - 如何触发
@@ -24,7 +24,7 @@ BFC 属于普通流，其他的有
 
 块级格式化上下文，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域
 
-具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 `BFC` 具有普通容器所没有的一些特性。
+具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性
 
 通俗讲：BFC 是一个封闭的大箱子，箱子内部无论如何折腾，就不会影响到外部
 
@@ -46,7 +46,7 @@ BFC 属于普通流，其他的有
 
 - BFC 是页面上的一个独立容器，容器里面的元素不会影响外面的元素
 - BFC 内部的块级盒会在垂直方向上一个接一个排列
-- 同一 BFC 下的相领块级元素可能发生外边距折叠，创建新的 BFC 可以避免外边距折叠
+- 同一 BFC 下的相领块级元素可能发生外边距重叠，创建新的 BFC 可以避免外边距重叠
 - 每个元素的外边距盒（margin box）的左边与包含块边框盒（border box）的左边相接触（从右向左的格式的话，则相反），即使存在浮动
 - 浮动盒的区域不会和 BFC 重叠
 - 计算 BFC 的高度时，浮动元素也会参与计算
@@ -99,7 +99,7 @@ flag 是否立即执行
 
 #### 应用场景
 
-- 搜索框输入时的实时联想
+- 搜索框输入时的实时结果
 - 监听 scroll 事件计算位置信息
 
 #### 实现方法
@@ -117,7 +117,7 @@ function throttle(func, wait) {
     let pre = 0;
     return function (...args) {
         if (Date.now() - pre > wait) {
-            pre = Data.now();
+            pre = Date.now();
             func.apply(this, args);
         }
     };
@@ -150,7 +150,7 @@ function throttle(func, wait) {
         if (Date.now() - pre > wait) {
             clearTimeot(timer);
             timer = null;
-            pre = Data.now();
+            pre = Date.now();
             func.apply(this, args);
         } else if (!timer) {
             timer = setTimeout(() => {
@@ -165,7 +165,7 @@ function throttle(func, wait) {
 
 apply、箭头函数、arguments
 
-#### apply 手写
+#### 手写 apply
 
 ```javascript
 function myApply(context = window, args) {
@@ -200,7 +200,7 @@ function myApply(context = window, args) {
 #### 数组和类数组的区别
 
 - 数组是数组，类数组是对象
-- 类数组拥有 length 属性和索引属性的对象
+- 类数组是拥有 length 属性和索引属性的对象
 - 区别：类数组是对象，它的原型关系和数组不同
 
 类数组如何转换为数组
@@ -217,15 +217,37 @@ function myApply(context = window, args) {
 
 ## 3.闭包
 
-什么是闭包？
+考察点：
 
-闭包的特性，内层函数使用外层函数的变量
+词法环境、执行上下文与调用栈、（词法）作用域
 
-闭包的应用：
+- 什么是闭包？
+- 闭包的优缺点
 
-闭包的例子：
+- 闭包的应用
 
-### 实现 add(1)(2)(3)
+### 什么是闭包？
+
+闭包就是一个绑定了执行环境的函数，它利用词法作用域的特性，在函数嵌套时，内层函数引用外层函数作用域下的变量，并且内层函数在全局环境下可访问，就形成了闭包
+
+### 闭包的优缺点
+
+- 优点
+  - 保护私有变量
+  - 避免全局变量污染
+  - 让一些变量始终存在内容中
+- 缺点
+  - 一直存在内存中
+
+### 闭包的应用
+
+应用场景有两处，一是作为返回值，二是作为参数传递
+
+像函数式编程、面向事件编程、模块化、私有实例变量都是闭包的应用场景
+
+
+
+#### 实现 add(1)(2)(3)）
 
 ```javascript
 function add(x, y, z) {
@@ -275,52 +297,164 @@ Promise 链式调用，链式调用怎么写
 
 ## 5.React Hooks 实现原理
 
+考察点：React Hooks 是什么、怎么实现的，使用时需要注意什么
+
+### React Hooks 是什么
+
+Hooks 是 React 16.8 新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他 React 特性
 
 
-为什么不能在循环中调用 hooks？react 中为什么不能在 for 循环、if 语句里使用 hooks，说下 react hooks 实现原理。
 
-hooks为什么只能写在顶层，不写在顶层会报错吗
+### React Hooks 实现原理
+
+- Hooks 数据存储在组件对应的 Fiber 节点上。每个 Fiber 节点都有之关联的 Hooks 链表，Hooks 通过链表的形式进行串联存储
+- 利用闭包保存 Hooks 状态。每次组件重新渲染时，Hooks 的状态通过闭包机制得到保留
+- 利用链表结构维护 Hooks 的状态。Hooks 以链表的形式进行存储，便于在组件更新时快速定位和更新对应的  Hooks 状态
+- UseState 和 useEffect 等 Hooks API 的实现原理。这些 API 的内部实现利用了闭包和链表结构来保存和管理状态
+- Hooks 机制让 React 函数也能实现和 Class 组件类似的状态管理和副作用处理功能
+
+总的来说，React Hooks 的实现借助了 Fiber 架构、闭包和链表等技术手段，使得函数组件也能拥有状态管理和生命周期的能力，极大地简化了 React 组件的开发
 
 
+
+衍生问题：
+
+为什么不能在循环中调用 Hooks？
+
+Hooks为什么只能写在顶层，不写在顶层会报错吗
+
+
+
+### 为什么不能在循环中调用 Hooks？
+
+Hooks 的原理是基于 Fiber 树结构和链表维护 Hooks 状态。如果在循环或条件语句中调用 Hooks，会破坏这种固定的调用顺序，导致 Hooks 状态混乱
+
+
+
+### Hooks为什么只能写在顶层，不写在顶层会报错吗
+
+Hooks 的实现机制依赖于 Fiber 树结构，以及 Hooks 在 Fiber 节点上的链表存储。在顶层调用 Hooks，可以确保 Hooks 能够正确地与 Fiber 树建立关联
 
 
 
 ## 6. 数据流： Redux 是什么？
 
-它的核心理念是什么
+考察点：状态管理，redux、redux 核心原则
 
-https://tech.meituan.com/2017/07/14/redux-design-code.html
-考察点：状态管理，redux
+Redux 是 JavaScript 状态容器，能提供可预测化的状态管理
 
-redux 是状态管理库，不仅适用于 react，还可以作用于 vue
+它认为：
+
+- Web 应用是一个状态机，视图与状态时一一对应的
+- 所有的状态，保存在一个对象里
+
+单一数据源、state 只读、使用 reducer 纯函数修改数据
+
+Redux 是一个用户管理应用状态的开源 JavaScript 库，它提供了一种可预测的状态容器，帮助应用开发更加一致和可维护。Redux 基于 Flux 架构模式，采用单一数据源的方式管理应用的全局状态
+
+Redux 的核心概念包括：
+
+1. Store：存储应用的整个状态数
+2. Action：描述应用状态变化的事件
+3. Reducer：根据 Action 更新 Store 中的状态
+
+Redux 的工作流程如下：
+
+1. 用户在应用中触发某个事件，比如点击按钮
+2. 应用分发一个 Action 对象，描述这个事件
+3. Reducer 函数接收这个 Action，并根据其更新 Store 中的状态
+4. Store 中的状态发生变化，React 组件会感知到这个变化并重新渲染
+
+Redux 是状态管理库，不仅适用于 react，还可以作用于 vue
 
 它的特点是一个 store、reducer 纯函数、通过 dispatch 一个 action 来修改 store
 
 即用户 dispatch 一个动作，传给纯函数 reducer，reducer 接受两个参数，一个为原本的 store，另一个为动作，调用完毕后返回新的 store，用户监听 store 变化，就能实时知道 store 的变化
 
-考察点：redux 核心原则
-单一数据源、state 只读、使用 reducer 纯函数修改数据
+Redux 的主要优点包括：
+
+1. 提供可预测的状态管理方式，增强应用的可维护性
+2. 单一数据源使得状态更新更加清晰和可控
+3. 通过纯函数 Reducer 实现状态更新，增强代码的可测试性
+4. 与 React 配合良好，有利于构建复杂的、大规模的 Web 应用
+
+好文解读：https://tech.meituan.com/2017/07/14/redux-design-code.html
+
+衍生问题：React-Redux是什么，Mobx 是什么，dva是什么，zustand 是什么
 
 
+
+### React-Redux是什么
+
+React-Redux 是专门为 React 应用程序设计的状态管理库。它是 Redux 库的一个绑定层，提供了将 Redux 状态管理和 React 组合结合的方式
+
+典型的工作流程：
+
+1. 创建 Redux store 并定义 action、reducer 等
+2. 使用 connect 函数将 React 组件与 Redux store 进行绑定
+3. 在组件中通过 mapStateToProps 和 mapDispatchToProps 访问和更新状态
+4. 当状态发生变化时，React-Redux 会自动触发组件的重新渲染
+
+
+
+### Mobx 是什么
+
+Mobx 是一个轻量级的状态管理库，它通过观察者模式来管理应用程序的状态。与 Redux 等单向数据流框架不同，Mobx 采用的是响应式编程的思想
+
+工作流程如下：
+
+- 定义可观察的状态（observable）
+- 创建衍生状态（computed）
+- 订阅状态变化并更新 UI（observer）
+- 通过 action 修改状态
+
+
+
+### dva是什么
+
+Dva 是一个基于 Redux 和 React-Router 的轻量级前端框架，它提供了一种更加简单和声明式的方式来管理 React 应用程序的状态
+
+定义 model、注册 model 到 dva 应用，使用 connect 连接组件和 model
+
+
+
+### zustand 是什么
+
+Zustand 是一个简单、轻量级的 JavaScript 状态管理库，主要用于 React 应用程序。它提供了一种全新的、基于 Hooks 的状态管理方式，旨在解决 Redux 等库的复杂性和样板代码问题
+
+使用 Zustand 的典型流程如下：
+
+1. 创建一个 store，定义状态和更新状态的 actions
+2. 在组件中使用 useStore hook 订阅和更新状态
+3. 如果需要，可以创建多个子 store 进行模块化管理
 
 
 
 ## 7. 浏览器输入 url 到页面渲染都经历了什么
 
-输入 url，敲击键盘，浏览器判断输入的 url 是否为网址，如果是网址，则前往该地址；如果不是网址，再通过浏览器默认搜索引擎拼接输入的值，前往搜索引擎页面。当该地址有强缓存时，直接返回资源给浏览器。如没有强缓存，再查看是否有协商缓存，如果有协商缓存，判断是否需要更新，如果不需要，则返回 304，如果需要，则继续请求。先判断 DNS 是否有缓存，有的话直接返回 ip 地址，如果没有则 DNS 解析，并缓存 DNS。获取后等待 TCP 连接，建立连接后，发起 HTTP 请求，服务器返回状态。判断是否与打开的网址是同一个站点，如果是，使用相同的渲染进程渲染页面，如果不是，浏览器渲染 HTML、CSS、JS。经历重绘与回流最终构建出渲染树，GUI 线程接管渲染页面
+考察点：HTTP 发展史、HTTP缓存（强缓存、弱缓存）、HTTP状态码、TCP三次握手四次挥手、进程和线程、重绘与回流
+
+输入 url，敲击键盘，浏览器判断输入的 url 是否为网址，如果不是网址，再通过浏览器默认搜索引擎拼接输入的值，前往搜索引擎页面；如果是网址，则前往该地址。当该地址有强缓存时，直接返回资源给浏览器。如没有强缓存，再查看是否有协商缓存，如果有协商缓存，判断是否需要更新，如果不需要，则返回 304，如果需要，则继续请求。先判断 DNS 是否有缓存，有的话直接返回 ip 地址，如果没有则 DNS 解析，并缓存 DNS。获取后等待 TCP 连接，建立连接后，发起 HTTP 请求，服务器返回状态。判断是否与打开的网址是同一个站点，如果是，使用相同的渲染进程渲染页面，如果不是，浏览器渲染 HTML、CSS、JS。经历重绘与回流最终构建出渲染树，GUI 线程接管渲染页面
 
 
 
-考察点：描述浏览器从输入网址到页面展示的整个过程
+衍生问题：重绘与回流
 
-输入 url，浏览器判断是否是网址，如果是前往网址，如果不是，通过浏览器默认搜索引擎搜索输入的字符；
-构建请求时判断是否有强缓存，如果有则返回强缓存资源；如果没有，判断是否有协商缓存，如果有，走协商缓存，如果没有继续请求。判断是否有 DNS 缓存，没有就 DNS 解析，缓存 DNS，获取 ip 地址，建立 TCP 连接，发送 HTTP 请求，服务器响应，断开 TCP 连接。判断是否与打开的网站是同一个站点，是，使用相同站点的渲染进程渲染页面，否，浏览器解析 HTML/CSS/JS，引起重绘回流
+### 重绘与回流
+
+重绘是元素的样式发生改变，不影响它所在的文档流的位置
+
+回流是元素的尺寸、结构或者某些属性发生改变，浏览器需要重新计算它所在的位置，然后重新渲染页面的过程
+
+回流必定会触发重绘，但重绘不一定会引起回流
+
+
 
 
 
 ## 8. HTTP 1、2、3 的区别
 
-关键字 HTTP 、HTTP 发展历程、HTTPS、HTTP 缓存、HTTP 状态码
+考察点：HTTP 、HTTP 发展历程、HTTPS、HTTP 缓存、HTTP 状态码
 
 ### HTTP 的发展史
 
@@ -354,11 +488,19 @@ HTTP2 多路复用
 
 即相同域名多个请求，共享同一个 TCP 连接，降低了延迟
 
-其他特点：请求优先级，二进制传输，数据流，服务器推送，头部压缩
+工作原理如下：
+
+1. 客户端和服务器建立一个 TCP 连接后，就可以同时发送多个 HTTP 请求
+2. 每个请求和响应都会分配一个唯一的流（Stream）标识符
+3. 流之间是并行独立的，互不干扰
+4. 服务器可以交错地发送请求的响应数据包，客户端能够根据流 ID 将其重新组装
+
+HTTP2的其他特点：请求优先级，二进制传输，数据流，服务器推送，头部压缩
 
 缺点是：tcp 会丢包
 
 HTTP3
+
 解决 tcp 连接的问题
 
 ### HTTPS
@@ -409,75 +551,123 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 
 414 - 请求 URI 过长
 
-详见——> [HTTP 状态码](
+详见——> [HTTP 状态码](../HTTP/HTTP状态码)
 
 
 
 ## 9. 你常用的性能优化
 
-你知道的前端性能优化有哪些
+考察点：性能优化、性能指标
 
-性能优化
-性能指标
-FP：首次渲染时间
-FCP：首次渲染内容时间（包括文字、图像）
+### 性能优化
+
+#### HTTP方面优化
+
+- 开启 HTTP2（特点：对头阻塞）
+- 使用缓存：利用 HTTP 缓存、代理服务器缓存（开启 gzip 压缩）、应用程序缓存等减少重复请求
+- 减少 HTTP 请求（开启 HTTP2 后这就不是个问题了）：合并 CSS、JavaScript 和图片文件，减少页面加载时的 HTTP 请求输了
+- 使用 CDN：OSS/CDN 可以将静态资源分发到全球各个服务器
+
+#### 页面渲染优化
+
+- 减少 DOM 操作：尽量减少对 DOM 的操作，例如使用事件委托、CSS 动画
+- 使用懒加载：懒加载可以延迟加载非关键资源，从而提高页面加载速度
+- 使用服务器渲染（SSR）：服务端渲染可以在服务器端生成 HTML 页面，减少客户端的加载时间
+- 使用 Web 字体：使用 Web 字体代替图片可以减少“资源”文件数量及加载时间
+- 如果使用中文字体，可使用字蛛减少字体大小
+- 优化图片格式、大小：压缩图片大小、使用 WebP 、AVIF格式、懒加载图片等方式可以减少加载时间
+- 将 CSS 放头部、JavaScript 脚本放尾部
+- 防抖节流
+- 减少回流（重排）和重绘
+- CSS 书写顺序
+-  async defer
+
+#### Webpack 等打包工具的性能优化
+
+- 配置 Webpack，压缩 JS、CSS、图片等静态资源大小
+- Tree shaking 去除死代码
+
+
+
+#### React 性能优化
+
+- 使用 usememo(缓存值)、useCallback（缓存毁掉函数）、memo（避免重复渲染）、react.lazy(懒加载)
+- 分页、虚拟列表、按需引入
+- map循环展示添加key
+- 路由懒加载
+- 第三方插件按需引入
+
+
+
+
+### 性能指标
+
+https://pagespeed.web.dev/ 或者 Chrome DevTools 可以分析一个网站的性能、无障碍、最佳做法以及SEO
+
+常见的网页性能指标包括：
+
+首次渲染内容时间（First Contentful Paint, FCP）：指页面开始渲染第一块内容的时间
+
+最大内容渲染时间（Largest Contentful Paint, LCP）：指页面渲染最大内容元素的时间
+
+FCP（First Contentful Paint）：首次渲染内容时间（包括文字、图像）
+
+LCP（Larget Contentful Paint）：最大内容渲染时间
+
 FMP：首次绘制有效内容时间
+
 TTI：应用可交互时间
 
-优化手段我归纳为 5 类：small（更小）、pre（更早）、delay（更晚）、concurrent（并发）、cache（缓存）
 
-前端框架：react
-列表 虚拟列表
 
--虚拟列表方案
-按需加载，比如 React 中使用 React.lazy 和 React.Suspense
-函数式组件
--memo 缓存组件
--- memo 和 shouldComponentUpdate 的区别
--- shouldComponentUpdate 默认 true，返回 false 时不会重新 render
--- memo 相反。默认 false，返回 true 时不会重新 render
--useCallback 缓存回调函数，需要与 memo 配合使用 类似于
--useMemo 缓存大量的计算
--- useCallback 和 useMemo 的区别
-写组件的
-类组件
--pureComponent 跳过不必要的更新
--shouldComponentUpdate 跳过不必要的更新
-
-前端工程化：webpack
-配置相关，因为我用 umi 比较多，已经封装好了，很
-服务器端
-
-利用 CDN 加速
--gzip
-常用方法：防抖节流
-非框架：
-减少回流（重排）和重绘、事件委托、CSS 书写顺序、减少 DOM 操作
-http 缓存
-传统技能：
-css 放头部、script 放尾部，使用 async
+衍生问题：useCallback 是什么 、useMemo 是什么 、useCallback 和 useMemo 有什么区别？、memo 是什么？
 
 
 
+### useCallback 是什么
+
+- useCallback 是一个 Hooks 函数，它接受一个函数和一个依赖项数组作为参数
+- 它的作用是，在组件的整个生命周期中，缓存传入的函数，只有当依赖项数组中的值发生变化时，才会重新创建这个函数
+- 这样可以避免每次组件渲染时都创建新的函数示例，从而提高性能，特别时当该函数作为 props 传递给子组件时
+
+### useMemo 是什么
+
+- useMemo 也是一个 Hooks 函数，它接受一个函数和一个依赖项数组作为参数
+- 它的作用是，在组件在某次渲染时，缓存传入函数的计算结果，只有当依赖项数组中的值发生变化时，才会重新计算并缓存结果
+- 这样可以避免在每次组件渲染时都重复进行昂贵的计算，从而提高性能
+
+### useCallback 和 useMemo 有什么区别？
+
+1. 缓存对象
+   - useCallback 缓存的是函数实例
+   - useMemo 缓存的是函数的计算结果
+2. 作用时机
+   - useCallback 在组件的每个生命周期内缓存函数
+   - useMemo 只在组件的某次渲染中缓存计算结果
+3. 优化对象
+   - useCallback 常用于优化子组件的渲染，避免不必要的重新渲染
+   - useMemo 常用于优化复杂计算，避免重复计算
+4. 使用场景
+   - useCallback 适用于当函数作为 props 传递给子组件时，避免不必要的重复渲染
+   - useMemo 适用于当有复杂的计算逻辑时，避免重复计算
+
+总的来说，useCallback 和 useMemo 都是 React 中用于性能优化的 Hooks，但关注的优化对象和使用场景不同
+
+### memo 是什么？
+
+memo 是一个高阶组件（HOC），它可以用来包装一个函数组件，从而实现性能优化
+
+它的作用如下：
+
+- 避免不必要的渲染
+  - memo 会对组件的 props 进行浅比较，如果 props 没有发生变化，则不会触发组件的重新渲染
+- 缓存计算结果
+  - memo 会缓存组件的计算结果，如果 props 没有发生变化，则可以直接使用缓存的结果，而不需要重新计算
+- 提高代码可读性
 
 
-你知道的前端性能优化有哪些
 
-考察点：前端性能优化手段
-
-从工程角度，webpack 的优化，压缩 js、css、图片等静态资源，升级为 vite
-从 react 角度，usememo（缓存值）、useCallback（缓存回调函数）、memo（避免重复渲染）、分页、虚拟列表、react.lazy(懒加载)、按需引入
-useCallback 和 useMemo 有什么区别？
-
-从 http 角度，开启 http2（特点：对头阻塞），采用 http 缓存策略
-从服务器角度，开启 gzip 压缩，oss，cdn
-从页面渲染角度，css 放头部，js 放尾部，防抖节流等
-
-
-
-如何做性能优化，最大的性能优化就是随时升级各种库的版本
-
-webpack 的速度不如 bun ，bun 的速度不如 vite， vite 的速度不如用 rust 打包，总之随时在变化
+### 如何优化 FCP（First Contenful Paint）
 
 
 

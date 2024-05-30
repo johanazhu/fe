@@ -8,20 +8,27 @@
 
 ## 2. 手写 Object.create
 
+考察点：new 操作符
+
+相关文章：[Object.create](../JavaScript/Object.create)
 
 
-## 3. 作用域
 
-谈下你的作用域的理解
+```javascript
+function create(proto) {
+    function F() {}
+    F.prototype = proto
+    return new F()
+}
+```
 
-考察点：作用域
-js 的作用域是词法作用域，其特点是在那里定义它就作用在那里，与定义位置有关而与调用位置无关
-作用域分为全局作用域、函数作用域、块级作用域
-全局作用域顾名思义，全局中只有一个
-函数作用域只作用于函数中，函数内的变量函数外不能调用。
-块级作用域仅在 let、const 声明时才会形成
-因为函数作用域的特点使得作用域有链状，即作用域链
-作用域又有闭包的产生
+
+
+### 衍生问题
+
+原型与原型链
+
+
 
 
 
@@ -81,7 +88,11 @@ https://febook.hzfe.org/awesome-interview/book3/browser-memory-leaks
 
 ## 9.微前端有什么用
 
-https://juejin.cn/post/7242623208841592869
+- 应用解耦和独立部署
+- 技术栈灵活选择
+- 按需加载
+- 版本独立
+- 团队自治
 
 
 

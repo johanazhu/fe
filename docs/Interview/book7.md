@@ -33,9 +33,16 @@ IIFE，立即执行函数，声明一个匿名函数，并马上调用这个匿�
 
 ## 5.props 类型不要用 React.FC 写法
 
-https://sorrycc.com/mdh-120/
+props 类型不要用 React.FC 写法，因为[早已不推荐](https://github.com/facebook/create-react-app/pull/8177)，缺点包括不能于泛型一起工作、不能与 defaultProps 一起工作等，用正常的函数参数声明即可。如果对返回值有更严格的要求，可以加 JSX.Element 或 React.ReactElement 返回值类型
 
-props 类型不要用 React.FC 写法，因为[早已不推荐](https://github.com/facebook/create-react-app/pull/8177)，缺点包括不能于泛型一起工作、不能与 defaultProps 一起工作等，用正常的函数参数声明即可
+```typescript
+type FooProps = { bar: string };
+const Foo = (props: FooProps) => <div/>
+const Foo = (props: FooProps): JSX.Element => <div />;
+
+// 不推荐
+const Foo: React.FC<FooProps> = (props) => <div />
+```
 
 
 
@@ -90,6 +97,14 @@ componentDidCatch 上报错误日志
 通过 getBoundingClientRect，也是循环所有图片，但是是通过拿到该元素的getBoundingClientRect 来判断是否出现再视图中
 
 intersectionObserver 交叉观察器，异步
+
+
+
+## 9.Taro 的工作原理
+
+Taro 在编译过程中，会将 React 代码解析成 AST 语法树
+
+
 
 
 

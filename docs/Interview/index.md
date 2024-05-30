@@ -1,7 +1,5 @@
 # 面试真题导航
 
-
-
 > 这里是「五年前端三年面试」的真题面试题，笔者收集了各式各样的前端面试题，汇聚到着十个markdown中。不为别的，只为自己被裁要做八股文准备
 >
 > ——2024.4.12
@@ -40,9 +38,9 @@
 - 手写源码：New 操作符
 - JavaScript 基础：事件循环
 - ES6特性：迭代器和生成器
-- React： Diff算法
+- React： 虚拟DOM 与 Diff算法
 - React：为什么有时 react 两次 setState，只执行了一次
-- 浏览器： 错误捕获
+- 浏览器： 浏览器渲染原理 
 - 微前端：微前端的沙箱机制是怎么实现的？ 
 - 项目：十万条数据如何优化
 - 算法题：反转链表 
@@ -80,7 +78,7 @@
 - JavaScript 基础：谈谈变量提升
 - ES6特性：let 和 const
 - React：React 中的多次渲染如何优化
-- React： useEffect、useLayoutEffect、useLayoutEffect使用场景
+- React： useEffect、useLayoutEffect、useLayoutEffect 使用场景
 - WebApp：适配方案
 - 浏览器：Cookie、localStorage、sessionStorage、IndexedDB的区别
 - 工程化：谈下 webpack loader 机制
@@ -96,7 +94,7 @@
 - React：React 如何处理异常？
 - 浏览器：如何减少白屏时间
 - 性能优化：网站首页有大量的图片，加载很慢，如何优化呢（图片懒加载）
-- 工程化（微前端）：XXX
+- Taro 的工作原理
 - 算法题：全排列
 
 ## 模拟题八
@@ -104,7 +102,7 @@
 - CSS：行内元素、块级元素有哪些，区别是什么
 - 手写源码：首先现一个发布订阅 
 - JavaScript 基础：垃圾回收机制
-- ES6特性：XXXX
+- ES6特性：扩展运算符和剩余运算符
 - React: react中一个父组件，两个子组件，一个传props，一个不传props，父组件重新渲染，两个子组件会不会都重新渲染
 - React17、18、19 更新以及服务端组件
 - TS：interface 和 type 的区别
@@ -127,14 +125,14 @@
 
 ## 模拟题十
 
-- CSS：介绍下盒子模型
+- CSS：重绘和回流
 - 手写源码：instanceof 
 - JavaScript 基础：history 和 hash 两种路由最大的区别是什么
 - ES6：展开运算符的作用
 - React： React 合成事件是什么
-- React： React 的作用是什么？
+- React： xxx
 - 0.1 + 0.2 为什么不等于 0.3
-- 浏览器：Web 安全
+- 浏览器：Web 安全 + 错误捕获
 - 性能优化：当用户反馈页面加载慢，你是前端怎么排查这个问题
 - 算法题：合并两个有序数组
 
@@ -167,6 +165,20 @@
 如果有好的项目我会去学习，无论是视频还是文字
 
 这是外在原因影响我的。其次我会设立目标，比如今年，要是没有失业的话，我会用 nextjs 做全栈的出海项目，现在其实已经做了几个。但
+
+
+
+工作中遇到的难点
+
+
+
+### 你又什么要问我的
+
+1. 这个岗位的职责是什么
+2. 工作做的好坏的标准是什么
+3. 作息时间和五险一金缴纳
+
+
 
 
 

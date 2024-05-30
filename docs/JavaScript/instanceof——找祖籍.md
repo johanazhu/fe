@@ -1,6 +1,6 @@
 # instanceof——找祖籍
 
-我们分别在 [JavaScript由什么组成](./JavaScript由什么组成.md) 和 [JavaScript 中的始皇](./JavaScript 中的始皇.md) 两篇文章中讲到了 instanceof，这篇文章好好说说 instanceof
+我们分别在 [JavaScript由什么组成](./JavaScript由什么组成) 和 [JavaScript 中的始皇](./JavaScript中的始皇) 两篇文章中讲到了 instanceof，这篇文章好好说说 instanceof
 
 ## 什么是 instanceof？
 
@@ -27,7 +27,7 @@ console.log(johan instanceof Resume); // true
 console.log(johan instanceof Object); // true
 ```
 
-在 [JavaScript 中的始皇](./JavaScript 中的始皇.md) 中有个例子：
+在 [JavaScript 中的始皇](./JavaScript中的始皇) 中有个例子：
 
 ```javascript
 Object instanceof Object
@@ -124,9 +124,9 @@ function myInstanceof(left, right) {
     let proto = Object.getPrototypeOf(left);
     while (true) {
         // 循环往下寻找，知道找到相同的对象
-        if (proto == null) return false;
+        if (proto === null) return false;
         // 找到相同的原型对象
-        if (proto == right.prototype) return true;
+        if (proto === right.prototype) return true;
         proto = Object.getPrototypeOf(proto);
     }
 }

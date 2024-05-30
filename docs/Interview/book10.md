@@ -2,26 +2,73 @@
 
 
 
-## 1.介绍下盒子模型
+## 1.重绘和回流
 
-考察点：盒子模型
+考察点：重绘、回流
 
-盒子模型由 margin、border、padding、content 组成
-分两种
-标准盒子模型
-width= content 宽度
-height= content 高度
-IE 模型
-width=border+content+padding
-height=border+content+padding
-标准盒子模型：box-sizing:content-box
-IE 盒子模型：box-sizing:border-box
+重绘是指当页面中元素的样式发生改变（如颜色、阴影、边框等）而不影响它在文档流中的位置时，浏览器会对这些元素进行重新绘制，这个过程称为重绘
+
+回流是指页面中元素的尺寸、结构或某些属性发生改变时，浏览器需要重新计算元素的大小和位置，然后再重新渲染页面的过程
+
+回流必定会触发重绘，但重绘不一定会引起回流
+
+触发回流的常见情况包括：
+
+- 添加或者删除可见的 DOM 元素
+- 元素位置/尺寸/内容发声改变
+- 浏览器窗口大小发生变化
+- 应用 CSS 样式的改变
+
+引起回流的样式改变：
+
+- 改变元素的尺寸（width、height、padding、margin等）
+- 改变元素位置（top、left、right、bottom等）
+- 改变元素显示（display:none）
+- 添加或删除可见的 DOM 元素
+- 改变元素字体
+- 改变浏览器窗口大小
+
+引起重绘的样式改变：
+
+- 改变元素颜色
+- 改变元素背景颜色
+- 改变元素阴影
+- 改变元素边框
+
+所以在页面优化优性能时，我们应该尽量减少触发回流的操作，一些常见的优化手段：
+
+- 批量修改DOM（Render 的批处理也会如此考虑的）
+- 使用 transform 代替 top/left
+- 使用 visibility 代替 display:none
+- 尽量减少不必要的样式改变
+- 将颜色、背景颜色、边框等发生重绘的样式写在 CSS 样式的前头
+
+
 
 
 
 ## 2. 手写 instanceof 
 
 考察点：instanceof 原理
+
+相关文章：[instanceof——找祖籍](../JavaScript/instanceof——找祖籍)
+
+```javascript
+function myInstanceof(left, right) {
+    if (typeof left !== 'object' || left === null) return false;
+    let proto = Object.getPrototypeOf(left);
+    while(true) {
+        if (proto === null) return false;
+        
+        if (proto === right.prototype) return true
+        proto = Object.getPrototypeOf(proto)
+    }
+}
+```
+
+### 衍生问题
+
+原型与原型链
 
 
 
@@ -44,7 +91,9 @@ IE 盒子模型：box-sizing:border-box
 为什么需要合成事件？和原生事件相比有什么不同
 
 目的：封装事件，实现跨平台，把差异封装在底层
+
 将事件全部统一冒泡到 document 再进行触发
+
 可以统一命名，这样子命名符合 react 编程习惯
 
 抹平不同浏览器的差异、与内部优先级机制绑定、需要考虑所有浏览器事件
@@ -52,6 +101,27 @@ IE 盒子模型：box-sizing:border-box
 在 react 中，我们绑定的事件并不是原生事件，而是由原生事件合成的 react 事件，比如 click 事件合成为 onClick 事件；比如 blur、change、input 等，合成为 onChange 事件，它统一绑定在 document 上统一管理（react 17 之后就绑定在 root 根节点上，这样做的好处是利于微前端）
 
 衍生：事件冒泡
+
+
+
+从 React 17 开始，React 的事件代理将从文档级别更改为根 DOM 容器
+
+```
+const rootNode = document.getElementById('root');
+ReactDOM.render(<App />, rootNode);
+```
+
+在**React** 16和更早的版本中，**React**将对大多数事件执行document.addEventListener（）。
+
+ **React** 17将在后调用rootNode.addEventListener（）。
+
+
+
+React 17 去掉事件池
+
+事件池：合成事件对象会被放入池中统一管理。这意味着合成事件对象可以被复用，当所有事件处理函数被调用之后，其所有属性都会被回收释放置空
+
+事件池的好处是在较旧浏览器中重用了不同事件的事件对象以提高性能，但它对现代浏览器的性能优化微乎其微，反而给开发者带来困惑，因此去除了事件池，因此也没有了事件复用机制。
 
 
 
@@ -76,11 +146,11 @@ https://news.ycombinator.com/item?id=39310142
 
 
 
+计算机的底层都是由二进制来表示的，对于 0.1和 0.2 这种数字在用二进制储存的时候会有精度误差
 
 
 
-
-## 8.浏览器：Web 安全
+## 8.浏览器：Web 安全 + 错误捕获
 
 
 
@@ -111,6 +181,28 @@ https://news.ycombinator.com/item?id=39310142
 > 3. 防范方式包含使用`POST`请求处理资源、服务端验证请求的`Referer`、禁止第三方网站请求携带Cookie以及最后在请求时增加`csrftoken`字段做校验
 
 
+
+
+
+js 代码异常
+
+try catch
+
+window.error
+
+资源加载错误
+
+window.addEventListen("error", callback)
+
+Promise 错误
+
+window.addEventListen("unhandlerejectedtion")
+
+React 错误
+
+错误捕获
+
+static getDerviedStateFromProps componentDidCatch
 
 
 

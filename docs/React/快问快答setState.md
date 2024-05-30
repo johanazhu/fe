@@ -4,7 +4,13 @@
 
 ### setState 是同步还是异步的？
 
-分情况。合成事件、钩子函数中调用，表现为“异步”；原生事件、setTimeout/setInterval、Promise 等原生 API 调用则是同步。
+分情况。合成事件、生命周期函数中调用，表现为“异步”；这是为了提高性能，将多个状态更新合并为一个批处理，减少不必要的重复渲染
+
+setTimeout/setInterval、Promise 等原生事件和浏览器原始事件中，setState 则是同步。这是因为这些事件发生在 React 调度流程之外，不会触发批处理更新机制
+
+可以通过 setState 接受一个函数作为参数，在函数内获取到上一次的 state，来实现同步更新
+
+虽然说 setState 在某些情况下是异步的，但实际上它并不是真正意义上的异步，而只是批量更新的一种优化手段
 
 ### 为什么这么设计？
 
@@ -34,7 +40,7 @@
 
 ### setState 怎么才能获取最新的 state
 
-setState 的第二个参数时可选的回调函数 `setState(stateChange[, callback])` 。它将在 setState 完成合并 hou 重新渲染组件并执行。通常，用 componentDidUpdate 来代替此方法
+setState 的第二个参数时可选的回调函数 `setState(stateChange[, callback])` 。它将在 setState 完成合并后重新渲染组件并执行。通常，用 componentDidUpdate 来代替此方法
 
 为什么？
 
@@ -60,10 +66,6 @@ setState 做的事情不仅时修改 this.state 的值，它还会触发 React �
 setState 的函数实现中，会根据 isBatchingUpdates（默认是 false）变量判断是否直接更新 this.state 还是放到队列中稍后更新。有一个 batchedUpdate 函数，可以修改 isBatchingUpdates 为 tue，当 React 调用事件处理函数之前或者生命周期函数之前就会调用 batchedUpdate 函数，这样的话，setState 就不会同步更新 this.state，而是放到更新队列里面后续更新
 
 ![setState原理](https://i.loli.net/2021/09/13/yJb7HlFMe5pAZkU.png)
-
-setState 执行过程
-
-https://juejin.cn/post/6844903781813993486#heading-5
 
 ## 面试吊打
 

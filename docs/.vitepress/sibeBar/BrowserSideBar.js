@@ -45,8 +45,8 @@ export default function BrowserSideBar() {
                     link: '/Browser/回流与重绘',
                 },
                 {
-                    text: '事件循环系统',
-                    link: '/Browser/事件循环系统',
+                    text: '事件循环机制',
+                    link: '/Browser/事件循环机制',
                 },
                 {
                     text: '事件冒泡',
