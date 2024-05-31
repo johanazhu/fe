@@ -43,12 +43,6 @@ A：最大的区别在于函数式组件会捕获渲染时的值
 
 ## 组件
 
-### Q：函数式组件与 class 组件的区别
-
-A：最大的区别在于函数式组件会捕获渲染时的值
-
-具体可以看这篇文章——[函数式组件与类组件有何不同](../函数式组件与类组件有何不同.md)
-
 ### Q： React 有哪几种创建组件的方式？有什么区别
 
 A：函数式组件、类组件、createElement
@@ -113,9 +107,11 @@ A：唯一性，diff 算法
 
 ### Q：请问 setState 是异步还是同步？为什么？
 
-A：代码是同步的，但是渲染要看模式，在 legacy 模式下，非原生事件、setTimeout/setInterval 等情况下为异步；addEventListener 绑定的原生事件、setTimeout/setInterval 同步；而在未来的 concurrent 模式下（V18 模式使用），都为异步
+A：代码是同步的，但是渲染是异步的。在 React17 之前要看模式，legacy 模式下，非原生事件、setTimeout/setInterval 等情况下为异步；addEventListener 绑定的原生事件、setTimeout/setInterval 同步；而在 concurrent 模式下都为异步。React 17 之后就全为异步了
 
-为什么？为了提高性能，React 会采用批处理的方案
+为什么？
+
+为了提高性能，React 会采用批处理的方案
 
 ### Q：什么事件可以触发异步，什么会触发同步？
 

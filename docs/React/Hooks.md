@@ -1,4 +1,4 @@
-# 了解 React Hooks 及钩子函数
+# React Hooks 及钩子函数
 
 > 学习一项知识，必须问自己三个重要问题：1. 它的本质是什么。2. 它的第一原则是什么。3. 它的知识结构是怎样的
 
@@ -42,6 +42,17 @@
 -   useDebugValue
 
 自定义 Hooks
+
+
+
+## Hook 的规则
+
+Hook 是使用 JavaScript 函数定义的，但它们代表了一种特殊的可重用的 UI 逻辑，并且对它们可以被调用的位置有限制。
+
+- 只在顶层调用 Hook
+- 仅在 React 函数中调用 Hook
+
+
 
 ## 测试一下 Hooks 的熟练程度
 
@@ -205,7 +216,7 @@ this 指向：需要考虑 this 的指向问题
 
 写法简洁
 
-​ 这个不用多说，写个 class 组件，需要写各种生命周期，如果优化，还需要在 shouldComponentUpdate 做渲染判断，但是函数式组件的 useMemo、memo 比 shouldComponentUpdate 不知道简洁到那里去
+ 这个不用多说，写个 class 组件，需要写各种生命周期，如果优化，还需要在 shouldComponentUpdate 做渲染判断，但是函数式组件的 useMemo、memo 比 shouldComponentUpdate 不知道简洁到那里去
 
 ## 最重要且常见的两个 hooks
 

@@ -20,12 +20,12 @@ export default function reactSideBar() {
             ],
         },
         {
-            text: 'React各种知识点',
+            text: 'React基础',
             collapsable: false,
             sidebarDepth: 0,
             items: [
                 {
-                    text: 'React知识汇总',
+                    text: '基础知识汇总',
                     link: '/React/',
                 },
                 {
@@ -37,20 +37,16 @@ export default function reactSideBar() {
                     link: '/React/核心API',
                 },
                 {
+                    text: 'Fiber',
+                    link: '/React/Fiber',
+                },
+                {
                     text: 'VirtualDOM',
                     link: '/React/VirtualDOM',
                 },
                 {
                     text: 'Diff',
                     link: '/React/Diff',
-                },
-                {
-                    text: '快问快答setState',
-                    link: '/React/快问快答setState',
-                },
-                {
-                    text: '函数式组件与类组件有何不同',
-                    link: '/React/函数式组件与类组件有何不同',
                 },
                 {
                     text: 'Hooks',
@@ -61,28 +57,44 @@ export default function reactSideBar() {
                     link: '/React/Hooks踩坑',
                 },
                 {
-                    text: '事件机制',
-                    link: '/React/事件机制',
+                    text: '快问快答setState',
+                    link: '/React/快问快答setState',
                 },
                 {
-                    text: 'Fiber',
-                    link: '/React/Fiber',
+                    text: '深入浅出 setState 原理篇',
+                    link: '/React/setState',
+                },
+                {
+                    text: '函数式组件与类组件有何不同',
+                    link: '/React/函数式组件与类组件有何不同',
                 },
                 {
                     text: '性能优化',
                     link: '/React/性能优化',
                 },
                 {
+                    text: '事件机制',
+                    link: '/React/事件机制',
+                },
+                {
                     text: 'Refs',
                     link: '/React/Refs',
                 },
                 {
-                    text: '生命周期',
-                    link: '/React/生命周期',
+                    text: '里程碑',
+                    link: '/React/里程碑',
                 },
                 {
-                    text: '为什么我们要写super(props)',
-                    link: '/React/为什么我们要写super(props)',
+                    text: 'React版本更新',
+                    link: '/React/React版本更新',
+                },
+                {
+                    text: 'React18的useEffect会执行两次',
+                    link: '/React/React18的useEffect会执行两次',
+                },
+                {
+                    text: '生命周期',
+                    link: '/React/生命周期',
                 },
             ],
         },
@@ -99,10 +111,6 @@ export default function reactSideBar() {
                     text: '手写React',
                     link: '/React/手写/手写React',
                 },
-                {
-                    text: 'Preact',
-                    link: '/React/手写/Preact',
-                },
             ],
         },
         {
@@ -113,10 +121,6 @@ export default function reactSideBar() {
                 {
                     text: '生态',
                     link: '/React/生态/',
-                },
-                {
-                    text: 'Immutable',
-                    link: '/React/生态/Immutable',
                 },
                 {
                     text: '从Redux说起，到手写，再到状态管理',
@@ -151,49 +155,10 @@ export default function reactSideBar() {
                     link: '/React/生态/ReactRouter',
                 },
                 {
-                    text: 'ReactSSR',
-                    link: '/React/生态/ReactSSR',
+                    text: 'Immutable',
+                    link: '/React/生态/Immutable',
                 },
             ],
-        },
-        {
-            text: '实战',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: '实战',
-                    link: '/React/实战/',
-                },
-                {
-                    text: 'React代码整洁之道',
-                    link: '/React/实战/React代码整洁之道',
-                },
-                {
-                    text: 'React全家桶最佳实践2023年版',
-                    link: '/React/实战/React全家桶最佳实践2023年版',
-                },
-                {
-                    text: '自动化测试',
-                    link: '/React/实战/自动化测试',
-                },
-                {
-                    text: 'TodoList',
-                    link: '/React/实战/TodoList',
-                },
-                {
-                    text: 'UI组件',
-                    link: '/React/实战/UI组件',
-                },
-                {
-                    text: 'MovMov',
-                    link: '/React/实战/MovMov',
-                },
-                {
-                    text: '仿TapTap默认颜色取海报颜色',
-                    link: '/React/实战/仿TapTap默认颜色取海报颜色',
-                },
-            ],
-        },
+        }
     ];
 }

@@ -253,7 +253,7 @@ https://www.zhihu.com/question/67652709
 
 #### 函数对象
 
-JavaScript 中的函数就是对象。对象是“名/值”对的集合并游泳一个连到原型对象的隐藏连接。
+JavaScript 中的函数就是对象。对象是“名/值”对的集合并拥有一个连到原型对象的隐藏连接。
 
 对象字面量产生的对象连接到 Object.prototype 。函数对象连接到 Function.prototype（该原型对象本身连接到 Object.prototype）。每个函数在创建时会附加两个隐藏属性：函数的上下文和实现函数行为的代码
 

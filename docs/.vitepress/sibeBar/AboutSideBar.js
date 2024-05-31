@@ -6,12 +6,8 @@ export default function AboutSideBar() {
             sidebarDepth: 0,
             items: [
                 {
-                    text: '关于我',
+                    text: '关于本网站',
                     link: '/About/',
-                },
-                {
-                    text: '关于本站',
-                    link: '/About/website',
                 },
             ],
         },

@@ -25,7 +25,7 @@
 
 所以当初有了 context（React 0.14 确定引入），通过 context 能实现”远房组件“的数据共享。但它也有缺点，使用 context 意味着所有的组件都可以修改 context 里面的状态，就像谁都可以修改共享状态一样，导致程序运行的不可预测，这不是我们想要的
 
-facebook 提出了 [Flux](https://facebook.github.io/flux/) 解决方案，它引入了[单向数据流](#补充：单向数据流)的概念（没错，React 没有单向数据流的概念，Redux 是集成了 Flux 的单向数据流理念），架构如下图所示：
+meta 提出了 [Flux](https://facebook.github.io/flux/) 解决方案，它引入了[单向数据流](#补充：单向数据流)的概念（没错，React 没有单向数据流的概念，Redux 是集成了 Flux 的单向数据流理念），架构如下图所示：
 
 ![Flux 流程图](https://i.loli.net/2021/12/01/YzWmMoJCILsVZaE.png)
 

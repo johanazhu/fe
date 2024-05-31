@@ -22,44 +22,47 @@
     -   createElement
         -   JSX 就是通过 babel 转换为 createElement
     -   cloneElement
-    -   [Refs](./Refs.md)
+    -   Refs
     -   portal 传送门
     -   context
     -   children
     -   ...
-    
--   [VirtualDOM](./VirtualDOM.md)
+-   [Fiber](./Fiber)
+    -   为什么会有？
+    -   Fiber架构是怎么样的？
+    -   它的作用
+    -   原理
+-   [VirtualDOM](./VirtualDOM)
     -   是什么？
     -   它的作用？
--   [Diff](./Diff.md)
+-   [Diff](./Diff)
     -   是什么？
     -   在其中起到什么作用
     -   它的本质？抽象语法树（AST）
--   [setState](./快问快答setState.md)
-    -   为什么要用 setState，而不是直接 `this.statet.xx == oo`？
-    -   setState 异步的原理，为什么出现
-    -   表现出异步后如何拿到更新后的 state
--   [函数式组件与类组件有何不同](./函数式组件与类组件有何不同.md)
-
--   [Hooks](./Hooks.md)
-
+-   [Hooks](./Hooks)
     -   是什么？
     -   有什么用？优缺点？
     -   它的本质是什么？
-    -   [Hooks 踩坑](./Hooks踩坑.md)
-    -   手写
+    -   [Hooks 踩坑](./Hooks踩坑)
+    -   手写 Hooks
+    -   写过自定义 Hooks 吗，展开讲讲
+-   [setState](./快问快答setState)
+    -   为什么要用 setState，而不是直接 `this.statet.xx == oo`？
+    -   [setState 异步的原理](./setState)
+-   [函数式组件与类组件有何不同](./函数式组件与类组件有何不同)
+-   [性能优化](./性能优化)
+    -   以 Hooks 为例
 
--   [事件机制](./事件机制.md)
--   [Fiber](./Fiber.md)
-    -   为什么会有？
-    -   架构是怎么样的
-    -   为什么要了解
--   [性能优化](./性能优化.md)
-    -   方法
--   [Refs](./Refs.md)
+-   事件机制
+-   [Refs](./Refs)
     -   是什么？
     -   不同阶段 ref 的用法
--   [生命周期](./生命周期.md)
+-   [里程碑](./里程碑)
+    -   React 从13年开始到V15的Class组件 + 生命周期 再到Function + Hooks 的时间节点里程碑
+
+-   [React版本更新](./React版本更新)
+-   [React18的useEffect会执行两次](./React18的useEffect会执行两次)
+-   [生命周期](./生命周期)（已过时）
     -   class 才有生命周期
     -   15 的生命周期
     -   16.3 的生命周期
@@ -67,32 +70,34 @@
 
 ## 生态
 
--   [Immutable](./生态/Immutable.md)
-    -   数据不可变是什么
--   [ReactRedux](./生态/ReactRedux.md)
+-   [Redux](./生态/从Redux说起，到手写，再到状态管理)
+    -   Redux 是什么
+    -   它的作用
+
+-   [ReactRedux](./生态/ReactRedux)
     -   是什么？ 单向数据流
     -   有什么用？
     -   手写
     -   连接 React 与 Redux
     -   手写
-
--   [Redux-Sage](./生态/Redux-Sage.md)
+-   [Redux-Sage](./生态/Redux-Sage)
     -   Redux 异步解决方案
     -   手写
--   [Redux-thunk](./生态/Redux-thunk.md)
+-   [Redux-thunk](./生态/Redux-thunk)
     -   Redux 异步解决方案
     -   手写
--   [Dva](./生态/Dva.md)
+-   [Dva](./生态/Dva)
     -   集成了 Redux+Redux-Sage
     -   手写
--   [Mobx](./生态/Mobx.md)
+-   [Mobx](./生态/Mobx)
     -   是什么？另一个状态库
     -   原理
 -   [各个状态库对比](./生态/状态管理)
--   [ReactRouter](./生态/ReactRouter.md)
+-   [ReactRouter](./生态/ReactRouter)
     -   单页面路由的本质
     -   手写
--   [ReactSSR](./生态/ReactSSR.md)
+-   [Immutable](./生态/Immutable)
+    -   数据不可变是什么
 
 ## 手写 React（未实现）
 
@@ -100,26 +105,3 @@
 -   组件和生命周期
 -   diff 算法
 -   异步的 setState
-
-## 实战（未实现）
-
--   [React 代码整洁之道](./实战/React代码整洁之道.md)
-
--   [React全家桶最佳实践2023年版](./实战/React全家桶最佳实践2023年版.md)
-
--   [自动化测试](./实战/自动化测试.md)
-
--   [TodoList](./实战/TodoList.md)
-
-    -   开源
-    -   搭建多个版本
-
--   [UI 组件](./实战/UI组件.md)
-    -   开源
-    -   jingui
--   [MovMov](./实战/MovMov.md)
-    -   开源
-    -   力求 star 1000 以上
--   [仿 TapTap 默认颜色取海报颜色](./实战/仿TapTap默认颜色取海报颜色.md)
-
-

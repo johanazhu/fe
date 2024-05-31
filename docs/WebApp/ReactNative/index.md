@@ -1,4 +1,4 @@
-# React Native
+# React Native（暂未涉略）
 
 React Native 是什么
 

@@ -55,10 +55,6 @@ export default function FrontEndSideBar() {
                     text: '生态',
                     link: '/React/生态/',
                 },
-                {
-                    text: '实战',
-                    link: '/React/实战/',
-                },
             ],
         },
         {

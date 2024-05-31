@@ -220,7 +220,7 @@ react 如何做优化
 
 react 到底是什么
 
-​ UI 库..，facebook 出品，
+​ UI 库..，meta 出品，
 
 ​ 为什么会出来
 

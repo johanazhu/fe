@@ -15,3 +15,7 @@ ReactRouter
 Redux-Sage
 Redux-thunk
 ReactRedux
+
+
+
+nextjs

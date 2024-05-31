@@ -23,7 +23,6 @@
             [{ title: '面试篇',  link:'/React/面试题/' }],
             [{ title: '基础篇',  link:'/React/' }],
             [{ title: '生态篇', link:'/React/生态/' }],
-            [{ title: '实战篇', link:'/React/实战/' }],
         ]
     },
     { title:'大前端',  link:'/WebApp/', y:220, x:-100,
@@ -147,7 +146,7 @@
         right: [
             [{ title: '软实力',  link:'/Others/' }],
             [{ title: '简历面试',  link:'/Others/Resume' }],
-            [{ title: '关于我',  link:'/About/' }]
+            [{ title: '关于本网站',  link:'/About/' }]
         ],
     },
     { title:'程序员的归宿' }

@@ -1,4 +1,10 @@
-# React 18
+# React 版本更新
+
+
+
+
+
+React17 开始 setstate 都是异步了，需要通过 options.synchronousUpdate=true设置同步
 
 ## 参考资料
 
