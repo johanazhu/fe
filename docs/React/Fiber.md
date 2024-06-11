@@ -1,110 +1,441 @@
 # Fiber 的作用和原理
 
-[官网解释](https://zh-hans.reactjs.org/docs/faq-internals.html)：
+目录：
 
-> Fiber 是 React 16 中新的协调引擎。它的主要目的是使 Virtual DOM 可以进行增量式渲染。
+- Fiber 是什么
 
-为什么会有 Fiber
+- Fiber 的作用
+- 为什么会有 Fiber
+- Fiber 理论实现
+- Fiber 实现原理
 
-React 在 V16 之前会面临的主要性能问题是：当组件树很庞大时，更新状态可能造成页面卡顿，根本原因在于——更新流程是 【同步、不可中断的】
+- Fiber 是如何工作的
+- 番外：时间切片与优先级调度
 
-为了解决这个问题，React 提出 F
 
-Fiber 架构怎么做的？
 
--   让 React 渲染的过程可以被中断，可以将控制权交回浏览器，让浏览器及时地相应用户的交互——异步可中断
--   通过将工作任务拆分成一个个雄安的工作单元分别来执行——Fiber
+## Fiber 是什么
 
-Fiber 即是一种数据结构，又是一个工作单位
+先看看别人是怎么解释的
 
-Fiber 作为数据结构
+[官网解释](https://zh-hans.legacy.reactjs.org/docs/faq-internals.html#what-is-react-fiber)：
 
-React Fiber 机制的实现，就是依赖于下面的这种数据结构-链表实现的。其中每个节点都是一个 Fiber，一个 Fiber 包含了 child（第一个子节点）、sibling（兄弟节点）、parent（父节点）等属性。Fiber 节点中其实还会保存节点的类型、节点的信息（比如 state、props）、节点对应的值等
+Fiber 是 React 16 中新的协调引擎。它的主要目的是使 Virtual DOM 可以进行增量式渲染
 
-Fiber 作为工作单位
+[程墨Morgan](https://www.zhihu.com/people/morgancheng)：React Fiber是对核心算法的一次重新实现
 
-将它视作一个执行单元，每次执行完一个“执行单元”，React 就会检查现在还剩多少时间，如果没有时间就将控制权让出来
+[尤雨溪](https://evanyou.me/)评价Fiber：
 
-> React Fiber 本质上是为了解决 React 更新低效率的问题，不要期待 Fiber 能给你现有应用带来质的提升，如果性能问题是自己造成的，自己的锅还是得自己背
->
-> ——尤雨溪
+React Fiber 本质上是为了解决 React 更新低效率的问题（通过提供分配计算优先级从而提升 perceived performance），不要期待 Fiber 能给你现有应用带来质的提升，如果性能问题是自己造成的，自己的锅还是得自己背
 
-调度的最小单位——Fiber
+[React技术揭秘](https://react.iamkasong.com/process/fiber.html#fiber%E7%9A%84%E5%90%AB%E4%B9%89) 解释：Fiber包含三层含义
 
-Fiber 架构
+1. 作为架构来说，之前的 React15 的 Reconciler 采用递归的方式执行，数据保存在递归调用栈中，所以被称为 stack Reconciler。React 的 Reconciler 基于 Fiber 节点实现，被称为 Fiber Reconciler
+2. 作为静态的数据结构来说，每个 Fiber 节点对应一个 React element，保存了该组件的类型（函数组件/类组件/原生组件...）、对应的 DOM 节点等信息
+3. 作为动态的工作单位来说，每个Fiber节点保存了本次更新中该组件改变的状态、要执行的工作（需要被删除/被插入页面中/被更新...）
+
+...
+
+我的理解：正如卡颂所说，但我以我的理解来复述一遍。Fiber 包含了三层含义
+
+1. 作为架构来说，从 React 15 的 Stack Reconciler 升级为 Fiber Reconciler，这是对核心算法的重构，实现 **异步可中断更新** 的特性
+2. 从数据结构来说，它表示一个 React element，它保存了组件的类型（函数组件/类组件/原生组件...）、对应的 DOM 节点等信息
+3. 作为动态的工作单位来说，每个 FiberNode 保存了本次更新中该组件改变的状态、要执行的工作（增删改）
+
+无论是作为数据结构还是工作单位，它都是以 FiberNode 的身份存在，因为 React16 的架构我们命名为 Fiber，所以它的协调器就是 Fiber Reconciler，它作为 React element 或者最小工作单位就叫 FiberNode
 
 ## Fiber 的作用
 
-## Fiber
+为了解决React15在大组件更新时产生的卡顿现象，React团队提出了 Fiber 架构，并在 React16 发布，将 **同步递归无法中断的更新** 重构为 **异步的可中断更新** 
 
-Fiber 是对核心算法的一次重新实现
+它实现了5个具体目标
 
-react 的组件设计，如果你的一个组件加载或者更新时，带动 200 个组件更新，那么它会等这 200 个组件更新完再让出进程，如果这个时候用户有交互，是没有反应的（如果说 200 个组件需要 200 毫秒，这 200 毫秒内交互无效），为了提高用户体验，引入了 Fiber
+- 把可中断的任务拆分成小任务
+- 对正在做的任务调整优先次序、重做、复用上次（未完成）的任务
+- 在父子任务间从容切换，以支持 React 执行过程中的布局刷新
+- 支持 render 返回多个元素
+- 更好地支持 error bounday
 
-因为 javascript 是单线程的
+## 为什么会有 Fiber
 
-在 react v16 之前版本，因为 react 的设计不符合大组件的
+要讲 Fiber 原理，就要先从为什么会有 Fiber 说起，为什么要有 Fiber，因为需要。为什么需要，就要从 Fiber 架构之前的 React15 讲起，因为 React15 的架构满足不了大组件渲染卡顿问题（其根本原因是它的更新流程是「**同步、不可中断**」），所以就有了解决方案，这个解决方案就是重构底层架构，它就是 Fiber 架构
 
-分片
+### React 15的架构
 
-fiber 就好像是包子，你不用知道包子是怎么做出来的，你只要吃就好。
+React 15 的结构由两部分组成：
 
-fiber 的出现对生命周期的影响，有好几个生命周期需要多次被调用
+- Reconciler（协调器）
+- Renderer（渲染器）
+  - [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom)：将 React 组件渲染成 DOM
+  - [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer)：将 React 组件渲染成 Native 视图
+  - [React Test Renderer](https://github.com/facebook/react/tree/main/packages/jest-react)：将 React 组件渲染为 JSON 树（用于测试）
+  - [React Art Renderer](https://github.com/facebook/react/tree/main/packages/react-art)：将  React 组件渲染为 ART（即Canvas、SVG之流）
 
-render
+> 严格说来，[`react-native-renderer`](https://github.com/facebook/react/tree/main/packages/react-native-renderer) 实现了 React 和 React Native 的连接。真正渲染 Native 视图的平台特定代码及组件都存储在 [React Native 仓库](https://github.com/facebook/react-native)中
 
-componentWillReceiveProps
+Reconciler 负责找出变化的组件，属于共享代码
 
-shouldComponentUpdate
+Renderer 负责将变化的组件渲染到页面上，不同的平台有不同的渲染器
 
-componentWillMount
+React 15的 Reconciler （协调器）称之为 Stack reconciler，它的特点是当主动或被动触发更新组件（如改变 props、setState操作）时，会**递归**执行更新。当组件层级很深，递归更新时间超过16ms，就会呈现卡顿现象
 
-componentWillUpdate
+> 这是因为人眼接受的动画最低频率是16ms，即1000/60=16.67ms
 
-componentWillMount 和 componentWillUpdate 往往有副作用
+于是乎，React 团队提出了**可中断的异步更新** 方案，那就是 Fiber 架构
 
-组件交互的流程，用 jsx 写 react 组件，render() 输出虚拟 dom（通过 babel 插件），虚拟 dom 转为 DOM，再在 DOM 上注册事件，事件触发 setState()修改数据，在每次调用 setState 方法时，React 会自动执行 render 方法来更新虚拟 dom，如果组件已经被渲染，那么还会更新到 DOM 中去
+### React 16 架构
 
-异步渲染中的 Fiber 的做法是：分片
+React16 架构分为三层：
 
-把一个很耗时的任务分成很多小片，
+- Scheduler（调度器）
+- Reconciler（协调器）
+- Renderer（渲染器）
 
-Fiber 之前的架构是同步更新，遍历，从根组件开始到子节点，
+与 React15 相比，就多了 Scheduler（调度器），正是因为调度器，才使得 React 有了能够中断任务切片、调整优先级等能力
 
-假如更新一个组件需要 1 毫秒，如果有 200 个组件要更新，那就需要 200 毫秒，在这 200 毫秒的更新过程中，浏览器那个唯一的主线程都在专心运行更新操作，无暇去做任何其他的事情。想象一下，在这 200 毫秒内，用户往一个 input 元素中输入点什么，敲击键盘也不会获得响应，因为渲染输入按键结果也是浏览器主线程的工作，但是浏览器主线程被 React 占着呢，抽不出空，最后的结果就是用户敲了按键看不到反应，等 React 更新过程结束之后，咔咔咔那些按键一下子出现在 input 元素里了。
+#### Scheduler（调度器）
 
-这就是所谓的界面卡顿，很不好的用户体验。
+上文中讲到 React15 大型组件渲染卡顿问题时，我们讲到当超过 JavaScript 的运行时间超过 16ms 时，我们会感到卡顿，并从人眼的角度分析了原因
 
-现有的 React 版本，当组件树很大的时候就会出现这种问题，因为更新过程是同步地一层组件套一层组件，逐渐深入的过程，在更新完所有组件之前不停止，函数的调用栈就像下图这样，调用得很深，而且很长时间不会返回。
+但换个角度，从浏览器的角度来分析一波：
 
-![image-20210429131950217](https://i.loli.net/2021/06/03/7ncbYMKSCjBkRfr.png)
+首先，JavaScript 是单线程语言，意味着它有依次执行代码的特点，打个比喻，就像排队打饭，执行完一个函数再轮到下一个，挨个执行
 
-因为 JavaScript 单线程的特点，每个同步任务不能耗时太长，不然就会让程序不会对其他输入作出相应，React 的更新过程就是犯了这个禁忌，而 React Fiber 就是要改变现状。
+所以我们可以得到这样的一个画面，React15 在渲染大组件时，因为 JavaScript 单线程的特性，要把大组件下的所有子组件进行计算，当计算时间超过了16ms，就产生卡顿现象
 
-React Fiber 的方式：
+![React15的组件更新](https://i.loli.net/2021/06/03/7ncbYMKSCjBkRfr.png)
 
-破解 JavaScript 中同步操作时间过长的方法其实很简单——分片。
+所以只要我们设置一种机制，将一个耗时长的任务分成很多小任务，按照优先级顺序依次执行，当计算时间超过16ms，就交由 GUI 绘制，绘制一会儿再由渲染线程接管，执行JS，也就是 React，React 的 Scheduler（调度器）再按照优先级分配，看有没有紧急任务，如果没有就继续更新，有的话就执行紧急任务，完成紧急任务后就按照优先级继续完成剩余任务。当执行时间再到16ms时，再交给 GUI 绘制，如此反复，就能瞒过肉眼，达到流畅感
 
-把一个耗时长的任务分成很多小任务，每一个小任务完成了，就把控制权交还给 React 负责任务协调的模块，看看有没有其他其他紧急任务要做，如果没有就继续去更新，如果有紧急任务，那就去做紧急任务
+这个技术就是**时间分片**，即讲一个渲染工作分解成多个小任务，并在多个帧之间分配和执行这些任务
 
-![image-20210429145248158](https://i.loli.net/2021/06/03/GYqmfj2AFPZURMt.png)
+![Fiber架构下的组件更新](https://i.loli.net/2021/06/03/GYqmfj2AFPZURMt.png)
 
-如果一个任务还没完成（时间到了），就会被另一个更高优先级的更新过程打算，这个时候，优先级高的更新任务会优先处理，而低优先级更新任务所作的工作则会完全作废，然后等待机会重头再来
+这种在浏览器空闲的时候调用的方法部分浏览器（目前看就 Safari 不支持）中已经实现，即 [requestIdleCallback](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestIdleCallback)
 
-React Fiber 更新过程被分为两个阶段（Phase）：第一个阶段 Reconciliation Phase 和第二阶段 Commit Phase
+React 团队考虑到浏览器兼容性以及 requestIdleCallback 的触发频率不稳定等原因，所以自己写了个 requestIdleCallback polyfill（垫平），这就是 Scheduler。除了空闲时触发回调的功能外，Scheduler 还提供了多种调度优先级功能
 
-第一阶段，Fiber 会找到需要更新哪些 DOM，这个阶段可以被打算；但到了第二阶段，就会一鼓作气把 DOM 更新完，绝不会被打断
+##### 调度器的优先级
+
+React 中调度器的不同优先级极其排序
+
+- Immediate：最高优先级，会马上执行的不能中断
+- UserBlocking：一般用户交互结果，需要及时反馈
+- Normal：普通等级，比如网络请求等不需要用户立即感知的
+- Low：低优先级，这种可以延后，最后要执行
+- Idle：最低优先级，可以被无限延迟，比如 console
+
+
+
+
+
+
+
+1. 事件优先级（Event Priority）
+   - 这是最高的优先级，主要用于处理用户交互事件，如点击、滚动等
+2. Fiber 优先级（Lane Priority）
+   - 采用车道模型，最内层的优先级最高，依次递减，
+3. 调度优先级（Schedule Priority）
+   - 当 React 生成任务时，会赋予这样的优先级
+4. 任务过期时间
+   - 当 Scheduler 还会考虑任务的过期时间，对于即将过期的任务会给予给高的优先级
+
+#### Reconciler（协调器）
+
+在讲 React 15 的 Reconciler 时，我们讲到它是递归处理虚拟DOM，React 16 中的 Reconciler 则从递归变成了可以中断的循环过程。每次循环都会调用 shouldYield 判断当前是否有剩余时间
+
+```javascript
+function workLoopConcurrent() {
+  // Perform work until Scheduler asks us to yield
+  // 直到调度程序要求我们让步之前继续工作
+  while (workInProgress !== null && !shouldYield()) {
+    // $FlowFixMe[incompatible-call] found when upgrading Flow
+    //在升级 Flow 时发现了 $FlowFixMe[incompatible-call]
+    performUnitOfWork(workInProgress);
+  }
+}
+```
+
+之前讲到 React 16 在更新状态时如果超过16ms，会中断执行并存储未执行的代码，等后续浏览器有空闲时间后再执行未执行的代码，那它在技术上是如何实现的
+
+在 React 16 中，Reconciler 与 Renderer 不再是交替工作。当 Scheduler 将任务交给 Reconciler 后，Reconciler 会为变化的虚拟 DOM 打上增/删/更新的标签，类似这样：
+
+```javascript
+export const Placement = /*             */ 0b0000000000010;
+export const Update = /*                */ 0b0000000000100;
+export const PlacementAndUpdate = /*    */ 0b0000000000110;
+export const Deletion = /*              */ 0b0000000001000;
+```
+
+> 注：以上打标签源自[React技术揭秘](https://react.iamkasong.com/)，目前源码中已经不再是这样的打标签，此处做理解即可
+
+需要注意的是：整个 Scheduler 与 Reconciler 的工作都在内存中进行，只有当所有组件都完成了 Reconciler 的工作，才会统一交给 Renderer
+
+#### Renderer（渲染器）
+
+就是将 Reconciler 打上标签的虚拟DOM对象（即 FiberNode）执行成 DOM（JS 变 视图）
+
+简单来说，React 16 的 Fiber 架构就是先通过调度器将高优先级的任务push到协调器中的就绪任务队列中，协调器对其打标签，找出需要变化的组件，最后由渲染器将变化的组件渲染到页面
+
+### React 16 与 React 15的区别
+
+React 16 多了 Scheduler（调度器），分配优先级；React15 没有 Scheduler，不能分配优先级
+
+React 16 中的 Reconciler（协调器）采用 Fiber 架构，可以进行**异步可中断更新**；React 15 的 Reconciler 为 Stack reconciler（堆栈协调器），状态更新时，会进行递归更新，同步且不可中断
+
+我们对比 React16 与 React 15，知道 React 16 采用了 Fiber 架构，它能做到优先级分配、异步可中断更新，那么它的原理是什么，它是怎么实现的
+
+## Fiber 理论实现
+
+Fiber 架构的两大特点：**优先级分配**、**异步可中断**。我们从这两点着手，看它怎么实现
+
+卡颂在 [React 技术揭秘](https://react.iamkasong.com/process/fiber-mental.html) 中提到 React 核心团队成员 [Sebastian Markbåge](https://github.com/sebmarkbage/)（React Hooks 的发明者）说：我们在 React 中做的就是践行代数效应（Algebraic Effects）
+
+并提及浏览器中的 Generator 可以实现` 代数效应`
+
+但 Generator 的一些缺陷使 React 团队放弃了它
+
+- 类似 async，Generator 也是有传染性的，使用了 Generator 则上下文的其他函数都需要做出改变（加上*），心智负担比较重
+- Generator 执行的中间状态是上下文关联的，不能解决优先级问题
+
+于是乎，React 自己写了个类Generator 功能函数，它支持优先级调配，以及可以中断与恢复，并且恢复后可以复用之前的状态
+
+> PS：React-saga 还有 dva 都是用 Generator 实现可控异步
+
+## Fiber 实现原理
+
+在上文解释 Fiber 是什么的时候，我按照自己的理解讲了 Fiber 是什么，其中提及 FiberNode，说它是最小（工作）单位
+
+这里我们不做过多解释，因为那样会牵扯到源码，能得到的结论是 JSX 会被编译成 React.createElement，它最后会调用 ReactElement 方法返回一个包含组件数据的对象，该对象有个参数`$$typeof: REACT_ELEMENT_TYPE` 标记了该对象是个 React Element。大致如下的对象：
+
+```javascript
+{
+  $$typeof: Symbol(react.element),
+  key: null,
+  props: {},
+  ref: null,
+  type: ƒ AppFunc(),
+  _owner: null,
+  _store: {validated: false},
+  _self: null,
+  _source: null
+}
+```
+
+JSX 表示当前组件内容的数据结构，但不包含组件的 Schedule、Reconcile、Renderer 所需的信息。这些都在 FiberNode 中
+
+所以说 React element 表示的我们写的 React 组件，React 内部又加上了一些属性和方法（比如更新的优先级、打标记等等）让其实现异步可中断的能力
+
+而 React element + 这些属性和方法的总和就叫 FiberNode
+
+### FiberNode的结构
+
+源码中写到清清楚楚的[属性定义](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.js#L137) 。虽然属性很多，但我们可以按三层含义将它分类
+
+```javascript
+function FiberNode(
+  this: $FlowFixMe,
+  tag: WorkTag,
+  pendingProps: mixed,
+  key: null | string,
+  mode: TypeOfMode,
+) {
+  // Instance 作为静态数据结构的属性
+  this.tag = tag;
+  this.key = key;
+  this.elementType = null;
+  this.type = null;
+  this.stateNode = null;
+
+  // Fiber 用于连接其他 FiberNode 形成 Fiber Tree
+  this.return = null;
+  this.child = null;
+  this.sibling = null;
+  this.index = 0;
+
+  this.ref = null;
+  this.refCleanup = null;
+
+  // 作为动态的工作单元的属性
+  this.pendingProps = pendingProps;
+  this.memoizedProps = null;
+  this.updateQueue = null;
+  this.memoizedState = null;
+  this.dependencies = null;
+
+  this.mode = mode;
+
+  // Effects
+  this.flags = NoFlags;
+  this.subtreeFlags = NoFlags;
+  this.deletions = null;
+
+  // 调度优先级相关
+  this.lanes = NoLanes;
+  this.childLanes = NoLanes;
+
+  // 指向该fiber在另一次更新时对应的fiber
+  this.alternate = null;
+}
+```
+
+#### 作为数据结构
+
+作为静态数据结构，它所保存的信息为：
+
+```javascript
+// 表示组件类型，Function/Class/Host...
+this.tag = tag;
+// key 属性，利于 diff 对比
+this.key = key;
+// 大部分情况同type，某些情况不同，比如 FunctionComponent 使用 React.memo 包裹
+this.elementType = null;
+// 对于 FunctionComponent，指函数本身，对于 ClassComponent，指 Class，对于 HostComponent，指 DOM 节点 tagName
+this.type = null;
+// 对应的真实DOM节点
+this.stateNode = null;
+```
+
+#### 作为 Fiber节点
+
+每个元素即每个 FiberNode，对应 React element，多个 FiberNode 形成 Fiber Tree 。他们的这种连接方式在数据结构里称为链表。一个 FiberNode 包含了 return、child、sibling 属性，如下所示：
+
+```javascript
+// 指向父级 FiberNode
+this.return = null;
+// 指向子级 FiberNode
+this.child = null;
+// 指向右边第一个兄弟 FiberNode
+this.sibling = null;
+```
+
+#### 作为动态的工作单位
+
+将它视作一个执行单元，每次执行完一个“执行单元”，React 就会检查现在还剩多少时间，如果没有时间就将控制权让出来，它保存了本次更新相关的信息
+
+```javascript
+// 保存本次更新造成的状态改变相关信息
+this.pendingProps = pendingProps;
+this.memoizedProps = null;
+this.updateQueue = null;
+this.memoizedState = null;
+this.dependencies = null;
+
+this.mode = mode;
+
+// Effects
+this.flags = NoFlags;
+this.subtreeFlags = NoFlags;
+this.deletions = null;
+
+// 调度优先级相关
+this.lanes = NoLanes;
+this.childLanes = NoLanes;
+```
+
+
+
+## Fiber 是如何工作的（React 的渲染过程）
+
+笔者没有能力去看源码，只能讲一下 Fiber 架构下的 React 组件时是如何渲染的。注意，笔者不会讲与源码相关的知识点，只是从组件创建到更新， Fiber 架构下的组件是如何运行的：
+
+1. ReactDOM.render() （mount）和 setState （update）的时候开始创建更新
+2. Schedule（调度器）设置优先级，并将创建的更新加入任务队列，等待调度
+3. 在 requestIdleCallback 空闲时执行任务
+4. 从根节点开始遍历 FiberNode，并且构建 WorkInProgress Tree
+5. Reconciler（协调器） 阶段生成 EffectList（对其打标签，进行 Diff 对比）
+6. Renderer（渲染器） 根据 EffectList 更新 DOM
+
+React把一次渲染分为两个阶段：**render **和 **commit**
+
+其中 Reconciler（协调器） 工作的阶段被称为 render 阶段，因为该阶段会调用组件的 render 方法
+
+Renderer（渲染器） 工作的阶段被称为 commit 阶段。它会把 render 阶段提交的信息渲染在页面
+
+而 render 和 commit 阶段统称为 work，即 React 在工作中，相对应的，如果任务正在 Scheduler（调度器）内调度，就不属于 work
+
+因为它的一次更新过程会被分成多个分片完成，所以完成有可能一个更新任务还没完成，就被另一个更高优先级的更新过程打断，这时候，优先级高的更新任务会优先处理完，而底优先级更新任务所做的工作则会完成作废，然后等待机会重新再来
+
+因为一个更新过程可能被打断，所以 React Fiber 一个更新过程被分为两个阶段（Phase）：第一个阶段Reconciliation Phase 和 第二阶段 Commit Phase
+
+第一阶段，React Fiber 会找出需要更新哪些 DOM，这个阶段是可以被打算的；但到了第二阶段，那就一鼓作气把 DOM 更新完，绝不会被打断
+
+以 render 函数为界限，第一阶段会调用下面这些生命周期函数
+
+- componentWillMount
+- componentWillReceiveProps
+- shouldComponentUpdate
+- componentWillUpdate
+
+下面这些生命周期函数则会在第二阶段调用
+
+- componentDidMount
+- componentDidUpdate
+- componentWillUnmount
 
 因为第一阶段的过程会被打断而且“重头再来”，就会造成意想不到的情况。
 
-比如说，一个低优先级的任务 A 正在执行，已经调用了某个组件的 componentWillUpdate 函数，接下来发现自己的时间分片已经用完了，于是冒出水面，看看有没有紧急任务，哎呀，真的有一个紧急任务 B，接下来 React Fiber 就会去执行这个紧急任务 B，任务 A 虽然进行了一半，但是没办法，只能完全放弃，等到任务 B 全搞定之后，任务 A 重头来一遍，注意，是重头来一遍，不是从刚才中段的部分开始，也就是说，componentWillUpdate 函数会被再调用一次。
+比如说，一个低优先级的任务A正在执行，已经调用了某个组件的componentWillUpdate函数，接下来发现自己的时间分片已经用完了，于是冒出水面，看看有没有紧急任务，哎呀，真的有一个紧急任务B，接下来React Fiber就会去执行这个紧急任务B，任务A虽然进行了一半，但是没办法，只能完全放弃，等到任务B全搞定之后，任务A重头来一遍，注意，是重头来一遍，不是从刚才中段的部分开始，也就是说，componentWillUpdate函数会被再调用一次。
 
-虚拟 DOM 是由 JSX 转译过来的，JSX 的入口函数是 React.createElement, 可操作空间不大， 第三大的底层 API 也非常稳定，因此我们只能改变第二层。
+在现有的React中，每个生命周期函数在一个加载或者更新过程中绝对只会被调用一次；**在React Fiber中，不再是这样了，第一阶段中的生命周期函数在一次加载和更新过程中可能会被多次调用！**
 
-React16 将内部组件层改成 Fiber 这种数据结构，因此它的架构名也改叫 Fiber 架构。Fiber 节点拥有 return, child, sibling 三个属性，分别对应父节点， 第一个孩子， 它右边的兄弟， 有了它们就足够将一棵树变成一个链表， 实现深度优化遍历。
+## 番外：时间分片
+
+### 时间分片
+
+在[浏览器架构](../Browser/浏览器架构)一文中我们讲过现代浏览器由 1 个主要进程、一个 GPU 进程、多个渲染进程、多个插件进程、多个网络进程、多个音频进程、存储进程构成
+
+在[进程与线程](../CSBasic/进程与线程)一文中我们介绍了进程和线程的关系。进程时应用程序创建的实例，而线程依托于进程
+
+再加上我们在[浏览器的渲染原理](../Browser/浏览器的渲染原理)中所说，浏览器渲染分为三个步骤，解析、渲染、绘制
+
+解析：HTML、CSS、JavaScript 被解析，HTML 被解析为 DOM 树，CSS 被解析成 CSS 规则数，JavaScript 通过 DOM API 和 CSSOM API 来操作  DOM Tree 和 CSS Rule Tree
+
+渲染：浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rendering Tree（渲染树），这其中进行大量的 Reflow 和 Repaint
+
+绘制：最后调用操作系统的 Native GUI 的 API 绘制画面
+
+有了这些知识点后，我们思考一下为什么 React15 中组件更新卡顿的问题，为什么 JavaScript 会一直占用主线程，导致卡顿
+
+上文我们讲到人眼的流畅感觉是 16ms，即1帧的工作量不超过16ms，页面会是流程
+
+那么浏览器一帧内的工作会经历什么呢？
+
+![*浏览器一帧内的工作*](https://s2.loli.net/2024/06/07/Ygm2sRVdeC5Ha8x.webp)
+
+通过上图我们可以得知：
+
+- 处理用户的交互
+- JS 解析执行
+- 帧开始。窗口尺寸变更，页面滚动等事件
+- rAF(requestAnimationFrame)
+- 布局
+- 绘制
+
+所以如果以上六个步骤所占时间超过16ms，用户就能感到卡顿
+
+React16 提出将渲染更新拆分成多个子任务，每次制作一小部分，做完看是否还有剩余时间，如果有，则继续下一个任务；如果没有，则挂起当前任务，将时间控制权交给主线程，等主线程不忙的时候再执行任务
+
+因为浏览器是一帧一帧执行的，在两个执行帧之间，主线程通常会有一小段空闲时间，requestIdleCallback 可以在空闲期（Idle Period）调用空闲期回调（Idle Callback），执行一些任务
+
+![687474703a2f2f696d67732e74616f77656e672e736974652f323031392d30362d32352d3135313233312e706e67](D:\Documents\PicGo Files\687474703a2f2f696d67732e74616f77656e672e736974652f323031392d30362d32352d3135313233312e706e67.png)
+
+- 低优先级任务由`requestIdleCallback`处理；
+- 高优先级任务，如动画相关的由`requestAnimationFrame`处理；
+- `requestIdleCallback`可以在多个空闲期调用空闲期回调，执行任务；
+- `requestIdleCallback`方法提供 deadline，即任务执行限制时间，以切分任务，避免长时间执行，阻塞UI渲染而导致掉帧；
+
+
+
+## 总结
+
+fiber 架构是 React 在 16 以后引入的，之前是 jsx -> render function -> vdom 然后直接递归渲染 vdom，现在则是多了一步 vdom 转 fiber 的 reconcile，在 reconcile 的过程中创建 dom 和做 diff 并打上增删改的 effectTag，然后一次性 commit。这个 reconcile 是可被打断的，可以调度，也就是 fiber 的 schedule。
+
+
 
 ## 参考资料
 
+-   [React 技术揭秘](https://react.iamkasong.com/)
 -   [完全理解 React Fiber](http://www.ayqy.net/blog/dive-into-react-fiber/)
 -   [[译]深入 React fiber 架构及源码](https://zhuanlan.zhihu.com/p/57346388)
 -   [这可能是最通俗的 React Fiber(时间分片) 打开方式](https://juejin.cn/post/6844903975112671239)

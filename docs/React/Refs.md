@@ -1,122 +1,87 @@
-# Refs
+# Ref
 
 Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建 React 元素
 
 Ref 就是能获取到该元素的原始 dom
 
-## 使用场景
 
-在某些情况下，我们需要在数据流之外强制修改子组件，被修改的子组件可能是一个 React 组件的实例，饿可能是一个 DOM 元素，例如：
 
--   管理焦点，文本选择或媒体播放
--   触发强制动画
--   集成第三方 DOM 库
+## 作用
 
-```tsx
-import React, { forwardRef } from 'react';
+- 在函数组件中，当我们希望能够记住某些信息，但不希望该信息触发信的渲染时，就可以使用 ref 来存储，典型的例子是 Hooks 的 [Capture Value](./Hooks踩坑)
+- 用于访问真实 DOM 元素
+- 当父组件需要获取子组件实例对象时，也可通过 `ref` 来获得
 
-// Refs 的使用
-// 什么是 Refs, Refs 提供了一种方法，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素
-// 有什么用？可以通过Dom操作节点
-// 怎么说？怎么操作，具体的案例有吗
-// 例如在 MyComponent 里，我使用 React.createRef() 创建了一个 ref（myRef），在render时挂载到
-// div 元素上，这是我们可以通过DOM操作来控制这个元素，
-// 使用方法是 this.myRef.current ,如例2 MyComponent1，
-// 截图可得，我们已经取到了class为myref的div节点。当我们得到这个节点后，就可以通过Dom操作（像
-// Jquery那样操作）来改变组件中的值
-// 一种在 class 情况下使用 this.myRef = React.createRef()
-// 但是在 hook 中也可以使用
 
-class MyComponent extends React.Component {
-    myRef: any;
-    constructor(props: any) {
-        super(props);
-        this.myRef = React.createRef();
-    }
-    render() {
-        return <div ref={this.myRef} />;
-    }
-}
 
-class MyComponent1 extends React.Component {
-    myRef: any;
-    constructor(props: any) {
-        super(props);
-        this.myRef = React.createRef();
-    }
-    componentDidMount() {
-        const node = this.myRef.current;
-        console.log('node', node);
-    }
-    render() {
-        return (
-            <div className="myref" ref={this.myRef}>
-                1111
-            </div>
-        );
-    }
-}
+## 获取真实 DOM 的三个方法
 
-class TestClassButton extends React.Component {
-    buttonRef: any;
-    textRef: any;
-    constructor(props: any) {
-        super(props);
-        this.buttonRef = React.createRef();
-        this.textRef = React.createRef();
-    }
+1.推荐使用 API
 
-    render() {
-        return (
-            <div>
-                <span>111</span>
-                <button ref={this.buttonRef}>点击按钮</button>
-                {/* <MyFunctionComponent ref={this.textRef} /> */}
-            </div>
-        );
-    }
-}
+- React.createRef()：类组件
+- useRef：函数组件
 
-// 默认情况下，你不能在函数组件上使用 ref 属性，因为它们没有实例
-// function MyFunctionComponent() {
-//     return <input />;
-// }
+2.ref 回调函数方法
 
-// class Parent extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.textInput = React.createRef();
-//     }
-//     render() {
-//         // 代码不能运行
-//         return (
-//             <MyFunctionComponent ref={this.textInput} />
-//         );
-//     }
-// }
-// 如上代码所示，函数式组件没有实例
-// 如果要在函数组件中使用 ref ，可以使用 forwardRef（转发）
-const MyFunctionComponent = forwardRef((props: any, ref: any) => {
-    return <input ref={ref} value={props.value} />;
-});
+```jsx
+// 类组件
+bindRef = ele => {
+  this.bodyRef = ele;
+};
 
-class Parent extends React.Component {
-    textInput: any;
-    constructor(props: any) {
-        super(props);
-        this.textInput = React.createRef();
-    }
-    render() {
-        // 代码不能运行
-        return <MyFunctionComponent ref={this.textInput} value={'11111'} />;
-    }
-}
-// 也就是说如果你要在外部通过ref控制函数组件ref的话，就可以用 forwwardRef 来实现，它一般与
-//  useImperativeHandle 结合（ref能做的事情很多， useImperativeHandle 限制暴露的api）
-// 不管怎么样，在函数组件内部使用 ref 属性是都可以的 (useRef)
+<div ref={this.bindRef}></div>
 
-export default React.memo(Parent);
+
+// 函数组件
+const bindRef = useCallback((ele) => {
+  
+}, []);
+<div ref={bindRef}></div>
 ```
+
+3.字符串（仅限类组件中使用），不推荐是用
+
+```jsx
+// 会自动在 this 上绑定 bodyRef, 等于当前元素
+<div ref="bodyRef"></div>
+```
+
+## 获得子组件实例
+
+1.字组件为类组件，直接绑定 ref，就能拿到整个子组件的实例对象
+
+```jsx
+class A extends Component {}
+
+const App = () => {
+  const ref = useRef()
+  return (<A ref={ref}/>)
+}
+```
+
+2.函数组件：forwardRef + useImperativeHandle
+
+forwardRef：允许组件使用 ref 将 DOM 节点暴露给付组件
+
+useImperativeHandle：暴露实例对象方法
+
+```jsx
+import { forwardRef, useImperativeHandle } from 'react';
+
+const A = (props, ref) => {
+  useImperativeHandle(ref, () => {
+    // 返回要绑定的实例对象
+    return {};
+  }, []);
+}
+
+const App = forwardRef(A);
+
+```
+
+
+
+
 
 ## 参考资料
 

@@ -53,7 +53,7 @@ ReactDOM.render(element, container);
 
 上面这三行代码式一个再简单不过的 React 应用：在 root 根节点上渲染一个 Hello World！的 h1 标签节点
 
-可看[demo1]()
+可看demo1
 
 这里就有三个疑问
 
@@ -107,7 +107,7 @@ type 就是 DOM 节点的名字，比如这里是 h1。props 包含所有元素�
 
 key、ref 不错说，p
 
-回去看[源码]()：
+回去看源码：
 
 ```javascript
 export function createElement(type, config, children) {

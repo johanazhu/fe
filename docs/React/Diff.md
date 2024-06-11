@@ -11,35 +11,15 @@ React 在以下两个假设的基础上提出了一套 O(n) 的启发式算法
 
 为什么降级可行？因为跨层级很少发生可以忽略
 
-diff 算法
-
-什么是 diff 算法
-
- 对比 git diff
-
-vdom 为什么用 diff 算法
-
-diff 算法的实现流程
-
- DOM 操作时昂贵的，因因此尽量减少 DOM 操作
-
- 找出本次 DOM 必须更新的节点来更新，其他不更新
-
- 这个“找出”的过程，就需要 diff 算法
-
-diff 实现过程
-
- patch(container, vnode) 第一次渲染
-
- patch(vnode, newVnode) 更新数据
-
-### VD diff 算法
-
-#### 思路
+### VirtualDOM Diff 算法
 
 一般的设计思路都是页面等于页面状态的映射，即 UI = render(state)。当需要更新页面的时候，无需关系 DOM 具体的变换方式，只需要改变 state 即可，剩下的事情（render）将由框架代劳。
 
 所以思路就是改变 state，生成新的 VD - 新的 VD 与旧的 VD 进行对比 - 生成差异对象（patch） - 遍历差异对象并更新
+
+ patch(container, vnode) 第一次渲染
+
+ patch(vnode, newVnode) 更新数据
 
 ## 参考资料
 

@@ -51,7 +51,7 @@ PS：这个问题已经淘汰，以前的函数组件是没有状态的，但现
 
 ### Q： React 组件间有哪些通讯方式？
 
-A：四种，父传子（props），子传父（props 回调），跨组件（context），非嵌套组件通信（事件订阅）
+A：父传子（props），子传父（props 回调），跨组件（context），非嵌套组件通信（事件订阅，远亲组件，用第三方状态库，如Redux、MobX）
 
 ### Q：父组件如何调用子组件中的方法？
 
@@ -105,17 +105,36 @@ A：唯一性，diff 算法
 
 ## state & setState
 
+重点：
+
+**React 18 之后 setState 都是异步**
+
+**React 18 之后 setState 都是异步**
+
+**React 18 之后 setState 都是异步**
+
 ### Q：请问 setState 是异步还是同步？为什么？
 
-A：代码是同步的，但是渲染是异步的。在 React17 之前要看模式，legacy 模式下，非原生事件、setTimeout/setInterval 等情况下为异步；addEventListener 绑定的原生事件、setTimeout/setInterval 同步；而在 concurrent 模式下都为异步。React 17 之后就全为异步了
+A：代码是同步的，但是渲染是异步的。在 React18 之前要看模式，legacy 模式下，非原生事件、setTimeout/setInterval 等情况下为异步；addEventListener 绑定的原生事件、setTimeout/setInterval 同步；而在 concurrent 模式下都为异步。React 18 之后就全为异步了
 
 为什么？
 
-为了提高性能，React 会采用批处理的方案
+为了提高性能，React 会采用自动批处理
 
 ### Q：什么事件可以触发异步，什么会触发同步？
 
 A：非原生事件、非 setTimeout/setInterval 会触发异步；原生事件、setTimeout/setInterval 会触发同步
+
+### Q：为什么要设计成异步？
+
+A：React 的核心开发者员 [Dan Abramov](https://overreacted.io/) 回复这不是一个历史包袱，而是一个设计，完整回复请看 [issue](https://github.com/facebook/react/issues/11527#issuecomment-360199710)，简单来说有几点考量：
+
+1. 保持内部一致性
+   - React 的设计确保了 state、props、refs 等对象的行为和表现的一致性。即使 setState 是同步的，props也无法同步更新，因为只有付组件重渲染之后才能知道新的 props。React 选择异步更新 state 和 props，以保证在重构代码时，无论是提升 state 还是使用 props，代码的行为都是一致的
+2. 性能优化
+   - React 会根据不同的调用源（如事件处理、网络请求、动画等）给 setState 调用不同的优先级，这意味着一些状态更新可能被延迟，从而优化性能，例如在用户输入时优先处理输入框的状态更新，而延迟处理接收到的新消息的渲染
+3. 更多的可能性
+   - 当切换当前页面，通过 setState 异步，让 React 幕后渲染页面
 
 ### Q：调用 setState 之后发生了什么
 
@@ -129,6 +148,12 @@ A：禁止在 shouldComponentUpdate 和 componentWillUpdate 中调用 setState�
 
 A：修改值不改变视图，setState 不仅是修改 this.state 的值，更重要的是它会触发 React 的更新机制，会进行 diff，然后将 patch 部分更新到真实 DOM 中
 
+### Q：React 组件主动更新的方法有那些？
+
+A：setState、forceUpdate、this.setState、this.forceUpdate、ReactDOM.render
+
+被动渲染组件的方法：修改 props
+
 ## Hooks
 
 ### Q：你对 Hooks 了解吗？Hooks 的本质是什么？为什么？
@@ -139,7 +164,29 @@ A： React Hooks 是 React 16.8 之后推出的函数式组件状态管理方案
 
 ### Q：为什么不能在循环中调用 hooks？或者说为什么不能在 for 循环、if 语句里使用 hooks？
 
-A：因为 hooks 中的状态是以链表形式存在，如果使用 for 循环、if 语句，会使得后续的状态没法更新
+A：Hooks 的使用规则：不要在循环、条件或嵌套函数中使用 Hook，确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们
+
+存 Hooks 状态的对象是以**单链表**的形式储存状态，如果用循环、条件或者嵌套函数等方式使用 Hooks，会破坏 Hooks 的调用顺序
+
+```typescript
+fiber.memorizedstate(hook@)-> next(hook1)-> next(hook2)->next(hook3)->next(hook4)->...
+```
+
+React 中每个组件都有一个对应的 FiberNode，其实就是一个对象，这个对象有个属性叫 memoizedState。当组件是函数组件的时候，Fiber.memoizedState 上存储的就是 Hooks 单链表
+
+单链表的每个 Hook 节点没有名字或者 key，因为除了它们的顺序，我们无法记录它们的唯一性。因为为了确保某个 Hook 是它本身，我们不能破坏这个链表的稳定性
+
+PS： Hook 类型定义如下：
+
+```javascript
+export type Hook = {
+    memoizedState: any, // 最新状态值
+    baseState: any, // 初始状态值
+    baseQueue: Update<any, any> | null,
+    queue: UpdateQueue<any, any> | null, // 环形链表，存储的是该 hook 多次调用产生的更新对象
+    next: Hook | null,  // next 指针，之下链表中的下一个 Hook，如果为 null，证明是最后一个 Hook
+}
+```
 
 ### Q： React hooks，它带来了哪些便利
 

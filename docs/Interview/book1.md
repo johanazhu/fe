@@ -497,11 +497,11 @@ HTTP2 多路复用
 
 HTTP2的其他特点：请求优先级，二进制传输，数据流，服务器推送，头部压缩
 
-缺点是：tcp 会丢包
+缺点是：TCP 会丢包
 
 HTTP3
 
-解决 tcp 连接的问题
+解决 TCP 连接的问题
 
 ### HTTPS
 
@@ -591,7 +591,7 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 
 #### React 性能优化
 
-- 使用 usememo(缓存值)、useCallback（缓存毁掉函数）、memo（避免重复渲染）、react.lazy(懒加载)
+- 使用 usememo(缓存值)、useCallback（缓存回调函数）、memo（避免重复渲染）、react.lazy(懒加载)
 - 分页、虚拟列表、按需引入
 - map循环展示添加key
 - 路由懒加载

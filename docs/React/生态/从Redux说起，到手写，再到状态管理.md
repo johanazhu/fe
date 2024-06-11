@@ -4,13 +4,13 @@
 
 ## 先说结论
 
-1. Redux 是状态管理库，也是一种架构
+1. Redux 是状态管理库，也是一个架构
 2. Redux 与 React 无关，但它是为了解决 React 组件中状态无法共享而出的一种解决方案
 3. 单纯的 Redux 只是一个状态机， store 中存放了所有的状态 state，要想改变里面的状态 state，只能 dispatch 一个动作
 4. 发出去的 action 需要用 reducer 来处理，传入 state 和 action，返回新的 state
 5. subscribe 方法可以注册回调方法，当 dispatch action 的时候会执行里面的回调
 6. Redux 其实是一个发布订阅模式
-7. Redux 支持 enhancer，enhancer 其实就是一个装饰器模式，传入当前的 createStore，返回一个增强的 createStore
+7. Redux 支持 enhancer，enhancer 其实就是一个装饰器函数，传入当前的 createStore，返回一个增强的 createStore
 8. Redux 使用 applyMiddleware 函数支持中间件，它的返回值其实就是一个 enhancer
 9. Redux 的中间件也是一个装饰器模式，传入当前的 dispatch，返回一个增强了的 dispatch
 10. 单纯的 Redux 是没有 View 层的
@@ -33,9 +33,10 @@ meta 提出了 [Flux](https://facebook.github.io/flux/) 解决方案，它引入
 
 Flux 的问题或者说缺点在哪？
 
-store 之间存在依赖关系、难以进行服务器端渲染、 stores 混杂了逻辑和状态
+store 之间存在依赖关系、难以进行服务器端渲染、 store 混杂了逻辑和状态
 
-笔者在学习的 React 技术栈时是 2018 年，那是已然流行 React + Redux 的解决方案，Flux 已经被淘汰了，了解 Flux 是为了引出 Redux
+> 笔者在学习的 React 技术栈时是 2018 年，那是已然流行 React + Redux 的解决方案，Flux 已经被淘汰了，了解 Flux 是为了引出 Redux
+>
 
 ## Redux 的出现
 
@@ -43,7 +44,7 @@ Redux 主要解决状态共享问题
 
 > 官网：Redux 是 JavaScript 状态容器，它提供可预测的状态管理
 >
-> 它的作者是 [Dan Abramov](https://overreacted.io/)
+> 它的作者是 [Dan Abramov](https://overreacted.io/)，而后成为 React 主开发者，23年离职
 
 其架构为：
 

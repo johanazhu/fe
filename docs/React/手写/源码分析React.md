@@ -57,7 +57,7 @@ function Welcome(props) {
 
 React 是什么？
 
-React 是一个库，它主要做的事情，就是管理试图 UI，
+React 是一个库，它主要做的事情，就是管理视图 UI，
 
 写法：你可以按照 jsx 写法，也可以按照 React.createElement() 来写代码
 

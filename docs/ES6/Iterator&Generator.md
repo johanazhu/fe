@@ -1,30 +1,21 @@
 # 生成器与迭代器
 
-## Iterator 迭代器
 
-String、Array、Map、Set 等原生可迭代对象，因为他们都在原型（prototype）对象重实现了 Symbol.iterator 键对应的方法
 
-for...of 是对象迭代器的遍历，而 for...in 是对象重可枚举值的遍历
 
-我们使用的 `for in` 循环，是通过调用被循环对象的一个特殊函数 `Iterator` 来实现的，但是以前这个函数是隐藏的我们无法访问，从 Symbol 引入之后，我们就可以通过 `Symbol.iterator` 来直接读写这个特殊函数
 
-```javascript
-var students = {};
-students[Symbol.iterator] = function () {
-    let index = 1;
-    return {
-        next() {
-            return { done: index > 100, value: index++ };
-        },
-    };
-};
 
-for (var i of students) {
-    console.log(i);
-}
-```
 
 ## Generator 生成器
+
+Generator的缺陷
+
+- 类似 async，Generator 也有传染性，使用了 Generator 则上下文的其他函数也需要做出改变，心智负担比较重
+- Generator 执行的中间状态是上下文关联的
+
+
+
+
 
 用法和定义一个普通的函数（function）几乎一样，只是在 function 关键字和函数名之前加入了星号\*
 
@@ -81,6 +72,36 @@ console.log(it.next());
 console.log(it.next());
 console.log(it.next());
 console.log(it.next());
+```
+
+
+
+
+
+
+
+## Iterator 迭代器
+
+String、Array、Map、Set 等原生可迭代对象，因为他们都在原型（prototype）对象重实现了 Symbol.iterator 键对应的方法
+
+for...of 是对象迭代器的遍历，而 for...in 是对象重可枚举值的遍历
+
+我们使用的 `for in` 循环，是通过调用被循环对象的一个特殊函数 `Iterator` 来实现的，但是以前这个函数是隐藏的我们无法访问，从 Symbol 引入之后，我们就可以通过 `Symbol.iterator` 来直接读写这个特殊函数
+
+```javascript
+var students = {};
+students[Symbol.iterator] = function () {
+    let index = 1;
+    return {
+        next() {
+            return { done: index > 100, value: index++ };
+        },
+    };
+};
+
+for (var i of students) {
+    console.log(i);
+}
 ```
 
 ## 参考资料

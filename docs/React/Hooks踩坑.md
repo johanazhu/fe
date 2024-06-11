@@ -1,14 +1,16 @@
 # Hooks 踩坑——Capture Value
 
-### Capture Value
 
-可以理解为快照
 
-函数在每次渲染时也是独立的。这就是 **Capture Value** 特性
+简单来说，就是快照
 
-React.Hooks 的本质是利用了闭包机制
+就像拍照片时，你当时是怎么样，照片就是怎么样，不以你最新的动作为标准
 
-简易手写 React Hooks
+因为函数在每次渲染时也是独立的。这就是 **Capture Value** 特性
+
+参考例子：[这里](https://codesandbox.io/s/pjqnl16lm7)
+
+## 简易手写 React Hooks
 
 ```javascript
 let memorizedState = []; // 存放hooks
@@ -31,7 +33,7 @@ const [show, setState] = useState(false);
 
 闭包引起了状态不能更新
 
-### 如何绕过 Capture Value
+## 如何绕过 Capture Value
 
 ```jsx
 const [flag, setFlag] = useState(false)
@@ -64,7 +66,7 @@ function handleClick() {
 
 要解决这个问题，很容易想到把上次的状态保存起来。
 
-### 怎么理解这个快照
+## 怎么理解这个快照
 
 先看看这个普通函数的类似的行为：
 
@@ -105,4 +107,6 @@ sayHi(someone);
 
 -   [useEffect 完整指南](https://overreacted.io/a-complete-guide-to-useeffect/)
 
--   [精读《useEffect 完全指南》](https://juejin.cn/post/6844903806090608647#heading-5)
+-   [精读《useEffect 完全指南》](https://juejin.cn/post/6844903806090608647)
+
+-   [how-are-function-components-different-from-classes/](https://overreacted.io/how-are-function-components-different-from-classes/)

@@ -174,17 +174,34 @@ React 在以下两个假设的基础上提出了一套 O(n) 的**启发式算法
 
 
 
-## 6. 为什么有时 react 两次 setState，只执行了一次
+## 6. 说说 React 的渲染过程
 
-考察点：批处理
+考察点：React 渲染的理解
 
-在 React 中，setState 方法是异步的，这意味着多次连续调用 setState 时，React 会将这些更新合并（batch）为一次，从而只触发一次重新渲染，从而提高性能
+整体流程：
 
-像 setTimeout、promise 之类的原生方法和浏览器原生事件，setState 是同步，这是因为这些事件发生在 React 调度流程之外，不会触发批处理更新机制
+![React 渲染流程图](https://s2.loli.net/2024/06/10/H9gneBd4GrSA1mk.jpg)
 
-可以通过 setState 接受一个函数作为参数，在函数内取到上一次的 state，来实现同步更新
+ React的核心可以用`ui=fn(state)`来表示，更详细可以用
 
-虽然说 setState 在某些情况下是异步的，但实际上它并不是真正意义上的异步，而只是批量更新的一种优化手段
+```jsx
+// 模拟代码
+const state = reconcile(update);
+const UI = commit(state);
+```
+
+上面的fn可以分为如下一个部分：
+
+- Scheduler（调度器）： 排序优先级，让优先级高的任务先进行reconcile
+- Reconciler（协调器）： 找出哪些节点发生了改变，并打上不同的Flags（旧版本react叫Tag）
+- Renderer（渲染器）： 将Reconciler中打好标签的节点渲染到视图上
+
+这些模块是怎么配合工作的：
+
+1. 首先 React 组件（jsx）会被 babel 转换为 React.createElement，React.createElement 函数最后会调用 ReactElement 方法返回一个包含组件数据的对象，这也被称为虚拟 dom
+2. 不过在首次渲染，还是更新状态时，这些渲染的任务都会先经过 Scheduler 的调度，Scheduler 会根据任务的优先级来决定哪些任务先进入 render 阶段，比如用户触发的更新优先级非常高，如果当前正在进行一个比较耗时的任务，则这个任务就会被用户触发的更新打算，在 Scheduler 中初始化任务的时候会计算一个过期事件，不同类型的任务过期时间不同，优先级越高的任务，过期时间越短，优先级越低的任务，过期时间越长。Scheduler会分配一个时间片给需要渲染的任务，如果是一个非常耗时的任务，如果在一个时间片之内没有执行完成，则会从当前渲染到的Fiber节点暂停计算，让出执行权给浏览器，在之后浏览器空闲的时候从之前暂停的那个Fiber节点继续后面的计算，这个计算的过程就是计算Fiber的差异，并标记副作用。
+3. 在 render 阶段，render阶段的主角是Reconciler，在mount阶段和update阶段，它会比较jsx和当前Fiber节点的差异（diff算法指的就是这个比较的过程），将带有副作用的Fiber节点标记出来，这些副作用有Placement（插入）、Update（更新）、Deletetion（删除）等，而这些带有副作用Fiber节点会加入一条EffectList中，在commit阶段就会遍历这条EffectList，处理相应的副作用，并且应用到真实节点上。而Scheduler和Reconciler都是在内存中工作的，所以他们不影响最后的呈现。
+4. 在commit阶段：会遍历EffectList，处理相应的生命周期，将这些副作用应用到真实节点，这个过程会对应不同的渲染器，在浏览器的环境中就是react-dom，在canvas或者svg中就是reac-art等。 
 
 
 
