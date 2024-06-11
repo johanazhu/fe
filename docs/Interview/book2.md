@@ -10,8 +10,6 @@ flex 为缩写，flex：1 表示 1 1 0
 
 flex 默认是 0 1 auto
 
-扩展时剩余部分等比，收缩时，剩余部分等比
-
 1. flex-grow: 1：用来控制 flex 项目在主轴方向上的放大比例。当容器中有剩余空间时，该属性决定了该项目相对于其他 flex 项目是否方法以及放大比例是多少
 2. flex-shrink: 1：用来控制 flex 项目在主轴方向上的缩小比例。当容器中空间不足时，该属性决定了该项目相当于其他 flex 项目是否缩小以及缩小比例是多少
 3. flex-basis: 0：用来设置 flex 项目在主轴方向上的初始大小。如果 flex-basis 设置为0，则 flex 项目的大小完全由 flex-grow 和 flex-shrink 决定
@@ -31,7 +29,7 @@ flex: 1 表示剩余空间有余的时候等比扩展，剩余空间不足的时
 
 flex:2 实力等同于  flex: 2 1 0,
 
-flex-grow:2 ,相对于其他 flex 项目，它的放大比例为2倍
+flex-grow:2 ，相对于其他 flex 项目，它的放大比例为2倍
 
 flex-shrink:1，缩小比例为1
 
@@ -84,11 +82,37 @@ function deepClone(source, storage = new WeakMap()) {
 
 或者用 `structuredClone()`
 
-衍生问题：有哪些浅拷贝
+衍生问题：有哪些浅拷贝、json.stingify 的缺点，怎么解决
 
 ### 浅拷贝
 
 Object.assign、扩展运算符、slice（数组方法）、concat（数组方法）
+
+### json.stingify 的缺点
+
+缺点：
+
+- 无法拷贝函数、正则
+- 会抛出对象的 constructor，所有的构造函数会指向 Object
+- 对象有循环引用，会报错
+
+如何解决循环引用问题？
+
+使用 WeakMap 来解决循环引用，为什么它能解决
+
+要想解决循环引用，可以额外开辟一块存储空间，来存储当前对象和拷贝对象的对应关系，当拷贝时，先从空间中找，找到直接返回，没有的话正常拷贝
+
+这种数据结构可以用 Map 和 WeakMap，最大的区别在于 WeakMap 是弱引用
+
+WeakMap 中的键是“弱引用”，在没有其他引用存在时，垃圾回收能直接进行，避免内存泄露
+
+讲讲内存泄露
+
+新生代内存回收：Scavenge 算法
+
+老生代内存回收：标记-清除（Mark - Sweep）
+
+- 标记-清除-整理
 
 
 
