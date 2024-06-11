@@ -63,7 +63,7 @@ export default function ES6SideBar() {
             ],
         },
         {
-            text: 'Promise专栏',
+            text: 'Promise',
             collapsable: false,
             sidebarDepth: 0,
             items: [

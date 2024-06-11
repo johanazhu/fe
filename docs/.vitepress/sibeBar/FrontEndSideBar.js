@@ -164,8 +164,8 @@ export default function FrontEndSideBar() {
                     link: '/ES6/',
                 },
                 {
-                    text: 'Promise专栏',
-                    link: '/ES6/Promise/',
+                    text: 'Promise',
+                    link: '/ES6/Promise/Promise',
                 },
             ],
         },
