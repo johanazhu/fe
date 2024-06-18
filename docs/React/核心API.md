@@ -17,7 +17,7 @@
 
 `forwardRef` 允许组件使用 [ref](https://zh-hans.react.dev/learn/manipulating-the-dom-with-refs) 将 DOM 节点暴露给父组件。
 
-```react
+```jsx
 const SomeComponent = forwardRef(render)
 ```
 
@@ -29,7 +29,7 @@ const SomeComponent = forwardRef(render)
 
 子组件
 
-```react
+```jsx
 import { forwardRef } from 'react';
 
 const MyInput = forwardRef(function MyInput(props, ref) {
@@ -45,7 +45,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 父组件：
 
-```react
+```jsx
 function Form() {
   const ref = useRef(null);
 
@@ -70,7 +70,7 @@ function Form() {
 
 `memo` 允许你的组件在 props 没有改变的情况下跳过重新渲染
 
-```react
+```jsx
 const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 ```
 
