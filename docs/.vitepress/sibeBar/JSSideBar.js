@@ -144,10 +144,6 @@ export default function JSSideBar() {
                     link: '/JavaScript/原理/0.1加0.2为什么不等于0.3',
                 },
                 {
-                    text: '发布订阅',
-                    link: '/JavaScript/原理/发布订阅',
-                },
-                {
                     text: '图片懒加载',
                     link: '/JavaScript/原理/图片懒加载',
                 },

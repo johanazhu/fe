@@ -178,6 +178,58 @@ var obj = {}
 [].push.apply(obj, arr)
 ```
 
+
+
+## 代码题：手写进度条
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度条</title>
+    <style>
+        #progress-bar {
+            width: 100%;
+            height: 10px;
+            background: gainsboro
+        }
+
+        #progress-slot {
+            transition: all 0.5s;
+            background: red;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-bar">
+        <div id="progress-slot"></div>
+    </div>
+    <script>
+        let timer = 0;
+        function start() {
+            const dom = document.getElementById('progress-slot')
+            let width = 0;
+            timer = setInterval(() => {
+                width +=1;
+                dom.style.width = width + '%'
+                if (width >= 100) {
+                    clearInterval(timer)
+                }
+            }, 150)
+        }
+        start()
+    </script>
+</body>
+</html>
+```
+
+
+
+
+
 ## 参考资料
 
 -   [夯实 JS 主要知识点](https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)

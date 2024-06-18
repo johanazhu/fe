@@ -4,18 +4,20 @@
 
 考察点：行内元素、块级元素
 
+行内元素：a、b、br、code、i、label、q、small、span、strong、sub、sup、textarea、tt
+
+块级元素：div、h1-h6、dl、dd、dt、ul、o、li、form、p、pre、table、tbody、td、tfood、th、thead、tr
 
 
-## 2. 实现一个发布订阅 
 
-考察点：常用设计模式
+## 2. 实现发布订阅 
 
-观察者模式需要知道被观察者
+考察点：手写订阅发布
 
 发布订阅模式无需知道对方，通过监听数据
 
 ```javascript
-class EventPubSub {
+class EventEmitter {
     constructor() {
         this.event = {};
     }
@@ -51,18 +53,71 @@ class EventPubSub {
             callback();
             this.off(type, f);
         }
-        this.on(tyoe, f);
+        this.on(type, f);
     }
 }
 ```
+
+使用示例：
+
+```javascript
+const eventEmitter = new EventEmitter();
+
+// 订阅事件
+eventEmitter.on("公众号", (name) => {
+    console.log(`我订阅了${name}`)
+})
+
+// 发布事件
+eventEmitter.emit('公众号'， '随朱波流')
+```
+
+
+
+衍生问题：你还知道哪些设计模式、Redux
+
+### 你还知道哪些设计模式
+
+单例模式：保证一个类只有一个实例，并提供一个全局访问点。
+
+redux，vuex 等唯一状态数据库，JQuery 只有一个$
+
+- 实现唯一性
+- 减少内存空间
+
+工厂模式：定义一个创建对象的类
+
+观察者模式：就是发布订阅的代表
+
+装饰器模式：不改变原对象的基础上，通过对其进行包装扩展，使原有对象满足用户的复杂需求
+
+适配器模式：通过将一个类的接口换成客户端所期待的接口，可以帮我们剞劂不兼容问题
+
+
+
+### Redux
+
+Redux 是状态管理库，它由数据驱动，发起 action，会引发 reducer 的数据更新，从而更新到最新的  store
+
+Redux 用到了很多设计模式，例如发布订阅模式，单例模式，装饰器模式
+
+发布订阅模式
+
+- 先订阅，
+
+单例模式
+
+- 全局只有一个 store，Redux 像一个状态机，你传入 state 和 action，返回新的 state
+
+装饰器模式
+
+- 它的enhancer、中间件都是装饰器模式，就在 Redux 基础上再包了一层
 
 
 
 ## 3.垃圾回收机制
 
 考察点：v8 垃圾回收
-
-https://febook.hzfe.org/awesome-interview/book2/browser-garbage
 
 
 
@@ -234,7 +289,9 @@ SSR 一次页面渲染的流程：
 
 
 
-## 7. interface 和 type 的区别
+## 7. Interface 和 Type 的区别
+
+Interface 和 Type 的核心区别是 Type 不可在定义后重新添加内容，而 Interface 则总是可以扩展新内容（可扩展）。相比 Interface，Type 并没有实际创建一个新的类型，而是创建一个引用某个类型的名字
 
 
 

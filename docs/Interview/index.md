@@ -1,8 +1,10 @@
-# 面试真题导航
+# 前端十面
 
 > 这里是「五年前端三年面试」的真题面试题，笔者收集了各式各样的前端面试题，汇聚到着十个markdown中。不为别的，只为自己被裁要做八股文准备
 >
 > ——2024.4.12
+>
+> 今天你是我的面试官，明天你要看我的面经
 
 每文共十道题，其中会涉及CSS、手写源码、JavaScript 基础、ES6 特性、React、数据流、工程化、HTTP、微前端、算法等等方面知识，笔者希望靠这十文入职心仪公司
 
@@ -12,7 +14,7 @@
 - 手写源码：防抖与节流
 - JavaScript 基础：闭包
 - ES6特性：Promise 
-- React： React Hook 实现原理
+- React： Fiber 是什么，为什么需要 Fiber 
 - 数据流： Redux 是什么？
 - 浏览器：浏览器输入 url 到页面渲染都经历了什么？
 - HTTP：HTTP 1、2、3 的区别
@@ -25,7 +27,7 @@
 - 手写源码：深拷贝
 - JavaScript 基础：原型和原型链
 - ES6特性：箭头函数和普通函数的区别
-- React： Fiber 是什么，为什么需要 Fiber
+- React： React Hook 实现原理
 - React：函数式组件与类组件的区别
 - 浏览器：什么是同源策略以及跨源资源共享（CORS）？
 - 工程化：Webpack构建的原理 
@@ -64,7 +66,7 @@
 - 手写源码：实现一个 promise
 - JavaScript 基础：作用域
 - ES6特性：Es Module 和 CommonJs
-- React： useMemo、useCallback和useRefs区别
+- React： useMemo、useCallback是什么
 - React：说说你做的组件
 - 浏览器：html缓存了怎么更新，js和css缓存是怎么更新的
 - 工程化：babel 是什么，怎么做到的 
@@ -100,7 +102,7 @@
 ## 模拟题八
 
 - CSS：行内元素、块级元素有哪些，区别是什么
-- 手写源码：首先现一个发布订阅 
+- 手写源码：实现发布订阅 
 - JavaScript 基础：垃圾回收机制
 - ES6特性：扩展运算符和剩余运算符
 - React: react中一个父组件，两个子组件，一个传props，一个不传props，父组件重新渲染，两个子组件会不会都重新渲染

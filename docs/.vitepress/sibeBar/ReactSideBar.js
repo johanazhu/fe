@@ -89,10 +89,6 @@ export default function reactSideBar() {
                     link: '/React/React版本更新',
                 },
                 {
-                    text: 'React18的useEffect会执行两次',
-                    link: '/React/React18的useEffect会执行两次',
-                },
-                {
                     text: '生命周期',
                     link: '/React/生命周期',
                 },

@@ -64,11 +64,23 @@ CommonJS 模块是运行时加载，ES6 模块是编译时输出接口
 
 
 
-## 5.React： useMemo、useCallback和useRefs区别
+## 5.React： useMemo、useCallback是什么
 
-React.memo、React.useCallback、React.usememo 的作用
+考察点：useCallback、useMemo
 
-React.memo有什么优点缺点
+useCallback：缓存函数，结合 memo 能让子组件不重复渲染
+
+useMemo：缓存值，结合 memo 能让子组件不重复渲染
+
+衍生问题：除了useCallback和 useMemo，React 还有那些性能优化的点
+
+
+
+### 除了useCallback和 useMemo，React 还有那些性能优化的点
+
+
+
+
 
 
 

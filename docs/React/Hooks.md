@@ -29,13 +29,11 @@
 
 性能优化相关
 
--   useMemo
--   useCallback
+- [useCallback 和 useMemo 使用场景](./useCallback和useMemo)
 
-与 Ref 相关
+与 Refs 相关
 
--   useRef
--   useImperativeHandle
+- [Refs](./Refs)
 
 不常见的其他的 hooks
 
@@ -377,7 +375,9 @@ function Counter() {
 
 #### 与 useLayoutEffect 的区别
 
-同步
+layoutEffect 是在 dom 更新之后同步调用
+
+一般不建议用 useLayoutEffect，因为同步逻辑会阻塞渲染
 
 ```jsx
 // 用来替代constructor初始化状态
@@ -393,135 +393,11 @@ useMemo（）
 
 ## 性能优化相关
 
-什么时候使用 useMemo 和 useCallback ？
+[useCallback 和 useMemo 使用场景](./useCallback和useMemo)
 
-这两个 hooks 内置于 React 都有特别的原因：
+## 与 Refs 相关
 
-1. 引用相等
-2. 昂贵的计算
-
-针对 useMemo 和 useCallback 最直观的测试就是打印 函数式组件是否有渲染，优化之后，没改变的组件不渲染
-
-先说结论 useCallback 和 useMemo 都可缓存函数的引用或值，但是从更细的实用角度来说，useCallback 缓存函数的引用，useMemo 缓存计算数据的值
-
-### useMemo
-
-渲染一个组件，会将内部的方法重新执行，这个操作是没有闭包的，消耗无关的性能。
-
-使用 useMemo 来优化
-
-传入 useMemo 的函数会在渲染期间执行，
-
-默认情况下，如果 React 父组件重新渲染，它包含的所有子组件都会重新渲染，即使子组件没有任何变化。
-
-React.memo() 方法可以防止子组件不必要渲染，从而提供组件性能。
-
-### useCallback
-
-useCallback 钩子是专门为传递给子组件的回调函数设计的，可以避免不必要的重新创建这些函数，重新创建这些函数的过程会再每次重渲染时引起性能问题
-
-`useMemo` 和 `useCallback` 接受的参数都是一样，都是在其依赖项发生变化后执行，都是返回缓存的值，区别在于 `useMemo` 返回的是函数运行的结果，`useCallback` 返回的是函数
-
-useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
-
-### React.memo
-
-只有当 props 改变时会重新渲染子组件
-
-[demo](https://codesandbox.io/s/laughing-shamir-5nx7p?file=/src/App.js)
-
-### useCallback 和 useMemo
-
-相同点：useCallback 和 useMemo 都是性能优化的手段，类似于类组件的 shouldComponentUpdate，在子组件中使用 shouldComponentUpdate，判断该组件的 props 和 state 有没有变化，从而避免每次父组件 render 时重新渲染子组件
-
-区别：useCallback 和 useMemo 的区别是 useCallback 返回一个函数，当把它返回的这个函数作为子组件使用时，可以避免每次父组件更新时重新渲染这个子组件
-
-```jsx
-const renderButton = useCallback(
-     () => (
-         <Button type="link">
-            {buttonText}
-         </Button>
-     ),
-     [buttonText]    // 当buttonText改变时才重新渲染renderButton
-);
-```
-
-useMemo 返回的是一个值，用于避免在每次渲染时都进行高开销的计算
-
-```jsx
-// 仅当num改变时才重新计算结果
-const result = useMemo(() => {
-    for (let i = 0; i < 100000; i++) {
-      (num * Math.pow(2, 15)) / 9;
-    }
-}, [num]);
-```
-
-### 什么时候使用
-
-别人导师说：任何时候都用是一个好的习惯，但是大部分时间不用也没什么大问题。**但是如果该函数或变量作为 props 传给子组件，请一定要用，避免子组件的非必要渲染**
-
-## 与 Ref 相关
-
-ref 是 reference（引用）的缩写。在 React 中，我们习惯用 ref 保存 DOM
-
-### useRef
-
-事实上，任何需要被”引用“ 的数据都可以保存在 ref 中， useRef 的出现将这种思想进一步发扬光大
-
-useRef 钩子能够在重渲染过程中保存 state
-
-使用 useRef 保存和更新一些数据时有一定好处的，**它可以不通过内存来保存数据**，使得这些数据再重渲染时不会被清除掉
-
-如果我们想利用普通的变量再重渲染过程中追踪数据变化是不可行的，因为每次组件渲染时它都会被重新初始化。然而，如果使用 ref 的话，其中的数据能在每次组件渲染时保持不变。
-
-#### 为啥使用 useRef?
-
-它不仅仅是用来管理 DOM ref 的，它还相当于 this，可以存放任何变量，很好的解决闭包带来的不方便性
-
-#### 怎么使用 useRef?
-
-```javascript
-const [count, setCount] = useState < number > 0;
-const countRef = useRef < number > count;
-```
-
-##### 场景举例
-
-点击加一个按钮 3 次，再点弹框显示 1 次，再点加按钮 2 次，最终 alert 会是什么结果？
-
-```jsx
-import React, { useState } from 'react'
-
-const Counter = () => {
-  const [count, setCount] = useState<number>(0)
-
-  const handleCount = () => {
-    setTimeout(() => {
-      alert('current count: ' + count)
-    }, 3000);
-  }
-
-  return (
-    <div>
-      <p>current count: { count }</p>
-      <button onClick={() => setCount(count + 1)}>加</button>
-      <button onClick={() => handleCount()}>弹框显示</button>
-    </div>
-  )
-}
-
-export default Counter
-```
-
-结果是弹框内容为 **current count: 3**，为什么？
-
-当我们更新状态的时候, React 会重新渲染组件, 每一次渲染都会拿到独立的 count 状态, 并重新渲染一个 handleCount 函数. 每一个 handleCount 里面都有它自己的 count
-
-### ForwardRef
-
-ForwardRef 只是将 ref 作为第二个参数传递下去，不会进入 ref 的工作流程
+[Refs](./Refs)
 
 ## 自定义 Hooks
 

@@ -1,40 +1,49 @@
 # React 版本更新
 
-笔者从 React17开始将，讲诉每一个大版本
+笔者从 React17开始讲，讲诉每一个大版本
 
-## React17
+## React17 版本更新
 
-React 17 的改动并不大
+React17 无新特性，是个过渡版本，它在2022年9月发布，这个版本将 React 自身的升级变得更加容易
 
-在 React17 中，已经不需要显式导入 React 了。详见[介绍全新的 JSX 转换](https://zh-hans.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)
+- 渐进式升级
+- 事件委托的变更
+- 全新的 JSX 转换
 
-- `React` 更新引入了 `react/jsx-runtime`, 改变了 `JSX` 编译模式, 不再是 `React.createElement`
+## 渐进式升级
 
-```javascript
-_jsx('h1', { children: 'Hello world' });
+**React v17 开启了 React 渐进式升级的新篇章**。当你从 React 15 升级至 16 时（或者，从 16 升级到 17），你通常会一次性升级整个应用程序，这对大部分应用来说十分有效
+
+## 事件委托的变更
+
+React v17中，React 不会再将事件处理添加到 `document` 上，而是将事件处理添加到渲染 React 树的根 DOM 容器中
+
+```jsx
+const rootNode = document.getElementById('root');
+ReactDOM.render(<App />, rootNode);
 ```
 
-- 同时编译工具(`react` 的预设 `@babel/preset-react`)，针对 `jsx` 不但会帮我们进行编译, 还会帮我们手动引入所需要的包
+在 React 16 及之前版本，React 会对大多数事件进行`document.addEventListener()` 操作。
 
-```javascript
-// 由编译器引入（禁止自己引入！）
-import { jsx as _jsx } from 'react/jsx-runtime';
+React v17 开始会通过调用 `rootNode.addEventListener()` 来代替
 
-function App() {
-  return _jsx('h1', { children: 'Hello world' });
-}
-```
+![react_17_delegation](https://s2.loli.net/2024/06/16/kXmv5TSiZxj2Qya.png)
 
-- 那早期版本是不是更新了 `@babel/preset-react` 也可以不需要手动引入? 不可以, 因为这里是使用新的编译方式, 旧的版本并不支持
+## 全新的 JSX 转换
 
-## React18 
+Reacct v17 支持了全新的 [JSX 转换](https://zh-hans.legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)。使得无需显式导入 React 即可单独使用 JSX
 
-React18 新特性有很多，也是面试常考题，主要分为
+## React18 版本更新
+
+React18 新特性有很多，也是面试常考题，它在22年3月发布，它的特性包括：
 
 - 正式支持 Concurrent Mode（并发模式）
 - 自动批处理
+- 新功能（新API）：过渡（startTransition）
+- 新的 Suspense 特性：支持 Suspense 的流式服务端渲染
 - 放弃 IE
 - Render API
+- 服务端组件
 
 
 
@@ -56,11 +65,29 @@ React 18 的并发模式主要通过两个新的 API 来实现：useTransition()
 
 ### 自动批处理
 
-在 React18 之前，合成事件、生命周期中如果多次修改 state，会进行批处理，但是原生事件、定时器、promise.then 不会进行批处理。原因是早起的批处理是通过一个状态作为批处理为依据
+在 React18 之前，合成事件、生命周期中如果多次修改 state，会进行批处理，但是原生事件、定时器、Promise 不会进行批处理。原因是早期的批处理是通过一个状态作为批处理为依据
 
 在 React 18 之后所有的更新都会转成自动批处理：
 
 - 主要原因是不再通过 状态 来作为批处理依据，而是基于 Fiber 增加调度的流程来实现，以更新的「优先级」来依据来进行批处理
+
+```jsx
+// 之前：只对 React 事件执行批量处理
+setTimeout(() => {
+  setCount(c => c + 1);
+  setFlag(f => !f);
+  // React 将渲染两次，每次状态更新一次（无批量处理）
+}, 1000);
+
+// 之后：超时、Promises、本机事件处理程序
+// 或任何其他事件内的更新是批处理的。
+
+setTimeout(() => {
+  setCount(c => c + 1);
+  setFlag(f => !f);
+  // React 只会在最终重新渲染一次（这就是批量处理！）
+}, 1000);
+```
 
 可以通过 `flushSync `退出批处理
 
@@ -78,6 +105,47 @@ React 18 的并发模式主要通过两个新的 API 来实现：useTransition()
   }}
 >
 ```
+
+
+
+### 新功能（新API）：过渡（Transition）
+
+过渡是  React 中的一个新概念，用以区分紧急和非紧急更新
+
+- 紧急更新：反映了直接的交互，如输入、点击、按压
+- 过渡更新：将 UI 从一个视图过渡到另一个
+
+```jsx
+import {startTransition} from 'react';
+
+// 紧急：显示输入的内容
+setInputValue(input);
+
+// 将内部的任何状态更新都标记为过渡
+startTransition(() => {
+  // 过渡：显示结果
+  setSearchQuery(input);
+});
+```
+
+被 startTransition 包裹的更新被当作非紧急事件处理，如有更紧急更新，如点击或按键，则会被中断。如果一个过渡被用户中断（例如，连续输入多个字符），React 会丢弃未完成的无效的渲染，而只渲染最新的更新。
+
+- `useTransition`：一个启动过渡的 Hook，包括一个值以跟踪待定状态。
+- `startTransition`：当 Hook 不能使用时，一个启动过渡的方法。
+
+### 新的 Suspense 特性：支持 Suspense 的流式服务端渲染
+
+如果组件树的某一部分还没有准备好被显示，Suspense 可以让你声明式地指定加载状态：
+
+```jsx
+<Suspense fallback={<Spinner />}>
+  <Comments />
+</Suspense>
+```
+
+React17时，React 推出了一个有限的 Suspense 版本。然而，唯一支持的用例是用 React.lazy 拆分代码，且在服务端渲染时根本不支持
+
+在 React 18 中，我们增加了对服务端的 Suspense 支持，并使用并发渲染特性扩展了其功能
 
 
 
@@ -112,26 +180,12 @@ ReactDOM.createRoot(root).render(<App />);
 
 
 
-### 严格模式下第二次渲染期间抑制日志
-
-为了防止组件有什么意外的副作用，而引起 BUG，所以严格模式下 React 在开发模式中会可以执行两次渲染，尽可能把问题提前暴露出来，来提前预防
-
-而 React 为了让日志更容易阅读，通过修改 console 中的方法，取消了其中一次渲染的控制台日志
-
-问题：开发人员在调试过程中会存在很多困惑
-
-展望未来：React 将不再默认在第二次渲染期间抑制日志，如果安装了 `React DevTools > 4.18.0`, 第二次渲染期间的日志现在将以柔和的颜色显示在控制台中
-
-
-
-
-
-
-
 
 
 ## 参考资料
 
+-   [官网React17](https://zh-hans.legacy.reactjs.org/blog/2020/10/20/react-v17.html)
+-   [官网React18](https://zh-hans.legacy.reactjs.org/blog/2022/03/29/react-v18.html)
 -   [React 18 带给我们的惊喜](https://mp.weixin.qq.com/s/Pr5lMuL1ev7id9k2h2DTQQ)
 -   [React18 正式版发布，未来发展趋势是？](https://mp.weixin.qq.com/s/gwfib4yaI0NxBfnWGrcwkw)
 -   [React 18 对 Hooks 的影响](https://mp.weixin.qq.com/s/fgT7Kxs_0feRx4TkBe6G5Q)

@@ -61,7 +61,6 @@
     -   React 从13年开始到V15的Class组件 + 生命周期 再到Function + Hooks 的时间节点里程碑
 
 -   [React版本更新](./React版本更新)
--   [React18的useEffect会执行两次](./React18的useEffect会执行两次)
 -   [生命周期](./生命周期)（已过时）
     -   class 才有生命周期
     -   15 的生命周期

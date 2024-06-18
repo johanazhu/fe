@@ -185,7 +185,7 @@ enhancer 要做的就是：**东西还是那个东西，只是经过了一些工
 ```javascript
 applyMiddleware(...middlewares);
 // 结合 createStore，就是
-const store = createStore(reudcer, initState, applyMiddleware(...middlewares));
+const store = createStore(reducer, initState, applyMiddleware(...middlewares));
 ```
 
 所以我们需要先对 createStore 进行改造，判断当有 enhancer 时，我们需传值给中间件

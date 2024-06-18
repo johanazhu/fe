@@ -283,57 +283,56 @@ curriedAdd(1, 2)(3);
 
 
 
-## 4.Promise 相关
+## 4.Promise 是什么
 
-then、
+考察点：promise
 
- setTimeout
+Promise 是 JavaScript 中用于处理异步操作的一种解决方案。它可以让异步代码的执行看起来更像同步代码，从而提高代码的可读性和可维护性，与之比较的是传统的回调函数
 
-什么是回调地狱，如何解决？引出 Promise async await
+Promise 有三种状态：pending（等待）、fulfilled（成功）和 rejected（失败），Promise 的状态只能从 pending 转变为 fulfilled 或 rejected，且一旦状态确定就不会再改变
 
-Promise 链式调用，链式调用怎么写
+Promise 的实现原理如下：
 
-
-
-## 5.React Hooks 实现原理
-
-考察点：React Hooks 是什么、怎么实现的，使用时需要注意什么
-
-### React Hooks 是什么
-
-Hooks 是 React 16.8 新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他 React 特性
+1. 每个 Promise 实例都有一个 then 方法，用于注册成功和失败的回调函数
+2. 当异步操作完成时，Promise 实例会自动调用相应的回调函数，并将结果传递给回调函数
+3. Promise 使用微任务队列来管理回调函数的执行顺序，保证了代码的执行顺序
+4. Promise 还支持链式调用，可以在 then 方法中返回一个新的 Promise 实例，从而实现复杂的异步流程控制
 
 
 
-### React Hooks 实现原理
+## 5. Fiber 是什么，为什么需要 Fiber
 
-- Hooks 数据存储在组件对应的 Fiber 节点上。每个 Fiber 节点都有之关联的 Hooks 链表，Hooks 通过链表的形式进行串联存储
-- 利用闭包保存 Hooks 状态。每次组件重新渲染时，Hooks 的状态通过闭包机制得到保留
-- 利用链表结构维护 Hooks 的状态。Hooks 以链表的形式进行存储，便于在组件更新时快速定位和更新对应的  Hooks 状态
-- UseState 和 useEffect 等 Hooks API 的实现原理。这些 API 的内部实现利用了闭包和链表结构来保存和管理状态
-- Hooks 机制让 React 函数也能实现和 Class 组件类似的状态管理和副作用处理功能
+考察点：Fiber 
 
-总的来说，React Hooks 的实现借助了 Fiber 架构、闭包和链表等技术手段，使得函数组件也能拥有状态管理和生命周期的能力，极大地简化了 React 组件的开发
+### 什么是 React Fiber
+
+- Fiber 是 React 内部的一种新的协调算法，用于对 React 组件树进行调度和渲染
+- 它使用了一种基于 Fiber 的数据结构来表诉组件树，这个数据结构允许 React 执行更加颗粒的控制和分段计算
+
+### 为什么需要 React Fiber
+
+- 在 React 16 之前面临的主要性能问题是：当组件很庞大时，更新状态可能造成页面卡顿，根本原因在于更新流程是同步、不可中断的。React 16 重写了代码，提出 Fiber 架构，它是可异步中断的
+- 传统的 React Reconciler 算法存在一些问题，例如无法暂停、恢复或者放弃正在执行的工作，这会导致高优先级的任务被阻塞
+- React Fiber 通过将组件树的递归更新拆分为多个子任务，使 React 可以对任务进行暂停、恢复和放弃等操作，从而提高用户交互的响应性
+- Fiber 还支持增量渲染，可以将渲染工作分批完成，而不是一次性完成，从而使得 React 应用在执行大量计算时也能保持流畅的用户体验
+
+### Fiber 的工作原理
+
+- Fiber 中使用了一种基于链表的数据结构来表示组件树，称为 Fiber 树
+- Fiber 树中的每个节点就是一个 Fiber 对象，包含了组件的状态信息和更新操作
+- React 在更新组件时，会根据新旧 Fiber 树之间的差异计算出需要更新的部分，并将更新任务拆分称多个子任务
+
+### Fiber 的渲染流程
+
+1. 初次渲染：当应用首次启动时，会构造一颗全新的 Fiber 树，即创建虚拟 DOM 并将其转换为 Fiber 节点
+2. 数据更新：当应用的状态发生变化时，React 会比较新旧两棵 Fiber 树，找到差异并更新到真实 DOM
+3. 渲染过程：
+   1. 输入阶段：从 react-dom 包开始，将更新请求传递给调度器（Scheduler）
+   2. 调度阶段：调度起将更多任务拆分成多个工作单元，并根据优先级分批执行
+   3. 提交阶段：完成所有工作单元后，将变更应用到真实 DOM
+4. 中断与恢复：Fiber 架构支持将渲染过程中断并恢复，以确保应用的响应性
 
 
-
-衍生问题：
-
-为什么不能在循环中调用 Hooks？
-
-Hooks为什么只能写在顶层，不写在顶层会报错吗
-
-
-
-### 为什么不能在循环中调用 Hooks？
-
-Hooks 的原理是基于 Fiber 树结构和链表维护 Hooks 状态。如果在循环或条件语句中调用 Hooks，会破坏这种固定的调用顺序，导致 Hooks 状态混乱
-
-
-
-### Hooks为什么只能写在顶层，不写在顶层会报错吗
-
-Hooks 的实现机制依赖于 Fiber 树结构，以及 Hooks 在 Fiber 节点上的链表存储。在顶层调用 Hooks，可以确保 Hooks 能够正确地与 Fiber 树建立关联
 
 
 
@@ -584,18 +583,23 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 
 #### Webpack 等打包工具的性能优化
 
-- 配置 Webpack，压缩 JS、CSS、图片等静态资源大小
+- 拆包
+- 配置 Webpack，压缩 JS、CSS、图片等静态资源大小（资源压缩）
 - Tree shaking 去除死代码
 
 
 
 #### React 性能优化
 
-- 使用 usememo(缓存值)、useCallback（缓存回调函数）、memo（避免重复渲染）、react.lazy(懒加载)
-- 分页、虚拟列表、按需引入
-- map循环展示添加key
+- 使用 usememo(缓存值)、useCallback（缓存回调函数）、memo（避免重复渲染）、
+- react.lazy(懒加载)
+- 分页
+- 虚拟列表
+- 列表项使用 key 属性
 - 路由懒加载
 - 第三方插件按需引入
+- 使用 Fragment 或者空标签减少层级
+- SSR 渲染
 
 
 
@@ -620,21 +624,20 @@ TTI：应用可交互时间
 
 
 
-衍生问题：useCallback 是什么 、useMemo 是什么 、useCallback 和 useMemo 有什么区别？、memo 是什么？
+衍生问题：useCallback 是什么 、useMemo 是什么 、useCallback 和 useMemo 有什么区别？、memo 是什么？虚拟列表的解决方案
 
 
 
 ### useCallback 是什么
 
-- useCallback 是一个 Hooks 函数，它接受一个函数和一个依赖项数组作为参数
-- 它的作用是，在组件的整个生命周期中，缓存传入的函数，只有当依赖项数组中的值发生变化时，才会重新创建这个函数
+- useCallback 缓存缓存回调函数
 - 这样可以避免每次组件渲染时都创建新的函数示例，从而提高性能，特别时当该函数作为 props 传递给子组件时
+- useCallback 有哪些应用场景，工作中你有哪些性能
 
 ### useMemo 是什么
 
-- useMemo 也是一个 Hooks 函数，它接受一个函数和一个依赖项数组作为参数
-- 它的作用是，在组件在某次渲染时，缓存传入函数的计算结果，只有当依赖项数组中的值发生变化时，才会重新计算并缓存结果
-- 这样可以避免在每次组件渲染时都重复进行昂贵的计算，从而提高性能
+- useMemo 缓存计算值
+- useMemo 有哪些应用场景，工作中你有哪些性能
 
 ### useCallback 和 useMemo 有什么区别？
 
@@ -664,6 +667,12 @@ memo 是一个高阶组件（HOC），它可以用来包装一个函数组件，
 - 缓存计算结果
   - memo 会缓存组件的计算结果，如果 props 没有发生变化，则可以直接使用缓存的结果，而不需要重新计算
 - 提高代码可读性
+
+
+
+### 虚拟列表的解决方案
+
+通过 IntersectionObserver 和 getBoundingClientRect 实现
 
 
 
