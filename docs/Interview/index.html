@@ -191,9 +191,9 @@
         // 不管事件触发多少次，都在n秒后执行
         // 用处：用户触发高频事件过于频繁，只要最后一次操作
         // 应用场景：搜索关键字、窗口大小、表单提交
-        // 使用：dobounce(handleClick, 1000)
+        // 使用：debounce(handleClick, 1000)
         // flag 是否立即执行
-        function dobounce(func, wait, flag) {
+        function debounce(func, wait, flag) {
             let timer = null;
             return function (...args) {
                 clearTimeout(timer);
@@ -430,9 +430,9 @@
         // flexible(rem布局) vw 布局 px 布局
         //
         // 防抖节流
-        // 防抖 dobounce
+        // 防抖 debounce
         // 一段时间内执行代码，  以最后一次为准
-        function dobounce(func, wait, flag) {
+        function debounce(func, wait, flag) {
             let timer = null;
             return function (...args) {// 扩展运算符
                 clearTimeout(timer);

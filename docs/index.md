@@ -23,17 +23,14 @@ hero:
       text: React
       link: /React/
     - theme: alt
-      text: 后端之海
+      text: BackEnd
       link: /BackEnd/
-    - theme: alt
-      text: Node
-      link: /Node/
-    - theme: alt
-      text: 大前端
-      link: /WebApp/
     - theme: alt
       text: 面试真题
       link: /Interview/
+    - theme: alt
+      text: 大前端
+      link: /WebApp/
 features:
   - title: 允许一切如其所是
     details: 参差百态乃幸福之本源

@@ -38,28 +38,48 @@ Reacct v17 支持了全新的 [JSX 转换](https://zh-hans.legacy.reactjs.org/bl
 React18 新特性有很多，也是面试常考题，它在22年3月发布，它的特性包括：
 
 - 正式支持 Concurrent Mode（并发模式）
+- Render API
 - 自动批处理
 - 新功能（新API）：过渡（startTransition）
 - 新的 Suspense 特性：支持 Suspense 的流式服务端渲染
 - 放弃 IE
-- Render API
 - 服务端组件
 
 
 
 ### Concurrent Mode（并发模式）
 
+V16就提出了Fiber架构，React 并发（concurrent）模式还在构建中（处于实验阶段），到V18才正式投入
+
 在以前，React 在状态变更后，会开始准备虚拟 DOM，然后渲染真实 DOM，整个流程都是串行的。一旦开始触发更新，只能等流程完成结束，期间是无法中断的
 
 并发模式下，React 在执行过程中，每执行一个 Fiber，都会看有没有更高优先级的更新，如果有，则当前低优先级的更新会被暂停，等高优先级任务执行完毕后，再继续执行之前的任务
 
-
-
-在 React 18 中，引入了新的并发模式，允许 React 更高效地利用 CPU 资源，提高应用的渲染速度。这个新功能被称为“React 的异步渲染（asyncchronous rendering）”
-
-在 React 18 之前，React 采用基于时间分片的协调策略，将大的更新任务切分为多个小的任务，从而避免阻塞用户界面。但这种策略需要手动添加时间分片代码，而且对于复杂的更新任务难以保证性能
-
 React 18 的并发模式主要通过两个新的 API 来实现：useTransition() 和 useDeferredValue()。useTransition() 可以把回调函数里的更新设置为连续事件的优先级，比离散事件的优先级低。useDeferredValue() 是延后更新 state 的值。这些并发特性的 API 都是通过设置 Lane 来实现的，React 检测对应的 Lane 就会开启带有时间分片的 workLoopConcurrent 循环。时间分片的 workLoop + 优先级调度，这就是 React 并发机制的实现原理
+
+
+
+### Render API
+
+修复了将组件挂载在 root 节点的一个 API
+
+18之前版本：
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+const root = document.getElementById('root')!;
+ReactDOM.render(<App />, root);
+```
+
+18版本：支持并发模式渲染
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+const root = document.getElementById('root')!;
+ReactDOM.createRoot(root).render(<App />);
+```
 
 
 
@@ -116,7 +136,7 @@ setTimeout(() => {
 - 过渡更新：将 UI 从一个视图过渡到另一个
 
 ```jsx
-import {startTransition} from 'react';
+import { startTransition } from 'react';
 
 // 紧急：显示输入的内容
 setInputValue(input);
@@ -153,30 +173,6 @@ React17时，React 推出了一个有限的 Suspense 版本。然而，唯一支
 
 1. React 17 修复了 IE 兼容问题
 2. React 18 就彻底放弃了对 IE 的支持
-
-
-
-### Render API
-
-修复了将组件挂载在 root 节点的一个 API
-
-18之前版本：
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-const root = document.getElementById('root')!;
-ReactDOM.render(<App />, root);
-```
-
-18版本：支持并发模式渲染
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-const root = document.getElementById('root')!;
-ReactDOM.createRoot(root).render(<App />);
-```
 
 
 

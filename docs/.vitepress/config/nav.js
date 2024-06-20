@@ -2,6 +2,7 @@ export default [
     { text: 'Introduction', link: '/Introduction/' },
     { text: 'JavaScript', link: '/JavaScript/' },
     { text: 'React', link: '/React/' },
+    { text: 'Interview', link: '/Interview/' },
     { text: 'BackEnd', link: '/BackEnd/' },
     {
         text: 'BigFront', items: [
@@ -20,7 +21,7 @@ export default [
             //   text: '数据结构与算法',
             //   link: 'https://github.com/johanazhu/leetcode',
             // },
-            { text: 'Interview', link: '/Interview/' },
+            // { text: 'Interview', link: '/Interview/' },
             { text: 'Docker', link: '/Docker/' },
             { text: 'Linux', link: '/Linux/' },
             { text: 'Git', link: '/Git/' },

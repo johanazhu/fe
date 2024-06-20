@@ -119,11 +119,33 @@ Redux 用到了很多设计模式，例如发布订阅模式，单例模式，�
 
 考察点：v8 垃圾回收
 
+详见原理：[垃圾回收机制](https://fe.azhubaby.com/JavaScript/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6.html)
 
+V8 进程的内存由以下部分组成：
 
-标记清除
+- 新生代内存区
+- 老生代内存区
+- 其他（大对象区、代码区、map 区）
 
-引用计数
+新生代存在生存时间短的对象，老生代存放生存时间久的对象
+
+新生代通常只支持1-8M的容量，而老生代区会支持更大的容量，而针对这两块区域，V8 分别使用两个不同的垃圾回收器
+
+- 主垃圾回收器，负责老生代的垃圾回收
+- 副垃圾回收器，负责新生代的垃圾回收
+
+新生代内存回收：Scavenge 算法
+
+- 将空间分成两半，一半是 from 空间，一半是 to 空间，新加入的对象会放在 from 空间，当空间快满时，执行垃圾清理；再角色调换，当调换完后的 from 空间快满时，再执行垃圾清理，如此反复
+
+老生代内存回收：标记-清除-整理（Mark - Sweep），此为两个算法，「标记-清理」算法和 「标记-整理」算法
+
+- 标记-清理：标记用不到的变量，清理掉
+- 标记-整理：整理完内存后，会产生不连续的内容空间，为节省空间，整理算法会将内容排序到一处空间，空间就变大了
+
+引用计数：引擎中有张“引用表”，保存了内存里面的资源的引用次数，如果一个值的引用次数是0，就表示这个只不再用到，因此可以将这块内存释放
+
+- 缺点：循环引用，从而导致内容泄露
 
 
 
@@ -145,23 +167,17 @@ Redux 用到了很多设计模式，例如发布订阅模式，单例模式，�
 
 React17、18、19 更新以及服务端组件
 
-### 新的JSX转换
+### React17
 
-#### React 16 原理
+#### 全新的 JSX 转换
 
-babel-loader 会预编译 JSX 为 React.createElement(...)
+React 17之前必须引入 `import React from 'react';` ，打包工具才能正常编译
 
-#### React 17 原理
+React 17 之后，React 引入了 `react/jsx-runtime`，编译工具会自动识别 React 组件并将代码编译为 React.createElement
 
-React 17 中的 JSX 转换不会将 JSX 转换为 React.createElement
+#### 事件委托的变更
 
-而是自动从 React 的 package 中引入新的入口函数并调用
-
-另外此次升级不会改变 JSX 语法，旧的 JSX 转换也讲继续工作
-
-### 事件代理（委托）更改
-
-在 React 17 时，React 将不再再后台的稳当级别附加事件处理程序。它将附加到渲染的 React 数的根 DOM 容器
+React v17 中，React 不会再将事件处理添加到 `document` 上，而是将事件处理添加到渲染 React 树的根 DOM 容器中
 
 ```jsx
 const rootNode = document.getElementById('root');
@@ -170,26 +186,9 @@ ReactDOM.render(<App />, rootNode);
 
 ![image-20240513105744250](D:\Documents\PicGo Files\image-20240513105744250.png)
 
-在**React** 16和更早的版本中，**React**将对大多数事件执行document.addEventListener（）。
+在 React 16 和更早的版本中，React 将对大多数事件执行document.addEventListener（）。
 
- **React** 17将在后调用rootNode.addEventListener（）
-
-### 去掉事件池
-
-
-
-### 全新的 JSX 转换器
-
-总结下来就是两点：
-
-- 用 `jsx()` 函数替换 `React.createElement()`
-- 运行时自动引入 `jsx()` 函数，无需手写引入`react`
-
-在v16中，我们写一个React组件，总要引入 react
-
-
-
-
+React 17 将在后调用rootNode.addEventListener（）
 
 ### React 18 更新
 
@@ -198,6 +197,8 @@ ReactDOM.render(<App />, rootNode);
 v18的新特性是使用现代浏览器的特性构建的，彻底放弃对 IE 的支持。
 
 v17 和 v18 的区别就是：从同步不可中断更新变成了异步可中断更新，v17可以通过一些试验性的API开启并发模式，而v18则全面开启并发模式
+
+> V16就提出了Fiber架构，React 并发（concurrent）模式还在构建中（处于实验阶段），到V18才正式投入
 
 #### 更新 render API
 
@@ -282,10 +283,16 @@ SSR 一次页面渲染的流程：
 
 
 
-#### useTransition 和 useDeferredValue
+#### 新功能（新API）：过渡（startTransition）
+
+#### 新增 useId、useTransition 和 useDeferredValue
 
 - useTransition
 - useDeferredValue
+
+#### 放弃 IE
+
+#### 服务端组件
 
 
 
@@ -305,11 +312,48 @@ Interface 和 Type 的核心区别是 Type 不可在定义后重新添加内容�
 
 
 
-## 9.3 次握手过程
+## 9. 浏览器：跨域
 
-第一次握手客户端向服务端发送一个报文，第二次是服务端收到报文后，会应答一个报文给客户端。第三次是客户端收到报文后再给服务端发送一个报文，三次握手久成功了
+考察点：跨域
 
-考察点：tcp
+### 同源策略
+
+一个安全策略
+
+同源：同一协议（protocol）、域名（domain）、端口（port）
+
+### 跨域解决方案
+
+JSONP
+
+- 最古老的彼岸者，利用 `script` 标签没有跨域限制这个特点
+- 仅支持 GET 方法
+- 步骤
+  - 定义jsonp回调函数方法jsonpCallback 
+  - script 请求接口（后端）时带上cb=jsonpCallback 参数
+  -  后端获取到 jsonpCallback 的值并返回给前端
+
+CORS（跨域资源共享）
+
+window.postMessage
+
+​	
+
+WebSocket
+
+- 双向数据通信
+
+Nginx 代理
+
+Node 代理
+
+document.domain + iframe
+
+document.location.hash + iframe
+
+window.name + iframe
+
+修改浏览器安全配置
 
 
 

@@ -77,7 +77,7 @@ BFC 属于普通流，其他的有
 - 验证表单，输入 1000 毫秒后验证
 
 ```javascript
-function dobounce(func, wait, flag) {
+function debounce(func, wait, flag) {
     let timer = null;
     return function (...args) {
         clearTimeout(timer);
@@ -592,11 +592,11 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 #### React 性能优化
 
 - 使用 usememo(缓存值)、useCallback（缓存回调函数）、memo（避免重复渲染）、
-- react.lazy(懒加载)
+- 路由懒加载（使用 react.lazy）
+- Suspense
 - 分页
 - 虚拟列表
 - 列表项使用 key 属性
-- 路由懒加载
 - 第三方插件按需引入
 - 使用 Fragment 或者空标签减少层级
 - SSR 渲染
@@ -673,6 +673,8 @@ memo 是一个高阶组件（HOC），它可以用来包装一个函数组件，
 ### 虚拟列表的解决方案
 
 通过 IntersectionObserver 和 getBoundingClientRect 实现
+
+- IntersectionObserver 监听一个目标与它祖先元素或
 
 
 
