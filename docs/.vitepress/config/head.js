@@ -1,4 +1,13 @@
 
+
+export const title = "五年前端三年面试";
+export const socialTitle = "五年前端三年面试 - Johnny 的前端知识地图";
+export const description =
+    "这里是 Johnny 的前端知识地图——五年前端三年面试，内容包括 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化、面试真题等方面的编程知识";
+const keywords =
+    "Johnny的编程知识库,azhubaby,javascript,js,React,browser,html5,css3,jquery,git,react,JavaScript学习路线,JavaScript知识体系,面试,前端面试,知识体系,大前端";
+const socialOgImage = "https://fe.azhubaby.com/og.jpg";
+
 export const head = [
     // icon
     [
@@ -39,7 +48,7 @@ export const head = [
         "meta",
         {
             name: "keywords",
-            content: `Jahan johnnyjoestar Johnny的编程知识库 azhubaby javascript js React webpack babel browser html css jquery git http docker webapp miniapp flutter ReactNative designPattern Ruby on Rails goland python 实战 JavaScript学习路线 JavaScript知识体系 面试 前端面试 知识体系 前端工程化 大前端`,
+            content: keywords,
         },
     ],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
@@ -59,6 +68,11 @@ export const head = [
             async: '',
             src: 'https://www.googletagmanager.com/gtag/js?id=G-03YTWDXVL1',
         },
+    ],
+    [
+        'script',
+        {},
+        "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-03YTWDXVL1');",
     ],
     // google 广告
     [
@@ -84,40 +98,16 @@ export const head = [
         {},
         `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "i1lhwlg2q4")`
     ],
-    // google analytics
-    [
-        'script',
-        {},
-        "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-03YTWDXVL1');",
-    ],
-
-    // 社交媒体
-    [
-        'meta',
-        { property: 'og:type', content: 'website' }
-    ],
-    [
-        'meta',
-        { property: 'og:site_name', content: '五年前端三年面试' }
-    ],
-    [
-        'meta',
-        { property: 'og:title', content: '五年前端三年面试' }
-    ],
-    [
-        'meta',
-        { property: 'og:image', content: 'https://fe.azhubaby.com/site_logo.png' }
-    ],
-    [
-        'meta',
-        { property: 'og:description', content: '这里是 Johnny 的前端知识地图，名曰五年前端三年面试，记录 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化等方面的编程知识' }
-    ],
-    [
-        'meta',
-        { property: 'og:url', content: 'https://fe.azhubaby.com' }
-    ],
-    [
-        'meta',
-        { name: 'twitter:card', content: 'summary_large_image' }
-    ]
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'zh-CN' }],
+    ['meta', { property: 'og:title', content: socialTitle }],
+    ['meta', { property: 'og:description', content: description }],
+    ['meta', { property: 'og:site_name', content: title }],
+    ['meta', { property: 'og:image', content: socialOgImage }],
+    ['meta', { property: 'og:url', content: 'https://fe.azhubaby.com/' }],
+    ['meta', { property: 'twitter:card', content: 'summary_large_image', }],
+    ['meta', { property: 'twitter:title', content: socialTitle }],
+    ['meta', { property: 'twitter:description', content: description }],
+    ['meta', { property: 'twitter:image', content: socialOgImage }],
+    ['meta', { property: 'twitter:site', content: "@JOJOhanbo" }],
 ]
