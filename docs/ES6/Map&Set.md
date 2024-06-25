@@ -160,6 +160,79 @@ Set 作为最简单的集合，有着如下几个特点：
 
 但由于不是强引用，所以无法进行遍历或取得值数量，只能用于值的存取（WeakMap）或是否存在值的判断（WeakSet）
 
+
+
+
+
+## 编码题：求一个数组中获取最大的值，至少两种方法
+
+一：Math.max
+
+```javascript
+let nums = [5, 2, 9, 1, 7];
+const maxValue = Math.max(...nums)
+console.log(maxValue)
+```
+
+二：reduce
+
+```javascript
+let nums = [5, 2, 9, 1, 7];
+const maxValue = nums.reduce((a, b) => Math.max(a,b), -Infinity);
+console.log(maxValue)
+```
+
+三：遍历数组并比较
+
+```javascript
+let nums = [5, 2, 9, 1, 7];
+let maxValue = nums[0];
+for (let i = 1; i < nums.length; i++) {
+    if (maxValue < nums[i]) {
+        maxValue = nums[i]
+    }
+}
+console.log(maxValue)
+```
+
+
+
+## 编码题：求两个数组的交集和并集
+
+一：使用 Set 和展开运算符
+
+```javascript
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [3, 4, 5, 6, 7];
+
+// 求交集
+let intersection = [...new Set(arr.filter(x => arr2.includues(x)))]
+console.log(intersection)
+
+// 求并集
+let union = [...new Set([...arr1, ...arr2])]
+console.log(union)
+```
+
+二：使用 reduce 和 includes
+
+```javascript
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [3, 4, 5, 6, 7];
+
+let intersection = arr1.reduce((acc, curr) => {
+    if (arr2.includes(curr)) {
+        acc.push(curr)
+    }
+    return acc;
+}, [])
+console.log(intersection)
+```
+
+
+
+
+
 ### 参考资料
 
 -   [Map and Set（集合和映射）](https://zh.javascript.info/map-set)

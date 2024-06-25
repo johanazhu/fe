@@ -1,52 +1,52 @@
 {
-  "hash": "3c1c4233",
-  "configHash": "31fdb522",
-  "lockfileHash": "60b08247",
-  "browserHash": "5f3f5d9e",
+  "hash": "1200b789",
+  "configHash": "a59ff925",
+  "lockfileHash": "032886e1",
+  "browserHash": "90a0bbeb",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/.pnpm/vue@3.4.23/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/.pnpm/vue@3.4.30/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "5c24885a",
+      "fileHash": "c5c258fc",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
-      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.0.27_vue@3.4.23/node_modules/@vue/devtools-api/dist/index.js",
+      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.3.4/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "b9a149a2",
+      "fileHash": "12eed474",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
-      "src": "../../../../node_modules/.pnpm/@vueuse+core@10.9.0_vue@3.4.23/node_modules/@vueuse/core/index.mjs",
+      "src": "../../../../node_modules/.pnpm/@vueuse+core@10.11.0_vue@3.4.30/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "b5c3fe6e",
+      "fileHash": "6bef4f7e",
       "needsInterop": false
     },
     "ua-parser-js": {
-      "src": "../../../../node_modules/.pnpm/ua-parser-js@1.0.37/node_modules/ua-parser-js/src/ua-parser.js",
+      "src": "../../../../node_modules/.pnpm/ua-parser-js@1.0.38/node_modules/ua-parser-js/src/ua-parser.js",
       "file": "ua-parser-js.js",
-      "fileHash": "758e1cd7",
+      "fileHash": "2732bfd0",
       "needsInterop": true
     },
     "vue-router": {
-      "src": "../../../../node_modules/.pnpm/vue-router@4.3.1_vue@3.4.23/node_modules/vue-router/dist/vue-router.mjs",
+      "src": "../../../../node_modules/.pnpm/vue-router@4.4.0_vue@3.4.30/node_modules/vue-router/dist/vue-router.mjs",
       "file": "vue-router.js",
-      "fileHash": "02cc4ab8",
+      "fileHash": "3dc070e4",
       "needsInterop": false
     },
     "fabric-pure-browser": {
       "src": "../../../../node_modules/.pnpm/fabric-pure-browser@5.1.0/node_modules/fabric-pure-browser/dist/fabric.js",
       "file": "fabric-pure-browser.js",
-      "fileHash": "2130debe",
+      "fileHash": "b42cc328",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-5CH6667N": {
-      "file": "chunk-5CH6667N.js"
+    "chunk-BQOXFNVW": {
+      "file": "chunk-BQOXFNVW.js"
     },
-    "chunk-Y2F7D3TJ": {
-      "file": "chunk-Y2F7D3TJ.js"
+    "chunk-BUSYA2B4": {
+      "file": "chunk-BUSYA2B4.js"
     }
   }
 }

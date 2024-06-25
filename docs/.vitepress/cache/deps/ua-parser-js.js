@@ -1,13 +1,13 @@
 import {
   __commonJS
-} from "./chunk-Y2F7D3TJ.js";
+} from "./chunk-BUSYA2B4.js";
 
-// node_modules/.pnpm/ua-parser-js@1.0.37/node_modules/ua-parser-js/src/ua-parser.js
+// node_modules/.pnpm/ua-parser-js@1.0.38/node_modules/ua-parser-js/src/ua-parser.js
 var require_ua_parser = __commonJS({
-  "node_modules/.pnpm/ua-parser-js@1.0.37/node_modules/ua-parser-js/src/ua-parser.js"(exports, module) {
+  "node_modules/.pnpm/ua-parser-js@1.0.38/node_modules/ua-parser-js/src/ua-parser.js"(exports, module) {
     (function(window2, undefined) {
       "use strict";
-      var LIBVERSION = "1.0.37", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 500;
+      var LIBVERSION = "1.0.38", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 500;
       var AMAZON = "Amazon", APPLE = "Apple", ASUS = "ASUS", BLACKBERRY = "BlackBerry", BROWSER = "Browser", CHROME = "Chrome", EDGE = "Edge", FIREFOX = "Firefox", GOOGLE = "Google", HUAWEI = "Huawei", LG = "LG", MICROSOFT = "Microsoft", MOTOROLA = "Motorola", OPERA = "Opera", SAMSUNG = "Samsung", SHARP = "Sharp", SONY = "Sony", XIAOMI = "Xiaomi", ZEBRA = "Zebra", FACEBOOK = "Facebook", CHROMIUM_OS = "Chromium OS", MAC_OS = "Mac OS";
       var extend = function(regexes2, extensions) {
         var mergedRegexes = {};
@@ -139,6 +139,11 @@ var require_ua_parser = __commonJS({
           ],
           [VERSION, [NAME, OPERA + " Mini"]],
           [
+            /\bop(?:rg)?x\/([\w\.]+)/i
+            // Opera GX
+          ],
+          [VERSION, [NAME, OPERA + " GX"]],
+          [
             /\bopr\/([\w\.]+)/i
             // Opera Webkit
           ],
@@ -168,6 +173,11 @@ var require_ua_parser = __commonJS({
             // Weibo
           ],
           [NAME, VERSION],
+          [
+            /\bddg\/([\w\.]+)/i
+            // DuckDuckGo
+          ],
+          [VERSION, [NAME, "DuckDuckGo"]],
           [
             /(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i
             // UCBrowser
@@ -306,6 +316,8 @@ var require_ua_parser = __commonJS({
             // Line App for Android
             /(alipay)client\/([\w\.]+)/i,
             // Alipay
+            /(twitter)(?:and| f.+e\/([\w\.]+))/i,
+            // Twitter
             /(chromium|instagram|snapchat)[\/ ]([-\w\.]+)/i
             // Chromium/Instagram/Snapchat
           ],
@@ -521,6 +533,10 @@ var require_ua_parser = __commonJS({
             /\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i
           ],
           [MODEL, [VENDOR, "OPPO"], [TYPE, MOBILE]],
+          [
+            /\b(opd2\d{3}a?) bui/i
+          ],
+          [MODEL, [VENDOR, "OPPO"], [TYPE, TABLET]],
           [
             // Vivo
             /vivo (\w+)(?: bui|\))/i,
@@ -952,7 +968,7 @@ var require_ua_parser = __commonJS({
           ],
           [MODEL, [VENDOR, ZEBRA], [TYPE, WEARABLE]],
           [
-            /(quest( 2| pro)?)/i
+            /(quest( \d| pro)?)/i
             // Oculus Quest
           ],
           [MODEL, [VENDOR, FACEBOOK], [TYPE, WEARABLE]],
@@ -1223,7 +1239,7 @@ var require_ua_parser = __commonJS({
           _os[NAME] = undefined;
           _os[VERSION] = undefined;
           rgxMapper.call(_os, _ua, _rgxmap.os);
-          if (_isSelfNav && !_os[NAME] && _uach && _uach.platform != "Unknown") {
+          if (_isSelfNav && !_os[NAME] && _uach && _uach.platform && _uach.platform != "Unknown") {
             _os[NAME] = _uach.platform.replace(/chrome os/i, CHROMIUM_OS).replace(/macos/i, MAC_OS);
           }
           return _os;

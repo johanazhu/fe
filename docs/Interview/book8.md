@@ -316,6 +316,8 @@ Interface 和 Type 的核心区别是 Type 不可在定义后重新添加内容�
 
 考察点：跨域
 
+具体可看[跨域的十种解决方案](/Browser/跨域)
+
 ### 同源策略
 
 一个安全策略
@@ -324,36 +326,42 @@ Interface 和 Type 的核心区别是 Type 不可在定义后重新添加内容�
 
 ### 跨域解决方案
 
-JSONP
+#### JSONP
 
 - 最古老的彼岸者，利用 `script` 标签没有跨域限制这个特点
 - 仅支持 GET 方法
 - 步骤
   - 定义jsonp回调函数方法jsonpCallback 
-  - script 请求接口（后端）时带上cb=jsonpCallback 参数
-  -  后端获取到 jsonpCallback 的值并返回给前端
+  - script 请求接口（后端）时带上cb=jsonpCallback 参数，如 `/api?callback=jsonpCallback `
+  - 后端 response 返回 jsonpCallback ({a: 'b'})，前端执行 `jsonpCallback` ，就拿到注入的数据
 
-CORS（跨域资源共享）
+#### CORS（跨域资源共享）
 
-window.postMessage
+在服务端/后端的相应头中添加`Access-Control-Allow-*` 头，告知浏览器端通过此请求只需要服务器端/后端支持即可，不涉及前端改动
 
-​	
+#### window.postMessage
 
-WebSocket
+postMessage是HTML5引入的一种跨文档通信的机制。a 页面通过`iframe.contentWindow.postMessage({msg: 'hello'}, 'b.html(目标页面)')` 发送消息，b 页面通过 `window.addEventListener('message', function(e){})` 接受信息，通讯就完成了
 
-- 双向数据通信
+#### WebSocket
 
-Nginx 代理
+双向数据通信，不是 http 协议，所以不受跨域限制，服务端直接传数据给前端
 
-Node 代理
+#### Nginx 代理
 
-document.domain + iframe
+Nginx.conf 设置反向代理
 
-document.location.hash + iframe
+#### Node 代理
 
-window.name + iframe
+本地开发时，即用 webpack 或者 vite 构建工具时，配置方向代理
 
-修改浏览器安全配置
+#### document.domain + iframe
+
+#### document.location.hash + iframe
+
+#### window.name + iframe
+
+#### 修改浏览器安全配置
 
 
 

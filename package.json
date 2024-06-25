@@ -14,18 +14,18 @@
   "author": "johan",
   "license": "ISC",
   "devDependencies": {
-    "@vite-pwa/vitepress": "^0.4.0",
-    "vite": "^5.2.9",
-    "vite-plugin-pwa": "^0.19.8",
-    "vitepress": "1.1.0",
-    "vue": "^3.4.23",
-    "workbox-window": "^7.0.0"
+    "@vite-pwa/vitepress": "^0.5.0",
+    "vite": "^5.3.1",
+    "vite-plugin-pwa": "^0.20.0",
+    "vitepress": "1.2.3",
+    "vue": "^3.4.30",
+    "workbox-window": "^7.1.0"
   },
   "dependencies": {
     "fabric-pure-browser": "^5.1.0",
-    "jsdom": "^24.0.0",
+    "jsdom": "^24.1.0",
     "markdown-it-mathjax3": "^4.3.2",
-    "ua-parser-js": "1.0.37",
-    "vue-router": "^4.3.1"
+    "ua-parser-js": "1.0.38",
+    "vue-router": "^4.4.0"
   }
 }
