@@ -4,9 +4,6 @@ Sitemap: https://fe.azhubaby.com/sitemap.xml
 User-agent: *
 
 
-
-# Algolia-Crawler-Verif: LE7T3Q08D4
-
 User-Agent: *
 Allow: /
 
