@@ -17,17 +17,22 @@ export default [
     {
         text: 'More',
         items: [
-            // {
-            //   text: '数据结构与算法',
-            //   link: 'https://github.com/johanazhu/leetcode',
-            // },
-            // { text: 'Interview', link: '/Interview/' },
-            { text: 'Docker', link: '/Docker/' },
-            { text: 'Linux', link: '/Linux/' },
-            { text: 'Git', link: '/Git/' },
-            // { text: 'DesignPattern', link: '/DesignPattern/' },
-            // { text: 'CSBasic', link: '/CSBasic/' },
-            { text: 'About', link: '/About/' },
-        ],
+            {
+                items: [
+                    // {
+                    //   text: '数据结构与算法',
+                    //   link: 'https://github.com/johanazhu/leetcode',
+                    // },
+                    { text: 'Docker', link: '/Docker/' },
+                    { text: 'Linux', link: '/Linux/' },
+                    { text: 'Git', link: '/Git/' },
+                    // { text: 'DesignPattern', link: '/DesignPattern/' },
+                    // { text: 'CSBasic', link: '/CSBasic/' },
+                    { text: 'About', link: '/About/' },
+                ]
+            },
+            { text: 'ETF投资智慧', link: 'https://etfworld.azhubaby.com/' },
+            { text: '囤比特币', link: 'https://holdbtc.azhubaby.com/' },
+        ]
     },
 ];

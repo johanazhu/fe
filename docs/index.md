@@ -19,18 +19,24 @@ hero:
     - theme: alt
       text: JavaScript
       link: /JavaScript/
-    - theme: alt
+    - theme: brand
       text: React
       link: /React/
     - theme: alt
       text: BackEnd
       link: /BackEnd/
-    - theme: alt
+    - theme: brand
       text: 面试真题
       link: /Interview/
     - theme: alt
       text: 大前端
       link: /WebApp/
+    - theme: alt
+      text: ETF投资智慧
+      link: https://etfworld.azhubaby.com/
+    - theme: alt
+      text: 囤比特币
+      link: https://holdbtc.azhubaby.com/
 features:
   - title: 允许一切如其所是
     details: 参差百态乃幸福之本源
