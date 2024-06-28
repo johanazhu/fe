@@ -1,5 +1,29 @@
 # Git 提交规范
 
+
+
+## Husky
+
+Husky 是用于管理 Git Hooks 的工具，Git Hooks 是 Git 中的一个特性，可以在 Git 的生命周期中的某些重要事件（如提交、推送等）触发自定义脚本
+
+钩子
+
+
+
+## lint-staged
+
+配合 Husky 钩子，格式化文件代码
+
+
+
+
+
+
+
+
+
+
+
 git commit 规范主要可以帮助开发人员在 code reivew 期间更容易理解提交的内容，现在大部分主流 commit 都是基于 Angular 团队的规范而衍生出来的，它的 message 格式如下：
 
 ```markdown

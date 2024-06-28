@@ -92,6 +92,15 @@ export const head = [
             src: 'https://us.umami.is/script.js'
         }
     ],
+    // plausible
+    [
+        'script',
+        {
+            defer: true,
+            'data-domain': 'fe.azhubaby.com',
+            src: 'https://click.pageview.click/js/script.js'
+        }
+    ],
     // microsoft analytics
     [
         'script',
