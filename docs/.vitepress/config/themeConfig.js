@@ -2,9 +2,6 @@ import nav from './nav';
 import sidebar from './sidebar';
 
 export default {
-    outline: [2, 4],
-    outlineTitle: '大纲',
-    lastUpdatedText: '上次更新',
     logo: '/android-chrome-96x96.png',
 
     nav,
@@ -26,6 +23,31 @@ export default {
     footer: {
         copyright: 'Copyright © 2021-present johan',
     },
+
+    docFooter: {
+        prev: "上一页",
+        next: "下一页",
+    },
+
+    outline: {
+        level: [2, 4],
+        label: "页面导航",
+    },
+
+    lastUpdated: {
+        text: "最后更新于",
+        formatOptions: {
+            dateStyle: "short",
+            timeStyle: "medium",
+        },
+    },
+
+    langMenuLabel: "多语言",
+    returnToTopLabel: "回到顶部",
+    sidebarMenuLabel: "菜单",
+    darkModeSwitchLabel: "主题",
+    lightModeSwitchTitle: "切换到浅色模式",
+    darkModeSwitchTitle: "切换到深色模式",
 
     search: {
         provider: 'algolia',
