@@ -82,6 +82,86 @@ function flatten(arr) {
 }
 ```
 
+
+
+## 数组对象去重
+
+方法一：new Set + JSON.stringigy
+
+```javascript
+const arr = [
+	{id: 1, name: 'John'},
+  	{id: 2, name: 'Jane'},
+  	{id: 1, name: 'John'},
+  	{id: 3, name: 'Bob'},
+  	{id: 2, name: 'Jane'}
+]
+
+const set = new Set(arr.map(JSON.stringify));
+// 先把每一项转成字符串，再在数组中通过 Set 去重
+const uniqueArr = Array.from(set).map(JSON.parse);
+// Array.from 将 Set 后的对象转换成 Array
+// 再将去重的字符串还原成对象
+
+console.log(uniqueArr);
+```
+
+方法二：reduce
+
+```javascript
+const arr = [
+	{id: 1, name: 'John'},
+  	{id: 2, name: 'Jane'},
+  	{id: 1, name: 'John'},
+  	{id: 3, name: 'Bob'},
+  	{id: 2, name: 'Jane'}
+]
+
+const uniqueArr = Object.values(arr.reduce((acc, cur) => {
+  acc[cur.id] = cur;
+  return acc;
+}, {}));
+// acc 累加值，cur 当前值，第二个参数是初始值initialValue
+// Object.values() 对象转数组
+```
+
+方法三：filter 
+
+```javascript
+const arr = [
+  {id: 1, name: 'John'},
+  {id: 2, name: 'Jane'},
+  {id: 1, name: 'John'},
+  {id: 3, name: 'Bob'},
+  {id: 2, name: 'Jane'}
+];
+
+const uniqueArr = arr.filter((item, index, arr) => {
+    return arr.findIndex(t => t.id === item.id) === index
+})
+```
+
+方法四：Map
+
+```javascript
+const arr = [
+  {id: 1, name: 'John'},
+  {id: 2, name: 'Jane'},
+  {id: 1, name: 'John'},
+  {id: 3, name: 'Bob'},
+  {id: 2, name: 'Jane'}
+];
+
+const map = new Map();
+arr.forEach(item => map.set(item.id, item));
+
+const uniqueArr = Array.from(map.values());
+
+console.log(uniqueArr);
+```
+
+
+
 ## 如何实现浏览器内多个标签页之间的通信?
 
 三种。监听 localStorage、webworker、sharedworker

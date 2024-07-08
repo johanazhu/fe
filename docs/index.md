@@ -37,6 +37,9 @@ hero:
     - theme: alt
       text: 囤比特币
       link: https://holdbtc.azhubaby.com/
+    - theme: alt
+      text: 小报童专栏导航
+      link: https://xiaobot.tools/
 features:
   - title: 允许一切如其所是
     details: 参差百态乃幸福之本源

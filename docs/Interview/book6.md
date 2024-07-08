@@ -157,9 +157,11 @@ function new2(Constructor, ...args) {
 
 
 
-## 6. useEffect useLayoutEffect useLayoutEffect使用场景
+## 6. useEffect、useLayoutEffect 使用场景
 
-
+1. 执行时机：useEffect 在浏览器绘制后执行，而 useLayoutEffect 是在浏览器绘制前执行。这意味着 useLayoutEffect 可以同步的更新 DOM 并立即看到效果
+2. 适用场景：useEffect 适用于大多数情况下的副作用操作，如网络请求、数据订阅等。而 useLayoutEffect 适用于需要同步修改 DOM 布局或样式的场景，如动画、测量元素尺寸等
+3. 性能影响：useEffect 因为是异步执行，不会阻塞浏览器渲染，对性能影响较小；而 useLayoutEffect 如果执行复杂的操作，可能会阻塞浏览器绘制，对性能有一定影响
 
 
 

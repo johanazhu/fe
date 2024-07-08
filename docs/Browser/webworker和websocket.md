@@ -13,7 +13,7 @@ HTML5 有两个新特性，Web Worker 和 Web Socket
 - 独立线程运行：浏览器提供一个子线程，可单独执行，不会阻塞主线程的执行
 - 通信机制：Web Worker 与主线程之间通过消息传递的方式通信。主线程可以向 Worker 发送数据，Worker 也可以向主线程发送数据
 - 数据隔离：Web Worker 运行在独立的线程，不能访问 DOM 等主线程专有的资源，可以避免 Worker 对主线程造成干扰
-- 种类：HTML5 标准定义了两种 Web Worker，分别是 Dedicated Worker 和 Shared Worker。谴责仅能被创建它的页面使用，后者可以被多个页面共享
+- 种类：HTML5 标准定义了两种 Web Worker，分别是 Dedicated Worker 和 Shared Worker。前者仅能被创建它的页面使用，后者可以被多个页面共享
 
 应用场景：
 

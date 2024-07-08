@@ -418,7 +418,7 @@ React16 提出将渲染更新拆分成多个子任务，每次制作一小部分
 
 因为浏览器是一帧一帧执行的，在两个执行帧之间，主线程通常会有一小段空闲时间，requestIdleCallback 可以在空闲期（Idle Period）调用空闲期回调（Idle Callback），执行一些任务
 
-![687474703a2f2f696d67732e74616f77656e672e736974652f323031392d30362d32352d3135313233312e706e67](D:\Documents\PicGo Files\687474703a2f2f696d67732e74616f77656e672e736974652f323031392d30362d32352d3135313233312e706e67.png)
+![一帧时间表](https://s2.loli.net/2024/07/01/BLgGQTZadIAJwfe.png)
 
 - 低优先级任务由`requestIdleCallback`处理；
 - 高优先级任务，如动画相关的由`requestAnimationFrame`处理；

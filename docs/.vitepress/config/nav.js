@@ -33,6 +33,7 @@ export default [
             },
             { text: 'ETF投资智慧', link: 'https://etfworld.azhubaby.com/' },
             { text: '囤比特币', link: 'https://holdbtc.azhubaby.com/' },
+            { text: '小报童专栏导航', link: 'https://xiaobot.tools/' },
         ]
     },
 ];
