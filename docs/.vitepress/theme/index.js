@@ -26,20 +26,50 @@
 //     },
 // };
 // 切换成这种模式：https://github.com/vite-pwa/vitepress/tree/main/examples/pwa-prompt
-import { h } from 'vue'
+import { h, watch } from "vue";
+import { useData } from "vitepress";
 import DefaultTheme from 'vitepress/theme'
 import Layout from './Layout.vue'
 
 import RegisterSW from './components/RegisterSW.vue'
 import ReloadPrompt from './components/ReloadPrompt.vue'
 import RoadMap from './components/RoadMap.vue'
+import MAsideSponsors from "./components/MAsideSponsors.vue";
 
 export default {
     ...DefaultTheme,
-    Layout() {
-        return h(Layout, null, {
-            'layout-bottom': () => h(ReloadPrompt)
-        })
+    // Layout() {
+    //     // return h(DefaultTheme.Layout, null, {
+    //     //     'layout-bottom': () => h(ReloadPrompt),
+    //     //     "aside-bottom": () => h(MAsideSponsors),
+    //     // })
+    //     const props: Record<string, any> = {};
+    //     // 获取 frontmatter
+    //     const { frontmatter } = useData();
+
+    //     /* 添加自定义 class */
+    //     if (frontmatter.value?.layoutClass) {
+    //         props.class = frontmatter.value.layoutClass;
+    //     }
+    //     return h(DefaultTheme.Layout, props, {
+    //         'layout-bottom': () => h(ReloadPrompt),
+    //         "aside-bottom": () => h(MAsideSponsors),
+    //     });
+    // },
+    Layout: () => {
+        const props = {};
+        // 获取 frontmatter
+        const { frontmatter } = useData();
+
+        /* 添加自定义 class */
+        if (frontmatter.value?.layoutClass) {
+            props.class = frontmatter.value.layoutClass;
+        }
+
+        return h(DefaultTheme.Layout, props, {
+            'layout-bottom': () => h(ReloadPrompt),
+            "aside-bottom": () => h(MAsideSponsors),
+        });
     },
     enhanceApp({ app }) {
         app.component('RoadMap', RoadMap)
