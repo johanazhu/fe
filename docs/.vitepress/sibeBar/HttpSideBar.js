@@ -45,10 +45,6 @@ export default function HTTPSideBar() {
                     link: '/HTTP/HTTP状态码',
                 },
                 {
-                    text: '从输入 url 到看到页面发生了什么',
-                    link: '/HTTP/从输入 url 到看到页面发生了什么',
-                },
-                {
                     text: 'HTTPS',
                     link: '/HTTP/HTTPS',
                 },
