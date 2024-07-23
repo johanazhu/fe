@@ -322,7 +322,68 @@ vite:基于esm的新一代构建工具
 
 
 
-## 9.OSI七层模型 
+## 9.promise.all 中一个接口坏了，怎么保证其他两个正常调用
+
+使用 Promise.allSettled
+
+Promise.all 和 Promise.allSettled 最大的不同：Promise.allSettled 永远不会被 reject
+
+Promise.allSettled 会等待所有 Promise 执行完毕，无论完成或失败，都会返回一个包含每个 Promise 结果的数组。每个结果对象包含 status 和 value 或 reason 属性，分别表示 Promise 的状态（fulfilled 或者 rejected） 以及结果值或错误原因。
+
+```javascript
+async function main() {
+  const promise1 = Promise.resolve('Promise 1 resolved');
+  const promise2 = Promise.reject(new Error('Promise 2 rejected'));
+  const promise3 = Promise.resolve('Promise 3 resolved');
+
+  const results = await Promise.allSettled([promise1, promise2, promise3]);
+
+  results.forEach((result, index) => {
+    if (result.status === 'fulfilled') {
+      console.log(`Promise ${index + 1}: ${result.value}`);
+    } else {
+      console.log(`Promise ${index + 1} rejected: ${result.reason}`);
+    }
+  });
+}
+
+main();
+```
+
+如果不能使用 Promise.allSettled
+
+Promise.all 在遇到任何一个 Promise 被拒绝（即抛出异常）时会立即停止执行并返回一个拒绝（rejected）状态的 Promise。要让 Promise.all 即使在某个 Promise 失败后也能继续优先，需要确保所有单个  Promise 都不会被拒绝。这种常见的做法是在每个 Promise 上加上错误处理，使得它们在出现错误时仍然解决（resolve）而不是（reject）
+
+例如：
+
+```javascript
+function reflect(promise) {
+  return promise
+    .then(value => ({ status: "fulfilled", value }))
+    .catch(error => ({ status: "rejected", reason: error }));
+}
+ 
+const promises = [promise1, promise2, promise3]; // 假设这是一组Promise
+const wrappedPromises = promises.map(reflect);
+ 
+Promise.all(wrappedPromises).then(results => {
+  results.forEach((result, index) => {
+    if (result.status === "fulfilled") {
+      console.log(`Promise ${index + 1} resolved with value: ${result.value}`);
+    } else {
+      console.log(`Promise ${index + 1} rejected with reason: ${result.reason}`);
+    }
+  });
+});
+```
+
+在这个例子中，`reflect`函数接收一个Promise并返回一个新的Promise，这个新Promise无论原Promise是解决还是拒绝都会解决。它会解决为一个对象，该对象包含原Promise的状态（"fulfilled"或"rejected"）和相应的值或原因。
+
+这种方法的优点是它允许`Promise.all`等待所有Promise完成（不论解决还是拒绝）并返回它们所有的结果。
+
+
+
+
 
 
 
