@@ -109,9 +109,38 @@ applyMiddleware 函数，装饰器模式
 
 
 
-## 9.微前端有什么用
+## 9.微前端是什么？有什么用
 
 考察点：微前端
+
+微前端可以在一个页面上跑多个 react、vue 甚至原生项目，他们之间的 JS、CSS 相互隔离运行，不会相互影响，也有通信机制可以通信
+
+怎么实现的？
+
+当路由切换时，下载对应引用的代码，然后跑到容器中
+
+比如 single-spa（qiankun就是基于此框架改造），它做的就是监听路由变化，路由切换的时候加载，卸载注册应用的代码
+
+只不过 single-spa 的入口是一个 js 文件，需要代码手动指定要加载啥 js、css等，不方便维护
+
+qiankun 是对 single-spa 的升级
+
+它做了什么改造，一改为 html 为入口，解析 html，从中分析 js、css，再加载，这个是 import-html-entry 这个包实现的
+
+二把 js 代码包裹了一层 function，然后再把内部的 window 用 Proxy 包一层，这样内部的代码就完全被隔离了，就实现了一个 js 沙箱
+
+这是 js 隔离
+
+还有样式隔离
+
+qiankun 提供了两套样式隔离方案：shadow dom 和自己实现的 scoped
+
+qiankun 做了样式隔离，有 shadow dom 和 scoped 两种方案，但都有问题：
+
+- shadow dom 自带样式隔离，但是 shadow dom 内的样式和外界互不影响，导致挂在弹窗的样式会加不上。父应用也没法设置子应用的样式。
+- scoped 的方案是给选择器加了一个 data-qiankun='应用名' 的选择器，这样父应用能设置子应用样式，这样能隔离样式，但是同样有挂在 body 的弹窗样式设置不上的问题，因为 qiankun 的 scoped 不支持全局样式
+
+
 
 乾坤技术原理、为什么不用 iframe、父子应用如何通讯
 

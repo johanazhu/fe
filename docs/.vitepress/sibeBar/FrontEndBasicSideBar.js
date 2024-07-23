@@ -61,8 +61,8 @@ export default function FrontEndBasicSideBar() {
                     link: '/Basic/CSS/CSS渲染以及优化策略',
                 },
                 {
-                    text: 'CSS知多少',
-                    link: '/Basic/CSS/CSS知多少',
+                    text: 'CSS 新特性',
+                    link: '/Basic/CSS/CSS新特性',
                 },
                 {
                     text: '文本溢出',

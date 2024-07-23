@@ -116,21 +116,11 @@
 
 
 
-不要问，不要说，一切尽在不言中
+未完待续...
 
-这一刻，偎着五三让我们静静的渡过
 
-有兴趣的话，可以加我的公众号——随朱波流，这里记录不仅前端
 
-<img src="https://s2.loli.net/2022/03/24/GsVP9mbAqXRzMD3.jpg" height="200px" width="200px" title="微信公众号二维码" />
 
-## 请我喝咖啡:coffee:
-
-如果您觉得这个项目能够帮助到您，可以给我个 star🌟，也可以推荐给您的朋友
-
-持续更新中～ 🚀🚀🚀
-
-<img src="https://s2.loli.net/2022/10/09/31kvp8HRJuoBCfc.jpg" height="200px" width="200px" title="赞赏码" />
 
 ## License
 

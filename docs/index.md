@@ -8,7 +8,7 @@ titleTemplate: Johnny的编程知识体系
 hero:
   name: 五年前端三年面试
   text: Johnny的编程知识库
-  tagline: 一个自我成长的前端掌握的技能点
+  tagline: 像我这样平凡的前端的自我救赎
   image:
     src: ./logo.webp
     alt: challenges
@@ -31,13 +31,13 @@ hero:
     - theme: alt
       text: 大前端
       link: /WebApp/
-    - theme: alt
+    - theme: brand
       text: ETF投资智慧
       link: https://etfworld.azhubaby.com/
     - theme: alt
       text: 囤比特币
       link: https://holdbtc.azhubaby.com/
-    - theme: alt
+    - theme: brand
       text: 小报童专栏导航
       link: https://xiaobot.tools/
 features:

@@ -353,7 +353,7 @@ Redux 是一个用户管理应用状态的开源 JavaScript 库，它提供了�
 
 Redux 的核心概念包括：
 
-1. Store：存储应用的整个状态数
+1. Store：存储应用的整个状态
 2. Action：描述应用状态变化的事件
 3. Reducer：根据 Action 更新 Store 中的状态
 

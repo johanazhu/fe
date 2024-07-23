@@ -3,9 +3,9 @@
 export const title = "五年前端三年面试";
 export const socialTitle = "五年前端三年面试 - Johnny 的前端知识地图";
 export const description =
-    "这里是 Johnny 的前端知识地图——五年前端三年面试，内容包括 JavaScript、React、大前端、后端、浏览器、HTTP、性能优化、面试真题等方面的编程知识";
+    "这里是 Johnny 的前端知识地图——五年前端三年面试，内容包括 JavaScript、React、前端、后端、浏览器、HTTP、性能优化、面试真题、前端面试、React面试等方面的编程知识";
 const keywords =
-    "Johnny的编程知识库,azhubaby,javascript,js,React,browser,html5,css3,jquery,git,react,JavaScript学习路线,JavaScript知识体系,面试,前端面试,知识体系,大前端";
+    "Johnny的编程知识库,azhubaby,javascript,js,React,browser,git,JavaScript知识体系,面试,前端面试,react面试题,web前端面试,js面试题";
 const socialOgImage = "https://fe.azhubaby.com/og.jpg";
 
 export const head = [

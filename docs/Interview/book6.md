@@ -165,6 +165,24 @@ function new2(Constructor, ...args) {
 
 
 
+useEffect 被设计成在 dom 操作前异步调用，useLayoutEffect 是在 dom 操作后同步调用
+
+为什么这样设计？
+
+因为都要操作 dom 了，这时候如果来个 effect 同步执行，计算量很大，会把 fiber 架构带来的优势毁掉
+
+所以 effect 是异步的，不会阻塞渲染
+
+而 useLayoutEffect，顾名思义是想在这个阶段拿到一些布局信息，dom 操作后可以，而且都渲染完成了，自然可以同步调用了
+
+layout effect 的执行就是在 layout 阶段遍历所有 fiber，取出 updateQueue 的每个 effect 执行。
+
+
+
+**useEffect 的 hook 在 render 阶段会把 effect 放到 fiber 的 updateQueue 中，这是一个 lastEffect.next 串联的环形链表，然后 commit 阶段会异步执行所有 fiber 节点的 updateQueue 中的 effect。**
+
+**useLayoutEffect 和 useEffect 差不多，区别只是它是在 commit 阶段的 layout 阶段同步执行所有 fiber 节点的 updateQueue 中的 effect。** 
+
 
 
 ## 7.  WebApp：适配方案

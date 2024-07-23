@@ -18,6 +18,10 @@ export default {
             icon: 'github',
             link: 'https://github.com/johanazhu/fe',
         },
+        {
+            icon: 'twitter',
+            link: 'https://x.com/JOJOhanbo',
+        },
     ],
 
     footer: {

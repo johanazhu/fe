@@ -72,11 +72,17 @@ Error Boundying 错误捕获组件
 static XXX 渲染错误 UI
 componentDidCatch 上报错误日志
 
-衍生问题：Error Boundaries 有什么问题
+衍生问题：Error Boundary 有什么问题
 
-Error Boundaries 只能捕获组件层面的错误，比如说你的UI组件渲染错误
+### Error Boundary 有什么问题
 
-如果说这个时候点击按钮，请求数据，这时候报错了，那么它就捕获不到了
+1.Error Boundaries 只能捕获组件层面的错误，无法捕获事件处理程序中的错误
+
+比如说你的UI组件渲染错误，如果说这个时候点击按钮，请求数据，这时候报错了，那么它就捕获不到了
+
+2.不能捕获异步操作中的异常，如 Promise，setTimeout 的异常无法捕获，可以用 window.addEvent('onhandledrejection')  进行捕获
+
+3.错误信息不够详细，它会返回一个回退UI，并不会提供太多的错误信息
 
 
 
