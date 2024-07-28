@@ -304,9 +304,81 @@ Interface 和 Type 的核心区别是 Type 不可在定义后重新添加内容�
 
 ## 8.项目构建工具有考虑换vite吗？vite有什么优势？
 
+或者问 webpack 与 vite 的区别是什么？
+
+1.开发环境区别
+
+- vite 自己实现 server，不对代码打包，充分利用浏览器的`<script type="module">` 的支持
+  - 假设 main.js 引入了 vue
+  - 该 server 会把 `import { createApp } from 'vue'` 改成 `import {createApp} from "/node_modules/.vite/vue.js"` 这样浏览器就知道去哪里做到 vue.js
+- webpack-dev-server 常使用 babel-loader 基于内存打包，比 vite 慢很多很多
+  - 该 server 会把 vue.js 的代码（递归地）打包进 main.js
+
+2.生产环境区别
+
+- vite 使用 rollup + esbuild 来打包 JS 代码
+- webpack 使用 babel 来打包 JS 代码，比 esbuild 慢很多很多
+  - webpack 能使用 esbuild 吗？可以，你需要配置（很麻烦）
+  - esbuild 为什么快
+    - babel 用 js 写，esbuild 用 go 写的
+    - webpack 和 rollup 一个层级
+    - babel 和 esbuild 一个层级的
+    - vite 相当于比 webpack 再封装了一层
+
+3.文件处理时机
+
+- vite 只会在你请求某个文件的时候处理该文件
+- webpack 会提前打包好 main.js，等你请求的时候直接输出打包好的 JS 给你
+
+目前已知 vite 的缺点有
+
+1. 热更新常常失败，原因不清楚
+2. 有些功能 rollup 不支持，需要自己写 rollup 插件
+3. 不支持非现代浏览器
 
 
 
+衍生问题：swc、esbuild 是什么？
+
+### swc、esbuild 是什么？
+
+swc、esbuild 对标 babel
+
+#### swc
+
+实现语言：Rust
+
+功能：编译 JS/TS、打包 JS/TS
+
+优势：比 babel 快很多（20倍以上）
+
+能否集成进 webpack：能
+
+使用者：NextJS、Parcel、Deno、Vercel、ByteDance、Tencent、Shopify...
+
+做不到：
+
+- 对 TS 代码进行类型检查（用 tsc 可以）
+- 打包CSS、SVG
+
+#### esbuild
+
+实现语言：Go
+
+功能：同上
+
+优势：比 babel 快很多（10-100倍以上）
+
+能否集成进 webpack：能
+
+使用者：vite、vuepress、snowpack、umijs
+
+做不到：
+
+- 对 TS 代码进行类型检查
+- 打包CSS、SVG
+
+为什么 rust 性能比 go 好，但是 esbuild 的打包速度会比 swc 快，因为 esbuild 的开发者是个 ceo，代码能力比 swc 的开源者强
 
 
 

@@ -197,9 +197,66 @@ layout effect 的执行就是在 layout 阶段遍历所有 fiber，取出 update
 
 
 
-## 9. 谈下 webpack loader 机制
+## 9. webpack 怎么配置多页面？
 
-考察点：webpack loader 机制
+对应的 webpack config：
+
+```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+    entry: {
+        app: "./src/app.js",
+        admin: "./src/admin.js"
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            chunks: ['app']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'admin.html',
+            chunks: ['admin']
+        })
+    ]
+}
+```
+
+但是，这样配置会有一个「重复打包」的问题：假设 app.js 和 adminjs 都引入了 vue.js，那么 vue.js的代码既会打包进 app.js，也会打包进 admin.js。我们需要使用 `optimization.splitchunks` 将共同依赖单独打包成 common.js（HtmlWebpackPlugin 会自动引入 commonjs）。
+
+如何支持无限多页面呢？
+
+写遍历文件就实现了
+
+```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const fs = require('fs')
+const path = require('path')
+
+const filenames = fs.readdirSync('./src/pages')
+	.filter(file => file.endsWith('.js'))
+	.map(file => path.basename(file, '.js'))
+
+const entries = filesnames.reduce((result, name) => (
+{...result, [name]: `./src/pages/${name}.js`}
+), {})
+
+const plugins = filenames.map((name) => 
+    new HtmlWebpackPlugin({
+    	filename: name + '.html',
+    	chunks: [name]
+	})                     
+)
+
+module.exports = {
+    entry: {
+       ...entries
+    },
+    plugins: [
+       ...plugins
+    ]
+}
+```
 
 
 

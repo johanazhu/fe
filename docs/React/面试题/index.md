@@ -142,7 +142,7 @@ A：唯一性标识，index 会重合，做 Diff 算法的时候定位元素比�
 
 ### Q： React 组件间有哪些通讯方式？
 
-A：父传子（props），子传父（props 回调），跨组件（context），非嵌套组件通信（事件订阅，远亲组件，用第三方状态库，如Redux、MobX）
+A：父传子（props + 函数），跨组件（context），任意组件通信（状态管理，用第三方状态库，如Redux、MobX、Recoil）
 
 ### Q：父组件如何调用子组件中的方法？
 
@@ -562,6 +562,17 @@ A：[渲染十万条数据解决方案](./渲染十万条数据解决方案.md)
 ### Q：如何获取 React 的DOM 元素
 
 A：ref ，函数式组件中通过 useRef 获取
+
+### Q：什么是高阶组件
+
+A: 参数是组件，返回值也是组件的函数。什么都能做，所以抽象问题旧具体回答
+
+举例说明即可：
+
+1. React.forwardRef：透传 ref
+2. React.memo
+3. ReactRedux 的 connect
+4. ReactRouter 的 withRouter
 
 ### Q：讲一下你对 context 的理解
 

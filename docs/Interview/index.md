@@ -30,7 +30,7 @@
 - React： React Hook 实现原理
 - React：函数式组件与类组件的区别
 - 浏览器：什么是同源策略以及跨源资源共享（CORS）？
-- 工程化：Webpack构建的原理 
+- 工程化：如何提供 webpack 构建速度？
 - 应用题：promise.all 中一个接口坏了，怎么保证其他两个正常调用
 - 算法题：三数之和
 
@@ -43,7 +43,7 @@
 - React： 虚拟DOM 与 Diff算法
 - React：说说 React的渲染过程
 - 浏览器： 浏览器渲染原理 
-- 微前端：微前端的沙箱机制是怎么实现的？ 
+- 微前端：qiankun 的原理是什么？如何实现 js 沙箱和 css 隔离的
 - 项目：十万条数据如何优化
 - 算法题：反转链表 
 
@@ -63,7 +63,7 @@
 ## 模拟题五
 
 - CSS: CSS 选择器有哪些
-- 手写源码：实现一个 promise
+- 手写源码：New 操作符
 - JavaScript 基础：作用域
 - ES6特性：Es Module 和 CommonJs
 - React： useMemo、useCallback是什么
@@ -83,7 +83,7 @@
 - React： useEffect、useLayoutEffect、useLayoutEffect 使用场景
 - WebApp：适配方案
 - 浏览器：Cookie、localStorage、sessionStorage、IndexedDB的区别
-- 工程化：谈下 webpack loader 机制
+- 工程化：webpack 怎么配置多页面
 - 算法题：有效的括号
 
 ## 模拟题七
@@ -94,7 +94,7 @@
 - ES6特性：Map 和 Set
 - React：props 类型不要用 React.FC 写法
 - React：React 如何处理异常？
-- 浏览器：如何减少白屏时间
+- 浏览器：遇到白屏问题如何分析和解决
 - 性能优化：网站首页有大量的图片，加载很慢，如何优化呢（图片懒加载）
 - Taro 的工作原理
 - 算法题：全排列

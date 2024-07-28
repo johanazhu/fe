@@ -1,17 +1,317 @@
-# JavaScript 面试题
+# JavaScript 手写面试题
 
-JavaScript 的基本功面试题无非包括 闭包、原型链、继承、作用域、执行栈、class 实现继承
+笔者面试多家公司，遇到不少手写面试题，这里分享笔者遇到的手写面试题，如果你也遇到了常见的面试题，可以在底部留言分享
 
-它的手写面试题包括
+## 目录
 
-# 数组扁平化、去重、排序
+[数组去重](#数组去重)
 
-已知如下数组：var arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10];
+[排序](#排序)
 
-编写一个程序将数组扁平化去并除其中重复部分数据，最终得到一个升序且不重复的数组
+[数组扁平化、去重、排序](#数组扁平化、去重、排序)
+
+[进度条](#进度条)
+
+
+
+## 数组去重
+
+给定一个数组 ` [1,2,2,4,null,null,'3','abc',3,5,4,1,2,2,4,null,null,'3','abc',3,5,4]`， 去除重复项
+
+> PS：面试的时候一般不会允许你使用 ES6语法和 JS API 或者即使允许你也会让你写出多个方法越多越好，这里我们都写
 
 ```javascript
-var arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
+const arr =  [1,2,2,4,null,null,'3','abc',3,5,4,1,2,2,4,null,null,'3','abc',3,5,4]
+
+// Array.from + new Set 
+const unique = function (arr) {
+    // new Set 返回的是集合
+    return Array.from(new Set(arr)) 
+}
+
+// 展开运算符 + new Set
+const unique = function (arr) {
+    // new Set 返回的是集合
+    return [...new Set(arr)]
+}
+
+// Map 
+const unique = function (arr) { 
+	let map = new Map()
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i]
+        if (map.has(item)) {
+            continue;
+        }
+        map.set(item, true)
+        result.push(item)
+    }
+	return result
+}
+// PS：map 和 对象的区别在于 map 的 key 可以是任何值
+
+// 双 for 循环
+const unique = function (arr) {
+     for (let i = 0; i < arr.length; i++) {
+        for (let j=i+1; j <arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                arr.splice(j, 1)
+                j--;
+            }
+        }
+    }
+    return arr
+}
+
+// indexOf
+const unique = function (arr) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i]
+        if (result.indexOf(item) < 0) {
+            result.push(item)
+        }
+    }
+    return result
+}
+
+// filter 
+const unique = function (arr) {
+    let res = arr.filter((item, index, array) => {
+        return array.indexOf(item) === index;
+    });
+    return res;
+}
+
+// includes
+const unique = function (arr) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i];
+        if (!result.includes(item)) {
+            result.push(item)
+        }
+    }
+    return result
+}
+
+// reduce + includes
+const unique = function (arr) {
+    const res = arr.reduce((prev, cur) => prev.includes(cur) ? prev : [...prev, cur], [])
+    return res;
+}
+// PS: reduce callback 中的 prev 为上一次调用callback 的结果，cur 为当前值
+```
+
+衍生问题：数组对象去重
+
+### 数组对象去重
+
+```javascript
+const arr = [
+    { id: 1, name: 'John' },
+    { id: 1, name: 'elaine' },
+    { id: 2, name: 'johnny' },
+    { id: 3, name: 'react' },
+    { id: 3, name: 'vue' },
+    { id: 4, name: 'javascript' },
+    { id: 5, name: 'css' },
+];
+      
+// 双循环
+const unique = function (arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i+1; j < arr.length; j++) {
+            if (arr[i].id === arr[j].id) {
+                arr.splice(j, 1);
+                j--
+            }
+        }
+    }
+ 	return arr
+}
+
+
+// new Set + JSON.stringyify
+const unique = function (arr) {
+    // 先把每一项转成字符串，再在数组中通过 Set 去重
+    const set = new Set(arr.map(JSON.stringify))
+    // Array.from 将 Set 后的对象转换成 Array
+    const _arr = Array.from(set).map(JSON.parse)
+    return _arr
+}
+
+
+// reduce
+const unique = function (arr) {
+    const result = arr.reduce((prev, cur) => {
+        prev[cur.id] = cur
+        return prev
+    }, {})
+    console.log(result)
+    return Object.values(result)
+}
+// PS: Object.values() 对象转数组
+
+// filter
+const unique = function (arr) {
+    return arr.filter((item, index, arr) => {
+        return arr.findIndex(t => t.id === item.id) === index
+    })
+}
+
+// Map + for 
+const unique = function (arr) {
+    let map = new Map;
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        const item = arr[i];
+        if (map.has(item.id)) {
+            continue;
+        }
+        map.set(item.id, true)
+        result.push(item)
+    }
+    return result
+}
+```
+
+
+
+## 排序
+
+```javascript
+let arr = [57, 68, 59, 52, 72, 28, 96, 33, 24, 19];
+
+// 冒泡排序
+function bubbleSort(arr) {
+    const len = arr.length;
+    for (let i = 0; i < len; i++) {
+        let flag = false;
+        for (let j = 0; j < len-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+                flag = true
+            }
+        }
+        if (flag === false) return arr
+    }
+    return arr
+}
+
+// 归并排序
+function mergeSort(arr) {
+    let len = arr.length;
+    if (len <= 1) {
+        return arr
+    }
+    const mid = Math.floor(len / 2)
+    const leftArr = mergeSort(arr.slice(0, mid))
+    const rightArr = mergeSort(arr.slice(mid, len))
+    arr = mergeArr(leftArr, rightArr)
+    return arr
+}
+
+function mergeArr(arr1, arr2) {
+    let i = 0, j = 0;
+    const res = []
+    const len1 = arr1.length;
+    const len2 = arr2.length;
+    while (i < len1 && j < len2) {
+        if (arr1[i] < arr2[j]) {
+            res.push(arr1[i])
+            i++
+        } else {
+            res.push(arr2[j]);
+            j++
+        }
+    }
+    if (i < len1) {
+        return res.concat(arr1.slice(i))
+    } else {
+        return res.concat(arr2.slice(j))
+    }
+}
+
+// 快排
+function quickSort(arr, left = 0; right = arr.length - 1) {
+    if (arr.length > 1) {
+        const lineIndex = partition(arr, left, right) 
+        if (left < lineIndex - 1) {
+            quickSort(arr, left, lineIndex - 1)
+        }
+        if (lineIndex < right) {
+            quickSort(arr, lineIndex, right)
+        }
+        return arr
+    }
+}
+
+function partition(arr, left, right) {
+    let pivotValue = arr[Math.floor(left + (right - left) / 2)]
+    let i = left
+   	let j = right
+    while(i <= j) {
+        while(arr[i] < pivotValue) {
+            i++
+        }
+        while(arr[j] > pivotValue) {
+            j--
+        }
+        if (i <= j) {
+            swap(arr, i, j) 
+            i++
+            j--
+        }
+    }
+    return i
+}
+
+function swap(arr, i, j) {
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+}
+
+// 插入排序
+function insertSort(arr) {
+    for (var i = 1; i < arr.length; i++) {
+        var current = arr[i];
+        for (var j = i - 1; j>=0 && arr[j] > current; j--) {
+            arr[j+1] = arr[j]
+        }
+        arr[j+ 1] = current
+    }
+    return arr
+}
+
+// 选择排序
+function selectSort(arr) {
+    let len = arr.length;
+    let minIndex;
+    for (let i = 0; i < len - 1; i++) {
+        minIndex = i;
+        for (let j = i; j < len; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j
+            }
+        }
+        if (minIndex !== i) {
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
+        }
+    }
+    return arr
+}
+```
+
+
+
+## 数组扁平化
+
+问：编写一个程序将数组扁平化去并除其中重复部分数据，最终得到一个升序且不重复的数组
+
+```javascript
+
+let arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
 
 // 扁平化
 let flatArr = arr.flat(Infinity);
@@ -26,30 +326,11 @@ console.log(result);
 // Array.from 将类数组转成数组实例
 ```
 
-### 数组去重
-
-#### ES5
-
-```javascript
-function unique(arr) {
-    var res = arr.filter((item, index, array) => {
-        return array.indexOf(item) === index;
-    });
-    return res;
-}
-```
-
-#### ES6
-
-```javascript
-function unique(arr) {
-    return [...new Set(arr)];
-}
-```
+衍生问题：数组扁平化
 
 ### 数组扁平化
 
-使用 Array.prototype.flat 就可以将多层数组拍平一层
+使用 `Array.prototype.flat` 就可以将多层数组拍平一层
 
 ```javascript
 [1, [2, [3]]].flat(Infinity); // [1, 2, 3]
@@ -84,183 +365,7 @@ function flatten(arr) {
 
 
 
-## 数组对象去重
-
-方法一：new Set + JSON.stringigy
-
-```javascript
-const arr = [
-	{id: 1, name: 'John'},
-  	{id: 2, name: 'Jane'},
-  	{id: 1, name: 'John'},
-  	{id: 3, name: 'Bob'},
-  	{id: 2, name: 'Jane'}
-]
-
-const set = new Set(arr.map(JSON.stringify));
-// 先把每一项转成字符串，再在数组中通过 Set 去重
-const uniqueArr = Array.from(set).map(JSON.parse);
-// Array.from 将 Set 后的对象转换成 Array
-// 再将去重的字符串还原成对象
-
-console.log(uniqueArr);
-```
-
-方法二：reduce
-
-```javascript
-const arr = [
-	{id: 1, name: 'John'},
-  	{id: 2, name: 'Jane'},
-  	{id: 1, name: 'John'},
-  	{id: 3, name: 'Bob'},
-  	{id: 2, name: 'Jane'}
-]
-
-const uniqueArr = Object.values(arr.reduce((acc, cur) => {
-  acc[cur.id] = cur;
-  return acc;
-}, {}));
-// acc 累加值，cur 当前值，第二个参数是初始值initialValue
-// Object.values() 对象转数组
-```
-
-方法三：filter 
-
-```javascript
-const arr = [
-  {id: 1, name: 'John'},
-  {id: 2, name: 'Jane'},
-  {id: 1, name: 'John'},
-  {id: 3, name: 'Bob'},
-  {id: 2, name: 'Jane'}
-];
-
-const uniqueArr = arr.filter((item, index, arr) => {
-    return arr.findIndex(t => t.id === item.id) === index
-})
-```
-
-方法四：Map
-
-```javascript
-const arr = [
-  {id: 1, name: 'John'},
-  {id: 2, name: 'Jane'},
-  {id: 1, name: 'John'},
-  {id: 3, name: 'Bob'},
-  {id: 2, name: 'Jane'}
-];
-
-const map = new Map();
-arr.forEach(item => map.set(item.id, item));
-
-const uniqueArr = Array.from(map.values());
-
-console.log(uniqueArr);
-```
-
-
-
-## 如何实现浏览器内多个标签页之间的通信?
-
-三种。监听 localStorage、webworker、sharedworker
-
-```javascript
-window.onstorage = (e: any) => {
-    console.log(e);
-};
-```
-
-### js 延迟加载的方式有哪些？
-
-defer 和 async
-
-什么是 defer？
-
-什么是 async？
-
-动态创建 DOM 方式
-
-按需异步载入 js
-
-### 如何解决跨域问题?
-
-### 如何统计当前页面出现过多少种 html 标签
-
-```javascript
-new Set([...document.getElementsByTagName('*')].map((v) => v.tagName)).size;
-```
-
-### 求一个网页中出现次数最多的三种标签
-
-```javascript
-const html = document.querySelector('html');
-const htmlChild = html.children;
-let obj = {};
-function fn(children) {
-    for (let i of children) {
-        if (obj.hasOwnProperty(i.tagName)) {
-            obj[i.tagName] = obj[i.tagName] + 1;
-        } else {
-            obj[i.tagName] = 1;
-        }
-        const child = i.children;
-        if (child.length !== 0) {
-            fn(child);
-        }
-    }
-}
-fn(htmlChild);
-let tag = Object.entries(obj).sort((a, b) => b[1] - a[1]);
-
-function result(array) {
-    return array.slice(0, 3);
-}
-console.log(result(tag));
-```
-
-问：介绍 defineProperty 方法，什么时候需要用到
-
-## Array 的方法，那些会改变原数组，那些不会
-
-改变数组：
-
-shift、unshift、pop、push、reverse、sort、splice、fill、copyWidthin
-
-不改变数组：
-
-concat、join、slice、map、filter、forEach、some、every、reduce
-
-## 垃圾回收
-
-## 迭代器
-
-## 类数组和数组的区别在哪里
-
-相同点：都可用下标访问每个原生，都有 length 属性
-
-不同点：数组的类型是 Array，类数组的类型是 object。即数组遍历可以用 for in 或 for，类数组只能用 for 循环
-
-常见的类数组有：arguments、DOM 对象列表（document.querySelectorAll）
-
-类数组转换为数组
-
-1. Array.prototype.slice.call(arrayLike, 0)
-2. [...arrayLike] 扩展运算符
-3. Array.from(arrayLike)
-
-数组转换为类数组
-
-```javascript
-var arr = [1, 2, 3, 4]
-var obj = {}
-[].push.apply(obj, arr)
-```
-
-
-
-## 代码题：手写进度条
+## 进度条
 
 ```html
 <!DOCTYPE html>
@@ -307,15 +412,3 @@ var obj = {}
 ```
 
 
-
-
-
-## 参考资料
-
--   [夯实 JS 主要知识点](https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451046276&idx=1&sn=b54360af4eaa853699f6ebda2d2be822&chksm=87cbe694b0bc6f8238b645cbffe7c3ef7c4b3f6a6899670e5a306b494e819af2d4dd1cf052f1&mpshare=1&scene=1&srcid=&sharer_sharetime=1566830719714&sharer_shareid=778ad5bf3b27e0078eb105d7277263f6#rd)
--   [44 道 JS 难题，做对一半就是高手](https://www.jianshu.com/p/e161bd720e64)
--   [JS 20 道概念虽老但也略有收获的 JS 基础题](https://www.cnblogs.com/echolun/p/13363457.html)
--   [精选十道前端面试题](https://zhuanlan.zhihu.com/p/373484984)
--   [字节跳动最爱考的前端面试题：JavaScript 基础](https://mp.weixin.qq.com/s/kh8H5YkFiJOgRH7hAzXfGQ)
--   [一网打尽那些经常被问到的手写题](https://mp.weixin.qq.com/s/YhPAOl1blr03XyiNpKTcKw)
--   [三刷红宝书之 JavaScript 的引用类型](https://juejin.cn/post/6844903910541361165)

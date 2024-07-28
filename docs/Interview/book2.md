@@ -294,15 +294,23 @@ CORS 引入了以下几个以 `Access-Control-Allow-*` 开头：
 
 
 
-## 8.Webpack构建的原理 
+## 8.如何提供 webpack 构建速度？ Webpack构建的原理 
 
-资源分析
+1.使用 DllPlugin 将不常变化的代码提前打包，并服用
 
-依赖图构建
+2.使用 thread-loader 或者 happypack（过时）进行多线程打包
 
-资源打包
+3.处于开发环境时，在 webpack config 中将 cache 设为 true，也可用 cache-loader（过时）
 
-输出构建
+4.处于生产环境时，关闭不必要的环节，比如可以关闭 source map
+
+5.网传的 hard-source-webpack-plugin 已经一年多没关闭
+
+
+
+
+
+
 
 
 
@@ -319,6 +327,16 @@ vite:基于esm的新一代构建工具
 其它还有esbuilder等等
 
 
+
+衍生题：Webpack构建的原理 
+
+资源分析
+
+依赖图构建
+
+资源打包
+
+输出构建
 
 
 

@@ -9,25 +9,45 @@
 分三种情况，水平居中，垂直居中，水平垂直居中
 
 单水平居中而言，居中元素不定宽高
+
 absolute+transform
+
 flex 属性居中
+
 flex + 子项 margin auto
+
 grid 属性居中
+
 grid 子项 margin auto
+
 grid 子项属性居中
+
 -webkit-box 属性居中
+
 table-cell + text-align
+
 line-height + text-align
+
 writeing-mode
+
 table
+
 居中元素需定宽高
+
 须知宽高+absolute+负 margin
+
 须知宽高+absolute+calc
+
 须知宽高+absolute+margin auto
+
 局限性较大的全局居中
+
 须知宽高+fixed+transform
+
 须知宽高+fixed+负 margin
+
 须知宽高+fixed+calc
+
 须知宽高+fixed+margin auto
 
 
@@ -165,24 +185,89 @@ Chrome 浏览器是一个应用程序，它有一个主进程、多个渲染进�
 yield 生成一个断点
 next 继续执行
 
-## 5. React：虚拟 DOM 与 Diff 算法
+## 5. React：虚拟 DOM 的原理
 
-考察点： Virtual DOM 、Diff
+考察点： 虚拟 DOM 
 
 ### 什么是 Virtual DOM
 
-React 使用 JavaScript 对象来模拟 DOM 树，这种模拟结构被称为虚拟 DOM。通过使用虚拟 DOM，React 可以高效地比较组件状态的变化，并只更新需要修改的DOM 节点，而不需要重新渲染整个页面
+虚拟 DOM 就是虚拟节点。React 用 JS 对象来模拟 DOM 节点，然后将其渲染成真实 DOM 节点
 
-### 为什么需要 Virtual DOM
+### 解决了什么问题
 
-1. 提高渲染效率，直接操作DOM是非常矮柜的，会导致页面的重绘和回流，降低性能。虚拟DOM可以批量比较和更新 DOM，最大限度地减少 DOM 操作，提高渲染效率
-2. 跨平台兼容，虚拟 DOM 是一个平台无关的数据结构，可以跨浏览器、移动端等多个平台使用，这为 React 的跨平台能力奠定了基础
-3. 简化开发，虚拟 DOM 屏蔽了底层 DOM 操作的复杂性，使开发者可以更专注于应用逻辑的开发，提高开发效率
-4. 更友好的调试体验，虚拟DOM是 JavaScript 对象，可以更容易地进行调试和测试，提高开发体验
+- DOM 操作性能问题。通过虚拟 DOM 和 diff 算法减少不必要的 DOM 操作，保证性能不太差
+- DOM 操作不方便问题。以前各种 DOM API 要记，现在只有 setState
+
+### 优势（为什么需要虚拟 DOM）
+
+1. 让 DOM 操作的整体新能更好，能（通过 diff）减少不必要的 DOM 操作
+2. 为 React 带来跨平台能力，因为虚拟节点除了渲染为 DOM 节点外，还可以在其他平台上渲染
+3. 简化开发，使用 setState 来操作 DOM 变化，不用记底层 DOM API
+
+### 缺点
+
+1. 性能要求极高的地方，还需要得用到 DOM 操作（目前还没遇到这种需求）
+2. React 为虚拟 DOM 创造了合成事件，跟原生 DOM 事件不一致，需要额外操作
+   - 将 React 事件都绑定到根容器（V17升级），自动实现事件委托
+   - 如果混用合成事件和原生 DOM 事件，可能出现 bug
+
+### 虚拟 DOM 的原理
+
+JSX(TSX) 写组件 -> React.element ->  React.Fiber -> 渲染成真实节点
+
+> JSX(TSX) 写组件 通过 jsx-runtime 转换为 React.element
+
+```javascript
+function render(vdom) {
+  // 如果是字符串或者数字，创建一个文本节点
+  if (typeof vdom === 'string' || typeof vdom === 'number') {
+    return document.createTextNode(vdom)
+  }
+  const { tag, props, children } = vdom
+  // 创建真实DOM
+  const element = document.createElement(tag)
+  // 设置属性
+  setProps(element, props)
+  // 遍历子节点，并获取创建真实DOM，插入到当前节点
+  children
+    .map(render)
+    .forEach(element.appendChild.bind(element))
+
+  // 虚拟 DOM 中缓存真实 DOM 节点
+  vdom.dom = element
+  
+  // 返回 DOM 节点
+  return element
+}
+```
+
+> PS：以上案例是简化了 虚拟 DOM 转换的过程，在 React16之前类似逻辑，将虚拟DOM 遍历替换，但换成 Fiber 后，就分为两个阶段，render 阶段是在虚拟 DOM 上打标记（会被打断），等 commit 阶段再一次性更新DOM
+
+
+
+
+
+衍生问题：DOM diff 算法是怎么样的
 
 ### Diff 算法
 
-React 通过比较新旧两颗虚拟 DOM 树的差异，计算出需要最小化 DOM 操作的更新路径。传统的 Diff 算法复杂度高度  O(n^3)，而 React 将其优化到 O(n)，大幅提高了更新效率
+#### 是什么
+
+简单俩说就是对比新旧两颗虚拟 DOM 树的差异的算法。当组件变化时，会 render 出一个新的虚拟 DOM，diff 算法对比新旧虚拟 DOM 之后，得到了一个 patch，然后 React 用 patch 来更新真实 DOM
+
+#### 怎么做
+
+- 首先对比两棵树的根节点
+
+  - 类型变化，那么会直接认为整个树都变了，不再对比子节点。直接标记删除对应真实 DOM 树，创建新的真实 DOM 树
+
+  - 类型没变，看属性是否变化
+
+    - 如果没变，就保留对应的真实节点
+
+    - 如果变化，就只更新该节点的属性，不重新创建节点
+
+      
 
 React 在以下两个假设的基础上提出了一套 O(n) 的**启发式算法**
 
@@ -264,15 +349,69 @@ Repaint 重绘：元素的样式发生改编，不影响它所在的文档流的
 
 
 
-## 7.微前端的沙箱机制是怎么实现的？ 
+## 7.qiankun 的原理是什么？如何实现 js 沙箱和 css 隔离的
 
-1. window 对象隔离
-   - 微前端通过创建一个独立的 window 对象作为沙箱，将应用的代码运行在这个隔离的 window 环境中
-   - 这样可以防止应用之间的全局变量冲突和资源相互影响
-2. DOM 隔离
-   - 微前端将每个应用的 DOM 元素都挂载到一个独立的容器中，防止 DOM 元素之间的相互影响
-3. 样式隔离
-4. 生命周期隔离
+qiankun 是阿里出的微前端框架，旨在解决复杂的单页应用开发中的多应用整合问题
+
+### 工作原理
+
+微前端的基本原则就是在 url 变化时，加载、卸载对应的子应用，single spa 就实现了这个功能
+
+它做的事情就是注册微应用、监听 URL 变化，然后激活对应的微应用（再执行生命周期）
+
+single-spa 不够完善，没有解决资源加载、沙箱、全局状态管理的问题，qiankun 基于 single-spa 搭建
+
+- 基于 html 自动分析 js、css，自动加载，不需要开发者手动指定如何加载
+- 基于快照、Proxy 的思路实现了 JS 隔离，基于 shadow Dom 和 scoped css 的思路实现了 CSS 隔离
+- 提供全局状态管理机制（props 通信）
+
+
+
+### js 沙箱和  css 隔离
+
+子应用之间要实现隔离，互不影响，也就是要实现 JS 和 CSS 的隔离
+
+single-spa 没有做这方面的处理，qiankun 实现了这个功能
+
+JS 隔离的也就是要隔离 window 这个全局变量，其他不会有冲突，本身就是在不同函数的作用域下执行的
+
+qiankun 实现 window 隔离有三个思路：
+
+- 快照：加载子应用前记录下 window 的属性，卸载后恢复到之前的快照
+- diff：加载子应用之后记录对 window 属性的增删改，卸载后恢复
+- **Proxy**：创建一个代理对象，每个子应用访问的时这个代理对象
+
+css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow root 下的 dom 的样式不会影响到其他 dom
+
+
+
+### 总结
+
+简单来说，微前端就是通过监听路由切换+沙箱机制实现了多个子应用共同运行的技术
+
+监听路由
+
+- 能对子应用进行加载和卸载
+
+沙箱机制
+
+- 一个子应用存在于一个沙箱内，沙箱内无论如何变化影响不到另外沙箱外
+- 基于快照、Proxy 的思路实现了 JS 隔离，基于 shadow Dom 和 scoped css 的思路实现了 CSS 隔离
+- 提供全局状态管理机制（props 通信）
+
+
+
+
+
+衍生问题：为什么不用 single spa
+
+### 为什么不用 single spa
+
+换句话问：single spa 有什么不足，qiankun 又做了什么
+
+- 加载微应用时需要指定加载哪些 js、css，如果子应用的打包逻辑发生了变化，入口文件也要跟着变
+- 一个页面可能有多个子应用，之间会不会有JS、样式冲突？
+- 多个子应用之间的通信怎么处理？
 
 
 
