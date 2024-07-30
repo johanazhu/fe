@@ -147,16 +147,137 @@ ReactDOM.render(<App />, rootNode);
 
 
 
-## 7. 0.1 + 0.2 为什么不等于 0.3
+## 7. 代码题：实现 LazyMan
 
-考察点：浮点数
+实现 LazyMan，能按以下方式调用：
 
-因为 JS 采用的是 IEEE754 标准的双精准度（64 位），一个浮点数既要包含整数部分又要包含小数部分，
-0.1 和 0.2 先转成二进制，在转换为同一维度计算，得到二进制后，再转换为十进制后
+```markdown
+LazyMan('Hank')输出:
+Hi! This is Hank!
+
+LazyMan('Hank').sleep(10).eat('dinner')输出
+Hi! This is Hank!
+//等待10秒..
+Wake up after 10
+Eat dinner~
+
+LazyMan('Hank').eat('dinner').eat('supper')输出
+Hi This is Hank!
+Eat dinner~
+Eat supper~
+
+LazyMan('Hank').sleepFirst(5).eat('supper')输出
+//等待5秒
+Wake up after 5
+Hi This is Hank!
+Eat supper
+```
 
 
 
-计算机的底层都是由二进制来表示的，对于 0.1和 0.2 这种数字在用二进制储存的时候会有精度误差
+### 实现
+
+普通函数写法
+
+```javascript
+const LazyMan = (val) => {
+    const task = () => {console.log(`Hi! This is ${val}!`); next()}
+    let queue = []
+    queue.push(task)
+    const next = () => { const first = queue.shift(); first?.() }
+    
+    var api = {
+        // x: queue,
+        eat(type) {
+            const task = () => {console.log(`Eat ${type}~`); next()}
+            queue.push(task)
+       		return api
+        },
+        sleep(time) {
+          	const task = () => {
+                setTimeout(() => {
+                    console.log(`Wake up after ${time}`)
+                    next()
+                }, time *1000)
+            }
+         	queue.push(task)
+            return api
+        },
+    	sleepFirst(time) {
+            const task = () => {
+                setTimeout(() => {
+                    console.log(`Wake up after ${time}`)
+                    next()
+                }, time *1000)
+            }
+         	queue.unshift(task)
+            return api
+        }
+    }
+    setTimeout(() => {
+        next()
+    },0)
+    return api
+    
+}
+```
+
+
+
+Class 写法
+
+```javascript
+class _LazyMan {
+    constructor (val) {
+        this.queue = [] 
+        const task = () => {
+            console.log(`Hi This is ${val}!`)
+            this.next()
+        }
+        this.queue.push(task)
+        setTimeout(() => {
+            this.next()
+        }, 0)
+        return this;
+    }
+    next() {
+        const first = this.queue.shift(); 
+        first?.()
+    }
+    eat(val) {
+        const task = () => {
+            console.log(`Eat ${val}~`)
+            this.next()
+        }
+        this.queue.push(task)
+        return this
+    }
+    sleep(time) {
+       	const task = () => {
+           	setTimeout(() => {
+                console.log(`Wake up after ${time}`)
+                this.next()
+           	}, time * 1000)
+       	}
+       	this.queue.push(task)
+        return this;
+    }
+  	sleepFirst(time) {
+       	const task = () => {
+           	setTimeout(() => {
+                console.log(`Wake up after ${time}`)
+                this.next()
+           	}, time * 1000)
+       	}
+       	this.queue.unshift(task)
+       	return this;
+    }
+}
+
+function LazyMan(val) {
+    return new _LazyMan(val)
+}
+```
 
 
 

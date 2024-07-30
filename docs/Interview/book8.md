@@ -298,7 +298,17 @@ SSR 一次页面渲染的流程：
 
 ## 7. Interface 和 Type 的区别
 
-Interface 和 Type 的核心区别是 Type 不可在定义后重新添加内容，而 Interface 则总是可以扩展新内容（可扩展）。相比 Interface，Type 并没有实际创建一个新的类型，而是创建一个引用某个类型的名字
+区别1：interface 只能描述对象，type 则描述所有数据类型
+
+区别2：type 只是别名，interface 则是类型声明
+
+区别3：type 不可重新赋值，interface 自动合并
+
+所以一般对外 API 尽量用 interface，方便扩展；对内 API 尽量用 type，防止代码分散
+
+衍生题：什么是联合类型 和 类型收窄
+
+### 联合类型和类型收窄
 
 
 

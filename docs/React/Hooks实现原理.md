@@ -65,6 +65,18 @@ hooks 的实现就是基于 fiber 的，会在 fiber 节点上放一个链表，
 
 
 
+## 手写 useState
+
+
+
+
+
+
+
+
+
+
+
 
 
 

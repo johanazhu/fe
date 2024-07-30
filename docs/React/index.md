@@ -45,7 +45,7 @@
     -   它的本质是什么？
     -   [Hooks 踩坑](./Hooks踩坑)
     -   手写 Hooks
-    -   写过自定义 Hooks 吗，展开讲讲
+    -   [手写自定义Hooks](./手写自定义Hooks)
 -   [setState](./快问快答setState)
     -   为什么要用 setState，而不是直接 `this.statet.xx == oo`？
     -   [setState 异步的原理](./setState)

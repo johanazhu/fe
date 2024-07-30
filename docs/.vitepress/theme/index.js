@@ -68,7 +68,7 @@ export default {
 
         return h(DefaultTheme.Layout, props, {
             'layout-bottom': () => h(ReloadPrompt),
-            "aside-bottom": () => h(MAsideSponsors),
+            // "aside-bottom": () => h(MAsideSponsors),
         });
     },
     enhanceApp({ app }) {

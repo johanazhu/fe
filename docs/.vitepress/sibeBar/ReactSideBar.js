@@ -57,6 +57,10 @@ export default function reactSideBar() {
                     link: '/React/Hooks踩坑',
                 },
                 {
+                    text: '手写自定义Hooks',
+                    link: '/React/手写自定义Hooks',
+                },
+                {
                     text: '快问快答setState',
                     link: '/React/快问快答setState',
                 },
