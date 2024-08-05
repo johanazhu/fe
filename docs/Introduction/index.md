@@ -30,7 +30,7 @@
             [{ title: '移动H5开发',  link:'/WebApp/' }],
             [{ title: '微信公众号',  link:'/WebApp/WeChat/' }],
             [{ title: '微信小程序', link:'/WebApp/MiniApp/' }],
-            [{ title: 'Flutter',  link:'/Flutter/' }],
+            [{ title: 'Flutter',  link:'/WebApp/Flutter/' }],
             [{ title: 'ReactNative',  link:'/WebApp/ReactNative/' }],
         ],
     },

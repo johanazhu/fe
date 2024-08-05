@@ -12,6 +12,89 @@
 
 ![ React Compiler](https://s2.loli.net/2024/06/14/LY4zQwWZsMcR71P.png)
 
+
+
+## useMemo
+
+useMemo 是一个 React Hook，它在每次重新渲染时都能缓存计算的结果
+
+```jsx
+const cachedValue = useMemo(calculateValue, dependencies)
+```
+
+第一个参数是 ()=> value
+
+第二个参数是依赖项
+
+只有当依赖项变化时，才会计算出新的 value，如果依赖项不变，那就用之前的 value
+
+如果你的 value 是个函数，那么你就要写成 `useMemo(() => x => console.log(x))`
+
+### 用法 
+
+#### 跳过代价昂贵的重新计算
+
+在组件顶层调用 useMemo 以在重新渲染之间缓存计算结果：
+
+```jsx
+import { useMemo } from 'react';
+
+function TodoList({ todos, tab, theme }) {
+  const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
+  // ...
+}
+```
+
+你需要给 useMemo 传递两样东西：
+
+1. 一个没有任何参数的 calculation 函数，像这样`() =>`，并且返回任何你想要的计算结果
+2. 一个由包含在你的组件中并且 calculation 中使用的所有值组成的依赖列表
+
+在初次渲染时，你从 useMemo 得到的 值 将会是你的 calculation 函数执行的结果
+
+随后的每次渲染中，React 会比较前后两次渲染中的所有依赖项是否相同，如果通过 Object.is 比较所有依赖项都没有发生变化，那么他会返回之前计算过的值；否则，React 会重新执行 calculation 函数并且返回一个新的值
+
+### 使用场景
+
+#### 跳过组件的重新渲染
+
+某些情况下，useMmeo 可以帮助你优化重新渲染子组件的性能。假设这个 `TodoList` 组件将 `visibleTodos` 作为 props 传递给子 `List` 组件：
+
+```jsx
+export default function TodoList({ todos, tab, theme }) {
+  const visibleTodos = filterTodos(todos, tab);
+  return (
+    <div className={theme}>
+      <List items={visibleTodos} />
+    </div>
+  );
+}
+```
+
+将 List 用 memo 包裹住后，保持 props 不变就能实现 List 不渲染
+
+所以我们使用 useMemo 缓存 filterTodos 的值
+
+```jsx
+export default function TodoList({ todos, tab, theme }) {
+  // 告诉 React 在重新渲染之间缓存你的计算结果...
+  const visibleTodos = useMemo(
+    () => filterTodos(todos, tab),
+    [todos, tab] // ...所以只要这些依赖项不变...
+  );
+  return (
+    <div className={theme}>
+      {/* ... List 也就会接受到相同的 props 并且会跳过重新渲染 */}
+      <List items={visibleTodos} />
+    </div>
+  );
+}
+```
+
+通过将 visibleTodos 的计算函数包裹在 useMemo 中，你就可以确保它在重新渲染之间具有相同值，直到依赖项发生变化。
+
+
+
 ## useCallback
 
 useCallback 是一个允许你在多次渲染中缓存函数的 React Hook
@@ -21,6 +104,10 @@ const cachedFn = useCallback(fn, dependencies)
 ```
 
 ### 用法
+
+它和 useMemo 出自一脉
+
+useCallback( x => log(x), [m]) 等价于 useMemo(() => x => log(x), [m])
 
 #### 跳过组件的重新渲染
 
@@ -122,77 +209,6 @@ function ProductPage({ productId, referrer, theme }) {
 将 handleSubmit 传递给 useCallback 就可以确保它在多次重新渲染之间是相通的函数，直到依赖发生改变
 
 
-
-## useMemo
-
-useMemo 是一个 React Hook，它在每次重新渲染时都能缓存计算的结果
-
-```jsx
-const cachedValue = useMemo(calculateValue, dependencies)
-```
-
-### 用法 
-
-#### 跳过代价昂贵的重新计算
-
-在组件顶层调用 useMemo 以在重新渲染之间缓存计算结果：
-
-```jsx
-import { useMemo } from 'react';
-
-function TodoList({ todos, tab, theme }) {
-  const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
-  // ...
-}
-```
-
-你需要给 useMemo 传递两样东西：
-
-1. 一个没有任何参数的 calculation 函数，像这样`() =>`，并且返回任何你想要的计算结果
-2. 一个由包含在你的组件中并且 calculation 中使用的所有值组成的依赖列表
-
-在初次渲染时，你从 useMemo 得到的 值 将会是你的 calculation 函数执行的结果
-
-随后的每次渲染中，React 会比较前后两次渲染中的所有依赖项是否相同，如果通过 Object.is 比较所有依赖项都没有发生变化，那么他会返回之前计算过的值；否则，React 会重新执行 calculation 函数并且返回一个新的值
-
-### 使用场景
-
-#### 跳过组件的重新渲染
-
-某些情况下，useMmeo 可以帮助你优化重新渲染子组件的性能。假设这个 `TodoList` 组件将 `visibleTodos` 作为 props 传递给子 `List` 组件：
-
-```jsx
-export default function TodoList({ todos, tab, theme }) {
-  const visibleTodos = filterTodos(todos, tab);
-  return (
-    <div className={theme}>
-      <List items={visibleTodos} />
-    </div>
-  );
-}
-```
-
-和 useCallback 一样，将 List 用 memo 包裹住后，保持 props 不变就能实现 List 不渲染
-
-所以我们使用 useMemo 缓存 filterTodos 的值
-
-```jsx
-export default function TodoList({ todos, tab, theme }) {
-  // 告诉 React 在重新渲染之间缓存你的计算结果...
-  const visibleTodos = useMemo(
-    () => filterTodos(todos, tab),
-    [todos, tab] // ...所以只要这些依赖项不变...
-  );
-  return (
-    <div className={theme}>
-      {/* ... List 也就会接受到相同的 props 并且会跳过重新渲染 */}
-      <List items={visibleTodos} />
-    </div>
-  );
-}
-```
-
-通过将 visibleTodos 的计算函数包裹在 useMemo 中，你就可以确保它在重新渲染之间具有相同值，直到依赖项发生变化。
 
 ## useCallback 与 useMemo 有何关系？ 
 

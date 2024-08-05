@@ -41,7 +41,7 @@
 - JavaScript 基础：事件循环
 - ES6特性：迭代器和生成器
 - React： 虚拟DOM 与 Diff算法
-- React：说说 React的渲染过程
+- React：说说 React 的渲染过程
 - 浏览器： 浏览器渲染原理 
 - 微前端：qiankun 的原理是什么？如何实现 js 沙箱和 css 隔离的
 - 项目：十万条数据如何优化
@@ -80,7 +80,7 @@
 - JavaScript 基础：谈谈变量提升
 - ES6特性：let 和 const
 - React：React 中的多次渲染如何优化
-- React： useEffect、useLayoutEffect、useLayoutEffect 使用场景
+- React： useEffect、useLayoutEffect 使用场景
 - WebApp：适配方案
 - 浏览器：Cookie、localStorage、sessionStorage、IndexedDB的区别
 - 工程化：webpack 怎么配置多页面
@@ -118,11 +118,11 @@
 - 手写源码：柯里化
 - JavaScript 基础：数据类型有哪些
 - ES6：ES6至ES12的新特性
-- React: Umi 相关
+- React: 说说 React Router 有几种模式？实现原理？
 - 数据流：Redux 和 mobx 的区别
 - 设计模式：什么场景下会用策略模式
 - 工程化：tree shaking 是什么
-- 工程化：webpack 工作流程是怎样的
+- 工程化：webpack 工作原理是什么，工作流程是怎么样的
 - 算法题：爬楼梯
 
 ## 模拟题十

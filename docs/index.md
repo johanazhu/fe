@@ -32,12 +32,6 @@ hero:
       text: 大前端
       link: /WebApp/
     - theme: brand
-      text: ETF投资智慧
-      link: https://etfworld.azhubaby.com/
-    - theme: alt
-      text: 囤比特币
-      link: https://holdbtc.azhubaby.com/
-    - theme: brand
       text: 小报童专栏导航
       link: https://xiaobot.tools/
 features:

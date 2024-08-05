@@ -132,6 +132,14 @@ Node.js实战（第2版）
 
 
 
+用 nodejs 写个 tree
+
+用 nodejs 写个 curl
+
+再写个 mkdir  -p a/b/c/d/e/f
+
+用 node 写命令行
+
 
 
 ## 我的学习路径

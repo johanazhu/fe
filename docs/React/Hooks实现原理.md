@@ -1,77 +1,153 @@
 # React Hooks 实现原理
 
-在学习 Hooks 是怎么实现的之前，我们需要知道[Fiber](./Fiber) 、[Hooks](./Hooks) 相关的知识
-
-在 [Fiber](./Fiber) 中，我们了解到 React Fiber 的架构遵循着 `schedule - render - commit` 的运行流程，这个流程是 React 最底层的运行规律
-
-- schedule 调度，分配优先级
-- render 多次调用以下生命周期函数
-  - componentWillMount
-  - componentWillReceiveProps
-  - shouldComponentUpdate
-  - componentWillUpdate 
-- commit 会调用以下生命周期
-  - componentDidMount
-  - componentDidUpdate
-  - componentWillUnmount
-
-以前有人会拿 ClassComponent 的生命周期来类比 Hooks API 的执行时机。但两者的概念并不相通
-
-比如：代替 componentWillReceiveProps 的 Hooks 是什么呢？
-
-```jsx
-useEffect( () => {
-	console.log('something updated');
-}, [props.something])
-```
-
-但是 componentWillReceiveProps 是在 render 阶段执行，而 useEffect 是在 commit 阶段完成渲染后异步执行
-
-在 React15 中，每个生命周期函数在一个加载或者更新过程中绝对只会被调用一次，但是在 React16（React Fiber 架构）下，不再是这样，render 阶段会在一次加载和更新中被多次调用，commit 阶段只会执行一次
-
-那么 useEffect 为什么会在 commit 之后执行呢？
-
-## Hooks 的工作原理
-
-对于 useState Hook，考虑如下例子：
-
-```jsx
-function App() {
-  const [num, updateNum] = useState(0);
-
-  return <p onClick={() => updateNum((num) => num + 1)}>{num}</p>;
-}
-```
-
-可以将工作分为两部分：
-
-1. 通过一些途径产生更新，更新会造成组件 render
-2. 组件 render 时 useState 返回的 num 为更新后的结果
-
-其中 `步骤1` 的 `更新` 可以分为 `mount` 和 `update`：
-
-1. 调用 `ReactDOM.render` 会产生 `mount` 的`更新`，`更新`内容为 `useState` 的 `initialValue`（即 0）
-2. 点击 `p` 标签触发 `updateNUM` 会产生一次 `update` 的`更新`，`更新`内容为 `num => num + 1`
-
-hooks 挂载数据的数据结构叫做 fiber。
-
-
-
-
-
-hooks 的实现就是基于 fiber 的，会在 fiber 节点上放一个链表，每个节点的 memorizedState 属性上存放了对应的数据，然后不同的 hooks api 使用对应的数据来完成不同的功能
-
-
-
-
+原来写了流程，无奈看的时候感觉不妥，太干涩了，不如先实现一个 useState 再来讲理论知识。在看这章之前，需要先复习一下之前的 [Hooks](./Hooks)
 
 ## 手写 useState
 
+### 第一阶段，实现最简单的 useState
+
+```jsx
+let _state;
+const myUseState = initialValue => {
+    _state = _state === undefined ? initialValue : _state;
+    const setState = newValue => {
+        _state = newValue
+        render();
+    }
+    return [_state, setState]
+}
+
+// 无关useState，只为为了让其可以渲染组件
+const rootElement = document.getElementById("root")!;
+const root = ReactDOM.createRoot(rootElement);
+const render = () => {
+  root.render(<App />);
+};
+```
+
+我们知道 Hooks 是用闭包实现的，不然每次 render 之后它的值就会变化，所以必须有个全局变量定义在 `myUseState` 外，我们看 useState 的使用
+
+```javascript
+const [num, setNum] = useState(1);
+```
+
+它就是一个函数，传入一个值，返回两个值，两个值中一个是被闭包作用的变量，一个是操作这个变量的函数，操作 setState 后，就会重新渲染，这里用 `render()` 方法模拟
+
+笔者将这段代码放到 [codesandbox](https://codesandbox.io/p/sandbox/shou-xie-usestate-di-yi-jie-duan-l53vmf) 上，可随时查看编辑
+
+## 第二阶段，实现多个 useState 不冲突
+
+上一阶段，我们实现了单个 useState ，但如果有多个 useState 呢，这方式就不中用了
+
+其实很简单，把它设置为数组就可以，通过对其下标的指针来表示变化的是哪个变量即可
+
+全部代码如下所示：
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const rootElement = document.getElementById("root")!;
+const root = ReactDOM.createRoot(rootElement);
+
+let _state: any = [];
+let index = 0;
+
+const myUseState = (initialState: any) => {
+  const currentIndex = index;
+  _state[currentIndex] =
+    _state[currentIndex] === undefined ? initialState : _state[currentIndex];
+
+  const useState = (newValue: any) => {
+    _state[currentIndex] = newValue;
+    console.log("_state", _state);
+    render();
+  };
+
+  index += 1;
+  return [_state[currentIndex], useState];
+};
+
+function App() {
+  const [num, setNum] = myUseState(0);
+  const [num2, setNum2] = myUseState(0);
+
+  return (
+    <div className="App">
+      <h1>Hello World</h1>
+      <h2>{num}</h2>
+      <button onClick={() => setNum(num + 1)}>点我加1</button>
+      <h2>{num2}</h2>
+      <button onClick={() => setNum2(num2 + 1)}>点我加1</button>
+    </div>
+  );
+}
+
+const render = () => {
+  index = 0;
+  root.render(<App />);
+};
+
+render();
+```
+
+其中，最关键的点在于，有个 `_state 数组`和表示每个 state 的` index 下标`，通过 `state[index]` 表示每个由 useState 表示的值
+
+除此之外，每次 render 时，都要将 index 下标重置为 0，不然因为闭包的缘故， index 下标会一直往数组中push
+
+代入贴出可以一观：[线上代码](https://codesandbox.io/p/sandbox/aged-surf-89zjlk)
+
+如此一来我们就完成了 useState
+
+这也解释了为什么使用 React Hooks 的使用规则：**不能再循环、条件、嵌套函数中调用 Hook**
+
+因为 Hooks 方法的存储方式是数组（其实是链表，后续说明），一旦加判断调用，state 和 setState 的对应关系就错了（这里以 useState 为例）
 
 
 
+## Hooks 的工作原理
 
+我们的第二阶段的 useState 其实还有问题的，因为我们在全局 App 中使用了 _state 和 index，那么其他组件怎么办？
 
+答案是给每个组件创建一个 _state 和 index
+
+问题又来了：放在全局作用域中重名了怎么办
+
+解决方案，放在组件对应的 Fiber Node 上
+
+结合在 [Fiber](./Fiber) 篇中所讲，Fiber 的含义之一就是 Fiber Node，每一组件就对应一 Fiber Node，其中它的结构就是
+
+```javascript
+function FiberNode(
+  this: $FlowFixMe,
+  tag: WorkTag,
+  pendingProps: mixed,
+  key: null | string,
+  mode: TypeOfMode,
+) {
+  ...
+  //  保存该FunctionComponent对应的Hooks链表
+  this.memoizedState = null;
+  ...
+}
+```
+
+其中 memoizedState 就是上文所写的 _state，只不过我们将其简化为数组，用 index 配合表示值，而在真实 React 中 memoizedState 它是个对象，它通过链表来链接，不过 Hook 是无环的单链表
+
+```javascript
+hook = {
+  // 环状单向链表
+  queue: {
+    pending: null,
+  },
+  // 保存hook对应的state
+  memoizedState: initialState,
+  // 与下一个Hook连接形成单向无环链表
+  next: null,
+};
+```
+
+数据结构如上所示，memoizedState 表示一个组件的 Hooks，next 相当于上文所说的下表，表示下一个 Hooks
 
 
 

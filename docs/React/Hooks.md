@@ -1,4 +1,4 @@
-# Hooks 是什么
+# React Hooks 详解
 
 > 学习一项知识，必须问自己三个重要问题：1. 它的本质是什么。2. 它的第一原则是什么。3. 它的知识结构是怎样的
 
@@ -20,40 +20,20 @@
     -   Hooks带来的好处
 
 
-最重要且常见的两个 Hook
+各个 Hooks 
 
--   useState
-
--   useEffect
+-   useState（状态）
+-   useEffect（副作用）
     -   与 useLayoutEffect 的区别
-
-性能优化相关
-
-- [useCallback 和 useMemo 使用场景](./useCallback和useMemo)
-
-与 Refs 相关
-
-- [Refs](./Refs)
-
-不常见的其他的 hooks
-
--   useReducer
--   useContext
--   useTransition
--   useDebugValue
-
-自定义 Hooks
+-   useContext（上下文）
+-   useReducer（Redux）
+-   [useMemo（记忆）以及useCallback（回调）](./useCallback和useMemo)
+-   [Ref以及useRef](./Ref以及useRef)
+-   [Hooks 踩坑](./Hooks踩坑)
+-   [Hooks实现原理](./Hooks实现原理)
+-   [手写自定义Hooks](./手写自定义Hooks)
 
 附录：使用规则
-
-
-
-## Hook 的规则
-
-Hook 是使用 JavaScript 函数定义的，但它们代表了一种特殊的可重用的 UI 逻辑，并且对它们可以被调用的位置有限制。
-
-- 只在顶层调用 Hook
-- 仅在 React 函数中调用 Hook
 
 
 
@@ -79,7 +59,7 @@ useEffect(fn, []) 和 componentDidMount 有什么差异
 
 ---
 
-回答的如何？在了解一个概念前，疑惑越多，认识就越深。
+回答的如何？在了解一个概念前，疑惑越多，认识就越深
 
 ## 是什么
 
@@ -116,71 +96,6 @@ React Hook 是 React 16.8 推出的新特性。它可以让你再不编写 class
 HOC 的原理其实很简单，它就是一个函数，且它接受一个组件作为参数，并返回一个新的组件，把复用的地方放在高阶组件中，你在使用的时候，只需要做不同用处
 
 打个比方：就好像我给你一瓶水，你在渴的时候就会喝它；你在耍帅的时候拿它摆 POSE；你在别人需要的时候给他喝帮助人...
-
-write is cheap，show you code
-
-```jsx
-function Wrapper(WrappedComponent) {
-    return class extends React.Component {
-        componentDidMount() {
-            console.log('我是一瓶水')
-        }
-        render() {
-            return (
-                <div>
-                    <div className="title">{this.props.title}</div>
-                    <WrappedComponent {...this.props} />
-                </div>
-            )
-        }
-    }
-}
-```
-
-```jsx
-import "./styles.css";
-import React from "react";
-import Wrapper from "./Wrapper";
-
-class A extends React.Component {
-  render() {
-    return <div>喝它</div>;
-  }
-}
-
-class B extends React.Component {
-  render() {
-    return <div>耍帅摆POSE</div>;
-  }
-}
-
-class C extends React.Component {
-  render() {
-    return <div>帮助别人</div>;
-  }
-}
-
-const AA = Wrapper(A);
-const BB = Wrapper(B);
-const CC = Wrapper(C);
-
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <AA title="我是普通人" />
-      <BB />
-      <CC />
-    </div>
-  );
-}
-
-```
-
-这样就很明显的看出 HOC 的好处，”一瓶水“是共同代码，A、B、C 处理业务代码，然后将 A、B、C 传入 HOC（一瓶水）中，返回了一个新的组件 AA、BB、CC。相同的代码得到了公用
-
-![HOC-demo](https://i.loli.net/2021/09/17/q7vQpZwIngNc3C2.png)
 
 各位可以前往这里查看 [demo](https://codesandbox.io/s/hoc-demo-d9p9j?file=/src/App.js:0-629)
 
@@ -228,7 +143,7 @@ HOC 的用处不单单是代码复用，还可以做权限控制、打印日志�
   -  这个不用多说，写个 class 组件，需要写各种生命周期，如果优化，还需要在 shouldComponentUpdate 做渲染判断，但是函数式组件的 useMemo、memo 比 shouldComponentUpdate 不知道简洁到那里去
 
 
-## 最重要且常见的两个 hooks
+## 各种 Hooks 
 
 ### useState
 
@@ -240,11 +155,39 @@ HOC 的用处不单单是代码复用，还可以做权限控制、打印日志�
 
 在使用 useState 时，就会蹦出一个常见的面试题，[函数式组件与类组件有何不同](./函数式组件与类组件有何不同.md) ，函数式组件能捕获渲染时的值
 
+### 注意事项
+
+1.不可局部更新
+
+- 如果 state 是一个对象，能否部分更新，不能
+- setState 不会帮我们合并属性，可使用 展开运算符（...）来解决
+- useReducer 也不会合并属性
+
+2.地址要变
+
+- setState(obj) 如果 obj 地址不变，那么 React 就认为数据没有变化
+
+3.useState 和 setState 都接受函数
+
+- setState(i => i + 1)
+
+
+
 ### useEffect
 
 作用：执行副作用
 
+> PS：什么是副作用？对环境的改变就是副作用
+
 每一次渲染都有它自己的 props 和 state
+
+用途：
+
+- 作为 componentDidMount 使用，[] 作为第二个参数
+- 作为 componentDidUpdate 使用，可指定依赖
+- 作为 componentWillUnmount 使用，通过 return
+
+如果同时存在多个 useEffect，会按照出现次序执行
 
 在我们讨论 effects 之前，我们需要先讨论一下渲染（rendering）
 
@@ -373,56 +316,76 @@ function Counter() {
 
 所以实际上，每次渲染都有一个“新版本”的 handleAlertClick。每一个版本的 handleAlertClick “记住”了它自己的 count
 
-#### 与 useLayoutEffect 的区别
+### useLayoutEffect 
 
-layoutEffect 是在 dom 更新之后同步调用
+名曰：布局副作用
 
-一般不建议用 useLayoutEffect，因为同步逻辑会阻塞渲染
+它与 useEffect 常做对比，两者执行时机不同、性能影响不同、使用场景也不同
 
-```jsx
-// 用来替代constructor初始化状态
-useState()
+- useEffect 会异步执行
+  - 在 commit 阶段的 before mutation 阶段调用，但是会在 layout 阶段完成后才异步执行
+  - 所以它不会阻塞浏览器的绘制
+  - **在浏览器渲染完成后执行**
+- useLayoutEffect 是同步执行
+  - 在 commit 阶段的 layout 阶段同步执行
+  - 等价于类组件中的 componentDidMount
+  - 可以读取并同步修改 DOM，确保 DOM 的变化在用户看到之前完成
+  - 所以它会阻塞浏览器的绘制
+  - **在浏览器渲染前执行**
 
-// 替代 componentDidMount和componentDidUpdate以及componentWillUnmount
-// 统一称为处理副作用
-useEffect()
-
-// 替代shouldComponent
-useMemo（）
-```
-
-## 性能优化相关
-
-[useCallback 和 useMemo 使用场景](./useCallback和useMemo)
-
-## 与 Refs 相关
-
-[Refs](./Refs)
-
-## 自定义 Hooks
-
-由于 useState 和 useEffect 是函数调用，因为我们可以将其组合成自己的 Hooks
+#### 示意图
 
 ```javascript
-function MyResponsiveComponent() {
-    const width = useWindowWidth();
-    return <p> Window width is {width}</p>;
-}
-
-function useWindowWidth() {
-    const [width, setWidth] = useState(window, innerWidth);
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    });
-    return width;
-}
+APP() --> React.element --> VDOM --> DOM --> 修改视图
 ```
 
-自定义 Hooks 让不同的组件共享可重用的状态逻辑。注意状态本身是不共享的。每次调用 Hook 都只声明了其自身的独立状态
+`useLayoutEffect` 发生在 DOM 和 修改视图 阶段之间
+
+`useEffect` 发生在修改 DOM 之后
+
+#### 总结
+
+简单来说，useLayoutEffect 总是比 useEffect 先执行
+
+为了用户体验，优先使用useEffect（优先渲染）
+
+### useReducer
+
+用来践行 Flux/Redux 的思想
+
+看代码，公分4步走
+
+一：创建初始值 initialState
+
+二、创建所有操作 reducer(state, action)
+
+三、传给 useReducer，得到读和写 API
+
+四、调用写`({ type: "操作类型"})`
+
+总的来说 useReducer 是 useState 的复杂版
+
+
+
+### useContext
+
+上下文
+
+全局变量是全局的上下文
+
+上下文是局部的全局变量
+
+使用方法
+
+一、使用 `const context = createContext(null)` 创建上下文
+
+二、使用 `<Contet.Provider value={{ state, setState }}>` 圈定作用域
+
+三、在作用域内使用 `useContext` 消费上下文
+
+
+
+
 
 ## 附录：使用规则
 

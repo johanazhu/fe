@@ -53,8 +53,20 @@ export default function reactSideBar() {
                     link: '/React/Hooks',
                 },
                 {
+                    text: 'useCallback和useMemo',
+                    link: '/React/useCallback和useMemo',
+                },
+                {
+                    text: 'Ref以及useRef',
+                    link: '/React/Ref以及useRef',
+                },
+                {
                     text: 'Hooks踩坑',
                     link: '/React/Hooks踩坑',
+                },
+                {
+                    text: 'Hooks实现原理',
+                    link: '/React/Hooks实现原理',
                 },
                 {
                     text: '手写自定义Hooks',
@@ -65,7 +77,7 @@ export default function reactSideBar() {
                     link: '/React/快问快答setState',
                 },
                 {
-                    text: '深入浅出 setState 原理篇',
+                    text: 'setState 异步的原理',
                     link: '/React/setState',
                 },
                 {
@@ -79,10 +91,6 @@ export default function reactSideBar() {
                 {
                     text: '事件机制',
                     link: '/React/事件机制',
-                },
-                {
-                    text: 'Refs',
-                    link: '/React/Refs',
                 },
                 {
                     text: '里程碑',

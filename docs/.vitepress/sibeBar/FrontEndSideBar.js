@@ -119,7 +119,7 @@ export default function FrontEndSideBar() {
                 },
                 {
                     text: 'Flutter',
-                    link: '/Flutter/',
+                    link: '/WebApp/Flutter/',
                 },
                 {
                     text: 'MiniApp',

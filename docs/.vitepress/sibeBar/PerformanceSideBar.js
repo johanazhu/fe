@@ -1,6 +1,17 @@
 export default function PerformanceSideBar() {
     return [
         {
+            text: '常见面试题',
+            collapsable: false,
+            sidebarDepth: 0,
+            items: [
+                {
+                    text: '常见面试题',
+                    link: '/Performance/面试题/',
+                },
+            ],
+        },
+        {
             text: '性能优化',
             collapsable: false,
             sidebarDepth: 0,
@@ -10,24 +21,24 @@ export default function PerformanceSideBar() {
                     link: '/Performance/',
                 },
                 {
-                    text: '网络层面',
-                    link: '/Performance/网络层面',
+                    text: '网络层面优化',
+                    link: '/Performance/网络层面优化',
                 },
                 {
-                    text: '构建层面',
-                    link: '/Performance/构建层面',
+                    text: '工程化层面优化',
+                    link: '/Performance/工程化层面优化',
                 },
                 {
-                    text: '页面渲染层面',
-                    link: '/Performance/页面渲染层面',
+                    text: 'React层面优化',
+                    link: '/Performance/React层面优化',
                 },
                 {
-                    text: '服务端层面',
-                    link: '/Performance/服务端层面',
+                    text: '页面渲染层面优化',
+                    link: '/Performance/页面渲染层面优化',
                 },
                 {
-                    text: '总结',
-                    link: '/Performance/总结',
+                    text: '性能优化从零到一',
+                    link: '/Performance/性能优化从零到一',
                 },
             ],
         },

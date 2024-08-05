@@ -72,10 +72,6 @@ export default function webpackSideBar() {
                     text: 'happy-pack原理解析',
                     link: '/webpack/happy-pack原理解析',
                 },
-                {
-                    text: 'happy-pack原理解析',
-                    link: '/webpack/happy-pack原理解析',
-                },
             ],
         },
         {

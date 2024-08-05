@@ -34,7 +34,7 @@ import Layout from './Layout.vue'
 import RegisterSW from './components/RegisterSW.vue'
 import ReloadPrompt from './components/ReloadPrompt.vue'
 import RoadMap from './components/RoadMap.vue'
-import MAsideSponsors from "./components/MAsideSponsors.vue";
+import AsideSponsors from "./components/AsideSponsors.vue";
 
 export default {
     ...DefaultTheme,
@@ -68,7 +68,7 @@ export default {
 
         return h(DefaultTheme.Layout, props, {
             'layout-bottom': () => h(ReloadPrompt),
-            // "aside-bottom": () => h(MAsideSponsors),
+            "aside-bottom": () => h(AsideSponsors),
         });
     },
     enhanceApp({ app }) {

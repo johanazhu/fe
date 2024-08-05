@@ -75,14 +75,14 @@ export const head = [
         "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-03YTWDXVL1');",
     ],
     // google 广告
-    [
-        'script',
-        {
-            async: '',
-            crossorigin: 'anonymous',
-            src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8924495239960816',
-        },
-    ],
+    // [
+    //     'script',
+    //     {
+    //         async: '',
+    //         crossorigin: 'anonymous',
+    //         src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8924495239960816',
+    //     },
+    // ],
     // 自定义埋点
     [
         'script',

@@ -111,23 +111,19 @@ export default function BigFrontSideBar() {
             items: [
                 {
                     text: 'Flutter导航',
-                    link: '/Flutter/',
+                    link: '/WebApp/Flutter/',
                 },
                 {
                     text: 'Dart语法',
-                    link: '/Flutter/Dart语法',
+                    link: '/WebApp/Flutter/Dart语法',
                 },
                 {
                     text: 'FlutterTeach',
-                    link: '/Flutter/FlutterTeach',
+                    link: '/WebApp/Flutter/FlutterTeach',
                 },
                 {
                     text: 'Widget',
-                    link: '/Flutter/Widget',
-                },
-                {
-                    text: 'StatefulWidget',
-                    link: '/Flutter/StatefulWidget',
+                    link: '/WebApp/Flutter/Widget',
                 },
             ],
         },
