@@ -1,10 +1,88 @@
 # 手写 webpack
 
+
+
+webpack 做了两个问题
+
+- 把 import、export 转译为普通代码
+- 把所有文件打包成一个文件
+
+
+
+
+
+## 怎么把 import/ export 转移成函数
+
+@babel/core 已经帮我们做了
+
+
+
+import 关键字会变成 require 函数
+
+export 关键字会变成 exports 对象
+
+本质:ESModule 语法变成了 CommonJs 规则
+
+但目前我们不知道 require 函数怎么写，先不管，假设 require 已经写好了
+
+
+
+
+
+## 把多个文件打包成一个
+
+打包成一个什么样的文件
+
+肯定包含了所有模块，然后能执行所有模块
+
+
+
+```javascript
+var depRelation = [
+    {key: 'index.js', deps:['a.js','b.js'], code: function... },
+    {key: 'a.js', deps: ['b.js'], code: function...},
+ 	{key: 'b.js', deps: ['a.js'], code: function... }
+]
+execute(depRelation[0].key) // 执行入口文件
+function execute(key) {
+    var item = depRelation.find(i => i.key === key)
+    item.code()
+}
+```
+
+### 待解决
+
+1.depRelation 是对象，需要变成一个数组
+
+2.code 是字符串，需要变成一个函数
+
+3.execute 函数待完善
+
+
+
+
+
+### 如何创建最终文件
+
+打包
+
+把 ES6 代码转译为 ES5 版本
+
+所有代码合并到一个文件中
+
+
+
+
+
+
+
+
+
 打包 bundle 原理分析与实现
 
 npx webpack
 
-​ webpack -> config -> 打包入口 输出目录（入口文件在哪） -> 入口文件 -> 分析是否有依赖，以及依赖模块的路径 -> 解析处理内容（es6 转 es5）-> chunk code（缺失函数，require exports）
+ webpack -> config -> 打包入口 输出目录（入口文件在哪） -> 入口文件 -> 分析是否有依赖，以及依赖模块的路径 -> 解析处理内容（es6 转 es5）-> chunk code（缺失函数，require exports）
 
 首先是构建器
 

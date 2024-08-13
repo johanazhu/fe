@@ -20,10 +20,10 @@ Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也
 
 以下表格利于对比理解
 
-| 版本     | 强缓存        | 协商缓存      |
-| -------- | ------------- | ------------- |
-| HTTP/1.0 | Expires       | Last-Modified |
-| HTTP/1.1 | Cache-Control | ETag          |
+| 版本     | 强缓存                                                       | 协商缓存（内容协商）                                         |
+| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| HTTP/1.1 | Cache-Control: max-age=3600<br />ETag: ABC                   | If-None-Match: ABC<br />响应状态码：304 或 200               |
+| HTTP/1.0 | Expires: Wed, 06 Aug 2025 00:11:43 GMT<br />Last-Modified: Thu, 06 Jun 2024 01:36:31 GMT | Last-Modified-Since: Thu, 06 Jun 2024 01:36:31 GMT<br />响应状态码：304 或 200 |
 
 ## 两大缓存类型对比
 
@@ -31,7 +31,7 @@ Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也
 
 ### 强缓存
 
-#### Cache-Control
+### Cache-Control
 
 -   HTTP/1.1
 

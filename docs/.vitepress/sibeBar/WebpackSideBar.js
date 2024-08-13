@@ -21,99 +21,30 @@ export default function webpackSideBar() {
                     link: '/webpack/',
                 },
                 {
-                    text: 'webpack从零到总结',
-                    link: '/webpack/webpack从零到总结',
+                    text: '工程化、Babel、AST',
+                    link: '/webpack/工程化、Babel、AST',
                 },
                 {
-                    text: 'webpack持久化缓存',
-                    link: '/webpack/webpack持久化缓存',
+                    text: 'loader以及原理解析',
+                    link: '/webpack/loader以及原理解析',
                 },
                 {
-                    text: 'webpack配置篇',
-                    link: '/webpack/webpack配置篇',
+                    text: '手写plugin',
+                    link: '/webpack/手写plugin',
                 },
                 {
-                    text: '深入理解webpack文件打包机制',
-                    link: '/webpack/深入理解webpack文件打包机制',
+                    text: '手写webpack',
+                    link: '/webpack/手写webpack',
                 },
                 {
-                    text: 'loader和plugin做什么',
-                    link: '/webpack/loader和plugin做什么',
+                    text: 'webpack其他文章',
+                    link: '/webpack/webpack其他文章',
                 },
                 {
-                    text: 'webpack如何做优化',
-                    link: '/webpack/webpack如何做优化',
-                },
-                {
-                    text: 'webpack深入总结',
-                    link: '/webpack/webpack深入总结',
-                },
-                {
-                    text: 'Polyfill 方案的过去、现在和未来',
-                    link: '/webpack/Polyfill 方案的过去、现在和未来',
-                },
-                {
-                    text: '使用ProloadPrefetch优化你的应用',
-                    link: '/webpack/使用ProloadPrefetch优化你的应用',
-                },
-                {
-                    text: '为什么webpack4默认支持ES6语法的压缩',
-                    link: '/webpack/为什么webpack4默认支持ES6语法的压缩',
-                },
-                {
-                    text: 'webapck热更新解读',
-                    link: '/webpack/webapck热更新解读',
-                },
-                {
-                    text: 'webpack-dev-middleware源码解读',
-                    link: '/webpack/webpack-dev-middleware源码解读',
-                },
-                {
-                    text: 'happy-pack原理解析',
-                    link: '/webpack/happy-pack原理解析',
+                    text: 'vite',
+                    link: '/webpack/vite',
                 },
             ],
-        },
-        {
-            text: 'babel',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: '基础知识',
-                    link: '/webpack/babel/基础知识',
-                },
-                {
-                    text: '如何写一个babel',
-                    link: '/webpack/babel/如何写一个babel',
-                },
-                {
-                    text: 'babel原理',
-                    link: '/webpack/babel/babel原理',
-                },
-            ],
-        },
-        {
-            text: 'vite',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: '速度与激情之Vite初体验',
-                    link: '/webpack/vite/速度与激情之Vite初体验',
-                },
-            ],
-        },
-        {
-            text: 'AST抽象语法树',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: 'AST抽象语法树',
-                    link: '/webpack/AST抽象语法树',
-                },
-            ],
-        },
+        }
     ];
 }

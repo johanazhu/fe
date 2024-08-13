@@ -1,138 +1,162 @@
 # 常见面试题
 
-#### 1.有哪些常见的 loader？你用过哪些 loader
+## Q：webpack 的 Loader 是什么？
 
-raw-loader: 加载文件原始内容
+A：webpack 自带的打包器只支持 JS 文件，当我们想加载 css/less/scss/ts/md 文件时，就需要用 loader
 
-file-loader: 把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件（处理图片和字体）
+loader 的原理就是把 文件内容包装成能运行的 JS 
 
-url-loader: 与 file-loader 类似，区别是用户可以设置一个阈值，大于阈值时返回其 publicPath，小于阈值时返回文件 base64 形式编码（处理图片和字体）
+比如加载 css 需要用到 style-loader 和 css-loader 
 
-source-map-loader： 加载额外的 source map 文件，以方便断点调试
+css-loader 把代码从 CSS 代码变成 export default str 形式的 JS 代码
 
-svg-inline-loader: 将压缩后的 svg 内容注入代码中
+style-loader 把代码挂载到 head 里 的 style 标签里
 
-image-loader: 加载并且压缩图片文件
 
-json-loader：加载 json 文件
 
-babel-loader： 将 es6 转换成 es5
 
-ts-loader：将 typescript 转换成 javascript
 
-awesome-typescript-loader： 将 typescript 转换为 javascript，性能优于 ts-loader
 
-sass-loader: 将 sass 代码转换为 css 代码
 
-css-loader: 加载 css，支持模块化、压缩、文件导入等特性
+## Q：有哪些常见的 loader？
 
-style-loader： 把 css 代码注入到 javascript 中，通过 dom 操作去加载 css
+A：
 
-postcss-loader: 扩展 css 语法，使用下一代 css，可以配合 autoprefixer 插件自动补齐 css3 前缀
+- `raw-loader`: 加载文件原始内容
 
-eslint-loader：通过 eslint 检查 javascript 代码
+- `file-loader`: 把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件（处理图片和字体）
 
-tslint-loader：通过 tslint 检查 typescript 代码
+- `url-loader`: 与 file-loader 类似，区别是用户可以设置一个阈值，大于阈值时返回其 publicPath，小于阈值时返回文件 base64 形式编码（处理图片和字体）
 
-2. #### 有哪些常见的 plugin？你用过哪些 plugin？
+- `source-map-loader`：加载额外的 source map 文件，以方便断点调试
 
-html-webpack-plugin： 简化 html 文件创建（依赖于 html-loader）
+- `svg-inline-loader`：将压缩后的 svg 内容注入代码中
 
-uglifyjs-webpack-plugin：不支持 es6 压缩（2.0 以上不支持，1.0 支持）
+- `image-loader`：加载并且压缩图片文件
 
-terser-webpack-plugin：uglifyjs-webpack-plugin 的代替品，支持压缩 es6
+- `json-loader`：加载 json 文件
 
-mini-css-extract-plugin：分离样式文件，css 提取为独立文件，支持按需加载
+- `babel-loader`：将 es6 转换成 es5
 
-clean-webpack-plugin：目录清理
+- `markdown-loader`：把 markdown 变成 html
 
-webpack-bundle-analyzer：可视化 webpack 输出文件的体积（业务组件、依赖第三方模块）
+- `ts-loader`：将 typescript 转换成 javascript，并提示类型错误
 
-#### 3. 你说一说 Loader 和 Plugin 的区别
+- `sass-loader`：将 sass 代码转换为 css 代码
 
-loader 本质就是一个函数，在改函数中对接收到的内容进行转换，返回转换后的结果。因为 Webpack 只认识 JavaScript，所以 Loader 就成了翻译官，对其他类型的资源进行转移的预处理工作
+- `css-loader`：把 CSS 变成 JS 字符串
 
-Plugin 就是插件，基于事件流框架 Tapable，插件可以扩展 Webpack 的功能，在 Webpack 运行的生命周期中会广播出许多事件， Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果
+- `style-loader`： 把 JS 字符串变成 style 标签
 
-Loader 在 module.rules 中配置，作为模块的解析规则，类型为数组。每一项都是一个 Object，内部包含了 test（类型文件）、loader、options（参数）等属性
+- `postcss-loader`：扩展 css 语法，使用下一代 css，可以配合 autoprefixer 插件自动补齐 css3 前缀
 
-Plugin 在 plugins 中单独配置，类型为数组，每一项是一个 Plugin 的实例，参数都通过构造函数传入
+- `eslint-loader`：通过 eslint 检查 javascript 代码
 
-#### 4.webpack 构建流程简单说一下
+- `tslint-loader`：通过 tslint 检查 typescript 代码
 
-webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：
+- `thread-loader`：用于多进程打包
 
-​ 初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数
 
-​ 开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译
 
-​ 确定入口：根据配置中的 entry 找出所有的入口文件
+## Q：有哪些常见的 plugin？
 
-​ 编译模块：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖文件都经过了本步骤的处理
+A：
 
-​ 完成模块编译：在经过第 4 步使用的 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及他们之间的依赖关系
+- `html-webpack-plugin`：用于创建 HTML 页面并自动引入JS 和 CSS
+- `clean-webpack-plugin`：用于清理之前打包的残余文件
+- `mini-css-extract-plugin`：用于将 JS 中的 CSS 抽离成单独的 CSS 文件
+- `SplitChunksPlugin`：用于代码分包(Code Split)
+- `DllPlugin` + `DllReferencePlugin`：用于避免大依赖被频繁重新打包，大幅降低打包时间
+- `eslint-webpack-plugin` ：用于检查代码中的错误
+- `DefinePlugin`：用于在 webpack config 里添加全局变量
+- `copy-webpack-plugin`：用于拷贝静态文件到 dist
 
-​ 输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这部是可以修改输出内容的最后机会
+## Q: loader 和 plugin 的区别是什么
 
-​ 输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统
+Q：
+
+- loader是文件加载器，它能对文件进行编译、优化、混淆等，比如 babel-loader / css-loader
+- plugin是webpack 插件，它是对 webpack 功能的扩展，能实现更多功能，比如定义全局变量、Code Split、加快编译等。它能在 webpack 的每个阶段介入，因为它是基于事件机制，会监听 webpack 所有打包节点，并于节点出执行任务
+
+loader是一个文件转换器，它是对文件的转换，比如把less转换为 css，单纯的文件转换过程
+
+plugin 是对 webpack 功能的扩展，对 webpack 的每个阶段它都可以介入，他是基于事件机制，会监听 webpack 所有打包节点，执行广泛的任务
+
+## Q：webpack 构建流程简单说一下
+
+A: webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：
+
+ 初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数
+
+ 开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译
+
+ 确定入口：根据配置中的 entry 找出所有的入口文件
+
+ 编译模块：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖文件都经过了本步骤的处理
+
+ 完成模块编译：在经过第 4 步使用的 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及他们之间的依赖关系
+
+ 输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这部是可以修改输出内容的最后机会
+
+ 输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统
 
 在以上的过程中， webpack 会在特定的时间点广告处特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 webpack 提供的 API 改变 Webpack 的运行结果
 
 简单的说：
 
-​ 初始化：启动构建，读取与合并配置参数，加载 plugin，实例化 Compiler
+ 初始化：启动构建，读取与合并配置参数，加载 plugin，实例化 Compiler
 
-​ 编译：从 Entry 出发，针对每个 Module 串行调用对应的 Loader 去翻译文件的内容，再找到该 Module 依赖的 Module，递归地进行便已处理
+ 编译：从 Entry 出发，针对每个 Module 串行调用对应的 Loader 去翻译文件的内容，再找到该 Module 依赖的 Module，递归地进行便已处理
 
-​ 输出：将编译后的 Module 组合成 Chunk，将 Chunk 转换为文件，输出到文件系统中
+ 输出：将编译后的 Module 组合成 Chunk，将 Chunk 转换为文件，输出到文件系统中
 
-#### 5.source map 是什么？生产环境怎么用？
+## Q：source map 是什么？生产环境怎么用？
 
-​ source map 是讲编译、打包、压缩后的 diamante 映射回源代码的过程。打包压缩后的代码不具备良好的可读性，想要吊事源码就需要 source map
+ A：source map 是讲编译、打包、压缩后的 diamante 映射回源代码的过程。打包压缩后的代码不具备良好的可读性，想要吊事源码就需要 source map
 
-​ map 文件只要不打开开发者工具，浏览器是不会加载的
+ map 文件只要不打开开发者工具，浏览器是不会加载的
 
-​ 线上环境一般有三种处理方案：
+ 线上环境一般有三种处理方案：
 
-​ hidden-source-map：借助第三方错误监控平台 Sentry 使用
+ hidden-source-map：借助第三方错误监控平台 Sentry 使用
 
-​ nosources-source-map：只会显示具体行数以及查看源代码的错误栈。安全性比 sourcemap 高
+ nosources-source-map：只会显示具体行数以及查看源代码的错误栈。安全性比 sourcemap 高
 
-​ sourcemap：通过 nginx 设置将 .map 文件只对白名单开发（公司内网）
+ sourcemap：通过 nginx 设置将 .map 文件只对白名单开发（公司内网）
 
-​ 注意：避免在生产中使用 inline- 和 eval- ，因为它们会增加 bundle 体积大小，并降低整体性能
+ 注意：避免在生产中使用 inline- 和 eval- ，因为它们会增加 bundle 体积大小，并降低整体性能
 
-#### 6.模块打包原理知道吗？
+## Q：模块打包原理知道吗？
 
-​ webpack 实际上尉每个模块创造了一个可以导出和导入的环境，本质上并没有修改 代码的执行逻辑，代码执行顺序与模块加载顺序也完全一致。
+ webpack 实际上尉每个模块创造了一个可以导出和导入的环境，本质上并没有修改 代码的执行逻辑，代码执行顺序与模块加载顺序也完全一致。
 
-#### 7.文件监听原理呢？
+## Q：文件监听原理呢？
 
 在发现源码发生变化时，自动重新构建出新的输出文件。
 
 webpack 开启监听模式，有两种方式：
 
-​ 启动 webpack 命令时，带上 --watch 参数
+ 启动 webpack 命令时，带上 --watch 参数
 
-​ 在配置 webpack.config.js 中设置 watch：true
+ 在配置 webpack.config.js 中设置 watch：true
 
-#### 8.说一下 webpack 的热更新原理吧（必考）
+## Q：说一下 webpack 的热更新原理吧（必考）
 
-​ webpack 的热更新又称热替换（Hot Module Replacement），缩写为 HMR。这个机制可以做到不用刷新浏览器而将新变更的模块替换掉旧的模块。
+ webpack 的热更新又称热替换（Hot Module Replacement），缩写为 HMR。这个机制可以做到不用刷新浏览器而将新变更的模块替换掉旧的模块。
 
-​ HMR 的核心就是客户端从服务端拉去更新后的文件，准确的说是 chunk diff（chunk 需要更新的部分），实际上 WDS 与浏览器之间维护了一个 `Websocket` ，当本地资源发生变化时，WDS 会向浏览器推送更新，并带上构建时的 hash，让客户端与上一次资源进行对比。客户端对比出差异后会向 WDS 发起 `Ajax` 请求来获取更新内容（文件列表、hash），这样客户端就可以再借助这些信息继续向 WDS 发起 `jsonp` 请求获取该 chunk 的增量更新
+ HMR 的核心就是客户端从服务端拉去更新后的文件，准确的说是 chunk diff（chunk 需要更新的部分），实际上 WDS 与浏览器之间维护了一个 `Websocket` ，当本地资源发生变化时，WDS 会向浏览器推送更新，并带上构建时的 hash，让客户端与上一次资源进行对比。客户端对比出差异后会向 WDS 发起 `Ajax` 请求来获取更新内容（文件列表、hash），这样客户端就可以再借助这些信息继续向 WDS 发起 `jsonp` 请求获取该 chunk 的增量更新
 
 后续的部分（拿到增量更新之后如何处理？哪些状态该保留？哪些又需要更新？）由 `HocModulePlugin` 来完成，提供了相关 API 以供开发者针对自身场景进行处理，像 `react-hot-loader` 和 `vue-loader` 都是借助这些 API 实现 HMR。
 
 原理请参考 webpack HMR 原理解析
 
-### 9.如何对 bundle 体积进行监控和和分析？
+## Q：如何对 bundle 体积进行监控和和分析？
 
 `VSCode` 中有个插件 `Import Cost` 可以帮组我们对引入的模块的大小进行实时监测，还可以和使用 `webpack-bundle-analyzer` 生成 `bundle` 的模块组成图，显示所占体积
 
 `bundlesize` 工具包可以进行自动化资源体积监控
 
-### 10.文件指纹是什么？怎么用？
+## Q：文件指纹是什么？怎么用？
 
 文件指纹是打包后输出的文件名的后缀
 
@@ -140,7 +164,7 @@ webpack 开启监听模式，有两种方式：
 -   `Chunkhash`：和 webpack 打包的 chunk 有关，不同的 entry 会发出不同的 chunkhas
 -   `Contenthash`：根据文件内容来定义 hash，文件内容不变，则 contenthash 不变
 
-### 11.如何优化 webpack 的构建速度？
+## Q：如何优化 webpack 的构建速度？
 
 可以讲很多，我觉得按重要性来说
 
@@ -168,6 +192,7 @@ webpack 开启监听模式，有两种方式：
     -   使用 splitchunksplugin 进行（公共脚本、基础包、页面公共文件）分离（webpack4 内置），替代了 commonschunkplugin 插件
     -   基础包分离
 -   DLL：
+    -   使用 DllPlugin 将不常变化的代码提前打包，并复用，如 vue、react
     -   使用 DllPlugin 进行分包，使用 DllReferencePlugin（索引链接）对 manifest.json 引用，让一些基本不会改动的代码先打包成静态资源，避免反复编译浪费时间
     -   HashedModuleIdsPlugin 可以解决模块数字 id 问题
 -   充分利用缓存提升二次构建速度
@@ -180,8 +205,9 @@ webpack 开启监听模式，有两种方式：
     -   禁用 babel-loader 的模块依赖解析，否则 webpack 接受到的就都是转换过的 CommonJS 形式的模块，无法进行 tree-shaking
 -   动态 polyfill
     -   建议采用 polyfill-service 只给用户返回需要的 polyfill，社区维护
+-   处于生产环境时，关闭不必要的环节，比如可以关闭 source map
 
-### 12.你刚才提到了代码分割，那代码分割的本质是什么？有什么意义呢？
+## Q：你刚才提到了代码分割，那代码分割的本质是什么？有什么意义呢？
 
 代码分割的本质其实是在`源代码直接上线` 和 `打包成唯一脚本main.bundle.js` 这两种极端方案之间的一种更适合实际场景的中间状态。
 
@@ -191,7 +217,7 @@ webpack 开启监听模式，有两种方式：
 
 打包成唯一脚本：一把搜哈自己爽，服务器压力下，但是页面空白期长，用户体验差
 
-### 13.是否写过 Loader？简单描述一下编写 loader 的思路？
+## Q：是否写过 Loader？简单描述一下编写 loader 的思路？
 
 Loader 支持链式调用，所以开发商需要严格遵循“单一职责”，每个 Loader 只负责自己需要负责的事件。
 
@@ -206,7 +232,7 @@ Loader 支持链式调用，所以开发商需要严格遵循“单一职责”�
     -   npm link
     -   resolveloader
 
-### 14.是否写过 Plugin？简单描述一下编写 plugin 的思路
+## Q：是否写过 Plugin？简单描述一下编写 plugin 的思路
 
 webpack 在运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在特定的阶段钩入想要添加的自定义功能。 webpack 的 tapable 事件流机制保证了插件的有序性，使得整个系统扩展性良好。
 
@@ -221,7 +247,7 @@ webpack 在运行的生命周期中会广播出许多事件，Plugin 可以监�
     -   watch-run 当依赖的文件发生变化时会出发
 -   异步的事件需要在插件处理完任务时调用回调函数通知 webpack 进入下一个流程，不然会卡主
 
-### 15.聊一聊 Babel 原理吧
+## Q：聊一聊 Babel 原理吧
 
 大多数 JavaScript Parser 遵循 `estree` 规范，Babel 最初基于 `acorn` 项目（轻量级现代 JavaScript 解析器） Babel 大概分为三大部分：
 
@@ -234,7 +260,63 @@ webpack 在运行的生命周期中会广播出许多事件，Plugin 可以监�
 
 想了解如何一步一步实现一个编译器的同学可以移步 Babel 官网曾经推荐的开源项目 the-super-tiny-compiler （ https://github.com/jamiebuilds/the-super-tiny-compiler ）
 
-​
+
+
+## Q：webpack和vite的区别
+
+A：
+
+开发环境区别
+
+- vite 自己实现 server，不对代码打包，充分利用浏览器对 `<script type=module>` 的支持
+  - 假设 main.js 引入了 react
+  - 该 server 会把 `import { useState } from 'react'` 改成 `import { useState} from '/node_modules/.vite/react.js'` 这样浏览器就知道去哪里找 react.js 了
+- webpack-dev-server 常使用 babel-loader 基于内存打包，比 vite 慢很多很多
+  - 该 server 会把 react.js 的代码（递归地）打包进 main.js
+
+生产环境区别
+
+- vite 使用 rollup + esbuild 来打包 JS 代码
+- webpack 使用 babel 来打包 JS 代码，比 esbuild 慢很多很多
+  - webpack 能使用 esbuild 吗？ 可以，但需要自己配置（很麻烦）
+
+文件处理时机
+
+- vite 只会在你请求某个文件的时候处理该文件
+- webpack 会提前打包好 main.js，等你请求的时候直接输出打包好的 JS 给你
+
+已知 vite 的缺点有：
+
+- 热更新常常失败，原因不清楚
+- 有些功能 rollup 不支持，需要自己写 rollup 插件
+- 不支持非现代浏览器
+
+## Q：如何实现 tree-shaking？
+
+A：tree-shaking 就是让没有用到的 JS 代码不打包，以减小包的体积
+
+怎么删？
+
+- 使用 ES Modules 语法（即 ES6 的 import 和 export 关键字）
+- CommonJS 语法无法 tree-shaking（即 require 和 exports 语法）
+- 引入的时候只引用需要的模块
+  - 要写 `import { cloneDeep } from 'lodash-es'` 引入的库也需要用 ES Modules
+  - 不要写 `import _ from 'lodash'` 因为会导致无法 tree-shaking 
+
+怎么不删？
+
+在 package.json 中配置 sideEffects，防止某些文件被删掉
+
+- 比如我 import 了 x.js，而 x.js 只是添加了 window.x 属性，那么 x.js 就要放到 sideEffects 里
+- 比如所有被 import 的 CSS 都要放在 sideEffects 里
+
+怎么开启？
+
+在 webpack config 中将 mode 设置为 production（开发环境没必要 tree-shaking）
+
+
+
+
 
 ## 参考资料
 
