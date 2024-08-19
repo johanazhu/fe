@@ -162,7 +162,7 @@ const unique = function (arr) {
 
 // Map + for 
 const unique = function (arr) {
-    let map = new Map;
+    let map = new Map();
     let result = [];
     for (let i = 0; i < arr.length; i++) {
         const item = arr[i];
@@ -253,27 +253,92 @@ useMemo：缓存值，结合 memo 能让子组件不重复渲染
 
 ## 7.html缓存了怎么更新，js和css缓存是怎么更新的
 
+考察点：HTTP缓存
+
+一般来说，html 不缓存，js、css 缓存，html 中会加载 js 和 css，后两者会以哈希名的方式引入到 html 中
+
+html 被缓存了就是要让缓存失效，一般有两种解法，一如果资源都在 OSS 或者 CDN 上，那么在 OSS 或者 CDN 上设置过期时间；二在 nginx 中设置过期时间
+
+衍生问题：HTTP强缓存和协商缓存
+
+HTTP先走强缓存，Cache-Control失效，走协商缓存ETag，ETag未变，返回 304，变化返回新资源并打上 ETag 标签
 
 
 
+## 8.埋点 SDK 设计思路
 
-## 8.babel 是什么，怎么做到的 ⭐
+考察点：对 埋点SDK 的理解
 
-考察点： babel 原理
+设计到日制和埋点
 
-babel 是什么？一个 javascript 编译器
-babel 是一个转译器，感觉相对于编译器 compiler，叫转译器 transpiler 更准确
+- 自动化上报页面PV、UV，记录用户点击路径行为
+- 自动上报页面异常
+- 发送埋点信息时，不影响性能，不阻碍页面主流程加载和请求发送
+
+#### 数据上报
+
+使用 `navigator.sendBeacon` ，它的优势在于它能异步操作，即使在页面卸载后，该方法也可以继续发送数据，并且这个方法可以实现跨域发送数据
+
+还有以下几种上报
+
+- ajax、fetch 上报
+- image 上报
+- jsonp 上报
+
+#### 上报时机
+
+上报时机有三种：
+
+- requestIdleCallback/setTimeout 延时上报
+- beforeUnload 回调函数里上报
+- 缓存上报数据，达到一定数量后再上报
+
+先缓存上报数据，缓存到一定数量后，利用 `requestIdleCallback/setTimeout` 延时上报，在页面离开时统一将未上报数据进行上报
+
+#### 性能监控
+
+- FP、FCP、LCP、onload、DOMContentLoaded
+- 资源加载时间
+- 接口请求耗时
+
+#### 错误监控
+
+- 资源加载错误：`addEventListener('error')`
+- JS 错误：`window.onerror` 或者 `window.addEventListener('error', callback)`
+  - `window.onerror` 无法捕获资源加载错误
+
+- Promise 错误 error 无法捕获， `window.addEventListener('unhandledrejection', callback)`
+
+```
+window.addEventListener('error', event => {
+  this.error(error);
+})
+window.addEventListener('unhandledrejection', event => {
+  	this.error(new Error(event.reason), { type: 'unhandledrejection' })
+})
+```
+
+#### 行为监控
+
+- UV、PV
+- 页面停留时长
+- 用户点击
 
 
 
 ## 9.进程和线程的区别
 
 考察点：进程和线程
-进程是一个应用起来的实例，线城是运行在进程中的最小单位
 
-7. tcp 滑动窗口是什么
+进程是一个应用起来的实例，线程是运行在进程中的最小单位
 
-考察点：tcp
+浏览器是是多进程架构，其中有一个浏览器主进程，多个渲染进程（一个 Tab 就是一个进程）
+
+渲染进程中包括多个线程：GUI 渲染线程、JS 引擎线程、事件触发线程、异步线程、定时器线程
+
+GUI 渲染线程和 JS 引擎线程是互斥的。GUI 负责渲染页面，JS引擎负责执行 JS 脚本，但是 JS 能操作 DOM，所以两者不能同时进行
+
+
 
 ## 10. 算法题：无重复字符的最长子串
 

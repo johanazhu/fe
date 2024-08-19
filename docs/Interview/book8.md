@@ -184,7 +184,7 @@ const rootNode = document.getElementById('root');
 ReactDOM.render(<App />, rootNode);
 ```
 
-![image-20240513105744250](D:\Documents\PicGo Files\image-20240513105744250.png)
+![image-20240513105744250](https://pub-15dc9987604d4311befe731fecc8adb9.r2.dev/1a3310a5a82e1ae46fe8d3464567234c.png)
 
 在 React 16 和更早的版本中，React 将对大多数事件执行document.addEventListener（）。
 
@@ -310,7 +310,9 @@ SSR 一次页面渲染的流程：
 
 ### 联合类型和类型收窄
 
+联合类型表示取值可以为多种类型中的一种
 
+类型收窄是指在代码执行过程中通过一些检查将联合类型狭窄到一个特点类型
 
 
 

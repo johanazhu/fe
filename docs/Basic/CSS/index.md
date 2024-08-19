@@ -74,6 +74,9 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
 
 宽高为 0，border 三边设置透明 transparent，一边设置颜色
 
+必须设置宽高，不然 border-top或者 border-bottom 都是失效
+
+
 ```css
 .sanjiaoxing {
     width: 0;
@@ -117,7 +120,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
           margin-top: 87px;
         }
         </style>
-
+    
         <p>下边界范围会...</p>
         <p>...会跟这个元素的上边界范围重叠。</p>
         ```
@@ -132,16 +135,16 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
                 margin-top: 13px;
                 margin-bottom: 87px;
             }
-
+    
             header {
                 margin-top: 87px;
             }
-
+    
             footer {
                 margin-bottom: 13px;
             }
         </style>
-
+    
         <section>
             <header>上边界重叠 87</header>
             <main></main>
@@ -163,7 +166,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
           margin-bottom: 87px;
         }
         </style>
-
+        
         <p>上边界范围是 87 ...</p>
         <div></div>
         <p>... 上边界范围是 87</p>

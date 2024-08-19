@@ -10,7 +10,7 @@ flex 为缩写，flex：1 表示 1 1 0
 
 flex 默认是 0 1 auto
 
-1. flex-grow: 1：用来控制 flex 项目在主轴方向上的放大比例。当容器中有剩余空间时，该属性决定了该项目相对于其他 flex 项目是否方法以及放大比例是多少
+1. flex-grow: 1：用来控制 flex 项目在主轴方向上的放大比例。当容器中有剩余空间时，该属性决定了该项目相对于其他 flex 项目是否放大以及放大比例是多少
 2. flex-shrink: 1：用来控制 flex 项目在主轴方向上的缩小比例。当容器中空间不足时，该属性决定了该项目相当于其他 flex 项目是否缩小以及缩小比例是多少
 3. flex-basis: 0：用来设置 flex 项目在主轴方向上的初始大小。如果 flex-basis 设置为0，则 flex 项目的大小完全由 flex-grow 和 flex-shrink 决定
 
@@ -254,7 +254,7 @@ Capture Value 不是它的区别，它是 React Hooks 的一个特征
 
 衍生：Capture Value
 
-Capture Value 是指 React Hooks 在使用必报时会自动捕获当前组件渲染时的值，而不是 Hooks 调用时捕获的值。这也可以确保 Hooks 内部使用的值总是最新的
+Capture Value 是指 React Hooks 在使用闭包时会自动捕获当前组件渲染时的值，而不是 Hooks 调用时捕获的值。这也可以确保 Hooks 内部使用的值总是最新的
 
 具体来说：
 
@@ -321,26 +321,22 @@ CORS 引入了以下几个以 `Access-Control-Allow-*` 开头：
 
 4.处于生产环境时，关闭不必要的环节，比如可以关闭 source map
 
-5.网传的 hard-source-webpack-plugin 已经一年多没关闭
-
-
-
-
-
-
-
-
-
 
 
 webpack性能优化分为生产环境调优和开发环境调优。
+
 1.生产环境调优主要是通过利用缓存、减少代码体积、分包等方式提升页面响应速度。对于spa单页的话通常需要通过优化减少首屏渲染时间。
+
 2.开发环境调优的目的是提升webpack构建速度。如开启热更新和热模块（HMR）替换、缩小代码编译范围、多线程打包等
 
 现在也有很多出圈的构建工具
+
 rollup：任务型打包工具，很多三方库都是用这个进行打包，比如react。
+
 parcel:零配置开箱即用。
+
 vite:基于esm的新一代构建工具
+
 其它还有esbuilder等等
 
 

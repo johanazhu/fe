@@ -14,6 +14,8 @@
 
 
 
+
+
 ## 数组去重
 
 给定一个数组 ` [1,2,2,4,null,null,'3','abc',3,5,4,1,2,2,4,null,null,'3','abc',3,5,4]`， 去除重复项
@@ -363,6 +365,28 @@ function flatten(arr) {
 }
 ```
 
+#### 写原型上
+
+```javascript
+
+Array.prototype.flatten = function (depth) {
+    const result = [];
+    for (let i = 0; i < this.length; i++) {
+        if (Array.isArray(this[i]) && depth > 0) {
+            result.push(...this[i].flatten(depth - 1))
+        } else {
+            result.push(this[i])
+        }
+    }
+    return result
+}
+
+var arr = [1, 2, [3, 4, [5, 6]]]
+console.log(arr.flatten(2))
+```
+
+
+
 
 
 ## 进度条
@@ -410,5 +434,4 @@ function flatten(arr) {
 </body>
 </html>
 ```
-
 

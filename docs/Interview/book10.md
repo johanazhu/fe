@@ -74,7 +74,18 @@ function myInstanceof(left, right) {
 
 ## 3.history 和 hash 两种路由最大的区别是什么
 
-考察点：history 和 hash 两种路由最大的区别是什么
+考察点：前端路由实现
+
+前端单页面路由的两种方案为 history 和 hash
+
+hash 模式：带 # 号，通过监听 `hashChange` 来监听变化，从而展示不同的页面模块，不需要在服务器端额外配置，兼容性更好
+
+-  `window.addEventListener("hashchange", callback)`
+
+history 模块：没有 # 号，通过监听 HTML5 的新特性 `history.pushState` + `popState` 实现，需要在服务端额外配置 try_files，需要支持 HTML5 的现代浏览器
+
+- `history.pushState` 、`history.replaceState`  不刷新页面但往历史栈中新增/替换一个记录
+- `window.popState`：当历史记录条目被更改时触发
 
 
 
@@ -137,8 +148,7 @@ ReactDOM.render(<App />, rootNode);
 
 收集从当前 FiberNode 到根 FiberNode 之间所有注册的「该事件对应回调」
 
-对于补货
-
+对于捕获
 
 
 ## 6.React中父组件如何调用子组件中的方法？
@@ -281,59 +291,35 @@ function LazyMan(val) {
 
 
 
-## 8.浏览器：Web 安全 + 错误捕获
+## 8.浏览器：错误捕获
 
+考察点：错误捕获的几种方式
 
+前端错误处理最佳实现方法：
 
-> 这个问题正好是复习过了，所以答得很全面，主要从`浏览器同源策略`、`CSP`、`XSS`、`CSRF`以及`SQL注入`等方面分别做了介绍。
+### 全局错误捕获
 
-> 浏览器同源策略：
->
-> 1. 现代浏览器以及`HTTPS`会对非同源的请求进行拦截以保证安全
-> 2. 若请求链接中的协议、主机名、端口、方法等任何一个不一样，都是不同源请求
+通常设置全局错误处理，可以捕获未处理的异常和错误
 
-> CSP：
->
-> 1. 内容安全策略，可以在HTML中的`meta`标签或者服务端返回的`Content-Secrity-Policy`头中进行设置
-> 2. 可以指定资源的请求域、资源的加载方式等
+- window.onerror：捕获全局 JavaScript 错误
+- window.addEventListener("error")：捕获资源加载错误，如 js、css、图片加载错误
+- window.addEventListener(“unhandlerejection”)：捕获未处理的 Promise 错误
 
-> XSS：
->
-> 1. `跨站脚本攻击`，分为了持久型XSS、反射型XSS和DOM型XSS
-> 2. 持久型XSS是最常见的XSS攻击，主要通过输入框、富文本等组件输入一些恶意的脚本代码，存储到服务端之后，当其他用户打开页面加载该脚本时便出现攻击行为
-> 3. 反射型XSS是需要用户点击黑客提供的恶意链接，该恶意链接会在跳转到正常页面的同时执行黑客脚本
-> 4. DOM型XSS存在于一些第三方插件中，如浏览器插件去恶意修改页面DOM等方式
-> 5. 对于XSS的防范主要是防范持久型XSS，在页面的输入框和富文本提交时对字符串做过滤处理，同时在页面中只对可信的HTML文本做解析
+### 组件级错误边界
 
-> CSRF：
->
-> 1. `跨站请求伪造`，当用户在正常的网站登录之后，由于同源请求会默认携带Cookie，因此黑客可以在自己的网站中向正常网站发送伪造请求来冒充用户自己的操作
-> 2. 攻击方式主要包含通过标签的src属性、href属性以及form的action属性等，通常是伪造`GET`请求
-> 3. 防范方式包含使用`POST`请求处理资源、服务端验证请求的`Referer`、禁止第三方网站请求携带Cookie以及最后在请求时增加`csrftoken`字段做校验
+React 中实现错误边界挫力组件级别的错误，ErrorBoundary 
 
+### 尽早捕获错误
 
+在 API 请求或用户输入处理加上 try-catch 语句来捕获错误
 
+### 错误日志记录
 
+将错误记录发送到服务器以进行进一步分析，入 Sentry
 
-js 代码异常
+### 用户友好提示
 
-try catch
-
-window.error
-
-资源加载错误
-
-window.addEventListen("error", callback)
-
-Promise 错误
-
-window.addEventListen("unhandlerejectedtion")
-
-React 错误
-
-错误捕获
-
-static getDerviedStateFromProps componentDidCatch
+在错误出现时，给用户提示可理解的信息
 
 
 
@@ -341,7 +327,11 @@ static getDerviedStateFromProps componentDidCatch
 
 
 
+利用浏览器的开发者工具进行性能分析是关键步骤。具体操作包括：
 
+- **打开开发者工具**：在浏览器中按 `F12` 或右键选择“检查”。
+- **查看网络请求**：在“网络”标签中，查看各个资源的加载时间，特定的文件（如HTML、CSS、JavaScript）是否耗时过长。
+- **分析加载时间**：观察“水fall图”，识别哪些请求是造成延迟的主要因素，如过多的HTTP请求会导致页面加载缓慢
 
 
 

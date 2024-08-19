@@ -105,7 +105,20 @@ applyMiddleware 函数，装饰器模式
 
 ## 8.工程化：split code 代码分割的原理是什么
 
+考察点：webpack 分包
 
+目的是优化初始加载时间
+
+- 减少初始包体积：
+- 按需加载
+- 提高并行加载效率
+
+代码分割通常通过构建工具实现
+
+- 使用 import() 语法：这是动态导入的方式
+- 界面路由：在单页应用中，使用前端路由库来实现路由级别的代码分割
+- webpack配置：使用`optimization.splitChunks`来定义分割逻辑
+- 魔术注释：Webpack支持在使用 `import()` 语法时添加注释，指定文件名称或者 chunks 名称，在打包时能够更好地控制生成文件的名称和位置
 
 
 
@@ -132,8 +145,6 @@ qiankun 是对 single-spa 的升级
 这是 js 隔离
 
 还有样式隔离
-
-qiankun 提供了两套样式隔离方案：shadow dom 和自己实现的 scoped
 
 qiankun 做了样式隔离，有 shadow dom 和 scoped 两种方案，但都有问题：
 

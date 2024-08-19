@@ -255,7 +255,7 @@ StatefulWiget：有状态组件，通过 setState 更新状态，状态更新后
 -   Route 是一个应用程序抽象的屏幕或页面
 -   Navigator 是一个管理路由的 widget
 
-## 线城和异步 UI
+## 线程和异步 UI
 
 async/await
 

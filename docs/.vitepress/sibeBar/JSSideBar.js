@@ -13,6 +13,10 @@ export default function JSSideBar() {
                     text: '手写各种源码',
                     link: '/JavaScript/面试题/手写各种源码',
                 },
+                {
+                    text: 'TypeScript面试题',
+                    link: '/JavaScript/TypeScript/面试题',
+                },
             ],
         },
         {
@@ -199,27 +203,27 @@ export default function JSSideBar() {
                 },
                 {
                     text: 'TypeScript 是什么',
-                    link: '/JavaScript/TypeScript/TypeScript 是什么',
+                    link: '/JavaScript/TypeScript/TypeScript是什么',
                 },
                 {
                     text: 'TypeScript 的运行与调试',
-                    link: '/JavaScript/TypeScript/TypeScript 的运行与调试',
+                    link: '/JavaScript/TypeScript/TypeScript的运行与调试',
                 },
                 {
                     text: 'TypeScript 的​数据类型',
-                    link: '/JavaScript/TypeScript/TypeScript 的数据类型',
+                    link: '/JavaScript/TypeScript/TypeScript的数据类型',
                 },
                 {
                     text: 'TypeScript 的类型运算',
-                    link: '/JavaScript/TypeScript/TypeScript 的类型运算',
+                    link: '/JavaScript/TypeScript/TypeScript的类型运算',
                 },
                 {
                     text: 'TypeScript 的类型兼容',
-                    link: '/JavaScript/TypeScript/TypeScript 的类型兼容',
+                    link: '/JavaScript/TypeScript/TypeScript的类型兼容',
                 },
                 {
                     text: 'TypeScript 最佳实践',
-                    link: '/JavaScript/TypeScript/TypeScript 最佳实践',
+                    link: '/JavaScript/TypeScript/TypeScript最佳实践',
                 },
             ],
         },
