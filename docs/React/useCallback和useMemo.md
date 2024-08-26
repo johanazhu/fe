@@ -12,7 +12,142 @@
 
 ![ React Compiler](https://s2.loli.net/2024/06/14/LY4zQwWZsMcR71P.png)
 
+在讲 useMemo 是什么之前，我们先了解下什么是 Memo
 
+## Memo
+
+官方定义：React.memo 是一个高阶组件（HOC），其主要目的是优化函数组件的性能。它通过记忆组件的渲染输出，使得当组件的 props 没有变化时，可以跳过该组件的重新渲染，从而提升性能
+
+它会进行浅层对比，即对比两个对象或数组时只检查其第一层属性的相等性方法，在此比较中，仅比较对象的直接属性值，而不递归地深入到镶嵌的对象或数组中
+
+```javascript
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { a: 1, b: { c: 2 } };
+const obj3 = obj1;
+
+console.log(obj1 === obj2); // false，因为 obj1 和 obj2 指向不同的内存地址
+console.log(obj1 === obj3); // true，因为 obj3 引用同一个 obj1
+```
+
+> 和浅拷贝一个道理，只考察第一层属性，不递归更深层的对象和数组
+
+举个栗子🌰
+
+```jsx
+...
+function App() {
+    const [n, setN] = useState(0)
+    const [m, setM] = useState(0)
+    const onClick = () => {
+        setN(n + 1)
+    }
+    
+    return (
+    	<div className="App">
+			<div>
+            	<button onClick={onClick}>update n {n}</button>
+            </div>	
+            <Child data={m} />
+        </div>
+    )
+}
+
+function Child(props) {
+    console.log("child 执行了")
+    return <div>child: {props.data}</div>
+}
+...
+```
+
+当我们什么都不做时，点击 button，Child 组件会重新 re-render，Child 组件为什么会重新 re-render，因为 button 点击后，n变化，导致 App re-render，所以 App 中的 Child 组件也跟着重新渲染
+
+但这不对，因为 Child 的依赖项是 m，m没变化，Child 不需要重新渲染才对，所以我们需要加上 React.memo
+
+```jsx
+...
+function App() {
+    const [n, setN] = useState(0)
+    const [m, setM] = useState(0)
+    const onClick = () => {
+        setN(n + 1)
+    }
+    
+    return (
+    	<div className="App">
+			<div>
+            	<button onClick={onClick}>update n {n}</button>
+            </div>	
+            <Child2 data={m} />
+        </div>
+    )
+}
+
+function Child(props) {
+    console.log("child 执行了")
+    return <div>child: {props.data}</div>
+}
+
+const Child2 = React.memo(Child)
+```
+
+如此一来，Child2 就不会重新 re-render 了
+
+也就是说，如果 props 不变，就没必要再此执行一个函数组件了
+
+但这个做法有个 bug，加上监听函数后，一秒破功
+
+```jsx
+...
+function App() {
+    const [n, setN] = useState(0)
+    const [m, setM] = useState(0)
+    const onClick = () => {
+        setN(n + 1)
+    }
+    
+    const onChildClick = () => {
+        console.log('点击 child')
+    }
+    
+    return (
+    	<div className="App">
+			<div>
+            	<button onClick={onClick}>update n {n}</button>
+            </div>	
+            <Child2 onClick={onChildClick} data={m} />
+        </div>
+    )
+}
+
+function Child(props) {
+    console.log("child 执行了")
+    return <div onClick={props.onClick}>child: {props.data}</div>
+}
+
+const Child2 = React.memo(Child)
+```
+
+当加上函数后，Child2 就会重新 re-render，理由也很简单
+
+- button 点击后，触发 App re-render
+- 生成的 onChildClick 是一个新的函数
+- 函数属于对象，对象都是引用类型，所以心的 onChildClick 和之前的 onChildClick 不是同一个引用
+- 故 Child 即使用 memo 包裹了，但是会因为 props（onClick）变化而重新渲染
+
+这时就要用到 useMemo
+
+```jsx
+ 
+...
+const onChildClick = useMemo(() => {
+    return () => {
+        console.log('点击 child')
+    }
+}, [m])
+ ...
+```
+
+如此就缓存住了 onChildClick
 
 ## useMemo
 
@@ -24,35 +159,13 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 第一个参数是 ()=> value
 
-第二个参数是依赖项
+第二个参数是依赖项 [m,n]
 
-只有当依赖项变化时，才会计算出新的 value，如果依赖项不变，那就用之前的 value
+只有当依赖项变化时，才会计算出新的 value
+
+如果依赖项不变，那就用之前的 value
 
 如果你的 value 是个函数，那么你就要写成 `useMemo(() => x => console.log(x))`
-
-### 用法 
-
-#### 跳过代价昂贵的重新计算
-
-在组件顶层调用 useMemo 以在重新渲染之间缓存计算结果：
-
-```jsx
-import { useMemo } from 'react';
-
-function TodoList({ todos, tab, theme }) {
-  const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
-  // ...
-}
-```
-
-你需要给 useMemo 传递两样东西：
-
-1. 一个没有任何参数的 calculation 函数，像这样`() =>`，并且返回任何你想要的计算结果
-2. 一个由包含在你的组件中并且 calculation 中使用的所有值组成的依赖列表
-
-在初次渲染时，你从 useMemo 得到的 值 将会是你的 calculation 函数执行的结果
-
-随后的每次渲染中，React 会比较前后两次渲染中的所有依赖项是否相同，如果通过 Object.is 比较所有依赖项都没有发生变化，那么他会返回之前计算过的值；否则，React 会重新执行 calculation 函数并且返回一个新的值
 
 ### 使用场景
 
@@ -93,7 +206,20 @@ export default function TodoList({ todos, tab, theme }) {
 
 通过将 visibleTodos 的计算函数包裹在 useMemo 中，你就可以确保它在重新渲染之间具有相同值，直到依赖项发生变化。
 
+如果 useMemo 是个值还好说，如果是返回函数的函数，如`useMmeo(()=>(x) => console.log(x))` 不仅难用，而且难以理解，于是 React 团队就写了语法糖——useCallback
 
+最开始的案例我们修改下：
+
+```jsx
+ 
+...
+const onChildClick = useCallback(() => {
+    console.log('点击 child')
+}, [m])
+ ...
+```
+
+它的作用和 useMemo 一模一样，只是针对的是函数
 
 ## useCallback
 
@@ -136,79 +262,6 @@ function ProductPage({productId, referer, theme}) {
 在之后的渲染中，React 将会使用 `Object.is` 把当前的依赖和已传入之前的依赖进行比较。如果没有任何依赖改变，`useCallback` 在多次渲染中缓存一个函数，直到这个函数的依赖发生变化
 
 简而言之，`useCallback` 在多次渲染中缓存一个函数，直至这个函数的变化
-
-### 使用场景
-
-假设你正在从 `ProductPage` 传递一个 `handleSubmit` 函数到 `ShippingForm` 组件中：
-
-```jsx
-function ProductPage({ productId, referrer, theme }) {
-  // ...
-  return (
-    <div className={theme}>
-      <ShippingForm onSubmit={handleSubmit} />
-    </div>
-  );
-}
-```
-
-**默认情况下，当一个组件重新渲染时， React 将递归渲染它的所有子组件**。因此每当因 theme 改变时而 ProductPage 组件重新渲染时， ShippingForm 子组件也会重新渲染
-
-但按照我们的设想，ShippingForm 组件没有 props 和 state 变化，所以它应该不需要再次渲染，所以我们需要用到 React.memo 和 useCallback，将 ShippingForm 组件包裹在 memo 中，如果 props 和上次渲染时相同，那么 ShippingForm 组件将跳过重新渲染
-
-```
-import { memo } from 'react';
-
-const ShippingForm = memo(function ShippingForm({ onSubmit }) {
-  // ...
-});
-```
-
-**当代码像上面一样改变后，如果 props 与上一次渲染时相同，ShippingForm 组件将跳过重新渲染**。这时缓存函数就变得很重要。假设定义了 handleSubmit 而没有定义 useCallback：
-
-```jsx
-function ProductPage({ productId, referrer, theme }) {
-  // 每当 theme 改变时，都会生成一个不同的函数
-  function handleSubmit(orderDetails) {
-    post('/product/' + productId + '/buy', {
-      referrer,
-      orderDetails,
-    });
-  }
-  
-  return (
-    <div className={theme}>
-      {/* 这将导致 ShippingForm props 永远都不会是相同的，并且每次它都会重新渲染 */}
-      <ShippingForm onSubmit={handleSubmit} />
-    </div>
-  );
-}
-```
-
-如上所示：每当修改 theme，ProductPage 组件重新渲染，生成一个新的 handleSubmit（**函数式组件会捕获渲染时的值**），因为 handleSubmit 变化，ShippingForm  props 永远会不同，这意味着 memo 对性能的优化永远不会生效，而这就是 useCallback 起作用的地方：
-
-```jsx
-function ProductPage({ productId, referrer, theme }) {
-  // 在多次渲染中缓存函数
-  const handleSubmit = useCallback((orderDetails) => {
-    post('/product/' + productId + '/buy', {
-      referrer,
-      orderDetails,
-    });
-  }, [productId, referrer]); // 只要这些依赖没有改变
-
-  return (
-    <div className={theme}>
-      {/* ShippingForm 就会收到同样的 props 并且跳过重新渲染 */}
-      <ShippingForm onSubmit={handleSubmit} />
-    </div>
-  );
-}
-```
-
-将 handleSubmit 传递给 useCallback 就可以确保它在多次重新渲染之间是相通的函数，直到依赖发生改变
-
-
 
 ## useCallback 与 useMemo 有何关系？ 
 

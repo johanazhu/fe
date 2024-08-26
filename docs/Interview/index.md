@@ -80,7 +80,7 @@
 - JavaScript 基础：谈谈变量提升
 - ES6特性：let 和 const
 - React：React 中的多次渲染如何优化
-- React： useEffect、useLayoutEffect 使用场景
+- React： useLayoutEffect 和 useEffect 的区别
 - WebApp：适配方案
 - 浏览器：Cookie、localStorage、sessionStorage、IndexedDB的区别
 - 工程化：webpack 怎么配置多页面

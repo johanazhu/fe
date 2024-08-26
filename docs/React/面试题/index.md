@@ -175,9 +175,9 @@ PS：这个问题已经淘汰，以前的函数组件是没有状态的，但现
 
 ## 性能优化
 
-### Q：哪些方法会触发 React 的重新渲染呢
+### Q：哪些方法会触发 React 的重新渲染（re-render）呢
 
-A：父元素渲染、state、props更新（数据更新）、focusUpdate
+A：父组件重新渲染、state、props更新（数据更新）、`forceUpdate` （class组件）
 
 ### Q：React 怎么避免重复渲染
 
@@ -594,7 +594,94 @@ A：最大的区别在于函数式组件会捕获渲染时的值
 
 具体可以看这篇文章——[函数式组件与类组件有何不同](../函数式组件与类组件有何不同)
 
+### Q：React 的运行机制
 
+A：笔者没到看几篇讲运行机制的文章，但面试时常被考，说实话，什么叫运行机制，笔者至今没有理解。只是笔者会套壳将渲染流程讲一遍，擦一下边，无论面试官怎么想，笔者都要把自己知道的说一遍
+
+Fiber 架构后的 React 把渲染流程分成两部分：render 和 commit 阶段
+
+render 阶段找到虚拟DOM 中变化的部分，创建 DOM，打上增删改的标记，这个行为叫 reconcile（调和）
+
+reconcile 可以被打断，又 schedule 调度。会根据优先级的权重值决定先执行还是后执行
+
+等全部计算完后，就一次性更新到 DOM，叫做 commit 
+
+为了更好的进行打标记，所以用链表的数据结构。其中除了 children 信息外，额外多了 sibling、return 分别记录着兄弟节点和父节点的信息
+
+这个数据结构也被叫做 Fiber（Fiber 含义之一）
+
+简单来说，React 先把 VDOM 转换成 Fiber，再去进行 Reconcile，这样就实现了中断
+
+> 为什么这样可以打断？
+>
+> 如此一来就不再是递归，而是循环
+>
+> ```jsx
+> function workLoop() {
+>   while (wip) {
+>     performUnitOfWork();
+>   }
+> 
+>   if (!wip && wipRoot) {
+>     commitRoot();
+>   }
+> }
+> ```
+
+React Fiber 中有一个 workLoop 循环，每次循环执行 reconcile，当前的 Fiber 会放在 workInProcess 这个全局变量上
+
+当循环完了，也就是 wip 为空了，那就执行 commit 阶段，把 reconcile 的结构更新到 DOM 上
+
+至于优先级，则有个方法 shouldYield，每次处理 Fiber 节点的 reconcile 之前都会调用下
+
+```jsx
+function workLoop() {
+  while (wip && shouldYield()) {
+    performUnitOfWork();
+  }
+
+  if (!wip && wipRoot) {
+    commitRoot();
+  }
+}
+```
+
+> shouldYield 方法会判断待处理的任务队列中是否有优先级更高的任务，有的话就先处理那边的 Fiber，这边的先暂停一下
+
+这就是 Fiber 架构的 reconcile 可以打断的原理。通过 Fiber 的数据结构，加上循环处理前每次判断下是否打断来实现的。
+
+等 render 阶段完毕后，就会进入 commit 阶段。如上所说，commit 阶段就是根据标记更新 dom
+
+那么怎么个更新法？
+
+是遍历一次 Fiber 来查找有 effectTag 的节点，更新 DOM 吗？
+
+这样当然没问题，但没必要（大数组的遍历消耗的性能大）
+
+React 的做法是把 effectTag 的节点收集到一个队列里，然后 commit 阶段直接遍历这个队列就行了
+
+这个队列叫做 effectList。
+
+React 会在 commit 阶段遍历 effectList，根据 effectTag 来增删改 DOM
+
+DOM 创建前后就是 useEffect、useLayoutEffect 还有一些函数组件的副作用执行的时候
+
+React 将其分为 3 个小阶段
+
+before mutation
+
+- 异步调用 useEffect 的回调函数
+- 异步调用，等 layout 阶段执行完后再执行异步的回调函数
+
+mutation
+
+- 遍历 effectList 更新  DOM
+
+layout
+
+- 同步调用 useLayout 的回调函数
+- 能拿到新的 dom
+- 还会更新 ref
 
 
 

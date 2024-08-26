@@ -157,31 +157,41 @@ function new2(Constructor, ...args) {
 
 
 
-## 6. useEffect、useLayoutEffect 使用场景
+## 6. useLayoutEffect 和 useEffect 的区别
 
-1. 执行时机：useEffect 在浏览器绘制后执行，而 useLayoutEffect 是在浏览器绘制前执行。这意味着 useLayoutEffect 可以同步的更新 DOM 并立即看到效果
-2. 适用场景：useEffect 适用于大多数情况下的副作用操作，如网络请求、数据订阅等。而 useLayoutEffect 适用于需要同步修改 DOM 布局或样式的场景，如动画、测量元素尺寸等
-3. 性能影响：useEffect 因为是异步执行，不会阻塞浏览器渲染，对性能影响较小；而 useLayoutEffect 如果执行复杂的操作，可能会阻塞浏览器绘制，对性能有一定影响
+useLayoutEffect 和 useEffect 的区别在于执行时机：
 
+- useEffect 是在浏览器页面渲染后**异步**执行、，它不会阻塞浏览器的渲染过程
+  - commit 阶段的 before mutation 阶段调用
+  - 但是会在 layout 完成后才异步执行
+- useLayoutEffect 是在浏览器完成 DOM 更新后但浏览器进行下一次绘制之前同步执行，它会阻塞浏览器的渲染过程
+  - commit 阶段 的 layout 阶段同步执行
+  - 等价于类组件中的 componentDidMount
 
+衍生问题：React 的执行时机
 
-useEffect 被设计成在 dom 操作前异步调用，useLayoutEffect 是在 dom 操作后同步调用
+### React 的执行时机
 
-为什么这样设计？
+React 分为 render 和 commit 阶段
 
-因为都要操作 dom 了，这时候如果来个 effect 同步执行，计算量很大，会把 fiber 架构带来的优势毁掉
+render 阶段找虚拟 DOM 中变化的部分，并打上增删改的标记（effectTag），将这些节点收集到一个队列中（effectList）
 
-所以 effect 是异步的，不会阻塞渲染
+在 commit 阶段遍历 effectList，根据 effectTag 来增删改 DOM，commit 阶段分为 3 个小阶段
 
-而 useLayoutEffect，顾名思义是想在这个阶段拿到一些布局信息，dom 操作后可以，而且都渲染完成了，自然可以同步调用了
+before mutation
 
-layout effect 的执行就是在 layout 阶段遍历所有 fiber，取出 updateQueue 的每个 effect 执行。
+- 异步调用 useEffect 的回调函数
+- 异步调用，等 layout 阶段执行完后再执行异步的回调函数
 
+mutation
 
+- 遍历 effectList 更新  DOM
 
-**useEffect 的 hook 在 render 阶段会把 effect 放到 fiber 的 updateQueue 中，这是一个 lastEffect.next 串联的环形链表，然后 commit 阶段会异步执行所有 fiber 节点的 updateQueue 中的 effect。**
+layout
 
-**useLayoutEffect 和 useEffect 差不多，区别只是它是在 commit 阶段的 layout 阶段同步执行所有 fiber 节点的 updateQueue 中的 effect。** 
+- 同步调用 useLayout 的回调函数
+- 能拿到新的 dom
+- 还会更新 ref
 
 
 
