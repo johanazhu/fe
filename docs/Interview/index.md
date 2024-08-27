@@ -39,7 +39,7 @@
 - CSS：如何实现垂直居中
 - 手写源码：New 操作符
 - JavaScript 基础：事件循环
-- ES6特性：迭代器和生成器
+- ES6特性：迭代器和生成器是什么
 - React： 虚拟DOM 与 Diff算法
 - React：说说 React 的渲染过程
 - 浏览器： 浏览器渲染原理 
@@ -92,8 +92,8 @@
 - 手写源码：实现 Reduce 函数
 - JavaScript 基础：什么是立即执行函数
 - ES6特性：Map 和 Set
-- React：props 类型不要用 React.FC 写法
-- React：React 如何处理异常？
+- React：说说你对react的理解/请说一下react的渲染过程
+- React： useEffect 第二个参数是对象如何处理
 - 浏览器：遇到白屏问题如何分析和解决
 - 性能优化：网站首页有大量的图片，加载很慢，如何优化呢（图片懒加载）
 - Taro 的工作原理

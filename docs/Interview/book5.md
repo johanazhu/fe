@@ -181,6 +181,7 @@ const unique = function (arr) {
 ## 3. 作用域
 
 考察点：作用域
+
 JavaScript 的作用域是词法作用域，其特点是在那里定义它就作用在那里，与定义位置有关而与调用位置无关
 
 作用域分为全局作用域、函数作用域、块级作用域
@@ -193,11 +194,9 @@ JavaScript 的作用域是词法作用域，其特点是在那里定义它就作
 
 因为函数作用域的特点使得作用域有链状，即作用域链
 
-作用域又有闭包的产生
 
 
-
-## 4.Es Module 和 CommonJs
+## 4.ES Module 和 CommonJs
 
 类似问题：前端模块化机制有哪些
 
@@ -221,17 +220,17 @@ CommonJS 模块是运行时加载，ES6 模块是编译时输出接口
 
 
 
-
-
-
-
 ## 5.React： useMemo、useCallback是什么
 
 考察点：useCallback、useMemo
 
 useCallback：缓存函数，结合 memo 能让子组件不重复渲染
 
+- useCallback(() => {}, [desp])
+
 useMemo：缓存值，结合 memo 能让子组件不重复渲染
+
+- useMemo(() => value, [desp])
 
 衍生问题：除了useCallback和 useMemo，React 还有那些性能优化的点
 
@@ -239,15 +238,48 @@ useMemo：缓存值，结合 memo 能让子组件不重复渲染
 
 ### 除了useCallback和 useMemo，React 还有那些性能优化的点
 
+React Fiber 的工作流简单来说分为两个阶段：render 和 commit
 
+render 阶段会进行多次调用（会被打断）
 
+commit 阶段是将虚拟 DOM 渲染到真实DOM上
 
+所以优化可以分为三类
+
+- render阶段优化。即跳过不必要的组件的渲染更新
+
+- commit 阶段优化。即减少 commit 阶段耗时
+- 非渲染方面的优化
+
+#### render阶段优化
+
+React.memo
+
+useMemo、useCallback 实现未定的 props 值
+
+列表项使用 key 属性
+
+#### commit 阶段优化
+
+避免在 didMount、didUpdate 中更新组件 State
+
+也就是说无不必要不要使用 useLayoutEffect，它和 didMount 一样，会阻塞页面渲染
+
+#### 非渲染方面的优化
+
+组件按需挂载
+
+懒加载：webpack 的动态导入+ React.lazy
+
+懒渲染：即当组件进入或即将进入可视区域时才渲染组件，如Modal、Drawer
+
+虚拟列表：懒渲染中的一种特殊场景，不渲染所有数据，只渲染可视区域中的数据。当用户滑动时，通过监听 scroll 来判断是上滑还是下拉，从而更新数据。同理 IntersectionObserver（交叉观察者）和 getBoundingClientRect 也能实现
 
 
 
 ## 6. React：说说你做的组件
 
-
+口述表达题
 
 
 
@@ -260,6 +292,8 @@ useMemo：缓存值，结合 memo 能让子组件不重复渲染
 html 被缓存了就是要让缓存失效，一般有两种解法，一如果资源都在 OSS 或者 CDN 上，那么在 OSS 或者 CDN 上设置过期时间；二在 nginx 中设置过期时间
 
 衍生问题：HTTP强缓存和协商缓存
+
+### HTTP强缓存和协商缓存
 
 HTTP先走强缓存，Cache-Control失效，走协商缓存ETag，ETag未变，返回 304，变化返回新资源并打上 ETag 标签
 

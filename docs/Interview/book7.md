@@ -7,6 +7,7 @@
 考察点：双飞翼/圣杯布局
 
 双飞翼布局：浮动+margin-left+中间部分再包裹一层
+
 圣杯布局：浮动+margin-left+自身相对定位
 
 
@@ -14,6 +15,8 @@
 
 
 ## 2. 手写 reduce
+
+
 
 
 
@@ -31,58 +34,59 @@ IIFE，立即执行函数，声明一个匿名函数，并马上调用这个匿�
 
 
 
-## 5.props 类型不要用 React.FC 写法
+## 5.说说你对react的理解/请说一下react的渲染过程
 
-props 类型不要用 React.FC 写法，因为[早已不推荐](https://github.com/facebook/create-react-app/pull/8177)，缺点包括不能于泛型一起工作、不能与 defaultProps 一起工作等，用正常的函数参数声明即可。如果对返回值有更严格的要求，可以加 JSX.Element 或 React.ReactElement 返回值类型
+首先，React 现在都用 React Fiber 架构。他实现了 React 组件的异步可中断效果
 
-```typescript
-type FooProps = { bar: string };
-const Foo = (props: FooProps) => <div/>
-const Foo = (props: FooProps): JSX.Element => <div />;
+基于这个架构，我们可以把 React 渲染分为两个阶段，即 render 阶段和 commit 阶段
 
-// 不推荐
-const Foo: React.FC<FooProps> = (props) => <div />
+render 阶段就是找虚拟 DOM 中变化的部分，创建 DOM，打上增删改的标记，并把这些标记记录到 effectList 队列中
+
+这个阶段可以被打断，由 schedule 调度，它会根据你的优先级权重值决定先执行还是后执行
+
+等全部计算完后，就一次性更新到 DOM
+
+渲染到 DOM 的阶段称为 commit 阶段，这个阶段即把之前记录的更新点更新到 DOM 上
+
+它也有三个小阶段，即 before mutation、mutation 和 layout
+
+before mutation 会异步调用 useEffect 的回调函数
+
+mutation 阶段会遍历 effectList 更新 DOM
+
+layout 阶段会同步调用 useLayoutEffect 的回调函数，还能拿到最新的 dom
+
+## 6. useEffect 第二个参数是对象如何处理
+
+考察点：useEffect 的使用
+
+**保持依赖项为数组**
+
+```jsx
+const [state, setState] = useState({ a: 1, b: 2 });
+
+useEffect(() => {
+    // 处理副作用
+    console.log("状态改变了", state);
+}, [state.a, state.b]);  // 依赖项数组应包含对象的具体属性
 ```
 
+**使用 JSON.stringify**
+
+```jsx
+const [state, setState] = useState({ a: 1, b: 2 });
+
+useEffect(() => {
+    // 处理副作用
+    console.log("状态改变了", state);
+}, [JSON.stringify(state)]);  // 使用 JSON.stringify 作为依赖项
+```
+
+**使用自定义钩子**
+
+写个类似 useSetState 这样的 hooks，判断复杂对象的变化
 
 
-
-
-## 6. React 如何处理异常？
-
-考察点：异常处理
-
-Error Boundaries 错误边界，两个生命周期
-static getDerviedStateFromError，展示错误 UI
-componentDidCatch，上报错误日志
-
-其他的异常处理
-try catch：捕获预见错误，捕获不到具体的语法错误和异步错误
-window.error：能捕获意料之外的语法错误，但捕获不到资源加载错误和接口异常
-window.addEventListener('error')：捕获资源加载错误
-window.addEvent('onhandledrejection')：捕获 promise 错误
-
-
-
-js 代码错误。try catch 只能针对已知错误
-window.addEventListener('error') 资源加载错误不可捕获，promise 错误不可捕获
-window.addEventListener('handleRejection') 捕获 promise 错误
-React 方面
-Error Boundying 错误捕获组件
-static XXX 渲染错误 UI
-componentDidCatch 上报错误日志
-
-衍生问题：Error Boundary 有什么问题
-
-### Error Boundary 有什么问题
-
-1.Error Boundaries 只能捕获组件层面的错误，无法捕获事件处理程序中的错误
-
-比如说你的UI组件渲染错误，如果说这个时候点击按钮，请求数据，这时候报错了，那么它就捕获不到了
-
-2.不能捕获异步操作中的异常，如 Promise，setTimeout 的异常无法捕获，可以用 window.addEvent('onhandledrejection')  进行捕获
-
-3.错误信息不够详细，它会返回一个回退UI，并不会提供太多的错误信息
 
 
 
@@ -161,12 +165,12 @@ componentDidCatch 上报错误日志
 
 
 
-## 8.虚拟列表
-
-## 网站首页有大量的图片，加载很慢，如何优化呢？（图片懒加载）
+## 8.网站首页有大量的图片，加载很慢，如何优化呢？
 
 考察点：大量图片优化
+
 图片懒加载，显示的图片显示出来，还没出现的图片先用小图标展示
+
 图片放在 oss 上
 
 最开始用placeholder图或者loading图来代替，真正的图片放在data-img属性上，等到图片需要展示的时候再替换img.src

@@ -153,7 +153,9 @@ ReactDOM.render(<App />, rootNode);
 
 ## 6.React中父组件如何调用子组件中的方法？
 
+1.使用  `React.forwardRef`  和 `useImperativeHandle` 实现在父组件中访问字组件的方法
 
+2.使用回调函数
 
 
 

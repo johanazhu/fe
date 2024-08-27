@@ -109,7 +109,7 @@ applyMiddleware 函数，装饰器模式
 
 目的是优化初始加载时间
 
-- 减少初始包体积：
+- 减少初始包体积
 - 按需加载
 - 提高并行加载效率
 
@@ -175,7 +175,7 @@ qiankun 做了样式隔离，有 shadow dom 和 scoped 两种方案，但都有�
 
 个人感觉是解决方案，qiankun 背靠阿里，有问题可以在 github 上找，而且 umijs 集成了qiankun，开发效率能提升
 
-
+衍生问题：什么是 postmessage
 
 ### postmessage 
 

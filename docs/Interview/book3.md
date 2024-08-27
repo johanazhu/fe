@@ -174,16 +174,38 @@ Chrome 浏览器是一个应用程序，它有一个主进程、多个渲染进�
 
 
 
-## 4.迭代器和生成器
+## 4. 迭代器和生成器是什么
 
-考察点： generator 原理
+### 迭代器（Iterator）
 
-迭代器是 iterator
-生成器是 generator
+迭代器是一个对象，它定义了一个序列，并通过特定的方式返回集合中的下一个元素。迭代器遵循“迭代器协议”，这个蝶衣要求迭代器对象必须包含一个 next() 方法，该方法返回一个对象，该对象包含两个属性：
 
-生成器
-yield 生成一个断点
-next 继续执行
+- value：表示当前迭代的值
+- done：一个布尔值，指示迭代是否完成。若已完成，done 为 true，否则为 false
+
+在 JavaScript 中，内置的集合类型（如数组、映射和集合）都实现了自己的迭代器。通过使用 for...of 循环，可以方便地使用迭代器来遍历集合的元素
+
+### 生成器（Generator）
+
+生成器是一个特殊的函数，用于创建迭代器。生成器函数的定义使用 function* 语法，而在函数体内使用 yield 语句来暂停执行并返回一个值。每次调用生成器的 next() 方法时，它会恢复执行生成器函数，直到遇到下一个 yield 或函数结束
+
+生成器可以在调用过程中“暂停”，这使得生成器能够在每一步之间保持转台
+
+衍生问题： async/await 的原理
+
+### async/await 的原理
+
+async/await 是 JavaScript 中处理异步操作的语法糖，极大简化了基于 Promise 的代码结构
+
+async函数：会返回一个 Promise 对象。如果函数内部有返回值，那么这个值会被包装成一个 resolved 的 Promise。如果抛出异常，则返回一个 rejected 的 Promise
+
+await 表达式：必须在 async 函数内部使用，作用是等待一个 Promise 对象的完成，获取其 resolved 的结果。若 Promise 被 rejected，则会抛出异常，可以通过 try/catch 语句来捕获
+
+在底层，async/await 是基于生成器函数（Generator Function） 和 Promise 实现的。async 函数本质上是一个 Generator 函数的语法糖，它自动处理了 Generator 函数的迭代器控制和 Promise 的状态管理，使得异步代码的编码更加直观和简洁
+
+
+
+
 
 ## 5. React：虚拟 DOM 的原理
 
@@ -242,10 +264,6 @@ function render(vdom) {
 ```
 
 > PS：以上案例是简化了 虚拟 DOM 转换的过程，在 React16之前类似逻辑，将虚拟DOM 遍历替换，但换成 Fiber 后，就分为两个阶段，render 阶段是在虚拟 DOM 上打标记（会被打断），等 commit 阶段再一次性更新DOM
-
-
-
-
 
 衍生问题：DOM diff 算法是怎么样的
 
@@ -325,7 +343,7 @@ const UI = commit(state);
 
 浏览器渲染三个步骤，解析、渲染、绘制
 
-解析：HTML、CSS、JavaScript 被解析，HTML 被解析为 DOM 树，CSS 被解析成 CSS 规则数，JavaScript 通过 DOM API 和 CSSOM API 来操作  DOM Tree 和 CSS Rule Tree
+解析：HTML、CSS、JavaScript 被解析，HTML 被解析为 DOM 树，CSS 被解析成 CSS 规则树，JavaScript 通过 DOM API 和 CSSOM API 来操作  DOM Tree 和 CSS Rule Tree
 
 渲染：浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rendering Tree（渲染树），这其中进行大量的 Reflow 和 Repaint
 
@@ -335,13 +353,11 @@ const UI = commit(state);
 
 衍生问题：Reflow 和 Repaint 是什么
 
-
-
 ### Reflow 和 Repaint 是什么
 
 Reflow 回流：元素的尺寸、结构或者某些属性发生改变，浏览器需要重新计算它所在的位置，然后重新绘制页面的过程
 
-Repaint 重绘：元素的样式发生改编，不影响它所在的文档流的位置
+Repaint 重绘：元素的样式发生改变，不影响它所在的文档流的位置
 
 回流必定会触发重绘，但重绘不一定会引起回流
 
@@ -383,6 +399,8 @@ qiankun 实现 window 隔离有三个思路：
 
 css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow root 下的 dom 的样式不会影响到其他 dom
 
+> shadow dom 为封装而生。它可以让一个组件拥有自己的「影子」DOM 树，这个 DOM 树不能在主文档中被任意访问，可能拥有局部样式规则，还有其他特性
+
 
 
 ### 总结
@@ -398,8 +416,6 @@ css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow r
 - 一个子应用存在于一个沙箱内，沙箱内无论如何变化影响不到另外沙箱外
 - 基于快照、Proxy 的思路实现了 JS 隔离，基于 shadow Dom 和 scoped css 的思路实现了 CSS 隔离
 - 提供全局状态管理机制（props 通信）
-
-
 
 
 
@@ -422,7 +438,7 @@ css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow r
 虚拟列表，10000 条数据 插入不卡的那种
 
 - 虚拟滚动
-  - 只渲染可视区域内的数据,其他数据按需加载
+  - 只渲染可视区域内的数据，其他数据按需加载
 - 延迟渲染（懒加载）
 - 时间分片
 - 分页加载

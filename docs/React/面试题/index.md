@@ -596,13 +596,13 @@ A：最大的区别在于函数式组件会捕获渲染时的值
 
 ### Q：React 的运行机制
 
-A：笔者没到看几篇讲运行机制的文章，但面试时常被考，说实话，什么叫运行机制，笔者至今没有理解。只是笔者会套壳将渲染流程讲一遍，擦一下边，无论面试官怎么想，笔者都要把自己知道的说一遍
+A：笔者没看到几篇讲运行机制的文章，但面试时常被考，说实话，什么叫运行机制，笔者至今没能理解。只是笔者会变相地将渲染流程讲一遍。无论面试官怎么想，笔者都要把自己知道的说一遍
 
 Fiber 架构后的 React 把渲染流程分成两部分：render 和 commit 阶段
 
 render 阶段找到虚拟DOM 中变化的部分，创建 DOM，打上增删改的标记，这个行为叫 reconcile（调和）
 
-reconcile 可以被打断，又 schedule 调度。会根据优先级的权重值决定先执行还是后执行
+reconcile 可以被打断，由 schedule 调度。会根据优先级的权重值决定先执行还是后执行
 
 等全部计算完后，就一次性更新到 DOM，叫做 commit 
 
@@ -618,13 +618,13 @@ reconcile 可以被打断，又 schedule 调度。会根据优先级的权重值
 >
 > ```jsx
 > function workLoop() {
->   while (wip) {
->     performUnitOfWork();
->   }
+>       while (wip) {
+>         	performUnitOfWork();
+>       }
 > 
->   if (!wip && wipRoot) {
->     commitRoot();
->   }
+>       if (!wip && wipRoot) {
+>        	commitRoot();
+>       }
 > }
 > ```
 
@@ -679,7 +679,7 @@ mutation
 
 layout
 
-- 同步调用 useLayout 的回调函数
+- 同步调用 useLayoutEffect 的回调函数
 - 能拿到新的 dom
 - 还会更新 ref
 

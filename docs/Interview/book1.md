@@ -301,6 +301,14 @@ Promise 的实现原理如下：
 
 
 
+衍生问题：Promise.all 和 Promise.allSettle
+
+### Promise.all 和 Promise.allSettle
+
+Promise.all 和 Promise.allSettled 最大的不同：Promise.allSettled 永远不会被 reject
+
+
+
 ## 5. Fiber 是什么，为什么需要 Fiber
 
 考察点：Fiber 
@@ -308,7 +316,7 @@ Promise 的实现原理如下：
 ### 什么是 React Fiber
 
 - Fiber 是 React 内部的一种新的协调算法，用于对 React 组件树进行调度和渲染
-- 它使用了一种基于 Fiber 的数据结构来表诉组件树，这个数据结构允许 React 执行更加颗粒的控制和分段计算
+- 它使用了一种基于链表数据结构来表示组件树（称之为Fiber树），这个数据结构允许 React 执行更加颗粒的控制和分段计算
 
 ### 为什么需要 React Fiber
 
@@ -321,7 +329,9 @@ Promise 的实现原理如下：
 
 - Fiber 中使用了一种基于链表的数据结构来表示组件树，称为 Fiber 树
 - Fiber 树中的每个节点就是一个 Fiber 对象，包含了组件的状态信息和更新操作
-- React 在更新组件时，会根据新旧 Fiber 树之间的差异计算出需要更新的部分，并将更新任务拆分称多个子任务
+- React 在更新组件时，会根据新旧 Fiber 树之间的差异计算出需要更新的部分，并将更新任务拆分成多个子任务
+
+真实 DOM 对应在内存中的 Fiber 节点会形成 Fiber 树，这棵 Fiber 树在 React 中叫 current Fiber，也就是当前 DOM 树对应的 Fiber 树，而正在构建 Fiber 树的叫 workInProgress Fiber，这两棵树的节点通过 alternate 相连
 
 ### Fiber 的渲染流程
 
@@ -332,8 +342,6 @@ Promise 的实现原理如下：
    2. 调度阶段：调度起将更多任务拆分成多个工作单元，并根据优先级分批执行
    3. 提交阶段：完成所有工作单元后，将变更应用到真实 DOM
 4. 中断与恢复：Fiber 架构支持将渲染过程中断并恢复，以确保应用的响应性
-
-
 
 
 

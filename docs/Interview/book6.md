@@ -140,7 +140,9 @@ function new2(Constructor, ...args) {
 ## 3. 谈谈变量提升
 
 考察点：变量提升
+
 变量是会提升的。var 申明的变量会提升至顶部，然后赋值时在执行
+
 函数提升的权重大于变量提升
 
 
@@ -149,11 +151,15 @@ function new2(Constructor, ...args) {
 
 类似问题：let、var、const的区别
 
+var 会有变量提升
+
+let、const 则不会
+
 
 
 ## 5.React 中的多次渲染如何优化
 
-
+使用 React.memo + React.useCallback 和 React.useMemo 来做优化
 
 
 

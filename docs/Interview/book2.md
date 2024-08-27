@@ -262,9 +262,9 @@ Capture Value 是指 React Hooks 在使用闭包时会自动捕获当前组件�
 - 而在函数式组件中，由于没有 this，开发者可以直接使用闭包来捕获外部变量。但如果不小心,可能会产生一些"陈旧"的值被捕获的问题。
 - Capture Value 机制就是为了解决这个问题，确保 Hook 内部使用的值总是最新的，不会因为闭包的特性而产生 bug。
 
-
-
 参考问题：[How Are Function Components Different from Classes?](https://overreacted.io/how-are-function-components-different-from-classes/)
+
+
 
 ## 7.浏览器：什么是同源策略以及跨源资源共享（CORS）？
 
@@ -383,7 +383,7 @@ main();
 
 如果不能使用 Promise.allSettled
 
-Promise.all 在遇到任何一个 Promise 被拒绝（即抛出异常）时会立即停止执行并返回一个拒绝（rejected）状态的 Promise。要让 Promise.all 即使在某个 Promise 失败后也能继续执行，需要确保所有单个  Promise 都不会被拒绝。这种常见的做法是在每个 Promise 上加上错误处理，使得它们在出现错误时仍然解决（resolve）而不是（reject）
+Promise.all 在遇到任何一个 Promise 被拒绝（即抛出异常）时会立即停止执行并返回一个拒绝（rejected）状态的 Promise。要让 Promise.all 即使在某个 Promise 失败后也能继续执行，需要确保所有单个 Promise 都不会被拒绝。这种常见的做法是在每个 Promise 上加上错误处理，使得它们在出现错误时仍然解决（resolve）而不是（reject）
 
 例如：
 
