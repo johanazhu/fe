@@ -175,6 +175,20 @@ qiankun 做了样式隔离，有 shadow dom 和 scoped 两种方案，但都有�
 
 个人感觉是解决方案，qiankun 背靠阿里，有问题可以在 github 上找，而且 umijs 集成了qiankun，开发效率能提升
 
+iframe的缺点：
+
+- 路由状态丢失，刷新一下，iframe 的 url 状态就丢失了
+
+- dom 割裂严重，弹幕只能在 iframe 内部展示，无法覆盖全局
+- web 应用之间通信困难
+- 每次打开白屏时间太长，对于 SPA 应用来说无法接受
+
+
+
+
+
+
+
 衍生问题：什么是 postmessage
 
 ### postmessage 

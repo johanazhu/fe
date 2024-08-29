@@ -90,34 +90,189 @@ useEffect(() => {
 
 
 
-## 7.遇到白屏问题如何分析和解决
+## 7.首页白屏如何优化
 
 
 
-检测白屏：
+### 路由懒加载
 
-1. 检测页面关键DOM的是否渲染
+SPA 项目，一个项目对应一个页面
 
-2. 通用的DOM渲染监听
+```jsx
+// 通过webpackChunkName设置分割后代码块的名字
+const Home = () => import(/* webpackChunkName: "home" */ "@/views/home/index.vue");
+const MetricGroup = () => import(/* webpackChunkName: "metricGroup" */ "@/views/metricGroup/index.vue");
+…………
+const routes = [
+    {
+       path: "/",
+       name: "home",
+       component: Home
+    },
+    {
+       path: "/metricGroup",
+       name: "metricGroup",
+       component: MetricGroup
+    },
+    …………
+ ]
+```
 
-3. H5截图（canvas绘图）检测
+#### 路由懒加载的原理
 
-4. native截图（容器截屏）检测
+懒加载前提的实现：ES6 的动态加载模块——`import()`
 
-5. 利用performance.getEntries("paint")获取fp/fcp来感知渲染
 
-原因分析：
 
-1. 网络状态
-2. 脚本报错
-3. js，css和浏览器或者webview兼容性问题
+### 组件懒加载
 
-解决方案：
+比如当前页面不用展示的组件先不加载，如 Modal、Dialog 等模态框组件
 
-1. 骨架屏
-2. 启用服务端渲染SSR
-3. 首屏静态html
-4. 离线包或者PWA
+
+
+### 合理的 Tree Shaking
+
+作用：消除无用的 JS 代码，减少代码体积
+
+#### Tree-Shaking 原理
+
+依赖 ES6 的模块特性，ES6 模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析
+
+
+
+
+
+### 使用骨架屏或加载提示
+
+
+
+
+
+### 长列表虚拟滚动
+
+只渲染可视区域的列表项，非可见区域的不渲染
+
+#### 虚拟列表的原理
+
+计算出列表总高度，并在触发滚动事件时根据 scrollTop 值不断更新 startIndex 以及 endIndex，以此来列表数据 listData 中截取对应元素
+
+
+
+### Web Worker 优化长任务
+
+由于浏览器 GUI 渲染线程与 JS 引擎线程是互斥关系，所以当页面中有长任务时，会造成页面 UI 阻塞，出现界面卡顿、掉帧等情况
+
+
+
+### JS 的6钟加载方式
+
+**正常模式**
+
+```html
+<script src="index.js"></script>
+```
+
+这种情况下 JS 会阻塞 DOM 渲染
+
+**async 模式**
+
+```html
+<script async src="index.js"></script>
+```
+
+异步模式，JS 不会阻塞 DOM 的渲染，async 加载是无顺序的，当它加载结束，JS 会立即执行
+
+使用场景：埋点统计、客服系统
+
+**defer 模式**
+
+```html
+<script defer src="index.js"></script>
+```
+
+defer 模式下，JS 的加载也是异步的，但 defer 资源会在 `DOMContentLoaded` 执行之前，并且 defer 是有顺序的加载
+
+**module 模式**
+
+```html
+<script type="module">import { a } from './a.js'</script>
+```
+
+在主流现代浏览器中，script 标签的属性可以加上 `type="module"`，浏览器会对内部的 import 引用发起 HTTP 请求，获取模块内容。这时 script 的行为会像是 defer 一样，在后台下载，并且等待 DOM 解析
+
+Vite 就是利用浏览器支持原生的 `es module` 模块，开发时跳过打包的过程，提升编译效率
+
+**preload** 
+
+```html
+<link rel="preload" as="script" href="index.js">
+```
+
+link 标签的 preload 属性：用于提前加载一些需要的依赖，这些资源会优先加载
+
+preload 特点
+
+preload 加载的资源是在浏览器渲染机制之前进行处理的，并不会阻塞 onload 事件
+
+preload 加载的 JS 脚本其加载和执行的过程是分离的，即 preload 会预加载相应的脚本代码，待到需要时自行调用
+
+**prefetch**
+
+```html
+<link rel="prefetch" as="script" href="index.js">
+```
+
+prefetch 是利用浏览器的空闲时间，加载页面将来可能用到的资源的一种机制；通常可以用于加载其他页面（非首页）所需要的资源，以便加快后续页面的打开速度
+
+prefetch 特点：
+
+prefetch 加载的资源可以获取非当前页面所需资源，并且将其放入缓存至少五分钟
+
+当页面跳转时，未完成的 prefetch 请求不会被中断
+
+#### 加载方式总结
+
+async、defer 是 script 标签的专属属性，对于网页的其他资源，可以通过 link 的 preload、prefetch 属性来预加载
+
+现代框架已经将 preload、prefetch 添加到打包流程中，通过配置可以使用
+
+### 图片的优化
+
+#### 图片动态裁剪
+
+#### 图片懒加载
+
+图片懒加载实现原理
+
+先通过 HTML 自定义属性 data-xxx 先暂存 src 的值，然后在图片出现在屏幕可视区域时，再将 data-xxx 的值赋值到 img 的scr 属性即可
+
+#### 使用字体图标
+
+#### 图片转 base64 格式
+
+#### 图片资源压缩
+
+tinypng 图片资源压缩
+
+#### 图片资源放到 OSS 上
+
+#### 图片格式转换
+
+转成 webp、AVIF格式
+
+
+
+衍生问题：路由懒加载怎么使用，背后的原理是什么？
+
+### 路由懒加载怎么使用，背后的原理是什么？
+
+import 的动态引入
+
+使用了ESModule
+
+如果说浏览器不支持 ESModule，webpack 打包时会将其打包成什么样子？
+
+如果兼容不支持ESModule的浏览器，webpack 会将 ESModule 转换成 CommonJS 或 UMD 格式。既可以确保在较旧的环境中运行，又能确保模块依赖的加载机制正常工作
 
 
 
@@ -133,35 +288,16 @@ useEffect(() => {
 
 
 
+解决方案：
 
-
-衍生：如何减少白屏时间、怎么提高项目的首屏加载速度、单页面应用为什么会有白屏
-
-
-
-### 如何减少白屏时间
-
-
-
-### 怎么提高项目的首屏加载速度
-
-预渲染技术、骨架屏技术
+1. 骨架屏
+2. 启用服务端渲染SSR
+3. 首屏静态html
+4. 离线包或者PWA
 
 
 
-### 单页面应用为什么会有白屏
 
-单页应用（SPA）中的白屏现象通常指的是在用户访问应用时，页面长时间显示空白而没有任何内容，这种现象会严重影响用户体验。白屏问题的原因一半包括以下几点：
-
-1. 初始加载时间长
-   - **资源未能及时加载**：单页应用通常多个资源，如 JavaScript、CSS 和其他静态文件。如果这些资源的加载时间过长，用户在应用初始化时可能会看到白屏
-   - **大文件体积**：如果加载的 JavaScript 文件体积庞大，尤其是包含了大量业务逻辑，那么在下载、解析和执行过程中可能会出现明显的延迟
-2. JavaScript 执行时间长
-   - **主线程占用过长**：单页应用的首次加载通常需要执行大量的 JavaScript 代码。如果没有优化，执行时间过长，则会阻塞页面渲染，导致用户看到白屏现象
-   - **资源请求阻塞**：当JavaScript代码在执行过程中发起额外的网络请求，如果这些请求未能及时完成，会导致页面渲染延迟
-3. 依赖问题
-   - **异步数据请求失败**：单页应用通常依赖于异步请求来获取数据。如果请求失败或者返回的数据不符合预期，应用可能无法渲染任何内容，从而导致白屏。
-   - **库或框架加载问题**：如果使用的框架或库加载失败，例如Vue、React等的组件未能初始化成功，也会出现白屏。
 
 
 
@@ -185,9 +321,15 @@ intersectionObserver 交叉观察器，异步
 
 
 
-## 9.Taro 的工作原理
+## 9.微前端：如何防止一个应用没有被卸载掉造成内存泄露
 
-Taro 在编译过程中，会将 React 代码解析成 AST 语法树
+
+
+
+
+衍生问题：CSS 可能会造成全局污染？怎么避免样式互相冲突
+
+### CSS 可能会造成全局污染？怎么避免样式互相冲突
 
 
 

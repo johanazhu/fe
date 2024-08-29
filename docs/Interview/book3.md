@@ -401,7 +401,7 @@ css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow r
 
 > shadow dom 为封装而生。它可以让一个组件拥有自己的「影子」DOM 树，这个 DOM 树不能在主文档中被任意访问，可能拥有局部样式规则，还有其他特性
 
-
+`css沙箱`做了两套`strictStyleIsolation`、`experimentalStyleIsolation`两套适用不同场景的方案
 
 ### 总结
 

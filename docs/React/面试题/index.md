@@ -81,9 +81,27 @@ A：（单向）链表。主要包含一下链接属性：
 
 A：链表结构能够更高效地插入和删除节点
 
-### Q: Fiber 是如何支持动画的呢
+### Q：Fiber 是如何支持动画的呢
 
 A：requestAnimationFrame
+
+### Q：ReactElement, Fiber, DOM 三者的关系
+
+A：我们用 JSX 写出的代码，会被 React 转换成 `ReactElement` 对象
+
+`Fiber Tree` 是通过 `ReactElement` 生成的，它就是 虚拟 DOM，
+
+`Fiber Tree` 是 `DOM树` 的数据结构，`Fiber Tree` 驱动 `DOM Tree` 
+
+### Q：React17之前jsx文件为什么要声明import React from 'react'，之后为什么不需要了
+
+A：React 17 之前：JSX 编译为 React.createElement 调用，因此需要导入 React
+
+React 17及之后：新的 JSX 转换机制自动处理这些导入，因此不再需要显示导入 React
+
+其原因是 React 和 babel 团队合作，单独为 React 团队做了个 `react/jsx-runtime`
+
+
 
 
 
