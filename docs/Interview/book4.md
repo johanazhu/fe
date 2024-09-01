@@ -128,7 +128,7 @@ applyMiddleware 函数，装饰器模式
 
 微前端可以在一个页面上跑多个 react、vue 甚至原生项目，他们之间的 JS、CSS 相互隔离运行，不会相互影响，也有通信机制可以通信
 
-怎么实现的？
+### 怎么实现的？（技术原理）
 
 当路由切换时，下载对应引用的代码，然后跑到容器中
 
@@ -153,11 +153,7 @@ qiankun 做了样式隔离，有 shadow dom 和 scoped 两种方案，但都有�
 
 
 
-乾坤技术原理、为什么不用 iframe、父子应用如何通讯
-
-
-
-
+衍生问题：为什么不用 iframe、父子应用如何通讯、什么是 postmessage
 
 ### 为什么不用 iframe
 
@@ -179,17 +175,28 @@ iframe的缺点：
 
 - 路由状态丢失，刷新一下，iframe 的 url 状态就丢失了
 
-- dom 割裂严重，弹幕只能在 iframe 内部展示，无法覆盖全局
+- dom 割裂严重，弹窗只能在 iframe 内部展示，无法覆盖全局
 - web 应用之间通信困难
 - 每次打开白屏时间太长，对于 SPA 应用来说无法接受
 
 
 
+## qiankun 父子应用如何通讯
 
+1.全局状态管理（initGlobalState）
 
+2.props 传递
 
+- 父组件在加载子应用时传递 props
+- 字组件通过 this.props 访问这些数据
 
-衍生问题：什么是 postmessage
+3.url参数传递
+
+4.事件机制（自己做一个发布订阅模式）
+
+5.第三方库（Redux）
+
+6.localStorage/sessionStorage
 
 ### postmessage 
 
@@ -200,6 +207,8 @@ postmenssage 是 HTML 引入的一种跨窗口通信机制，解决了以下爱�
 - 页面和其打开的新窗口之前的数据传递
 - 页面与嵌套的 iframe 之间的消息传递
 - 多窗口之间的跨域数据传递
+
+
 
 
 

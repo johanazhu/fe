@@ -24,6 +24,20 @@ ES6 的特性都很有用，ES7-ES11 中，我比较感兴趣的是：
 
 其中，async/await 异步终极解决方案，`for await of` 异步串行，`Promise.allSettled` 解决了 `Promise.all` 的只要一个请求失败了就会抛出错误的问题，当我们一次发起多个请求时，所有结果都能返回，无论成功或失败，等等等，不了解的可以往下查找
 
+
+
+## 空值合并运算符（??）
+
+**空值合并运算符**（**`??`**）是一个逻辑运算符，当左侧的操作数为 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/null) 或者 [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined) 时，返回其右侧操作数，否则返回左侧操作数。
+
+
+
+## 可选链运算符（?.）
+
+**可选链运算符**（**`?.`**）允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效
+
+
+
 ## 参考资料
 
 -   [从 ES6 到 ES10 的新特性万字大总结](https://zhuanlan.zhihu.com/p/342882092?utm_source=wechat_session&utm_medium=social&utm_oi=56197411504128)

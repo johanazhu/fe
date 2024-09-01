@@ -92,45 +92,37 @@ useEffect(() => {
 
 ## 7.首页白屏如何优化
 
+简单来说，就是所性能优化，就是换个问题问
 
+### 1.路由懒加载
 
-### 路由懒加载
-
-SPA 项目，一个项目对应一个页面
+单页面应用，一个路由对应一个页面 
 
 ```jsx
-// 通过webpackChunkName设置分割后代码块的名字
-const Home = () => import(/* webpackChunkName: "home" */ "@/views/home/index.vue");
-const MetricGroup = () => import(/* webpackChunkName: "metricGroup" */ "@/views/metricGroup/index.vue");
-…………
-const routes = [
-    {
-       path: "/",
-       name: "home",
-       component: Home
-    },
-    {
-       path: "/metricGroup",
-       name: "metricGroup",
-       component: MetricGroup
-    },
-    …………
- ]
+import React, { Suspense } from 'react';
+
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <OtherComponent />
+      </Suspense>
+    </div>
+  );
+}
 ```
 
 #### 路由懒加载的原理
 
-懒加载前提的实现：ES6 的动态加载模块——`import()`
+懒加载前提的实现：ES6 的动态加载模块——`import()`，它返回的是一个 promise
+
+当 webpack 解析到 import 语法时，会自动进行代码分割
 
 
 
-### 组件懒加载
-
-比如当前页面不用展示的组件先不加载，如 Modal、Dialog 等模态框组件
-
-
-
-### 合理的 Tree Shaking
+### 2.合理的 Tree Shaking
 
 作用：消除无用的 JS 代码，减少代码体积
 
@@ -138,17 +130,23 @@ const routes = [
 
 依赖 ES6 的模块特性，ES6 模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析
 
+简单来说，根据 ES Modules 的静态分析
 
+### 3.组件方面
 
+#### 组件懒渲染
 
+当组件进入或即将进入可视区域时才渲染组件。常见的组件 Modal/Drawer 等，当 visible 属性为 true 时才渲染组件内容，也可以认为是懒渲染的一种实现
 
-### 使用骨架屏或加载提示
+#### React.memo 减少React子组件渲染
 
+配合 React.useCallback 和 React.useMemo
 
+### 4.使用骨架屏或加载提示
 
+在项目打包时将骨架屏的内容直接放在 HTML 文件的根节点上
 
-
-### 长列表虚拟滚动
+### 5.长列表虚拟滚动
 
 只渲染可视区域的列表项，非可见区域的不渲染
 
@@ -158,13 +156,13 @@ const routes = [
 
 
 
-### Web Worker 优化长任务
+### 5.Web Worker 优化长任务
 
 由于浏览器 GUI 渲染线程与 JS 引擎线程是互斥关系，所以当页面中有长任务时，会造成页面 UI 阻塞，出现界面卡顿、掉帧等情况
 
 
 
-### JS 的6钟加载方式
+### 6.JS 的六种加载方式
 
 **正常模式**
 
@@ -236,7 +234,7 @@ async、defer 是 script 标签的专属属性，对于网页的其他资源，�
 
 现代框架已经将 preload、prefetch 添加到打包流程中，通过配置可以使用
 
-### 图片的优化
+### 7.图片的优化
 
 #### 图片动态裁剪
 
@@ -262,40 +260,33 @@ tinypng 图片资源压缩
 
 
 
-衍生问题：路由懒加载怎么使用，背后的原理是什么？
+### 8.启用服务端渲染SSR
 
-### 路由懒加载怎么使用，背后的原理是什么？
-
-import 的动态引入
-
-使用了ESModule
-
-如果说浏览器不支持 ESModule，webpack 打包时会将其打包成什么样子？
-
-如果兼容不支持ESModule的浏览器，webpack 会将 ESModule 转换成 CommonJS 或 UMD 格式。既可以确保在较旧的环境中运行，又能确保模块依赖的加载机制正常工作
+SSR 渲染，把客户端渲染改成服务端渲染，也利于SEO
 
 
 
+### 9.首屏静态html
 
-
-为了解决单页应用的白屏问题，可以采用以下优化方法：
-
-- **代码分割**：将 JavaScript 和 CSS 分为多个较小的文件，按需加载，减少初始加载时间
-- **懒加载和预加载**：对于非关键的资源，可以采用懒加载或预加载策略，确保需要的资源先加载。
-- **优化请求**：通过合并请求或使用CDN加速文件传输，减少网络延迟。
-- **使用骨架屏或加载指示**：在内容加载之前显示骨架屏或加载动画，以改善用户体验。
-- **监测和分析**：使用工具监测应用的性能，通过分析用户反馈不断优化加载时间
+既然要加快，那就做到极致，首屏是个静态页
 
 
 
-解决方案：
+### 10.缓存
 
-1. 骨架屏
-2. 启用服务端渲染SSR
-3. 首屏静态html
-4. 离线包或者PWA
+资源文件和接口加上HTTP缓存，加快请求速度
 
+强缓存（Cache-Control）和协商缓存（Etag）
 
+与强缓存的时候走强缓存，当强缓存失效后走协商缓存
+
+将`Cache-Control:no-cache`、`Cache-Control:max-age=0`、`pragma: no-cache` 时，即告诉浏览器不走强缓存
+
+当强缓存失效后，浏览器需要发送一个带有 `If` 开头的条件请求字段，专门用来验证资源是否过期，
+
+请求时带上 `If-None-Match:上次一的Etag`，如果资源没有变化，则返回 304 状态，使用本地缓存
+
+如果资源变化，则发情 HTTP 请求，并记录相应头中的 ETag，HTTP状态返回 200
 
 
 
