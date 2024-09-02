@@ -8,7 +8,9 @@
 
 [排序](#排序)
 
-[数组扁平化、去重、排序](#数组扁平化、去重、排序)
+[数组扁平化](#数组扁平化)
+
+[菜单数组转换为嵌套树形结构](#菜单数组转换为嵌套树形结构)
 
 [进度条](#进度条)
 
@@ -309,52 +311,49 @@ function selectSort(arr) {
 
 ## 数组扁平化
 
-问：编写一个程序将数组扁平化去并除其中重复部分数据，最终得到一个升序且不重复的数组
+多维数组到一维数组
 
 ```javascript
-
-let arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
-
-// 扁平化
-let flatArr = arr.flat(Infinity);
-// 去重
-let disArr = Array.from(new Set(flatArr));
-// 排序
-let result = disArr.sort(function (a, b) {
-    return a - b;
-});
-console.log(result);
-// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-// Array.from 将类数组转成数组实例
+let ary = [1, [2, [3, [4, 5]]], 6];
+let str = JSON.stringify(ary);
 ```
 
-衍生问题：数组扁平化
-
-### 数组扁平化
-
-使用 `Array.prototype.flat` 就可以将多层数组拍平一层
+### 方法零：flat直接调用
 
 ```javascript
-[1, [2, [3]]].flat(Infinity); // [1, 2, 3]
+arr_flat = arr.flat(Infinity);
 ```
 
-#### ES5：递归
+### 方法一：递归
 
 ```javascript
 function flatten(arr) {
-    var result = [];
-    for (var i = 0, len = arr.length; i < len; i++) {
-        if (Array.isArray(arr[i])) {
-            result = result.concat(flatten(arr[i]));
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i]
+        if (Array.isArray(item)) {
+             result = result.concat(flatten(arr[i]));
         } else {
-            result.push(arr[i]);
+            result.push(item)
         }
     }
     return result;
 }
 ```
 
-#### ES6
+`result = result.concat(flatten(arr[i])) `为什么是 concat 呢，push 会改变原数组，使用 concat 就是拼接，返回一个新数组
+
+### 方法二：reduce
+
+```javascript
+function flatten(arr) {
+	return arr.reduce((pre, cur) => {
+        return pre.concat(Array.isArray(cur) ? flatten(cur) : cur)
+    }, [])
+}
+```
+
+### 方法三：展开运算符
 
 ```javascript
 function flatten(arr) {
@@ -365,7 +364,7 @@ function flatten(arr) {
 }
 ```
 
-#### 写原型上
+### 写原型上
 
 ```javascript
 
@@ -383,6 +382,141 @@ Array.prototype.flatten = function (depth) {
 
 var arr = [1, 2, [3, 4, [5, 6]]]
 console.log(arr.flatten(2))
+```
+
+### 衍生问题
+
+问：编写一个程序将数组扁平化去并除其中重复部分数据，最终得到一个升序且不重复的数组
+
+```javascript
+let arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
+
+// 扁平化
+let flatArr = arr.flat(Infinity);
+// 去重
+let disArr = Array.from(new Set(flatArr));
+// 排序
+let result = disArr.sort(function (a, b) {
+    return a - b;
+});
+console.log(result);
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+// Array.from 将类数组转成数组实例
+```
+
+
+
+## 菜单数组转换为嵌套树形结构
+
+```javascript
+[
+    { id: 1, name: "Home", parentId: null },
+    { id: 2, name: "About Us", parentId: null },
+    { id: 3, name: "Services", parentId: null },
+    { id: 4, name: "Contact", parentId: null },
+    { id: 5, name: "Team", parentId: 2 },
+    { id: 6, name: "History", parentId: 2 },
+    { id: 7, name: "Web Development", parentId: 3 },
+    { id: 8, name: "App Development", parentId: 3 },
+    { id: 9, name: "Email", parentId: 4 },
+    { id: 10, name: "Phone", parentId: 4 },
+    { id: 11, name: "Frontend", parentId: 7 },
+    { id: 12, name: "Backend", parentId: 7 },
+    { id: 13, name: "iOS", parentId: 8 },
+    { id: 14, name: "Android", parentId: 8 },
+    { id: 15, name: "React", parentId: 11 },
+    { id: 16, name: "Vue", parentId: 11 },
+    { id: 17, name: "Node.js", parentId: 12 },
+    { id: 18, name: "Django", parentId: 12 }
+]
+// 转换为
+[
+  	{ id: 1, menu: 'Home', parentId: null}, 
+    { 
+        id: 2, 
+        name: "About Us", 
+        parentId: null,
+    	child: [
+            { "id": 5, "name": "Team", "parentId": 2 },
+            { "id": 6, "name": "History", "parentId": 2 },
+        ]
+    },
+    { 
+        id: 3, 
+        name: "Services",
+        parentId: null,
+        child: [
+            { 
+                id: 7, name: "Web Development", parentId: 3,
+                child: [
+                    { id: 11, name: "Frontend", parentId: 7, child: [
+                         { id: 15, name: "React", parentId: 11 },
+   						 { id: 16, name: "Vue", parentId: 11 },
+                    ]},
+                    { id: 12, name: "Backend", parentId: 7, child: [
+                        { id: 17, name: "Node.js", parentId: 12 },
+    					{ id: 18, name: "Django", parentId: 12 }
+                    ]},
+                ]
+            },
+    		{ 
+                id: 8, name: "App Development", parentId: 3,
+             	child: [
+                 	{ id: 13, name: "iOS", parentId: 8 },
+    				{ id: 14, name: "Android", parentId: 8 },
+             	]
+            },
+        ]
+    },
+    { 
+        id: 4, 
+        name: "Contact",
+        parentId: null,
+        child: [
+            { id: 9, name: "Email", parentId: 4 },
+    		{ id: 10, name: "Phone", parentId: 4 },
+        ]
+    },
+]
+```
+
+解答：
+
+```javascript
+function buildTree(menuArray) {
+   	let itemMap = {};
+   	let tree = [];
+
+    // 首先将数组转换为一个对象，并且加上 children
+    menuArray.forEach(item => {
+        itemMap[item.id] = { ...item, children: []}
+    })
+    
+    // 构建树形结构
+    menuArray.forEach(item => {
+        if (item.parentId === null) {
+         	// 添加根节点
+            tree.push(itemMap[item.id])
+        } else {
+            // 找到当前节点的父节点，将当前节点添加为父节点的子节点
+            const parent = itemMap[item.parentId]
+            if (parent) {
+                parent.children.push(itemMap[item.id])
+            }
+        }
+    })
+    
+    function removeEmptyChildren(node) {
+        if (node.children.length === 0) {
+            delete node.children
+        } lese {
+            node.children.forEach(removeEmptyChildren)
+        }
+    }
+    tree.forEach(removeEmptyChildren)
+    
+    return tree
+}
 ```
 
 

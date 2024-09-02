@@ -30,11 +30,38 @@ ES6 的特性都很有用，ES7-ES11 中，我比较感兴趣的是：
 
 **空值合并运算符**（**`??`**）是一个逻辑运算符，当左侧的操作数为 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/null) 或者 [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined) 时，返回其右侧操作数，否则返回左侧操作数。
 
+```javascript
+const foo = null ?? 'default string';
+console.log(foo);
+// 输出: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// 输出: 0
+```
+
 
 
 ## 可选链运算符（?.）
 
 **可选链运算符**（**`?.`**）允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效
+
+```javascript
+const adventurer = {
+  name: 'Alice',
+  cat: {
+    name: 'Dinah',
+  },
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName);
+// 输出: undefined
+
+console.log(adventurer.someNonExistentMethod?.());
+// 输出: undefined
+
+```
 
 
 

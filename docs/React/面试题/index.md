@@ -97,11 +97,22 @@ A：我们用 JSX 写出的代码，会被 React 转换成 `ReactElement` 对象
 
 A：React 17 之前：JSX 编译为 React.createElement 调用，因此需要导入 React
 
-React 17及之后：新的 JSX 转换机制自动处理这些导入，因此不再需要显示导入 React
+React 17及之后：变成了jsx.createElement，因此不再需要显示导入 React
 
 其原因是 React 和 babel 团队合作，单独为 React 团队做了个 `react/jsx-runtime`
 
+```javascript
+function App() {
+  return <h1>Hello World</h1>;
+}
+//转换后
+import {jsx as _jsx} from 'react/jsx-runtime';
 
+function App() {
+  return _jsx('h1', { children: 'Hello world' });
+}
+
+```
 
 
 

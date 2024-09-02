@@ -1,6 +1,6 @@
 # Async & Await
 
-一句话：
+## 一句话总结
 
 一异步迭代器
 
@@ -20,6 +20,67 @@ async 函数对 Generator 函数的改进，体现在以下四点：
 -   `await` 只能用在 `async` 关键词的函数中
 -   `async` 函数返回一个 `Promise`
 -   `async/await` 相当于封装了 `Promise`
+
+
+
+## async
+
+什么是 async ?
+
+> MDN 的定义: async 是一个通过异步执行并隐式返回 Promise 作为结果的函数。
+
+注意重点: **返回结果为Promise**。
+
+举个例子:
+
+```js
+async function func() {
+  return 100;
+}
+console.log(func());
+// Promise {<resolved>: 100}
+```
+
+这就是隐式返回 Promise 的效果
+
+## await
+
+我们来看看 `await`做了些什么事情。
+
+以一段代码为例：
+
+```javascript
+async function test() {
+  console.log(100)
+  let x = await 200
+  console.log(x)
+  console.log(200)
+}
+console.log(0)
+test()
+console.log(300)
+```
+
+<details>
+    <summary>答案</summary>
+    0、100、300、200、200
+</details>
+
+分析：
+
+按顺序，先打印“0”，
+
+遇到 test() 方法，执行它，打印 “100”
+
+遇到 await，将其放入微任务队列，后续代码需要等 await 执行完才能执行（微任务执行完毕才能执行）
+
+继续执行，打印 “300”
+
+宏任务执行完毕，执行微任务，执行 await 200，也就是 resolve(200)，打印“200”
+
+继续执行，打印“200”
+
+
 
 ## 参考资料
 

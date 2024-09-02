@@ -204,17 +204,25 @@ function myApply(context = window, args) {
 - 类数组是拥有 length 属性和索引属性的对象
 - 区别：类数组是对象，它的原型关系和数组不同
 
+常见的类数组还有
+
+- 用 getElementsByTagName/ClassName() 获取的 HTMLCollection
+- 用 querySelector 获取的 nodeList
+
 类数组如何转换为数组
 
 以下三种方法都可以将类数组转换为数组：
 
 `Array.from(likeArray)`
 
-`[...likeArray]`
+展开运算符：`[...likeArray]`
 
-`slice(likeArray, 0)`
+`Array.prototype.slice(likeArray, 0)`
 
+`Array.prototype.concat.apply([], arguments)`
 
+- apply 方法会把第二个参数展开
+- concat 拼到一起
 
 ## 3.闭包
 
