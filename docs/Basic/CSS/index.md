@@ -16,6 +16,8 @@ CSS 方面的知识点，说来说去就这几点：
 
 [清除浮动](#清除浮动)
 
+[点击穿透](#点击穿透)
+
 [各种布局](#布局)
 
 -   [flex 布局](#flex)
@@ -120,7 +122,7 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
           margin-top: 87px;
         }
         </style>
-    
+        
         <p>下边界范围会...</p>
         <p>...会跟这个元素的上边界范围重叠。</p>
         ```
@@ -135,16 +137,16 @@ w3c 引入这两个概念是为了格式化文档树以外的信息。也就是�
                 margin-top: 13px;
                 margin-bottom: 87px;
             }
-    
+        
             header {
                 margin-top: 87px;
             }
-    
+        
             footer {
                 margin-bottom: 13px;
             }
         </style>
-    
+        
         <section>
             <header>上边界重叠 87</header>
             <main></main>
@@ -216,6 +218,18 @@ BFC 有什么不足？
     clear: bothd;
 }
 ```
+
+
+
+## 点击穿透
+
+当 pointer-events 的值为 none 时，表示鼠标事件“穿透”该元素并且指定该元素“下面”的任何东西
+
+```css
+pointer-events: none
+```
+
+
 
 ## 布局
 

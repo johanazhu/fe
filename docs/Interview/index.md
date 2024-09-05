@@ -81,7 +81,7 @@
 - ES6特性：let 和 const
 - React：React 中的多次渲染如何优化
 - React： useLayoutEffect 和 useEffect 的区别
-- WebApp：适配方案
+- HTTP：什么是单点登录（SSO ）？如何实现
 - 浏览器：Cookie、localStorage、sessionStorage、IndexedDB的区别
 - 工程化：webpack 怎么配置多页面
 - 算法题：有效的括号
