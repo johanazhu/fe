@@ -26,35 +26,119 @@
 
 IIFE，立即执行函数，声明一个匿名函数，并马上调用这个匿名函数。只有一个作用，创建一个独立的作用域
 
-
+衍生题：模块化
 
 ## 4.Map 和 Set
 
+Map 是一组键值对的结构，具有极快的查找速度。数据结构是 hash-table（哈希表）
+
+Map 是一个带键的数据项的集合，就像一个 Object 一样，但是它们最大的差别是 Map 允许任何类型的键（key）
+
+Set 作为最简单的集合，有着如下几个特点：
+
+-   Set 可以存储任何类型的值，遍历顺序与 插入顺序相同
+-   **Set 内无重复的值**
+
+### WeakMap
+
+与 Map 类似，但又有点击区别：
+
+- WeakMap 只接受对象作为 key（null除外），如果设置其他类型的数据作为 key，会报错。`Map` 的键可以是任意类型
+- WeakMap 是弱引用，key 所指向的对象可以被垃圾回收；Map 的 key 实际上和内存地址绑定
+- WeakMap 不能被遍历，Map 可以被遍历
 
 
 
+衍生题：map 和 对象的区别
 
-## 5.说说你对react的理解/请说一下react的渲染过程
+### map 和 对象的区别
 
-首先，React 现在都用 React Fiber 架构。他实现了 React 组件的异步可中断效果
+对象的键只能是字符串
 
-基于这个架构，我们可以把 React 渲染分为两个阶段，即 render 阶段和 commit 阶段
+map的键可以是任意类型
 
-render 阶段就是找虚拟 DOM 中变化的部分，创建 DOM，打上增删改的标记，并把这些标记记录到 effectList 队列中
+```javascript
+var map = new Map();
+map.set(1, 2);
+map.set({ name: 'johan' }, true);
+```
 
-这个阶段可以被打断，由 schedule 调度，它会根据你的优先级权重值决定先执行还是后执行
 
-等全部计算完后，就一次性更新到 DOM
 
-渲染到 DOM 的阶段称为 commit 阶段，这个阶段即把之前记录的更新点更新到 DOM 上
+## 5.修改深层对象有什么解决方案
 
-它也有三个小阶段，即 before mutation、mutation 和 layout
+例如如下数据结构，如何修改数据，让其不要过多渲染
 
-before mutation 会异步调用 useEffect 的回调函数
+> 这涉及到state 的数据不可变，因为object 是引用类型，修改值会影响到之前的值
 
-mutation 阶段会遍历 effectList 更新 DOM
+```javascript
+state = {
+ 	user: {
+        objA: {
+          name: 'A',
+          age: 20
+        }
+    }
+}
 
-layout 阶段会同步调用 useLayoutEffect 的回调函数，还能拿到最新的 dom
+```
+
+解决方案一：使用展开运算符（Spread Operator）
+
+```
+this.setState(prevState => ({
+  user: {
+    ...prevState.user,
+    objA: {
+      ...prevState.user.objA,
+      name: '新名字',
+      age: 25
+    }
+  }
+}));
+```
+
+解决方案二：Object.assign()
+
+```javascript
+this.setState(prevState => 
+  Object.assign({}, prevState, {
+    user: Object.assign({}, prevState.user, {
+      objA: Object.assign({}, prevState.user.objA, {
+        name: '新名字',
+        age: 25
+      })
+    })
+  })
+);
+```
+
+解决方案三：使用深克隆
+
+```javascript
+import _ from 'lodash';
+
+const updatedUser = _.cloneDeep(this.state.user);
+updatedUser.objA.name = '新名字';
+updatedUser.objA.age = 25;
+
+this.setState({ user: updatedUser });
+```
+
+解决方案四：使用不可变数据结构（如immer.js）
+
+```javascript
+import produce from 'immer';
+
+this.setState(prevState => 
+  produce(prevState, draft => {
+    draft.user.objA.name = '新名字';
+    draft.user.objA.age = 25;
+  })
+);
+```
+
+其实就是让赋值的对象和之前的对象的值不同，如果数据结构简单，可以用浅拷贝（扩展运算符或者Object.assign），数据结构复杂，则用深拷贝来做。但推荐的方案是用不可变数据结构，如 immer.js 库来做，保持值的唯一性
 
 ## 6. useEffect 第二个参数是对象如何处理
 
@@ -152,17 +236,23 @@ function MyComponent() {
 
 #### 虚拟列表的原理
 
-计算出列表总高度，并在触发滚动事件时根据 scrollTop 值不断更新 startIndex 以及 endIndex，以此来列表数据 listData 中截取对应元素
+计算出列表总高度，并在触发滚动事件时根据 scrollTop 值不断更新 startIndex 以及 endIndex，以此从列表数据 listData 中截取对应元素
+
+虚拟滚动的缺点：
+
+频繁的计算导致会有短暂的白屏现象，可以通过节流来限制触发频率
+
+加上为列表管理加一些“上、下缓冲区”，即在可视区域之外预渲染一些元素
 
 
 
-### 5.Web Worker 优化长任务
+### 6.Web Worker 优化长任务
 
 由于浏览器 GUI 渲染线程与 JS 引擎线程是互斥关系，所以当页面中有长任务时，会造成页面 UI 阻塞，出现界面卡顿、掉帧等情况
 
 
 
-### 6.JS 的六种加载方式
+### 7.JS 的六种加载方式
 
 **正常模式**
 
@@ -234,7 +324,7 @@ async、defer 是 script 标签的专属属性，对于网页的其他资源，�
 
 现代框架已经将 preload、prefetch 添加到打包流程中，通过配置可以使用
 
-### 7.图片的优化
+### 8.图片的优化
 
 #### 图片动态裁剪
 
@@ -260,19 +350,19 @@ tinypng 图片资源压缩
 
 
 
-### 8.启用服务端渲染SSR
+### 9.启用服务端渲染SSR
 
 SSR 渲染，把客户端渲染改成服务端渲染，也利于SEO
 
 
 
-### 9.首屏静态html
+### 10.首屏静态html
 
 既然要加快，那就做到极致，首屏是个静态页
 
 
 
-### 10.缓存
+### 11.缓存
 
 资源文件和接口加上HTTP缓存，加快请求速度
 

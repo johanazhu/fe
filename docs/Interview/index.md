@@ -92,7 +92,7 @@
 - 手写源码：实现 Reduce 函数
 - JavaScript 基础：什么是立即执行函数
 - ES6特性：Map 和 Set
-- React：说说你对react的理解/请说一下react的渲染过程
+- React：修改深层对象有什么解决方案
 - React： useEffect 第二个参数是对象如何处理
 - 浏览器：遇到白屏问题如何分析和解决
 - 性能优化：网站首页有大量的图片，加载很慢，如何优化呢（图片懒加载）
@@ -130,7 +130,7 @@
 - CSS：重绘和回流
 - 手写源码：instanceof 
 - JavaScript 基础：history 和 hash 两种路由最大的区别是什么
-- ES6：展开运算符的作用
+- Git： git rebase 和 git merge 有什么区别
 - React： React 合成事件是什么
 - React： React中父组件如何调用子组件中的方法？
 - 代码题：实现 LazyMan

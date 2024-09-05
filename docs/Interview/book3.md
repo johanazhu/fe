@@ -58,7 +58,7 @@ table
 
 考察点：new 操作符
 
-相关文章：[new 做了什么](../JavaScript/new 做了什么)
+相关文章：[new 做了什么](../JavaScript/new做了什么)
 
 new 操作符具体做了什么
 
@@ -178,7 +178,7 @@ Chrome 浏览器是一个应用程序，它有一个主进程、多个渲染进�
 
 ### 迭代器（Iterator）
 
-迭代器是一个对象，它定义了一个序列，并通过特定的方式返回集合中的下一个元素。迭代器遵循“迭代器协议”，这个蝶衣要求迭代器对象必须包含一个 next() 方法，该方法返回一个对象，该对象包含两个属性：
+迭代器是一个对象，它定义了一个序列，并通过特定的方式返回集合中的下一个元素。迭代器遵循“迭代器协议”，这个协议要求迭代器对象必须包含一个 next() 方法，该方法返回一个对象，该对象包含两个属性：
 
 - value：表示当前迭代的值
 - done：一个布尔值，指示迭代是否完成。若已完成，done 为 true，否则为 false
@@ -334,8 +334,32 @@ const UI = commit(state);
 
 1. 首先 React 组件（jsx）会被 babel 转换为 React.createElement，React.createElement 函数最后会调用 ReactElement 方法返回一个包含组件数据的对象，这也被称为虚拟 dom
 2. 不过在首次渲染，还是更新状态时，这些渲染的任务都会先经过 Scheduler 的调度，Scheduler 会根据任务的优先级来决定哪些任务先进入 render 阶段，比如用户触发的更新优先级非常高，如果当前正在进行一个比较耗时的任务，则这个任务就会被用户触发的更新打算，在 Scheduler 中初始化任务的时候会计算一个过期事件，不同类型的任务过期时间不同，优先级越高的任务，过期时间越短，优先级越低的任务，过期时间越长。Scheduler会分配一个时间片给需要渲染的任务，如果是一个非常耗时的任务，如果在一个时间片之内没有执行完成，则会从当前渲染到的Fiber节点暂停计算，让出执行权给浏览器，在之后浏览器空闲的时候从之前暂停的那个Fiber节点继续后面的计算，这个计算的过程就是计算Fiber的差异，并标记副作用。
-3. 在 render 阶段，render阶段的主角是Reconciler，在mount阶段和update阶段，它会比较jsx和当前Fiber节点的差异（diff算法指的就是这个比较的过程），将带有副作用的Fiber节点标记出来，这些副作用有Placement（插入）、Update（更新）、Deletetion（删除）等，而这些带有副作用Fiber节点会加入一条EffectList中，在commit阶段就会遍历这条EffectList，处理相应的副作用，并且应用到真实节点上。而Scheduler和Reconciler都是在内存中工作的，所以他们不影响最后的呈现。
-4. 在commit阶段：会遍历EffectList，处理相应的生命周期，将这些副作用应用到真实节点，这个过程会对应不同的渲染器，在浏览器的环境中就是react-dom，在canvas或者svg中就是reac-art等。 
+3. 在 render 阶段，render阶段的主角是Reconciler，在mount阶段和update阶段，它会比较jsx和当前Fiber节点的差异（diff算法指的就是这个比较的过程），将带有副作用的Fiber节点标记出来，这些副作用有Placement（插入）、Update（更新）、Deletetion（删除）等，而这些带有副作用Fiber节点会加入一条EffectList中，在commit阶段就会遍历这条EffectList，处理相应的副作用，并且应用到真实节点上。而Scheduler和Reconciler都是在内存中工作的，所以他们不影响最后的呈现
+4. 在commit阶段：会遍历EffectList，处理相应的生命周期，将这些副作用应用到真实节点，这个过程会对应不同的渲染器，在浏览器的环境中就是react-dom，在canvas或者svg中就是reac-art等。
+
+
+
+
+
+首先，React 现在都用 React Fiber 架构。他实现了 React 组件的异步可中断效果
+
+基于这个架构，我们可以把 React 渲染分为两个阶段，即 render 阶段和 commit 阶段
+
+render 阶段就是找虚拟 DOM 中变化的部分，创建 DOM，打上增删改的标记，并把这些标记记录到 effectList 队列中
+
+这个阶段可以被打断，由 schedule 调度，它会根据你的优先级权重值决定先执行还是后执行
+
+等全部计算完后，就一次性更新到 DOM
+
+渲染到 DOM 的阶段称为 commit 阶段，这个阶段即把之前记录的更新点更新到 DOM 上
+
+它也有三个小阶段，即 before mutation、mutation 和 layout
+
+before mutation 会异步调用 useEffect 的回调函数
+
+mutation 阶段会遍历 effectList 更新 DOM
+
+layout 阶段会同步调用 useLayoutEffect 的回调函数，还能拿到最新的 dom 
 
 
 
@@ -437,7 +461,7 @@ css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow r
 
 虚拟列表，10000 条数据 插入不卡的那种
 
-- 虚拟滚动
+- 虚拟列表
   - 只渲染可视区域内的数据，其他数据按需加载
 - 延迟渲染（懒加载）
 - 时间分片
@@ -446,6 +470,26 @@ css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow r
 - 增强渲染
 - 骨架屏
 - 代码分割
+
+### 虚拟列表的原理
+
+计算出列表总高度，并当滚动时，根据 scrollTop 值不断更新 startIndex 以及 endIndex，以此从列表数据 listData 中截取对应元素
+
+```javascript
+const scrollTop = virtualRef.current.scrollTop;
+const fixedScrollTop = scrollTop - (scrollTop % 30);
+virtualContentRef.current.style.webkitTransform = `translate3d(0, ${fixedScrollTop}px, 0)`;
+setStart(Math.floor(scrollTop / 30));
+setVisibleData(data.slice(start, start + visibleCount));
+```
+
+
+
+### 虚拟列表的缺点
+
+频繁的计算导致会有短暂的白屏现象，可以通过节流来限制触发频率
+
+加上为列表管理加一些“上、下缓冲区”，即在可视区域之外预渲染一些元素
 
 
 

@@ -69,10 +69,21 @@ export default function BrowserSideBar() {
                     link: '/Browser/BOM',
                 },
                 {
+                    text: 'webworker和websocket',
+                    link: '/Browser/webworker和websocket',
+                },
+                {
+                    text: 'sse',
+                    link: '/Browser/sse',
+                },
+                {
+                    text: 'web安全',
+                    link: '/Browser/web安全',
+                },
+                {
                     text: 'localStorage',
                     link: '/Browser/localStorage',
                 },
-                // "/Browser/前端性能优化.md",
             ],
         },
     ];
