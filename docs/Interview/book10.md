@@ -169,7 +169,7 @@ git 四大工作区域：workspace（工作区）、Stage（暂存区）、Respo
 
 ### React17 事件委托更新
 
-从 React 17 开始，React 的事件委托将从文档级别更改为根 DOM 容器
+从 React 17 开始，React 不再将事件处理添加到 `document` 上，而是将事件处理添加到渲染 React 树的根 DOM 容器中
 
 ```
 const rootNode = document.getElementById('root');
@@ -186,7 +186,7 @@ ReactDOM.render(<App />, rootNode);
 
 原理：事件冒泡
 
-优点：减少DOM操作，使得内存减少
+优点：减少DOM操作，使得所用内存减少
 
 缺点：当层级过多，冒泡过程中，可能会被某层阻止掉（这个也不算缺点吧，只能说这样过就会有这个问题出现）
 

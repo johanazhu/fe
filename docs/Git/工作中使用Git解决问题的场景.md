@@ -146,6 +146,13 @@ git revert <commit-id>
 
 所以就个人开发或个人 feature 分支而言，可以使用 `git reset` 来回滚代码，但在多人协作的集成分支上，`git revert` 更适合。这样，提交的历史记录不会被抹去，可以安全地进行撤回
 
+- git reset 会修改历史记录，可能对团队协作造成问题
+  - `git reset --hard xxx`：回滚某次提交，git log 中找不到记录
+- git revert 会保留记录，适合团队使用
+  - `git revert --hard xxx`：回滚某次提交，并且会保留你之前的记录并加上一条记录
+
+
+
 ## 使用 git stash 来暂存文件
 
 顾名思义，就是把本地的改动暂存起来

@@ -33,7 +33,7 @@ hero:
       link: /WebApp/
     - theme: brand
       text: 小报童专栏导航
-      link: https://xiaobot.tools/
+      link: https://xiaobot.tools?utm_source=fe.azhubaby.com&utm_medium=referral
 features:
   - title: 允许一切如其所是
     details: 参差百态乃幸福之本源

@@ -4,6 +4,27 @@
 
 ## 1. 左边宽度已知，右边自适应方案
 
+具体可以看[左边固定，右边自适应](https://demo.azhubaby.com/左边固定，右边自适应.html)，代码也已经部署到 [github](https://github.com/johanazhu/demo) 上
+
+一共六种方法：
+
+- flex 布局
+- grid 布局
+- 双子元素+ absolute
+  - 左元素 absolute
+  - 右元素 absolute + left 200px + width: calc(100% - 200px)
+- 左元素 absolute + 右元素 margin-left
+  - 左元素 absolute
+  - 右元素 margin-left: 200px + width: calc(100% - 200px)
+- 无父元素 + 左元素浮动，右元素不动
+  - 左元素 float:left
+  - 右元素和之前一样设置高度即可，其他不用写
+- 无父元素+左元素左浮动，右元素右浮动
+  - 左元素 float:left
+  - 右元素float:right + calc(100% - 200px)
+
+ 
+
 
 
 ## 2. 手写 Object.create

@@ -20,7 +20,8 @@ const random = Math.floor(Math.random() * 3 + 1)
             <section class="vp-sponsor-section">
                 <div class="VPSponsorsGrid vp-sponsor-grid mini" data-vp-grid="1">
                     <div class="vp-sponsor-grid-item">
-                        <a class="vp-sponsor-grid-link" href="https://xiaobot.tools/" target="_blank"
+                        <a class="vp-sponsor-grid-link"
+                            href="https://xiaobot.tools?utm_source=fe.azhubaby.com&utm_medium=referral" target="_blank"
                             rel="sponsored noopener">
                             <article class="vp-sponsor-grid-box">
                                 <h4 class="visually-hidden">小报童专栏导航</h4>
