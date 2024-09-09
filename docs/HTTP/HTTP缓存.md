@@ -2,7 +2,9 @@
 
 速度、速度，还是速度，一个网站要想体验好，就必须在第一时间以最快的速度显示出来。mysql 查询慢，就加一层 redis 做缓存，网站资源加载慢，怎么做，使用 HTTP 缓存
 
-HTTP 缓存自 HTTP/1.0 就开始有，为的是减少服务器压力，加快网页响应速度
+HTTP 缓存自 HTTP/1.0 就开始有，为的是减少服务器压力，加快网页响应速度。这是缓存运作的一个整体流程图：
+
+![缓存示意图](https://pub-15dc9987604d4311befe731fecc8adb9.r2.dev/98958c07ee7c69fcf8c8fa0be974da2a.png)
 
 ## 缓存操作的目标
 
@@ -37,46 +39,52 @@ Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也
 
 -   通过过期时长控制缓存，对应的字段有很多，例如 max-age
     -   例如 Cache-Control: max-age=3600，表示缓存时间为 3600 秒，过期失效
--   缓存请求指令：
+    
+- 缓存请求指令：
 
-    -   ```http
-        Cache-Control: max-age=<seconds>
-        Cache-Control: max-stale[=<seconds>]
-        Cache-Control: min-fresh=<seconds>
-        Cache-control: no-cache
-        Cache-control: no-store
-        Cache-control: no-transform
-        Cache-control: only-if-cached
-        ```
+  - 客户端可以在 HTTP 请求中使用的标准 Cache-Control 指令
 
--   缓存响应指令：
+  - ```
+    Cache-Control: max-age=<seconds>
+    Cache-Control: max-stale[=<seconds>]
+    Cache-Control: min-fresh=<seconds> 
+    Cache-control: no-cache
+    Cache-control: no-store 
+    Cache-control: no-transform
+    Cache-control: only-if-cached
+    ```
 
-    -   ```http
-        Cache-control: must-revalidate
-        Cache-control: no-cache
-        Cache-control: no-store
-        Cache-control: no-transform
-        Cache-control: public
-        Cache-control: private
-        Cache-control: proxy-revalidate
-        Cache-Control: max-age=<seconds>
-        Cache-control: s-maxage=<seconds>
-        ```
+- 缓存响应指令：
 
--   其中关键点：
+  - 服务器可以在响应中使用的标准 Cache-Control 指令
 
-    -   `Cache-control: no-cache`
-        -   跳过当前的强缓存，发送 HTTP 请求（如有协商缓存标识即直接进入**协商缓存阶段**）
-        -   no-cache 的含义和 `max-age=0` 一样 ，即跳过强缓存，强制刷新
-    -   `Cache-control: no-store`
-        -   不使用缓存（包括协商缓存）
-    -   `Cache-Control: public, max-age=31536000`
-        -   一般用于缓存静态资源
-        -   public：响应可以被中间代理、CDN 等缓存
-        -   private：专用于个人的缓存，中间代理、CDN 等能换缓存此响应
-        -   max-age：单位是秒
+  - ```
+    Cache-control: must-revalidate
+    Cache-control: no-cache
+    Cache-control: no-store
+    Cache-control: no-transform
+    Cache-control: public
+    Cache-control: private
+    Cache-control: proxy-revalidate
+    Cache-Control: max-age=<seconds>
+    Cache-control: s-maxage=<seconds>
+    ```
 
--   > 更多指令参考[指令大全](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)
+- 其中关键点：
+
+  -   `Cache-control: no-cache`
+      -   不使用强缓存，需要与服务器验证缓存是否新鲜（如有协商缓存标识即直接进入**协商缓存阶段**）
+      -   no-cache 的含义和 `max-age=0` 一样 ，即跳过强缓存
+  -   `Cache-control: no-store`
+      -   禁止使用缓存（包括协商缓存），每次都向服务器请求最新的资源
+  -   `Cache-Control: public, max-age=31536000`
+      -   一般用于缓存静态资源
+      -   public：响应可以被中间代理、CDN 等缓存
+      -   private：专用于个人的缓存，中间代理、CDN 等能换缓存此响应
+      -   max-age：单位是秒
+  -   `Cache-Control: must-revalidate`：在缓存过期前可以使用，过期后必须向服务器验证
+
+- > 更多指令参考[指令大全](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)
 
 #### Expires
 
@@ -84,7 +92,7 @@ Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也
 
 -   语法：
 
-    -   ```http
+    -   ```
         Expires: <http-date>
         ```
 
@@ -128,6 +136,25 @@ Last-Modified 即最后修改时间，而它能感知的单位时间是秒，也
     -   有些文件修改频率在秒以内，这样以秒粒度来记录就不适用了
     -   有些服务器无法精准获取文件的最后修改时间
 -   更多指令参考[指令大全](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified)
+
+本地通过 express 起一个服务来验证协商缓存，代码如下：
+
+```javascript
+const express = require('express');
+const app = express();
+var options = { 
+  etag: true, // 开启协商缓存
+  lastModified: true, // 开启协商缓存
+  setHeaders: (res, path, stat) => {
+    res.set({
+      'Cache-Control': 'max-age=00', // 浏览器不走强缓存
+      'Pragma': 'no-cache', // 浏览器不走强缓存
+    });
+  },
+};
+app.use(express.static((__dirname + '/public'), options));
+app.listen(3001);
+```
 
 #### ETag VS Last-Modified
 
@@ -294,6 +321,19 @@ app.listen(3001);
 
 -   [协商缓存](https://negotiate-cache.vercel.app/)
 
+
+
+## 面试题：
+
+### Q：http 强缓存失效，协商缓存请求几次
+
+A：当强缓存失效时，通常进行**一次请求**
+
+- 浏览器向服务器发送带有条件的请求（HTTP头带上 If-None-Match 或 If-Modified-Since）
+- 服务器收到请求后，会根据缓存策略做出相应
+  - 如果资源未修改，返回 304（Not Modified），浏览器继续使用本地缓存
+  - 如果资源已修改，返回 200，则服务器返回新资源
+
 ## 总结
 
 HTTP 为什么要缓存，为了分担服务器压力，也为了让页面加载更快
@@ -304,9 +344,15 @@ HTTP 为什么要缓存，为了分担服务器压力，也为了让页面加载
 
 协商缓存是什么？在 HTTP/1.0 中以 Last-Modified 为依据，即最后过期修改时间，它也不准确，HTTP 升级成 1.1 后，用新标识符 ETag 来代替，两者可同时存在，后者的权重更大
 
-无论是 Expires ，还是 Last-Modified，都是以时间点来依据，理论上是不出问题，但却出问题了，所以就有了新的方案
+无论是 Expires ，还是 Last-Modified，都是以时间点来依据，理论上是不出问题，但却出问题了，所以就有了新的方案（HTTP1.1）
 
-其中强缓存存在时，浏览器会采用强缓存标识符来缓存，当将强缓存设置为失效时，浏览器则会采用协商缓存来做缓存策略
+强缓存存在时，浏览器返回浏览器缓存，强缓存失效后，先查看 HTTP1.1 规定的 ETag，查看它是否失效，失效则发送请求，请求头带上 `If-None-Match`，判断状态是否 304，如果是304 则使用浏览器缓存，不是则返回响应并更新缓存值（ETag以及Cache-control）
+
+如果没有 ETag，则判断上次响应头中是否有 `Last-Modified`，再发送请求头中带有 `If-Modified-Since` 的请求，判断是否304，返回资源 
+
+再回顾一下流程图：
+
+![缓存示意图](https://pub-15dc9987604d4311befe731fecc8adb9.r2.dev/98958c07ee7c69fcf8c8fa0be974da2a.png)
 
 以上，即使笔者所理解的 HTTP 缓存
 

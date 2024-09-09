@@ -2,53 +2,52 @@
 
 
 
-## 1. CSS：如何实现垂直居中？
+## 1. CSS：如何实现水平垂直居中？
 
-考察点：div 居中
+考察点：水平垂直居中
 
-分三种情况，水平居中，垂直居中，水平垂直居中
+相关文章：[水平垂直居中](../Basic/CSS/水平垂直居中)
 
-单水平居中而言，居中元素不定宽高
+两种情况考虑
 
-absolute+transform
+居中元素不定宽高
 
-flex 属性居中
-
-flex + 子项 margin auto
-
-grid 属性居中
-
-grid 子项 margin auto
-
-grid 子项属性居中
-
--webkit-box 属性居中
-
-table-cell + text-align
-
-line-height + text-align
-
-writeing-mode
-
-table
+- absolute + transform
+- flex 属性居中
+- flex + 子项 `margin:auto`
+- grid 属性居中
+- grid + 子项 `margin:auto`
+- grid + 子项属性居中
+- -webkit-box 属性居中
+- table-cell + vertical-align
+- line-height + text-align
+- writing-mode
+- table
 
 居中元素需定宽高
 
-须知宽高+absolute+负 margin
+- 须知宽高+absolute+负 margin
 
-须知宽高+absolute+calc
 
-须知宽高+absolute+margin auto
+- 须知宽高+absolute+calc
+
+
+- 须知宽高+absolute+margin auto
+
 
 局限性较大的全局居中
 
-须知宽高+fixed+transform
+- 须知宽高+fixed+transform
 
-须知宽高+fixed+负 margin
 
-须知宽高+fixed+calc
+- 须知宽高+fixed+负 margin
 
-须知宽高+fixed+margin auto
+
+- 须知宽高+fixed+calc
+
+
+- 须知宽高+fixed+margin auto
+
 
 
 

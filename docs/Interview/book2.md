@@ -276,6 +276,8 @@ Capture Value 是指 React Hooks 在使用闭包时会自动捕获当前组件�
 
 ### 跨源资源共享（CORS）
 
+跨域资源共享（Cross-Origin Resource Sharing，简写为CORS）简称跨域访问，是HTML5提供的标准跨域解决方案
+
 服务端/后端在相应头中添加`Access-Control-Allow-*` 头，告知浏览器端通过此请求
 
 只需要服务端/后端支持即可，不涉及前端改动

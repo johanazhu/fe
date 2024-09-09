@@ -62,7 +62,7 @@ export default function FrontEndBasicSideBar() {
                 },
                 {
                     text: 'CSS 新特性',
-                    link: '/Basic/CSS/CSS新特性',
+                    link: '/Basic/CSS/CSS3新特性',
                 },
                 {
                     text: '文本溢出',

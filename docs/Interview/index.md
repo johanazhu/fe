@@ -36,7 +36,7 @@
 
 ## 模拟题三
 
-- CSS：如何实现垂直居中
+- CSS：如何实现水平垂直居中
 - 手写源码：New 操作符
 - JavaScript 基础：事件循环
 - ES6特性：迭代器和生成器是什么
@@ -89,7 +89,7 @@
 ## 模拟题七
 
 - CSS：双飞翼/圣杯布局
-- 手写源码：实现 Reduce 函数
+- 手写源码：手写 ajax
 - JavaScript 基础：什么是立即执行函数
 - ES6特性：Map 和 Set
 - React：修改深层对象有什么解决方案
@@ -142,14 +142,6 @@
 
 
 
-## 备用
-
-- 白屏时间和首屏时间的区别
-  - 白屏时间：FCP（First Content Paint）
-  - 首屏收件：LCP（Large Content Paint）
-  - 计算：Performance
-  - 用 MutationObserver（https://github.com/zxyue25/blog/issues/1）
-
 
 
 ## 其他
@@ -166,10 +158,7 @@
 1. 这个岗位的职责是什么
 2. 工作做的好坏的标准是什么
 3. 作息时间和五险一金缴纳
-4. 在面试中如何评定一个人是否是高级前端
-   - 面试表现吗？
-   - 社区影响力？
-   - 还是说做过什么比较厉害的开源项目
+4. 公司技术员工的离职率怎么样
 
 
 
@@ -190,10 +179,3 @@
 
 
 
-interface 和 type 的区别
-
-interface 只能描述对象，type 则描述所有数据类型
-
-type 是别名，interface 则是类型声明
-
-type 不可重新赋值，interface 自动合并

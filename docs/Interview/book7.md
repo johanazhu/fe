@@ -14,9 +14,28 @@
 
 
 
-## 2. 手写 reduce
+## 2. 手写 ajax
 
+```javascript
+var xhr = new XMLHttpRequest();
 
+xhr.open('GET', '/xxx', true)
+// false 异步
+// true 同步
+
+xhr.setRequestHeader("Content-Type", "application/json")
+
+xhr.onreadystatechange = function () {
+    if (xhr.readyState !== 4) return;
+    if (xhr.status === 200 || xhr.status === 304) {
+       	console.log('响应数据:', xhr.responseText);
+    } else {
+        console.error('请求失败，状态码：' + xhr.status);
+    }
+}
+
+ xhr.send();
+```
 
 
 
@@ -176,9 +195,24 @@ useEffect(() => {
 
 ## 7.首页白屏如何优化
 
-简单来说，就是所性能优化，就是换个问题问
+相关问题：前端性能优化指标、前端性能优化手段、白屏、大量图片加载优化
 
-### 1.路由懒加载
+### 前端性能指标
+
+- 白屏时间 FP
+- 首次内容绘制时间 FCP
+- 最大内容绘制时间 LCP
+- 累积布局偏移值  CLS
+- 首字节时间 TTFB
+- 首次输入延迟时间 FID
+- 可交互时间 TTI
+- 总阻塞时间 TBT
+
+
+
+### 前端性能优化
+
+#### 1.路由懒加载
 
 单页面应用，一个路由对应一个页面 
 
@@ -206,35 +240,35 @@ function MyComponent() {
 
 
 
-### 2.合理的 Tree Shaking
+#### 2.合理的 Tree Shaking
 
 作用：消除无用的 JS 代码，减少代码体积
 
-#### Tree-Shaking 原理
+##### Tree-Shaking 原理
 
 依赖 ES6 的模块特性，ES6 模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析
 
 简单来说，根据 ES Modules 的静态分析
 
-### 3.组件方面
+#### 3.组件方面
 
-#### 组件懒渲染
+##### 组件懒渲染
 
 当组件进入或即将进入可视区域时才渲染组件。常见的组件 Modal/Drawer 等，当 visible 属性为 true 时才渲染组件内容，也可以认为是懒渲染的一种实现
 
-#### React.memo 减少React子组件渲染
+##### React.memo 减少React子组件渲染
 
 配合 React.useCallback 和 React.useMemo
 
-### 4.使用骨架屏或加载提示
+#### 4.使用骨架屏或加载提示
 
 在项目打包时将骨架屏的内容直接放在 HTML 文件的根节点上
 
-### 5.长列表虚拟滚动
+#### 5.长列表虚拟滚动
 
 只渲染可视区域的列表项，非可见区域的不渲染
 
-#### 虚拟列表的原理
+##### 虚拟列表的原理
 
 计算出列表总高度，并在触发滚动事件时根据 scrollTop 值不断更新 startIndex 以及 endIndex，以此从列表数据 listData 中截取对应元素
 
@@ -246,13 +280,13 @@ function MyComponent() {
 
 
 
-### 6.Web Worker 优化长任务
+#### 6.Web Worker 优化长任务
 
 由于浏览器 GUI 渲染线程与 JS 引擎线程是互斥关系，所以当页面中有长任务时，会造成页面 UI 阻塞，出现界面卡顿、掉帧等情况
 
 
 
-### 7.JS 的六种加载方式
+#### 7.JS 的六种加载方式
 
 **正常模式**
 
@@ -324,45 +358,41 @@ async、defer 是 script 标签的专属属性，对于网页的其他资源，�
 
 现代框架已经将 preload、prefetch 添加到打包流程中，通过配置可以使用
 
-### 8.图片的优化
+#### 8.图片的优化
 
-#### 图片动态裁剪
+##### 图片动态裁剪
 
-#### 图片懒加载
+##### 图片懒加载
 
 图片懒加载实现原理
 
 先通过 HTML 自定义属性 data-xxx 先暂存 src 的值，然后在图片出现在屏幕可视区域时，再将 data-xxx 的值赋值到 img 的scr 属性即可
 
-#### 使用字体图标
+##### 使用字体图标
 
-#### 图片转 base64 格式
+##### 图片转 base64 格式
 
-#### 图片资源压缩
+##### 图片资源压缩
 
 tinypng 图片资源压缩
 
-#### 图片资源放到 OSS 上
+##### 图片资源放到 OSS 上
 
-#### 图片格式转换
+##### 图片格式转换
 
 转成 webp、AVIF格式
 
 
 
-### 9.启用服务端渲染SSR
+#### 9.启用服务端渲染SSR
 
 SSR 渲染，把客户端渲染改成服务端渲染，也利于SEO
 
-
-
-### 10.首屏静态html
+#### 10.首屏静态html
 
 既然要加快，那就做到极致，首屏是个静态页
 
-
-
-### 11.缓存
+#### 11.缓存
 
 资源文件和接口加上HTTP缓存，加快请求速度
 
