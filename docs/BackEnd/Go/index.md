@@ -71,6 +71,34 @@ https://www.yuque.com/aceld/mo95lb/haizwm
 
 
 
+
+
+- 基础书籍
+  - Go 程序设计语言 https://book.douban.com/subject/27044219/
+  - Go 并发编程实战
+- 进阶书籍：
+  - Go 语言设计与实现 https://draveness.me/golang/
+  - Go 语言高级编程 https://chai2010.cn/advanced-go-programming-book/
+  - Go 语言原本 https://golang.design/under-the-hood/
+- 巩固基础，项目推荐
+  - 数据库/存储小项目 https://www.bilibili.com/video/BV1qW421c7kY
+  - 极客兔兔 https://github.com/geektutu/7days-golang
+  - https://github.com/muesli/cache2go
+
+
+
+## 其他书籍、资料
+
+- 《Head First Go》
+- 《Go 语言学习笔记》
+- 《Go 网络编程》
+- 《Go 语言从入门到进阶实战》
+- 《Mastering Go》中文翻译 https://www.bookstack.cn/read/Mastering_Go_ZH_CN/README.md
+- Go 语言常见面试题 https://www.topgoer.cn/docs/gomianshiti/mian1
+- Uber 出品的 Go 语言编码风格指南 https://github.com/uber-go/guide/blob/master/style.md
+- Awesome-go go 语言相关的资料、三方库列表 https://awesome-go.com/
+- 
+
 ## 参考资料
 
 - [程序员练级攻略（2018）](https://time.geekbang.org/column/intro/100002201)

@@ -6,19 +6,93 @@
 
 考察点：CSS 样式隔离手段
 
+BEM
 
+- BEM 命名法，不用的项目加上前缀，通过命名规则避免冲突
+
+[CSS Modules](https://github.com/css-modules/css-modules)
+
+- 通过编译生成不冲突的选择器类名
+- `import styles from "./styles.css"; <h1 class="${styles.title}"></h1>`
+
+CSS in JS
+
+- CSS 写进 JS 中
+- [styled-components](https://link.juejin.cn/?target=https%3A%2F%2Fstyled-components.com%2F) 
+
+预处理器
+
+- 同 BEM，人为规范，第三方库不受影响
+
+Shadow DOM（影子DOM）
+
+- CSS 沙箱，原声支持
+
+Scroped 
+
+- scroped css
+- 对所有样式加了一层 data-xxx=“应用名” 的选择器来隔离
+
+
+
+衍生问题：qiankun 微前端的CSS隔离
+
+### qiankun 微前端的CSS隔离
+
+qiankun 主要用 shadow DOM 和 scoped css 实现样式隔离
+
+- shadow dom 自带样式隔离，但是 shadow dom 内的样式和外界不影响，导致挂在弹窗的样式会加不上。父应用也没法设置子应用的样式
+- scoped 的方案是给选择器加上一个 data-qiankun ='应用名' 的选择器，这样父应用能设置子应用样式，也能隔离样式，但是同样有挂在 body 的弹窗样式设置不上的问题，因为 qiankun 的 scoped 不支持全局样式
 
 ## 2. 手写 柯里化
 
 考察点：柯里化
 
+```javascript
+function curry(fn) 
+```
+
 衍生：实现 add(1)(2)(3)
+
+### 实现 add(1)(2)(3)
+
+```
+
+```
 
 
 
 ## 3.JavaScript 基础：数据类型有哪些
 
+基本类型和引用类型
 
+基本类型：string、number、boolean、undefined、null、symbol、bigint
+
+应用类型：object
+
+衍生问题：基本类型和引用类型的区别、判断数据类型的方法
+
+
+
+### 基本类型和引用类型的区别
+
+基本类型存在栈内存中
+
+引用类型存在堆内存中
+
+### 判断数据类型的方法
+
+- typeof
+- instanceof
+- constructor
+- Object.prototype.toString.call()
+
+| 名称                        | 能检测                                                       | 不能检测                                       |
+| :-------------------------- | :----------------------------------------------------------- | :--------------------------------------------- |
+| typeof                      | string、number、boolean、undefined 以及 function             | null 以及除 function 外的对象，结果都为 object |
+| instanceof                  | 能判断引用数据类型                                           | 不能判断基础数据类型                           |
+| constructor                 | string、number、boolean、array、object、function 以及 构造函数 | undefined、null。不安全，因为指向可以改变      |
+| Object.prototype.toString() | 内置（原生）构造函数                                         | 自定义构造函数                                 |
 
 ## 4. ES6至ES12的新特性
 
@@ -131,11 +205,11 @@ location / {
 
 
 
-## 6.数据流：Redux 和 mobx 的区别
+## 6.React：如何实现 react 的 keep-alive
 
 
 
-## 7.XSS攻击是什么
+## 7.前端安全：XSS攻击是什么
 
 考察点： 前端安全
 
@@ -190,7 +264,19 @@ CSRF 不注入恶意脚本，侧重于请求伪造，在用户不知情的情况
 
 考察点：tree shaking
 
-有什么作用，原理是什么
+Tree shaking字面意就是“摇树”，将没有使用到的代码全部抖落下来，删除没有使用的代码，从而减少代码体积
+
+如何开启
+
+- 配置 `optimization.usedExports` 为 `true`，启动标记功能
+
+### 原理是什么
+
+依赖 ES6 的模块特性，ES6 模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析
+
+简单来说，根据 ES Modules 的静态分析
+
+在ES Module中，我们可以将模块的加载分为两个阶段：**静态分析**和**编译执行**；
 
 
 

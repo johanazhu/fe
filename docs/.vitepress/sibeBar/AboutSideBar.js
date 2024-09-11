@@ -16,29 +16,6 @@ export default function AboutSideBar() {
             ],
         },
         // {
-        //     text: '简历面试',
-        //     collapsable: false,
-        //     sidebarDepth: 0,
-        //     items: [
-        //         {
-        //             text: 'Resume',
-        //             link: '/Others/Resume',
-        //         },
-        //         {
-        //             text: 'TalkHr',
-        //             link: '/Others/TalkHr',
-        //         },
-        //         {
-        //             text: '介绍项目经验',
-        //             link: '/Others/介绍项目经验',
-        //         },
-        //         {
-        //             text: '面试者提问环节',
-        //             link: '/Others/面试者提问环节',
-        //         },
-        //     ],
-        // },
-        // {
         //     text: '术与道',
         //     collapsable: false,
         //     sidebarDepth: 0,

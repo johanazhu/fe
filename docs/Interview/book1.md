@@ -716,7 +716,18 @@ memo 是一个高阶组件（HOC），它可以用来包装一个函数组件，
 
 ## 10.算法题：两数之和
 
-
+```javascript
+function twoSum(target, nums) {
+    let map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        let diff = target - nums[i];
+        if (map.has(diff)) {
+            return [map.get(diff), i]
+        }
+        map.set(nums[i], i)
+    }
+}
+```
 
 
 

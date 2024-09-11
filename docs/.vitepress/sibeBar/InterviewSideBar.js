@@ -55,5 +55,28 @@ export default function InterviewSideBar() {
                 },
             ],
         },
+        {
+            text: '面试向我看齐',
+            collapsable: false,
+            sidebarDepth: 0,
+            items: [
+                {
+                    text: '面试一点通',
+                    link: '/Interview/talk/',
+                },
+                {
+                    text: '如何反问面试官',
+                    link: '/Interview/talk/如何反问面试官',
+                },
+                {
+                    text: '解决的最难的项目回答模板',
+                    link: '/Interview/talk/解决的最难的项目回答模板',
+                },
+                {
+                    text: '学习成长原则',
+                    link: '/Interview/talk/学习成长原则',
+                },
+            ],
+        },
     ];
 }

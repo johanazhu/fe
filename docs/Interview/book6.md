@@ -128,6 +128,9 @@ function myInstanceof (left, right) {
 
 ```javascript
 function new2(Constructor, ...args) {
+    if(typeof Fn != 'function'){
+        throw new TypeError(Fn + 'is not a constructor')
+    }
     let obj = Object.create(null);
     obj.__proto__ = Constructor.prototype;
     const result = Constructor.apply(obj, args)
@@ -292,5 +295,32 @@ module.exports = {
 
 ## 10.算法题：有效的括号
 
-
+```javascript
+function isValid(s) {
+    const n = s.length;
+    
+    if (n % 2 === 1) {
+        return false
+    }
+    
+    const pairs = new Map([
+        [')', '('],
+        ['}', '{'],
+        [']', '[']
+    ])
+    
+    const stk = [];
+    for (let ch of s) {
+        if (pairs.has(ch)) {
+            if (!stk.length || stk[stk.length - 1] !== pairs.get(ch)) {
+                return false
+            }
+            stk.pop()
+        } else {
+            stk.push(ch)
+        }
+    }
+    return !stk.length
+}
+```
 

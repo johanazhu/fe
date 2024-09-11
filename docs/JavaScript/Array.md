@@ -367,7 +367,35 @@ arr.find();
 
 
 
+## 判断是否是数组的方法
 
+Array.isArray
+
+```javascript
+var arr = []
+Array.isArray(arr)
+```
+
+instanceof
+
+```javascript
+var arr = []
+arr instanceof Array
+```
+
+constructor
+
+```javascript
+var arr = []
+arr.constructor === Array
+```
+
+Object.prototype.toString.call()
+
+```javascript
+var arr = []
+Object.prototype.toString.call(arr) === '[object Array]'
+```
 
 
 

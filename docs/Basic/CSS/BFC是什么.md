@@ -35,21 +35,67 @@ BFC 的特征如结界一般，里面的人出不去，外面的人进不来
 
 在布局时我们经常会遇到这种情况，对子元素设置浮动后，父元素会发生高度塌陷，也就是父元素的高度变为 0。解决这个问题，只需要将父元素变成一个 BFC 就行。常用的做法如给父元素设置 overflow: hidden 属性
 
-### 2.垂直 margin 合并
+### 2.margin 塌陷
 
-外边距合并的问题。
+什么是 margin 坍塌
 
-主要用到
+经典面试题：现在有两个盒子，外层父盒子 `margin-top: 100px`，内层子盒子 `margin-top: 200px`，请问内层盒子的距离顶部距离多少
 
+```css
+.father{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(219, 68, 101);
+    margin-top: 100px;
+}
+.son{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(56, 248, 207);
+    margin-top: 200px;
+}
 ```
-盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻盒子的margin会发生重叠
+
+线上 [demo](https://demo.azhubaby.com/BFC/margin塌陷.html) 可看
+
+可以看出，垂直方向上它的 margin 合并了，以子盒子的margin-top 为准，也就是200px
+
+这种现象被称为 margin 塌陷
+
+一句话总结：父子嵌套的元素垂直方向的 margin 取最大值
+
+为什么会出现 margin 塌陷问题，不知道，css 的特性太多了，但解决方案我们知道，就是用 BFC 解决
+
+只需要在父盒子上加上 `overflow: hidden;` 即可
+
+### 3.垂直 margin 合并
+
+顾名思义，两个兄弟元素，没有设置 BFC 的情况下会出现 margin 合并现象
+
+例如：一个元素设置 `margin-bottom: 100px`，下边元素设置 `margin-top: 100px`
+
+```css
+.one{
+    background-color: pink;
+    height: 20px;
+    margin-bottom: 100px;
+}
+.two{
+    background-color: purple;
+    height: 20px;
+    margin-top: 100px;
+}
 ```
 
-属于同一个 BFC 的两个相邻盒子的 margin 会发生重叠，那么我们创建不属于同一个 BFC，就不会发生 margin 重叠了。
+线上 [demo](https://demo.azhubaby.com/BFC/margin合并.html) 可看
 
-<img src="https://i.loli.net/2021/06/03/YLG6tZU1J5RjluT.png" />
+结果是上下间距为 100px，而非200px，而且它们的 margin 值是显示最大值，这种被称为 margin 合并
 
-### 3.自适应布局
+解决方法也是触发 BFC
+
+只需要在两个元素之间添加一个元素，并给这个元素添加 `overflow:hidden` 即可
+
+### 4.自适应布局
 
 如下
 
@@ -105,6 +151,8 @@ BFC 的特征如结界一般，里面的人出不去，外面的人进不来
 给 info 加上 overflow：hidden
 
 ![BFC1](https://i.loli.net/2021/06/03/oPjbLkCtgpwdZGI.png)
+
+线上 [demo](https://demo.azhubaby.com/BFC/自适应布局.html)  可看
 
 因为我们将 info 元素改造成了 BFC，所以具有 BFC 特性的元素的子元素不会受到外部元素影响，也不会影响外部元素，于是，这里的 info 元素为了不和浮动元素产生任何交集，顺着浮动边缘形成自己的封闭上下文
 
