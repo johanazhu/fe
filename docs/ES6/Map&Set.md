@@ -208,11 +208,30 @@ let arr1 = [1, 2, 3, 4, 5];
 let arr2 = [3, 4, 5, 6, 7];
 
 // 求交集
-let intersection = [...new Set(arr.filter(x => arr2.includues(x)))]
+let intersection = [...new Set(arr1.filter(x => arr2.includues(x)))]
 console.log(intersection)
+
+let intersection = function(nums1, nums2) {
+    if (nums.length < nums2.length) {
+        const _ = nums1;
+        nums1 = nums2;
+        nums2 = _
+    }
+    const nums1Set = new Set(nums1);
+    const resSet = new Set();
+    //for (const n of nums2) {
+    //    nums1Set.has(n) && resSet.add(n)
+    //}
+    // 循环比迭代器快
+    for (let i = nums2.length - 1; i >= 0; i--) {
+        nums1Set.has(nums2[i]) && resSet.add(nums2[i])
+    }
+    return Array.from(resSet)
+}
 
 // 求并集
 let union = [...new Set([...arr1, ...arr2])]
+let union = Array.from(new Set([...arr1, ...arr2]))
 console.log(union)
 ```
 

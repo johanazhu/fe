@@ -4,11 +4,7 @@
 
 ## 1. CSS：BFC 是什么
 
-- BFC 是什么
-- 如何触发
-- BFC的特征
-- BFC 有什么用
-- 谈谈你对 BFC 的理解
+一句话解释：BFC 是块级格式化上下文，它的作用有清除内部浮动、margin 塌陷、垂直 margin 合并、自适应布局，可通过`overflow: hidden` 等方法触发
 
 ### 文档流
 
@@ -55,16 +51,15 @@ BFC 属于普通流，其他的有
 
 - 修复浮动元素造成的高度塌陷问题
   - 子元素浮动，引起高度为0，父元素加上 BFC（overflow: hidden），撑起高度
-- 避免外边距折叠
+- margin 塌陷
+- 垂直 margin 合并
 - 实现灵活健壮的自适应布局
 
-
+相关文章：[CSS 世界中的结界——BFC](https://fe.azhubaby.com/Basic/CSS/BFC是什么.html)
 
 
 
 ## 2. 手写源码：防抖与节流
-
-先手写，再做到口喷
 
 ### 防抖
 
@@ -89,9 +84,8 @@ function debounce(func, wait, flag) {
         }, wait);
     };
 }
+// flag 是否立即执行
 ```
-
-flag 是否立即执行
 
 ### 节流
 
@@ -162,11 +156,9 @@ function throttle(func, wait) {
 }
 ```
 
-### 衍生问题
+衍生问题：手写apply、箭头函数和普通函数有什么区别、数组和类数组的区别
 
-apply、箭头函数、arguments
-
-#### 手写 apply
+### 手写 apply
 
 ```javascript
 function myApply(context = window, args) {
@@ -186,7 +178,7 @@ function myApply(context = window, args) {
 }
 ```
 
-#### 箭头函数和普通函数有什么区别
+### 箭头函数和普通函数有什么区别
 
 - 箭头函数没有 this 对象，函数体内的 this 是定义时所在的对象，而不是使用时的对象
 - 不可以当作构造函数使用，也就是说，不可以对箭头函数使用 new 命令，否则会抛出一个错误
@@ -194,11 +186,7 @@ function myApply(context = window, args) {
 - 不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数
   - 衍生 generator 函数。生成器，yield，开始，中断
 
-
-
-### arguments
-
-#### 数组和类数组的区别
+### 数组和类数组的区别（arguments）
 
 - 数组是数组，类数组是对象
 - 类数组是拥有 length 属性和索引属性的对象
@@ -209,31 +197,29 @@ function myApply(context = window, args) {
 - 用 getElementsByTagName/ClassName() 获取的 HTMLCollection
 - 用 querySelector 获取的 nodeList
 
-类数组如何转换为数组
+#### 类数组如何转换为数组
 
-以下三种方法都可以将类数组转换为数组：
+以下几种方法都可以将类数组转换为数组：
 
-`Array.from(likeArray)`
+- `Array.from(likeArray)`
 
-展开运算符：`[...likeArray]`
+- 展开运算符：`[...likeArray]`
 
-`Array.prototype.slice(likeArray, 0)`
 
-`Array.prototype.concat.apply([], arguments)`
+- `Array.prototype.slice(likeArray, 0)`
 
-- apply 方法会把第二个参数展开
-- concat 拼到一起
+- `Array.prototype.concat.apply([], arguments)`
+
+相关文章：[防抖与节流](https://fe.azhubaby.com/JavaScript/防抖与节流.html)
 
 ## 3.闭包
 
-考察点：
 
-词法环境、执行上下文与调用栈、（词法）作用域
 
-- 什么是闭包？
-- 闭包的优缺点
-
-- 闭包的应用
+考察点：闭包
+作用：对外层函数的变量起到保护作用
+作用：既重用一个变量又保护变量不被污染的一种编程方式
+原理：存在执行上下文栈中，没有被销毁。所以会引起内存泄漏问题
 
 ### 什么是闭包？
 
@@ -244,9 +230,9 @@ function myApply(context = window, args) {
 - 优点
   - 保护私有变量
   - 避免全局变量污染
-  - 让一些变量始终存在内容中
+  - 让一些变量始终存在内容中（是优点）
 - 缺点
-  - 一直存在内存中
+  - 一直存在内存中（也是缺点）
 
 ### 闭包的应用
 
@@ -254,9 +240,9 @@ function myApply(context = window, args) {
 
 像函数式编程、面向事件编程、模块化、私有实例变量都是闭包的应用场景
 
+衍生问题： add(1)(2)(3)
 
-
-#### 实现 add(1)(2)(3)）
+### 实现 add(1)(2)(3)
 
 ```javascript
 function add(x, y, z) {
@@ -279,22 +265,9 @@ curriedAdd(1, 2)(3);
 
 
 
-
-
-考察点：闭包
-
-闭包：闭包是一个绑定了执行环境的函数，它利用了词法作用域的特性，在函数嵌套时，内层函数引用外层函数作用域下的变量，并且内层函数在全局环境下可访问，就形成了闭包
-作用：对外层函数的变量起到保护作用
-作用：既重用一个变量又保护变量不被污染的一种编程方式
-原理：存在执行上下文栈中，没有被销毁。所以会引起内存泄漏问题
-
-
-
-
+相关文章：[闭包](https://fe.azhubaby.com/JavaScript/闭包.html)
 
 ## 4.Promise 是什么
-
-考察点：promise
 
 Promise 是 JavaScript 中用于处理异步操作的一种解决方案。它可以让异步代码的执行看起来更像同步代码，从而提高代码的可读性和可维护性，与之比较的是传统的回调函数
 
@@ -309,17 +282,81 @@ Promise 的实现原理如下：
 
 
 
-衍生问题：Promise.all 和 Promise.allSettle
+衍生问题：手写 Promise.all 、手写 Promise.allSettle
 
-### Promise.all 和 Promise.allSettle
+### 手写 Promise.all 
+
+```javascript
+function all(iterable) {
+      return new Promise((resolve, reject) => {
+        const results = new Array(promises.length);
+        let completedCount = 0;
+
+        promises.forEach((promise, index) => {
+            // 确保即使是非 Promise 的值也能处理
+            Promise.resolve(promise)
+                .then(value => {
+                    results[index] = value;
+                    completedCount++;
+                    // 当所有 Promise 都成功时
+                    if (completedCount === promises.length) {
+                        resolve(results);
+                    }
+                })
+                .catch(reason => {
+                    // 如果任何一个 Promise 失败，则立即 reject
+                    reject(reason);
+                });
+        });
+
+        // 如果传入的是空数组，则直接 resolve 空数组
+        if (promises.length === 0) {
+            resolve(results);
+        }
+    });
+}
+```
+
+Promose.all 的缺陷在于只要其中任何一个 promise 失败都会执行 reject，并且 reject 是第一个抛出的错误信息，只有所有的 promise 都 resolve 时才会调用 .then 中的回调函数
+
+### 手写 Promise.allSettled
+
+```javascript
+function allSettled(promises) {
+    return new Promise((resolve) => {
+        const results = new Array(promise.length);
+        let completedCount = 0;
+        
+        promises.forEach((promise, index) => {
+            Promise.resolve(promise)
+            	.then((value) => {
+                	results[index] = {
+                        status: 'fulfilled',
+                        value,
+                    }
+            })
+            .catch(reason => {
+                results[index] = {
+                    status: 'rejected',
+                    reason,
+                }
+            })
+            .finally(() => {
+                completedCount++
+                if (completedCount === promises.length) {
+                    resolve(results)
+                }
+            })
+        })
+    })
+}
+```
 
 Promise.all 和 Promise.allSettled 最大的不同：Promise.allSettled 永远不会被 reject
 
 
 
 ## 5. Fiber 是什么，为什么需要 Fiber
-
-考察点：Fiber 
 
 ### 什么是 React Fiber
 
@@ -634,15 +671,213 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 
 
 
+
+#### 1.路由懒加载
+
+单页面应用，一个路由对应一个页面 
+
+```jsx
+import React, { Suspense } from 'react';
+
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <OtherComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+#### 路由懒加载的原理
+
+懒加载前提的实现：ES6 的动态加载模块——`import()`，它返回的是一个 promise
+
+当 webpack 解析到 import 语法时，会自动进行代码分割
+
+
+
+#### 2.合理的 Tree Shaking
+
+作用：消除无用的 JS 代码，减少代码体积
+
+##### Tree-Shaking 原理
+
+依赖 ES6 的模块特性，ES6 模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析
+
+简单来说，根据 ES Modules 的静态分析
+
+#### 3.组件方面
+
+##### 组件懒渲染
+
+当组件进入或即将进入可视区域时才渲染组件。常见的组件 Modal/Drawer 等，当 visible 属性为 true 时才渲染组件内容，也可以认为是懒渲染的一种实现
+
+##### React.memo 减少React子组件渲染
+
+配合 React.useCallback 和 React.useMemo
+
+#### 4.使用骨架屏或加载提示
+
+在项目打包时将骨架屏的内容直接放在 HTML 文件的根节点上
+
+#### 5.长列表虚拟滚动
+
+只渲染可视区域的列表项，非可见区域的不渲染
+
+##### 虚拟列表的原理
+
+计算出列表总高度，并在触发滚动事件时根据 scrollTop 值不断更新 startIndex 以及 endIndex，以此从列表数据 listData 中截取对应元素
+
+虚拟滚动的缺点：
+
+频繁的计算导致会有短暂的白屏现象，可以通过节流来限制触发频率
+
+加上为列表管理加一些“上、下缓冲区”，即在可视区域之外预渲染一些元素
+
+
+
+#### 6.Web Worker 优化长任务
+
+由于浏览器 GUI 渲染线程与 JS 引擎线程是互斥关系，所以当页面中有长任务时，会造成页面 UI 阻塞，出现界面卡顿、掉帧等情况
+
+
+
+#### 7.JS 的六种加载方式
+
+**正常模式**
+
+```html
+<script src="index.js"></script>
+```
+
+这种情况下 JS 会阻塞 DOM 渲染
+
+**async 模式**
+
+```html
+<script async src="index.js"></script>
+```
+
+异步模式，JS 不会阻塞 DOM 的渲染，async 加载是无顺序的，当它加载结束，JS 会立即执行
+
+使用场景：埋点统计、客服系统
+
+**defer 模式**
+
+```html
+<script defer src="index.js"></script>
+```
+
+defer 模式下，JS 的加载也是异步的，但 defer 资源会在 `DOMContentLoaded` 执行之前，并且 defer 是有顺序的加载
+
+**module 模式**
+
+```html
+<script type="module">import { a } from './a.js'</script>
+```
+
+在主流现代浏览器中，script 标签的属性可以加上 `type="module"`，浏览器会对内部的 import 引用发起 HTTP 请求，获取模块内容。这时 script 的行为会像是 defer 一样，在后台下载，并且等待 DOM 解析
+
+Vite 就是利用浏览器支持原生的 `es module` 模块，开发时跳过打包的过程，提升编译效率
+
+**preload** 
+
+```html
+<link rel="preload" as="script" href="index.js">
+```
+
+link 标签的 preload 属性：用于提前加载一些需要的依赖，这些资源会优先加载
+
+preload 特点
+
+preload 加载的资源是在浏览器渲染机制之前进行处理的，并不会阻塞 onload 事件
+
+preload 加载的 JS 脚本其加载和执行的过程是分离的，即 preload 会预加载相应的脚本代码，待到需要时自行调用
+
+**prefetch**
+
+```html
+<link rel="prefetch" as="script" href="index.js">
+```
+
+prefetch 是利用浏览器的空闲时间，加载页面将来可能用到的资源的一种机制；通常可以用于加载其他页面（非首页）所需要的资源，以便加快后续页面的打开速度
+
+prefetch 特点：
+
+prefetch 加载的资源可以获取非当前页面所需资源，并且将其放入缓存至少五分钟
+
+当页面跳转时，未完成的 prefetch 请求不会被中断
+
+#### 加载方式总结
+
+async、defer 是 script 标签的专属属性，对于网页的其他资源，可以通过 link 的 preload、prefetch 属性来预加载
+
+现代框架已经将 preload、prefetch 添加到打包流程中，通过配置可以使用
+
+#### 8.图片的优化
+
+##### 图片动态裁剪
+
+##### 图片懒加载
+
+图片懒加载实现原理
+
+先通过 HTML 自定义属性 data-xxx 先暂存 src 的值，然后在图片出现在屏幕可视区域时，再将 data-xxx 的值赋值到 img 的scr 属性即可
+
+##### 使用字体图标
+
+##### 图片转 base64 格式
+
+##### 图片资源压缩
+
+tinypng 图片资源压缩
+
+##### 图片资源放到 OSS 上
+
+##### 图片格式转换
+
+转成 webp、AVIF格式
+
+
+
+#### 9.启用服务端渲染SSR
+
+SSR 渲染，把客户端渲染改成服务端渲染，也利于SEO
+
+#### 10.首屏静态html
+
+既然要加快，那就做到极致，首屏是个静态页
+
+#### 11.缓存
+
+资源文件和接口加上HTTP缓存，加快请求速度
+
+强缓存（Cache-Control）和协商缓存（Etag）
+
+与强缓存的时候走强缓存，当强缓存失效后走协商缓存
+
+将`Cache-Control:no-cache`、`Cache-Control:max-age=0`、`pragma: no-cache` 时，即告诉浏览器不走强缓存
+
+当强缓存失效后，浏览器需要发送一个带有 `If` 开头的条件请求字段，专门用来验证资源是否过期，
+
+请求时带上 `If-None-Match:上次一的Etag`，如果资源没有变化，则返回 304 状态，使用本地缓存
+
+如果资源变化，则发情 HTTP 请求，并记录相应头中的 ETag，HTTP状态返回 200
+
+
+
+
+
+
 ### 性能指标
 
 https://pagespeed.web.dev/ 或者 Chrome DevTools 可以分析一个网站的性能、无障碍、最佳做法以及SEO
 
 常见的网页性能指标包括：
-
-首次渲染内容时间（First Contentful Paint, FCP）：指页面开始渲染第一块内容的时间
-
-最大内容渲染时间（Largest Contentful Paint, LCP）：指页面渲染最大内容元素的时间
 
 FCP（First Contentful Paint）：首次渲染内容时间（包括文字、图像）
 
@@ -651,6 +886,30 @@ LCP（Larget Contentful Paint）：最大内容渲染时间
 FMP：首次绘制有效内容时间
 
 TTI：应用可交互时间
+
+mutationobserver：监听 document 对象的节点变化
+
+
+
+FCP（First Contentful Paint)：白屏时间（第一个文本绘制时间）
+
+Speed Index：首屏时间
+
+TTI（Time To Interactive）：第一次可交互的时间
+
+lighthouse score（performance）：Chrome 浏览器审查工具性能评分
+
+FCP（白屏时间）：是指从用户进入网站（输入 url、刷新、跳转等方法）的时刻开始计算，一直到页面有内容展示出来的时间节点
+
+
+
+粗略的计算首屏时间: `loadEventEnd - fetchStart/startTime` 或者 `domInteractive - fetchStart/startTime`
+
+通过计算首屏区域内的所有图片加载时间，然后取其最大值
+
+利用 [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 接口，监听 document 对象的节点变化
+
+
 
 
 

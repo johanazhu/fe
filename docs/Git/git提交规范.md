@@ -2,6 +2,12 @@
 
 
 
+约定式提交：https://www.conventionalcommits.org/zh-hans/v1.0.0/
+
+git commit 最佳实践，commitizen + husky + commitlint 规范化校验
+
+
+
 ## Husky
 
 Husky 是用于管理 Git Hooks 的工具，Git Hooks 是 Git 中的一个特性，可以在 Git 的生命周期中的某些重要事件（如提交、推送等）触发自定义脚本

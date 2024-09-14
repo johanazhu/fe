@@ -12,6 +12,20 @@ BEM
 
 [CSS Modules](https://github.com/css-modules/css-modules)
 
+- webpack 中 开启 css modules
+
+  ```javascript
+   use:[
+      'style-loader',
+      {
+          loader: "css-loader",
+          options: {
+              modules: true // 启用 CSS 模块
+          }
+      }
+  ]
+  ```
+
 - 通过编译生成不冲突的选择器类名
 - `import styles from "./styles.css"; <h1 class="${styles.title}"></h1>`
 
@@ -44,23 +58,56 @@ qiankun 主要用 shadow DOM 和 scoped css 实现样式隔离
 - shadow dom 自带样式隔离，但是 shadow dom 内的样式和外界不影响，导致挂在弹窗的样式会加不上。父应用也没法设置子应用的样式
 - scoped 的方案是给选择器加上一个 data-qiankun ='应用名' 的选择器，这样父应用能设置子应用样式，也能隔离样式，但是同样有挂在 body 的弹窗样式设置不上的问题，因为 qiankun 的 scoped 不支持全局样式
 
-## 2. 手写 柯里化
+## 2. 手写柯里化
 
 考察点：柯里化
 
 ```javascript
-function curry(fn) 
+function curry(fn)  {
+    const argLength = fn.length;
+    
+    function inner(...args) {
+        if (args.length >= argLength) {
+            return fn(...args)
+        } else {
+            return function(...args2) {
+                return inner(...args, ...args2)
+            }
+        }
+    }
+    return inner
+}
+```
+
+用法：
+
+```javascript
+function add(a, b, c) {
+    return a + b + c
+}
+
+const curriedAdd = curry(add)
+console.log(curriedAdd(1)(2)(3)) // 输出 6
+console.log(curriedAdd(1, 2)(3)) // 输出 6
+console.log(curriedAdd(1, 2, 3)) // 输出 6
 ```
 
 衍生：实现 add(1)(2)(3)
 
 ### 实现 add(1)(2)(3)
 
+```javascript
+function add(a) {
+    return function inner(b) {
+        return function inner2(c) {
+            return a + b + c
+        }
+    }
+}
+console.log(add(1)(2)(3)); // 6
 ```
 
-```
-
-
+更多实现方法：[实现 add(1)(2)(3)](https://github.com/lgwebdream/FE-Interview/issues/21)
 
 ## 3.JavaScript 基础：数据类型有哪些
 
@@ -205,7 +252,21 @@ location / {
 
 
 
-## 6.React：如何实现 react 的 keep-alive
+## 6.React：如何实现 React 的 keep-alive
+
+什么是 keep-alive：
+
+在 Vue 中，keep-alive 用于缓存不活跃的组件实例，避免在路由切换时重新请求数据或重置状态
+
+React 中如何实现
+
+目前 React 没有官方的 keep-alive 解决方案（说是在后续的 React19 中会更新），做粗暴的解决方案是 `display：none` 隐藏组件
+
+行之有效的方法：使用 Portals 实现 keep-alive
+
+- 通过创建一个内容中的 DOM 元素，并使用 React.DOM.createPortal 将子节点渲染到这个元素上，可以实现不显示组件的同时，保持组件状态
+- 封转一个 Conditional 组件，通过控制 active 属性，动态将字组件添加和移除出 DOM
+- 为了避免初次渲染时无论`active`状态如何都渲染子组件，引入了`activatedRef`来记录组件是否被激活过，只有在激活后才渲染子组件（懒加载）
 
 
 
@@ -268,15 +329,13 @@ Tree shaking字面意就是“摇树”，将没有使用到的代码全部抖�
 
 如何开启
 
-- 配置 `optimization.usedExports` 为 `true`，启动标记功能
+- 配置 `optimization.usedExports` 为 `true`，启动 tree shaking 功能
 
 ### 原理是什么
 
-依赖 ES6 的模块特性，ES6 模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析
+简单来说，根据 ES Modules 的静态分析。通过 AST 将用不到的函数进行移除，从而减小打包体积。
 
-简单来说，根据 ES Modules 的静态分析
-
-在ES Module中，我们可以将模块的加载分为两个阶段：**静态分析**和**编译执行**；
+ES6 模块依赖关系是确定的，和运行时的状态无关，它会进行静态分析
 
 
 

@@ -119,7 +119,7 @@
 - JavaScript 基础：数据类型有哪些
 - ES6：ES6至ES12的新特性
 - React: 说说 React Router 有几种模式？实现原理？
-- React：如何实现 react 的 keep-alive
+- React：如何实现 react 的 keep alive
 - 前端安全：XSS攻击是什么
 - 工程化：tree shaking 是什么
 - 工程化：webpack 工作原理是什么，工作流程是怎么样的
@@ -165,6 +165,10 @@
 你还有什么问题么？（你对团队的了解、好奇，对未来的个人成长有什么期待？）
 
 
+
+刷题：
+
+https://bigfrontend.dev/
 
 
 

@@ -12,6 +12,12 @@
 
 [菜单数组转换为嵌套树形结构](#菜单数组转换为嵌套树形结构)
 
+[两个数组的交集、并集](#两个数组的交集、并集)
+
+- [两个数组对象的交集，并集](#两个数组对象的交集，并集)
+
+[算数组中出现 value 的数量](#算数组中出现 value 的数量)
+
 [进度条](#进度条)
 
 
@@ -519,9 +525,159 @@ function buildTree(menuArray) {
 }
 ```
 
+网友所写：
+
+```javascript
+function buildTree(items, parentId = null) {  
+  let tree = [];  
+  for (let i in items) {  
+    if (items[i].parentId == parentId) {  
+      const children = buildTree(items, items[i].id);  
+      if (children.length) {  
+        items[i].children = children;  
+      }  
+      tree.push(items[i]);  
+    }  
+  }  
+  return tree;  
+}  
+```
 
 
 
+## 两个数组的交集、并集
+
+```javascript
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [3, 4, 5, 6, 7];
+```
+
+### 交集
+
+```javascript
+const intersection1 = function (arr1, arr2) {
+    return arr1.filter(item => arr2.includes(item))
+}
+const intersection2 = function (arr1, arr2) {
+    return arr1.filter(item => {
+    	if(arr2.indexOf(item) > -1) {
+            return item
+        } 
+    })
+}
+
+const intersection3 = function (arr1, arr2) {
+    const visited = {}
+    const result = []
+    for (let i = 0; i < arr1.length; i++) {
+        const item = arr1[i]
+        
+        visited[item] = item
+    }
+    
+    for (let i = 0; i < arr2.length; i++) {
+        const item = arr2[i];
+        
+        if (visited[item] !== undefined) {
+            result.push(item)
+            visited[item] = undefined
+        }
+    }
+    
+    return result
+}
+
+const intersection4 = function(nums1, nums2) {
+   var result = [];
+   var set1 = new Set([...nums1]);
+   var set2 = new Set([...nums2]);
+   for (var i of set2) {
+     if (set1.has(i)) {
+        result.push(i);
+     }
+   }
+   return result;
+};
+
+```
+
+
+
+### 并集
+
+```javascript
+const union1 = function (arr1, arr2) {
+    return Array.from(new Set(arr1.concat(arr2)))
+}
+const union2 = function (arr1, arr2) {
+    return [...new Set(arr1.concat(arr2))]
+}
+const union3 = function (arr1, arr2) {
+    return Array.from(new Set(...arr1, ...arr2))
+}
+const union4 = function (arr1, arr2) {
+    return [...new Set(...arr1, ...arr2)]
+}
+```
+
+### 两个数组对象的交集、并集
+
+```javascript
+let arr1 = [ 123, "webank", [1, 2, 3], "123", {a: 1}, "tencent", 123, [1, 2, 3], {a: 1} ]; 
+let arr2 = [ 123, "123455", {a: 2}, [1, 2, 3], "hello", "webank" ];
+// 输出：
+// [123, [1, 2, 3], "webank"]
+```
+
+面试时遇到，做不出来，现在也没做出来
+
+
+
+## 算数组中出现 value 的数量
+
+```javascript
+let a = ['a','b','hello',3,'a','hello','ab',4,'b','a','a',3,4,1,2,'b']
+console.log(countFn(a)); 
+//输出{ '1': 1, '2': 1, '3': 2, '4': 2, a: 4, b: 3, hello: 2, ab: 1 }
+```
+
+解答：
+
+```javascript
+function countFn(arr) {
+	let obj = {};
+	for (let i = 0; i < arr.length; i++) {
+		let item = arr[i]
+		if (obj[item]) {
+			obj[item] ++
+		} else {
+			obj[item] = 1
+		}
+	}
+	return obj
+}
+```
+
+Map 解法
+
+> 在面试时，面试官说我不会 map，还用 map 写，为什么呢（说我菜）
+
+```javascript
+function countFn(arr) {
+    let map = new Map()
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i];
+        if (map.has(item)) {
+            map.set(item, map.get(item) + 1)
+        } else {
+            map.set(item, 1)
+        }
+    }
+    return Object.fromEntries(map)
+}
+```
+
+我就是少了不会 map 转 obj 的方法——Object.fromEntries
 
 ## 进度条
 

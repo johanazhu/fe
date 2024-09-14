@@ -6,12 +6,73 @@ ES6 的特性是使用最多的，包括类、模块化、箭头函数、函数�
 
 另外还有：
 
--   ES7 的 `Array.prototype.includes()`
+-   ES7 的 `Array.prototype.includes()` 、 `**` （指数运算符）
 -   ES8 的 async/await 、String padding: `padStart()`和`padEnd()` 、 `Object.values()`
 -   ES9 的 Rest/Spread 属性、for await of、 `Promise.finally()`
 -   ES10 的 `Array.prototype.flat()` 、 `Array.prototype.flatMap()` 、String 的 `trimStart()` `trimEnd()`
 -   ES11 的 `Promise.allSettled` 、空值处理及可选链
 -   ES12 的逻辑赋值操作符、数字分隔符、 `Promise.any()`
+
+
+
+
+
+## ES8（ES2018）
+
+- async/await 
+- Object.values/Object.entries
+- padStart()/padEnd()
+- getOwnPropertyDescriptors
+- 参数可以有多余逗号
+- 共享内存和原子操作
+
+
+
+
+
+### Object.values/Object.entries
+
+Object.entries：将对象转换为数组，获取键值对
+
+```javascript
+const arr = {
+	name: 'johan',
+    age: 18,
+    gender: '男'
+}
+Object.enties(arr) 
+// [
+//	['name': 'johan'],
+//  ['age': 18],
+//  ['gender': '男']
+// ]
+```
+
+Object.values：只获取值
+
+```javascript
+const arr = {
+	name: 'johan',
+    age: 18,
+    gender: '男'
+}
+Object.values(arr)
+// ['johan', 18, '男']
+```
+
+之前 ES5 的 Object.keys：只获取键
+
+```javascript
+const arr = {
+	name: 'johan',
+    age: 18,
+    gender: '男'
+}
+Object.values(arr)
+// ['name', 'age', 'gender']
+```
+
+
 
 ## 最有用的
 
@@ -29,6 +90,8 @@ ES6 的特性都很有用，ES7-ES11 中，我比较感兴趣的是：
 ## 空值合并运算符（??）
 
 **空值合并运算符**（**`??`**）是一个逻辑运算符，当左侧的操作数为 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/null) 或者 [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined) 时，返回其右侧操作数，否则返回左侧操作数。
+
+相当于是 `||` 的升级版，因为 `||` 不能判断 `''`、`0` 等情况， `''`、`0` 会被视为 false
 
 ```javascript
 const foo = null ?? 'default string';

@@ -23,7 +23,7 @@ flex: 1 表示剩余空间有余的时候等比扩展，剩余空间不足的时
 第三个参数表示 flex-basis，定义了分配剩余空间之前元素的大小。默认值为 auto，就是自动
 
 
-衍生问题：flex:2 表示什么意思
+衍生问题：flex:2 表示什么意思、flex 还有哪些属性
 
 ### flex:2 表示什么意思
 
@@ -33,7 +33,17 @@ flex-grow:2 ，相对于其他 flex 项目，它的放大比例为2倍
 
 flex-shrink:1，缩小比例为1
 
+### flex 还有哪些属性
 
+flex-direction：主轴方向
+
+flex-wrap：换行方式
+
+justify-content：主轴排列
+
+align-items：交叉轴排列
+
+flex-flow：轴向与换行组合设置
 
 ## 2. 手写源码：深拷贝
 

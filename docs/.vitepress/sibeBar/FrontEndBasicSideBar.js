@@ -61,7 +61,7 @@ export default function FrontEndBasicSideBar() {
                     link: '/Basic/CSS/CSS渲染以及优化策略',
                 },
                 {
-                    text: 'CSS 新特性',
+                    text: 'CSS3新特性',
                     link: '/Basic/CSS/CSS3新特性',
                 },
                 {

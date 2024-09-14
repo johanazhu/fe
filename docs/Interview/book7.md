@@ -197,216 +197,65 @@ useEffect(() => {
 
 相关问题：前端性能优化指标、前端性能优化手段、白屏、大量图片加载优化
 
-### 前端性能指标
+### 前端性能监控指标
 
-- 白屏时间 FP
-- 首次内容绘制时间 FCP
-- 最大内容绘制时间 LCP
-- 累积布局偏移值  CLS
-- 首字节时间 TTFB
-- 首次输入延迟时间 FID
-- 可交互时间 TTI
-- 总阻塞时间 TBT
+Navigation Timing API：
 
+- responseStart - fetchStart：收到首字节的耗时
+- domContentLoadedEventEnd - fetchStart：HTML 加载完成耗时
+- loadEventStart - fetchStart：页面完全加载耗时
+- domainLookupEnd - domainLookupStart：DNS 解析耗时
+- connectEnd - connectStart：TCP 连接耗时
+- responseStart - requestStart：Time to First Byte（TTFB）
+- responseEnd - responseStart：数据传输耗时
+- domInteractive - responseEnd：DOM 解析耗时
+- loadEventStart - domContentLoadedEventEnd：资源加载耗时（页面中同步加载的资源)
 
+Lighthouse Performance：
 
-### 前端性能优化
+- FP（First Paint）：首次绘制
+- FCP（First Contentful Paint）：首次内容绘制
+- FMP（First Meaningful Paint）：首次有效绘制
+- LCP（Largest Contentful Paint）：最大可见元素绘制
+- TTI（Time to Interactive）：可交互时间
+- TTFB（Time to First Byte）：浏览器接收第一个字节的时间
 
-#### 1.路由懒加载
+除了上面之外，UC 内核也有一套性能监控指标：
 
-单页面应用，一个路由对应一个页面 
+- T0：Blink 收到 HTTP Head 的时间。
+- T1：首屏有内容显示的时间。
+- T2：首屏全部显示出来的时间。
 
-```jsx
-import React, { Suspense } from 'react';
 
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
-function MyComponent() {
-  return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <OtherComponent />
-      </Suspense>
-    </div>
-  );
-}
-```
+### 什么是首屏时间
 
-#### 路由懒加载的原理
+`首屏时间`：也称**用户完全可交互时间**，即整个页面首屏完全渲染出来，用户完全可以交互，一般首屏时间小于页面完全加载时间，该指标值可以衡量页面访问速度
 
-懒加载前提的实现：ES6 的动态加载模块——`import()`，它返回的是一个 promise
 
-当 webpack 解析到 import 语法时，会自动进行代码分割
 
+#### 1、首屏时间 VS 白屏时间
 
+这两个完全不同的概念，**白屏时间是小于首屏时间的**
+`白屏时间`：首次渲染时间，指页面出现第一个文字或图像所花费的时间
 
-#### 2.合理的 Tree Shaking
+#### 2、为什么 performance 直接拿不到首屏时间
 
-作用：消除无用的 JS 代码，减少代码体积
+随着 Vue 和 React 等前端框架盛行，`Performance` 已无法准确的监控到页面的首屏时间
 
-##### Tree-Shaking 原理
+因为 `DOMContentLoaded` 的值只能表示**空白页**（当前页面 body 标签里面没有内容）加载花费的时间
 
-依赖 ES6 的模块特性，ES6 模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析
+浏览器需要先加载 JS , 然后再通过 JS 来渲染页面内容，这个时候**单页面类型**首屏才算渲染完成
 
-简单来说，根据 ES Modules 的静态分析
 
-#### 3.组件方面
 
-##### 组件懒渲染
+### 三、常见计算方式
 
-当组件进入或即将进入可视区域时才渲染组件。常见的组件 Modal/Drawer 等，当 visible 属性为 true 时才渲染组件内容，也可以认为是懒渲染的一种实现
-
-##### React.memo 减少React子组件渲染
-
-配合 React.useCallback 和 React.useMemo
-
-#### 4.使用骨架屏或加载提示
-
-在项目打包时将骨架屏的内容直接放在 HTML 文件的根节点上
-
-#### 5.长列表虚拟滚动
-
-只渲染可视区域的列表项，非可见区域的不渲染
-
-##### 虚拟列表的原理
-
-计算出列表总高度，并在触发滚动事件时根据 scrollTop 值不断更新 startIndex 以及 endIndex，以此从列表数据 listData 中截取对应元素
-
-虚拟滚动的缺点：
-
-频繁的计算导致会有短暂的白屏现象，可以通过节流来限制触发频率
-
-加上为列表管理加一些“上、下缓冲区”，即在可视区域之外预渲染一些元素
-
-
-
-#### 6.Web Worker 优化长任务
-
-由于浏览器 GUI 渲染线程与 JS 引擎线程是互斥关系，所以当页面中有长任务时，会造成页面 UI 阻塞，出现界面卡顿、掉帧等情况
-
-
-
-#### 7.JS 的六种加载方式
-
-**正常模式**
-
-```html
-<script src="index.js"></script>
-```
-
-这种情况下 JS 会阻塞 DOM 渲染
-
-**async 模式**
-
-```html
-<script async src="index.js"></script>
-```
-
-异步模式，JS 不会阻塞 DOM 的渲染，async 加载是无顺序的，当它加载结束，JS 会立即执行
-
-使用场景：埋点统计、客服系统
-
-**defer 模式**
-
-```html
-<script defer src="index.js"></script>
-```
-
-defer 模式下，JS 的加载也是异步的，但 defer 资源会在 `DOMContentLoaded` 执行之前，并且 defer 是有顺序的加载
-
-**module 模式**
-
-```html
-<script type="module">import { a } from './a.js'</script>
-```
-
-在主流现代浏览器中，script 标签的属性可以加上 `type="module"`，浏览器会对内部的 import 引用发起 HTTP 请求，获取模块内容。这时 script 的行为会像是 defer 一样，在后台下载，并且等待 DOM 解析
-
-Vite 就是利用浏览器支持原生的 `es module` 模块，开发时跳过打包的过程，提升编译效率
-
-**preload** 
-
-```html
-<link rel="preload" as="script" href="index.js">
-```
-
-link 标签的 preload 属性：用于提前加载一些需要的依赖，这些资源会优先加载
-
-preload 特点
-
-preload 加载的资源是在浏览器渲染机制之前进行处理的，并不会阻塞 onload 事件
-
-preload 加载的 JS 脚本其加载和执行的过程是分离的，即 preload 会预加载相应的脚本代码，待到需要时自行调用
-
-**prefetch**
-
-```html
-<link rel="prefetch" as="script" href="index.js">
-```
-
-prefetch 是利用浏览器的空闲时间，加载页面将来可能用到的资源的一种机制；通常可以用于加载其他页面（非首页）所需要的资源，以便加快后续页面的打开速度
-
-prefetch 特点：
-
-prefetch 加载的资源可以获取非当前页面所需资源，并且将其放入缓存至少五分钟
-
-当页面跳转时，未完成的 prefetch 请求不会被中断
-
-#### 加载方式总结
-
-async、defer 是 script 标签的专属属性，对于网页的其他资源，可以通过 link 的 preload、prefetch 属性来预加载
-
-现代框架已经将 preload、prefetch 添加到打包流程中，通过配置可以使用
-
-#### 8.图片的优化
-
-##### 图片动态裁剪
-
-##### 图片懒加载
-
-图片懒加载实现原理
-
-先通过 HTML 自定义属性 data-xxx 先暂存 src 的值，然后在图片出现在屏幕可视区域时，再将 data-xxx 的值赋值到 img 的scr 属性即可
-
-##### 使用字体图标
-
-##### 图片转 base64 格式
-
-##### 图片资源压缩
-
-tinypng 图片资源压缩
-
-##### 图片资源放到 OSS 上
-
-##### 图片格式转换
-
-转成 webp、AVIF格式
-
-
-
-#### 9.启用服务端渲染SSR
-
-SSR 渲染，把客户端渲染改成服务端渲染，也利于SEO
-
-#### 10.首屏静态html
-
-既然要加快，那就做到极致，首屏是个静态页
-
-#### 11.缓存
-
-资源文件和接口加上HTTP缓存，加快请求速度
-
-强缓存（Cache-Control）和协商缓存（Etag）
-
-与强缓存的时候走强缓存，当强缓存失效后走协商缓存
-
-将`Cache-Control:no-cache`、`Cache-Control:max-age=0`、`pragma: no-cache` 时，即告诉浏览器不走强缓存
-
-当强缓存失效后，浏览器需要发送一个带有 `If` 开头的条件请求字段，专门用来验证资源是否过期，
-
-请求时带上 `If-None-Match:上次一的Etag`，如果资源没有变化，则返回 304 状态，使用本地缓存
-
-如果资源变化，则发情 HTTP 请求，并记录相应头中的 ETag，HTTP状态返回 200
+- 用户自定义打点—最准确的方式（只有用户自己最清楚，什么样的时间才算是首屏加载完成）
+  - 缺点：侵入业务，成本高
+- 粗略的计算首屏时间: `loadEventEnd - fetchStart/startTime` 或者 `domInteractive - fetchStart/startTime`
+- 通过计算首屏区域内的所有图片加载时间，然后取其最大值
+- 利用 [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 接口，监听 document 对象的节点变化
 
 
 

@@ -4,7 +4,7 @@
 
 ## 选择器增强
 
-CSS3 新增了更多的选择器，如属性选择器、结构性伪类选择器
+CSS3 新增了更多的选择器，如属性选择器、伪类选择器
 
 ## 圆角边框
 
@@ -16,7 +16,7 @@ CSS3 新增了更多的选择器，如属性选择器、结构性伪类选择器
 
 ## 文字效果
 
-引入 word-wrap、text-shadow、text-overflow、text-decoration 等属性，可以为文字添加阴影效果、控制溢出文本
+引入 word-wrap、text-shadow、text-overflow、text-decoration 等属性，可以为文字添加阴影效果、控制溢出文本、下划线
 
 ## 背景特性
 
