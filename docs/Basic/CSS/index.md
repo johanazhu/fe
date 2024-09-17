@@ -18,6 +18,8 @@ CSS 方面的知识点，说来说去就这几点：
 
 [点击穿透](#点击穿透)
 
+[设置元素不可见的几种方法](#设置元素不可见的几种方法)
+
 [各种布局](#布局)
 
 -   [flex 布局](#flex)
@@ -228,6 +230,26 @@ BFC 有什么不足？
 ```css
 pointer-events: none
 ```
+
+
+
+## 设置元素不可见的几种方法
+
+`display: none` ：设置后元素（及其子元素）不占据空间，不可点击（会引起会流）
+
+`visibility: hidden`：设置后元素（及其子元素）占据空间，不可点击（只会重绘）
+
+`opacity: 0`：设置后元素（及其子元素）占据空间，可点击（只会重绘）
+
+还有其他方案：
+
+- z-index: -1
+- font-size：0
+- clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+- transform: scale(0)
+- transform: translate(0 ,100%)
+- width: 0、height: 0
+- overflow: hidden
 
 
 

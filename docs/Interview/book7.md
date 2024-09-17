@@ -37,17 +37,32 @@ xhr.onreadystatechange = function () {
  xhr.send();
 ```
 
+衍生问题：如何取消请求
+
+### 如何取消请求
+
+```javascript
+xhr.abort();
+```
+
+- 只能取消当前正在进行的请求。如果请求已经完成或已被取消，则 `abort()` 方法不会产生任何效果。
+- 调用 `abort()` 方法后，将触发 `error` 回调函数。
+
 
 
 ## 3.什么是立即执行函数
 
-考察点：立即执行函数
-
 IIFE，立即执行函数，声明一个匿名函数，并马上调用这个匿名函数。只有一个作用，创建一个独立的作用域
 
-衍生题：模块化
+衍生问题：模块化
+
+模块化的发展历程
+
+IIFE ——> CommonJS ——> AMD ——> ES Modules 
 
 ## 4.Map 和 Set
+
+Map 是字典，Set 是集合
 
 Map 是一组键值对的结构，具有极快的查找速度。数据结构是 hash-table（哈希表）
 
@@ -57,6 +72,9 @@ Set 作为最简单的集合，有着如下几个特点：
 
 -   Set 可以存储任何类型的值，遍历顺序与 插入顺序相同
 -   **Set 内无重复的值**
+    -   可以做去重
+    -   去重后要把 Set 转换为数组
+
 
 ### WeakMap
 
@@ -68,7 +86,7 @@ Set 作为最简单的集合，有着如下几个特点：
 
 
 
-衍生题：map 和 对象的区别
+衍生问题：map 和 对象的区别
 
 ### map 和 对象的区别
 
@@ -102,7 +120,9 @@ state = {
 
 ```
 
-解决方案一：使用展开运算符（Spread Operator）
+有四种解决方案：
+
+一：使用展开运算符（Spread Operator）
 
 ```
 this.setState(prevState => ({
@@ -117,7 +137,7 @@ this.setState(prevState => ({
 }));
 ```
 
-解决方案二：Object.assign()
+二：Object.assign()
 
 ```javascript
 this.setState(prevState => 
@@ -132,7 +152,7 @@ this.setState(prevState =>
 );
 ```
 
-解决方案三：使用深克隆
+三：使用深克隆
 
 ```javascript
 import _ from 'lodash';
@@ -144,7 +164,7 @@ updatedUser.objA.age = 25;
 this.setState({ user: updatedUser });
 ```
 
-解决方案四：使用不可变数据结构（如immer.js）
+四：使用不可变数据结构（如immer.js）
 
 ```javascript
 import produce from 'immer';
@@ -161,9 +181,7 @@ this.setState(prevState =>
 
 ## 6. useEffect 第二个参数是对象如何处理
 
-考察点：useEffect 的使用
-
-**保持依赖项为数组**
+保持依赖项为数组
 
 ```jsx
 const [state, setState] = useState({ a: 1, b: 2 });
@@ -174,7 +192,7 @@ useEffect(() => {
 }, [state.a, state.b]);  // 依赖项数组应包含对象的具体属性
 ```
 
-**使用 JSON.stringify**
+使用 JSON.stringify
 
 ```jsx
 const [state, setState] = useState({ a: 1, b: 2 });
@@ -185,11 +203,20 @@ useEffect(() => {
 }, [JSON.stringify(state)]);  // 使用 JSON.stringify 作为依赖项
 ```
 
-**使用自定义钩子**
+使用不可变数据结构（如immer.js）使用自定义钩子
 
 写个类似 useSetState 这样的 hooks，判断复杂对象的变化
 
+使用不可变数据结构（如immer.js）
 
+```jsx
+import produce from 'immer';
+const [state, setState] = useState({ a: 1, b: 2 });
+
+useEffect(() => {
+    console.log("状态改变了", state);
+}, [produce(state)]); 
+```
 
 
 
@@ -262,8 +289,6 @@ Lighthouse Performance：
 
 
 ## 8.网站首页有大量的图片，加载很慢，如何优化呢？
-
-考察点：大量图片优化
 
 图片懒加载，显示的图片显示出来，还没出现的图片先用小图标展示
 

@@ -1,18 +1,26 @@
 # 模拟题八
 
-## 1.行内元素、块级元素有哪些，区别是什么
+## 1.css 设置元素不可见的几种方法
 
-考察点：行内元素、块级元素
+`display: none` ：设置后元素（及其子元素）不占据空间，不可点击（会引起会流）
 
-行内元素：a、b、br、code、i、label、q、small、span、strong、sub、sup、textarea、tt
+`visibility: hidden`：设置后元素（及其子元素）占据空间，不可点击（只会重绘）
 
-块级元素：div、h1-h6、dl、dd、dt、ul、o、li、form、p、pre、table、tbody、td、tfood、th、thead、tr
+`opacity: 0`：设置后元素（及其子元素）占据空间，可点击（只会重绘）
+
+还有其他方案：
+
+- z-index: -1
+- font-size：0
+- clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+- transform: scale(0)
+- transform: translate(0 ,100%)
+- width: 0、height: 0
+- overflow: hidden
 
 
 
 ## 2. 实现发布订阅 
-
-考察点：手写订阅发布
 
 发布订阅模式无需知道对方，通过监听数据
 
@@ -159,9 +167,31 @@ V8 进程的内存由以下部分组成：
 
 
 
-## 5.react中一个父组件，两个子组件，一个传props，一个不传props，父组件重新渲染，两个子组件会不会都重新渲染
+## 5.React中一个父组件，两个子组件，一个传props，一个不传props，父组件重新渲染，两个子组件会不会都重新渲染
 
+父组件重新渲染：当父组件因为状态变化重新渲染时，所有子组件都会被重新渲染，即使它们本身的props没有变化
 
+组件优化： 如果希望避免不必要的子组件重新渲染，可以使用 `React.memo` 来优化组件，这样只有在props发生变化时才会重新渲染。
+
+**采用纯组件(Pure Component)**：纯组件特性是如果props没有变化，则不会重新渲染，常用于提升性能和减少渲染次数，在 function 组件中就是用 React.memo 包裹组件
+
+衍生问题：React 父子组件如何通讯、受控组件和非受控组件
+
+### React 父子组件如何通讯
+
+通过 Props：父组件可以利用 props 向子组件传递数据和回调函数，实现数据的单向流动
+
+回调函数：子组件可以定义属性接收父组件传入的回调函数，从而在需要的时候将数据传回父组件
+
+React Context 对于跨层级或兄弟组件的通信，可以使用 React Context 来共享状态，而无需逐层传递 props。
+
+状态管理库：Redux、MobX等状态管理工具来处理组件间的通信
+
+### 受控组件和非受控组件
+
+受控组件，简单来讲，就是受我们控制的组件，组件的状态全程响应外部数据
+
+非受控组件，简单来讲，就是不受我们控制的组件
 
 
 
@@ -397,8 +427,6 @@ swc、esbuild 对标 babel
 - 打包CSS、SVG
 
 为什么 rust 性能比 go 好，但是 esbuild 的打包速度会比 swc 快，因为 esbuild 的开发者是个 ceo，代码能力比 swc 的开源者强
-
-
 
 
 

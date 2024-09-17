@@ -143,7 +143,14 @@ console.log(add(1)(2)(3)); // 6
 
 ## 4. ES6至ES12的新特性
 
-展开语法和解构语法
+- ES7 的 `Array.prototype.includes()` 、 `**` （指数运算符）
+- ES8 的 async/await 、String padding: `padStart()`和`padEnd()` 、 `Object.values()`
+- ES9 的 Rest/Spread 属性、for await of、 `Promise.finally()`
+- ES10 的 `Array.prototype.flat()` 、 `Array.prototype.flatMap()` 、String 的 `trimStart()` `trimEnd()`
+- ES11 的 `Promise.allSettled` 、空值处理及可选链
+- ES12 的逻辑赋值操作符、数字分隔符、 `Promise.any()`
+
+空值处理及可选链重点关注
 
 
 

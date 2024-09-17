@@ -4,10 +4,6 @@
 
 ## 1. CSS：如何实现水平垂直居中？
 
-考察点：水平垂直居中
-
-相关文章：[水平垂直居中](../Basic/CSS/水平垂直居中)
-
 两种情况考虑
 
 居中元素不定宽高
@@ -48,76 +44,169 @@
 
 - 须知宽高+fixed+margin auto
 
+相关文章：[水平垂直居中](../Basic/CSS/水平垂直居中)
 
+## 2.手写源码：数组去重
 
+给定一个数组 ` [1,2,2,4,null,null,'3','abc',3,5,4,1,2,2,4,null,null,'3','abc',3,5,4]`， 去除重复项
 
-
-
-## 2. 手写 New 操作符
-
-考察点：new 操作符
-
-相关文章：[new 做了什么](../JavaScript/new做了什么)
-
-new 操作符具体做了什么
-
-> 1.在内存中创建一个新对象
->
-> 2.这个新对象的[[prototype]] 指向被赋值为构造函数的 prototype 属性
->
-> 3.构造函数内部的 this 被赋值为这个新对象
->
-> 4.执行构造函数内部的代码
->
-> 5.如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象
-
-手写代码
+> PS：面试的时候一般不会允许你使用 ES6语法和 JS API 或者即使允许你也会让你写出多个方法越多越好，这里我们都写
 
 ```javascript
-function new2(Constructor, ...args) {
-    let obj = Object.create(null);
-    obj.__proto__ = Constructor.prototype;
-   	const result = Constructor.apply(obj, args)
-    return typeof result === 'object' ? result : obj
+const arr =  [1,2,2,4,null,null,'3','abc',3,5,4,1,2,2,4,null,null,'3','abc',3,5,4]
+
+// Array.from + new Set 
+const unique = function (arr) {
+    // new Set 返回的是集合
+    return Array.from(new Set(arr)) 
 }
+
+// 展开运算符 + new Set
+const unique = function (arr) {
+    // new Set 返回的是集合
+    return [...new Set(arr)]
+}
+
+// Map 
+const unique = function (arr) { 
+	let map = new Map()
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i]
+        if (map.has(item)) {
+            continue;
+        }
+        map.set(item, true)
+        result.push(item)
+    }
+	return result
+}
+// PS：map 和 对象的区别在于 map 的 key 可以是任何值
+
+// 双 for 循环
+const unique = function (arr) {
+     for (let i = 0; i < arr.length; i++) {
+        for (let j=i+1; j <arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                arr.splice(j, 1)
+                j--;
+            }
+        }
+    }
+    return arr
+}
+
+// indexOf
+const unique = function (arr) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i]
+        if (result.indexOf(item) < 0) {
+            result.push(item)
+        }
+    }
+    return result
+}
+
+// filter 
+const unique = function (arr) {
+    let res = arr.filter((item, index, array) => {
+        return array.indexOf(item) === index;
+    });
+    return res;
+}
+
+// includes
+const unique = function (arr) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i];
+        if (!result.includes(item)) {
+            result.push(item)
+        }
+    }
+    return result
+}
+
+// reduce + includes
+const unique = function (arr) {
+    const res = arr.reduce((prev, cur) => prev.includes(cur) ? prev : [...prev, cur], [])
+    return res;
+}
+// PS: reduce callback 中的 prev 为上一次调用callback 的结果，cur 为当前值
 ```
 
+> map 和 对象的区别在于 map 的key可以是任何值
 
+衍生问题：对象中的去重、数组中包含多层嵌套对象去重
 
-### 衍生问题
-
-Object.create、apply
-
-
-
-#### Object.create
+### 数组对象去重
 
 ```javascript
-function create(proto){
-    function F() {}
-    F.prototype = proto
-    return new F()
+const arr = [
+    { id: 1, name: 'John' },
+    { id: 1, name: 'elaine' },
+    { id: 2, name: 'johnny' },
+    { id: 3, name: 'react' },
+    { id: 3, name: 'vue' },
+    { id: 4, name: 'javascript' },
+    { id: 5, name: 'css' },
+];
+      
+// 双循环
+const unique = function (arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i+1; j < arr.length; j++) {
+            if (arr[i].id === arr[j].id) {
+                arr.splice(j, 1);
+                j--
+            }
+        }
+    }
+ 	return arr
 }
-```
 
 
+// new Set + JSON.stringyify
+const unique = function (arr) {
+    // 先把每一项转成字符串，再在数组中通过 Set 去重
+    const set = new Set(arr.map(JSON.stringify))
+    // Array.from 将 Set 后的对象转换成 Array
+    const _arr = Array.from(set).map(JSON.parse)
+    return _arr
+}
 
-#### apply
 
-```javascript
-function myApply(context === window, args) {
-    if (this === Fcuntion.prototype) {
-        return undefined
+// reduce
+const unique = function (arr) {
+    const result = arr.reduce((prev, cur) => {
+        prev[cur.id] = cur
+        return prev
+    }, {})
+    console.log(result)
+    return Object.values(result)
+}
+// PS: Object.values() 对象转数组
+
+// filter
+const unique = function (arr) {
+    return arr.filter((item, index, arr) => {
+        return arr.findIndex(t => t.id === item.id) === index
+    })
+}
+
+// Map + for 
+const unique = function (arr) {
+    let map = new Map();
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        const item = arr[i];
+        if (map.has(item.id)) {
+            continue;
+        }
+        map.set(item.id, true)
+        result.push(item)
     }
-    let fn = Symbol();
-    context[fn] = this;
-    let result;
-    if (Array.isArray(args)) {
-        result = context[fn](...args)
-    } else {
-        result = context[fn]()
-    }
-    delete context[fn];
     return result
 }
 ```
@@ -125,8 +214,6 @@ function myApply(context === window, args) {
 
 
 ## 3. 事件循环
-
-考察点：事件循环
 
 整个事件循环（Event Loop）的执行顺序如下：
 
@@ -163,9 +250,7 @@ Chrome 浏览器是一个应用程序，它有一个主进程、多个渲染进�
 
 微任务比如：`promise`、`process.nextTick`、 `Object.observe` 、`MutationObserver`
 
-
-
-### MutationObserver是什么
+MutationObserver是什么
 
 是什么： [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 监听 document 对象的节点变化
 
@@ -204,11 +289,7 @@ await 表达式：必须在 async 函数内部使用，作用是等待一个 Pro
 
 
 
-
-
-## 5. React：虚拟 DOM 的原理
-
-考察点： 虚拟 DOM 
+## 5. React：虚拟DOM 与 Diff算法
 
 ### 什么是 Virtual DOM
 
@@ -297,13 +378,15 @@ React 在以下两个假设的基础上提出了一套 O(n) 的**启发式算法
 
 
 
-#### 重绘和回流
+### 重绘和回流
 
 重绘是元素的样式发生改变，不影响它所在的文档流的位置
 
 回流是元素的尺寸、结构或者某些属性发生改变，浏览器需要重新计算它所在的位置，然后重新渲染页面的过程
 
 回流必定会触发重绘，但重绘不一定会引起回流
+
+相关文章：[Virtual DOM](../React/VirtualDOM)、[Diff 算法](../React/Diff)
 
 
 
@@ -386,73 +469,29 @@ Repaint 重绘：元素的样式发生改变，不影响它所在的文档流的
 
 
 
+## 8.如何提高 webpack 构建速度
 
+1.使用 DllPlugin 将不常变化的代码提前打包，并服用
 
-## 7.qiankun 的原理是什么？如何实现 js 沙箱和 css 隔离的
+2.使用 thread-loader 或者 happypack（过时）进行多线程打包
 
-qiankun 是阿里出的微前端框架，旨在解决复杂的单页应用开发中的多应用整合问题
+3.处于开发环境时，在 webpack config 中将 cache 设为 true，也可用 cache-loader（过时）
 
-### 工作原理
-
-微前端的基本原则就是在 url 变化时，加载、卸载对应的子应用，single spa 就实现了这个功能
-
-它做的事情就是注册微应用、监听 URL 变化，然后激活对应的微应用（再执行生命周期）
-
-single-spa 不够完善，没有解决资源加载、沙箱、全局状态管理的问题，qiankun 基于 single-spa 搭建
-
-- 基于 html 自动分析 js、css，自动加载，不需要开发者手动指定如何加载
-- 基于快照、Proxy 的思路实现了 JS 隔离，基于 shadow Dom 和 scoped css 的思路实现了 CSS 隔离
-- 提供全局状态管理机制（props 通信）
+4.处于生产环境时，关闭不必要的环节，比如可以关闭 source map
 
 
 
-### js 沙箱和  css 隔离
+rollup：任务型打包工具，很多三方库都是用这个进行打包，比如react。
 
-子应用之间要实现隔离，互不影响，也就是要实现 JS 和 CSS 的隔离
+parcel:零配置开箱即用。
 
-single-spa 没有做这方面的处理，qiankun 实现了这个功能
+vite:基于esm的新一代构建工具
 
-JS 隔离的也就是要隔离 window 这个全局变量，其他不会有冲突，本身就是在不同函数的作用域下执行的
-
-qiankun 实现 window 隔离有三个思路：
-
-- 快照：加载子应用前记录下 window 的属性，卸载后恢复到之前的快照
-- diff：加载子应用之后记录对 window 属性的增删改，卸载后恢复
-- **Proxy**：创建一个代理对象，每个子应用访问的时这个代理对象
-
-css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow root 下的 dom 的样式不会影响到其他 dom
-
-> shadow dom 为封装而生。它可以让一个组件拥有自己的「影子」DOM 树，这个 DOM 树不能在主文档中被任意访问，可能拥有局部样式规则，还有其他特性
-
-`css沙箱`做了两套`strictStyleIsolation`、`experimentalStyleIsolation`两套适用不同场景的方案
-
-### 总结
-
-简单来说，微前端就是通过监听路由切换+沙箱机制实现了多个子应用共同运行的技术
-
-监听路由
-
-- 能对子应用进行加载和卸载
-
-沙箱机制
-
-- 一个子应用存在于一个沙箱内，沙箱内无论如何变化影响不到另外沙箱外
-- 基于快照、Proxy 的思路实现了 JS 隔离，基于 shadow Dom 和 scoped css 的思路实现了 CSS 隔离
-- 提供全局状态管理机制（props 通信）
+其它还有esbuilder等等
 
 
 
-衍生问题：为什么不用 single spa
-
-### 为什么不用 single spa
-
-换句话问：single spa 有什么不足，qiankun 又做了什么
-
-- 加载微应用时需要指定加载哪些 js、css，如果子应用的打包逻辑发生了变化，入口文件也要跟着变
-- 一个页面可能有多个子应用，之间会不会有JS、样式冲突？
-- 多个子应用之间的通信怎么处理？
-
-
+衍生题：Webpack构建的原理 
 
 
 

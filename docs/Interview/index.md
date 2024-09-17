@@ -30,7 +30,7 @@
 - React： React Hook 实现原理
 - React：函数式组件与类组件的区别
 - 浏览器：什么是同源策略以及跨源资源共享（CORS）
-- 工程化：如何提供 webpack 构建速度
+- 微前端：qiankun 的原理是什么？如何实现 js 沙箱和 css 隔离的 
 - 应用题：promise.all 中一个接口坏了，怎么保证其他两个正常调用
 - 算法题：三数之和
 
@@ -43,7 +43,7 @@
 - React： 虚拟DOM 与 Diff算法
 - React：说说 React 的渲染过程
 - 浏览器： 浏览器渲染原理 
-- 微前端：qiankun 的原理是什么？如何实现 js 沙箱和 css 隔离的
+- 工程化：如何提高 webpack 构建速度
 - 项目：十万条数据如何优化
 - 算法题：反转链表 
 
@@ -63,7 +63,7 @@
 ## 模拟题五
 
 - CSS: CSS 选择器有哪些
-- 手写源码：New 操作符
+- 手写源码：数组去重
 - JavaScript 基础：作用域
 - ES6特性：Es Module 和 CommonJs
 - React： useMemo、useCallback是什么
@@ -101,7 +101,7 @@
 
 ## 模拟题八
 
-- CSS：行内元素、块级元素有哪些，区别是什么
+- CSS：CSS 设置元素不可见的几种方法
 - 手写源码：实现发布订阅 
 - JavaScript 基础：垃圾回收机制
 - ES6特性：扩展运算符和剩余运算符

@@ -1,7 +1,5 @@
 # 模拟题四
 
-
-
 ## 1. 左边宽度已知，右边自适应方案
 
 具体可以看[左边固定，右边自适应](https://demo.azhubaby.com/左边固定，右边自适应.html)，代码也已经部署到 [github](https://github.com/johanazhu/demo) 上
@@ -25,31 +23,64 @@
 
  
 
+## 2. 手写 New 操作符
 
+new 操作符具体做了什么
 
-## 2. 手写 Object.create
+> 1.在内存中创建一个新对象
+>
+> 2.这个新对象的[[prototype]] 指向被赋值为构造函数的 prototype 属性
+>
+> 3.构造函数内部的 this 被赋值为这个新对象
+>
+> 4.执行构造函数内部的代码
+>
+> 5.如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象
 
-考察点：new 操作符
-
-相关文章：[Object.create](../JavaScript/Object.create)
-
-
+手写代码
 
 ```javascript
-function create(proto) {
+function new2(Constructor, ...args) {
+    let obj = Object.create(null);
+    obj.__proto__ = Constructor.prototype;
+   	const result = Constructor.apply(obj, args)
+    return typeof result === 'object' ? result : obj
+}
+```
+
+衍生问题：Object.create、apply
+
+### 手写Object.create
+
+```javascript
+function create(proto){
     function F() {}
     F.prototype = proto
     return new F()
 }
 ```
 
+### 手写 apply
 
+```javascript
+function myApply(context === window, args) {
+    if (this === Fcuntion.prototype) {
+        return undefined
+    }
+    let fn = Symbol();
+    context[fn] = this;
+    let result;
+    if (Array.isArray(args)) {
+        result = context[fn](...args)
+    } else {
+        result = context[fn]()
+    }
+    delete context[fn];
+    return result
+}
+```
 
-### 衍生问题
-
-原型与原型链
-
-
+相关文章：[new 做了什么](../JavaScript/new做了什么)
 
 
 
@@ -126,8 +157,6 @@ applyMiddleware 函数，装饰器模式
 
 ## 8.工程化：split code 代码分割的原理是什么
 
-考察点：webpack 分包
-
 目的是优化初始加载时间
 
 - 减少初始包体积
@@ -138,7 +167,7 @@ applyMiddleware 函数，装饰器模式
 
 - 使用 import() 语法：这是动态导入的方式
 - 界面路由：在单页应用中，使用前端路由库来实现路由级别的代码分割
-- webpack配置：使用`optimization.splitChunks`来定义分割逻辑
+- webpack配置：使用 `optimization.splitChunks` 来定义分割逻辑
 - 魔术注释：Webpack支持在使用 `import()` 语法时添加注释，指定文件名称或者 chunks 名称，在打包时能够更好地控制生成文件的名称和位置
 
 
@@ -202,7 +231,7 @@ iframe的缺点：
 
 
 
-## qiankun 父子应用如何通讯
+qiankun 父子应用如何通讯
 
 1.全局状态管理（initGlobalState）
 
@@ -235,19 +264,9 @@ postmenssage 是 HTML 引入的一种跨窗口通信机制，解决了以下爱�
 
 
 
-## 10. 算法题：二叉树的前序遍历 ⭐
+## 10. 算法题：二叉树的前序遍历
 
 二叉树的前序、中序、后序遍历
-
-
-
-
-
-
-
-
-
-
 
 
 

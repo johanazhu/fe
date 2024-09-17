@@ -47,8 +47,6 @@ flex-flow：轴向与换行组合设置
 
 ## 2. 手写源码：深拷贝
 
-考察点：深拷贝的原理以及最新的解决方案
-
 ```javascript
 function deepClone(source, storage = new WeakMap()) {
     if (typeof source !== 'object' || source === null) {
@@ -159,13 +157,7 @@ WeakMap 中的键是“弱引用”，在没有其它引用存在时，垃圾回
    - 当查找一个对象的属性或者方法时，会沿着原型链向上查找，直到找到目标或原型链末端（通常为 Object.prototype）
    - 原型链可以解释 JavaScript 的继承机制，对象可以访问原型链上所有对象的属性和方法
 
-
-
-
-
 ## 4.ES6特性：箭头函数和普通函数的区别
-
-考察点：箭头函数
 
 主要区别：
 
@@ -191,13 +183,9 @@ WeakMap 中的键是“弱引用”，在没有其它引用存在时，垃圾回
 
 ## 5.React Hooks 实现原理
 
-考察点：React Hooks 是什么、怎么实现的，使用时需要注意什么
-
 ### React Hooks 是什么
 
 Hooks 是 React 16.8 新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他 React 特性
-
-
 
 ### React Hooks 实现原理
 
@@ -213,13 +201,7 @@ Hooks 是 React 16.8 新增特性。它可以让你在不编写 class 的情况�
 
 衍生问题：
 
-为什么不能在循环中调用 Hooks？
-
-Hooks为什么只能写在顶层，不写在顶层会报错吗?
-
-你有写过哪些自定义 hooks
-
-
+为什么不能在循环中调用 Hooks？Hooks为什么只能写在顶层，不写在顶层会报错吗？你有写过哪些自定义 hooks
 
 ### 为什么不能在循环中调用 Hooks？
 
@@ -272,7 +254,7 @@ Capture Value 是指 React Hooks 在使用闭包时会自动捕获当前组件�
 - 而在函数式组件中，由于没有 this，开发者可以直接使用闭包来捕获外部变量。但如果不小心,可能会产生一些"陈旧"的值被捕获的问题。
 - Capture Value 机制就是为了解决这个问题，确保 Hook 内部使用的值总是最新的，不会因为闭包的特性而产生 bug。
 
-参考问题：[How Are Function Components Different from Classes?](https://overreacted.io/how-are-function-components-different-from-classes/)
+相关文章：[函数式组件与类组件有何不同？](https://fe.azhubaby.com/React/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E4%B8%8E%E7%B1%BB%E7%BB%84%E4%BB%B6%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C.html)
 
 
 
@@ -323,45 +305,69 @@ CORS 引入了以下几个以 `Access-Control-Allow-*` 开头：
 
 
 
-## 8.如何提供 webpack 构建速度？ Webpack构建的原理 
+## 8.qiankun 的原理是什么？如何实现 js 沙箱和 css 隔离的
 
-1.使用 DllPlugin 将不常变化的代码提前打包，并服用
+qiankun 是阿里出的微前端框架，旨在解决复杂的单页应用开发中的多应用整合问题
 
-2.使用 thread-loader 或者 happypack（过时）进行多线程打包
+### 工作原理
 
-3.处于开发环境时，在 webpack config 中将 cache 设为 true，也可用 cache-loader（过时）
+微前端的基本原则就是在 url 变化时，加载、卸载对应的子应用，single spa 就实现了这个功能
 
-4.处于生产环境时，关闭不必要的环节，比如可以关闭 source map
+它做的事情就是注册微应用、监听 URL 变化，然后激活对应的微应用（再执行生命周期）
 
+single-spa 不够完善，没有解决资源加载、沙箱、全局状态管理的问题，qiankun 基于 single-spa 搭建
 
-
-webpack性能优化分为生产环境调优和开发环境调优。
-
-1.生产环境调优主要是通过利用缓存、减少代码体积、分包等方式提升页面响应速度。对于spa单页的话通常需要通过优化减少首屏渲染时间。
-
-2.开发环境调优的目的是提升webpack构建速度。如开启热更新和热模块（HMR）替换、缩小代码编译范围、多线程打包等
-
-现在也有很多出圈的构建工具
-
-rollup：任务型打包工具，很多三方库都是用这个进行打包，比如react。
-
-parcel:零配置开箱即用。
-
-vite:基于esm的新一代构建工具
-
-其它还有esbuilder等等
+- 基于 html 自动分析 js、css，自动加载，不需要开发者手动指定如何加载
+- 基于快照、Proxy 的思路实现了 JS 隔离，基于 shadow Dom 和 scoped css 的思路实现了 CSS 隔离
+- 提供全局状态管理机制（props 通信）
 
 
 
-衍生题：Webpack构建的原理 
+### js 沙箱和  css 隔离
 
-资源分析
+子应用之间要实现隔离，互不影响，也就是要实现 JS 和 CSS 的隔离
 
-依赖图构建
+single-spa 没有做这方面的处理，qiankun 实现了这个功能
 
-资源打包
+JS 隔离的也就是要隔离 window 这个全局变量，其他不会有冲突，本身就是在不同函数的作用域下执行的
 
-输出构建
+qiankun 实现 window 隔离有三个思路：
+
+- 快照：加载子应用前记录下 window 的属性，卸载后恢复到之前的快照
+- diff：加载子应用之后记录对 window 属性的增删改，卸载后恢复
+- **Proxy**：创建一个代理对象，每个子应用访问的时这个代理对象
+
+css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow root 下的 dom 的样式不会影响到其他 dom
+
+> shadow dom 为封装而生。它可以让一个组件拥有自己的「影子」DOM 树，这个 DOM 树不能在主文档中被任意访问，可能拥有局部样式规则，还有其他特性
+
+`css沙箱`做了两套`strictStyleIsolation`、`experimentalStyleIsolation`两套适用不同场景的方案
+
+### 总结
+
+简单来说，微前端就是通过监听路由切换+沙箱机制实现了多个子应用共同运行的技术
+
+监听路由
+
+- 能对子应用进行加载和卸载
+
+沙箱机制
+
+- 一个子应用存在于一个沙箱内，沙箱内无论如何变化影响不到另外沙箱外
+- 基于快照、Proxy 的思路实现了 JS 隔离，基于 shadow Dom 和 scoped css 的思路实现了 CSS 隔离
+- 提供全局状态管理机制（props 通信）
+
+
+
+衍生问题：为什么不用 single spa
+
+### 为什么不用 single spa
+
+换句话问：single spa 有什么不足，qiankun 又做了什么
+
+- 加载微应用时需要指定加载哪些 js、css，如果子应用的打包逻辑发生了变化，入口文件也要跟着变
+- 一个页面可能有多个子应用，之间会不会有JS、样式冲突？
+- 多个子应用之间的通信怎么处理？
 
 
 

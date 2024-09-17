@@ -45,8 +45,6 @@
 
 
 
-
-
 ## 2. 手写 instanceof 
 
 考察点：instanceof 原理
@@ -151,9 +149,11 @@ git 四大工作区域：workspace（工作区）、Stage（暂存区）、Respo
 
 ## 5. React 合成事件是什么
 
-考察点：合成事件
+`React` 事件通过 `JSX` 方式绑定的事件, 比如 `onClick={() => this.handle()}`
 
-为什么需要合成事件？和原生事件相比有什么不同
+原生事件使用 `addEventListener`
+
+### 为什么需要合成事件？和原生事件相比有什么不同
 
 目的：封装事件，实现跨平台，把差异封装在底层
 
@@ -163,7 +163,7 @@ git 四大工作区域：workspace（工作区）、Stage（暂存区）、Respo
 
 抹平不同浏览器的差异、与内部优先级机制绑定、需要考虑所有浏览器事件
 
-在 react 中，我们绑定的事件并不是原生事件，而是由原生事件合成的 react 事件，比如 click 事件合成为 onClick 事件；比如 blur、change、input 等，合成为 onChange 事件，它统一绑定在 document 上统一管理（react 17 之后就绑定在 root 根节点上，这样做的好处是利于微前端）
+在 React 中，我们绑定的事件并不是原生事件，而是由原生事件合成的 React 事件，比如 click 事件合成为 onClick 事件；比如 blur、change、input 等，合成为 onChange 事件，它统一绑定在 document 上统一管理（react 17 之后就绑定在 root 根节点上，这样做的好处是利于微前端）
 
 衍生：React17 事件委托更新、事件委托、React事件传播机制
 
@@ -201,8 +201,6 @@ ReactDOM.render(<App />, rootNode);
 寻找触发事件的 DOM 节点，找到其对应的 FiberNode
 
 收集从当前 FiberNode 到根 FiberNode 之间所有注册的「该事件对应回调」
-
-对于捕获
 
 
 ## 6.React中父组件如何调用子组件中的方法？

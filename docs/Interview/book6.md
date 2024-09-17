@@ -4,19 +4,11 @@
 
 ## 1. CSS 优先级是怎么计算的
 
-考察点：CSS 优先级
-
 !important > 内联样式 > ID 选择器 > 类选择器 = 属性选择器 = 伪类选择器 > 标签选择器 = 伪元素选择器
-
-CSS 相关性能优化
 
 
 
 ## 2. 手写 apply、call、bind 
-
-考察点：主动修改 this 的指向
-
-相关文章：[call、apply、bind三大将](../JavaScript/call、apply、bind三大将)
 
 ### apply
 
@@ -40,8 +32,6 @@ Function.prototype.myapply = function (context = window, args) {
 }
 ```
 
-
-
 ### call
 
 ```javascript
@@ -56,8 +46,6 @@ Function.prototype.mycall = function (context = window, ...args) {
     return result
 }
 ```
-
-
 
 ### bind
 
@@ -138,7 +126,7 @@ function new2(Constructor, ...args) {
 }
 ```
 
-
+相关文章：[call、apply、bind三大将](../JavaScript/call、apply、bind三大将)
 
 ## 3. 谈谈变量提升
 
@@ -148,8 +136,6 @@ function new2(Constructor, ...args) {
 
 函数提升的权重大于变量提升
 
-
-
 ## 4. let 和 const
 
 类似问题：let、var、const的区别
@@ -157,8 +143,6 @@ function new2(Constructor, ...args) {
 var 会有变量提升
 
 let、const 则不会
-
-
 
 ## 5.React 中的多次渲染如何优化
 

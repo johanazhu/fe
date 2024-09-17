@@ -214,13 +214,6 @@ function myApply(context = window, args) {
 
 ## 3.闭包
 
-
-
-考察点：闭包
-作用：对外层函数的变量起到保护作用
-作用：既重用一个变量又保护变量不被污染的一种编程方式
-原理：存在执行上下文栈中，没有被销毁。所以会引起内存泄漏问题
-
 ### 什么是闭包？
 
 闭包就是一个绑定了执行环境的函数，它利用词法作用域的特性，在函数嵌套时，内层函数引用外层函数作用域下的变量，并且内层函数在全局环境下可访问，就形成了闭包
@@ -263,9 +256,9 @@ curriedAdd(1)(2, 3);
 curriedAdd(1, 2)(3);
 ```
 
-
-
 相关文章：[闭包](https://fe.azhubaby.com/JavaScript/闭包.html)
+
+
 
 ## 4.Promise 是什么
 
@@ -388,11 +381,11 @@ Promise.all 和 Promise.allSettled 最大的不同：Promise.allSettled 永远�
    3. 提交阶段：完成所有工作单元后，将变更应用到真实 DOM
 4. 中断与恢复：Fiber 架构支持将渲染过程中断并恢复，以确保应用的响应性
 
+相关文章：[Fiber 的作用和原理](https://fe.azhubaby.com/React/Fiber.html)
+
 
 
 ## 6. 数据流： Redux 是什么？
-
-考察点：状态管理，redux、redux 核心原则
 
 Redux 是 JavaScript 状态容器，能提供可预测化的状态管理
 
@@ -431,9 +424,9 @@ Redux 的主要优点包括：
 3. 通过纯函数 Reducer 实现状态更新，增强代码的可测试性
 4. 与 React 配合良好，有利于构建复杂的、大规模的 Web 应用
 
-好文解读：https://tech.meituan.com/2017/07/14/redux-design-code.html
 
-衍生问题：React-Redux是什么，Mobx 是什么，dva是什么，zustand 是什么
+
+衍生问题：React-Redux是什么？Mobx 是什么？dva是什么？zustand 是什么？
 
 
 
@@ -481,23 +474,21 @@ Zustand 是一个简单、轻量级的 JavaScript 状态管理库，主要用于
 2. 在组件中使用 useStore hook 订阅和更新状态
 3. 如果需要，可以创建多个子 store 进行模块化管理
 
-
+相关文章：[从 Redux 说起，到手写，再到状态管理](https://fe.azhubaby.com/React/生态/从Redux说起，到手写，再到状态管理.html)
 
 ## 7. 浏览器输入 url 到页面渲染都经历了什么
-
-考察点：HTTP 发展史、HTTP缓存（强缓存、弱缓存）、HTTP状态码、TCP三次握手四次挥手、进程和线程、重绘与回流
 
 输入 url，敲击键盘，浏览器判断输入的 url 是否为网址，如果不是网址，再通过浏览器默认搜索引擎拼接输入的值，前往搜索引擎页面；如果是网址，则构建请求。
 
 浏览器判断是否有缓存，如果有，则返回资源给浏览器（之后浏览器进行解析），如果没有，则先判断DNS是否有缓存，如果有直接返回 ip 地址，如果没有则 DNS 解析，并缓存 DNS。
 
-获取后等待 TCP 连接，建立连接后，发起 HTTP 请求，服务器返回状态。判断是否与打开的网址是同一个站点，如果是，使用相同的渲染进程渲染页面，如果不是，浏览器渲染 HTML、CSS、JS。经历重绘与回流最终构建出渲染树，GUI 线程接管渲染页面
+获取后等待 TCP 连接，建立连接后，发起 HTTP 请求，服务器返回状态和数据。判断是否与打开的网址是同一个站点，如果是，使用相同的渲染进程渲染页面，如果不是，浏览器渲染 HTML、CSS、JS。经历重绘与回流最终构建出渲染树，GUI 线程接管渲染页面
 
-其中缓存部分，先判断它是否有强缓存在判断协商缓存。执行顺序为，先判断 Cache-Control （HTTP 1.1）是否可用，可用返回，不可用判断 Expires（HTTP 1.0） 是否可用，可用返回，不可用则判断协商缓存 ETag（HTTP 1.1），如果是则发起请求，请求头中带有条件请求If-No-Match，判断状态是否为304，如果是则资源未变，使用本地缓存，如果不是，则继续发送请求，并记住 ETag
+其中缓存部分，先判断它是否有强缓存再判断协商缓存。执行顺序为：先判断 Cache-Control （HTTP 1.1）是否失效，未失效返回缓存；失效则判断 Expires（HTTP 1.0） 是否失效，未失效返回缓存；失效则判断协商缓存 ETag（HTTP 1.1），请求时请求头中带有条件请求`If-No-Match`，判断状态是否为304，如果是则资源未变，返回缓存内容，如果不是，则请求服务器返回资源并缓存住缓存信息（Cache-Control 以及 ETag 等）；如果 ETag 不可用，则判断上次响应中是否有Last-Modified，如果是，则发起请求，请求投中带有条件请求 `If-Modified-Since`，逻辑与 `If-No-Match` 一样
 
-如果协商缓存ETag不可用，则判断上次响应中是否有Last-Modified，如果是，则发起请求，请求投中带有条件请求 If-Modified-Since，逻辑与If-No-Match 一样。
+整体流程图：
 
-
+![缓存示意图](https://pub-15dc9987604d4311befe731fecc8adb9.r2.dev/98958c07ee7c69fcf8c8fa0be974da2a.png)
 
 衍生问题：重绘与回流
 
@@ -509,13 +500,11 @@ Zustand 是一个简单、轻量级的 JavaScript 状态管理库，主要用于
 
 回流必定会触发重绘，但重绘不一定会引起回流
 
+相关文章：[从 url 输入到返回请求的过程](https://fe.azhubaby.com/Browser/%E4%BB%8Eurl%E8%BE%93%E5%85%A5%E5%88%B0%E8%BF%94%E5%9B%9E%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B.html)
 
-
-
+相关文章：[面试常客：HTTP 缓存](https://fe.azhubaby.com/HTTP/HTTP%E7%BC%93%E5%AD%98.html)
 
 ## 8. HTTP 1、2、3 的区别
-
-考察点：HTTP 、HTTP 发展历程、HTTPS、HTTP 缓存、HTTP 状态码
 
 ### HTTP 的发展史
 
@@ -612,19 +601,13 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 
 414 - 请求 URI 过长
 
-详见——> [HTTP 状态码](../HTTP/HTTP状态码)
+更多内容：[HTTP 状态码](../HTTP/HTTP状态码)
 
 
 
 ## 9. 你常用的性能优化
 
-考察点：性能优化、性能指标
-
-
-
-### 性能优化
-
-#### HTTP方面优化
+### HTTP方面优化
 
 - 开启 HTTP2（特点：对头阻塞）
 - 使用缓存：利用 HTTP 缓存、代理服务器缓存（开启 gzip 压缩）、应用程序缓存等减少重复请求
@@ -634,11 +617,12 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 
 - 服务器开启 gzip 压缩
 
-#### 页面渲染优化
+### 页面渲染优化
 
 - 减少 DOM 操作：尽量减少对 DOM 的操作，例如使用事件委托、CSS 动画
 - 使用懒加载：懒加载可以延迟加载非关键资源，从而提高页面加载速度
 - 使用服务器渲染（SSR）：服务端渲染可以在服务器端生成 HTML 页面，减少客户端的加载时间
+- 首屏静态html：既然要加快，那就做到极致，首屏是个静态页
 - 使用 Web 字体：使用 Web 字体代替图片可以减少“资源”文件数量及加载时间
 - 如果使用中文字体，可使用字蛛减少字体大小
 - 优化图片格式、大小：压缩图片大小、使用 WebP 、AVIF格式、懒加载图片等方式可以减少加载时间
@@ -648,18 +632,18 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 - CSS 书写顺序
 -  async defer
 
-#### Webpack 等打包工具的性能优化
+### Webpack 等打包工具的性能优化
 
 - 拆包
 - 配置 Webpack，压缩 JS、CSS、图片等静态资源大小（资源压缩）
-- Tree shaking 去除死代码
+- Tree shaking 去除死代码（生产模式自动做 Tree shaking）
+- 使用最新版本的 webpack 或者是其他性能更好的打包库
 
+### React 框架做的事情
 
-
-#### React 性能优化
-
-- 使用 usememo(缓存值)、useCallback（缓存回调函数）、memo（避免重复渲染）、
+- 使用 usememo(缓存值)、useCallback（缓存回调函数）+ memo（避免重复渲染）
 - 路由懒加载（使用 react.lazy）
+- 组件懒渲染
 - Suspense
 - 分页
 - 虚拟列表
@@ -668,11 +652,29 @@ HTTP 1.1 通过 etag，生成文件唯一标识来判断是否过期
 - 使用 Fragment 或者空标签减少层级
 - SSR 渲染
 
+### 图片的优化
+
+- 图片动态裁剪
+
+- 图片懒加载
+  - 图片懒加载实现原理
+  - 先通过 HTML 自定义属性 data-xxx 先暂存 src 的值，然后在图片出现在屏幕可视区域时，再将 data-xxx 的值赋值到 img 的scr 属性即可
+
+- 使用字体图标
+
+- 图片转 base64 格式
+
+- 图片资源压缩
+  - tinypng 图片资源压缩
+
+- 图片资源放到 OSS 上
+
+- 图片格式转换
+  - 转成 webp、AVIF格式更现代的压缩图片格式
 
 
 
-
-#### 1.路由懒加载
+#### 路由懒加载
 
 单页面应用，一个路由对应一个页面 
 
@@ -692,7 +694,7 @@ function MyComponent() {
 }
 ```
 
-#### 路由懒加载的原理
+##### 路由懒加载的原理
 
 懒加载前提的实现：ES6 的动态加载模块——`import()`，它返回的是一个 promise
 
@@ -700,7 +702,7 @@ function MyComponent() {
 
 
 
-#### 2.合理的 Tree Shaking
+#### 合理的 Tree Shaking
 
 作用：消除无用的 JS 代码，减少代码体积
 
@@ -710,9 +712,7 @@ function MyComponent() {
 
 简单来说，根据 ES Modules 的静态分析
 
-#### 3.组件方面
-
-##### 组件懒渲染
+#### 组件懒渲染
 
 当组件进入或即将进入可视区域时才渲染组件。常见的组件 Modal/Drawer 等，当 visible 属性为 true 时才渲染组件内容，也可以认为是懒渲染的一种实现
 
@@ -720,11 +720,11 @@ function MyComponent() {
 
 配合 React.useCallback 和 React.useMemo
 
-#### 4.使用骨架屏或加载提示
+#### 使用骨架屏或加载提示
 
 在项目打包时将骨架屏的内容直接放在 HTML 文件的根节点上
 
-#### 5.长列表虚拟滚动
+#### 长列表虚拟滚动
 
 只渲染可视区域的列表项，非可见区域的不渲染
 
@@ -738,15 +738,18 @@ function MyComponent() {
 
 加上为列表管理加一些“上、下缓冲区”，即在可视区域之外预渲染一些元素
 
+> 通过 IntersectionObserver 和 getBoundingClientRect 也可实现
+>
 
 
-#### 6.Web Worker 优化长任务
+
+#### Web Worker 优化长任务
 
 由于浏览器 GUI 渲染线程与 JS 引擎线程是互斥关系，所以当页面中有长任务时，会造成页面 UI 阻塞，出现界面卡顿、掉帧等情况
 
+一些需要大量计算的数据可以放在 web worker 上计算，计算好后再塞入页面中
 
-
-#### 7.JS 的六种加载方式
+#### JS 的六种加载方式
 
 **正常模式**
 
@@ -812,162 +815,45 @@ prefetch 加载的资源可以获取非当前页面所需资源，并且将其�
 
 当页面跳转时，未完成的 prefetch 请求不会被中断
 
-#### 加载方式总结
+##### 加载方式总结
 
 async、defer 是 script 标签的专属属性，对于网页的其他资源，可以通过 link 的 preload、prefetch 属性来预加载
 
 现代框架已经将 preload、prefetch 添加到打包流程中，通过配置可以使用
 
-#### 8.图片的优化
-
-##### 图片动态裁剪
-
-##### 图片懒加载
-
-图片懒加载实现原理
-
-先通过 HTML 自定义属性 data-xxx 先暂存 src 的值，然后在图片出现在屏幕可视区域时，再将 data-xxx 的值赋值到 img 的scr 属性即可
-
-##### 使用字体图标
-
-##### 图片转 base64 格式
-
-##### 图片资源压缩
-
-tinypng 图片资源压缩
-
-##### 图片资源放到 OSS 上
-
-##### 图片格式转换
-
-转成 webp、AVIF格式
 
 
-
-#### 9.启用服务端渲染SSR
-
-SSR 渲染，把客户端渲染改成服务端渲染，也利于SEO
-
-#### 10.首屏静态html
-
-既然要加快，那就做到极致，首屏是个静态页
-
-#### 11.缓存
-
-资源文件和接口加上HTTP缓存，加快请求速度
-
-强缓存（Cache-Control）和协商缓存（Etag）
-
-与强缓存的时候走强缓存，当强缓存失效后走协商缓存
-
-将`Cache-Control:no-cache`、`Cache-Control:max-age=0`、`pragma: no-cache` 时，即告诉浏览器不走强缓存
-
-当强缓存失效后，浏览器需要发送一个带有 `If` 开头的条件请求字段，专门用来验证资源是否过期，
-
-请求时带上 `If-None-Match:上次一的Etag`，如果资源没有变化，则返回 304 状态，使用本地缓存
-
-如果资源变化，则发情 HTTP 请求，并记录相应头中的 ETag，HTTP状态返回 200
-
-
-
-
-
+衍生问题：性能指标
 
 ### 性能指标
 
-https://pagespeed.web.dev/ 或者 Chrome DevTools 可以分析一个网站的性能、无障碍、最佳做法以及SEO
+[pagespeed](https://pagespeed.web.dev/) 或者 Chrome DevTools （Lighthouse）可以分析一个网站的性能、无障碍、最佳做法以及SEO
 
-常见的网页性能指标包括：
+核心Web Vitals
 
-FCP（First Contentful Paint）：首次渲染内容时间（包括文字、图像）
+- **LCP（Larget Contentful Paint）**：最大内容渲染时间
+- **FID (First Input Delay)**：用户首次与页面交互（如点击链接或按钮）到浏览器响应之间的延迟，理想值应小于100毫秒。
+- **CLS (Cumulative Layout Shift)**：评估页面布局稳定性的指标，反映在页面加载过程中内容的位移程度，理想值应小于0.1。
 
-LCP（Larget Contentful Paint）：最大内容渲染时间
+加载性能
 
-FMP：首次绘制有效内容时间
+- **TTFB (Time to First Byte)**：从用户请求发起到浏览器收到第一个字节的时间，理想值应小于200毫秒。
+- **FCP (First Contentful Paint)**：首次渲染出内容（文本、图像等）的时间，理想值应小于1秒。
+- **DOMContentLoaded**：浏览器已完全加载 HTML，并构建了 DOM 树，但像 `<img>` 和样式表之类的外部资源可能尚未加载完成。
+- **load**：浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等。
 
-TTI：应用可交互时间
+交互性能
 
-mutationobserver：监听 document 对象的节点变化
+- **TTI (Time to Interactive)**：页面可交互的时间点，表示用户可以开始与页面交互的时间。
+- **TBT (Total Blocking Time)**：阻塞时间，总体阻塞用户输入的时间段。
 
+白屏时间计算：
 
-
-FCP（First Contentful Paint)：白屏时间（第一个文本绘制时间）
-
-Speed Index：首屏时间
-
-TTI（Time To Interactive）：第一次可交互的时间
-
-lighthouse score（performance）：Chrome 浏览器审查工具性能评分
-
-FCP（白屏时间）：是指从用户进入网站（输入 url、刷新、跳转等方法）的时刻开始计算，一直到页面有内容展示出来的时间节点
-
-
-
-粗略的计算首屏时间: `loadEventEnd - fetchStart/startTime` 或者 `domInteractive - fetchStart/startTime`
+`loadEventEnd - fetchStart/startTime` 或者 `domInteractive - fetchStart/startTime`
 
 通过计算首屏区域内的所有图片加载时间，然后取其最大值
 
 利用 [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 接口，监听 document 对象的节点变化
-
-
-
-
-
-衍生问题：useCallback 是什么 、useMemo 是什么 、useCallback 和 useMemo 有什么区别？、memo 是什么？虚拟列表的解决方案
-
-
-
-### useCallback 是什么
-
-- useCallback 缓存缓存回调函数
-- 这样可以避免每次组件渲染时都创建新的函数示例，从而提高性能，特别时当该函数作为 props 传递给子组件时
-- useCallback 有哪些应用场景，工作中你有哪些性能
-
-### useMemo 是什么
-
-- useMemo 缓存计算值
-- useMemo 有哪些应用场景，工作中你有哪些性能
-
-### useCallback 和 useMemo 有什么区别？
-
-1. 缓存对象
-   - useCallback 缓存的是函数实例
-   - useMemo 缓存的是函数的计算结果
-2. 作用时机
-   - useCallback 在组件的每个生命周期内缓存函数
-   - useMemo 只在组件的某次渲染中缓存计算结果
-3. 优化对象
-   - useCallback 常用于优化子组件的渲染，避免不必要的重新渲染
-   - useMemo 常用于优化复杂计算，避免重复计算
-4. 使用场景
-   - useCallback 适用于当函数作为 props 传递给子组件时，避免不必要的重复渲染
-   - useMemo 适用于当有复杂的计算逻辑时，避免重复计算
-
-总的来说，useCallback 和 useMemo 都是 React 中用于性能优化的 Hooks，但关注的优化对象和使用场景不同
-
-### memo 是什么？
-
-memo 是一个高阶组件（HOC），它可以用来包装一个函数组件，从而实现性能优化
-
-它的作用如下：
-
-- 避免不必要的渲染
-  - memo 会对组件的 props 进行浅比较，如果 props 没有发生变化，则不会触发组件的重新渲染
-- 缓存计算结果
-  - memo 会缓存组件的计算结果，如果 props 没有发生变化，则可以直接使用缓存的结果，而不需要重新计算
-- 提高代码可读性
-
-
-
-### 虚拟列表的解决方案
-
-通过 IntersectionObserver 和 getBoundingClientRect 实现
-
-- IntersectionObserver 监听一个目标与它祖先元素或
-
-
-
-### 如何优化 FCP（First Contenful Paint）
 
 
 
