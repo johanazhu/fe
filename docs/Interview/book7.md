@@ -48,7 +48,8 @@ xhr.abort();
 - 只能取消当前正在进行的请求。如果请求已经完成或已被取消，则 `abort()` 方法不会产生任何效果。
 - 调用 `abort()` 方法后，将触发 `error` 回调函数。
 
-
+> `fetch.abort()` 也能取消请求，axios 的取消原理就是基于 `xhr.abort` 和 `fetch.abort`
+>
 
 ## 3.什么是立即执行函数
 
@@ -220,71 +221,45 @@ useEffect(() => {
 
 
 
-## 7.首页白屏如何优化
+## 7.遇到白屏问题如何分析和解决
 
 相关问题：前端性能优化指标、前端性能优化手段、白屏、大量图片加载优化
 
-### 前端性能监控指标
+常见的白屏问题有
 
-Navigation Timing API：
+1.资源加载失败页面依赖的关键资源（CSS、JS、图片等）加载失败，导致页面无法正常渲染
 
-- responseStart - fetchStart：收到首字节的耗时
-- domContentLoadedEventEnd - fetchStart：HTML 加载完成耗时
-- loadEventStart - fetchStart：页面完全加载耗时
-- domainLookupEnd - domainLookupStart：DNS 解析耗时
-- connectEnd - connectStart：TCP 连接耗时
-- responseStart - requestStart：Time to First Byte（TTFB）
-- responseEnd - responseStart：数据传输耗时
-- domInteractive - responseEnd：DOM 解析耗时
-- loadEventStart - domContentLoadedEventEnd：资源加载耗时（页面中同步加载的资源)
+2.资源加载延迟资源加载（或阻塞），导致页面长时间等待资源加载完毕，出现空白
 
-Lighthouse Performance：
+3.代码执行中出现未被补货的错误，如 JS 错误、Promise 错误，导致页面无法正常打开
 
-- FP（First Paint）：首次绘制
-- FCP（First Contentful Paint）：首次内容绘制
-- FMP（First Meaningful Paint）：首次有效绘制
-- LCP（Largest Contentful Paint）：最大可见元素绘制
-- TTI（Time to Interactive）：可交互时间
-- TTFB（Time to First Byte）：浏览器接收第一个字节的时间
+4.浏览器兼容性问题
 
-除了上面之外，UC 内核也有一套性能监控指标：
+### 如何监测页面白屏
 
-- T0：Blink 收到 HTTP Head 的时间。
-- T1：首屏有内容显示的时间。
-- T2：首屏全部显示出来的时间。
+1.检测根节点是否渲染
 
+这种方法的原理是在当前主流 SPA 框架下，DOM 一般挂载在一个根节点之下（比如 `<div id="app"></div>` ），发生白屏后通常是根节点下所有 DOM 被卸载。
 
+2.Mutation Observer 监听 DOM 变化
 
-### 什么是首屏时间
+可以通过 Mutation Observer 来监听 DOM 树变化，从而判断页面是否白屏。
 
-`首屏时间`：也称**用户完全可交互时间**，即整个页面首屏完全渲染出来，用户完全可以交互，一般首屏时间小于页面完全加载时间，该指标值可以衡量页面访问速度
+3.页面截图
 
+通过对网页进行截图，对截图进行像素点分析，判断页面是否白屏。
 
+衍生问题：前端性能指标
 
-#### 1、首屏时间 VS 白屏时间
+### 前端性能指标
 
-这两个完全不同的概念，**白屏时间是小于首屏时间的**
-`白屏时间`：首次渲染时间，指页面出现第一个文字或图像所花费的时间
+web core vitals
 
-#### 2、为什么 performance 直接拿不到首屏时间
+LCP（最大内容渲染时间）、INP（从交互到下一次绘制的时间）、FID（首次输入延迟）、CLS（累积布局偏移）
 
-随着 Vue 和 React 等前端框架盛行，`Performance` 已无法准确的监控到页面的首屏时间
+以用户为中心的性能指标
 
-因为 `DOMContentLoaded` 的值只能表示**空白页**（当前页面 body 标签里面没有内容）加载花费的时间
-
-浏览器需要先加载 JS , 然后再通过 JS 来渲染页面内容，这个时候**单页面类型**首屏才算渲染完成
-
-
-
-### 三、常见计算方式
-
-- 用户自定义打点—最准确的方式（只有用户自己最清楚，什么样的时间才算是首屏加载完成）
-  - 缺点：侵入业务，成本高
-- 粗略的计算首屏时间: `loadEventEnd - fetchStart/startTime` 或者 `domInteractive - fetchStart/startTime`
-- 通过计算首屏区域内的所有图片加载时间，然后取其最大值
-- 利用 [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 接口，监听 document 对象的节点变化
-
-
+FP（首次绘制）、FCP（首次内容绘制时间）、TTI（可交互时间）、TBT（总阻塞时间）、LCP（最大内容渲染时间）、INP（从交互到下一次绘制的时间）、FID（首次输入延迟）、CLS（累积布局偏移）
 
 
 

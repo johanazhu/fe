@@ -823,41 +823,78 @@ async、defer 是 script 标签的专属属性，对于网页的其他资源，�
 
 
 
-衍生问题：性能指标
+衍生问题：性能指标、白屏监控
 
 ### 性能指标
 
 [pagespeed](https://pagespeed.web.dev/) 或者 Chrome DevTools （Lighthouse）可以分析一个网站的性能、无障碍、最佳做法以及SEO
 
-核心Web Vitals
+**三大核心指标（Core Web Vitals）（2020年 Chrome提出）**
 
-- **LCP（Larget Contentful Paint）**：最大内容渲染时间
-- **FID (First Input Delay)**：用户首次与页面交互（如点击链接或按钮）到浏览器响应之间的延迟，理想值应小于100毫秒。
-- **CLS (Cumulative Layout Shift)**：评估页面布局稳定性的指标，反映在页面加载过程中内容的位移程度，理想值应小于0.1。
+- Largest Contentful Paint（LCP）：最大内容绘制。`加载性能`指标。2.5s 内加载完视为优秀
 
-加载性能
+- Interaction to Next Paint（INP）：从交互到下一次绘制的延时。`交互体验`指标。200ms 内视为优秀
 
-- **TTFB (Time to First Byte)**：从用户请求发起到浏览器收到第一个字节的时间，理想值应小于200毫秒。
-- **FCP (First Contentful Paint)**：首次渲染出内容（文本、图像等）的时间，理想值应小于1秒。
-- **DOMContentLoaded**：浏览器已完全加载 HTML，并构建了 DOM 树，但像 `<img>` 和样式表之类的外部资源可能尚未加载完成。
-- **load**：浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等。
+- Cumulative Layout Shift（CLS）：累计布局偏移。`视觉稳定性` 指标，100ms 内视为优秀
 
-交互性能
+- First Input Delay（FID）：首次输入延时。`交互体验`指标，100ms 内执行完视为优秀
 
-- **TTI (Time to Interactive)**：页面可交互的时间点，表示用户可以开始与页面交互的时间。
-- **TBT (Total Blocking Time)**：阻塞时间，总体阻塞用户输入的时间段。
+- PS：2024 年 3 月 INP 取代 FID 
 
-白屏时间计算：
+因为 FID 有一些局限性
 
-`loadEventEnd - fetchStart/startTime` 或者 `domInteractive - fetchStart/startTime`
+- 首次：FID 只上报用户第一次与页面交互的响应性。虽然第一次交互很重要，但并不代表整个页面声明周期
+- 输入延迟：FID 只测量首次交互的输入延时，即交互开始到事件开始处理这段时间，而事件处理和渲染的耗时，没有被统计
 
-通过计算首屏区域内的所有图片加载时间，然后取其最大值
+所以有了新的指标INP，它不仅测量首次交互，而且还测量所有的交互延时。除了输入延时，还包括事件处理时长、渲染延时。它的目标是确保从用户开始交互到下一帧绘制的时间尽可能短，以满足用户进行的所有或大多数交互
 
-利用 [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver) 接口，监听 document 对象的节点变化
+**以用户为中心的性能指标**
 
+- First Paint（FP）：首次绘制时间
+  - 页面第一次绘制像素的时间，2s内优秀
+- First contentful paint（FCP）：首次内容绘制时间
+  - 首次渲染出内容（文本、图像等）的时间，理想值应小于1秒
+- Largest contentful paint（LCP）：最大内容渲染时间
+  - 视窗内最大元素绘制的时间，2.5s内优秀
+- Interaction to Next Paint（INP）：从交互到下一次绘制的延时。
+  - 交互体验指标。200ms 内视为优秀（代替 FID）
+- First input delay（FID）：首次输入延迟
+  - 当用户第一次与站点交互（点击按钮）的浏览器响应的时间，100ms内优秀
+  - 后被 INP 代替
+- Time to interactive（TTI）：可交互时间
+  - 用户首次可以与页面进行有意义互动的时间
+  - JS 未执行完、长任务阻塞
+- Total blocking time（TBT）：总阻塞时间
+  - FCP 到 TTI 之间长任务的阻塞时间，总体阻塞用户输入的时间段
+- Cumulative layput shift（CLS）：累积布局偏移
+  - 测量页面视觉稳定性
+- DOMContentLoaded：浏览器已完全加载 HTML，并构建了 DOM 树，但像 `<img>` 和样式表之类的外部资源可能尚未加载完成
+- load：浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等
 
+### 白屏监控
 
+白屏通常指的是页面打开后，浏览器上面的地址栏已经显示完整的 URL，但是页面内容无法渲染，只有白色的空白页面。
 
+导致白屏的原因大致可分为两类:
+
+- 资源加载问题
+- 代码执行错误
+
+从现代前端视角来看，这两种原因都跟当前SPA框架的广泛使用有关。
+
+白屏检测的方法有以下几种
+
+1.检测根节点是否渲染
+
+这种方法的原理是在当前主流 SPA 框架下，DOM 一般挂载在一个根节点之下（比如 `<div id="app"></div>` ），发生白屏后通常是根节点下所有 DOM 被卸载。
+
+2.Mutation Observer 监听 DOM 变化
+
+可以通过 Mutation Observer 来监听 DOM 树变化，从而判断页面是否白屏。
+
+3.页面截图
+
+通过对网页进行截图，对截图进行像素点分析，判断页面是否白屏。
 
 ## 10.算法题：两数之和
 
@@ -873,10 +910,5 @@ function twoSum(target, nums) {
     }
 }
 ```
-
-
-
-
-
 
 
