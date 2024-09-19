@@ -331,17 +331,30 @@ single-spa 没有做这方面的处理，qiankun 实现了这个功能
 
 JS 隔离的也就是要隔离 window 这个全局变量，其他不会有冲突，本身就是在不同函数的作用域下执行的
 
-qiankun 实现 window 隔离有三个思路：
+qiankun 的沙箱机制旨在实现 JavaScript 代码的隔离，主要通过以下几种方式
 
-- 快照：加载子应用前记录下 window 的属性，卸载后恢复到之前的快照
-- diff：加载子应用之后记录对 window 属性的增删改，卸载后恢复
-- **Proxy**：创建一个代理对象，每个子应用访问的时这个代理对象
+三种沙箱实现方式
 
-css 隔离则使用的是 shadow dom，这是浏览器支持的特性，shadow root 下的 dom 的样式不会影响到其他 dom
+- 快照沙箱（Snapshot Sandbox）
+  - 快照沙箱在子应用运行之前对主应用的运行环境进行“快照”，这个快照会保存当前的 `window` 对象及其属性。当子应用完成运行后，快照会用来恢复环境，从而影响到主应用的操作不被直接渗透
+- 代理沙箱（Proxy Sandbox）
+  - 这种方式使用 JavaScript 的 `Proxy` 对象来创建一个新的全局对象作为子应用的环境。这一新对象的所有操作都会被代理，从而确保子应用对全局状态的操作不会影响到主应用的状态
+- 传统沙箱（Legacy Sandbox）
+  - 在某些情况下，Qiankun 也支持传统的沙箱实现方式，通过给每个子应用创建独立的全局作用域，确保其不会与主应用产生交互
 
-> shadow dom 为封装而生。它可以让一个组件拥有自己的「影子」DOM 树，这个 DOM 树不能在主文档中被任意访问，可能拥有局部样式规则，还有其他特性
+qiankun 会为每个子应用创建一个全新的 window 对象。当子应用加载时，qiankun 会使用这个新的对象来代替原始的全局对象，这样任何在子应用中对 `window` 的修改都不会影响主应用。并且，在需要还原时，qiankun 可以很方便地恢复到快照状态
 
-`css沙箱`做了两套`strictStyleIsolation`、`experimentalStyleIsolation`两套适用不同场景的方案
+css 样式隔离实现原理
+
+- shadow Dom 沙箱：shadow dom 为封装而生。它可以让一个组件拥有自己的「影子」DOM 树，这个 DOM 树不能在主文档中被任意访问，可能拥有局部样式规则，还有其他特性
+  - 缺点
+    - 兼容性，老浏览器不支持
+    - 但是 shadow dom 内的样式和外界互不影响，导致挂在弹窗的样式会加不上。父应用也没法设置子应用的样式
+- 作用域沙箱 - scrope css：选择器加了一个 data-qiankun='应用名' 的选择器
+  - 缺点
+    - 挂在 body 的弹窗样式设置不上的问题，因为 qiankun 的 scoped 不支持全局样式
+
+- qiankun 的css沙箱做了两套`strictStyleIsolation`、`experimentalStyleIsolation`适用不同场景的方案
 
 ### 总结
 

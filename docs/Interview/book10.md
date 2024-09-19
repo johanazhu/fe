@@ -149,9 +149,9 @@ git 四大工作区域：workspace（工作区）、Stage（暂存区）、Respo
 
 ## 5. React 合成事件是什么
 
-`React` 事件通过 `JSX` 方式绑定的事件, 比如 `onClick={() => this.handle()}`
+React 基于浏览器事件机制自身实现了一套事件机制，包括事件注册、事件合成、事件冒泡、事件派发。在 React 中这套事件机制被称为合成事件
 
-原生事件使用 `addEventListener`
+简单来说就是 React 模拟原生 DOM 事件所有能力的一个事件对象
 
 ### 为什么需要合成事件？和原生事件相比有什么不同
 
@@ -159,11 +159,19 @@ git 四大工作区域：workspace（工作区）、Stage（暂存区）、Respo
 
 将事件全部统一冒泡到 document 再进行触发
 
-可以统一命名，这样子命名符合 react 编程习惯
+可以统一命名，这样一来命名符合 React 编程习惯
 
 抹平不同浏览器的差异、与内部优先级机制绑定、需要考虑所有浏览器事件
 
 在 React 中，我们绑定的事件并不是原生事件，而是由原生事件合成的 React 事件，比如 click 事件合成为 onClick 事件；比如 blur、change、input 等，合成为 onChange 事件，它统一绑定在 document 上统一管理（react 17 之后就绑定在 root 根节点上，这样做的好处是利于微前端）
+
+React 的所有事件都挂载在 root 根节点上
+
+当真实 DOM 元素触发事件，会冒泡到 root 对象上，再处理 React 事件
+
+所以先执行原生事件，然后处理 React 事件
+
+最后真正执行 root 根节点上挂载的事件
 
 衍生：React17 事件委托更新、事件委托、React事件传播机制
 

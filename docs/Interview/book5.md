@@ -120,11 +120,79 @@ useMemo、useCallback 实现未定的 props 值
 
 
 
-## 6. React：说说你做的组件
+## 6. React：组件库按需加载原理
 
-口述表达题
+通过 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 插件可以快速配置好自动按需加载组件
+
+在项目中的 config 文件中，修改 babel 插件配置，如下所示：
+
+```javascript
+module.exports = {
+    plugins: [
+        ['import', {
+          libraryName: 'vant',
+          libraryDirectory: 'es',
+          style: true
+        }, 'vant']
+    ]
+    
+	plugins: [
+        ["import", {
+            libraryName: "antd", 
+            libraryDirectory: "es",
+            style: "css" }
+        ]
+  	]
+};
+```
+
+这样，babel-plugin-import 就能自动实现按需加载
+
+> `ElementUI`使用的是`babel-plugin-component`
+
+### babel-plugin-import 插件的原理
+
+![image-20240919122206758](D:\Documents\PicGo Files\image-20240919122206758.png)
+
+简单来说，按需加载不过是将 `import {Button} from 'antd'` 的形式转换为 `import Button from 'antd/es/button' `的形式的过程
+
+对于组件本身来说，要支持按需加载功能，就要在打包时支持以 ES 模块化方式导出
+
+比如说 rollup，就可以在 `rollup.config.js` 中配置
+
+```javascript
+export default {
+  input: "./src/index.js",
+  output: [
+    {
+      file: './dist/my-lib-umd.js',
+      format: 'umd',
+      name: 'myLib'   
+      //当入口文件有export时，'umd'格式必须指定name
+      //这样，在通过<script>标签引入时，才能通过name访问到export的内容。
+    },
+    {
+      file: './dist/my-lib-es.js',
+      format: 'es'
+    },
+    {
+      file: './dist/my-lib-cjs.js',
+      format: 'cjs'
+    }
+  ]
+}
+```
 
 
+
+衍生问题：按需加载css
+
+### 按需加载css
+
+`CSS in JS`：
+
+1. 使用方不存在接入成本; 
+2. 2. 配合 sideEffects 可进行 Tree Shaking 
 
 ## 7.html缓存了怎么更新，js和css缓存是怎么更新的
 

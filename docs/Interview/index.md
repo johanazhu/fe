@@ -67,7 +67,7 @@
 - JavaScript 基础：作用域
 - ES6特性：Es Module 和 CommonJs
 - React： useMemo、useCallback是什么
-- React：说说你做的组件
+- React：组件库按需加载原理
 - 浏览器：html缓存了怎么更新，js和css缓存是怎么更新的
 - 场景题：前端埋点 SDK 设计思路
 - 计算机网络：进程和线程的区别
