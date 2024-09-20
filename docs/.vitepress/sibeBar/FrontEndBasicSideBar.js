@@ -25,12 +25,8 @@ export default function FrontEndBasicSideBar() {
                     link: '/Basic/CSS/BFC是什么',
                 },
                 {
-                    text: 'flex',
+                    text: 'flex 从总结到了解',
                     link: '/Basic/CSS/flex',
-                },
-                {
-                    text: 'grid',
-                    link: '/Basic/CSS/grid',
                 },
                 {
                     text: '水平垂直居中',
@@ -65,8 +61,8 @@ export default function FrontEndBasicSideBar() {
                     link: '/Basic/CSS/CSS3新特性',
                 },
                 {
-                    text: '文本溢出',
-                    link: '/Basic/CSS/文本溢出',
+                    text: 'grid',
+                    link: '/Basic/CSS/grid',
                 },
             ],
         },

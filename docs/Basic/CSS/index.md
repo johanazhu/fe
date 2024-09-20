@@ -20,6 +20,8 @@ CSS 方面的知识点，说来说去就这几点：
 
 [设置元素不可见的几种方法](#设置元素不可见的几种方法)
 
+[link和@import区别](#link和@import区别)
+
 [各种布局](#布局)
 
 -   [flex 布局](#flex)
@@ -31,7 +33,7 @@ CSS 方面的知识点，说来说去就这几点：
 
 ## 选择器
 
--   通用选择器（\*）
+-   通配选择器（\*）
 -   标签选择器（div、p、span）
 -   id 选择器（#foo）
 -   class 选择器（.foo）
@@ -48,7 +50,7 @@ CSS 方面的知识点，说来说去就这几点：
 
 根据 css 选择器性质计算权重
 
--   !important > id > 类、属性、伪类选择器 > 标签选择器、伪元素选择器
+-   !important > id > 类、属性、伪类选择器 > 标签选择器、伪元素选择器 > 通配选择器
 
 ## 伪类与伪元素
 
@@ -250,6 +252,26 @@ pointer-events: none
 - transform: translate(0 ,100%)
 - width: 0、height: 0
 - overflow: hidden
+
+## link和@import区别
+
+### 从属关系区别
+
+@import 是 CSS 提供的语法规则，只能导入样式表的作用；link 是 HTML 提供的标签，不仅可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等
+
+### 加载顺序区别
+
+加载页面时，link 标签引入的 CSS 被同时加载；@import 引入的 CSS 将在页面加载完毕后被加载
+
+也就是说，如果 link 和 @import 同时加载的话，link 的优先级大于 @import
+
+### 兼容性区别
+
+@import 是 CSS2.1 提出的语法，所以在 IE5+ 才能识别；link 标签作为 HTML 元素，不存在兼容性问题
+
+### DOM可控性区别
+
+可以通过 JS 操作 DOM ，插入link标签来改变样式；由于 DOM 方法是基于文档的，无法使用`@import`的方式插入样式
 
 
 

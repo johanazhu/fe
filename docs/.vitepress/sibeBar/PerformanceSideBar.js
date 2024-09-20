@@ -40,6 +40,10 @@ export default function PerformanceSideBar() {
                     text: '性能优化从零到一',
                     link: '/Performance/性能优化从零到一',
                 },
+                {
+                    text: '性能优化指标',
+                    link: '/Performance/性能优化指标',
+                },
             ],
         },
     ];
