@@ -203,7 +203,7 @@ qiankun 做了样式隔离，有 shadow dom 和 scoped 两种方案，但都有�
 
 
 
-衍生问题：为什么不用 iframe、父子应用如何通讯、什么是 postmessage
+衍生问题：为什么不用 iframe、父子应用如何通讯、什么是 postmessage、其他微前端方案
 
 ### 为什么不用 iframe
 
@@ -258,11 +258,20 @@ postmenssage 是 HTML 引入的一种跨窗口通信机制，解决了以下爱�
 - 页面与嵌套的 iframe 之间的消息传递
 - 多窗口之间的跨域数据传递
 
+### 其他微前端方案
 
+京东：**[micro-app](https://github.com/micro-zoe/micro-app)**
 
+- 基于类WebComponent \+ HTML Entry
+- **WebComponent**：web原生组件，它有两个核心组成部分：CustomElement和ShadowDom。CustomElement用于创建自定义标签，ShadowDom用于创建阴影DOM，阴影DOM具有天然的样式隔离和元素隔离属性。由于WebComponent是原生组件，它可以在任何框架中使用，理论上是实现微前端最优的方案。但WebComponent有一个无法解决的问题 - ShadowDom的兼容性非常不好，一些前端框架在ShadowDom环境下无法正常运行，尤其是react框架。
+- **类WebComponent**：就是使用CustomElement结合自定义的ShadowDom实现WebComponent基本一致的功能。
+- 数据通讯：基于发布订阅+CustomEvent
 
+![micro-app vs qiankun](https://pub-15dc9987604d4311befe731fecc8adb9.r2.dev/074dbf280018e0db9efb41d6cc28d0e3.png)
 
+无界：
 
+- 基于 WebComponent 容器 + iframe
 
 ## 10. 算法题：二叉树的前序遍历
 

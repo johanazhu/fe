@@ -126,6 +126,7 @@
         ],
         right: [
             [{ title: '面试真题',  link:'/Interview/' }],
+            [{ title: '提问技巧',  link:'/Interview/talk/' }],
         ]
     },
     { title:'源码读书课程',
@@ -144,8 +145,6 @@
     },
     { title:'其他',
         right: [
-            [{ title: '软实力',  link:'/Others/' }],
-            [{ title: '简历面试',  link:'/Others/Resume' }],
             [{ title: '关于本网站',  link:'/About/' }]
         ],
     },
