@@ -14,22 +14,20 @@ import { fabric } from 'fabric-pure-browser'
 // const  textColor = 'white'
 
 
-// const bgColor = [
-//     '#ffd803',
-//     '#e3f6f5',
-//     '#bae8e8'
-// ]
+const bgColor = [
+    '#78b1df', '#e48484', '#c28976'
+]
 // const lineColor = '#2d334a'
 // const textColor = '#272343'
 // const infoBg = '#595959';
 // const infoTextColor = 'white';
 
-const bgColor = [
-    '#3da9fc',
-    '#90b4ce',
-    '#ef4565'
-]
-const lineColor = '#094067'
+// const bgColor = [
+//     '#3da9fc',
+//     '#90b4ce',
+//     '#ef4565'
+// ]
+const lineColor = '#69b1e4'
 const textColor = '#fffffe'
 const infoBg = '#595959';
 const infoTextColor = 'white';
@@ -49,13 +47,13 @@ export const RECT = {
 }
 function drawInfo() {
     // 🔥 ❤️ 约翰个人觉得前端必须学习的知识点
-    const title = `✅ 约翰已经掌握的前端知识点
-🍒 约翰一知半解的知识点
-⭐ 收藏的内容，但还没来得及研究
-🍋 个人还没来得及学习的知识`
-    const x = 35
+    const title = `✅ 前端必须已经掌握的前端知识点
+🔥 高级前端需要掌握的知识点
+⭐ 全栈开发需要掌握的知识点
+🍋 个人还没涉略的领域`
+    const x = 0
     const y = 20
-    const width = 220
+    const width = 240
     const height = 100
     const { infoTextColor, fontSize, origin, infoBg } = RECT
     const rect = new fabric.Rect({
@@ -126,7 +124,7 @@ function drawQrcode(canvas) {
         })
 
         const group = new fabric.Group([rect, text], {
-            left: 480,
+            left: 475,
             top: y,
             lockMovementX: true,
             lockMovementY: true
@@ -300,14 +298,13 @@ function drawRect(item, canvas) {
 
         })
     } else if (typeof title == 'object') {
-        text = new fabric.Text(title.title, {
+        text = new fabric.Text(title?.text || title?.title, {
             fill: textColor,
             originY: origin,
             originX: origin,
             fontWeight: '500',
             fontSize: fontSize - depth * 2,
             fontFamily: RECT.fontFamily
-
         })
     }
 

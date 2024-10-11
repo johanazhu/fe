@@ -16,7 +16,7 @@
 
 - [两个数组对象的交集，并集](#两个数组对象的交集，并集)
 
-[算数组中出现 value 的数量](#算数组中出现 value 的数量)
+[算数组中出现 value 的数量](#算数组中出现value的数量)
 
 [进度条](#进度条)
 
@@ -633,7 +633,7 @@ let arr2 = [ 123, "123455", {a: 2}, [1, 2, 3], "hello", "webank" ];
 
 
 
-## 算数组中出现 value 的数量
+## 算数组中出现value的数量
 
 ```javascript
 let a = ['a','b','hello',3,'a','hello','ab',4,'b','a','a',3,4,1,2,'b']
@@ -725,3 +725,4 @@ function countFn(arr) {
 </html>
 ```
 
+可见 [demo](https://demo.azhubaby.com/进度条.html)

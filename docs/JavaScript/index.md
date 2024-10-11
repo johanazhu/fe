@@ -12,6 +12,192 @@
 
 如果把前端知识点类比中国地图上的城市省份， JavaScript 基础就是”长三角地区“，这是中国最重要的地方之一，也是一名高级前端必备的知识点
 
+
+<RoadMap :data="[
+    { title:'JavaScript', x:300, y:80 ,download:true},
+    { title:'JavaScript 是什么', link:'/JavaScript/JavaScript是什么', 
+    // y:1, x:240, 
+        right: [
+            ['由什么组成'],
+            ['ES版本'],
+        ],
+    },
+    { title:'由什么组成',  link:'/JavaScript/JavaScript由什么组成',
+        left: [
+            ['数据类型'],
+            ['类型区别'],
+            [{ title: '类型判断' },
+                // [-50],
+                [
+                    ['typeof'],
+                    [{ title: '🔥instanceof',  link:'/JavaScript/instanceof——找祖籍' }],
+                    ['constructor'],
+                    ['Object.prototype'],
+                ]
+            ],
+        ]
+    },
+    { title:'一切皆对象',  link:'/JavaScript/一切皆对象',
+        right: [
+            ['定义'],
+            ['基本包装类型'],
+        ]
+    },
+    { title:'Object（对象）',  link:'/JavaScript/Object',
+        left: [
+            ['属性与方法'],
+            [{ title: '创建对象' },
+                // [-50],
+                [
+                    ['对象直接量'],
+                    [{ title: '🔥关键字 new',  link:'/JavaScript/new做了什么' }],
+                    [{ title: '🔥Object.create',  link:'/JavaScript/Object.create' }],
+                ]
+            ],
+        ],
+         right: [
+           [{ title: '🔥拷贝的秘密'},
+                [
+                    ['深浅拷贝的区别'],
+                    ['扩展运算符'],
+                    ['Object.assign'],
+                    ['slice'],
+                    ['concat'],
+                    ['Array.from'],
+                    ['JSON.stringify'],
+                    ['structuredClone'],
+                ]
+           ]
+        ]
+    },
+    { title:'原型',  link:'/JavaScript/原型',
+        left: [
+            ['原型是什么'],
+            ['为什么要有原型'],
+            ['原型链又是什么'],
+        ]
+    },
+    { title:'继承',  link:'/JavaScript/继承',
+        left: [
+            ['原型链继承'],
+            ['构造函数继承'],
+            ['组合继承'],
+            ['原型式继承']
+        ],
+        right: [
+            ['寄生式继承'],
+            ['寄生组合式继承'],
+            ['类继承'],
+        ]
+    },
+    { title:'Function（函数）',  link:'/JavaScript/Function',
+        left: [
+           [{ title: '🔥JS中的始皇',  link:'/JavaScript/JavaScript中的始皇' }],
+        ],
+        right: [
+            ['属性和方法'],
+            ['创建函数'],
+            ['调用函数'],
+            ['一等公民'],
+        ],
+    },
+    { title:'作用域',  link:'/JavaScript/作用域',
+        left: [
+            ['作用域是什么'],
+            ['词法/动态作用域'],
+            [{ title: '作用域中的分类'},
+                [
+                    ['块级作用域'],
+                    [{ title: '🔥立即执行函数',  link:'/JavaScript/立即执行函数（IIFE）' }]
+                ]
+            ],
+        ],
+    },
+    { title:'this 关键字',  link:'/JavaScript/this关键字',
+        right: [
+            [{ title: '调用方式'},
+                [
+                    ['对象方法调用'],
+                    ['函数调用'],
+                    ['箭头函数调用'],
+                    ['构造函数调用'],
+                    ['call'],
+                    ['apply'],
+                    ['bind'],
+                ]
+            ],
+            ['函数的执行环境'],
+            ['this的作用'],
+        ],
+    },
+    { title: 'call、apply、bind',  link:'/JavaScript/call、apply、bind三大将',
+        left: [
+            ['call'],
+            ['apply'],
+            ['bind'],
+        ],
+    },
+    { title: '词法环境',  link:'/JavaScript/词法环境',
+        right: [
+            ['JS编译过程'],
+            ['由什么组成'],
+            ['变量提升'],
+        ],
+    },
+    { title: '上下文与调用栈',  link:'/JavaScript/执行上下文与调用栈',
+        left: [
+            ['上下文是什么'],
+            ['执行生命周期'],
+            ['执行步骤'],
+            [{ title: '🔥作用域VS上下文',  link:'/JavaScript/作用域与执行上下文' }],
+        ],
+    },
+    { title: '闭包',  link:'/JavaScript/闭包',
+        right: [
+            ['闭包的定义'],
+            ['原理'],
+            [{ title: '应用'},
+                [
+                    ['作为返回值'],
+                    ['作为参数传递'],
+                    ['私有实例变量'],
+                    [{ title: '🔥防抖与节流',  link:'/JavaScript/防抖与节流' }],
+                    [{ title: '🔥函数式编程',  link:'/JavaScript/函数式编程' }],
+                    ['面向事件编程'],
+                    ['模块化'],
+                    ['React hooks'],
+                ]
+            ],
+        ],
+    },
+    { title: '垃圾回收机制',  link:'/JavaScript/垃圾回收机制',
+        left: [
+            ['新生代'],
+            ['老生代'],
+            ['引用计数'],
+        ],
+    },
+    { title: '数组（Array）',  link:'/JavaScript/数组',
+        right: [
+            ['属性和方法'],
+            ['哪些是纯函数'],
+            ['判断是否是数组'],
+        ],
+    },
+       { title: '循环都来这儿',  link:'/JavaScript/循环都来这儿',
+        left: [
+            ['for 循环'],
+            ['for(reverse) 循环'],
+            ['for...in'],
+            ['for...of'],
+            ['forEach'],
+            ['map'],
+        ],
+    },
+    { title:'完' },
+]" />
+
+
 本章会讲解 JavaScript 中的基础知识，例如会在开篇讲 [JavaScript 是什么](./JavaScript是什么.md)，介绍它是什么，语言的特点等等。之后再讲 [JavaScript 由什么组成](./JavaScript由什么组成.md)。这里会讲解语言的构成，引出数据类型。JavaScript 的数据类型由基本类型和引用类型构成，从两者的差异到如何辨别两者，引出四种辨别方法：typeof（操作符）、instanceof（运算符）、constructor（构造方法）、Object.prototype.toString.call(source) （原型方法），总结它们的优缺点，最后手写一个判断数据类型的方法——isType
 
 有句话说：在 JavaScript 中，一切皆对象。理解了对象，就理解了 JavaScript。所以我们会以[一切皆对象](./一切皆对象.md) 为话题验证此观点是否正确

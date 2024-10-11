@@ -106,21 +106,21 @@ export default function reactSideBar() {
                 },
             ],
         },
-        {
-            text: '手写',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: '手写',
-                    link: '/React/手写/',
-                },
-                {
-                    text: '手写React',
-                    link: '/React/手写/手写React',
-                },
-            ],
-        },
+        // {
+        //     text: '手写',
+        //     collapsable: false,
+        //     sidebarDepth: 0,
+        //     items: [
+        //         {
+        //             text: '手写',
+        //             link: '/React/手写/',
+        //         },
+        //         {
+        //             text: '手写React',
+        //             link: '/React/手写/手写React',
+        //         },
+        //     ],
+        // },
         {
             text: 'React生态',
             collapsable: false,

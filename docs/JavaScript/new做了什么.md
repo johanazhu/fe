@@ -84,7 +84,7 @@ const user3 = new3(User, 'johnny', 'joestar')
 
 
 
-## 附录：
+## 附录
 
 在 JavaScript 高级程序设计第四版对 new 调用构造函数会执行的操作描述：
 

@@ -7,7 +7,7 @@
 
 <RoadMap :data="[
     { title:'三五知识图谱', x:300, y:80 ,download:true},
-    { title:'JavaScript', y:130, link:'/JavaScript/',
+    { title:'✅JavaScript', y:130, link:'/JavaScript/',
     left: [
       [{ title: '面试篇',  link:'/JavaScript/面试题/' }],
       [{ title: '基础篇',  link:'/JavaScript/' }],
@@ -15,47 +15,31 @@
       [{ title: '高阶篇', link:'/JavaScript/高阶/' }],
     ],
     right: [
-        [{ title: 'TypeScript', link:'/TypeScript/' }],
-    ],
-    } ,
-    { title:'React',  link:'/React/',
+        [{ title: '🔥TypeScript', link:'/JavaScript/TypeScript/' }],
+    ],},
+    { title:'✅ES6', link:'/ES6/', 
+    // y:1, x:240, 
         right: [
+            [{ title: 'ES6 面试题',  link:'/ES6/面试题/' }],
+            [{ title: 'ES6 知识点',  link:'/ES6/' }],
+            [{ title: '🔥Promise', link:'/ES6/Promise/' }],
+        ],
+    },
+    { title:'✅React',  link:'/React/',
+        left: [
             [{ title: '面试篇',  link:'/React/面试题/' }],
             [{ title: '基础篇',  link:'/React/' }],
             [{ title: '生态篇', link:'/React/生态/' }],
         ]
     },
-    { title:'大前端',  link:'/WebApp/', y:220, x:-100,
-        left: [
-            [{ title: '移动H5开发',  link:'/WebApp/' }],
-            [{ title: '微信公众号',  link:'/WebApp/WeChat/' }],
-            [{ title: '微信小程序', link:'/WebApp/MiniApp/' }],
-            [{ title: 'Flutter',  link:'/WebApp/Flutter/' }],
-            [{ title: 'ReactNative',  link:'/WebApp/ReactNative/' }],
-        ],
-    },
-    { title:'前端工程化', y:1, x:240,
-        right: [
-              [{ title: 'webpack',  link:'/webpack/' }],
-            [{ title: '微前端',  link:'/Engineered/MicroFrontend/' }],
-            [{ title: '代码规范',  link:'/Engineered/StandardGuide/' }],
-        ],
-    },
-    { title:'ES6', link:'/ES6/', x:-162,y:170,
-        right: [
-            [{ title: 'ES6 面试题',  link:'/ES6/面试题/' }],
-            [{ title: 'ES6 知识点',  link:'/ES6/' }],
-            [{ title: 'Promise 专栏', link:'/ES6/Promise/' }],
-        ],
-    },
     { title:'浏览器', link:'/Browser/',
         left: [
             [{ title: 'Browser 面试题',  link:'/Browser/面试题/' }],
-            [{ title: 'Browser 知识点',  link:'/Browser/' }],
+            [{ title: '🔥Browser 知识点',  link:'/Browser/' }],
         ],
         right: [
-            [{ title: 'HTTP', link:'/HTTP/'}],
-            [{ title: '性能优化',  link:'/Performance/' }]
+            [{ title: '🔥HTTP', link:'/HTTP/'}],
+            [{ title: '🔥性能优化',  link:'/Performance/' }]
         ]
     },
     { title:'⭐后端之海', x: 10, y:200, link:'/Browser/',
@@ -99,6 +83,24 @@
             ],
         ],
     },
+    { title:'前端工程化',
+    //  x:-162,y:170,
+        right: [
+              [{ title: 'webpack',  link:'/webpack/' }],
+            [{ title: '🔥微前端',  link:'/Engineered/MicroFrontend/' }],
+            [{ title: '代码规范',  link:'/Engineered/StandardGuide/' }],
+        ],
+    },
+    { title:'大前端',  link:'/WebApp/',
+    //  y:220, x:-100,
+        left: [
+            [{ title: '移动H5开发',  link:'/WebApp/' }],
+            [{ title: '微信公众号',  link:'/WebApp/WeChat/' }],
+            [{ title: '微信小程序', link:'/WebApp/MiniApp/' }],
+            [{ title: '🍋Flutter',  link:'/WebApp/Flutter/' }],
+            [{ title: '🍋RN',  link:'/WebApp/ReactNative/' }],
+        ],
+    },
     { title:'运维天下', y:220,
         left: [
             [{ title: 'Linux',  link:'/Linux/' }],
@@ -118,16 +120,19 @@
             [{ title: '设计模式',  link:'/DesignPattern/' }],
         ]
     },
-    { title:'基础三件套',
+    { title:'✅基础三件套',
         left: [
             [{ title: 'HTML',  link:'/Basic/HTML/' }],
             [{ title: 'CSS',  link:'/Basic/CSS/' }],
             [{ title: 'JQuery',  link:'/Basic/JQuery/' }]
-        ],
+        ]
+    },
+    {
+        title:'🔥前端十面',
         right: [
             [{ title: '面试真题',  link:'/Interview/' }],
-            [{ title: '提问技巧',  link:'/Interview/talk/' }],
-        ]
+            [{ title: '面试向我看齐',  link:'/Interview/talk/' }],
+        ],
     },
     { title:'源码读书课程',
         left: [
@@ -143,10 +148,5 @@
             [{ title: '读书笔记',  link:'/Read/book/' }],
         ]
     },
-    { title:'其他',
-        right: [
-            [{ title: '关于本网站',  link:'/About/' }]
-        ],
-    },
-    { title:'程序员的归宿' }
+    { title:'关于本网站',link:'/About/' },
 ]" />
