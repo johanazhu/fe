@@ -4,7 +4,6 @@
 
 ## 1.CSS 选择器有哪些
 
-考察点：CSS 选择器
 id 选择器、class 选择器、标签选择器、通用选择器、属性选择器、相连选择器、子选择器、后代选择器、伪类选择器
 
 ## 2. 手写 Object.create
@@ -23,8 +22,6 @@ function create(proto) {
 
 ## 3. 作用域
 
-考察点：作用域
-
 JavaScript 的作用域是词法作用域，其特点是在那里定义它就作用在那里，与定义位置有关而与调用位置无关
 
 作用域分为全局作用域、函数作用域、块级作用域
@@ -42,8 +39,6 @@ JavaScript 的作用域是词法作用域，其特点是在那里定义它就作
 ## 4.ES Module 和 CommonJs
 
 类似问题：前端模块化机制有哪些
-
-考察点：模块化历程 
 
 顺序：commonJS-ADM/CMD-ES6
 
@@ -64,8 +59,6 @@ CommonJS 模块是运行时加载，ES6 模块是编译时输出接口
 
 
 ## 5.React： useMemo、useCallback是什么
-
-考察点：useCallback、useMemo
 
 useCallback：缓存函数，结合 memo 能让子组件不重复渲染
 
@@ -196,8 +189,6 @@ export default {
 
 ## 7.html缓存了怎么更新，js和css缓存是怎么更新的
 
-考察点：HTTP缓存
-
 一般来说，html 不缓存，js、css 缓存，html 中会加载 js 和 css，后两者会以哈希名的方式引入到 html 中
 
 html 被缓存了就是要让缓存失效，一般有两种解法，一如果资源都在 OSS 或者 CDN 上，那么在 OSS 或者 CDN 上设置过期时间；二在 nginx 中设置过期时间
@@ -211,8 +202,6 @@ HTTP先走强缓存，Cache-Control失效，走协商缓存ETag，ETag未变，�
 
 
 ## 8.埋点 SDK 设计思路
-
-考察点：对 埋点SDK 的理解
 
 设计到日制和埋点
 
@@ -273,8 +262,6 @@ window.addEventListener('unhandledrejection', event => {
 
 ## 9.进程和线程的区别
 
-考察点：进程和线程
-
 进程是一个应用起来的实例，线程是运行在进程中的最小单位
 
 浏览器是是多进程架构，其中有一个浏览器主进程，多个渲染进程（一个 Tab 就是一个进程）
@@ -287,4 +274,23 @@ GUI 渲染线程和 JS 引擎线程是互斥的。GUI 负责渲染页面，JS引
 
 ## 10. 算法题：无重复字符的最长子串
 
-考察点：无重复字符的最长子串
+```javascript
+var lengthOfLongestSubstring = function(s) {
+    const memo = new Set();
+    let longestLen = 0;
+    let len = s.length;
+    let slow = 0;
+    for (let fast = 0; fast < len; fast++) {
+        let char = s[fast]
+
+        while(memo.has(char) && slow < len) {
+            // 删掉重复的字母
+            memo.delete(s[slow])
+            slow++
+        }
+        longestLen = Math.max(longestLen, fast - slow + 1)
+        memo.add(char)
+    }  
+    return longestLen;
+};
+```

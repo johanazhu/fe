@@ -4,8 +4,6 @@
 
 ## 1.重绘和回流
 
-考察点：重绘、回流
-
 重绘是指当页面中元素的样式发生改变（如颜色、阴影、边框等）而不影响它在文档流中的位置时，浏览器会对这些元素进行重新绘制，这个过程称为重绘
 
 回流是指页面中元素的尺寸、结构或某些属性发生改变时，浏览器需要重新计算元素的大小和位置，然后再重新渲染页面的过程
@@ -47,8 +45,6 @@
 
 ## 2. 手写 instanceof 
 
-考察点：instanceof 原理
-
 相关文章：[instanceof——找祖籍](../JavaScript/instanceof——找祖籍)
 
 ```javascript
@@ -71,8 +67,6 @@ function myInstanceof(left, right) {
 
 
 ## 3.history 和 hash 两种路由最大的区别是什么
-
-考察点：前端路由实现
 
 前端单页面路由的两种方案为 history 和 hash
 
@@ -355,8 +349,6 @@ function LazyMan(val) {
 
 ## 8.浏览器：错误捕获
 
-考察点：错误捕获的几种方式
-
 遇到错误捕获，首先回答的是使用 try-catch 捕获，但它只能捕获同步代码中的异常，对于异步代码（如 Promise），如果使用 try-catch ，则无法捕获其中的错误。但可以把 promise 语法写成 async/await 的形式，就可以使用 try-catch了
 
 ### 全局错误捕获
@@ -397,8 +389,27 @@ React 中实现错误边界挫力组件级别的错误，ErrorBoundary
 
 
 
-
-
 ## 10.算法题：合并两个有序数组
 
-考察点：合并两个有序数组
+```javascript
+var merge = function(nums1, m, nums2, n) {
+    let i = m - 1, j = n - 1, k = m + n - 1;
+    while(i >= 0 && j >= 0) {
+        if (nums1[i] >= nums2[j]) {
+            nums1[k] = nums1[i]
+            i--
+            k--
+        } else {
+            nums1[k] = nums2[j]
+            j--
+            k--
+        }
+    }
+
+    while(j >= 0) {
+        nums1[k] = nums2[j]
+        j--
+        k--
+    }
+};
+```

@@ -68,19 +68,13 @@ Function.prototype.mybind = function (context, ...args1) {
 
 
 
-### 衍生问题
+衍生问题：Symbol、数据类型、instanceof、new
 
-Symbol、数据类型、instanceof、new
-
-
-
-#### Symbol
+### Symbol
 
 唯一值，ES6新增
 
-
-
-#### 数据类型
+### 数据类型
 
 分为基本类型和引用类型
 
@@ -92,9 +86,7 @@ Symbol、数据类型、instanceof、new
 
 判断数据类型的方式有四种： typeof、instanceof、constructor、Object.prototype.toString.call()
 
-
-
-#### 手写 instanceof
+### 手写 instanceof
 
 ```javascript
 function myInstanceof (left, right) {
@@ -110,9 +102,7 @@ function myInstanceof (left, right) {
 }
 ```
 
-
-
-#### 手写 new
+### 手写 new
 
 ```javascript
 function new2(Constructor, ...args) {

@@ -86,7 +86,6 @@ function myApply(context === window, args) {
 
 ## 3. 继承
 
-考察点：继承
 原型链继承、借用构造函数继承、组合继承、原型式继承（Object.create）、寄生式继承、寄生组合式继承
 
 
@@ -119,10 +118,7 @@ React18之前：
 
 ## 6.Redux 中间件机制
 
-考察点：redux 核心逻辑
-
-增强器
-applyMiddleware 函数，装饰器模式
+增强器、applyMiddleware 函数，装饰器模式
 
 
 
@@ -275,7 +271,19 @@ postmenssage 是 HTML 引入的一种跨窗口通信机制，解决了以下爱�
 
 ## 10. 算法题：二叉树的前序遍历
 
-二叉树的前序、中序、后序遍历
+```javascript
+var preorderTraversal = function(root) {
+    let ret = [];
+    const preorder = (root) => {
+        if (!root) return;
+        ret.push(root.val)
+        preorder(root.left)
+        preorder(root.right)
+    }
+    preorder(root)
+    return ret;
+};
+```
 
 
 

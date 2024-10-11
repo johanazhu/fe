@@ -4,8 +4,6 @@
 
 ## 1.CSS 样式隔离手段
 
-考察点：CSS 样式隔离手段
-
 BEM
 
 - BEM 命名法，不用的项目加上前缀，通过命名规则避免冲突
@@ -59,8 +57,6 @@ qiankun 主要用 shadow DOM 和 scoped css 实现样式隔离
 - scoped 的方案是给选择器加上一个 data-qiankun ='应用名' 的选择器，这样父应用能设置子应用样式，也能隔离样式，但是同样有挂在 body 的弹窗样式设置不上的问题，因为 qiankun 的 scoped 不支持全局样式
 
 ## 2. 手写柯里化
-
-考察点：柯里化
 
 ```javascript
 function curry(fn)  {
@@ -279,8 +275,6 @@ React 中如何实现
 
 ## 7.前端安全：XSS攻击是什么
 
-考察点： 前端安全
-
 XSS 攻击，即跨站脚本攻击（Cross-Site Scripting），是一种网络安全漏洞
 
 前端最熟悉的攻击方式
@@ -330,8 +324,6 @@ CSRF 不注入恶意脚本，侧重于请求伪造，在用户不知情的情况
 
 ## 8.tree shaking 是什么
 
-考察点：tree shaking
-
 Tree shaking字面意就是“摇树”，将没有使用到的代码全部抖落下来，删除没有使用的代码，从而减少代码体积
 
 如何开启
@@ -353,3 +345,16 @@ ES6 模块依赖关系是确定的，和运行时的状态无关，它会进行�
 
 
 ## 10.算法题：爬楼梯
+
+```javascript
+var climbStairs = function(n) {
+    let p = 0, q = 0, r = 1;
+    for (let i = 0; i < n; ++i) {
+        p = q;
+        q = r;
+        r = p + q;
+    }
+    return r;
+};
+```
+

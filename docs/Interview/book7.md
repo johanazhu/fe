@@ -12,8 +12,6 @@
 
 
 
-
-
 ## 2. 手写 ajax
 
 ```javascript
@@ -297,5 +295,21 @@ intersectionObserver 交叉观察器，异步
 
 ## 10.算法题：全排列
 
-考察点：全排列
+```javascript
+var permute = function(nums) {
+    const list = []
+    backtrack(list, [], nums)
+    return list;
+};
+
+function backtrack(list, tempList, nums) {
+    if (tempList.length === nums.length) return list.push([...tempList])
+    for (let i = 0; i < nums.length; i++) {
+        if (tempList.includes(nums[i])) continue;
+        tempList.push(nums[i])
+        backtrack(list, tempList, nums)
+        tempList.pop()
+    }
+}
+```
 
