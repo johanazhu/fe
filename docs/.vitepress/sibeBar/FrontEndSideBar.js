@@ -21,7 +21,7 @@ export default function FrontEndSideBar() {
                     link: '/JavaScript/面试题/',
                 },
                 {
-                    text: 'JavaScript',
+                    text: 'JavaScript基础',
                     link: '/JavaScript/',
                 },
                 {
@@ -31,6 +31,29 @@ export default function FrontEndSideBar() {
                 {
                     text: '高阶',
                     link: '/JavaScript/高阶/',
+                },
+                {
+                    text: '🔥TypeScript',
+                    link: '/JavaScript/TypeScript/',
+                },
+            ],
+        },
+        {
+            text: 'ES6',
+            collapsable: false,
+            sidebarDepth: 0,
+            items: [
+                {
+                    text: '面试题',
+                    link: '/ES6/面试题/',
+                },
+                {
+                    text: 'ES6',
+                    link: '/ES6/',
+                },
+                {
+                    text: '🔥Promise',
+                    link: '/ES6/Promise/Promise',
                 },
             ],
         },
@@ -48,17 +71,36 @@ export default function FrontEndSideBar() {
                     link: '/React/',
                 },
                 {
-                    text: '手写',
-                    link: '/React/手写/',
-                },
-                {
                     text: '生态',
                     link: '/React/生态/',
                 },
             ],
         },
         {
-            text: '后端之海',
+            text: '浏览器',
+            collapsable: false,
+            sidebarDepth: 0,
+            items: [
+                {
+                    text: '面试题',
+                    link: '/Browser/面试题/',
+                },
+                {
+                    text: '🔥Browser',
+                    link: '/Browser/',
+                },
+                {
+                    text: '🔥HTTP',
+                    link: '/HTTP/',
+                },
+                {
+                    text: '🔥性能优化',
+                    link: '/Performance/',
+                },
+            ],
+        },
+        {
+            text: '⭐后端之海',
             collapsable: false,
             sidebarDepth: 0,
             items: [
@@ -105,33 +147,6 @@ export default function FrontEndSideBar() {
             ],
         },
         {
-            text: '大前端',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: 'WebApp',
-                    link: '/WebApp/',
-                },
-                {
-                    text: 'WeChat',
-                    link: '/WebApp/WeChat/',
-                },
-                {
-                    text: 'Flutter',
-                    link: '/WebApp/Flutter/',
-                },
-                {
-                    text: 'MiniApp',
-                    link: '/WebApp/MiniApp/',
-                },
-                {
-                    text: 'ReactNative',
-                    link: '/WebApp/ReactNative/',
-                },
-            ],
-        },
-        {
             text: '前端工程化',
             collapsable: false,
             sidebarDepth: 0,
@@ -141,7 +156,7 @@ export default function FrontEndSideBar() {
                     link: '/webpack/',
                 },
                 {
-                    text: '微前端',
+                    text: '🔥微前端',
                     link: '/Engineered/MicroFrontend/',
                 },
                 {
@@ -151,73 +166,44 @@ export default function FrontEndSideBar() {
             ],
         },
         {
-            text: 'ES6',
+            text: '大前端',
             collapsable: false,
             sidebarDepth: 0,
             items: [
                 {
-                    text: '面试题',
-                    link: '/ES6/面试题/',
+                    text: '移动H5开发',
+                    link: '/WebApp/',
                 },
                 {
-                    text: 'ES6',
-                    link: '/ES6/',
+                    text: '微信公众号',
+                    link: '/WebApp/WeChat/',
                 },
                 {
-                    text: 'Promise',
-                    link: '/ES6/Promise/Promise',
+                    text: '微信小程序',
+                    link: '/WebApp/MiniApp/',
+                },
+                {
+                    text: '🍋Flutter',
+                    link: '/WebApp/Flutter/',
+                },
+                {
+                    text: '🍋ReactNative',
+                    link: '/WebApp/ReactNative/',
                 },
             ],
         },
         {
-            text: '浏览器',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: '面试题',
-                    link: '/Browser/面试题/',
-                },
-                {
-                    text: 'Browser',
-                    link: '/Browser/',
-                },
-            ],
-        },
-        {
-            text: 'HTTP',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: '面试题',
-                    link: '/HTTP/面试题/',
-                },
-                {
-                    text: 'HTTP',
-                    link: '/HTTP/',
-                },
-            ],
-        },
-        {
-            text: '性能优化',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: '性能优化',
-                    link: '/Performance/',
-                },
-            ],
-        },
-        {
-            text: '面试真题',
+            text: '🔥前端十面',
             collapsable: false,
             sidebarDepth: 0,
             items: [
                 {
                     text: '面试真题',
                     link: '/Interview/',
+                },
+                {
+                    text: '面试向我看齐',
+                    link: '/Interview/talk',
                 },
             ],
         },
@@ -312,10 +298,6 @@ export default function FrontEndSideBar() {
                 {
                     text: '关于',
                     link: '/About/',
-                },
-                {
-                    text: '软实力',
-                    link: '/Others/',
                 },
             ],
         },
