@@ -33,10 +33,6 @@ export default function reactSideBar() {
                     link: '/React/React快速了解',
                 },
                 {
-                    text: '核心API',
-                    link: '/React/核心API',
-                },
-                {
                     text: 'Fiber',
                     link: '/React/Fiber',
                 },
@@ -119,38 +115,38 @@ export default function reactSideBar() {
                     text: '从Redux说起，到手写，再到状态管理',
                     link: '/React/生态/从Redux说起，到手写，再到状态管理',
                 },
-                {
-                    text: 'ReactRedux',
-                    link: '/React/生态/ReactRedux',
-                },
-                {
-                    text: 'Redux-Sage',
-                    link: '/React/生态/Redux-Sage',
-                },
-                {
-                    text: 'Redux-thunk',
-                    link: '/React/生态/Redux-thunk',
-                },
-                {
-                    text: 'Dva',
-                    link: '/React/生态/Dva',
-                },
-                {
-                    text: 'Mobx',
-                    link: '/React/生态/Mobx',
-                },
-                {
-                    text: '状态管理',
-                    link: '/React/生态/状态管理',
-                },
+                // {
+                //     text: 'ReactRedux',
+                //     link: '/React/生态/ReactRedux',
+                // },
                 {
                     text: 'ReactRouter',
                     link: '/React/生态/ReactRouter',
                 },
-                {
-                    text: 'Immutable',
-                    link: '/React/生态/Immutable',
-                },
+                // {
+                //     text: 'Redux-Sage',
+                //     link: '/React/生态/Redux-Sage',
+                // },
+                // {
+                //     text: 'Redux-thunk',
+                //     link: '/React/生态/Redux-thunk',
+                // },
+                // {
+                //     text: 'Dva',
+                //     link: '/React/生态/Dva',
+                // },
+                // {
+                //     text: 'Mobx',
+                //     link: '/React/生态/Mobx',
+                // },
+                // {
+                //     text: '状态管理',
+                //     link: '/React/生态/状态管理',
+                // },
+                // {
+                //     text: 'Immutable',
+                //     link: '/React/生态/Immutable',
+                // },
             ],
         }
     ];

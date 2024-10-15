@@ -85,7 +85,6 @@
 - [React常见面试题汇总](https://fe.azhubaby.com/React/面试题/)
 - [渲染十万条数据解决方案](https://fe.azhubaby.com/React/面试题/渲染十万条数据解决方案.html)
 - [React 快速了解](https://fe.azhubaby.com/React/React快速了解.html)
-- [React 核心 API](https://fe.azhubaby.com/React/核心API.html)
 - [Fiber 的作用和原理](https://fe.azhubaby.com/React/Fiber.html)
 - [VirtualDOM](https://fe.azhubaby.com/React/VirtualDOM.html)
 - [Diff](https://fe.azhubaby.com/React/Diff.html)
