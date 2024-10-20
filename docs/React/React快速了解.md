@@ -63,7 +63,7 @@ Redux 的作者的 [博客](https://overreacted.io/) ，上面有很多易错点
 
 Class 中的 Render 方法是个纯函数，不做任何直接渲染的事情。只是返回了一些指令，由 React 对这些指令做真正的 DOM 操作
 
-JSX 其实是 `React.createElement(compoent, props,...children)` 函数的语法糖。如下 JSX 代码：
+JSX 其实是 `React.createElement(component, props,...children)` 函数的语法糖。如下 JSX 代码：
 
 ```jsx
 <MyButton color="blue" shadowSize={2}>
