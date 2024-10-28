@@ -4,64 +4,53 @@
 >
 > 没有阴谋，都是阳谋，所谓阴谋都是掌握的信息不够
 
-Linux 是一个前端通往编程高手必不可少的技能之一。笔者在写这篇文章时对 Linux 的认识也许不如后端大牛们，这一 Linux 系列只是作为前端的笔记
+如果要在编程的道路上继续精进，那么 Linux 就是绕不开的一道门槛。笔者这里记录自己学习 Linux 的学习笔记，供君参考
 
-这一系列主要围绕一个前端需要掌握的运维知识展开
+笔者想的是，Linux 是个很庞大的学习资源，但笔者只要其中开发运维所需要的东西即可
 
-- Linux 常用命令
-
+所以笔者的学习顺序是先了解 Linux 是什么、Linux 的目录结构、Linux 的常用命令，最后笔者会分享自己云服务器的初始化脚本
 
 - Linux 基本概念
 
+- Linux 系统目录结构
 
-- Shell 命令
+- Linux 常用命令
 
+  - Linux 文件目录基本操作
 
-- Vim 谅解书
+  - Linux 用户和用户组管理
 
+  - Linux 文件与目录管理
 
-- 日志与定时任务
+- Linux 其他命令
 
+- 云服务器初始化脚本
+- Shell命令大全
 
+## 为什么要学Linux
 
+[知乎问题：为什么要学习 Linux？](https://www.zhihu.com/question/20117703)
 
-先来了解下，什么是 Linux
+[Vamei博客：为什么要学习Linux](https://link.zhihu.com/?target=http%3A//www.cnblogs.com/vamei/p/3733488.html)
 
-## Linux 是什么
+[Zaikun's Blog：自由谈](https://link.zhihu.com/?target=http%3A//mat.uc.pt/~zhang/blog.html)
 
-一句话解释：开源的类UNIX操作系统
+[张纪刚博客：我为什么要学习Linux?](https://link.zhihu.com/?target=http%3A//blog.csdn.net/zhangjg_blog/article/details/17621339)
 
-我们常说的 Linux 操作系统全称是 GNU/Linux。单独的 Linux 一般指的并不是操作系统，而是操作系统的 kernel（内核）。Linux 内核和 GNU 组合在一起才是操作系统
+## 官方网站
 
-Linux内核最初只是由芬兰人林纳斯·托瓦兹（Linus Torvalds）在赫尔辛基大学上学时出于个人爱好而编写的
+Linux中国：[https://linux.cn/](https://www.ruby-lang.org/)
 
-## 发展历史
+蓝桥云课：https://www.lanqiao.cn/courses/
 
-如下图所示，Unix 是祖爷爷，Linux 是家族创始人，它让家族发扬光大
+- 笔者看过 oeasy 老师的课，但是他讲的又短太细了，不适合我
 
-![Linux 和 Unix 的关系](https://s2.loli.net/2022/12/26/F7tyJ98PMOu2NLV.png)
+鸟哥的linux私房菜：https://linux.vbird.org/
 
-## 常用 Linux 发行版
+- 太全面了，不适合我
 
-单靠 Linux 内核，我们无法做任何事情，只有内核和应用程序在一起，我们才能使用
+Linux命令大全(手册)：https://www.linuxcool.com/
 
-发行版（distro）的英文是 distribution，是内核和应用程序的集合。一个典型的 Linux 发行版包括：Linux 内核，一些 GNU 程序库和工具，命令行 bash，也会包含图形界面
+Linux 教程：https://www.myfreax.com/linux-tutorial/
 
-发行版有很多，可以在 [distrowatch](https://distrowatch.com/) 上查看各个版本的发行版
-
-常见的有
-
-- Ubuntu[新手推荐]：安装简单，界面友好，社区活跃
-- CentOS[推荐]：Red Hat的开源版
-- archlinux[老手常用]：最小的基本系统
-- Debian：适合系统管理和运维
-- Deepin：国产的深度发行版，界面做的非常好看
-- ...
-
-社区里，Ubuntu 和 CentOS 用的人最多，很多教程也是基于这两种操作系统讲解 Linux 及运维知识的
-
-
-
-## 前端开发时用到的 Linux 命令
-
-笔者使用的 window 操作系统，安装 WSL 后，使用 WSL 来开发应用，开发完之后，通过ssh 连接远程服务器，并实现 ssh 远程推送
+Linux 学习资源整理：https://zhuanlan.zhihu.com/p/22654634
