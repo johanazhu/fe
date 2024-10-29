@@ -18,7 +18,6 @@
   - [Linux 用户和用户组管理](./用户和用户组管理)
 - [Linux 其他命令](./其他命令)
 - [Shell命令大全](./shell命令大全)
-- [云服务器初始化脚本](./云服务器初始化脚本)
 
 ## 为什么要学Linux
 
@@ -46,4 +45,3 @@ Linux命令大全(手册)：https://www.linuxcool.com/
 
 Linux 教程：https://www.myfreax.com/linux-tutorial/
 
-Linux 学习资源整理：https://zhuanlan.zhihu.com/p/22654634
