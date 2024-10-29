@@ -79,8 +79,8 @@ export default function BackEndSideBar() {
                     link: '/BackEnd/Go/',
                 },
                 {
-                    text: '极简学习',
-                    link: '/BackEnd/Go/极简学习',
+                    text: 'Go语法基础',
+                    link: '/BackEnd/Go/Go语法基础',
                 },
                 {
                     text: 'Go项目学习',
@@ -104,24 +104,21 @@ export default function BackEndSideBar() {
             ],
         },
         {
-            text: 'MongoDB',
-            collapsable: false,
-            // sidebarDepth: 0,
-            items: [
-                {
-                    text: 'MongoDB',
-                    link: '/BackEnd/MongoDB',
-                },
-            ],
-        },
-        {
-            text: 'Mysql',
+            text: '数据库',
             collapsable: false,
             // sidebarDepth: 0,
             items: [
                 {
                     text: 'Mysql',
                     link: '/BackEnd/Mysql',
+                },
+                {
+                    text: 'Postgresql',
+                    link: '/BackEnd/Postgresql',
+                },
+                {
+                    text: 'MongoDB',
+                    link: '/BackEnd/MongoDB',
                 },
             ],
         },

@@ -1,6 +1,53 @@
 export default function ArmorySideBar() {
     return [
         {
+            text: 'Linux',
+            collapsable: false,
+            sidebarDepth: 0,
+            items: [
+                {
+                    text: 'Linux 导航',
+                    link: '/Linux/',
+                },
+                {
+                    text: 'Linux 基本概念',
+                    link: '/Linux/基本概念',
+                },
+                {
+                    text: 'Linux 包管理器',
+                    link: '/Linux/包管理器',
+                },
+                {
+                    text: 'Linux 系统目录结构',
+                    link: '/Linux/系统目录结构',
+                },
+                {
+                    text: 'Linux 常用命令',
+                    link: '/Linux/常用命令',
+                },
+                {
+                    text: 'Linux 文件目录及权限',
+                    link: '/Linux/文件目录及权限',
+                },
+                {
+                    text: 'Linux 用户和用户组管理',
+                    link: '/Linux/用户和用户组管理',
+                },
+                {
+                    text: 'Linux 其他命令',
+                    link: '/Linux/其他命令',
+                },
+                {
+                    text: 'Shell 命令大全',
+                    link: '/Linux/shell命令大全',
+                },
+                {
+                    text: '云服务器初始化脚本',
+                    link: '/Linux/云服务器初始化脚本',
+                }
+            ],
+        },
+        {
             text: 'Git',
             collapsable: false,
             sidebarDepth: 0,
@@ -36,60 +83,21 @@ export default function ArmorySideBar() {
             ],
         },
         {
-            text: 'Linux',
+            text: '运维部署',
             collapsable: false,
             sidebarDepth: 0,
             items: [
-                {
-                    text: 'Linux导航',
-                    link: '/Linux/',
-                },
-                {
-                    text: '基本概念',
-                    link: '/Linux/基本概念',
-                },
-                {
-                    text: '常用命令',
-                    link: '/Linux/常用命令',
-                },
-                {
-                    text: '目录结构',
-                    link: '/Linux/目录结构',
-                },
-                {
-                    text: '防火墙知一二',
-                    link: '/Linux/防火墙知一二',
-                },
-                {
-                    text: '远程服务器相关操作',
-                    link: '/Linux/远程服务器相关操作',
-                }
-            ],
-        },
-        {
-            text: 'DevOps',
-            collapsable: false,
-            sidebarDepth: 0,
-            items: [
-                {
-                    text: 'DevOps导航',
-                    link: '/DevOps/',
-                },
                 {
                     text: 'DevOps',
-                    link: '/DevOps/部署',
+                    link: '/DevOps',
                 },
                 {
-                    text: '建设前端性能监控系统',
-                    link: '/DevOps/建设前端性能监控系统',
+                    text: 'Nginx',
+                    link: '/DevOps/Nginx',
                 },
                 {
-                    text: 'jenkins',
-                    link: '/DevOps/jenkins',
-                },
-                {
-                    text: 'sentry',
-                    link: '/DevOps/sentry',
+                    text: 'Nginx 常用命令及配置',
+                    link: '/DevOps/Nginx/常用命令及配置',
                 },
             ],
         },

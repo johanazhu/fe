@@ -21,7 +21,7 @@
         right:[
             ['数据库',[
                 [{ title: 'Mysql', link:'./Mysql'}],
-                //  [{ title: 'Postgres', link:'./Postgres'}],
+                [{ title: 'Postgresql', link:'./Postgresql'}],
                 [{ title: 'MongoDB', link:'./MongoDB'}],
             ]],
             // ['内存'],
@@ -46,11 +46,17 @@
 
 [Web API 设计](./RESTful)
 
-[Mysql](./Mysql)
-
-[MongoDB](./MongoDB)
-
-[Redis](./Redis)
-
 [HTTP 协议](../HTTP/)
+
+## 数据库
+
+- [Mysql](./Mysql)
+
+- [Postgresql](./Postgresql)
+
+- [MongoDB](./MongoDB)
+
+## Redis
+
+- [Redis](./Redis)
 
