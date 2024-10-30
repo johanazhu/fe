@@ -2,7 +2,7 @@
 
 
 
-[Nginx](./Nginx)
+Nginx 配置
 
 
 
