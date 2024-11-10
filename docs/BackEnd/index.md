@@ -23,11 +23,12 @@
                 [{ title: 'Mysql', link:'./Mysql'}],
                 [{ title: 'Postgresql', link:'./Postgresql'}],
                 [{ title: 'MongoDB', link:'./MongoDB'}],
+                [{ title: 'SQLite', link:'./SQLite'}],
+                 [{ title: 'Redis', link:'./Redis'}],
             ]],
             // ['内存'],
             // ['进程线程'],
             // ['缓存缓存系统'],
-            [{ title: 'Redis', link:'./Redis'}],
         ],
     },
     {title:'共同知识点',
@@ -56,7 +57,7 @@
 
 - [MongoDB](./MongoDB)
 
-## Redis
+- [SQLite](./SQLite)
 
 - [Redis](./Redis)
 

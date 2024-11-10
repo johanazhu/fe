@@ -15,7 +15,7 @@ export default function NodeSideBar() {
                 },
                 {
                     text: 'NPM包管理器',
-                    link: '/Node/NPM包管理器',
+                    link: '/Node/包管理器',
                 },
                 {
                     text: '脚手架',

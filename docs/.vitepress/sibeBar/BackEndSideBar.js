@@ -120,18 +120,15 @@ export default function BackEndSideBar() {
                     text: 'MongoDB',
                     link: '/BackEnd/MongoDB',
                 },
-            ],
-        },
-        {
-            text: 'Redis',
-            collapsable: false,
-            // sidebarDepth: 0,
-            items: [
+                {
+                    text: 'SQLite',
+                    link: '/BackEnd/SQLite',
+                },
                 {
                     text: 'Redis',
                     link: '/BackEnd/Redis',
                 },
             ],
-        }
+        },
     ];
 }

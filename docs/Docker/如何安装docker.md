@@ -2,6 +2,8 @@
 
 ## 如何安装
 
+https://u.sb/debian-install-docker/
+
 菜鸟教程上有所有系统的[安装教程](https://www.runoob.com/docker/windows-docker-install.html)
 
 也可看这篇文章——[Win10 专业版安装 Docker](https://zhuanlan.zhihu.com/p/85048683) ，19 年 10 月份写的，在未来几年里，够用。
@@ -41,3 +43,18 @@ docker version
 在网上搜索「Docker 加速」得到[教程](https://www.runoob.com/docker/docker-mirror-acceleration.html)
 
 找到合适自己系统的教程，照做即可，如果失败，就换个教程
+
+前段时间，[国内的Docker镜像源疑似集体停止服务](https://github.com/DaoCloud/public-image-mirror)
+
+```json
+{
+    "registry-mirrors": [
+        "https://docker.m.daocloud.io",
+        "https://dockerhub.icu",
+        "https://docker.anyhub.us.kg",
+        "https://docker.1panel.live"
+    ]
+}
+```
+
+https://blog.laoda.de/archives/docker-configuration-for-china-mainland

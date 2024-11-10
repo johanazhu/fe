@@ -4,7 +4,9 @@
 
 > 为了跨平台操作数据库，docker必须学
 
-## 正文
+
+
+## 使用 Dokcer 安装 Postgresql
 
 首先，从 Docker Hub 拉取官方的 PostgreSQL 镜像。可以使用以下命令：
 
@@ -29,7 +31,7 @@ docker run --name pgsql -p 5432:5432 -e POSTGRES_PASSWORD=abc123 -v pgdata:/var/
 - `--name pgsql`：容器的名称
 - `-p 5432:5432`：容器的端口，这里不写默认为 5432
 - `-e POSTGRES_PASSWORD=abc123`：环境变量POSTGRES_PASSWORD
-- `-v pgdata:/var/lib/postgresql/data`：将容器中的data 与宿主机（本机）相关联（挂载到本机上）
+- `-v pgdata:/var/lib/postgresql/data`：将容器中的 data 与宿主机（本机）相关联（挂载到本机上）
 
 进入容器中
 
@@ -103,3 +105,14 @@ docker run --name pgsql -p 5432:5432 -e POSTGRES_PASSWORD=abc123 -v pgdata:/var/
 > PS：`docker ps` 查看容器是否启动，虽然名字都为 pgsql，但是哈希值是不同的
 
 接下来，可以刷新 Navicat 查看数据库是否能连接，并且是否有 blog 数据库；也可以进入容器中的 postgresql，用命令行查看数据是否还存在
+
+
+
+
+
+## Postpresql 数据库
+
+```bash
+postgres://username:password@host:port/database_name
+```
+
