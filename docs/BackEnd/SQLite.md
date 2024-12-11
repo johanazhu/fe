@@ -26,3 +26,8 @@ SQLite是一个进程内的库，实现了自给自足的、无服务器的、�
 
 
 
+
+
+
+
+https://www.sqlite.org/lang.html

@@ -84,14 +84,14 @@ export const head = [
     //     },
     // ],
     // 自定义埋点
-    // [
-    //     'script',
-    //     {
-    //         defer: true,
-    //         'data-website-id': '234eb9cc-9737-415a-95ca-ee8ab0c57bc7',
-    //         src: 'https://us.umami.is/script.js'
-    //     }
-    // ],
+    [
+        'script',
+        {
+            defer: true,
+            'data-website-id': '0461b15d-2dec-4240-ad59-ca1c71c37a82',
+            src: 'https://umami.azhubaby.com/123456'
+        }
+    ],
     // plausible
     [
         'script',
