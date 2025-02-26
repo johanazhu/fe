@@ -13,7 +13,7 @@
 
 如果是 Window 电脑的话，可以参考这篇文章——[超级详细的mysql数据库安装指南](https://zhuanlan.zhihu.com/p/37152572)
 
-如果是 Linux/Mac 电脑的话，可以参考这篇文章——[如何使用二进制文件离线安装 Mysql](./如何使用二进制文件离线安装 Mysql)
+如果是 Linux/Mac 电脑的话，可以参考这篇文章——[如何使用二进制文件离线安装 Mysql](./如何使用二进制文件离线安装Mysql)
 
 当然，还可以通过 docker 起 mysql 服务，再通过 mysql 客户端连接
 
