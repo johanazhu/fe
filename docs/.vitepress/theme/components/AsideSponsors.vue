@@ -21,13 +21,13 @@ const random = Math.floor(Math.random() * 3 + 1)
                 <div class="VPSponsorsGrid vp-sponsor-grid mini" data-vp-grid="1">
                     <div class="vp-sponsor-grid-item">
                         <a class="vp-sponsor-grid-link"
-                            href="https://xiaobot.tools?utm_source=fe.azhubaby.com&utm_medium=referral" target="_blank"
+                            href="https://xiaobaot.cn?utm_source=fe.azhubaby.com&utm_medium=referral" target="_blank"
                             rel="sponsored noopener">
                             <article class="vp-sponsor-grid-box">
-                                <h4 class="visually-hidden">小报童专栏导航</h4>
+                                <h4 class="visually-hidden">小报童导航站</h4>
                                 <img style="max-width:36px; border-radius: 2px;" src="/images/sponsor/xiaobot.png"
-                                    alt="xiaobot.tools">
-                                <span class="vp-sponsor-grid-text" style="margin-left: 8px;">小报童专栏导航</span>
+                                    alt="xiaobaot.cn">
+                                <span class="vp-sponsor-grid-text" style="margin-left: 8px;">小报童导航站</span>
                             </article>
                         </a>
                     </div>

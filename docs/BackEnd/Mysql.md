@@ -27,7 +27,7 @@ mysql -u root -p
 本地登录mysql
 
 ```bash
-mysql -u root -p -h IP地址
+mysql -uroot -p -h IP地址
 ```
 
 修改密码（MySQL 8.0 之后）：
