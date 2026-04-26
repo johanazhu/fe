@@ -33,6 +33,22 @@ const random = Math.floor(Math.random() * 3 + 1)
                     </div>
                 </div>
             </section>
+            <section class="vp-sponsor-section">
+                <div class="VPSponsorsGrid vp-sponsor-grid mini" data-vp-grid="1">
+                    <div class="vp-sponsor-grid-item">
+                        <a class="vp-sponsor-grid-link"
+                            href="http://anyaihub.com/?utm_source=fe.azhubaby.com&utm_medium=referral" target="_blank"
+                            rel="sponsored noopener">
+                            <article class="vp-sponsor-grid-box">
+                                <h4 class="visually-hidden">AnyAIHub</h4>
+                                <img style="max-width:36px; border-radius: 2px;" src="/images/sponsor/anyaihub.png"
+                                    alt="anyaihub.com">
+                                <span class="vp-sponsor-grid-text" style="margin-left: 8px;">AnyAIHub</span>
+                            </article>
+                        </a>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </template>
