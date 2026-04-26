@@ -34,6 +34,9 @@ hero:
     - theme: brand
       text: 小报童导航站
       link: https://xiaobaot.cn?utm_source=fe.azhubaby.com&utm_medium=referral
+    - theme: alt
+      text: AnyAIHub
+      link: http://anyaihub.com/?utm_source=fe.azhubaby.com&utm_medium=referral
 features:
   - title: 允许一切如其所是
     details: 参差百态乃幸福之本源
