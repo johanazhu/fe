@@ -16,9 +16,9 @@
 </template>
 
 <script setup>
-import UAParser from 'ua-parser-js'
+import { UAParser } from 'ua-parser-js'
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vitepress'
 import { drawMap } from './utils'
 const props = defineProps({
     height: Number,

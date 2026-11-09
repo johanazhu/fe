@@ -1,4 +1,12 @@
-
+// 敏感配置从根目录 .env 读取（见 .env.example），未配置时对应项不注入 head
+const {
+    BAIDU_SITE_VERIFICATION,
+    BAIDU_ANALYTICS_ID,
+    GOOGLE_ANALYTICS_ID,
+    PLAUSIBLE_DOMAIN,
+    PLAUSIBLE_SCRIPT_SRC,
+    CLARITY_ID,
+} = process.env;
 
 export const title = "五年前端三年面试";
 export const socialTitle = "五年前端三年面试 - Johnny 的前端知识地图";
@@ -53,60 +61,79 @@ export const head = [
     ],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     // 百度搜索
-    ["meta", { name: "baidu-site-verification", content: "codeva-nBcDOxSAzM" }],
-    // ["meta", { name: "shenma-site-verification", content: "fe411010541768632c2c0f87027a13c6_1689208054" }],
-    [
-        "script",
-        {
-            src: "https://hm.baidu.com/hm.js?d62573a82a77fc885b0f1cbf8a6ab5e4",
-        },
-    ],
+    ...(BAIDU_SITE_VERIFICATION
+        ? [["meta", { name: "baidu-site-verification", content: BAIDU_SITE_VERIFICATION }]]
+        : []),
+    // ["meta", { name: "shenma-site-verification", content: process.env.SHENMA_SITE_VERIFICATION }],
+    ...(BAIDU_ANALYTICS_ID
+        ? [["script", { src: `https://hm.baidu.com/hm.js?${BAIDU_ANALYTICS_ID}` }]]
+        : []),
     // google 统计
-    [
-        'script',
-        {
-            async: '',
-            src: 'https://www.googletagmanager.com/gtag/js?id=G-03YTWDXVL1',
-        },
-    ],
-    [
-        'script',
-        {},
-        "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-03YTWDXVL1');",
-    ],
+    ...(GOOGLE_ANALYTICS_ID
+        ? [
+              [
+                  'script',
+                  {
+                      async: '',
+                      src: `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`,
+                  },
+              ],
+              [
+                  'script',
+                  {},
+                  `window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', '${GOOGLE_ANALYTICS_ID}');`,
+              ],
+          ]
+        : []),
     // google 广告
-    // [
-    //     'script',
-    //     {
-    //         async: '',
-    //         crossorigin: 'anonymous',
-    //         src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8924495239960816',
-    //     },
-    // ],
+    // ...(process.env.GOOGLE_ADSENSE_CLIENT
+    //     ? [
+    //           [
+    //               'script',
+    //               {
+    //                   async: '',
+    //                   crossorigin: 'anonymous',
+    //                   src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GOOGLE_ADSENSE_CLIENT}`,
+    //               },
+    //           ],
+    //       ]
+    //     : []),
     // 自定义埋点
-    [
-        'script',
-        {
-            defer: true,
-            'data-website-id': '0461b15d-2dec-4240-ad59-ca1c71c37a82',
-            src: 'https://umami.azhubaby.com/123456'
-        }
-    ],
+    // ...(process.env.UMAMI_WEBSITE_ID && process.env.UMAMI_SCRIPT_SRC
+    //     ? [
+    //           [
+    //               'script',
+    //               {
+    //                   defer: true,
+    //                   'data-website-id': process.env.UMAMI_WEBSITE_ID,
+    //                   src: process.env.UMAMI_SCRIPT_SRC,
+    //               },
+    //           ],
+    //       ]
+    //     : []),
     // plausible
-    [
-        'script',
-        {
-            defer: true,
-            'data-domain': 'fe.azhubaby.com',
-            src: 'https://click.pageview.click/js/script.js'
-        }
-    ],
+    ...(PLAUSIBLE_DOMAIN && PLAUSIBLE_SCRIPT_SRC
+        ? [
+              [
+                  'script',
+                  {
+                      defer: true,
+                      'data-domain': PLAUSIBLE_DOMAIN,
+                      src: PLAUSIBLE_SCRIPT_SRC,
+                  },
+              ],
+          ]
+        : []),
     // microsoft analytics
-    [
-        'script',
-        {},
-        `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "i1lhwlg2q4")`
-    ],
+    ...(CLARITY_ID
+        ? [
+              [
+                  'script',
+                  {},
+                  `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${CLARITY_ID}")`,
+              ],
+          ]
+        : []),
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'zh-CN' }],
     ['meta', { property: 'og:title', content: socialTitle }],

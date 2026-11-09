@@ -1,3 +1,5 @@
+// 必须最先加载 .env，保证后续模块读取到的 process.env 已就绪
+import './env';
 import { withPwa } from "@vite-pwa/vitepress";
 import { defineConfig } from "vitepress";
 import themeConfig from "./themeConfig";
