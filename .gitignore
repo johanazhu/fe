@@ -7,8 +7,6 @@ docs/.vitepress/.temp
 yarn.lock
 yarn-error.log
 
-pnpm.yaml
-pnpm-lock.yaml
 
 .vercel
 .env
